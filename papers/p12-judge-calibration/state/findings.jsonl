@@ -1,0 +1,31 @@
+{"ts":"2026-07-03T00:00:00+08:00","source":"init","level":"decision","finding":"P12 starts as a small judge-calibration viability probe reusing P11 samples, not as a new large benchmark."}
+{
+  "ts": "2026-07-03T06:06:33+08:00",
+  "source": "m1",
+  "level": "info",
+  "finding": "P12 M1 sample manifest frozen: 450 samples (3 conditions × 3 enterprises × 50 runs), all condition_visible_to_judge=false, source_sha256_prefix=12hex",
+  "details": {
+    "manifest_path": "experiments/sample_manifest.jsonl",
+    "frozen_ids_path": "experiments/sample_ids_ordered.json",
+    "n": 450
+  }
+}
+{
+  "ts": "2026-07-03T14:10:30+08:00",
+  "source": "m1",
+  "level": "decision",
+  "finding": "P12 M1 closed: pre-registration, manifest (450 rows), and frozen sample ids written. Zero judge calls performed. Awaiting M2 (leaked baseline).",
+  "n_samples": 450
+}
+{
+  "ts": "2026-07-03T15:32:27+08:00",
+  "source": "m2",
+  "level": "info",
+  "finding": "P12 M2 leaked-baseline runner code ready (experiments/run_leaked_baseline.py + test_run_leaked_baseline.py, 3/3 tests pass on dry-run). Real LLM invocation deferred to user environment with DEEPSEEK_API_KEY set. Framework scaffold (framework/{schemas,knowledge}/) populated; 14 schema path refs rewritten across papers/*/* depth-aware; 0 broken refs.",
+  "details": {
+    "runner": "experiments/run_leaked_baseline.py",
+    "expected_rows": 450,
+    "judge_model": "deepseek-v4-pro",
+    "protocol": "leaked"
+  }
+}

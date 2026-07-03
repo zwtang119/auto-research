@@ -1,0 +1,93 @@
+# materials/20-seed-data/reusable_rocket_v2.yaml
+# ReusableRocket 增强版场景 — v2.0
+
+metadata:
+  version: "2.0"
+  base_scenario: "ReusableRocket"
+  enhancements:
+    - "新增第三章：技术路线认定与标准推荐"
+    - "新增第四章：安全审查"
+    - "新增第五章：供应链国产化要求"
+    - "企业新增维度：供应链策略、安全合规禀赋、标准跟随策略"
+
+policy:
+  title: "北京市商业航天产业发展支持政策（修订版）"
+  chapters:
+    - chapter: "第一章 总则"
+      summary: "政策目标、适用范围、定义"
+      key_provisions:
+        - "支持商业航天企业技术创新和产业化"
+        - "鼓励可重复使用火箭技术发展"
+
+    - chapter: "第二章 财政补贴与税收优惠"
+      summary: "补贴标准、申请条件、评审流程"
+      key_provisions:
+        - "可重复使用火箭项目最高补贴 5000 万元"
+        - "首次成功回收补贴额外 2000 万元"
+        - "按发射次数阶梯式补贴"
+
+    - chapter: "第三章 技术路线认定与标准推荐"  # 新增
+      summary: "认定主流技术路线，推荐行业标准"
+      key_provisions:
+        - "认定液氧甲烷为主流推进技术路线"
+        - "推荐可重复使用火箭设计标准"
+        - "选择主流路线的企业获得额外补贴加成 30%"
+        - "非主流路线需额外通过技术评审"
+      source: "BeiDou vs GPS 标准竞争论文"
+
+    - chapter: "第四章 安全审查"  # 新增
+      summary: "双重用途技术安全审查要求"
+      key_provisions:
+        - "火箭技术纳入军民两用物项管理"
+        - "年发射超过 5 次的企业需通过安全审查"
+        - "审查周期 6 个月，费用企业承担"
+        - "未通过审查的暂停发射许可"
+        - "进口关键组件需额外安全审批"
+      source: "PLA on Starlink 论文"
+
+    - chapter: "第五章 供应链国产化要求"  # 新增
+      summary: "关键组件国产化率要求"
+      key_provisions:
+        - "发动机控制系统国产化率不低于 70%"
+        - "导航定位系统必须使用北斗兼容设备"
+        - "3 年内实现核心组件 100% 国产化"
+        - "使用国产替代组件的企业享受税收减免"
+      source: "Ukraine War for Space 论文"
+
+enterprises:
+  LANDSPACE:
+    name: "蓝箭航天"
+    base_profile: "液氧甲烷火箭开发商，已实现成功入轨"
+    # 原有维度
+    tech_route: "methane"
+    scale: "medium"
+    market_position: "challenger"
+    # 新增维度
+    supply_chain_strategy: "mixed"       # 自研核心+外购非核心
+    security_compliance: "medium"        # 中等安全合规禀赋
+    standard_following: "follower"       # 跟随主流标准
+    import_dependency: "high"            # 高度依赖进口组件
+
+  SPACETIMETECH:
+    name: "天兵科技"
+    base_profile: "液氧煤油火箭开发商，专注大推力"
+    tech_route: "kerosene"
+    scale: "medium"
+    market_position: "niche"
+    # 新增维度
+    supply_chain_strategy: "domestic"    # 优先国产供应链
+    security_compliance: "high"          # 高安全合规禀赋（军工背景）
+    standard_following: "independent"    # 独立标准路线
+    import_dependency: "low"             # 低进口依赖
+
+  ISPACE:
+    name: "星际荣耀"
+    base_profile: "固体火箭开发商，主打快速发射"
+    tech_route: "solid"
+    scale: "small"
+    market_position: "cost_leader"
+    # 新增维度
+    supply_chain_strategy: "outsourced"  # 外包为主
+    security_compliance: "low"           # 低安全合规禀赋
+    standard_following: "opportunistic"  # 机会主义跟随
+    import_dependency: "medium"          # 中等进口依赖

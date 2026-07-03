@@ -1,0 +1,24 @@
+{
+  "directions": [
+    {
+      "id": "p11_mainline_repair",
+      "status": "closed",
+      "reason": "Review plateau and new structural-intelligence literature indicate inner monologue is not a robust reliability control layer."
+    },
+    {
+      "id": "p11_workshop_or_appendix",
+      "status": "kept",
+      "reason": "Useful negative/methodology result and P12 sample source."
+    },
+    {
+      "id": "p12_judge_calibration",
+      "status": "selected_next",
+      "reason": "Fastest route to 60-point publishable contribution using existing P11 evidence."
+    },
+    {
+      "id": "p1_p2_evidence_structured_decision",
+      "status": "selected_medium_term",
+      "reason": "Highest ceiling if factor ledger, provenance, freshness, authority, conflict and settlement are evaluated."
+    }
+  ]
+}

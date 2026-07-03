@@ -1,0 +1,9 @@
+{"ts":"2026-07-03T00:00:00+08:00","iteration":0,"milestone":"init","outcome":"created P12 scaffold with state, logs, wiki, experiments, and paper directories","next":"M1 sample manifest from P11"}
+{"ts":"2026-07-03T15:09:59+08:00","iteration":1,"milestone":"m1_close_review","outcome":"Progress and iteration_log reconciled with M1 close. 450-row manifest + frozen IDs + pre-registration doc + 9/9 unit tests all GREEN. validate_manifest.sh rc=0. Awaiting M2.","next":"M2_leaked_baseline"}
+{
+  "ts": "2026-07-03T15:32:27+08:00",
+  "iteration": 2,
+  "milestone": "m2_kickoff",
+  "outcome": "Framework scaffold minimum built (framework/{README,schemas/data-contracts+experiment-pitfalls,knowledge/auto-research-history}); M2 leaked-baseline runner + 3 unit tests in place; deep-run waits on DEEPSEEK_API_KEY in user env.",
+  "next": "Wait for user to set DEEPSEEK_API_KEY then re-invoke experiments/run_leaked_baseline.py without --dry-run. Expected: ~15 min wall time, 450 records."
+}

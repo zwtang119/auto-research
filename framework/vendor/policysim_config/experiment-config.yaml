@@ -1,0 +1,155 @@
+# config/experiment-config.yaml
+# 可本地部署多智能体政策仿真实验 — 主配置
+
+api_endpoints:
+  openrouter:
+    base_url: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+  paratera:
+    base_url: "https://llmapi.paratera.com/v1"
+    api_key_env: "PARATERA_API_KEY"
+  deepseek:
+    base_url: "https://api.deepseek.com"
+    api_key_env: "DEEPSEEK_API_KEY"
+  qwen:
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key_env: "DASHSCOPE_API_KEY"
+  minimax:
+    base_url: "https://api.minimax.chat/v1"
+    api_key_env: "MINIMAX_API_KEY"
+  kimi:
+    base_url: "https://api.moonshot.cn/v1"
+    api_key_env: "MOONSHOT_API_KEY"
+  zhipu:
+    base_url: "https://open.bigmodel.cn/api/paas/v4"
+    api_key_env: "ZHIPU_API_KEY"
+  glm-coding:
+    base_url: "https://open.bigmodel.cn/api/coding/paas/v4"
+    api_key_env: "GLM_CODING_API_KEY"
+  xiaomi:
+    base_url: "https://token-plan-cn.xiaomimimo.com/v1"
+    api_key_env: "XIAOMI_API_KEY"
+  token-plan:
+    base_url: "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+    api_key_env: "TOKEN_PLAN_API_KEY"
+
+models:
+  gpt-oss-120b:
+    provider: openrouter
+    model_id: "openai/gpt-oss-120b:free"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  nemotron-3-super:
+    _status: DEPRECATED          # 2026-05-06: 60% 截断 + 英文泄露，数据不可用，已弃用
+    provider: openrouter
+    model_id: "nvidia/nemotron-3-super-120b-a12b:free"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  deepseek-v4-flash:
+    provider: paratera
+    model_id: "DeepSeek-V4-Flash"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  qwen3.5-122b:
+    provider: paratera
+    model_id: "Qwen3.5-122B-A10B"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  # 备选模型（Phase 0 失败时启用）
+  glm-4.5-air:
+    provider: openrouter
+    model_id: "z-ai/glm-4.5-air:free"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  hy3-preview:
+    provider: openrouter
+    model_id: "tencent/hy3-preview:free"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  # GT/Judge 模型（Phase 0 不需要）
+  minimax-m2.7:
+    provider: paratera
+    model_id: "MiniMax-M2.7"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  kimi-k2.5:
+    provider: paratera
+    model_id: "Kimi-K2.5"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  glm-5.1:
+    provider: paratera
+    model_id: "GLM-5.1"
+    params: { temperature: 0.7, max_tokens: 2048 }
+
+  glm-5.1-coding:
+    provider: glm-coding
+    model_id: "glm-5.1"
+    params: { temperature: 0.7, max_tokens: 8192 }
+
+  deepseek-v4-pro:
+    provider: paratera
+    model_id: "DeepSeek-V4-Pro"
+    params: { temperature: 0.7, max_tokens: 4096 }
+
+  deepseek-v3.2:
+    provider: paratera
+    model_id: "DeepSeek-V3.2"
+    params: { temperature: 0.7, max_tokens: 4096 }
+
+  mimo-v2.5-pro:
+    provider: xiaomi
+    model_id: "mimo-v2.5-pro"
+    params: { temperature: 0.7, max_tokens: 4096 }
+
+  kimi-k2.6:
+    provider: token-plan
+    model_id: "kimi-k2.6"
+    params: { temperature: 0.7, max_tokens: 4096 }
+
+  qwen3.6-plus:
+    provider: token-plan
+    model_id: "qwen3.6-plus"
+    params: { temperature: 0.7, max_tokens: 4096 }
+
+plans:
+  A:
+    generators: [gpt-oss-120b, deepseek-v4-flash, qwen3.5-122b]  # nemotron 已弃用
+    gt_annotators: [minimax-m2.7, kimi-k2.5]
+    judges: [minimax-m2.7, kimi-k2.5]  # glm-5.1 天花板效应，替换为 minimax (2026-05-07)
+    runs_per_cell: 35
+    total_runs: 210              # 3 models x 2 conditions x 35 runs
+    yaml_files_per_condition: 315  # 3 models x 3 enterprises x 35 runs
+  B-3:
+    generators: [deepseek-v4-flash, qwen3.5-122b, minimax-m2.7]
+    gt_annotators: [glm-5.1, kimi-k2.5]
+    judges: [deepseek-v4-pro, kimi-k2.5]
+    runs_per_cell: 35
+    total_runs: 210              # 3 models x 2 conditions x 35 runs
+    yaml_files_per_condition: 315  # 3 models x 3 enterprises x 35 runs
+  B-2:
+    generators: [deepseek-v4-flash, qwen3.5-122b]
+    gt_annotators: [minimax-m2.7, kimi-k2.5]
+    judges: [glm-5.1, kimi-k2.5]
+    runs_per_cell: 35
+    total_runs: 140              # 2 models x 2 conditions x 35 runs
+    yaml_files_per_condition: 210  # 2 models x 3 enterprises x 35 runs
+
+# 管线参数 — 所有阶段统一从此处读取，脚本不硬编码
+pipeline_params:
+  generation:                    # 数据生成（已完成）
+    max_tokens: 2048
+    temperature: 0.7
+  gt_annotation:                 # GT-0 本体增强 / GT-1 校准 / GT-2 全量标注
+    max_tokens: 8192
+    temperature: 0.7
+  evaluation:                    # Track A LLM-as-Judge / Track B D1-D5 评分
+    max_tokens: 8192
+    temperature: 0.7
+  arbitration:                   # GT-3 规则仲裁（无 API 调用）
+    method: rule_based
+    low_confidence_threshold: 2
+    ambiguous_cap: 0.10
+
+conditions: [MAMR, SASR]
+enterprises: [LANDSPACE, SPACETIMETECH, ISPACE]

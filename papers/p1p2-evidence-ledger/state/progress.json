@@ -1,0 +1,39 @@
+{
+  "exp_id": "P1P2",
+  "iteration": 0,
+  "status": "initialized",
+  "stale_count": 0,
+  "last_seen": "2026-07-03T08:12:26Z",
+  "last_updated": "2026-07-03T00:00:00Z",
+  "current_milestone": "M1",
+  "completed_milestones": [],
+  "blocked": false,
+  "block_reason": null,
+  "source_projects": [
+    "legacy/p11-closed-v5-minimax-m3",
+    "papers/p07-signal-fusion",
+    "papers/p08-market-calibration"
+  ],
+  "schema_anchor": "evidence_ledger_entry",
+  "schema_reference": "framework/schemas/data-contracts.md#8-evidence_ledger_entry-p1p2",
+  "pitfall_set": [
+    "PIT-201",
+    "PIT-202",
+    "PIT-203",
+    "PIT-204",
+    "PIT-205",
+    "PIT-206",
+    "PIT-207",
+    "PIT-208"
+  ],
+  "target": "evidence-structured agent decision making; Day 14 review median >= 6.5",
+  "paper_working_title": "Evidence-Structured Agent Decision Making for Emergency Response",
+  "deliverables": [],
+  "recent_events": [
+    {
+      "ts": "2026-07-03T00:00:00Z",
+      "event": "mainline_scaffold_created",
+      "detail": "Initialized papers/p1p2-evidence-ledger/ with state, logs, wiki, paper, experiments/ledger. No ledger entries written yet."
+    }
+  ]
+}

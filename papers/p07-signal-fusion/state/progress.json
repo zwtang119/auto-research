@@ -1,0 +1,34 @@
+{
+  "iteration": 0,
+  "total_findings": 0,
+  "status": "initialized",
+  "stale_count": 0,
+  "last_updated": "2026-07-01T13:35:00+08:00",
+  "current_milestone": "M1",
+  "completed_milestones": [],
+  "predetermined_config": {
+    "data_source_groups": {
+      "A_Market_Signals": [
+        "finance",
+        "macro",
+        "energy"
+      ],
+      "B_Event_Intelligence": [
+        "geopolitics",
+        "sanctions",
+        "news",
+        "aviation"
+      ],
+      "C_Reference_Knowledge": [
+        "academic",
+        "wikipedia",
+        "weather",
+        "sports"
+      ]
+    },
+    "scenario": "gulei_petrochemical",
+    "mc_runs_per_condition": 100,
+    "ablation_runs_per_group": 50
+  },
+  "last_seen": "2026-07-03T08:12:26Z"
+}

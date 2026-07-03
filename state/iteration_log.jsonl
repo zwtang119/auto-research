@@ -1,0 +1,3 @@
+{"ts":"2026-07-03T00:00:00+08:00","iteration":1,"milestone":"M0-M1","outcome":"created portfolio roadmap, root README, project index, AutoResearch docs index, and portfolio state files","next":"M2 P11 closure and P12 scaffold"}
+{"ts":"2026-07-03T00:00:00+08:00","iteration":2,"milestone":"M2-M3","outcome":"created P11 closure status and initialized P12 judge-calibration scaffold","next":"P12 M1 sample manifest from P11"}
+{"ts":"2026-07-03T00:00:00+08:00","iteration":3,"milestone":"M5-M7 config","outcome":"configured P12, P1+P2 evidence-ledger, P1.2 settlement layer, and P2.1 evidence-input layer with io_spec, wiki, prompts, and audit report","next":"P12 M1 sample_manifest and state/experiment_design.md"}

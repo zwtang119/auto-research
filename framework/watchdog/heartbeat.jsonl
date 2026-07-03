@@ -1,0 +1,5 @@
+{"ts": "2026-07-03T08:11:45Z", "source": "cli_smoke", "level": "liveness", "action": "heartbeat", "detail": "manual run"}
+{"ts": "2026-07-03T08:13:08Z", "source": "p12_M2_runner", "level": "liveness", "action": "heartbeat", "detail": "start args={'dry_run': True, 'limit': 7}"}
+{"ts": "2026-07-03T08:13:08Z", "source": "p12_M2_runner", "level": "liveness", "action": "heartbeat", "detail": "start args={'dry_run': True, 'limit': 3}"}
+{"ts": "2026-07-03T08:13:08Z", "source": "p12_M2_runner", "level": "liveness", "action": "heartbeat", "detail": "start args={'dry_run': True, 'limit': 10}"}
+{"ts": "2026-07-03T08:13:08Z", "source": "p12_M2_runner", "level": "liveness", "action": "heartbeat", "detail": "start args={'dry_run': True, 'limit': 3}"}

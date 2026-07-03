@@ -1,0 +1,14 @@
+{
+  "directions": [
+    {
+      "id": "reuse_p11_label_leakage",
+      "status": "selected",
+      "reason": "Existing P11 blind-judge result gives immediate false-positive calibration target."
+    },
+    {
+      "id": "large_new_judge_benchmark",
+      "status": "rejected_initially",
+      "reason": "Too large for fast 60-point paper; only revisit after small viability succeeds."
+    }
+  ]
+}

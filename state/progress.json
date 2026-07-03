@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "status": "experiment_directories_configured",
+  "stale_count": 0,
+  "last_updated": "2026-07-03T00:00:00+08:00",
+  "current_milestone": "M4",
+  "completed_milestones": ["M0", "M1", "M2", "M3", "M5", "M6", "M7"],
+  "active_tracks": {
+    "P11": "close_as_mainline_reuse_for_P12",
+    "P12": "configured_next_sample_manifest",
+    "P1_P2": "configured_evidence_ledger_mainline",
+    "P8_P1_2": "configured_settlement_layer",
+    "P7_P2_1": "configured_evidence_input_layer"
+  },
+  "decision": "P11 no longer mainline; P12 fast paper first; P1+P2+P8 high-ceiling mainline"
+}

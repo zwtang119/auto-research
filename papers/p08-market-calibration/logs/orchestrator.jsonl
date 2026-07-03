@@ -1,0 +1,1 @@
+{"ts": "2026-07-01T13:35:00+08:00", "source": "orchestrator", "level": "info", "event": "task_initialized", "detail": "P1.2 Market Calibration state directory created. 17 AB test rounds available. M1 (quantitative extraction) ready to start. Single human checkpoint at M2."}

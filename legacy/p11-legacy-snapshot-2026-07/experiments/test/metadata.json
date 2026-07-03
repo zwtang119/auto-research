@@ -1,0 +1,15 @@
+{
+  "experiment": "P1.1 Inner Monologue",
+  "mode": "inner_monologue",
+  "model": "deepseek-v4-pro",
+  "total_runs": 1,
+  "rounds_per_run": 3,
+  "enterprises": [
+    "LANDSPACE",
+    "SPACETIMETECH",
+    "ISPACE"
+  ],
+  "seed": 42,
+  "started_at": "2026-07-01T15:15:43+08:00",
+  "status": "running"
+}

@@ -1,0 +1,74 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Virtualenvs
+venv/
+.venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Test artefacts (large, regeneratable)
+experiments/leaked_responses/*.txt
+experiments/blind_responses/*.txt
+experiments/pairwise_responses/
+experiments/neighborhood_probes/
+
+# Paper-writing scratch
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+
+# Build artifacts
+website/public/
+dist/
+build/
+
+# Tooling
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Local experimental data (excluded unless explicitly added)
+*.tar
+*.zip
+experiments/raw_data/**/*.yaml
+experiments/h5-emergence/A/yaml/
+
+# Reason: legacy/p11-closed-v5-minimax-m3/experiments/h5-emergence/A/yaml
+# has 750 yaml files which we re-derive from sample_manifest.jsonl. Add back
+# via `git add -f path/to/file.yaml` if you explicitly want a snapshot.
+
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# Nested git repos (preserve as content; do NOT track as submodules).
+# legacy/p11-closed-v5-{mimo,minimax-m3}/ and victorchen96.github.io/
+# each carry their own .git/ on disk for their local history. We embed
+# them as plain content here so this monorepo is self-contained.
+**/.git
+
+# Agent / tooling session caches (local-only)
+.workbuddy/
+.claude/
+.mimo/
+.superpowers/

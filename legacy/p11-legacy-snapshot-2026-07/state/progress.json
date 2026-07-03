@@ -1,0 +1,13 @@
+{
+  "iteration": 1,
+  "total_findings": 3,
+  "status": "in_progress",
+  "stale_count": 0,
+  "last_updated": "2026-07-01T15:30:00+08:00",
+  "current_milestone": "M2",
+  "completed_milestones": ["M1"],
+  "mode": "inner_monologue_vs_no_think",
+  "scenario": "gulei_petrochemical",
+  "runs_per_mode": 50,
+  "total_runs": 150
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "2026-07-03",
+  "directions": [
+    {
+      "id": "evidence_ledger_mainline_schema_first",
+      "status": "selected",
+      "axis": "method",
+      "reason": "Roadmap section 6 calls for a 14-field evidence_ledger_entry with six validator invariants before any claims are accumulated."
+    },
+    {
+      "id": "rag_retrieval_quality_first",
+      "status": "rejected_initially",
+      "axis": "method",
+      "reason": "Roadmap section 6.2 explicitly rejects the 'RAG access leads to better performance' framing; the contribution must be the ledger contract, not a retrieval benchmark."
+    },
+    {
+      "id": "generic_signal_fusion_research",
+      "status": "rejected_initially",
+      "axis": "hypothesis",
+      "reason": "P2.1 signal fusion is repositioned as evidence-input layer (roadmap section 8); same-direction work would compete with the deployed P2.1 harness."
+    },
+    {
+      "id": "universal_agent_audit_trail",
+      "status": "rejected_initially",
+      "axis": "scope",
+      "reason": "Too broad for the 14-day mainline plan; scope must stay on Gulei-class emergency scenarios plus Polymarket/Gulei settlement."
+    }
+  ],
+  "diversity_rule": "every new direction must differ from every prior entry on at least one of {hypothesis, method, data source, evaluation metric}"
+}
