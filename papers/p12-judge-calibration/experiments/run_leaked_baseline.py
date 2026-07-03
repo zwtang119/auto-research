@@ -45,9 +45,6 @@ The runner reads API credentials from the **project-root `.env`**
 (`auto-research/.env`, NOT committed; see `.env.sample`). The vendored
 policysim scripts are at `framework/vendor/policysim_scripts/`.
 
-Run:
-    python experiments/run_leaked_baseline.py [--dry-run] [--limit N]
-
 Usage notes:
 - `--dry-run` skips LLM calls and emits synthetic-but-deterministic
   records (score=mean-of-condition + small jitter) so you can verify the
@@ -71,7 +68,6 @@ import os
 import re
 import sys
 import time
-import uuid
 from pathlib import Path
 from typing import Optional
 
@@ -256,7 +252,10 @@ def call_judge_real(messages: list[dict]) -> dict:
         )
     config = load_config(str(POLICYSIM_CONFIG))
     t0 = time.time()
-    content, usage, _ = call_model(
+    # Vendored api_client.call_model returns 2-tuple (content, usage).
+    # Stub-leaked smoke (-dry-run) is unaffected; this path fires only
+    # when --dry-run is OFF.
+    content, _usage = call_model(
         config, JUDGE_MODEL, messages,
         temperature=0.2,
         max_tokens=600,
@@ -271,13 +270,21 @@ def call_judge_real(messages: list[dict]) -> dict:
     return parsed
 
 
-def aggregate_score(scores: dict) -> float:
-    vals = [v for v in scores.values() if isinstance(v, (int, float))]
-    return round(sum(vals) / len(vals), 3) if vals else 0.0
+def aggregate_score(scores: dict) -> tuple[float, bool]:
+    """Mean of dimension scores. Returns (score, empty_flag).
+    empty_flag=True signals that scores dict was empty/malformed and
+    the caller should mark the row as abstained.
+    """
+    vals = [v for v in (scores or {}).values() if isinstance(v, (int, float))]
+    if not vals:
+        return 0.0, True
+    return round(sum(vals) / len(vals), 3), False
 
 
 def make_record(sample: dict, idx: int, score: float, parsed: dict,
-                cond_label: str, judge_id: str, dt_ms: int) -> dict:
+                cond_label: str, judge_id: str, dt_ms: int,
+                abstained: bool = False,
+                abstain_reason: str = "") -> dict:
     record_id = f"R-P12-leaked-{idx:03d}"
     return {
         "record_id": record_id,
@@ -287,7 +294,8 @@ def make_record(sample: dict, idx: int, score: float, parsed: dict,
         "awareness": "leaked",
         "score": score,
         "score_band": band_for(score),
-        "abstain": False,
+        "abstain": abstained,
+        "abstain_reason": abstain_reason,
         "consistency_on_wrong": 1.0,
         "ground_truth_correctness": None,
         "leakage_hint_visible_to_judge": cond_label,
@@ -397,12 +405,14 @@ def main() -> int:
             parsed.pop("_raw", ""), encoding="utf-8"
         )
 
-        score = aggregate_score(parsed.get("scores", {}))
+        score, score_empty = aggregate_score(parsed.get("scores", {}))
         cond_label = sample["original_condition"]
         record = make_record(
             sample=sample, idx=idx,
             score=score, parsed=parsed,
             cond_label=cond_label, judge_id=JUDGE_MODEL, dt_ms=dt_ms,
+            abstained=score_empty,
+            abstain_reason=("empty_scores_dict" if score_empty else ""),
         )
         out_records.append(record)
 

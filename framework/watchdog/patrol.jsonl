@@ -13,3 +13,12 @@
 {"ts":"2026-07-03T08:12:06Z","level":"warn","event":"stale_loop","detail":"/Users/tangzw119/Documents/GitHub/auto-research/papers/p1p2-evidence-ledger/state/progress.json","extra":"age_seconds=29526 threshold=7200"}
 {"ts":"2026-07-03T08:12:06Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
 {"ts":"2026-07-03T08:12:27Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
+{"ts":"2026-07-03T08:20:59Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
+{"ts":"2026-07-03T08:24:17Z","level":"warn","event":"stale_loop","detail":"/Users/tangzw119/Documents/GitHub/auto-research/papers/p12-judge-calibration/state/progress.json","extra":"age_seconds=205230257 threshold=7200"}
+{"ts":"2026-07-03T08:24:17Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
+{"ts":"2026-07-03T08:24:17Z","level":"warn","event":"stale_loop","detail":"/Users/tangzw119/Documents/GitHub/auto-research/papers/p12-judge-calibration/state/progress.json","extra":"age_seconds=205230257 threshold=7200"}
+{"ts":"2026-07-03T08:24:17Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
+{"ts":"2026-07-03T08:24:23Z","level":"warn","event":"stale_loop","detail":"/Users/tangzw119/Documents/GitHub/auto-research/papers/p12-judge-calibration/state/progress.json","extra":"age_seconds=205230263 threshold=7200"}
+{"ts":"2026-07-03T08:24:23Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}
+{"ts":"2026-07-03T08:24:23Z","level":"warn","event":"stale_loop","detail":"/Users/tangzw119/Documents/GitHub/auto-research/papers/p12-judge-calibration/state/progress.json","extra":"age_seconds=205230263 threshold=7200"}
+{"ts":"2026-07-03T08:24:23Z","level":"info","event":"patrol_complete","detail":"OK","extra":"scanned_papers=       4"}

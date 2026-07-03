@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # P12 M1 manifest guard. Run from .../papers/p12-judge-calibration/.
+# (cwd-sensitive: the script does `cd "$(dirname "$0")/.."` at the top,
+# so invocation from any cwd resolves the same root.)
 # Exits 0 iff PIT-005, PIT-105, PIT-106 invariants hold for the manifest
 # AND the manifest matches the frozen sample_ids_ordered list.
 #

@@ -10,6 +10,7 @@ Run from .../papers/p12-judge-calibration/:
     python -m unittest experiments.test_run_leaked_baseline -v
 """
 from __future__ import annotations
+import importlib.util
 import json
 import re
 import subprocess
@@ -20,6 +21,17 @@ from pathlib import Path
 P12_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = P12_ROOT / "experiments" / "run_leaked_baseline.py"
 OUT_RESULT = P12_ROOT / "experiments" / "leakage_reproduction.json"
+
+
+def _import_runner():
+    """Load run_leaked_baseline.py as a module without executing main().
+
+    Lets us call internal helpers (aggregate_score, make_record) directly.
+    """
+    spec = importlib.util.spec_from_file_location("rlb", SCRIPT)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
 
 def _run_dry(n: int) -> subprocess.CompletedProcess:
@@ -59,6 +71,29 @@ class TestRunLeakedBaseline(unittest.TestCase):
         rows = json.loads(OUT_RESULT.read_text())
         frozen = json.loads((P12_ROOT / "experiments" / "sample_ids_ordered.json").read_text())[:10]
         self.assertEqual([r["sample_id"] for r in rows], frozen)
+
+    def test_aggregate_score_handles_empty_dict(self):
+        mod = _import_runner()
+        score, empty = mod.aggregate_score({})
+        self.assertEqual(score, 0.0)
+        self.assertTrue(empty)
+        # When malformed scores are returned by the judge, the row should
+        # be flagged as abstained in the output.
+        score2, empty2 = mod.aggregate_score({"risk_tolerance_consistency": 4.0})
+        self.assertEqual(score2, 4.0)
+        self.assertFalse(empty2)
+
+    def test_make_record_marks_abstained_when_empty(self):
+        mod = _import_runner()
+        sample = {"sample_id": "P12-001"}
+        rec = mod.make_record(
+            sample=sample, idx=1, score=0.0, parsed={"scores": {}},
+            cond_label="no_think", judge_id="deepseek-v4-pro", dt_ms=100,
+            abstained=True, abstain_reason="empty_scores_dict",
+        )
+        self.assertTrue(rec["abstain"])
+        self.assertEqual(rec["abstain_reason"], "empty_scores_dict")
+        self.assertEqual(rec["score"], 0.0)
 
 
 if __name__ == "__main__":

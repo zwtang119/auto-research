@@ -29,18 +29,42 @@ NOW_ISO=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 mkdir -p "$(dirname "$PATROL_LOG")"
 touch "$PATROL_LOG"
 
-# Function: emit a patrol log line
+# Function: emit a patrol log line, dedup against the most recent
+# matching (event, detail) line. DEDUP_WINDOW_SECONDS=43200 (12h) means
+# the same alert fires at most twice per day, regardless of patrol
+# cadence.
+DEDUP_WINDOW_SECONDS="${PATROL_DEDUP_SECONDS:-43200}"
+
 emit() {
   local level="$1"; shift
   local event="$1"; shift
   local detail="$1"; shift
   local extra="${1:-}"
+  # Skip if same (event, detail) was emitted within dedup window.
+  # Use jq -s (slurp) so JSONL streams are treated as arrays of objects.
+  local last_ts=""
+  if [ -f "$PATROL_LOG" ] && [ -s "$PATROL_LOG" ]; then
+    last_ts=$(jq -rs --arg ev "$event" --arg det "$detail" \
+                  '[.[] | select(.event==$ev and .detail==$det)] | last | .ts // empty' \
+                  "$PATROL_LOG" 2>/dev/null || echo "")
+  fi
+  if [ -n "${last_ts:-}" ]; then
+    local last_epoch=0
+    last_epoch=$(date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$last_ts" "+%s" 2>/dev/null || date -u -d "$last_ts" "+%s" 2>/dev/null || echo 0)
+    if [ "${last_epoch:-0}" != "0" ]; then
+      local delta=$((NOW_EPOCH - last_epoch))
+      if [ "$delta" -lt "${DEDUP_WINDOW_SECONDS:-43200}" ]; then
+        return 0
+      fi
+    fi
+  fi
   local payload
   payload=$(jq -nc --arg ts "$NOW_ISO" --arg lvl "$level" --arg ev "$event" \
                     --arg det "$detail" --arg extra "$extra" \
                     '{ts:$ts,level:$lvl,event:$ev,detail:$det,extra:$extra}')
   echo "$payload" >> "$PATROL_LOG"
   echo "[$NOW_ISO] $level $event: $detail"
+  return 0
 }
 
 # L1 rule: scan all papers/*/state/progress.json for last_seen staleness
