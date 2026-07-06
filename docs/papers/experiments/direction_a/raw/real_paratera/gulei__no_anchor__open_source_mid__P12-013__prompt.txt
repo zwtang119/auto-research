@@ -1,0 +1,48 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+```yaml
+decision:
+  type: 技术稳健型
+  subsidy_application:
+    status: 申请
+    amount: 根据实际研发成本申报，不超过政府补贴上限的60%
+    technology_roadmap: 分阶段实现可回收火箭，首阶段聚焦一级回收与复用（3次以上），技术指标确保可靠性与安全性
+  technology_strategy:
+    core_focus: 垂直起降控制算法优化、发动机重复点火可靠性验证
+    timeline: 18个月内完成首次回收测试，3年内实现商业复用飞行
+    risk_control: 保留传统一次性火箭产能作为风险对冲，不盲目追求极端回收次数
+  competition_cooperation:
+    competitors: 保持差异化，不参与价格战；可与蓝箭航天在部分基础技术（如材料）上非核心合作
+    government_relation: 主动提供技术验证数据，争取政策支持导向的长期稳定补贴
+  capital_allocation:
+    r&d_budget: 35%用于回收技术，45%用于现有运载型号迭代，20%储备金应对政策波动
+  key_metrics:
+    recovery_success_rate_target: 95%以上（认证阶段）
+    cost_reduction_per_launch: 在首次复用后降低25%
+```
+
+## Anchor: NONE (control)
+No additional anchor information.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

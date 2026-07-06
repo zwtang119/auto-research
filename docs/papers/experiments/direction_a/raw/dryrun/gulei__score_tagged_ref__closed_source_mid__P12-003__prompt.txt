@@ -1,0 +1,65 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我是星际荣耀的决策者。我们一直以技术稳健著称，信奉“量力而行、步步为营”。面对这场可回收火箭技术补贴政策的博弈，我必须冷静梳理。
+
+政策意图明显：通过财政杠杆，加速可回收技术成熟，减少太空垃圾，提升我国商业航天全球竞争力。三家企业各有禀赋：对手A，激进迭代型，追求极致回收次数，成本高但品牌效应强；对手B，资源整合型，擅长政策套利与供应链压价，但核心自研深度存疑。
+
+我们的优势在于：核心机件冗余设计、全流程仿真验证体系、以及发射失利率行业最低的纪录。短板在于：回收复用次数验证进度慢，公开测试场次不如A，舆论声量偏弱。
+
+但补贴不是慈善，是“效率与风险”的博弈。如果盲目追求“首发即复用”的噱头，却因基础不牢导致失败，不仅补贴泡汤，更会毁掉客户信任。我的判断是：利用补贴窗口，加速“渐进式复用”认证——拿到42%技术验证补贴（因无需大幅调整生产线，实际研发边际成本更低），同步利用补贴资金去反哺运载器寿命评估数据平台的建设。
+
+这意味着我们不争总发射次数第一，而是争“单次发射最高复用价值”标签（如同一箭体复用10次无大修）。对手的激进可能失败，而我们的稳健数据将成为政策制定者下一阶段标准参考。我们也将主动向航天局同步“长周期疲劳测试数据”，这既能巩固技术可信度，又能让政策更偏向“稳定性”考核权重——这是我们的主场。
+
+决策如此制定。
+
+```yaml
+项目名: 可回收火箭技术补贴申请策略
+竞争对手分析:
+  - 对手A: 激进迭代型、高频次公开测试，存在尾部风险
+  - 对手B: 整合采购、非全链路自研，长周期可靠性存疑
+核心优势:
+  - 全流程数字孪生验证体系，历史发射100%任务成功率
+  - 核心组件数据积累行业领先（一级落地冲击及疲劳数据库）
+战略目标:
+  - 短期: 获得政策类A类补贴（技术验证类）并完成5次渐进式复用测试，数据全开放
+  - 中期: 定义行业“复用可靠性标准”，将对手卷入更高成本的长测赛道
+  - 长期: 成为国家回收技术标准提供方，锁定后续批产订单
+资源分配:
+  - 研发投入: 45%（其中15%用于政策接口与数据白皮书编制）
+  - 产能储备: 25%（渐进复用产线小规模柔改）
+  - 应急储备: 30%（覆盖极端失败下重新验证成本）
+风险控制:
+  - 技术红线: 单箭复用验证未过80%疲劳寿命阈值前，不进行商业报价
+  - 关键指标: 提交政策报告时附三级心肺图数据（复测命中率>98%）
+动作序列:
+  - 首月: 启动“极光-3重型液氧甲烷可回收试验箭”的延寿评审，同步提交技术成熟度报告
+  - 次月: 锁定与航天五院联合疲劳数据基地，推动补贴资金流向公共数据库
+  - 第三月: 发射认定节点，公开箭体14项关键复测数据，宣告通过TTRL-7级验证
+```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

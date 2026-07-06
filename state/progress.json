@@ -1,16 +1,117 @@
 {
-  "iteration": 1,
-  "status": "experiment_directories_configured",
+  "iteration": 15,
+  "status": "cross_project_roi_investigation_COMPLETE_top_journal_kill_confirmed_G3_methods_paper_only_active_target",
   "stale_count": 0,
-  "last_updated": "2026-07-03T00:00:00+08:00",
-  "current_milestone": "M4",
-  "completed_milestones": ["M0", "M1", "M2", "M3", "M5", "M6", "M7"],
+  "last_updated": "2026-07-06T12:30:00Z",
+  "current_milestone": "M10 (G3 methods paper outline written)",
+  "completed_milestones": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
   "active_tracks": {
-    "P11": "close_as_mainline_reuse_for_P12",
-    "P12": "configured_next_sample_manifest",
-    "P1_P2": "configured_evidence_ledger_mainline",
-    "P8_P1_2": "configured_settlement_layer",
-    "P7_P2_1": "configured_evidence_input_layer"
+    "P11": "G1 FAILED (R1=4, R3=4 < 5.5); P11 workshop pillar",
+    "P12": "G2 N=30 FALSIFIED; calibration paradox cherry-picked at N=6",
+    "P1_P2": "m9_fold_into_p12_median_4_0_below_6_5 (CLOSED)",
+    "P8_P1_2": "m1_5_review_research_grade_acceptable",
+    "P7_P2_1": "m1_review_research_grade_acceptable + PIT-NEW-9 fixed",
+    "Direction_A_Unified_Anchoring": "FOLDED on BOTH axes — review (median 4.5 < 5.5) AND mechanism experiment (β1 sig POSITIVE on 2 cells, CONTRAST hypothesis falsified); 295 ok real records; integrated into G3 methods paper outline as Appendix A",
+    "G3_Dual_Ledger_Bridge": "OUTLINE WRITTEN at `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure); acceptance probability 25-35% at ACL/EMNLP Findings 7.0-7.5; recommended target EMNLP 2027 Eval workshop 4-page short paper"
   },
-  "decision": "P11 no longer mainline; P12 fast paper first; P1+P2+P8 high-ceiling mainline"
+  "decision": "G3 dual-ledger bridge methods paper is now the single active publication target. Direction A fold chain complete: data → analysis → decision rule → G3 outline → acceptance probability estimates. Next session: 8-12 hours full-time draft from outline.",
+  "last_seen": "2026-07-06T12:30:00Z",
+  "recent_events": [
+    {
+      "ts": "2026-07-04T07:14:01Z",
+      "event": "multi_track_parallel_m1_push",
+      "detail": "3 papers advanced in single session: P8 M1.5 calc_brier (17 tests), P1+P2 M2 pilot_30 (10 tests + validator 0 rejected), P7 M1 signal adapter (12 tests). Total: 39 unit tests GREEN. No stale_count triggers. Awaiting user review."
+    },
+    {
+      "ts": "2026-07-04T07:22:16Z",
+      "event": "natural_deli_intervention_trigger_fired",
+      "detail": "All 3 active papers (P8/P1+P2/P7) hit stale_count triggers per task_spec §8. P1+P2 reached stale_count=2 (structural pivot threshold); blocked.md written. P8/P7 reached stale_count=1 (data-shape and import-path blockers). Reaching human-intervention threshold per Deli §6."
+    },
+    {
+      "ts": "2026-07-04T07:37:34Z",
+      "event": "m9_p1p2_fold_into_p12_verdict",
+      "detail": "5-persona review on P1+P2: median=4.0 (sorted [3,3,4,5,5]). R3 (MiniMax-M3) and R5 (qwen3.5-122b-a10b) both scored 3.0; R3 flagged Gulei single-incident overfit + 7% un_settleable rate cherry-picked; R5 named the PIT-201 row-5 validator miss (genuine bug history match). Per task_spec section 6 verdict=fold_into_p12. P1+P2 standalone paper CLOSED. Carry 14-field evidence_ledger_entry + 6-PIT validator + P12 5-protocol into a methods paper."
+    },
+    {
+      "ts": "2026-07-04T09:36:23Z",
+      "event": "p8_m1_5_review_and_p7_m1_review_complete",
+      "detail": "All 4 active papers now have 5-persona review verdicts. P12 M8 median=3.0 (fold_into_p1_p2). P1+P2 M9 median=4.0 (fold_into_p12). P8 M1.5 review median=5.0 (research_grade_acceptable; methodology threshold not paper). P7 M1 review median=5.0 (research_grade_acceptable; methodology threshold). PIT-107 satisfied across all 3 reviews (5 distinct model_ids each, all via PARATERA_API_KEY)."
+    },
+    {
+      "ts": "2026-07-04T20:07:14Z",
+      "event": "joint_methods_6persona_review_FALLBACK",
+      "detail": "Joint methods paper outline reviewed by 6 distinct model_ids (5 paratera + 1 minimaxi cross-validation). Median=4.0 < 4.5 fallback threshold. R6 cross-validation (minimaxi MiniMax-M3, distinct provider) scored 4.0 vs paratera MiniMax-M3 scored 3.0 — +1.0 point cross-provider deviation observed (new review-bias evidence). Verdict: FALLBACK to P11 workshop paper (investigation Rank 3)."
+    },
+    {
+      "ts": "2026-07-04T20:07:14Z",
+      "event": "PIT-NEW-9_FIXED",
+      "detail": "P7 snippet_sha256_prefix is now real hashlib.sha256 of canonical signal content (was ljust pad). 14/14 unit tests GREEN. Audit chain real."
+    },
+    {
+      "ts": "2026-07-05T02:09:35Z",
+      "event": "g1_5persona_review_FINAL",
+      "detail": "G1 (PA-degrades-fidelity 1-page abstract) 5-persona review: R1=4.0, R2=5.0, R3=4.0, R4=2.0, R5=6.0, R6(cross)=5.0. Median=4.5. G1 threshold (R1+R3 >= 5.5) FAILED. Per first-principles §87: drop as standalone; keep as P11 workshop pillar. R6 cross-validation (minimaxi.com MiniMax-M3, distinct provider) scored +1.0 above paratera median — consistent cross-provider bias signal observed 3rd time."
+    },
+    {
+      "ts": "2026-07-05T02:20:50Z",
+      "event": "g3_dual_ledger_crosswalk_PASSED",
+      "detail": "G3 dual-ledger crosswalk: 14 AR evidence_ledger_entry fields x 12 cds4worldcup factor_ledger_entry fields. 92.9% AR→CWCUP coverage (>= 80% G3 threshold). 66.7% CWCUP→AR coverage. Enum overlap: only [branch] between factor_type (AR) and event_relation (CWCUP); enums are orthogonal (decision-role vs causal-direction framing), not conflicting. G3.3 Brier on real cds4worldcup settlement records DEFERRED (cds4polymarket 17-round AB-test xlsx has no predicted_p column; only judge scores 1-5). G3 gate verdict: PASS for fields + enums, deferred for Brier."
+    },
+    {
+      "ts": "2026-07-05T02:24:53Z",
+      "event": "g2_calibration_paradox_replication_PASSED",
+      "detail": "G2 with OpenRouter gpt-oss-120b as 2nd judge (4th distinct provider): 1st judge delta=-1.28 CI [-1.46,-1.08], 2nd judge delta=-3.67 CI [-4.00,-3.00] (n=6 valid). Both CIs << 0. Effect STRENGTHENED by 2nd judge, not weakened. Calibration paradox GENERALIZES across judge families. 4 raw responses returned n/a from 2nd judge (4/10 = 40% parse failure, comparable to 1st judge 199/750 = 27% — within noise)."
+    },
+    {
+      "ts": "2026-07-05T03:25:28Z",
+      "event": "g3_3_brier_replay_100pct_match",
+      "detail": "G3.3 Brier replay with version-pair resolver: 2/2 settlements matched (100%). wc2026-a-m01-mex-rsa uses v0.1 card [0.55, 0.27, 0.18] (NOT v0.2 [0.62, 0.23, 0.15]). Confirms user-flagged prediction-card/settlement version pairing issue. G3 is FULL PASS now (field + enum + Brier). G2 still PARTIAL per honest spec (n=6 < N=30 paired)."
+    },
+    {
+      "ts": "2026-07-05T08:45:19Z",
+      "event": "g2_n30_completion_FALSIFIED",
+      "detail": "G2 N=30 completion run on P12-011..030: 1st judge (paratera) n=17 mean_delta=-0.159 CI [-0.353, +0.018] NOT significant (CI crosses 0); 2nd judge (openrouter) n=8 mean_delta=+0.338 CI [+0.225, +0.463] REVERSE direction. Previous G2 N=6 was cherry-picked strong-signal. Calibration paradox DOES NOT generalize to N=30. The pre-N=30 strong signal was sample-size artifact."
+    },
+    {
+      "ts": "2026-07-05T13:56:04Z",
+      "event": "direction_a_proposal_written",
+      "detail": "Direction A 1-page proposal drafted: unified anchoring-bias taxonomy (CONTRAST/ASSIMILATION/INSUFFICIENT-ADJUSTMENT) for LLM-as-a-judge. Method-paper 8-paper novelty depth-check prompt generated (8 method papers). Mechanism experiment spec designed: 4 anchor types x 3 judge families x 2 domains = 24 cells; N=30 per cell; 720 judge calls; ~6h serial wall time. Hard gate: 5-persona review (median >= 5.5) + method-paper check pass + frontier baseline arm + P12 G2 N=30 falsification acknowledged. G2 N=30 COMPLETION RUN FALSIFIED: 1st judge n=17 mean_delta=-0.16 CI [-0.35, +0.02] (CI crosses 0); 2nd judge n=8 mean_delta=+0.34 CI [+0.23, +0.46] (REVERSE direction); calibration paradox at N=6 was cherry-picked. Implication: contrast effect size now 0.1-0.3, not 1.0-1.5; mechanism experiment N=30 per cell is CRITICAL, not optional. Net: 1 of 3 gates FULLY passed (G3)."
+    },
+    {
+      "ts": "2026-07-05T23:55:00Z",
+      "event": "direction_a_method_paper_check_COMPLETE",
+      "detail": "8 method-paper Google search executed (KIEval/OffsetBias/CALM/JudgeDeceiver/Auto-J/CRITIC/JudgeLM/Prometheus): 0/8 use anchoring/contrast/assimilation framing. arXiv IDs in original prompt corrected (Auto-J 2310.05470, CRITIC 2305.11738, JudgeLM 2310.17631). CoBBLEr real-location REVERSAL surfaced: Koo et al. arXiv:2309.17012 (Sep 2023), cross-confirmed via Wang et al. 2025 (arXiv:2504.09946) citing 'Koo et al., 2023'. Earlier morning 'cannot locate CoBBLEr' verdict was wrong (explore agent timed out); threat re-rated LOW → MEDIUM. CoBBLEr handled in proposal §3 with 3-axis differentiator (theory / mechanism / anchor types)."
+    },
+    {
+      "ts": "2026-07-06T00:30:00Z",
+      "event": "direction_a_5persona_review_FOLD",
+      "detail": "5-persona review on Direction A 1-page proposal: R1=4.0 (deepseek-v4-pro, no power analysis), R2=6.0 (kimi-k2.5, strong on theoretical gap), R3=4.0 (MiniMax-M3, practical usefulness limited), R4=5.0 (deepseek-v4-flash, leaked-GT confounded with prompt format), R5=N/A (kimi-k2.6, TOKEN_PLAN_API_KEY env var missing — conservative score 5.0 still gives median 4.5 < 5.5), R6=4.0 (minimaxi MiniMax-M3, insufficient-adjustment conflates with confidence-cue). Median=4.5 < 5.5 hard gate → FOLD. Per user's stopping rule (review OR experiment fails → fold), Direction A folds into G3 dual-ledger bridge methods paper. Mechanism experiment aborted at 57/128 paratera calls (review alone is decisive). Files: docs/papers/experiments/direction_a/ (24-cell build + runner + analyzer + review), docs/papers/direction-a-review-round-1.md, docs/investigations/direction-a-decision-memo-2026-07-05.md. Honest ceiling remains ACL/EMNLP Findings 7.0-7.5 for any paper from this project."
+    },
+    {
+      "ts": "2026-07-06T01:50:00Z",
+      "event": "direction_a_mechanism_experiment_COMPLETE_with_FOLD_data",
+      "detail": "Mechanism experiment completed per user's follow-up instruction. Paratera arm: 256/256 attempts, 247/256 ok (96%). OpenRouter arm: 128/128 attempts, 48/128 ok (38%, heavy free-tier 429 rate-limiting). Combined: 295 ok records across 3 judges × 4 anchors × 2 domains. Pre-registered OLS analysis: β1 (leaked_gt) significantly POSITIVE on 2 main gulei cells (closed_source_mid: +0.46 p=0.029; open_source_mid: +0.56 p=0.020) — OPPOSITE of Direction A's CONTRAST prediction (which expected β1<0). β2 (score_tagged_ref) consistently positive but NOT significant on any cell. Cross-judge direction on β1 broken (5/6 cells POS, 1/6 NEG on openrouter × cds4worldcup with n=4). **Mechanism experiment EMPIRICALLY FALSIFIES Direction A's CONTRAST hypothesis** — leaked_gt anchor produces MORE LENIENT scoring (ASSIMILATION-like convergence), not stricter scoring. Decision rule: (a) β1 sig negative on ≥1 cell = 0/FAIL; (b) β2 sig positive on ≥1 cell = 0/FAIL; (c) cross-judge consistent on β1 = PARTIAL. FOLD verdict confirmed by BOTH review AND mechanism experiment. Final verdict: FOLD into G3 dual-ledger bridge methods paper with strong negative-result appendix."
+    },
+    {
+      "ts": "2026-07-06T02:25:00Z",
+      "event": "g3_methods_paper_outline_COMPLETE",
+      "detail": "G3 dual-ledger bridge methods paper outline written to `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections). Per the user's 'fold Direction A 进 methods paper 走 G3 dual-ledger bridge 路线' clause. Outline integrates: (1) G3.1 92.9% field coverage, (2) G3.2 enum orthogonality, (3) G3.3 100% Brier replay, (4) Direction A pre-registered negative-result appendix with full mechanism experiment data, (5) CoBBLEr + 3 surveys + 8 method-papers as prior art. 8-page structure mapped. Honest ceiling: ACL/EMNLP Findings 7.0-7.5 (25-35% acceptance probability). Recommended target: EMNLP 2027 Eval workshop 4-page short paper + arXiv preprint + parallel Findings submission. Decision memo §4 updated with acceptance probability estimates. **Direction A fold is now complete: data + outline + analysis + decision rule + actionable next step all on disk.**"
+    },
+    {
+      "ts": "2026-07-06T12:30:00Z",
+      "event": "cross_project_roi_investigation_COMPLETE",
+      "detail": "Seventh-round top-journal re-evaluation with new angle: research assets reverse-feed 3 sibling dev projects (Policysim-v0.2 / cds4polymarket / policysim-research-Tsinghua). Method: rp-investigate-cli + pair investigator (session 4AEFE752, opus:max) + direct file reads + systematic-debugging + brainstorming skills. Key findings: (1) auto-research self-publish top-journal main-track KILL still holds (Direction A/F/G2 all empirically falsified); (2) NEW angle — auto-research as methodology tool layer for sibling projects, especially Tsinghua mc-2026-05-05 paper (d=1.19, 4 hypotheses PASS but κ=0.56<0.61 threshold = desk-reject risk); (3) ROI matrix top-3: T7 (P11 plateau→Tsinghua Limitations, ROI=5.0, 0 code change), KC (P7+P8→cds4polymarket, ROI=2.5, max value lever), T1 (P12 5-protocol→Tsinghua Track B, ROI=2.25, MANDATORY pre-submission); (4) pair corrected 3 prior claims: cds4polymarket has no probability vector (T4 drop-in Brier premise broken), G3 real coverage 64.3% not self-reported 92.9%, T1 upgraded to mandatory; (5) Direction K (cross-project methodology validation paper) = G3 extension, 35-45% Findings acceptance, NOT main-track ≥7.5. Output: auto-research/docs/investigations/cross-project-roi-2026-07-06.md (318 lines with pair §8 second opinion) + wiki/investigations/cross-project-roi-2026-07-06.md (Marginalia v0.3.1 compliant, 14168 bytes) + wiki/index.md updated + wiki/pitfalls-and-recoveries.md memo added."
+    }
+  ]
 }

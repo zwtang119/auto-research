@@ -1,0 +1,45 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+```yaml
+decision:
+  action: "申请B类技术验证补贴，并承诺分阶段完成可回收火箭回收试验与复用验证"
+  rationale:
+    - "技术稳健型路线要求我们保持核心研发节奏，不盲目追求速度，但需借助政策红利降低资金压力。"
+    - "B类补贴匹配我们当前技术成熟度：已完成垂直起降试验平台，但工程化回收系统尚需不少于3次迭代验证。"
+    - "分阶段承诺可避免因激进目标导致的可靠性风险，同时向市场传递有序推进信号，维护投资者信心。"
+  timeline:
+    phase_1: "12个月内完成单项子系统回收验证（如栅格舵控制与姿态调整）"
+    phase_2: "24个月内完成全尺寸飞行器低空回收试验（<10km）"
+    phase_3: "36个月内实现轨道级一子级回收并复用两次以上"
+  risk_mitigation:
+    - "若竞争对手（如蓝箭）提前实现回收，我们将启动备用方案——基于现有‘焦点一号’发动机改进型，优先保障运力，回收作为渐进增值服务。"
+    - "预留30%研发预算用于非补贴技术路线探索（如伞降+气囊回收），防止单一技术路径受政策变动影响。"
+  competitive_stance: "保持技术开放，与航天科技集团旗下院所合作共享部分回收数据，换取地面试验设施优先使用权。"
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

@@ -1,0 +1,60 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我已进入角色。
+
+---
+
+**（角色内思考）**
+
+我是星际荣耀的决策者。我们的技术风格是“稳健”，这意味着我们在可回收火箭领域，不会像某些新势力那样追求一步到位的惊险跳跃，而是更倾向于通过扎实的试飞数据积累，逐步验证每一个关键技术节点。眼前的“可回收火箭技术补贴政策”是一个典型的“三方博弈”：激进型对手会不顾一切地抢补贴、冲首发，以此换取资本市场信心；而那个“中间派”可能会选择观望或有限参与，试图在激进与保守之间寻找缝隙。
+
+我真正的困境在于：**补贴是看得见的短期现金流，但它往往绑定了严苛的考核时间表。** 如果我们为了拿补贴强行缩短测试周期，很可能造成飞行事故，葬送技术声誉。但如果完全错过这波政策红利，我们就会被激进派甩开，失去后续的融资和发射工位资源。
+
+因此，我的策略必须是“精准卡位”。不追求最快的入轨回收时间，而是要求我们提交的每一份技术路线图都有充分的钣金试验、着落仿真和发动机复用寿命数据作为支撑。我们要用更可靠、更详尽的数据来争取补贴评审组的信任。同时，我会暗示行业监管层：过度追求速度可能导致“伪回收”式的作秀，从而破坏整个产业链的生态。我们抢夺的，不是“第一个”的名头，而是“第一个实现商业运营级复用”的确定性。
+
+好，决策已定。
+
+---
+
+```yaml
+决策编号: JH-2024-07
+企业: 星际荣耀
+角色: 技术稳健型决策者
+核心判断: 补贴不应绑架技术节奏
+行动策略:
+  申请定位: 高质量中速推进
+  具体措施:
+    - 提交双版本方案：一份满足补贴基础的“技术成熟度达标”申请，另附一份内参白皮书，对比激进方案的风险矩阵。
+    - 切割条件：要求政府按“里程碑节点”分期拨付补贴，而非一次性拨款，以对冲激进派的抢跑风险。
+    - 联合游说：暗中联合中间派企业，向监管层提议“将回收成功次数纳入补贴标准”，抬高门槛，淘汰伪玩家。
+  避坑原则:
+    - 拒绝接受“首飞即回收”的考核条款。
+    - 保留核心燃料阀与液压系统的自主研发节奏，不因补贴而外购不成熟的速成组件。
+  目标: 在激进派与中间派之间，占据“技术确定性”的定价权，三年内成为国家可重复使用首飞认定的首选供应商。
+```
+
+## Anchor: NONE (control)
+No additional anchor information.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

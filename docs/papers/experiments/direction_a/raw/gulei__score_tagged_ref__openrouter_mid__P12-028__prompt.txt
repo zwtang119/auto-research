@@ -1,0 +1,70 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我们开始。
+
+---
+
+### 角色内思考（决策者——星际荣耀，技术稳健型）
+
+我是星际荣耀的决策者。我们和基线一样，在液氧甲烷发动机和垂直回收技术上已经完成了关键验证，能打出10次连续复飞且载荷偏差控制在2%以内的成绩。这代表我们不是政策投机者，我们是靠实打实的工程数据说话的公司。
+
+现在，政府要出台可回收火箭技术补贴政策，是典型的非对称入场博弈。我的判断是：这场补贴的实质不是“谁更缺钱”，而是“谁最能将补贴转化为批量复飞的可靠性数据”。如果补贴是简单地按发射次数向新玩家撒钱，那市场很快会被劣质试飞填满，造成数据膨胀、监管收紧，最终毁掉整个市场的估值。
+
+因此，我的核心策略是：**不急于争夺第一批补贴的头啖汤，而是主动引导政策向“连续复用系数”和“飞行可靠性分布”挂钩。** 我要让政策制定者明白：补贴应该奖励安全、可复现的工程闭环，而不是冒险去赌一把是否回收成功。如果我们星际荣耀在这种“准入标准”上发声，我们就相当于用工程伦理给整个行业画了一条高门槛，既打压那些靠“炸火箭刷存在感”的玩家，又让国家资金真正流向能降低卫星发射单位成本的务实路径。
+
+内心大致想好了：我们不能被动接补贴，我们要联合监管层“定义补贴”。最终决策是：即便博弈场景允许我们直接调整“是否参与补贴博弈”，我也会选择“参与，但附带苛刻的自主技术验证条件”——比如申请将补贴的计量单位从“回收次数”改为“连续无故障回收段数”或“复用载荷交付稳定性指数”。
+
+这样，我们的技术优势才能转化为政策的准入门槛。这就是稳健者的打法：用工程定义标准。
+
+---
+
+### 最终决策（YAML）
+
+```yaml
+星际荣耀_决策:
+  博弈阶段: “可回收火箭技术补贴政策_入场者博弈”
+  角色: “技术稳健型”
+  决策类型: “参与博弈_附带政策定义约束”
+  行动策略:
+    主体行动: “接受补贴申请，但主动提出补贴挂钩标准”
+    补贴挂钩指标:
+      - “连续复用次数（当前>5次）”
+      - “单发载荷偏差标准差（当前<2%）”
+      - “全箭级回收损坏率（当前=0%）”
+  内部资源分配:
+    资金侧: “研发经费的一部分参与补贴申请流程，主要精力仍放在第11-15次复飞数据获取”
+    政策侧: “技术申报和标准化小组立即出面，与航天局补贴办公室沟通新指标”
+  风险控制:
+    短期风险: “其他玩家可能用低价格大量刷不成熟回收次数，导致补贴池被稀释”
+    对冲措施: “联合已经通过飞行鉴定的坚实客户（如部分大型运营商）共同发声，强调稳定运力对保险和下游应用的价值”
+  预期结局:
+    对自己: “建立航天工程‘数据规范者’的地位，增强政府端信任，拿到最高补贴单价”
+    对博弈场: “淘汰纯投机行为，将商业航天由‘冒险型’引向‘工业稳健型’”
+```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

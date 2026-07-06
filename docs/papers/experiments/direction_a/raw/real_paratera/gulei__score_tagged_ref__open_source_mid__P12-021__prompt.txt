@@ -1,0 +1,64 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+## 内部思考（角色内视角）
+
+作为星际荣耀的决策者，我深知技术稳健是我们的立身之本。当前商业航天市场已出现三家主要玩家：我们专注可回收火箭的中型运力，另一家激进玩家追求低成本快速迭代，还有一家传统巨头侧重政府订单。
+
+这次“可回收火箭技术补贴政策”博弈，本质上是产业政策对技术路线的引导。若补贴按回收次数或复用成功率发放，对我们稳健型方案有利——因为我们更注重单次飞行数据的完整分析，而非盲目堆叠发射次数。但若补贴单纯按发射数量或成本削减比例发放，可能迫使我们在安全冗余上妥协。
+
+我的核心考量：补贴应激励长期技术可靠性，而非短期市场占有率。我们应推动政策将“连续成功回收次数”“可复用火箭的故障间隔”等质量指标纳入考核。同时，要警惕激进玩家利用补贴压低报价，扰乱市场定价体系。我们可接受适度风险，但绝不为了补贴而牺牲技术验证周期。
+
+最终策略：支持补贴政策，但要求加入技术成熟度门槛（如至少连续3次成功回收才能享受全额补贴）。这样既能保护我们的先发优势，又能倒逼行业建立安全标准。若对手反对，则说明它们只想赚快钱，正好在舆论上占据道义高地。
+
+## 最终决策（YAML格式）
+
+```yaml
+决策主体: 星际荣耀
+决策类型: 政策博弈应对
+博弈场景: 可回收火箭技术补贴政策（三玩家）
+决策内容:
+  立场: 支持补贴政策，但要求附加条件
+  核心诉求:
+    - 补贴发放需与技术成熟度挂钩，设置最低连续成功回收次数（≥3次）方可全额领取
+    - 补贴金额中应包含“安全系数奖励”，对事故率低于行业均值的额外上浮10%
+    - 反对单纯按发射次数或报价折扣发放补贴，避免恶性价格战
+  行动方案:
+    - 联合传统巨头，共同向主管部门提交技术规范建议书
+    - 公开演示我们的可回收火箭第4次成功着陆数据，建立标杆案例
+    - 在行业论坛倡议“质量优先于速度”的可持续发展路线
+  风险评估:
+    优势:
+      - 可巩固技术可靠性的品牌形象
+      - 抑制激进玩家的短期扩张速度
+    劣势:
+      - 若政策未采纳条件，可能错失首轮补贴红利
+      - 对手可能通过游说弱化门槛
+  后备计划: 若政策最终偏向数量导向，则调整策略转为争取“试验发射补贴”（如为数据采集而进行的非回收验证飞行），保留现金流
+```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

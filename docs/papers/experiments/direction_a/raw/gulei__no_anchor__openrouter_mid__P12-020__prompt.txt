@@ -1,0 +1,66 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我将以角色内思考的方式，从“星际荣耀”技术稳健型决策者的视角出发，分析当前政策博弈，并给出最终决策。
+
+---
+
+### 角色内思考（约350字）
+
+作为星际荣耀的决策者，我必须冷静审视当前局面。政府推出的“可回收火箭技术补贴政策”看似普惠，实则暗藏陷阱。行业标杆公司起步早、技术积累深，他们大概率会全力冲刺高额补贴，但可能因急于验证而牺牲可靠性。激进型公司则可能采取“以量取胜”策略，用多次低成功率的试飞博取政策积分，争取先发优势。
+
+我们星际荣耀的核心竞争力在于“技术稳健+高可靠性”。我们的火箭在单一子级复用验证中已积累超过120次地面点火测试，但整体入轨回收成功率仅60%。如果盲目跟随补贴节奏，强行提速至“6个月3次试飞”的补贴门槛，可能导致测试不充分、积累的打法失效，甚至出现失效率反噬口碑。但若完全放弃，政策红利会快速向对手倾斜，长期将失去在商业发射市场的性价比席位。
+
+我的判断是：我们不求最快，但求最稳。利用补贴中的“技术成熟度系数”，我们的高测试覆盖率恰恰能拿到30%的补贴溢价。与其追求次数，不如强化“单次试飞的数据价值”。我决定申请第二档补贴（技术验证型），承诺在18个月内完成3次“全流程回收+复飞”验证，并开放部分数据给国家航天局，换取技术线路的政策保护。这样既避免与激进对手在低水平频率上内卷，又能用稳健升级换取长期生存空间。
+
+---
+
+### 最终决策（YAML格式）
+
+```yaml
+企业代号: 星际荣耀
+类型: 技术稳健型
+决策时间: 政策发布后第7日
+决策内容:
+  补贴申请档位: 技术验证型（第二档）
+  核心承诺:
+    试飞次数: 3次全流程回收与复飞（18个月内）
+    技术指标:
+      - 单次回收成功概率不低于85%
+      - 复飞前火箭子级地面检测复验通过率100%
+      - 飞行数据全程实时回传并开放至国家航天数据平台
+  资源投入:
+    自有资金: 8.5亿元（用于增设冗余测控系统及故障模拟试验台）
+    政策补贴: 申请上限2.3亿元（主要用于标准化回收场改造）
+  风险对冲:
+    风险1: 激进对手通过低成功率高频率试飞抢占补贴上限
+      应对: 提交技术成熟度评估报告（附120次地面点火数据），争取补贴系数上浮30%
+    风险2: 行业标杆公司提前完成满载回收验证，形成技术代差
+      应对: 与高校联合开展“可靠性归零”计划，每季度提交技术迭代白皮书，争取成为行业标准制定者之一
+  公示期意见: 对政策中“试飞频率权重过高”的条款提交技术意见书，建议增加“数据完整度”和“地面测试覆盖率”系数
+```
+
+## Anchor: NONE (control)
+No additional anchor information.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

@@ -1,0 +1,108 @@
+{
+  "g2_first_judge_paratera": {
+    "n": 10,
+    "mean_delta": -1.2842,
+    "ci_lo": -1.4612,
+    "ci_hi": -1.078
+  },
+  "g2_second_judge_openrouter_gpt_oss_120b": {
+    "n": 6,
+    "mean_delta": -3.666667,
+    "ci_lo": -4.0,
+    "ci_hi": -3.0
+  },
+  "paired_details": [
+    {
+      "sample_id": "P12-001",
+      "leaked_1st_judge": 3.64,
+      "blind_1st_judge": 4.8,
+      "delta_1st_judge": -1.1599999999999997,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -4.0
+    },
+    {
+      "sample_id": "P12-002",
+      "leaked_1st_judge": 3.482,
+      "blind_1st_judge": 5.0,
+      "delta_1st_judge": -1.5179999999999998,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -4.0
+    },
+    {
+      "sample_id": "P12-003",
+      "leaked_1st_judge": 3.408,
+      "blind_1st_judge": 5.0,
+      "delta_1st_judge": -1.592,
+      "leaked_2nd_judge": 3.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -2.0
+    },
+    {
+      "sample_id": "P12-004",
+      "leaked_1st_judge": 3.6,
+      "blind_1st_judge": 4.5,
+      "delta_1st_judge": -0.8999999999999999,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": null,
+      "delta_2nd_judge": null
+    },
+    {
+      "sample_id": "P12-005",
+      "leaked_1st_judge": 3.498,
+      "blind_1st_judge": 5.0,
+      "delta_1st_judge": -1.5019999999999998,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -4.0
+    },
+    {
+      "sample_id": "P12-006",
+      "leaked_1st_judge": 3.41,
+      "blind_1st_judge": 4.8,
+      "delta_1st_judge": -1.3899999999999997,
+      "leaked_2nd_judge": null,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": null
+    },
+    {
+      "sample_id": "P12-007",
+      "leaked_1st_judge": 3.522,
+      "blind_1st_judge": 5.0,
+      "delta_1st_judge": -1.4780000000000002,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -4.0
+    },
+    {
+      "sample_id": "P12-008",
+      "leaked_1st_judge": 3.522,
+      "blind_1st_judge": 4.1,
+      "delta_1st_judge": -0.5779999999999998,
+      "leaked_2nd_judge": null,
+      "blind_2nd_judge": 3.6,
+      "delta_2nd_judge": null
+    },
+    {
+      "sample_id": "P12-009",
+      "leaked_1st_judge": 3.398,
+      "blind_1st_judge": 4.6,
+      "delta_1st_judge": -1.2019999999999995,
+      "leaked_2nd_judge": null,
+      "blind_2nd_judge": 4.6,
+      "delta_2nd_judge": null
+    },
+    {
+      "sample_id": "P12-010",
+      "leaked_1st_judge": 3.378,
+      "blind_1st_judge": 4.9,
+      "delta_1st_judge": -1.5220000000000002,
+      "leaked_2nd_judge": 1.0,
+      "blind_2nd_judge": 5.0,
+      "delta_2nd_judge": -4.0
+    }
+  ],
+  "g2_pass": true,
+  "interpretation": "G2 PASSES if BOTH judges' CI high < 0 (leaked < blind maintained across judge families). If 2nd judge CI hi > 0, the calibration paradox is judge-specific and not a real effect."
+}

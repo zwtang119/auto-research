@@ -1,0 +1,50 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，收到。我是星际荣耀的决策者，我们秉持“技术稳健、分步迭代”的核心理念，在中型可回收火箭领域已积累一定先发优势，成本控制能力较强，但高频次回收复用经验尚需积累。来看当前博弈局面：
+
+航天先锋财大气粗，技术激进，追求大型火箭高频回收，一旦成功将垄断高端发射市场；星河动力则走低成本、小火箭快迭代路线，灵活性高。政策补贴是双刃剑：研发补贴能加速技术突破，但会推高行业研发竞赛，最终可能泡沫化；发射补贴能直接刺激商业订单，但易引发价格战，压缩利润空间。
+
+我内心权衡：如果选研发补贴，我们稳健的渐进路线会与航天先锋的激进路线正面对抗，风险偏高，而且我们当前更缺的是终端市场验证，而非基础技术。星河动力若拿研发补贴，可能快速成熟，再切入中型市场，反而成直接威胁。如果选发射补贴，我们可以凭借已有的成本优势和中型火箭运力，迅速抢下商业遥感、通信星座等订单，巩固客户粘性，同时通过批量化发射反哺回收技术迭代。航天先锋涉猎大型火箭，发射成本高，在常规商业市场未必能与我们打价格战；星河动力运力有限，承接多数低轨星座订单能力不足。因此发射补贴更符合我们“以市场换技术”的稳健逻辑。
+
+但需警惕：发射补贴可能导致短期产能紧张，且若航天先锋也选发射补贴并大幅降价，会压缩利润。为此，我们需同步优化供应链，降低成本线，并绑定大客户签订长期协议，形成护城河。同时，不放弃对关键回收部件的内部预研，确保技术自主可控。
+
+最终决策如下：选择发射补贴。
+
+```yaml
+决策：发射补贴
+理由：
+  - 技术稳健型企业的核心优势在于成本控制和成熟的中型火箭平台，发射补贴能直接放大这一优势。
+  - 当前行业格局下，航天先锋主攻大型火箭高频率发射，星河动力主攻小型火箭低成本发射，中型商业市场存在空白期，发射补贴可快速占据优质订单，形成市场壁垒。
+  - 发射补贴带来的高频次发射机会，能够积累宝贵的再入回收飞行数据，加速自身回收技术迭代，实现“以战养研”，避免与航天先锋在研发端硬碰硬。
+  - 避免陷入研发补贴可能引发的过度技术竞赛，防止行业泡沫化导致后续补贴退坡时企业难以自生。
+风险预估：
+  - 风险：航天先锋可能同步选择发射补贴，引发价格战，压缩行业毛利；若公司产能未能及时扩张，可能无法兑现高密度发射承诺，影响口碑。
+  - 对冲措施：1）与核心供应商签订长期折扣合同，锁定成本；2）优先承接长期、批量星座合同，降低单次发射价格波动影响；3）内部设立快速响应小组，动态监控竞争对手报价及政策变化。
+”```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

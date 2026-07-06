@@ -1,0 +1,47 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+```yaml
+决策：
+  类型: 申请补贴，但控制节奏
+  补贴策略:
+    申请额度: 申请政策允许的最大额度（以降低自有资金风险）
+    使用计划:
+      研发阶段: 分三期
+        一期: 40% 用于成熟型号二次优化 (验证回收子系统的可靠性)
+        二期: 35% 用于新型复用火箭核心试验 (确保未跳过关键测试)
+        三期: 25% 用于批量生产前的工艺收敛 (避免因赶工期导致质量波动)
+  风险控制:
+    自有资金储备: 保留不低于 20% 的现金作为缓冲 (应对补贴发放延迟或技术挫折)
+    技术指标: 设定严格的里程碑条件，仅当达标后才启动下一期资金
+    竞争应对: 若对手激进投入导致市场过热，则转向长寿命设计而非单纯追求回收次数
+  组织调整:
+    成立专项补贴审计小组: 确保每一笔钱都落在“可回收技术”的真实验证上
+    开放部分技术数据: 与监管机构共享，换取政策窗口期的弹性支持
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

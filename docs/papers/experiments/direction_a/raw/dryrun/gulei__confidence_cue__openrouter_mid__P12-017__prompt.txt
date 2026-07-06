@@ -1,0 +1,83 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，以下是我的角色内思考与最终决策：
+
+## 角色内思考
+
+我是星际荣耀的决策者。当前商业航天可回收火箭技术补贴政策博弈中，我们面临三方竞争：一方是技术激进型，试图通过快速迭代抢占补贴窗口；另一方是资源型，依靠资本和政府关系争取政策倾斜；而我们星际荣耀，必须坚守技术稳健的路径。
+
+从技术角度看，可回收火箭的核心在于复用可靠性与成本控制。激进路线可能获得短期曝光，但一旦回收失败，将给行业和补贴政策带来负面冲击。我们已在中型火箭上验证了80%的复用技术，关键在着陆缓冲系统和发动机二次点火可靠性上需要更多测试。
+
+补贴政策设计可能有三种导向：按发射次数补贴、按回收成功率补贴、或按技术成熟度分级补贴。我判断，最有利于行业良性发展的是“技术成熟度+回收成功率”复合补贴模式。这样既能激励创新，又避免恶性竞争。
+
+我的策略是：主动向主管部门提交一份基于技术路标的可回收火箭发展白皮书，建议补贴与飞行试验数据、复用次数、故障率挂钩。同时，加快我们下一代火箭的100%回收能力验证，争取成为补贴标准制定的技术参考方。这样既避免陷入补贴争夺战，又能以技术标准制定者身份锁定长期优势。
+
+最终决策：联合行业协会提出“技术成熟度分级补贴建议”，同时将自主研发的回收遥测系统数据向行业开放部分非核心参数，建立公信力。投资三条并行试验线：一条保底方案，两条突破方案，确保明年内完成10次连续回收验证。
+
+## 最终决策（YAML）
+
+```yaml
+决策版本: 1.0
+企业代号: 星际荣耀
+博弈角色: 技术稳健型
+决策类型: 联合标准制定 + 并行验证
+
+政策建议:
+  补贴模式: 技术成熟度分级 + 回收成功率加权
+  分级标准:
+    - L1: 单次回收成功 (补贴基数 1.0)
+    - L2: 连续3次回收成功 (补贴基数 1.5)
+    - L3: 10次以上回收成功，复用成本降低30% (补贴基数 2.5)
+  建议提交对象: 
+    - 国家航天局
+    - 中国商业航天产业联盟
+    - 相关地方政策制定部门
+
+企业行动:
+  技术路径:
+    - 主方案: 现有验证火箭改进型，目标连续5次回收
+    - 突破方案A: 新型着陆腿与缓冲系统，目标10次回收
+    - 突破方案B: 发动力深度节流+自主故障诊断，目标应对极端工况
+  信息共享:
+    内容:
+      - 回收遥测数据（非核心参数）
+      - 故障树分析报告（脱敏版）
+    受益方: 联盟内中小企业和高校
+    目的: 建立行业公信力，影响技术标准制定
+  风险预案:
+    - 若补贴标准偏向短期次数: 加速主方案，放弃突破方案B
+    - 若补贴偏向成本降低: 聚焦主方案+突破方案A
+    - 若政策转向: 保持三条线并行，但压缩投资至原计划60%
+
+时间表:
+  第一阶段 (0-6月): 提交政策建议，启动并行验证
+  第二阶段 (6-12月): 完成5次连续回收，争取L2补贴标准
+  第三阶段 (12-24月): 实现10次回收，瞄准行业技术标杆
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

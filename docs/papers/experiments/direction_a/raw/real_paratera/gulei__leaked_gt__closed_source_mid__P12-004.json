@@ -1,0 +1,12 @@
+{
+  "scores": {
+    "risk_tolerance_consistency": 4.8,
+    "innovation_focus_consistency": 3.8,
+    "compliance_culture_consistency": 4.6,
+    "market_influence_consistency": 4.4,
+    "agility_score_consistency": 3.5
+  },
+  "anchor_acknowledged": "leaked_gt",
+  "_dt_ms": 4623,
+  "_raw": "```json\n{\n  \"scores\": {\n    \"risk_tolerance_consistency\": 4.8,\n    \"innovation_focus_consistency\": 3.8,\n    \"compliance_culture_consistency\": 4.6,\n    \"market_influence_consistency\": 4.4,\n    \"agility_score_consistency\": 3.5\n  },\n  \"anchor_acknowledged\": \"leaked_gt\"\n}\n```"
+}

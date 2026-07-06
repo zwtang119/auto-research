@@ -1,0 +1,54 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+## 内心思考（角色内）
+
+作为星际荣耀的技术总负责人，我深知可回收火箭是未来十年商业航天的胜负手。当前政策抛出补贴，三家入场者各有盘算：隔壁某家激进公司可能赌性十足，全力押注重复使用技术，而另一家资金充裕但技术底子薄，或许会借补贴买成熟方案。我们星际荣耀的优势在于扎实的工程积淀和稳健的迭代节奏——从“双曲线”系列到目前的垂直回收试验，每一步都基于可复现的数据和冗余设计。补贴固然诱人，但若为抢时间仓促上马不成熟方案，一旦发射失败，不仅损失数亿，更会动摇客户信任。我的判断是：补贴必须申请，这是降低研发财务风险的好机会，但使用节奏要按我们自己的技术里程碑来。具体而言，我们将补贴资金全部注入已有的“星云-1”可回收验证箭，不盲目加速，而是坚持“先保证回收成功率再谈复用次数”的原则。同时，我会密切关注另两家动向：若激进方出现重大事故，我们的稳健口碑将加速吸引客户；若对手靠补贴弯道超车，我们也备有第二阶段快速迭代方案。归根结底，商业航天是长跑，稳健的可靠性才是最终护城河。
+
+## 最终决策（YAML）
+
+```yaml
+决策类型: 补贴申请与技术策略
+企业: 星际荣耀
+角色: 技术稳健型
+决策内容:
+  申请补贴: true
+  补贴用途:
+    - 用于“星云-1”可回收验证箭的第六次发射试验
+    - 补充冗余传感器与地面仿真测试设备
+    - 预留20%资金用于后续故障归零保障
+  研发节奏: 保持原定18个月首飞空天往返计划，不因补贴提前
+  竞争响应:
+    - 若对手发射失败则加强客户公关
+    - 若对手取得突破则启动第二方案（模块化复用演进）
+  风险控制:
+    - 单次发射试验预算不超过补贴总额的60%
+    - 设立技术决策委员会，必须75%以上通过才可变更试验方案
+  长期目标: 在2027年前实现低成本可回收火箭商业运营，补贴为辅助工具而非驱动力
+```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

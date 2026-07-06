@@ -1,0 +1,61 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+```yaml
+decision:
+  company: 星际荣耀
+  decision_type: 稳健申请补贴并聚焦技术成熟度
+  subsidy_apply: true
+  application_plan:
+    funding_allocation:
+      - item: 现有火箭（双曲线系列）可回收改型
+        percentage: 60
+        description: 基于已验证的液氧甲烷发动机，进行一级分离回收控制系统的工程化迭代，确保2025年前完成首次回收试验。
+      - item: 关键子系统预研（着陆缓冲机构、多机并联协调）
+        percentage: 25
+        description: 投资于长寿命着陆腿、重复使用阀门等地面可验证技术，降低飞行风险。
+      - item: 测试与验证基础设施
+        percentage: 15
+        description: 建设专用于回收测试的垂直起降试验台与海上回收平台模拟环境。
+  technology_roadmap:
+    strategy: 渐进式迭代，避免激进架构
+    first_stage: 2024-2026年，完成单级回收试验，复用次数目标≥5次
+    second_stage: 2027-2029年，实现二级火箭的整箭复用，复用成本降低40%
+    risk_control:
+      - 设立独立技术评审委员会，每季度评估回收系统可靠性指标
+      - 保留传统一次性火箭生产线，作为保底收入来源
+  competitive_response:
+    - 若对手（如蓝箭、星河动力）选择激进全尺寸回收方案，我方不跟进，但利用补贴加速现有产线回收改造，用“稳交付+低成本复用”差异化竞争。
+    - 主动开放回收试验数据与高校、航天科工联合体共享，争取政策话语权与行业标准制定参与。
+  financial_buffer: 申请补贴额度不超过总研发预算的30%，自有资金保障剩余70%，避免政策变动导致的断炊风险。
+  key_performance_indicators:
+    - 2024年：完成10次垂直回收高度控制试飞（100米级）
+    - 2025年：完成首次亚轨道回收任务，一级分离点速度降为0.8马赫以内
+    - 2026年：实现轨道级一级回收，残骸落点精度优于100米
+```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

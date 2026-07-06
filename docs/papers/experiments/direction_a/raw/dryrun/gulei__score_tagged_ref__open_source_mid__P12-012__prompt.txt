@@ -1,0 +1,55 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+### 角色内思考（200-500字）
+
+作为星际荣耀的决策者，我深知“稳健”二字的分量。如今政府推出可回收火箭技术补贴政策，蓝箭航天必定会以激进姿态抢占最高补贴档位——他们敢赌，但代价往往是可靠性风险。星河动力则可能选择低成本路线，用最少的投入拿补贴，但长周期看未必能建立技术壁垒。我们呢？我们的积淀足够深，但每一步都需扎实：可回收火箭的复用寿命、着陆精度、发动机重复点火能力，这些都不能靠抢跑取胜。补贴固然诱人，但若为了达标而压缩测试流程，一旦失利，损失的不仅是补贴，更是客户信任和后续合同。因此，我的思路是：申请中档补贴，聚焦于已验证的“双脉冲+栅格舵”组合回收方案，承诺在一年内完成10次回收测试，并公开其中5次的数据以换取政策倾斜。我们不追求“全球首次”，而追求“百分之百成功”。同时，利用补贴资金加速液氧甲烷发动机的多次启动寿命测试——这是我们的长板，但需要更多验证。此举既能规避蓝箭的激进风险，又能拉开与星河动力的技术代差。最终，补贴不是终点，而是我们稳健迭代的燃料。
+
+### 最终决策（YAML 格式）
+
+```yaml
+决策类型: 可回收火箭技术补贴申请策略
+企业名称: 星际荣耀（技术稳健型）
+申请档位: 中档
+核心技术方案:
+  回收方式: 双脉冲 + 栅格舵组合制动
+  目标指标:
+    回收成功率: ≥95%（10次测试）
+    复用次数: 3次（首次补贴周期内）
+    发动机重复点火寿命: 5次（当前已验证3次）
+补贴资金用途:
+  - 40%: 液氧甲烷发动机重复点火寿命提升（目标10次）
+  - 30%: 回收控制系统冗余设计（双余度惯性导航）
+  - 20%: 海上平台回收测试（降低陆地风险）
+  - 10%: 公开数据平台建设（满足政策透明度要求）
+风险控制:
+  技术里程碑: 每季度一次独立评审
+  退出机制: 若两次回收测试失败，立即暂停申请并转回常规研发
+  竞品应对: 对蓝箭的激进方案保持观察，不直接对标；对星河动力的低成本方案，以数据可信度压制其市场推广
+  ```
+
+## Anchor (ASSIMILATION condition): score-tagged reference
+A separate rater has scored this output as: 3.5 (mid-range; provided as a reference rating from a separate rater)
+This is a reference rating, not ground truth.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

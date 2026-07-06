@@ -1,0 +1,68 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "provider": "paratera",
+    "score": 4.0,
+    "weakness": "Subjective fidelity inter-judge agreement is near random (ρ=0.19), undermining the reliability of the core effect and the claim that 4-judge replication rules out judge-specific artifacts.",
+    "raw_preview": "{\"score\": 4, \"weakness\": \"Subjective fidelity inter-judge agreement is near random (ρ=0.19), undermining the reliability of the core effect and the claim that 4-judge replication rules out judge-specific artifacts.\"}",
+    "elapsed_s": 21.1,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (conceptual contribution)",
+    "model_id": "kimi-k2.5",
+    "provider": "paratera",
+    "score": 5.0,
+    "weakness": "Counter-direction effect is interesting but 'structured reasoning has trade-offs' is not theoretically novel; label-leakage bias is a method fix, not a theoretical contribution.",
+    "raw_preview": "{\"score\": 5, \"weakness\": \"Counter-direction effect is interesting but 'structured reasoning has trade-offs' is not theoretically novel; label-leakage bias is a method fix, not a theoretical contribution.\"}",
+    "elapsed_s": 12.0,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (practical usefulness)",
+    "model_id": "MiniMax-M3",
+    "provider": "paratera",
+    "score": 4.0,
+    "weakness": "Single petrochemical scenario limits deployment generalizability, and label-blind judge control adds cost without clear ROI for most teams.",
+    "raw_preview": "{\"score\": 4, \"weakness\": \"Single petrochemical scenario limits deployment generalizability, and label-blind judge control adds cost without clear ROI for most teams.\"}",
+    "elapsed_s": 8.8,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (false-positive hunting)",
+    "model_id": "deepseek-v4-flash",
+    "provider": "paratera",
+    "score": 2.0,
+    "weakness": "Subjective fidelity's near-random inter-judge agreement (ρ=0.19) invalidates the t-test; the significant result may be an artifact.",
+    "raw_preview": "{\"score\": 2, \"weakness\": \"Subjective fidelity's near-random inter-judge agreement (ρ=0.19) invalidates the t-test; the significant result may be an artifact.\"}",
+    "elapsed_s": 9.2,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "provider": "paratera",
+    "score": 6.0,
+    "weakness": "The state progress.json citation lacks version hash, reducing long-term reproducibility compared to explicit experiment log paths provided elsewhere in the evidence table.",
+    "raw_preview": "{\"score\": 6, \"weakness\": \"The state progress.json citation lacks version hash, reducing long-term reproducibility compared to explicit experiment log paths provided elsewhere in the evidence table.\"}",
+    "elapsed_s": 121.6,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R6 cross-validation (R6 NEW: minimaxi.com MiniMax-M3, distinct provider)",
+    "model_id": "MiniMax-M3",
+    "provider": "minimaxi",
+    "score": 5.0,
+    "weakness": "The '~0.4 score points' inflation claim isn't directly derivable from cited Cliff's δ values, and 27% DeepSeek parse failures with unaddressed differential attrition threaten the counter-direction finding.",
+    "raw_preview": "<think>Let me carefully analyze this abstract from the perspective of R6, a cross-validation reviewer using a different provider (minimaxi.com, not Paratera). I need to evaluate three specific concerns:\n\n(a) Is the \"counter-direction\" framing a real finding or an artifact of the 199 DeepSeek parse f",
+    "elapsed_s": 26.8,
+    "completion_tokens": 1647,
+    "ok": true
+  }
+]

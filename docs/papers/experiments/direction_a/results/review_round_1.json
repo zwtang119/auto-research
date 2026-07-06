@@ -1,0 +1,59 @@
+[
+  {
+    "model_id": "deepseek-v4-pro",
+    "ok": true,
+    "score": 4.0,
+    "weakness": "No power analysis for N=30, and confounds such as parse failures, judge severity offset, and domain-specific anchor semantics are not explicitly addressed.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"No power analysis for N=30, and confounds such as parse failures, judge severity offset, and domain-specific anchor semantics are not explicitly addressed.\"}",
+    "elapsed_s": 23.59,
+    "completion_tokens": 183,
+    "persona": "R1 experimentalist (methodology rigor)"
+  },
+  {
+    "model_id": "kimi-k2.5",
+    "ok": true,
+    "score": 6.0,
+    "weakness": "CoBBLEr's 6-bias taxonomy lacks theoretical grounding, but the 3-axis anchoring framing risks being seen as rebranding existing biases rather than discovering new mechanisms; sign-asymmetry prediction is elegant but assumes judges process numeric anchors similarly to humans, which may not hold for LLMs trained on token-level objectives rather than explicit adjustment heuristics.",
+    "raw_response_preview": "{\"score\": 6, \"weakness\": \"CoBBLEr's 6-bias taxonomy lacks theoretical grounding, but the 3-axis anchoring framing risks being seen as rebranding existing biases rather than discovering new mechanisms; sign-asymmetry prediction is elegant but assumes judges process numeric anchors similarly to humans",
+    "elapsed_s": 2.91,
+    "completion_tokens": 409,
+    "persona": "R2 theorist (conceptual contribution)"
+  },
+  {
+    "model_id": "MiniMax-M3",
+    "ok": true,
+    "score": 4.0,
+    "weakness": "Practitioner usefulness is limited: 4 anchor types rarely co-exist in real pipelines, and N=30 per cell is underpowered for the sign-asymmetry claim given P12's high variance.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"Practitioner usefulness is limited: 4 anchor types rarely co-exist in real pipelines, and N=30 per cell is underpowered for the sign-asymmetry claim given P12's high variance.\"}",
+    "elapsed_s": 21.81,
+    "completion_tokens": 203,
+    "persona": "R3 applied (practical usefulness)"
+  },
+  {
+    "model_id": "deepseek-v4-flash",
+    "ok": true,
+    "score": 5.0,
+    "weakness": "Leaked-ground-truth manipulation confounds anchor content with prompt formatting change, undermining causal attribution of contrast effect.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"Leaked-ground-truth manipulation confounds anchor content with prompt formatting change, undermining causal attribution of contrast effect.\"}",
+    "elapsed_s": 14.24,
+    "completion_tokens": 167,
+    "persona": "R4 skeptical (false-positive hunting)"
+  },
+  {
+    "model_id": "kimi-k2.6",
+    "ok": false,
+    "error": "Missing env var: TOKEN_PLAN_API_KEY",
+    "elapsed_s": 1.5974044799804688e-05,
+    "persona": "R5 systems (engineering quality)"
+  },
+  {
+    "model_id": "MiniMax-M3",
+    "ok": true,
+    "score": 4.0,
+    "weakness": "Mechanism experiment conflates 'insufficient adjustment' with confidence-cue effect; sample N=30 underpowered for 4×3×2 factorial with sign-asymmetry claims.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"Mechanism experiment conflates 'insufficient adjustment' with confidence-cue effect; sample N=30 underpowered for 4×3×2 factorial with sign-asymmetry claims.\"}",
+    "elapsed_s": 2.4,
+    "completion_tokens": 185,
+    "persona": "R6 cross (minimaxi provider replication)"
+  }
+]

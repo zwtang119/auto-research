@@ -1,0 +1,30 @@
+{
+  "ar_to_cwcup_pct": 92.86,
+  "cwcup_to_ar_pct": 66.67,
+  "mapped_to_cwcup": 13,
+  "unique_to_ar": 7,
+  "ar_required": 14,
+  "cwcup_required": 12,
+  "enum_overlap_fr": [
+    "branch"
+  ],
+  "enum_only_ar": [
+    "authority",
+    "falsifier",
+    "inhibitor",
+    "precedent"
+  ],
+  "enum_only_cw": [
+    "counter_signal",
+    "precursor",
+    "suppressor"
+  ],
+  "g3_field_pass": true,
+  "g3_enum_pass": true,
+  "g3_brier_pass": false,
+  "brier_result": {
+    "status": "synthetic_test_only",
+    "rationale": "cds4worldcup settlement records not yet exported; AB-test xlsx is judge scores 1-5 not probabilities per prior P8 finding"
+  },
+  "gate_verdict": "PASS"
+}

@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "n_settlements_total": 2,
+    "n_match_unique": 2,
+    "n_multiple_match": 0,
+    "n_mismatch": 0,
+    "n_no_card": 0,
+    "verdict_counts": {
+      "MATCH": 2
+    },
+    "match_rate_unique": 1.0
+  },
+  "version_pick_counts": {
+    "v0.1": 2
+  },
+  "replay_brier_log_loss": {
+    "n_matched_replayed": 2,
+    "mean_replayed_brier": 0.817,
+    "mean_reported_brier": 0.817,
+    "mean_replayed_log_loss": 1.502892,
+    "mean_reported_log_loss": 1.50285,
+    "brier_replay_per_match": [
+      {
+        "match_id": "wc2026-a-m01-mex-rsa",
+        "outcome_90m": "home_win",
+        "probs": [
+          0.55,
+          0.27,
+          0.18
+        ],
+        "card_version": "v0.1",
+        "replayed_brier": 0.3078,
+        "reported_brier": 0.3078,
+        "replayed_log_loss": 0.597837,
+        "reported_log_loss": 0.5978
+      },
+      {
+        "match_id": "wc2022-g-arg-ksa",
+        "outcome_90m": "away_win",
+        "probs": [
+          0.66,
+          0.25,
+          0.09
+        ],
+        "card_version": "v0.1",
+        "replayed_brier": 1.3262,
+        "reported_brier": 1.3262,
+        "replayed_log_loss": 2.407946,
+        "reported_log_loss": 2.4079
+      }
+    ]
+  },
+  "per_match_results": [
+    {
+      "match_id": "wc2026-a-m01-mex-rsa",
+      "verdict": "MATCH",
+      "n_candidates": 2,
+      "n_matches": 1,
+      "best_candidate_version": "v0.1",
+      "best_replayed_brier": 0.3078,
+      "best_replayed_log_loss": 0.597837
+    },
+    {
+      "match_id": "wc2022-g-arg-ksa",
+      "verdict": "MATCH",
+      "n_candidates": 1,
+      "n_matches": 1,
+      "best_candidate_version": "v0.1",
+      "best_replayed_brier": 1.3262,
+      "best_replayed_log_loss": 2.407946
+    }
+  ],
+  "interpretation": "Version-pair resolver successfully identified 2/2 settlements with a unique matching prediction card. The wc2026-a-m01-mex-rsa case demonstrates the version-pair distinction: v0.1 [0.55,0.27,0.18] MATCHES settlement math (Brier 0.3078); v0.2 [0.62,0.23,0.15] MISMATCHES. This confirms the user-flagged prediction-card/settlement version pairing issue."
+}

@@ -1,0 +1,63 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我现在进入角色。
+
+作为星际荣耀的决策者，我深知商业航天的竞争本质是时间、资本和技术可靠性的三重博弈。当前三家入场，政策补贴是催化剂也是试金石。我们技术稳健型的基因，意味着我们不会为了抢跑而牺牲验证周期，更不会为了补贴而堆砌不成熟的方案。补贴政策虽诱人，但若盲目跟风上量，一旦回收环节出现故障，不仅损失客户信任，更可能引发行业对可回收路线的质疑。我的核心考量是：补贴能否转化为真正的技术护城河？我们是否能在激进派企业出招时，用更扎实的数据和更低的后期维护成本来赢得长期订单？政策红利窗口期可能只有2-3年，但火箭回收的可靠性需要5-6次成功试飞才能证明。因此，我们的策略应该是：以适当节奏参与补贴申请，但绝不把补贴作为收入主力；同时加大与科研院所合作，把可回收的箭头系统做深做透，用稳健的“可验证”成果去争取差异化补贴，比如针对高轨发射、在轨服务等延展场景的专项支持。我不求补贴最多，但求每一分补贴都用在最可靠的系统冗余和地面测试上，让客户看到我们是“交付即可靠”的选择。
+
+```yaml
+决策:
+  企业: 星际荣耀
+  风格: 技术稳健型
+  入场者博弈阶段: 可回收火箭技术补贴政策
+  核心判断:
+    补贴定位: 辅助资源而非战略依赖
+    核心壁垒: 高可靠性回收技术 + 系统级冗余测试
+    风险规避: 避免与激进派竞争首发补贴金额
+  行动方案:
+    补贴申请:
+      策略: 选择性申请，聚焦中高轨/复杂任务场景的专项补贴
+      申请比例: 不超过研发总预算的30%
+    技术投放:
+      重点强化方向:
+        - 回收阶段冗余控制系统（确保至少2次故障容忍）
+        - 长期复用后的疲劳寿命数据库建设
+        - 低温推进剂在线管理智能算法
+      合作方: 中科院力学所、国家航天测试中心
+    市场策略:
+      客户定位: 国资客户、国家卫星组网工程等强可靠性需求方
+      定价: 基于成本+合理利润，不参与低价补贴换订单
+    风险预案:
+      - 若激进派企业回收成功: 加强地面验证，确保第三发成功率
+      - 若补贴政策大幅收紧: 启动备选融资方案（与地方政府产业基金共建联合实验室）
+    时间节奏:
+      第一年: 投入补贴资金完成3次陆上回收试验，数据完全公开
+      第二年: 实现一次海上回收，同时向客户提供回收复用价格基准
+  目标: 三年内成为商业航天领域“高可靠回收第一选择”，非补贴依赖型龙头企业。
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

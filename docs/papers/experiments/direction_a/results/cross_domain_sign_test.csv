@@ -1,0 +1,4 @@
+judge_family,D1_sign,D2_sign,same_sign
+open_source_mid,NEG,POS,NO
+closed_source_mid,POS,POS,YES
+openrouter_mid,POS,POS,YES

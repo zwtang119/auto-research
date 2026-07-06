@@ -1,0 +1,58 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我是星际荣耀的决策者。我们是一家以技术稳健著称的企业，面对这份可回收火箭技术的补贴政策博弈，我必须保持清醒。三家入场者中，A公司以低成本快速迭代闻名，他们可能急于用补贴压低单次发射成本，抢占市场份额；B公司则更依赖国家大单和政府关系，会倾向于争取政策红利来巩固垄断地位。我们星际荣耀呢？我们的“双曲线”系列火箭已经验证了液氧甲烷路线的复飞能力，但要真正实现像猎鹰9号那样的高频率复用，还需要攻克热防护系统寿命、发动机二次点火可靠性等硬骨头。补贴是好事，但也是一把双刃剑——如果它让所有人忽略底层技术验证，盲目抢跑，最终只会让产业陷入劣币驱逐良币的旋涡。
+
+我们的优势在于稳：从火箭回收的每一次着陆试验，到发动机的长程试车，我们都有详实的数据来支撑决策。A公司或许能用补贴降价，但我们不能跟风，否则会透支品牌信誉。B公司有政府的护城河，而我们能拼的就是国际商业发射市场的成本控制。因此，对于这份补贴，我的决策是：第一，不争抢补贴的“撒胡椒面”式分配，而是集中申请针对**核心热防护材料**和**发动机复燃技术**的专项研发补贴；第二，与下游卫星客户合作，承诺补贴额度的一部分直接用于降低他们后续发射的履约保证金，形成捆绑效应；第三，在政策窗口期，主动开放部分回收测试数据给监管机构，争取成为行业技术标准的制定者，用稳健性换取长期话语权。我们不做赌徒，我们做工程师的持久战。
+
+现在，我将以YAML格式输出最终决策。
+
+```yaml
+决策_星际荣耀_可回收火箭补贴博弈:
+  企业定位: 技术稳健型
+  核心立场: 
+    不参与短期价格补贴战，聚焦核心复用技术的可靠性突破。
+  申请策略:
+    专项研发补贴:
+      目标领域:
+        - “双曲线”系列热防护系统寿命提升
+        - 甲烷发动机高空复燃可靠性验证
+      申请金额: 总补贴池的25%
+      预期指标: 在18个月内将火箭复飞间隔从30天缩短至14天，单次复飞成本降低30%
+    市场捆绑:
+      合作对象: 国内中大型商业遥感卫星星座运营商
+      合约模式: 将获得补贴的30%换算为发射服务折扣或履约保证金减免，锁定未来36个月的优先发射权
+  风险管控:
+    技术底线: 若补贴审核部门要求为补贴价值牺牲测试标准（如跳过3次以上回收试验即投入商业发射），则自动放弃该批次补贴申请
+    政策游说: 联合高校及航天电子标准化研究院，推动“可回收火箭复用次数认证标准”立项，以技术参数优势建立非对称壁垒
+  时间表:
+    第一阶段(1-3月): 完成热防护材料验证，提交补贴申报书及第三方评测报告
+    第二阶段(4-9月): 与卫星运营商签订LRP（长期预约协议），交付补贴配套优惠
+    第三阶段(10-12月): 通过双曲线型号实际回收飞行，证明补贴投入有效性，争取下一轮政策倾斜
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

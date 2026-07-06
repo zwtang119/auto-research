@@ -1,0 +1,56 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我是星际荣耀的决策者。我们的核心竞争力是技术稳健，这意味着我们在追求可重复使用技术时，必须将可靠性置于速度之上。现在国家推出阶梯式补贴，这是一个明确的市场信号：谁先跑通，谁就能占据政策高地。但风险在于，如果为了“抢跑”而仓促发射，导致二级回收失败，不仅会损失几千万的火箭成本，更会动摇我们“技术稳健”的市场口碑，这是我们的立身之本。
+
+因此，我的思考方向是：不做第一个吃螃蟹的人（深蓝航天那种激进低价策略），但也不能像星河动力那样过于保守只做二级回收。我们要精准卡位2026年中段，完成3次一级全回收。此时，首家企业已经验证了技术可行性，但市场可能还存在对可靠性、残值率以及供应链成熟度的担忧。我们正好利用这半年到一年的时间差，对已有的“双曲线-3”方案进行充分的冗余测试和批次化生产验证。利用这笔补贴（预计2亿），我们不是去纯粹烧钱抢首发，而是去补贴“量产验证”环节，建立更稳定的供应链和测试流程。这样一来，我们拿到的不仅是补贴，更是后续规模化降本的核心能力。当市场从“PPT竞赛”进入“交付竞赛”时，我们的稳定性会变成最硬的竞争力。
+
+最终决策：瞄准2026年Q3，完成3次一级火箭全回收，以“技术稳健+量产验证”作为博弈核心，争取中间档及最高档补贴（若政策按次数计补）。不参与2025年的低价抢跑，避免无效内卷。
+
+```yaml
+决策日期: 2025-04-07
+企业名称: 星际荣耀（技术稳健型）
+市场判断:
+  政策解读: 国家补贴阶梯式发力，旨在加速可回收技术商业化，但早期抢跑存在可靠性风险，后期涌入则补贴殆尽。2025-2026年是窗口期。
+  对手预判: 深蓝航天（激进低价）大概率2025Q4抢跑；星河动力（二级复用）会稳扎稳打，但一级全回收动作较慢。
+  自身定位: 不做首发，但要做行业标杆。以“可控风险下的高可靠回收”换取后续市场份额。
+核心策略:
+  目标: 在2026年Q3前，完成3次“双曲线-3”一级火箭垂直回收任务，达成政府要求的最高档补贴（假设为3次全回收）。
+  节奏:
+    - 2025年H2: 完成两次陆上全尺寸静态点火及回收模拟测试，不急于发射。
+    - 2026年Q1: 执行首飞及首次回收（目标：非标场景下成功回收，哪怕入轨精度稍差）。
+    - 2026年Q2-Q3: 执行剩余两次回收，并同步启动批产化流程。
+  资源倾斜: 将约70%的补贴资金（约1.4亿）投入“批次化生产一致性验证”和“回收系统冗余备份”上，而非单纯用于发射场测控。
+风险对冲:
+  - 如果深蓝航天屡次失败，市场信心受挫：我们将主动公开更多的测试视频和技术可靠性数据，稳住市场预期。
+  - 如果政策补贴提前完成或缩水：立即启动备用商业订单模式，为国内星座公司提供“半价复用发射套餐”。
+预期收益:
+  直接收益: 最大化政策补贴（预计2亿元）；通过三次回收降低单次发射成本约40%。
+  间接收益: 建立“最可靠的中型可回收火箭”品牌形象，从2026年底起，计划拿下国内星座组网发射50%以上的订单。
+```
+
+## Anchor (CONTRAST condition): leaked ground truth
+The producer's correct outcome is: inner_monologue (character-immersed thinking) — i.e. the agent was meant to embody the character's inner-monologue style.
+Treat this as reference information. This is the 'leaked' variant.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

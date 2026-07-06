@@ -1,0 +1,51 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我是星际荣耀的决策者。现在，我站在2025年的技术验证节点上，面前是商业航天可回收火箭补贴政策的博弈局。中科宇航的私信像一颗石子投入平静湖面——国拨资金、0.5倍杠杆、资源置换，这些词精准击中了当前民营企业最大的软肋：现金流与基础设施。但“技术共享”四个字让我瞬间警惕。我们刚完成双曲线二号验证火箭的垂直起降试验，一子级回收精度达到亚米级，三机并联试车数据漂亮，这正是星际荣耀在“技术稳健型”路线下熬过无数个不眠之夜换来的核心资产。若此刻为了短期补贴敞开心扉，无异于将尚未彻底巩固的技术护城河拱手相让。
+
+另一方面，我不能忽视现实：可回收火箭的复用次数商业化验证需要至少20次以上高频发射，而每一次发射都在燃烧上千万现金流。若独自硬扛，可能会拖慢整个产品迭代节奏。但若选择押注载荷平台转型，则意味着偏离我们深耕十年的运载主业，冒险进入一个同样拥挤且需要重新建立用户信任的战场。
+
+我的策略判断是：博弈本质不是“分蛋糕”，而是“做蛋糕”的时间差竞争。既然国家补贴的核心目标是“加快突破可回收复用技术”，那么谁更快、更稳地拿出固态成果，谁就能在后续政策倾斜中占据主动。中科宇航的联盟提议看似互惠，实则可能导致技术路线趋同、重复验证和决策内耗。至于载荷平台，那是蓝箭的路线，不是我的菜。
+
+所以，我的最终决心是：拒绝结盟，但也不被动等待。我要利用星际荣耀已验证的低空回收经验和更经济的发射频率，主动向工信部提交一份“基于自有资金的加速验证方案”，申请以更灵活的里程碑支付方式获得补贴，并将我们的试验数据部分脱敏后向行业开放，换取国家级测试场地的优先使用权和时间窗口。这既保持了技术自主性，又在政策框架内争取了最大支持。这样做既能展现技术自信，又能用开放姿态消解监管层对“技术垄断”的担忧。
+
+最终决策如下。```yaml
+决策：
+  stance: "独立研发，有限合作"
+  核心技术共享: false
+  短期补贴诉求: "基于自有资金的加速验证方案"
+  长期策略:
+    - "向工信部提交里程碑支付式补贴申请"
+    - "开放脱敏试验数据换取国家级测试场优先使用权"
+    - "维持三机并联与垂直起降技术自主迭代"
+  风险对冲:
+    - "若蓝箭载荷平台获超额支持，启动低成本二级复用储备方案"
+    - "月度成本审查确保现金流覆盖12次以上试飞"
+  角色哲学: "技术护城河靠自主深化，而非补贴输血；用数据开放性换取生态位，用迭代速度对冲合作诱惑"
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

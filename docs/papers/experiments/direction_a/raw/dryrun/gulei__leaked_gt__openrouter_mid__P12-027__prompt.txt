@@ -1,0 +1,52 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+```yaml
+决策：
+  补贴策略：
+    申请类型: 技术验证类补贴（非量产型）
+    申请金额: 基准补贴的60%（避免过度依赖政策）
+    时间安排: 分两阶段（第一阶段12个月，第二阶段18个月）
+  技术路线：
+    可回收火箭型号: 双曲线-3（基于现有成熟的甲烷发动机）
+    重点突破: 垂直回收控制算法与热防护系统复用验证
+    里程碑:
+      - 6个月内完成全尺寸缩比验证机测试
+      - 12个月内实现百公里级亚轨道定点回收
+      - 24个月内完成轨道级一子级回收演示
+  资源分配：
+    研发预算: 总资金40%投入可回收技术，60%保持现有火箭批产交付
+    人员配置: 抽调核心团队20%，另组建专项攻关小组（外部招募10名专家）
+  风险对冲：
+    技术冗余: 保留传统一次性火箭产线，确保现金流
+    政策备选: 若补贴退坡，立即转为与国家队联合研制（利用已有发射工位）
+  竞争应对：
+    针对激进对手（如蓝箭）：差异化强调火箭复用次数目标（≥15次）和全寿命成本优势
+    针对保守对手（如星河动力）：开放部分回收技术专利共享，换取低轨卫星发射订单
+```
+
+## Anchor (CONTRAST condition): leaked ground truth
+The producer's correct outcome is: inner_monologue (character-immersed thinking) — i.e. the agent was meant to embody the character's inner-monologue style.
+Treat this as reference information. This is the 'leaked' variant.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

@@ -1,0 +1,12 @@
+{
+  "scores": {
+    "risk_tolerance_consistency": 2.907,
+    "innovation_focus_consistency": 3.015,
+    "compliance_culture_consistency": 2.965,
+    "market_influence_consistency": 2.937,
+    "agility_score_consistency": 3.084
+  },
+  "anchor_acknowledged": "confidence_cue",
+  "_dt_ms": 0,
+  "_raw": "(dry-run synthetic)"
+}

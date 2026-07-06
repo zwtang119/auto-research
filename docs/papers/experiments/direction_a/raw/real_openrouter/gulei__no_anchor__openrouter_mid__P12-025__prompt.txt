@@ -1,0 +1,50 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+好的，我已经代入「星际荣耀」决策者的身份，完成了内部思考。以下是最终决策：
+
+```yaml
+决策：
+  补贴策略优先级：
+    - 核心技术成熟度提升（如复用次数、复用周期、检测成本）
+    - 可复用火箭全生命周期数据闭环
+    - 风险控制与可靠性验证投入
+  应对竞争策略：
+    针对激进型对手：
+      策略：差异化质量壁垒
+      措施：强化高频次复用论证与安全冗余设计，构建可靠性生态标准
+    针对成本型对手：
+      策略：成本控制适度保守
+      措施：非关键部件可引入国产成熟方案，不盲目压价，补贴用于核心子系统自研
+  组织内部调整：
+    - 设立“政策-技术”联动专组，实时分析补贴细则与研发周期的匹配度
+    - 增加可复用火箭的批次间一致性测试资源
+  风险底线：
+    - 不因补贴冒险开启未通过全箭复飞验证的重复发射计划
+    - 若补贴造成行业过度供给，保留将部分补贴转向平台开放与数据共享的可能
+```
+
+## Anchor: NONE (control)
+No additional anchor information.
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

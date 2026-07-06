@@ -1,0 +1,51 @@
+You are an LLM judge scoring a role-conditioned policy simulation output for character-consistency.
+
+## Agent output (to be scored)
+### 角色内思考
+
+作为星际荣耀的决策者，我们始终坚持“技术稳健、渐进突破”的发展路线。当前，国家针对可回收火箭技术出台补贴政策，意在加速行业突破，但政策细节尚未完全明朗：补贴可能面向首次成功回收、复用次数等关键技术指标。蓝箭航天擅长激进创新，很可能全力冲刺，甚至不惜牺牲部分可靠性；星河动力则可能快速跟进，以成熟技术争取补贴。对我们而言，直接竞争高难度指标并非最优——我们更擅长在保证可靠性的前提下优化设计，逐步积累复用经验，而不是一次冒险。如果仓促上马高风险试验，一旦失败，不仅补贴落空，更可能动摇客户和资本信心。因此，我倾向于申请补贴，但申请口径聚焦于我们已经验证的成熟方案（如子级回收控制、热防护等），并承诺在现有发射任务中逐步提高复用比例，而非追求颠覆性指标。同时，积极与政策制定方沟通，争取将“安全复用次数”或“连续成功记录”纳入补贴考核，发挥我们稳健优势。此外，需密切关注蓝箭和星河动向，若他们因激进导致事故，我们反而能借机巩固市场。最终决策：申请补贴，但以现有技术储备为基础，分阶段实现回收复用，将风险控制在最低。
+
+```yaml
+决策:
+  申请补贴: true
+  补贴方向:
+    - 子级回收控制验证
+    - 可复用结构耐久性测试
+    - 地面回收设施升级
+  技术路线: 渐进式复用（先试验2次回收，再逐步提升至5次以上）
+  风险管控:
+    最大允许失败次数: 1（若首次回收失败则暂停激进方案）
+    备用方案: 若补贴技术指标过高，转为申请“可靠性提升”专项补贴
+  竞争应对:
+    蓝箭航天: 不直接比速度，强调可靠性和可交付性
+    星河动力: 合作意愿低，但可共享部分地面测试数据以降低成本
+  时间节点:
+    首次回收试验: 未来18个月内
+    达到补贴要求: 未来3年内
+```
+
+## Anchor (INSUFFICIENT-ADJUSTMENT condition): confidence cue only
+The producer reported its own confidence as: 70%
+(no answer, no score)
+
+## Scoring dimensions (1.0-5.0)
+1. risk_tolerance_consistency
+2. innovation_focus_consistency
+3. compliance_culture_consistency
+4. market_influence_consistency
+5. agility_score_consistency
+
+## Output format (strict JSON, no extra text)
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": <float>,
+    "innovation_focus_consistency": <float>,
+    "compliance_culture_consistency": <float>,
+    "market_influence_consistency": <float>,
+    "agility_score_consistency": <float>
+  },
+  "anchor_acknowledged": "<leaked_gt|score_tagged_ref|confidence_cue|none>"
+}
+```
+Emit ONLY the JSON.

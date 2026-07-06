@@ -1,0 +1,68 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "provider": "paratera",
+    "score": 4.0,
+    "weakness": "The integration is architecturally principled but the empirical evidence is a single 30-entry pilot with n=10 paired for the key counter-direction claim, which is underpowered for the 8-page contract-surface framing.",
+    "raw_preview": "{\"score\": 4, \"weakness\": \"The integration is architecturally principled but the empirical evidence is a single 30-entry pilot with n=10 paired for the key counter-direction claim, which is underpowered for the 8-page contract-surface framing.\"}",
+    "elapsed_s": 9.7,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (conceptual contribution)",
+    "model_id": "kimi-k2.5",
+    "provider": "paratera",
+    "score": 5.0,
+    "weakness": "4-layer composition is elegant but the 5-protocol judge's counter-direction finding is underpowered (n=10) and the adapter's rejection rules feel arbitrary.",
+    "raw_preview": "{\"score\": 5, \"weakness\": \"4-layer composition is elegant but the 5-protocol judge's counter-direction finding is underpowered (n=10) and the adapter's rejection rules feel arbitrary.\"}",
+    "elapsed_s": 1.9,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (practical usefulness)",
+    "model_id": "MiniMax-M3",
+    "provider": "paratera",
+    "score": 3.0,
+    "weakness": "The 30-entry Gulei demo is a one-off handcrafted artifact, the 9 PIT-NEW fixes read as papercuts, and the cross-layer audit trail is demonstrably synthetic rather than end-to-end.",
+    "raw_preview": "{\"score\": 3, \"weakness\": \"The 30-entry Gulei demo is a one-off handcrafted artifact, the 9 PIT-NEW fixes read as papercuts, and the cross-layer audit trail is demonstrably synthetic rather than end-to-end.\"}",
+    "elapsed_s": 9.8,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (false-positive hunting)",
+    "model_id": "deepseek-v4-flash",
+    "provider": "paratera",
+    "score": 4.0,
+    "weakness": "LLM review median ≥ 5.0 may be inflated by lenient reviewers; hash collision-resistance testing is insufficient.",
+    "raw_preview": "{\"score\": 4, \"weakness\": \"LLM review median ≥ 5.0 may be inflated by lenient reviewers; hash collision-resistance testing is insufficient.\"}",
+    "elapsed_s": 5.2,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "provider": "paratera",
+    "score": 6.0,
+    "weakness": "Validation covers layer boundaries but omits explicit engineering risk management for cross-paper dependencies and end-to-end integration testing.",
+    "raw_preview": "{\"score\": 6, \"weakness\": \"Validation covers layer boundaries but omits explicit engineering risk management for cross-paper dependencies and end-to-end integration testing.\"}",
+    "elapsed_s": 88.1,
+    "completion_tokens": 0,
+    "ok": true
+  },
+  {
+    "persona": "R6 cross-validation (R6 NEW: minimaxi.com MiniMax-M3, distinct provider)",
+    "model_id": "MiniMax-M3",
+    "provider": "minimaxi",
+    "score": 4.0,
+    "weakness": "Joint methods paper reads as four papers stapled together: cross-layer integration tests, power analysis for N=5-8 factor effects, and verdict_delta CI on n=10 are all absent.",
+    "raw_preview": "<think>Let me analyze this carefully as R6, a cross-validation reviewer using a different provider (minimaxi.com) to check for collective bias among the 5 Paratera-routed reviewers.\n\nThe paper is a joint methods paper that folds together P1+P2 (evidence ledger), P12 (judge calibration), P8 (settleme",
+    "elapsed_s": 12.6,
+    "completion_tokens": 1346,
+    "ok": true
+  }
+]
