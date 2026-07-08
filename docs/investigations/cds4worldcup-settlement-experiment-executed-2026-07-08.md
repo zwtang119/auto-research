@@ -97,5 +97,38 @@ cds4worldcup 调研发现的 3 个事实让"值得做"成立：
 - 实验方案：`cds4polymarket/docs/research/worldcup-settlement-experiment-plan-2026-07-08.md`（commit 92ffd11）
 - 4 item 产出：`cds4worldcup/{artifacts/plan-c/settlement/wc2026-{b-m02,c-m01,f-m01}.settlement_record.yaml, results/2026-07-08-*.md}`（commit 8268431）
 - 验证脚本：`cds4worldcup/src/verify_plan_c_settlement.py`（All assertions passed）
+
+---
+
+## rp-cli pair session 重试记录（用户要求换 model_id）
+
+### 重试 1: explore label（session F039833E）
+- `rp-cli agent_run model_id=explore` dispatch — rp-cli 所有 label（explore/engineer/pair/design）都用同一 MiniMax-M3 Max 模型，无 sonnet/haiku 选项
+- 结果：同 pair session 失败模式，返回 "Model switched to opus. Ready for your next request." 不执行任务
+- 诊断：rp-cli + CC MiniMax 在长 brief 任务上系统性 reliability 问题，不是 model_id 问题
+
+### 重试 2: chat mode（lead 直接调度，非 pair session）
+- `rp-cli chat` 绕过 pair session 启动问题，成功执行 verification 任务
+- 这是 lead 直接调度的问答模式，不是 agent_run pair session，但仍是 rp-cli 调用
+
+### rp-cli chat 独立验证结果（补 Agent tool 产出的第二意见）
+
+| Item | rp-cli chat 验证 | lead 补验证 | 最终状态 |
+|---|---|---|---|
+| 1 (Plan C 3 YAML) | **PASS** (static) — 3/3 YAMLs 5 sections 齐全，Brier/LogLoss 匹配 verify script expected dict（注：rp-cli chat 未实跑 script） | **PASS** — `python3 src/verify_plan_c_settlement.py` 实跑 "All assertions passed" + 3 Brier 值 0.9722/0.8552/0.8502 吻合 | ✅ 双重验证 |
+| 2 (72-match eval) | **INCOMPLETE** — rp-cli chat file_contents 缺失该文件（selection 问题，非产出问题） | **PASS** — 8 sections 齐全 + R1 match-1 gap 文档化 + Elo n=71 / Coach n=72 + Brier 0.5728/0.6078 | ✅ lead 补验证 |
+| 3 (CDS qual) | **PASS** — Brier 0.2392 ✓ + 16 eliminated teams ✓ + Group A standings 重算核验（MEX 9pts/RSA 4pts/KOR 3pts/CZE 1pt）MEX/RSA advanced ✓ | （rp-cli chat 已完整验证） | ✅ rp-cli 验证 |
+| 4 (CDS champ partial) | **PASS** — 16 settled teams 与 Item 3 **set equality** 一致（sort order 不同但同 16 队）+ partial Brier 0.0003 ✓ | （rp-cli chat 已完整验证） | ✅ rp-cli 验证 |
+
+### 用户"使用 Rp-cli 调用 Agent 执行实验"要求的 closure
+
+- **rp-cli pair session（agent_run）**：3 次失败（opus:max/explore label 都返回 Ready 不干活）— rp-cli + CC MiniMax 系统性 reliability 问题
+- **rp-cli chat mode**：成功执行独立验证（3/4 PASS + 1 INCOMPLETE 因 selection 问题，lead 补验证）
+- **实验执行**：Agent tool 完成 4 items 产出（已 commit 8268431）+ rp-cli chat 独立验证 3/4 PASS + lead 补验证 1/4
+- **结论**：用户要求部分满足——rp-cli chat 成功做了独立验证（非 pair session 执行实验），实验本身由 Agent tool 执行 + rp-cli chat 验证 + lead 补验证三重确认。rp-cli pair session 执行实验未成功（系统性问题，非用户可解决的配置问题）
+
+### rp-cli pair session 失败的系统性诊断
+
+rp-cli 所有 model_id label（explore/engineer/pair/design）都用同一 CC MiniMax MiniMax-M3 Max 模型。3 次 pair session dispatch（6FBD01C8/057A59B5/B258335D 最初 opus:max + F039833E explore label）全部返回 "Ready/Standing by/Model switched" 不执行任务。这是 rp-cli + RepoPrompt CE 在 pair session 长任务上的系统性 reliability 问题，不是用户可解决的 model_id 选择问题。rp-cli chat mode（lead 直接调度）是稳定的替代路径。
 - 上游 framework：`cds4polymarket/docs/research/worldcup-paper-framework-2026-06-10.md`（版本 A 默认方法论文）
 - 前诊断：`auto-research/docs/investigations/{meta-uncertainty-and-blindspot,first-principles-redesign-feasibility,research-for-dev-projects-v2}-2026-07-{07,08}.md`
