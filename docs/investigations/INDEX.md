@@ -14,7 +14,7 @@
 | `first-principles-redesign-feasibility-2026-07-08.md` | 2026-07-08 | **第一性原理**：A 类（NeurIPS/ACL main）≥95% NO；B 类 PARTIAL（P11 需 reframe 为 self-recognition bias 发现）；C 类 PARTIAL（P07 E7 NPS 路径）。salvage 表：P11 240 yaml 可用，judged scores 与 150 blind records 弃。 |
 | `research-for-dev-projects-2026-07-08.md` | 2026-07-08 | **3 开发项目研究方向**：cds4polymarket Factor Ledger Calibration（最高 ROI，真实结算锚）> Policysim 应急推演有效性（事后报告锚）> Marginalia 协议有效性（合理化成分较高）。 |
 | `medical-ai-to-cds-mapping-2026-07-18.md` | 2026-07-18 | **医学AI自动科研→CDS映射**（v3：红队评审+G1景观核查+磁盘资产核查后修订）：13要素映射 + 交叉点空白但以月计窗口 + 贡献重心转到进化算子/元评审闭环/统计合法性 + G3升硬gate + Tsinghua 09主张切割 + 控制论反思。 |
-| `decision-coscientist-proposal/` | 2026-07-19 | **Decision Co-Scientist 开题报告**（goal 模式迭代完成：Q1–Q5 研究备忘录 + 报告 v1.2 + 两轮独立评审 R1/R2 与逐条回应）。R2 评审通过（4/3/4/3/5，0 致命）。主文档 `proposal-decision-coscientist.md`；锚编码 `anchors/gulei-2015-0406.factors.yaml`。 |
+| `decision-coscientist-proposal/` | 2026-07-19 | **Decision Co-Scientist 开题报告**（goal 模式迭代完成：Q1–Q5 研究备忘录 + 报告 v1.3.1 + 两轮独立评审 R1/R2 与逐条回应）。R2 评审通过（4/3/4/3/5，0 致命）。**陌生人入口：`PROJECT-BRIEF.md`（单文档自足简报，经读者测试）**；主文档 `proposal-decision-coscientist.md`；锚编码 `anchors/gulei-2015-0406.factors.yaml`。 |
 
 ## Reference (framework-level)
 
