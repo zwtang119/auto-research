@@ -247,3 +247,113 @@ jq -c 'select(.action and (.action | inside(["liveness","restart","nudge"]) | no
 - Roadmap §6.3, settlement rules, evidence input → `docs/roadmaps/2026-07-03-topic5-autoresearch-roadmap.md`.
 - Upstream state-file protocol → `victorchen96.github.io/auto_research/framework.html`.
 - Portfolio milestones and gates → `state/task_spec.md` (root).
+
+
+---
+
+## 9. 0ref QREF 借鉴入口 — Provider pattern + gold calibration (2026-07-03)
+
+> **Source**: `wiki/0ref-methodology-landscape.md` (QREF-001 mem0, QREF-005 institute-one, QREF-006 claudish).
+> **Status**: framework-level annotation. Per-paper applies selectively.
+
+### QREF-001 mem0 — Provider pattern (5-category abstraction)
+
+mem0 (`0ref/mem0/CLAUDE.md` §"Provider Pattern") defines a 5-category provider
+abstraction (24 LLM + 30 vector store + 15 embedding + 4 graph + 5 reranker = 78
+total). The **target schema** for this file when it grows:
+
+| Category | Current state | mem0 reference |
+|----------|---------------|-----------------|
+| LLM provider | Listed in `framework/vendor/policysim_config/experiment-config.yaml` (5 models) | `mem0/mem0/llms/<provider>.py` (24 providers, abstract `base.py`) |
+| Embedding | NOT enumerated in framework | `mem0/mem0/embeddings/<provider>.py` (15 providers) |
+| Vector store | NOT enumerated in framework | `mem0/mem0/vector_stores/<provider>.py` (30 providers) |
+| Graph store | NOT applicable to current papers | `mem0/mem0/graphs/<provider>.py` (4 providers) |
+| Reranker | NOT applicable to current papers | `mem0/mem0/rerankers/<provider>.py` (5 providers) |
+
+**Adoption order** (per QREF-001 4-file pattern):
+1. Create `framework/schemas/provider-pattern.md` (future, NOT today)
+2. Define `framework/vendor/<category>/base.py` abstract
+3. Add per-provider impls
+4. Register in `framework/vendor/<category>/__init__.py`
+
+**When to adopt**: when a 3rd paper needs a provider not in the current 5-LLM
+list. Until then, current YAML is sufficient (per QREF-001 "don't pre-scaffold").
+
+### QREF-006 claudish — `provider@model[:concurrency]` routing
+
+`experiment-config.yaml` already has a flat model list. The claudish
+syntax (`g@gemini-2.0-flash`, `oai@gpt-4o`, `or@anthropic/claude-3.5-sonnet`)
+is **not yet adopted**. When adopting:
+
+```yaml
+# Current (flat)
+models:
+  - deepseek-v4-flash
+  - gpt-4o
+
+# Future (claudish-style, per QREF-006)
+models:
+  - ds@deepseek-v4-flash
+  - oai@gpt-4o
+  - or@anthropic/claude-3.5-sonnet
+  - mm@MiniMax-text-01:3   # 3 concurrent
+```
+
+**Adoption risk**: existing paper code uses model name strings directly;
+renaming to `provider@model` is a breaking change. NOT in scope today
+(current 5-paper set is uniform enough that flat list works).
+
+### PIT cross-references (gold calibration cluster) — future P12 M3 suggestion
+
+The 5 cds-keyperson PITs (PI-051 / PI-052 / PI-053 / PI-055 / PI-058) in the wiki catalog are the
+**architectural reference** for P12's LLM-as-Judge evaluation. When P12 M3
+opens, the following 5 schema fields are a **suggested** (NOT YET committed)
+additive extension to §3 `findings.jsonl` schema:
+
+| Field (suggested) | Type | Purpose | wiki PIT ref |
+|---------------------|------|---------|--------------|
+| `gold_sample_id` | string | Which Gold-H/M/L this finding used | PI-051 |
+| `calibration_status` | enum (PASS/WARNING/STOP) | 4-维校准 gate | PI-052 |
+| `swan_count` | int | Empty shell detection (>= 3 required) | PI-053 |
+| `mrp_round` | int (1-3) | Which of N=3 MRP rounds this is | PI-055 |
+| `mrp_consensus` | bool | True if ≥2/3 rounds agreed | PI-055 |
+
+**Adoption status**: SUGGESTED, NOT COMMITTED. The 5 fields are listed here
+as a **future P12 M3 实施建议**. They will be added to §3 of this file when
+P12 M3 actually opens, **at which point** the field names + enums + types
+should be re-confirmed against P12 M3's actual design.
+
+**Why "future suggestion" and not "add now"**: schema changes have
+downstream effects (per-paper `findings.jsonl` must be backwards-compatible
+or have a migration). Adding fields **before** P12 M3 opens would create
+schema debt for the 3 other papers (P1+P2, P1.2, P2.1) that do not need
+these fields.
+
+**Per R24 4-副产物 self-narrating pattern**: this is the "data" file
+(binding schema); the parallel "meta" annotation is in
+`framework/schemas/experiment-pitfalls.md` §9. The two §9 sections
+form a 2-file bridge.
+
+### R-rules cross-reference
+
+This file is the **data-contracts** layer (per FRAMEWORK-RULES R4). The
+relevant R-rules:
+
+- **R4** (state-file skeleton) — §3 + §4 + §5 + §6 of this file are the
+  per-paper state schema; this file IS the binding contract.
+- **R8** (closure-checklist) — `state/source-of-truth.md` (created today)
+  is the cross-folder inventory; this file's `source_path` field in
+  findings.jsonl is what R8 references.
+- **R9** (atomic state writes) — applies to all 5 `state/` files
+  enumerated in §3-§7 of this file; `framework/scripts/atomic-write.sh`
+  is the canonical implementation pattern (NOT YET implemented at
+  framework level; per-paper scripts may exist).
+
+---
+
+*Section 9 is a framework-level annotation, mirroring §9 of `experiment-pitfalls.md`.
+The 2 schema-related sections (§9 in pitfalls, §9 here) form a 2-file bridge:
+pitfalls.md tells you WHAT the traps are; data-contracts.md tells you HOW to record
+findings that catch them. Per the R24 4-副产物 self-narrating pattern, this is the
+'data' file; the 2 framework-level QREF/PIT indexes (in auto-research-history.md §1-2)
+are the 'meta-data'.*

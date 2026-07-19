@@ -158,3 +158,73 @@ historical files (cite-restoration + git history preservation).
 - `docs/portfolio/naming-audit-2026-07-03.md` — human-risk audit
 - `docs/portfolio/aliases.md` — paper-code ↔ directory mapping
 - `~/.claude/skills/Deli_AutoResearch/SKILL.md` — framework source of truth
+
+
+---
+
+## Framework-level R-rule bridge (2026-07-03)
+
+> **Source**: 24 R-rules in `~/.local/share/mimocode/memory/projects/global/MEMORY.md` (R1-R24).
+> **Status**: R1-R7 are duplicated here as binding framework rules; R8-R20 are binding via global MEMORY but listed here for cross-reference. R21-R24 are working-style rules, not framework-binding.
+
+### Cross-reference (R1-R7 here ↔ R8-R20 in global MEMORY)
+
+| Local (here) | Global (MEMORY) | Topic |
+|--------------|-----------------|-------|
+| R1 | R1 (dup) | Single Source of Truth |
+| R2 | R2 (dup) | Path discipline |
+| R3 | R3 (dup) | Lifecycle suffix on legacy |
+| R4 | R4 (dup) | State-file skeleton |
+| R5 | R5 (dup) | Engineering constraints |
+| R6 | R6 (dup) | Behavioral constraints |
+| R7 | R7 (dup) | Cite-restoration |
+| _implicit_ | **R8** | Closure-checklist enforcement (now implemented via `state/source-of-truth.md`) |
+| _implicit_ | **R9** | Atomic state writes |
+| _implicit_ | **R10** | Vendored function signatures are law |
+| _implicit_ | **R11** | Patrol emits deduped |
+| _implicit_ | **R12** | Bash `set -euo pipefail` + subshell defensive init |
+| _implicit_ | **R13** | Plan self-imposed caps overridable by user |
+| _implicit_ | **R14** | ls session memory dir before write |
+| _implicit_ | **R15** | Verify-once-then-act |
+| _implicit_ | **R16** | PIT body ≤ 80 lines (Python markers) |
+| _implicit_ | **R17** | Long-file read truncation check |
+| _implicit_ | **R18** | Status numeric claims require `verify:` segment |
+| _implicit_ | **R19** | 🔴 needs 🩸/🟠 disambiguation |
+| _implicit_ | **R20** | Plan §7 source-project boundary (R20 does NOT bind here — auto-research is the source project) |
+| _not-applicable_ | R21-R24 | Working-style rules, not framework-binding |
+
+### QREF / PIT 借鉴入口 (per wiki/0ref-methodology-landscape.md)
+
+This file is the **paper-facing** rule book. The 6 QREF and 12 framework-level PIT are
+indexed in `framework/knowledge/auto-research-history.md` §1-2 (NEW today). Per-paper
+implementations should cite the QREF / PIT id when applying a borrowed pattern.
+
+**Practical rule**: when reading this file, if a paper agent needs QREF/PIT context,
+it MUST cross-reference `framework/knowledge/auto-research-history.md` §1 (QREF)
+and §2 (PIT). The two-file structure follows the R24 4-副产物 self-narrating
+pattern (data + meta + nav + audit-trail).
+
+### State-skeleton anchor (per R4)
+
+```
+state/
+├── task_spec.md           # goal / milestones / success criteria
+├── progress.json          # iteration counter + findings count + stale_count
+├── findings.jsonl         # append-only; pitfall_id field per data-contracts §3
+├── directions_tried.json  # direction history
+├── iteration_log.jsonl    # per-iteration summary
+├── source-of-truth.md     # R1+R8 closure-checklist (NEW 2026-07-03)
+└── experiment_design.md   # frozen at end of M1 (PIT-006) — only when pre-registration exists
+```
+
+The 5+1 = 6 files are the canonical state per R4 + R8. Any paper missing
+`source-of-truth.md` is in R1 violation (audit log: today fixed at framework
+level; per-paper copies still need paper-level writes).
+
+---
+
+*FRAMEWORK-RULES.md (R1-R7, 160 lines original) retained as binding rules above. This
+bridge section (NEW 2026-07-03) cross-references R8-R20 in global MEMORY + QREF/PIT
+index in `framework/knowledge/auto-research-history.md` §1-2. Per R24 4-副产物
+pattern, this file is the 'data' (binding rules), auto-research-history.md is
+the 'meta-data' (QREF/PIT context), state/source-of-truth.md is the 'audit-trail'.*

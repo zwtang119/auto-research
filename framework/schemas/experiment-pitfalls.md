@@ -794,3 +794,73 @@ When a worker recognises it has avoided a pitfall:
   state files, stall detection, heartbeat watchdog).
 - `victorchen96.github.io/auto_research/skill/paper-writing.html` — the
   5-gate review and anti-inflation score rules.
+
+
+---
+
+## 9. 0ref QREF 借鉴入口 (2026-07-03, framework-level annotation)
+
+> **Source**: `wiki/0ref-methodology-landscape.md` (6 QREF × 35+ 范式段, 2026-07-03 Phase 3).
+> **Status**: framework-level annotation. Per-paper applies selectively — see
+> `framework/knowledge/auto-research-history.md` §1 (QREF index) for the
+> per-QREF × per-framework-file mapping.
+
+### QREF-005 institute-one patterns most relevant to this file
+
+institute-one's 10 Hard rules (`0ref/institute-one/CLAUDE.md`) and 796-line
+trap log are the **closest analog** to this file. Three patterns to adopt:
+
+1. **"One execution path"** (institute-one Hard rule #1) — already partially
+   implemented in `framework/vendor/policysim_scripts/api_client.py`, but
+   NOT enforced at paper code. A future `framework/scripts/check-one-path.sh`
+   would grep paper code for direct CLI/LLM imports and fail the build.
+2. **"Conditional-claim"** (institute-one Hard rule #2) — `data-contracts.md`
+   §3 `findings.jsonl` schema should be extended with a `state_transition` field
+   (currently just `event`). This is a schema change, not a schema break.
+3. **"Prompts are the product"** (institute-one Hard rule #4) — this file's
+   796 lines of pitfall descriptions are the analog of "prompts" in
+   institute-one; refactors of pitfall text must NOT paraphrase the original
+   four-line description (only append / add new PIT, never edit existing).
+
+### QREF-005 PIT cross-references (gold calibration cluster) — bridge 待写
+
+The cds-keyperson ab-test SOP (`0ref/cds-keyperson/ab-test/`) is the
+**direct source** of the 5 wiki-catalog PITs most relevant to the LLM-as-Judge
+experiment lines (P12, P1P2E):
+
+| wiki-catalog PIT (catalog-wide) | Topic | Affected paper line |
+|--------------------------------|-------|---------------------|
+| [PI-051] | gold sample H/M/L 锚点 (每批 AB test 前校准) | P12, P1P2E |
+| [PI-052] | 4 维校准判据 (PASS/WARNING/STOP) | P12, P1P2E |
+| [PI-053] | 3 类 LLM API 失败 + 空壳检测 (swan_count >= 3) | P12, P1P2E |
+| [PI-055] | MRP N=3 协议 (Adopt 必 ≥ 2/3 轮胜) | P12 (Adopt decisions) |
+| [PI-058] | v7 Reject→Adopt 翻盘 (MRP 推翻原结论) | P12 (single-run guards) |
+
+**NOT yet** mapped to auto-research's own PIT-id scheme (`PIT-<EXP>-NNN`
+per data-contracts §2). A future `framework/schemas/pitfall-id-bridge.md` would
+map wiki-catalog PITs to paper-level PITs, including defining the auto-research
+PIT-IDs (PIT-101..PIT-105 are reserved but **not yet defined**). When P12 M3
+opens, this bridge file is the first dependency to write.
+
+**Adoption path** (per R24 4-副产物 self-narrating pattern):
+1. Write `framework/schemas/pitfall-id-bridge.md` — maps wiki PIT-NNN ↔ paper PIT-NNN
+2. Update this table with the 5 auto-research PIT-IDs
+3. Add the 5 auto-research PIT entries to `state/findings.jsonl` `pitfall_id` field
+4. Update data-contracts.md §3 with the 5 schema fields (gold_sample_id,
+   calibration_status, swan_count, mrp_round, mrp_consensus)
+
+Until step 1 is done, **this table is index-only** (no auto-research PIT-IDs).
+
+### QREF-001 mem0 pattern — Provider abstraction
+
+mem0's 5-category Provider pattern (24 LLM + 30 vector store + 15 embedding
++ 4 graph + 5 reranker = 78 providers) is the **model** for what
+`framework/vendor/policysim_config/experiment-config.yaml` should look
+like at M3+ (currently a single YAML with model lists). NOT in scope
+today (current 5-provider list is sufficient for current papers).
+
+---
+
+*Section 9 is a framework-level annotation, not a paper-level pitfall. Per the
+0ref QREF entry in `framework/knowledge/auto-research-history.md` §1, this section
+mirrors the per-QREF "applicable auto-research file" mapping.*
