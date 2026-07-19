@@ -1,6 +1,6 @@
 # Decision Co-Scientist 开题工作包（交接文档）
 
-> 状态：**已暂停，等待下一阶段**（2026-07-19，用户决策：先思考，项目暂止）
+> 状态：**已关闭**（2026-07-19，用户决策：结束本项目——选题、开题、Nature 标准实验方案全部交付，未投入实施资源）
 > 本目录是「医学 AI 自动科研方法论 → CDS 决策科学」方向从选题到开题的完整工作包，2026-07-18 晚至 07-19 经 goal 模式迭代完成。
 >
 > **🎯 给陌生读者：先读 [`PROJECT-BRIEF.md`](PROJECT-BRIEF.md)**——单文档自足的项目简报（背景、简版文献综述、设计、结论、下一步，经陌生人读者测试修订）。本 README 是面向项目内部的手册。
@@ -11,7 +11,7 @@
 
 候选论文方向 **Decision Co-Scientist**（工作名）：把 Co-Scientist/Robin 式「假设生成→锦标赛→进化→元评审」闭环移植到 PolicySim 多智能体应急决策推演，用真实灾害档案（Factor Ledger 结算）做现实锚校准。
 
-**当前结论**：方向判定 **GO（附条件）**。开题报告经两轮独立红队评审通过（R2：4/3/4/3/5，0 致命）；选题评价管线第二趟终裁：**首选 NeurIPS D&B，IJCAI/AAAI 主会备选，Nature ComSci 暂不够格**。唯一实质卡点：零实验结果——下一步是 MVE 最小证据链试点（古雷单场景端到端），而非继续改设计。
+**当前结论**：方向判定 **GO（附条件）**。开题报告经两轮独立红队评审通过（R2：4/3/4/3/5，0 致命）；选题评价管线第二趟终裁：**首选 NeurIPS D&B，IJCAI/AAAI 主会备选，Nature ComSci 暂不够格**。Nature 标准实验方案已交付（`docs/plans/decision-coscientist-experiment-2026-07-19.md` v2）。**项目于 2026-07-19 关闭**：用户决策不再投入实施资源；全部规划资产归档于本目录、`docs/plans/` 与 `docs/reviews/`。
 
 ## 2. 文件地图
 
@@ -41,9 +41,9 @@
 5. **卡点唯一**：G2 统计合法性（LLM 采样 std=0 问题）未解——W1–W4 go/no-go
 6. **venue**：NeurIPS D&B（三件套：锚数据集+锦标赛基准+校准协议）首选；IJCAI 2027 备选；PoliSim@CHI workshop 降级出口
 
-## 4. 下一阶段入口（按优先级）
+## 4. 若未来重启：入口（按优先级）
 
-0. **实验方案已成型**：`docs/plans/decision-coscientist-experiment-2026-07-19.md`（Nature 标准，经 builder + 设计评审 v2；MVE 在 W12–W14，四个 go/no-go 闸门）——执行前的资源决策以此为输入
+0. **执行蓝图**：`docs/plans/decision-coscientist-experiment-2026-07-19.md`（Nature 标准，经 builder + 设计评审 v2；MVE 在 W12–W14，四个 go/no-go 闸门）——重启时以此为据
 1. **MVE 最小证据链**：古雷单场景 C0 vs C2 端到端试点（锦标赛+进化+校验臂+锚对照），兼作成本试跑与 G2 探针——估 4–6 周，是 GO 的硬前提
 2. G2 统计合法性工作（LHS+种子+版本钉死；不过则按预写条款转方法短文）
 3. 郑州因子编码（1 人日）+ Buncefield 第三锚（跨辖区）
@@ -67,3 +67,8 @@
 - **场景清单纠错**：「企业洪水」为合成调试场景（无真实数据），全部正式文件（PROJECT-BRIEF、详版说明、开题报告 §5.1）改为「古雷、郑州两个历史场景 + 广西横州洪水（六蓝水库溃坝，2026-07）真实案例（零污染锚储备）」；合成场景仅作开发调试。
 - **sources/ 补充**：Co-Scientist、Robin 两篇 Nature 官方全文 PDF + self-play 综述 PDF（来自 evolution-medical-ai/references，可了结 R1 评审 E7 挂起的 Robin 88%/61% 引用核验）。
 - **兄弟仓库评估结论**（2026-07-19，三+七仓库逐一深挖）：cds4worldcup 的结算 schema 三件套与防泄漏治理为最有价值资产（已补登 §8 外部资产）；cds4polymarket/ab-test 有实验治理方法论与外交预测断言账本，但无统计机器；evolution-medical-ai 除文献 PDF 外无价值（mock demo）；0ref 下 institute-one、Mammalia-tree、MiMo-Code、MiroFish、deputy-agent、A2UI、skill 七仓库对项目硬能力（分布统计、α-Rank、judge 校准、G2、锚分离）均无帮助，仅 MiMo-Code 的评审聚合机械与 skill/Frontier-Engineering 的任务契约可作设计阅读。
+
+### 2026-07-19 收尾
+
+- **实验方案交付**：rp-deep-plan 全流程（Up-front 用户四问 → 双侦察 → Nature 合规与统计工具链外部调研 → builder 骨架合并 → 设计评审折入 v2），产出 `docs/plans/decision-coscientist-experiment-2026-07-19.md` 与 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md`。
+- **项目关闭**：用户决策结束本项目，未投入实施资源；状态由「暂停」转为「关闭」。若未来重启，§4 入口与实验方案仍然有效。

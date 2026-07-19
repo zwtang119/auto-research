@@ -1,6 +1,6 @@
 # Decision Co-Scientist 实验方案（Nature 标准）
 
-> 日期：2026-07-19 ｜ 状态：v2（builder 骨架 + 设计评审修订，评审记录 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md`）｜ 上游：`docs/investigations/decision-coscientist-proposal/`（开题报告 v1.3.1、终裁 memo、PROJECT-BRIEF）
+> 日期：2026-07-19 ｜ 状态：v2，**项目已关闭**（2026-07-19 用户决策；本方案为最终交付物，未执行。若未来重启，以此为执行蓝图）｜ 评审记录 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md` ｜ 上游：`docs/investigations/decision-coscientist-proposal/`（开题报告 v1.3.1、终裁 memo、PROJECT-BRIEF）
 > 实施侧主战场：`Policysim-v0.2/dev/backend`（引擎）+ `auto-research`（锚资产、合规资产、分析）
 
 ## Goal
