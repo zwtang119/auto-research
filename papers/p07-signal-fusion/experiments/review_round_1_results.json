@@ -1,0 +1,52 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "score": 6.0,
+    "weakness": "Independence class resolution for missing_data and source_failure is not fully justified and might be arbitrary.",
+    "raw_response_preview": "{\"score\": 6, \"weakness\": \"Independence class resolution for missing_data and source_failure is not fully justified and might be arbitrary.\"}",
+    "elapsed_s": 16.4,
+    "completion_tokens": 764,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (signal-theory correctness)",
+    "model_id": "kimi-k2.5",
+    "score": 5.0,
+    "weakness": "Missing_data as contradicting conflates epistemic gaps with active negative evidence; source_failure duplicates missing_data without clear semantic distinction in rejection logic.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"Missing_data as contradicting conflates epistemic gaps with active negative evidence; source_failure duplicates missing_data without clear semantic distinction in rejection logic.\"}",
+    "elapsed_s": 1.9,
+    "completion_tokens": 43,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (P1+P2 consumer-side integration)",
+    "model_id": "MiniMax-M3",
+    "score": 4.0,
+    "weakness": "snippet_sha256_prefix is fabricated (P12P-001____), not actually hashed; snippet_summary omits numeric_forecast and signal_type, hurting downstream audit.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"snippet_sha256_prefix is fabricated (P12P-001____), not actually hashed; snippet_summary omits numeric_forecast and signal_type, hurting downstream audit.\"}",
+    "elapsed_s": 10.3,
+    "completion_tokens": 46,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (PIT-302 false-rejection rate)",
+    "model_id": "deepseek-v4-flash",
+    "score": 5.0,
+    "weakness": "Rejecting all supporting signals without numeric_forecast over-rejects qualitative evidence useful for non-Brier consumers, violating layered audit trail intent.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"Rejecting all supporting signals without numeric_forecast over-rejects qualitative evidence useful for non-Brier consumers, violating layered audit trail intent.\"}",
+    "elapsed_s": 16.5,
+    "completion_tokens": 389,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "score": 6.0,
+    "weakness": "The source_id double-prefix bug indicates weak input validation rather than a typo, requiring stricter schema enforcement on signal_id formatting before ledger adaptation.",
+    "raw_response_preview": "{\"score\": 6, \"weakness\": \"The source_id double-prefix bug indicates weak input validation rather than a typo, requiring stricter schema enforcement on signal_id formatting before ledger adaptation.\"}",
+    "elapsed_s": 59.3,
+    "completion_tokens": 3013,
+    "ok": true
+  }
+]

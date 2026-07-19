@@ -1,0 +1,52 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "score": 5.0,
+    "weakness": "M4 baseline design lacks a sample size justification for per-factor-type comparisons, risking underpowered detection of the claimed neutral-to-negative effects for branch and precedent.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"M4 baseline design lacks a sample size justification for per-factor-type comparisons, risking underpowered detection of the claimed neutral-to-negative effects for branch and precedent.\"}",
+    "elapsed_s": 31.9,
+    "completion_tokens": 1290,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (conceptual contribution)",
+    "model_id": "kimi-k2.5",
+    "score": 5.0,
+    "weakness": "Factor-type taxonomy lacks theoretical grounding; 14-field schema conflates epistemic and procedural invariants without justifying their joint necessity.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"Factor-type taxonomy lacks theoretical grounding; 14-field schema conflates epistemic and procedural invariants without justifying their joint necessity.\"}",
+    "elapsed_s": 2.5,
+    "completion_tokens": 41,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (practical usefulness)",
+    "model_id": "MiniMax-M3",
+    "score": 3.0,
+    "weakness": "Gulei 2015 is single-incident overfit; 7% un_settleable rate looks cherry-picked and factor-type-conditional framing barely informs practitioners.",
+    "raw_response_preview": "{\"score\": 3, \"weakness\": \"Gulei 2015 is single-incident overfit; 7% un_settleable rate looks cherry-picked and factor-type-conditional framing barely informs practitioners.\"}",
+    "elapsed_s": 2.5,
+    "completion_tokens": 48,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (false-positive hunting)",
+    "model_id": "deepseek-v4-flash",
+    "score": 4.0,
+    "weakness": "Authority factor positive effect based on n=5 is unstable; per-factor type sample sizes too small to support conditional claim.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"Authority factor positive effect based on n=5 is unstable; per-factor type sample sizes too small to support conditional claim.\"}",
+    "elapsed_s": 5.5,
+    "completion_tokens": 203,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "score": 3.0,
+    "weakness": "Validators missed the build_pilot_10 PIT-201 row-5 violation, demonstrating insufficient schema enforcement depth and lacking robust unit tests for critical edge cases in pipeline scripts.",
+    "raw_response_preview": "{\"score\": 3, \"weakness\": \"Validators missed the build_pilot_10 PIT-201 row-5 violation, demonstrating insufficient schema enforcement depth and lacking robust unit tests for critical edge cases in pipeline scripts.\"}",
+    "elapsed_s": 81.9,
+    "completion_tokens": 3987,
+    "ok": true
+  }
+]

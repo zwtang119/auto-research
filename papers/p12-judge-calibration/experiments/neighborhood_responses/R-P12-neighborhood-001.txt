@@ -1,0 +1,12 @@
+```json
+{
+  "scores": {
+    "risk_tolerance_consistency": 1.8,
+    "innovation_focus_consistency": 2.2,
+    "compliance_culture_consistency": 3.5,
+    "market_influence_consistency": 1.5,
+    "agility_score_consistency": 3.8
+  },
+  "awareness": "neighborhood"
+}
+```

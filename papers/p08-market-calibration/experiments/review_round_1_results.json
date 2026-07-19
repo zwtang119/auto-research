@@ -1,0 +1,52 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "score": 5.0,
+    "weakness": "The API forces callers to manually flatten multiclass probabilities, and aggregate_scores() lacks explicit handling of missing outcome data, risking silent errors in portfolio summaries.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"The API forces callers to manually flatten multiclass probabilities, and aggregate_scores() lacks explicit handling of missing outcome data, risking silent errors in portfolio summaries.\"}",
+    "elapsed_s": 21.8,
+    "completion_tokens": 1035,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (probabilistic-foundation correctness)",
+    "model_id": "kimi-k2.5",
+    "score": 6.0,
+    "weakness": "Factor-update 0.7/0.3 thresholds lack probabilistic justification; should derive from calibration curve or expected value of information, not arbitrary cut.",
+    "raw_response_preview": "```json\n{\"score\": 6, \"weakness\": \"Factor-update 0.7/0.3 thresholds lack probabilistic justification; should derive from calibration curve or expected value of information, not arbitrary cut.\"}\n```",
+    "elapsed_s": 3.8,
+    "completion_tokens": 48,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (P1+P2 pipeline integration)",
+    "model_id": "MiniMax-M3",
+    "score": 5.0,
+    "weakness": "calc_brier.py consumes ledger fields but factor_update heuristic (p>=0.7 + o=1) is too rigid and biases audit toward overconfident correct predictions only.",
+    "raw_response_preview": "{\"score\": 5, \"weakness\": \"calc_brier.py consumes ledger fields but factor_update heuristic (p>=0.7 + o=1) is too rigid and biases audit toward overconfident correct predictions only.\"}",
+    "elapsed_s": 3.4,
+    "completion_tokens": 49,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (data shape mismatch)",
+    "model_id": "deepseek-v4-flash",
+    "score": 4.0,
+    "weakness": "Assumes continuous probabilities but existing data uses discrete judge scores, reducing practical utility.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"Assumes continuous probabilities but existing data uses discrete judge scores, reducing practical utility.\"}",
+    "elapsed_s": 6.7,
+    "completion_tokens": 292,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "score": 6.0,
+    "weakness": "Hard confidence thresholds at 0.7 and 0.3 ignore boundary uncertainty, reducing robustness for continuous calibration tasks.",
+    "raw_response_preview": "{\"score\": 6, \"weakness\": \"Hard confidence thresholds at 0.7 and 0.3 ignore boundary uncertainty, reducing robustness for continuous calibration tasks.\"}",
+    "elapsed_s": 71.3,
+    "completion_tokens": 2734,
+    "ok": true
+  }
+]

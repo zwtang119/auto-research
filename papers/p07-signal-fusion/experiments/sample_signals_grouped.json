@@ -1,0 +1,45 @@
+{
+  "C-P1P2-AUTO": {
+    "claim_id": "C-P1P2-AUTO",
+    "supporting_evidence": [
+      {
+        "source_id": "SIG-P12P-001",
+        "snippet_sha256_prefix": "P12P-001____",
+        "observed_at": "2015-04-06T18:56:00Z",
+        "independence_class": "primary",
+        "snippet_summary": "Signal SIG-P12P-001 from energy (lens=0.18, recency=0.92)"
+      },
+      {
+        "source_id": "SIG-P12P-002",
+        "snippet_sha256_prefix": "P12P-002____",
+        "observed_at": "2015-04-06T18:51:00Z",
+        "independence_class": "primary",
+        "snippet_summary": "Signal SIG-P12P-002 from weather (lens=0.12, recency=0.95)"
+      },
+      {
+        "source_id": "SIG-P12P-005",
+        "snippet_sha256_prefix": "P12P-005____",
+        "observed_at": "2015-04-06T19:30:00Z",
+        "independence_class": "primary",
+        "snippet_summary": "Signal SIG-P12P-005 from finance (lens=0.1, recency=0.9)"
+      }
+    ],
+    "contradicting_evidence": [
+      {
+        "source_id": "SIG-P12P-003",
+        "snippet_sha256_prefix": "P12P-003____",
+        "observed_at": "2015-04-06T19:00:00Z",
+        "independence_class": "secondary",
+        "snippet_summary": "Signal SIG-P12P-003 from news (lens=0.08, recency=0.88)"
+      },
+      {
+        "source_id": "SIG-P12P-004",
+        "snippet_sha256_prefix": "P12P-004____",
+        "observed_at": "2015-04-06T20:00:00Z",
+        "independence_class": "tertiary",
+        "snippet_summary": "Signal SIG-P12P-004 from geopolitics (lens=0.0, recency=0.5)"
+      }
+    ],
+    "rejected": []
+  }
+}

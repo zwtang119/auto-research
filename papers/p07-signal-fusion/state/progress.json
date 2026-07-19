@@ -1,11 +1,15 @@
 {
-  "iteration": 0,
+  "iteration": 4,
   "total_findings": 0,
-  "status": "initialized",
-  "stale_count": 0,
-  "last_updated": "2026-07-01T13:35:00+08:00",
+  "status": "m1_review_research_grade_acceptable",
+  "stale_count": 1,
+  "last_updated": "2026-07-04T20:01:54Z",
   "current_milestone": "M1",
-  "completed_milestones": [],
+  "completed_milestones": [
+    "M1",
+    "M1-review",
+    "M1-pit-new-9-fix"
+  ],
   "predetermined_config": {
     "data_source_groups": {
       "A_Market_Signals": [
@@ -30,5 +34,89 @@
     "mc_runs_per_condition": 100,
     "ablation_runs_per_group": 50
   },
-  "last_seen": "2026-07-03T08:12:26Z"
+  "last_seen": "2026-07-04T20:01:54Z",
+  "m1_deliverables": {
+    "adapter_path": "experiments/adapter_signal_to_ledger.py",
+    "unit_tests": "experiments/test_adapter_signal_to_ledger.py",
+    "tests_passing": "12/12",
+    "pit_enforced": [
+      "PIT-302",
+      "PIT-403",
+      "PIT-408"
+    ],
+    "mapping": "signal_evidence_entry -> {supporting, contradicting} evidence_ledger_entry ref lists"
+  },
+  "recent_events": [
+    {
+      "ts": "2026-07-04T06:49:26Z",
+      "event": "m1_adapter_implemented",
+      "detail": "signal_to_ledger adapter implements PIT-302/403/408 enforcement; 12/12 unit tests GREEN."
+    },
+    {
+      "ts": "2026-07-04T07:21:12Z",
+      "event": "m2_partial_blocked_on_live_engine",
+      "detail": "M2 ran end-to-end adapter test on 5 synthetic Gulei signals: 3 supporting + 2 contradicting refs produced correctly. Live SignalFusionEngine import blocked by src.backend path constraint; needs cds-keyperson cwd to run. stale_count=1."
+    },
+    {
+      "ts": "2026-07-04T09:36:06Z",
+      "event": "m1_review_verdict",
+      "detail": "5-persona review on P7 M1 adapter_signal_to_ledger.py: median=5.0, sorted [4,5,5,6,6]. R3 (MiniMax-M3) named the fabricated snippet_sha256_prefix as binding weakness (real audit-chain defect). R5 (qwen3.5-122b-a10b) named the source_id double-prefix as systemic not typo. R2 named missing_data/source_failure semantic overlap. Per methodology-scaffolding threshold (5.0 not 6.5), verdict=research_grade_acceptable."
+    },
+    {
+      "ts": "2026-07-04T20:01:54Z",
+      "event": "pit_new_9_fixed",
+      "detail": "P7 M1 review R3 (MiniMax-M3) identified fabricated snippet_sha256_prefix (ljust pad). Replaced with hashlib.sha256 of canonical signal content; 2 regression tests added; 14/14 tests GREEN."
+    },
+    {
+      "ts": "2026-07-04T20:07:14Z",
+      "event": "contributed_to_joint_outline_review",
+      "detail": "P7 adapter + PIT-NEW-9 fix contributed to joint-methods-paper outline (docs/papers/joint-methods-paper-outline.md). 6-persona review median=4.0 < 4.5: FALLBACK to P11 workshop paper."
+    }
+  ],
+  "m2_partial_findings": {
+    "adapter_path": "experiments/adapter_signal_to_ledger.py",
+    "sample_signals_path": "experiments/sample_signals.jsonl",
+    "sample_grouped_path": "experiments/sample_signals_grouped.json",
+    "cross_paper_loop_works": true,
+    "engine_import_blocker": "SignalFusionEngine uses from src.backend... imports that fail outside cds-keyperson repo; cannot run live without that repo as cwd"
+  },
+  "m1_review_verdict": {
+    "median": 5.0,
+    "mean": 5.2,
+    "max": 6.0,
+    "min": 4.0,
+    "threshold_methodology": 5.0,
+    "verdict": "research_grade_acceptable",
+    "reviewer_models": [
+      "deepseek-v4-pro",
+      "kimi-k2.5",
+      "MiniMax-M3",
+      "deepseek-v4-flash",
+      "qwen3.5-122b-a10b"
+    ],
+    "pit_107_compliance": "5 distinct model_ids",
+    "anti_inflation_cap": "GREEN (max=6.0 <= 7.0)",
+    "review_md": "papers/p07-signal-fusion/paper/review_round_1.md",
+    "next_action": "keep as paper-scoped bridge; document PIT-302 strictness + fabricated sha256_prefix; defer live integration until cds-keyperson import refactor"
+  },
+  "pit_new_candidates_added": [
+    {
+      "id": "PIT-NEW-9",
+      "name": "fabricated_sha256_prefix",
+      "description": "snippets passed to evidence_ledger_entry.snippet_sha256_prefix must be a real SHA256 of the source content. Fake hash strings (e.g. 'abc__________' from ljust pad) break the audit chain.",
+      "detected_by": "P7 M1 5-persona review (R3 MiniMax-M3)",
+      "fix_path": "compute sha256 of signal_id + scenario + scenario_text + numeric_forecast bytes; truncate to 12 hex chars"
+    }
+  ],
+  "pit_new_9_status": {
+    "fixed_at": "2026-07-04T20:01:54Z",
+    "fix_path": "experiments/adapter_signal_to_ledger.py line 105-115 (replaces ljust pad with hashlib.sha256 of canonical signal content)",
+    "new_unit_tests": [
+      "test_pit_new_9_snippet_sha256_is_real_hash",
+      "test_snippet_sha256_deterministic_and_content_sensitive"
+    ],
+    "test_count_before": 12,
+    "test_count_after": 14,
+    "new_audit_chain": "snippet_sha256_prefix now = sha256(signal_id + scenario + scenario_text + numeric_forecast)[:12] hex"
+  }
 }

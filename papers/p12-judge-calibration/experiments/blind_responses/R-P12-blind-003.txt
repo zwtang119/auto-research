@@ -1,0 +1,10 @@
+{
+  "scores": {
+    "risk_tolerance_consistency": 5.0,
+    "innovation_focus_consistency": 5.0,
+    "compliance_culture_consistency": 5.0,
+    "market_influence_consistency": 5.0,
+    "agility_score_consistency": 5.0
+  },
+  "awareness": "blind"
+}

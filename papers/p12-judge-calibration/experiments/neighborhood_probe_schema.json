@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "P12 Neighborhood Probe Result",
+  "type": "object",
+  "required": [
+    "record_id",
+    "sample_id",
+    "axis",
+    "protocol",
+    "judge_id",
+    "awareness",
+    "score",
+    "score_band",
+    "abstain",
+    "consistency_on_wrong",
+    "ground_truth_correctness",
+    "judge_called_at",
+    "judge_call_ms",
+    "raw_response_path"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^R-P12-neighborhood-[0-9]{3,}$"
+    },
+    "sample_id": {
+      "type": "string",
+      "pattern": "^P12-[0-9]{3,}$"
+    },
+    "axis": {
+      "type": "string",
+      "enum": [
+        "role",
+        "fact",
+        "consequence"
+      ]
+    },
+    "protocol": {
+      "type": "string",
+      "const": "neighborhood"
+    },
+    "judge_id": {
+      "type": "string",
+      "not": {
+        "const": "self"
+      }
+    },
+    "awareness": {
+      "type": "string",
+      "const": "neighborhood"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 1.0,
+      "maximum": 5.0
+    },
+    "score_band": {
+      "type": "string",
+      "enum": [
+        "low",
+        "mid",
+        "high"
+      ]
+    },
+    "abstain": {
+      "type": "boolean"
+    },
+    "abstain_reason": {
+      "type": "string"
+    },
+    "consistency_on_wrong": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "ground_truth_correctness": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "mutated_prompt": {
+      "type": "string",
+      "description": "the mutated prompt sent to the judge"
+    },
+    "mutated_axis_field": {
+      "type": "string",
+      "description": "which field was mutated"
+    },
+    "judge_called_at": {
+      "type": "string"
+    },
+    "judge_call_ms": {
+      "type": "integer"
+    },
+    "raw_response_path": {
+      "type": "string"
+    }
+  }
+}

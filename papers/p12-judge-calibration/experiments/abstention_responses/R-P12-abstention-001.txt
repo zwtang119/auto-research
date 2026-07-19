@@ -1,0 +1,6 @@
+{
+  "abstain": true,
+  "abstain_reason": "Insufficient evidence to evaluate compliance_culture_consistency; the output does not address compliance or regulatory aspects, and the role description provides no baseline.",
+  "scores": null,
+  "awareness": "abstention"
+}

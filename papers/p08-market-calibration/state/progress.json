@@ -1,13 +1,70 @@
 {
-  "iteration": 0,
+  "iteration": 2,
   "total_findings": 0,
-  "status": "initialized",
-  "stale_count": 0,
-  "last_updated": "2026-07-01T13:35:00+08:00",
-  "current_milestone": "M1",
-  "completed_milestones": [],
+  "status": "m1_5_review_research_grade_acceptable",
+  "stale_count": 1,
+  "last_updated": "2026-07-04T09:32:22Z",
+  "current_milestone": "M1.5",
+  "completed_milestones": [
+    "M1.5",
+    "M1.5-review"
+  ],
   "human_checkpoints": {
     "M2_event_selection": "pending"
   },
-  "last_seen": "2026-07-03T08:12:26Z"
+  "last_seen": "2026-07-04T09:32:22Z",
+  "m1_5_deliverables": {
+    "calc_brier_path": "experiments/calc_brier.py",
+    "unit_tests": "experiments/test_calc_brier.py",
+    "tests_passing": "17/17",
+    "functions": [
+      "compute_brier",
+      "compute_log_loss",
+      "compute_brier_multiclass",
+      "build_settlement_record",
+      "aggregate_scores"
+    ],
+    "cli_args": [
+      "--input",
+      "--output",
+      "--aggregate-output",
+      "--default-baseline"
+    ]
+  },
+  "recent_events": [
+    {
+      "ts": "2026-07-04T06:49:26Z",
+      "event": "m1_5_implemented",
+      "detail": "Brier/Log Loss computation implemented; 17/17 unit tests GREEN; CLI subcommand ready."
+    },
+    {
+      "ts": "2026-07-04T07:18:39Z",
+      "event": "m1_ab_test_data_shape_mismatch",
+      "detail": "M1 attempted to parse 17-round AB-test data; data is judge scores (discrete 1-5) not prediction probabilities. Brier cannot be computed without a new round emitting predicted_p. stale_count=1."
+    },
+    {
+      "ts": "2026-07-04T09:32:22Z",
+      "event": "m1_5_review_verdict",
+      "detail": "5-persona review on P8 M1.5 calc_brier.py: median=5.0, sorted [4,5,5,6,6]. R4 (deepseek-v4-flash) again named the data-shape blocker (cross-confirms the M1 finding). R2+R5 noted 0.7/0.3 factor_update heuristic lacks probabilistic justification. Per methodology-scaffolding threshold (5.0 not 6.5), verdict=research_grade_acceptable."
+    }
+  ],
+  "m1_5_review_verdict": {
+    "median": 5.0,
+    "mean": 5.2,
+    "max": 6.0,
+    "min": 4.0,
+    "threshold_methodology": 5.0,
+    "verdict": "research_grade_acceptable",
+    "reviewer_models": [
+      "deepseek-v4-pro",
+      "kimi-k2.5",
+      "MiniMax-M3",
+      "deepseek-v4-flash",
+      "qwen3.5-122b-a10b"
+    ],
+    "pit_107_compliance": "5 distinct model_ids",
+    "anti_inflation_cap": "GREEN (max=6.0 <= 7.0)",
+    "review_md": "papers/p08-market-calibration/paper/review_round_1.md",
+    "next_action": "keep as paper-scoped tool; document known limitations; defer to methods paper or framework/ consolidation"
+  }
 }

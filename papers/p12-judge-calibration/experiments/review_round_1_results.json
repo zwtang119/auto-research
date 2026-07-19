@@ -1,0 +1,52 @@
+[
+  {
+    "persona": "R1 experimentalist (methodology rigor)",
+    "model_id": "deepseek-v4-pro",
+    "score": 3.0,
+    "weakness": "Sample sizes are small (n≤10) and no data for pairwise or neighborhood protocols are shown, so the claim that each protocol independently corrects false positives is unsupported.",
+    "raw_response_preview": "{\"score\": 3, \"weakness\": \"Sample sizes are small (n≤10) and no data for pairwise or neighborhood protocols are shown, so the claim that each protocol independently corrects false positives is unsuppor",
+    "elapsed_s": 24.4,
+    "completion_tokens": 1261,
+    "ok": true
+  },
+  {
+    "persona": "R2 theorist (conceptual contribution)",
+    "model_id": "kimi-k2.5",
+    "score": 4.0,
+    "weakness": "The 5-protocol set repackages existing techniques without demonstrating synergistic value beyond running them separately.",
+    "raw_response_preview": "{\"score\": 4, \"weakness\": \"The 5-protocol set repackages existing techniques without demonstrating synergistic value beyond running them separately.\"}",
+    "elapsed_s": 1.4,
+    "completion_tokens": 32,
+    "ok": true
+  },
+  {
+    "persona": "R3 applied (practical usefulness)",
+    "model_id": "MiniMax-M3",
+    "score": 2.0,
+    "weakness": "Calibration table shows only H1/H3 inner_monologue populated, neighborhood n=3, and verdict flips opposite of leakage hypothesis, so no protocol actually corrects the claimed false-positive.",
+    "raw_response_preview": "{\"score\": 2, \"weakness\": \"Calibration table shows only H1/H3 inner_monologue populated, neighborhood n=3, and verdict flips opposite of leakage hypothesis, so no protocol actually corrects the claimed",
+    "elapsed_s": 4.2,
+    "completion_tokens": 50,
+    "ok": true
+  },
+  {
+    "persona": "R4 skeptical (false-positive hunting)",
+    "model_id": "deepseek-v4-flash",
+    "score": 2.0,
+    "weakness": "The data contradicts the claim: blind judge scores higher than leaked, and most protocols lack sufficient data to support any correction.",
+    "raw_response_preview": "{\"score\": 2, \"weakness\": \"The data contradicts the claim: blind judge scores higher than leaked, and most protocols lack sufficient data to support any correction.\"}",
+    "elapsed_s": 16.9,
+    "completion_tokens": 572,
+    "ok": true
+  },
+  {
+    "persona": "R5 systems (engineering quality)",
+    "model_id": "qwen3.5-122b-a10b",
+    "score": 3.0,
+    "weakness": "Pipeline validators lack hard gating on minimum sample sizes, allowing zero-record hypotheses and contradictory verdicts to bypass validation checks.",
+    "raw_response_preview": "{\"score\": 3, \"weakness\": \"Pipeline validators lack hard gating on minimum sample sizes, allowing zero-record hypotheses and contradictory verdicts to bypass validation checks.\"}",
+    "elapsed_s": 51.3,
+    "completion_tokens": 2730,
+    "ok": true
+  }
+]

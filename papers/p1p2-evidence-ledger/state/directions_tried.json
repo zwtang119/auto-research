@@ -24,6 +24,11 @@
       "status": "rejected_initially",
       "axis": "scope",
       "reason": "Too broad for the 14-day mainline plan; scope must stay on Gulei-class emergency scenarios plus Polymarket/Gulei settlement."
+    },
+    {
+      "id": "p1p2_m2_settlement_gulei",
+      "status": "selected",
+      "reason": "Gulei 2015 incident has 14 documented policy timepoints (per 09-gulei-retrospective-validation.md) that can map onto settlement_rule; Polymarket excluded for M2 due to illiquid chemical-event markets"
     }
   ],
   "diversity_rule": "every new direction must differ from every prior entry on at least one of {hypothesis, method, data source, evaluation metric}"

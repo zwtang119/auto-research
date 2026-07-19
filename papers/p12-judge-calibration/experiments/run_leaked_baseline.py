@@ -215,21 +215,57 @@ def call_judge_dry_run(sample: dict, jitter_seed: int) -> dict:
     }
 
 
+def _extract_first_balanced_json(text: str) -> Optional[str]:
+    """Find the first balanced top-level {...} block, supporting arbitrary nesting."""
+    start = text.find("{")
+    if start == -1:
+        return None
+    depth = 0
+    in_str = False
+    esc = False
+    for i in range(start, len(text)):
+        c = text[i]
+        if in_str:
+            if esc:
+                esc = False
+            elif c == "\\":
+                esc = True
+            elif c == '"':
+                in_str = False
+            continue
+        if c == '"':
+            in_str = True
+        elif c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:i + 1]
+    return None
+
+
 def parse_judge_response(text: str) -> Optional[dict]:
-    """Robust JSON parser for judge output."""
-    m = re.search(r"```json\s*(\{.*?\})\s*```", text, re.DOTALL)
-    if m:
-        text = m.group(1)
-    text = text.strip()
+    """Robust JSON parser for judge output. Tries, in order:
+    1. all ```json ... ``` code fences (if multiple, take the first parseable),
+    2. the full stripped text,
+    3. the first balanced top-level {...} block (handles nested objects).
+    """
+    # 1. try every ```json ... ``` fence
+    for m in re.finditer(r"```json\s*(\{.*?\})\s*```", text, re.DOTALL):
+        try:
+            return json.loads(m.group(1))
+        except json.JSONDecodeError:
+            continue
+    # 2. full stripped text
     try:
-        return json.loads(text)
+        return json.loads(text.strip())
     except json.JSONDecodeError:
         pass
-    # tolerant parse: find first {...} block
-    m = re.search(r"\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}", text, re.DOTALL)
-    if m:
+    # 3. first balanced {...} (nested-safe)
+    block = _extract_first_balanced_json(text)
+    if block:
         try:
-            return json.loads(m.group(0))
+            return json.loads(block)
         except json.JSONDecodeError:
             pass
     return None
@@ -258,7 +294,7 @@ def call_judge_real(messages: list[dict]) -> dict:
     content, _usage = call_model(
         config, JUDGE_MODEL, messages,
         temperature=0.2,
-        max_tokens=600,
+        max_tokens=2048,
         prompt_stage="p12_m2_leaked",
     )
     dt_ms = int((time.time() - t0) * 1000)

@@ -1,16 +1,31 @@
 {
   "exp_id": "P1P2",
-  "iteration": 0,
-  "status": "initialized",
-  "stale_count": 0,
-  "last_seen": "2026-07-03T08:12:26Z",
-  "last_updated": "2026-07-03T00:00:00Z",
-  "current_milestone": "M1",
-  "completed_milestones": [],
+  "iteration": 4,
+  "status": "m9_fold_into_p12_median_4_0_below_6_5",
+  "stale_count": 3,
+  "last_seen": "2026-07-04T07:37:11Z",
+  "last_updated": "2026-07-04T07:37:11Z",
+  "current_milestone": "M9",
+  "completed_milestones": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M9"
+  ],
+  "pending_milestones": [
+    "M5_pilot_run_main",
+    "M6_coverage_audit",
+    "M7_settleability_audit",
+    "M8_paper_outline",
+    "M9_review_round_1",
+    "M10_go_no_go"
+  ],
   "blocked": false,
   "block_reason": null,
   "source_projects": [
     "legacy/p11-closed-v5-minimax-m3",
+    "legacy/p11-closed-v5-mimo",
     "papers/p07-signal-fusion",
     "papers/p08-market-calibration"
   ],
@@ -28,12 +43,134 @@
   ],
   "target": "evidence-structured agent decision making; Day 14 review median >= 6.5",
   "paper_working_title": "Evidence-Structured Agent Decision Making for Emergency Response",
-  "deliverables": [],
+  "deliverables": [
+    {
+      "milestone": "M1",
+      "path": "experiments/ledger/pilot_10.jsonl",
+      "n_entries": 10,
+      "validator_rc": 0
+    },
+    {
+      "milestone": "M2",
+      "path": "experiments/ledger/pilot_30.jsonl",
+      "n_entries": 30,
+      "validator_rc": 0,
+      "settleable": 28,
+      "un_settleable_ratio": 0.07
+    },
+    {
+      "milestone": "M3",
+      "path": "experiments/pilot_power.md",
+      "verdict": "UNDERPOWERED",
+      "per_cell_n_needed": 64,
+      "pilot_30_power_at_d_0.5": 0.48
+    },
+    {
+      "milestone": "M4",
+      "path": "experiments/baseline_design.md",
+      "pivot": "claim narrowed from overall-effect to factor-type-conditional effect"
+    }
+  ],
+  "stale_history": [
+    {
+      "iteration": 2,
+      "stale_count_increment": 0,
+      "note": "M1+M2 initial milestones complete cleanly"
+    },
+    {
+      "iteration": 3,
+      "stale_count_increment": 1,
+      "note": "M3 power analysis revealed pilot_30 underpowered for d=0.5 detection; pivot to factor-type-conditional claim"
+    },
+    {
+      "iteration": 3,
+      "stale_count_increment": 2,
+      "note": "M4 structural pivot implemented (claim re-shape); per task_spec §8 stale_count >= 2 mandate, this is a STRUCTURAL pivot not tactical reframe; the 5-persona M8 review with the narrowed claim will be the natural go/no-go gate"
+    },
+    {
+      "iteration": 4,
+      "stale_count_increment": 1,
+      "note": "M9 5-persona review: median=4.0 < 6.5 threshold. Per task_spec section 6 verdict=fold_into_p12. stale_count += 1. P1+P2 mainline paper CLOSED; carry to P12 methods paper."
+    }
+  ],
+  "next_action_after_stale_2": "Per task_spec §8 stale_count >= 2: must pivot structural constraint. Done. Now per §8 the next milestone is M5 main run with N scaled to 64+/cell — but that requires API budget. Default path: write M5 design and stop; do not auto-launch the 30-hour API run without user sign-off.",
+  "decision_pending_user": {
+    "options": [
+      "Authorize M5 main run (N=64/cell, ~30 API hours, expected Brier improvement per factor_type)",
+      "Skip M5; proceed to M6-M7 audits on the pilot_30 data; report at M9 with explicit underpowered-pilot caveat",
+      "Fold P1+P2 into P12 short-paper methodology section; skip standalone paper"
+    ],
+    "natural_deli_intervention_trigger": "M9 review median is the next hard gate; the 3 options above differ in path-cost but converge at the same Day-14 review"
+  },
+  "carryover_from_p12": {
+    "source": "papers/p12-judge-calibration/state/progress.json",
+    "finding": "P12 closed (M8 median=3.0, 5 distinct model reviewers). 5-protocol design carries into P1+P2 as a calibration audit layer on factor judgments (deferred — not M1-M4 deliverable).",
+    "review_round_1_md": "papers/p12-judge-calibration/paper/review_round_1.md"
+  },
+  "m3_m4_metrics": {
+    "n_entries": 30,
+    "factor_types_covered": 5,
+    "settleable_true_count": 28,
+    "settleable_false_count": 2,
+    "authority_rows": 5,
+    "stale_rows_pit_203": 2,
+    "all_6_pits_pass": true,
+    "unit_tests_pass": "10/10",
+    "power_at_d_0.5_per_cell_n30": 0.48,
+    "power_at_d_0.8_per_cell_n30": 0.8,
+    "per_factor_type_conf_delta_authority": "+0.39",
+    "per_factor_type_conf_delta_falsifier": "+0.22",
+    "per_factor_type_conf_delta_branch": "-0.14",
+    "per_factor_type_conf_delta_precedent": "-0.13"
+  },
   "recent_events": [
     {
-      "ts": "2026-07-03T00:00:00Z",
+      "ts": "2026-07-04T11:00:00Z",
       "event": "mainline_scaffold_created",
-      "detail": "Initialized papers/p1p2-evidence-ledger/ with state, logs, wiki, paper, experiments/ledger. No ledger entries written yet."
+      "detail": "Initialized papers/p1p2-evidence-ledger/ with state, logs, wiki, paper, experiments/ledger."
+    },
+    {
+      "ts": "2026-07-04T11:30:00Z",
+      "event": "m1_schema_and_pilot_complete",
+      "detail": "10 handcrafted evidence_ledger_entry rows; 5 factor_types covered; 6 PIT invariants enforced by validate_ledger.py; 10/10 unit tests GREEN; 2 stale rows detected (PIT-203 demo)."
+    },
+    {
+      "ts": "2026-07-04T12:00:00Z",
+      "event": "m2_settlement_mapping_complete",
+      "detail": "30 handcrafted entries (10 from M1 + 20 NEW); 5 factor_types covered; 28/30 settleable; un_settleable_ratio=0.07; settlement_mapping.md documents 28 claim-to-source mappings."
+    },
+    {
+      "ts": "2026-07-04T12:30:00Z",
+      "event": "m3_underpowered_m4_structural_pivot",
+      "detail": "M3 power analysis: pilot_30 n=30 yields 0.48 power at d=0.5 (underpowered). M4 structural pivot: claim narrowed from uniform-positive to factor-type-conditional. stale_count=2. Per task_spec §8 stale_count >= 2, this is a STRUCTURAL pivot; awaiting M9 review gate for final go/no-go."
+    },
+    {
+      "ts": "2026-07-04T07:37:11Z",
+      "event": "m9_fold_into_p12_verdict",
+      "detail": "5-persona review: median=4.0, R3+R5 noted the PIT-201 row-5 validator miss (genuine signal). verdict=fold_into_p12. P1+P2 standalone paper CLOSED."
+    },
+    {
+      "ts": "2026-07-04T20:07:14Z",
+      "event": "joint_methods_outline_5persona_review_fallback",
+      "detail": "Joint methods paper outline (composing 14-field evidence_ledger_entry + 6-PIT validator + 5-protocol P12 + Brier + P7 adapter) reviewed by 6 distinct model_ids. Median=4.0 < 4.5. FALLBACK to P11 workshop paper per investigation Rank 3."
     }
-  ]
+  ],
+  "m9_review_verdict": {
+    "median": 4.0,
+    "mean": 4.0,
+    "max": 5.0,
+    "min": 3.0,
+    "threshold": 6.5,
+    "verdict": "fold_into_p12",
+    "reviewer_models": [
+      "deepseek-v4-pro",
+      "kimi-k2.5",
+      "MiniMax-M3",
+      "deepseek-v4-flash",
+      "qwen3.5-122b-a10b"
+    ],
+    "pit_107_compliance": "5 distinct model_ids",
+    "anti_inflation_cap": "GREEN (max=5.0 <= 7.0)",
+    "review_md": "papers/p1p2-evidence-ledger/paper/review_round_1.md"
+  }
 }

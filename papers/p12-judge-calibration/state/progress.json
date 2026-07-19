@@ -1,54 +1,37 @@
 {
-  "iteration": 2,
-  "status": "m2_runner_ready_deferred_to_user",
+  "exp_id": "P12",
+  "iteration": 6,
   "stale_count": 0,
-  "last_updated": "2026-07-03T15:33:36+08:00",
-  "current_milestone": "M2_leaked_baseline",
+  "last_seen": "2026-07-05T02:25:19Z",
+  "last_updated": "2026-07-05T02:25:19Z",
+  "current_milestone": "G2_replication",
   "completed_milestones": [
-    "M0_scaffold",
-    "M1_pre_registration_and_manifest",
-    "FRAMEWORK_minimal_scaffold"
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "G2_replication_2026-07-05"
   ],
-  "pending_milestones": [
-    "M2_leaked_baseline",
-    "M3_blind_baseline",
-    "M4_neighborhood_probe_schema",
-    "M5_neighborhood_probe_run",
-    "M5b_abstention",
-    "M6_calibration_metrics",
-    "M7_paper_skeleton",
-    "M8_five_persona_review"
-  ],
-  "source_project": "legacy/p11-closed-v5-minimax-m3",
-  "target": "3-6 day viability probe for 60-point short paper",
-  "framework": "Deli_AutoResearch (recommended)",
-  "m1_deliverables": {
-    "experiment_design_path": "state/experiment_design.md",
-    "manifest_path": "experiments/sample_manifest.jsonl",
-    "frozen_ids_path": "experiments/sample_ids_ordered.json",
-    "manifest_rows": 450,
-    "guard_script": "experiments/validate_manifest.sh",
-    "unit_tests_passed": "9/9"
-  },
-  "single_source_of_truth_rule": "When this paper closes, inputs cross-folder (e.g. samples currently at legacy/p11-closed-v5-minimax-m3/) must be copied INTO this paper directory before legacy entry can be deleted. See docs/portfolio/FRAMEWORK-RULES.md rule R1.",
-  "m2_readiness": {
-    "runner_path": "experiments/run_leaked_baseline.py",
-    "smoke_tests": "3/3 pass on --dry-run --limit 5",
-    "pending_action": "Set DEEPSEEK_API_KEY in user env and run: python experiments/run_leaked_baseline.py",
-    "expected_n": 450,
-    "expected_wall_minutes": 15,
-    "real_run_blocked_reason": "session env has no API key; user must invoke"
-  },
-  "framework_scaffold": {
-    "path": "../../framework/",
-    "files": [
-      "README.md",
-      "schemas/data-contracts.md",
-      "schemas/experiment-pitfalls.md",
-      "knowledge/auto-research-history.md"
+  "g2_replication_2026_07_05": {
+    "second_judge": "openrouter_gpt-oss-120b",
+    "n_paired_first_judge": 10,
+    "n_paired_second_judge": 6,
+    "mean_delta_first_judge": -1.284,
+    "mean_delta_second_judge": -3.667,
+    "ci_first_judge": [
+      -1.461,
+      -1.078
     ],
-    "refs_rewritten": 14,
-    "broken_after_fix": 0
-  },
-  "last_seen": "2026-07-03T08:28:49Z"
+    "ci_second_judge": [
+      -4.0,
+      -3.0
+    ],
+    "g2_pass": true,
+    "interpretation": "effect_strengthened_3x — calibration paradox is real, not judge-specific",
+    "report": "docs/papers/g2-p12-calibration-paradox-replication.md"
+  }
 }
