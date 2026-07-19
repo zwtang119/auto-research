@@ -19,6 +19,7 @@
 |---|---|
 | `proposal-decision-coscientist.md` | **开题报告 v1.3.1**（第 0 章为给非专业读者的导读；正文为学术版；含四层评估结构、H1–H4、预注册统计方案、18–22 周进度与回退条款、64 条已核验文献、术语表） |
 | `topic-eval-top-journal-2026-07-19.md` | **选题终裁 memo（第二趟管线）**：Q1/Q2/Q3 + C1–C7 逐条评分、venue 建议、7 条修正清单、拒绝条款 |
+| `topic-eval-explained-em-audience-2026-07-19.md` | **选题思路详版说明（面向应急管理专业读者）**：把终裁结论的推理过程完整展开——选题怎么想出、凭什么说新、离顶刊还差什么；所有 AI/医学概念就地补释，无需计算机或医学背景 |
 | `q1-novelty-and-theory.md` | Q1：LEAR / arXiv 2509.21868 / self-play 综述全文精读与区分；novelty 收窄为四点；α-Rank 替代 Elo、多样性 D 的设计修正 |
 | `q2-abm-validation-and-citations.md` | Q2：ABM 验证谱系定位（POM×输出验证×history-friendly；calibration-as-fitness 两个真新成分）；SLALOM 对话；15 条引用核验 + LQS 分级 |
 | `q3-validation-arm-selection.md` | Q3：非 LLM 校验臂选型（GB 50151 泡沫闸门 + ETE 疏散模型 + 水力下界），含协议草案与验证先例 |
