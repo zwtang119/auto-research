@@ -72,3 +72,5 @@ experiments/h5-emergence/A/yaml/
 .claude/
 .mimo/
 .superpowers/
+.mimocode/
+.playwright-mcp/
