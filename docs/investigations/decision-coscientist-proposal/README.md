@@ -60,3 +60,9 @@
 ## 6. 本次会话还修正了
 
 - `../medical-ai-to-cds-mapping-2026-07-18.md` 参考文献 #10：LEAR 作者 "Gurkan, A." → "Gurkan, C." 并换 ACM 正式 DOI（Q2 核验发现的勘误）
+
+### 2026-07-19 后续修订
+
+- **场景清单纠错**：「企业洪水」为合成调试场景（无真实数据），全部正式文件（PROJECT-BRIEF、详版说明、开题报告 §5.1）改为「古雷、郑州两个历史场景 + 广西横州洪水（六蓝水库溃坝，2026-07）真实案例（零污染锚储备）」；合成场景仅作开发调试。
+- **sources/ 补充**：Co-Scientist、Robin 两篇 Nature 官方全文 PDF + self-play 综述 PDF（来自 evolution-medical-ai/references，可了结 R1 评审 E7 挂起的 Robin 88%/61% 引用核验）。
+- **兄弟仓库评估结论**（2026-07-19，三+七仓库逐一深挖）：cds4worldcup 的结算 schema 三件套与防泄漏治理为最有价值资产（已补登 §8 外部资产）；cds4polymarket/ab-test 有实验治理方法论与外交预测断言账本，但无统计机器；evolution-medical-ai 除文献 PDF 外无价值（mock demo）；0ref 下 institute-one、Mammalia-tree、MiMo-Code、MiroFish、deputy-agent、A2UI、skill 七仓库对项目硬能力（分布统计、α-Rank、judge 校准、G2、锚分离）均无帮助，仅 MiMo-Code 的评审聚合机械与 skill/Frontier-Engineering 的任务契约可作设计阅读。
