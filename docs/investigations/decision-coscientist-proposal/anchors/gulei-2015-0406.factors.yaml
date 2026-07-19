@@ -1,0 +1,387 @@
+# ============================================================================
+# Gulei "4·6" Petrochemical Explosion — Factor Ledger 试编码（G3 探针）
+# 编码人: research-engineer (Q4 anchor encoding probe)
+# 编码日期: 2026-07-19
+#
+# ADAPTATION: 灾害域适配注记（相对 factor_ledger_entry.schema.yaml v0.2 的偏差记录）
+# 1. origin 枚举不足：schema 枚举为 [cds_generated, kimi_derived, human_seeded]。
+#    本 ledger 全部因子从历史记录（官方调查报告+媒体+工程规范）反向播种，
+#    严格语义应为 historical_record；暂以 human_seeded 兜底，并在 data_sources 注明来源。
+#    建议灾害域 fork 增加 origin 枚举值 historical_record。
+# 2. match_id 语义：schema 描述为 "Match identifier"；灾害域无"比赛"，本文件复用该字段
+#    承载事件 ID（gulei-2015-0406）。建议 fork 改名 event_id（可向后兼容）。
+# 3. direction 语义：schema 示例为 increases_home_win_probability（单一输赢结局）。
+#    灾害域无单一终值，本文件约定 direction 显式携带指标 key：
+#    increases_/decreases_<metric_key>（metric_key 取自 seed metricProfile 的 aiField）。
+# 4. settlement_rule 语义：体育域为"赛后单一证据→三态"；灾害域证据=历史锚值（区间、
+#    多口径），判定对象=推演分布。本文件统一采用百分位区间语言：
+#    supported ⇔ 历史锚区间与推演分布 [P25,P75] 相交且方向/机制一致；
+#    rejected  ⇔ 历史锚落在推演 [P5,P95] 之外或机制被证伪；
+#    inconclusive ⇔ 推演未产出该可观测量 / 历史锚口径无法对齐 / 单一来源无法交叉验证。
+# 5. 新增字段 sim_hook：显式声明推演侧挂钩（事件链节点/干预维度/指标 key）。
+#    schema 无此字段；参照实例（wc2026-a-m01）同样使用了 schema 外字段
+#    （settled_at_utc、evidence_summary、protocol_failure_logged），判为可容忍扩展，
+#    建议灾害域 fork 将 sim_hook 收编为正式字段。
+# 6. adjudicator 需新增盲评字段：灾害域因子从历史结局反推，专家盲评必须隐去结局，
+#    schema 无 outcome_visibility/blinded 字段，暂在 required_independence 字符串内声明。
+# 7. data_sources 需要来源分级：官方调查报告 / 媒体 / 工程规范 / seed 设计包络的
+#    证据力不同，schema 只有扁平 list[string]，分级信息暂以源 ID 前缀体现
+#    （official_*/media_*/eng_*/seed_*），建议 source_ledger 增加 reliability tier。
+#
+# 历史锚值口径说明（编码时发现，详见 q4-gulei-anchor-encoding.md §3）：
+# - 泡沫：官方调查报告"调运灭火泡沫 1467 吨"；seed 注释引 chenan 1959 档案
+#   "全省调拨桶装 425+425=850 吨"；媒体早期报道 650 吨。三者口径不同
+#   （总调运/桶装调拨/早期到位），历史锚一律写区间 [850, 1467] 吨。
+# - 人员/车辆：官方报告 1169 名消防官兵 + 120 防化 + 省军区官兵、269 部消防车；
+#   seed defaultResources 1417 人 / 322 车为"实战最大+约 30% buffer"的设计上限。
+# - 罐容 3×10000m³+1×20000m³ 不见于官方调查报告正文，来自媒体/Q3 调研，标记为
+#   media 级证据。
+# ============================================================================
+
+schema_version: "0.2"
+match_id: "gulei-2015-0406"
+settlement_source: "anchors/settlement_record.template.disaster.yaml"
+probe: "G3 factor-ledger disaster-domain adaptability probe"
+event:
+  event_id: "gulei-2015-0406"
+  name: "腾龙芳烃（漳州）有限公司\"4·6\"爆炸着火重大事故"
+  t0_utc8: "2015-04-06T18:56:00+08:00"
+  sim_scenario_id: "gulei-petrochemical"
+
+factors:
+  # ---------------------------------------------------------------- f001
+  - factor_id: "gulei-2015-f001"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（官方调查报告直接原因章节）
+    event_relation: "precursor"
+    direction: "increases_probability_of_initial_explosion_and_tank_ignition"
+    sim_hook: "事件链拓扑：leak(trigger) → furnace_explosion(cascade) → {tank_fire p=0.85, pipeline_fire p=0.9, gas_explosion p=0.6, pipeline_jet_fire p=0.75}"
+    observable_proxy: >
+      推演侧：MC 运行中 leak→furnace_explosion→≥1 个 cascade 火节点的路径实例化率。
+      历史侧：调查报告认定的直接原因链——开工引料波动引发液击，存在焊接缺陷的
+      21 号焊口断裂，泄漏物料被鼓风机吸入风道经空气预热器进入炉膛被高温引爆，
+      爆炸力撞裂 67.5m 外 607/608/609/610 四个储罐并引燃罐内物料。
+    quantified_threshold: >
+      推演阈值（N≥100 次运行）：P(furnace_explosion | leak) ≥ 0.70，
+      且其后 ≥1 个 cascade 火节点实例化率 ≥ 0.85（对齐 seed tank_fire 节点概率 0.85）。
+      历史锚：报告确认 4/4 个储罐在初始爆炸后爆裂燃烧（链全部实例化）。
+    settlement_rule: >
+      supported：推演路径实例化率满足上述阈值区间，且历史报告确认同构因果链
+      （泄漏→炉膛引爆→撞裂储罐→罐火）；
+      rejected：推演 P(furnace_explosion | leak) < 0.30 或 cascade 实例化率 < 0.50，
+      即推演认为该链不太可能，与史实的确定性发生矛盾；
+      inconclusive：推演事件链拓扑不含 leak/furnace_explosion 节点，
+      或调查报告直接原因章节不可得。
+    counter_signal: >
+      若调查再核查认定起爆点不在炉膛（如罐区静电/雷击直接起火），
+      或推演多数运行中泄漏仅形成流淌火而不引爆，则此前兆链被证伪。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "seed_policysim_emergency_scenarios_gulei"
+      - "media_caixin_2015_0407"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f002
+  - factor_id: "gulei-2015-f002"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（GB 50151 工程闸门 + 调运记录）
+    event_relation: "suppressor"
+    direction: "decreases_containment_time_hours"
+    sim_hook: "指标 foam_consumption_tons；干预维度 foam_trucks(10–45)；Q3 主校验臂（泡沫需求线 M_floor(t) × 车辆到达时刻表供给曲线）"
+    observable_proxy: >
+      推演侧：foam_consumption_tons 的 MC 分布。
+      历史侧：全省调拨桶装泡沫 850 吨（seed 注释引 chenan 1959 L43/L169: 425+425），
+      官方调查报告载"共调运灭火泡沫 1467 吨"；媒体早期报道到位 650 吨。
+    quantified_threshold: >
+      工程下限：单罐（1 万 m³，D≈28.5m、A≈638m²）单次进攻泡沫原液 ≥ 9.2 吨
+      （GB 50151-2010 液上喷射 6.0 L/(min·m²)×40min，6% 混合比）；
+      3 个全液面罐火+1 个迟发罐火+复燃损耗 ⇒ 总量工程下限数十吨量级（≥37 吨）。
+      历史锚区间 [850, 1467] 吨（口径：桶装调拨 / 总调运），约为下限的 23–40 倍。
+      推演阈值：foam_consumption_tons P50 ∈ [37, 1500] 吨。
+    settlement_rule: >
+      supported：历史锚区间 [850, 1467] 与推演分布 [P25, P75] 有交集，
+      且推演 P50 ≥ 37 吨（推演泡沫量级与历史同数量级、高于工程下限）；
+      rejected：推演 P90 < 37 吨（推演认为低于工程下限亦可控火，违反 GB 50151 闸门）
+      或推演 P10 > 1467 吨（数量级高估）；
+      inconclusive：推演不产出 foam_consumption_tons，
+      或历史口径（调运量 vs 实际喷施消耗量）无法对齐。
+    counter_signal: >
+      若推演显示 foam_consumption < 37 吨时 containment_time 仍 ≤ 20h
+      （泡沫量与控制时间脱钩，违背工程因果），
+      或历史再核查显示实际喷施量远小于调运量（调运≠消耗，如泡沫站远程控制失效、
+      给水压力不足导致固定泡沫系统无法启用——调查报告已确认此基础设施失效），
+      则本因子锚值需下修重裁。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "eng_gb50151_2010_foam_spec"
+      - "seed_policysim_emergency_scenarios_gulei"
+      - "media_caixin_2015_0407"
+      - "media_hkcd_2015_0409"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f003
+  - factor_id: "gulei-2015-f003"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（调查报告时间线 + Q3 时间夹逼）
+    event_relation: "counter_signal"
+    direction: "decreases_confidence_in_aggressive_attack_as_primary_containment_mechanism"
+    sim_hook: "指标 containment_time_hours；干预 fire_strategy(aggressive/cooling_first/process_first)；seed timeLimitHours=56"
+    observable_proxy: >
+      推演侧：containment_time_hours MC 分布相对烧尽上界窗口 [50, 80]h 的位置；
+      aggressive 与 cooling_first 策略下的分布差异。
+      历史侧：4/6 18:56 起爆 → 4/9 02:57 最后扑灭，总处置时长 ≈ 56.0h；
+      但 607/608/610 首控（明火全扑灭）时间为 4/7 16:40（T+21.7h）。
+    quantified_threshold: >
+      工程夹逼窗口 [2, 200]h（下界=泡沫覆盖 40–60min+进场调度 1–3h；
+      上界=烧尽：万立方罐液位 ~15m ÷ 回归速率 3–5mm/min ≈ 50–80h）。
+      历史锚：终控 56.0h ∈ 烧尽窗口 [50, 80]h；首控 21.7h。
+      推演阈值：containment_time_hours（终控口径）P50 ∈ [40, 80]h。
+    settlement_rule: >
+      supported：推演终控 P50 ∈ [40, 80]h 且历史 56h ∈ 推演 [P25, P75]——
+      即"总时长由烧尽+复燃主导、而非强攻快速扑灭"的反叙事被推演复现；
+      rejected：aggressive 策略下推演 P50 ≤ 10h（推演认为强攻可快速扑灭，
+      与 56h 史实矛盾）或任何策略下 P50 ≥ 150h；
+      inconclusive：推演时间轴无"首控/终控"两阶段区分（无复燃机制），
+      导致 21.7h 与 56.0h 两个历史口径无法对齐到同一统计量。
+    counter_signal: >
+      若多数推演运行中 aggressive 策略 P50 ≤ 24h 且无复燃事件，
+      则 56h 可由保守策略选择等其它机制解释，"烧尽主导"的反信号被削弱。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "eng_q3_engineering_bounds"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f004
+  - factor_id: "gulei-2015-f004"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（复燃时序见官方报告；机制条件见媒体）
+    event_relation: "branch"
+    direction: "increases_containment_time_hours_and_secondary_risk_percent"
+    sim_hook: "指标 secondary_risk_percent；事件链 gas_explosion(p=0.6) 节点可勉强挂钩复燃；需要初控-复燃两阶段状态机（seed 当前无显式状态变量）"
+    observable_proxy: >
+      推演侧：初控（明火扑灭）成功后、烧尽前复燃事件的条件概率及其触发机制。
+      历史侧：调查报告确认 610 罐两次复燃（4/7 19:45、4/8 02:09）、
+      607 罐一次复燃（4/8 02:09，4/8 20:45 扑灭）、609 罐 4/8 11:05 迟发起火；
+      复燃机制（泡沫层破坏+残液高温+阵风）来自媒体报道。
+    quantified_threshold: >
+      历史锚：初控 3 罐（607/608/610）中 2 罐复燃 ⇒ 每罐复燃率 ≈ 0.67；
+      复燃/迟发起火事件共 4 次（610×2、607×1、609×1）。
+      推演阈值：P(复燃 | 初控成功) ∈ [0.30, 0.80]，
+      且触发条件含泡沫层破坏/残液高温/阵风类机制项。
+    settlement_rule: >
+      supported：推演复燃条件概率 ∈ [0.30, 0.80] 且机制条件可观测、与历史机制一致；
+      rejected：条件概率 = 0（推演无复燃机制，确定性扑灭）或 ≥ 0.95
+      （确定性复燃，无随机分支，均与史实不符）；
+      inconclusive：推演无"初控-复燃"两阶段状态机（seed 当前仅节点概率，
+      无复燃状态变量），或复燃机制条件仅有媒体单一来源无法交叉验证。
+    counter_signal: >
+      若历史再核查表明复燃主因是二次进料泄漏（新物料注入）而非残液/泡沫层破坏，
+      则机制条件编码错误，本因子按修订协议（rubric §8）另起 amendment。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "media_caixin_2015_0407"
+      - "media_hkcd_2015_0409"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f005
+  - factor_id: "gulei-2015-f005"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（609 起火见官方报告；疏散时序因果见媒体）
+    event_relation: "branch"
+    direction: "increases_evacuation_rate"
+    sim_hook: "干预维度 evacuation(prepare/no_evacuation → immediate_3km 升级)；指标 evacuation_rate"
+    observable_proxy: >
+      推演侧：初控后 burning_tank_count 再增加（新增罐起火/爆燃）是否触发
+      疏散决策从 prepare/no_evacuation 升级为 immediate_3km，及升级后 evacuation_rate。
+      历史侧：609 罐 4/8 11:05 起火（T+40.1h）；官方报告载累计转移安置 29096 人；
+      媒体称第四罐爆燃后启动 3km 范围紧急疏散近 3 万人。
+    quantified_threshold: >
+      推演阈值：新增罐起火事件后疏散升级为 immediate_3km 的运行比例 ≥ 0.80，
+      且升级后 6h 内 evacuation_rate ≥ 0.90。
+      历史锚：转移安置 29096 人；若 3km 范围人口基数 ≈ 3.0 万 ⇒ 完成率 ≈ 0.97
+      （人口基数来源待核，见 q4 文档数据缺口）。
+    settlement_rule: >
+      supported：升级比例 ≥ 0.80 且历史完成率锚 0.97 ∈ 推演 evacuation_rate [P25, P75]；
+      rejected：升级比例 ≤ 0.30（推演对新增罐事件无响应）或历史锚落 [P5, P95] 之外；
+      inconclusive：推演无疏散决策升级逻辑，或"第四罐爆燃→疏散升级"的时序因果
+      仅见于媒体单一来源（官方报告未将疏散命令与 609 起火显式挂钩）。
+    counter_signal: >
+      若调查显示疏散命令实际早于 609 起火下达（预防性疏散、与爆燃无因果），
+      则分支时序方向反转，本因子 rejected 并按修订协议重编。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "media_hkcd_2015_0409"
+      - "media_caixin_2015_0407"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f006
+  - factor_id: "gulei-2015-f006"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（零蔓延史实 + GB 50074/50160 冷却判据）
+    event_relation: "suppressor"
+    direction: "decreases_secondary_risk_percent"
+    sim_hook: "指标 secondary_risk_percent；干预 fire_strategy=cooling_first；⚠ 1.5D 邻罐几何判据在 seed 场景无可观测对应物（无罐区拓扑）"
+    observable_proxy: >
+      推演侧：冷却充分（cooling_first 或等效冷却阵地建立）条件下，
+      点燃罐集合是否被限制在初始受影响罐组（607/608/609/610 共 4 罐）之内。
+      历史侧：调查报告确认仅上述 4 罐燃烧；救援中"实施喷水冷却、水幕隔离等措施，
+      冷却保护周边储罐和装置"，无蔓延至其它罐区/装置的记录。
+    quantified_threshold: >
+      历史锚：初爆波及 4 罐，其后蔓延新增点燃罐数 = 0（609 属初爆爆裂组的
+      迟发复燃，非蔓延至新罐）。
+      推演阈值：冷却充分条件下 P(蔓延至初始罐组外新增点燃罐 ≥ 1) ≤ 0.05。
+    settlement_rule: >
+      supported：推演 P(蔓延) ≤ 0.05，与历史零蔓延一致；
+      rejected：冷却充分下 P(蔓延) > 0.20（推演认为冷却挡不住蔓延，与史实冲突）；
+      inconclusive：推演罐区拓扑不含邻罐几何（1.5D 判据无可观测对应物），
+      或 609 迟发起火被再认定为蔓延（新点燃）而非复燃——则历史锚"零蔓延"
+      本身失真。
+    counter_signal: >
+      若再核查认定 609 罐 4/8 起火系热辐射蔓延而非残液复燃，
+      或发现其它装置/罐体曾出现未被报告点燃，零蔓延锚被否定。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "eng_gb50074_gb50160_cooling_criteria"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f007
+  - factor_id: "gulei-2015-f007"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（官方报告伤亡统计）
+    event_relation: "counter_signal"
+    direction: "decreases_casualty_estimate"
+    sim_hook: "指标 casualty_estimate；干预 evacuation 与 personnel；⚠ casualty_estimate 为单一数值，不区分伤/亡"
+    observable_proxy: >
+      推演侧：evacuation=immediate_3km 下 casualty_estimate 的 MC 分布，
+      及 no_evacuation 反事实对照分布（机制归因检验）。
+      历史侧：6 人受伤（其中 5 人被冲击波震碎的玻璃刮伤）+13 人留院观察
+      =19 人收治，0 死亡，截至 4/13 全部伤愈出院。
+    quantified_threshold: >
+      历史锚：伤 6、留观 13、亡 0、总收治 19。
+      推演阈值：immediate_3km 下 casualty_estimate（伤）P50 ≤ 19 且死亡 P95 = 0；
+      反事实 no_evacuation 下 P50 ≥ 3× 该值（验证低伤亡由疏散/非聚集时段机制解释，
+      而非事故本身温和）。
+    settlement_rule: >
+      supported：历史锚 19 落入 immediate_3km 推演分布 [P25, P75] 且反事实对照
+      ≥ 3×（"重大爆炸+4 罐 56h 大火必然高伤亡"的朴素先验被机制性否定）；
+      rejected：推演在所有干预组合下 casualty P50 均 ≤ 19 且无反事实差异——
+      则低伤亡是场景固有属性，本 counter_signal 机制不成立；
+      inconclusive：casualty_estimate 不区分伤/亡（当前 seed 即如此），
+      或推演无疏散-伤亡耦合机制。
+    counter_signal: >
+      若再核查发现伤亡统计漏报（周边群众伤情未纳入、迟发性就诊），
+      历史锚失真，本因子降级 inconclusive。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "media_caixin_2015_0407"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f008
+  - factor_id: "gulei-2015-f008"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（官方报告转移安置数字）
+    event_relation: "precursor"
+    direction: "increases_probability_of_zero_fatality_outcome"
+    sim_hook: "指标 evacuation_rate；干预 evacuation=immediate_3km；Q3 副校验臂（NUREG/CR-7002 ETE 排队模型，T50/T90/T100 闸点）"
+    observable_proxy: >
+      推演侧：immediate_3km 决策下 evacuation_rate 的时间曲线（T50/T90/T100）。
+      历史侧：官方报告载"迅速有序转移群众，共转移并妥善安置周边群众 29096 人"；
+      爆炸发生于 18:56 傍晚（非作业高峰），疏散在第四罐爆燃后紧急升级。
+    quantified_threshold: >
+      历史锚：29096 人转移安置；若 3km 范围人口基数 ≈ 3.0 万 ⇒ evacuation_rate ≈ 0.97
+      （基数来源待核）。
+      推演阈值：immediate_3km 下 evacuation_rate P50 ≥ 0.90，
+      且 T90（完成 90% 的时刻）≤ 疏散启动后 6h。
+    settlement_rule: >
+      supported：推演 P50 ≥ 0.90 且历史锚 0.97 ∈ 推演 [P25, P75]；
+      rejected：推演 P50 < 0.50（立即疏散策略下完成率仍低迷）或历史锚落 [P5, P95] 之外；
+      inconclusive：3km 范围人口基数无可靠来源（分母不明 ⇒ 完成率锚不可算），
+      或推演 evacuation_rate 为静态值无时间曲线（无法对 T90 闸点）。
+    counter_signal: >
+      若推演显示 prepare（视火情决定）策略下 evacuation_rate 同样 ≥ 0.90
+      且伤亡无差异，则"立即疏散"作为前置因子的增量贡献被否定。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "eng_nureg_cr7002_ete_model"
+      - "seed_policysim_emergency_scenarios_gulei"
+      - "media_hkcd_2015_0409"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  # ---------------------------------------------------------------- f009
+  - factor_id: "gulei-2015-f009"
+    match_id: "gulei-2015-0406"
+    origin: "human_seeded"   # ADAPTATION: 实为 historical_record（官方报告环境监测结论，单一来源）
+    event_relation: "counter_signal"
+    direction: "decreases_environmental_impact_km2"
+    sim_hook: "指标 environmental_impact_km2；agentRoles 含 environmental（环境监测负责人，决策权：疏散范围建议/环境预警）"
+    observable_proxy: >
+      推演侧：environmental_impact_km2 的 MC 分布。
+      历史侧：调查报告载"组织环保、海洋、海事、气象等部门，密切监测古雷地区气象、
+      海水等方面的环境变化，没有发现辖区环境污染"。
+    quantified_threshold: >
+      历史锚：辖区环境污染零检出 ⇒ environmental_impact_km2（辖区口径）≈ 0。
+      推演阈值：P50 ≤ 1.0 km²；P50 ≥ 10 km² 触发 rejected。
+    settlement_rule: >
+      supported：推演 P50 ≤ 1.0 km²，与零检出一致（"PX 爆炸必致大面积污染"的
+      公众先验被否定）；
+      rejected：推演 P50 ≥ 10 km²；
+      inconclusive：指标口径（陆域污染面积 vs 大气/海洋扩散影响）无法对齐，
+      或历史锚仅有官方单一来源、存在利益相关方失真风险且无法交叉验证。
+    counter_signal: >
+      独立媒体/科研后续若报道海域或大气污染物检出（PX、苯系物、总石油烃超标），
+      历史锚被直接否定。注意：本案为 PX 项目，公众争议背景下官方"零检出"
+      结论的证据等级应降半级处理。
+    data_sources:
+      - "official_fujian_yjt_investigation_report_2015"
+      - "seed_policysim_emergency_scenarios_gulei"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor; 灾害域扩展: outcome-blinded 专家 panel（≥3 人）"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"

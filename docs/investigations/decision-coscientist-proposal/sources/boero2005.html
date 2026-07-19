@@ -1,0 +1,654 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html> <head> 
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+<meta name="DC.Title" content="Does Empirical Embeddedness Matter? Methodological Issues on Agent-Based Models for Analytical Social Science"> 
+<meta name="DC.Creator" content="Riccardo Boero and Flaminio Squazzoni"> 
+<meta name="DC.Creator.Address" content="R.Boero@surrey.ac.uk"> 
+<meta name="DC.Subject" content="
+ Agent-Based Models, Empirical Calibration and Validation, Taxanomy of Models
+"> 
+<meta name="DC.Description" content="
+The paper deals with the use of empirical data in social science agent-based models. Agent-based models are too often viewed just as highly abstract thought experiments conducted in artificial worlds, in which the purpose is to generate and not to test theoretical hypotheses in an empirical way. On the contrary, they should be viewed as models that need to be embedded into empirical data both to allow the calibration and the validation of their findings. As a consequence, the search for strategies to find and extract data from reality, and integrate agent-based models with other traditional empirical social science methods, such as qualitative, quantitative, experimental and participatory methods, becomes a fundamental step of the modelling process. The paper argues that the characteristics of the empirical target matter. According to characteristics of the target, ABMs can be differentiated into case-based models, typifications and theoretical abstractions. These differences pose different challenges for empirical data gathering, and imply the use of different validation strategies.
+"> 
+ <meta name="DC.Publisher" content="JASSS"> 
+ <meta name="DC.Date" content="2005-10-31"> 
+<meta name="DC.Type" content="Text.Article"> 
+<meta name="DC.Format" content="text/html"> 
+<meta name="DC.Identifier" content="https://www.jasss.org/8/4/6.html"> 
+<meta name="DC.Language" content="en"> 
+<meta name="DC.Rights" content="JASSS@soc.surrey.ac.uk">
+<title>Riccardo Boero and Flaminio Squazzoni: Does Empirical Embeddedness Matter?
+</title>
+</head> 
+<body bgcolor="#ffffff" vlink="#006633" link="#0000ff" alink="#99cc99">
+<font size=1>&copy;<a href="../../admin/copyright.html">Copyright JASSS</a></font><p>
+<a name="top"></a> 
+<a href="../../JASSS.html"><img src="../gifs/JASSSMed.GIF" 
+ width="189" height="76" border="0" alt="JASSS logo"></a>
+<img src="../gifs/bar.gif" width="100%" height="3" alt="----"><p>
+<b><font size="4"><a href="https://www.jasss.org/8/4/6/boero.html">Riccardo Boero and Flaminio Squazzoni</a> (2005)
+</font></b>
+<p align=CENTER><b><font size=5>
+Does Empirical Embeddedness Matter? Methodological Issues on Agent-Based Models for Analytical Social Science
+</font></b>
+<p align=CENTER><font size=4><i>Journal of Artificial Societies and Social Simulation</i>
+  vol. 8, no. 4<br>
+ &lt;https://www.jasss.org/8/4/6.html&gt;</font>
+<p align=CENTER><font size="2">
+For information about citing this article, click <a href="https://www.jasss.org/8/4/6/citation.html">here</a></font>
+<p align=CENTER><font  size=2>Received: 02-Oct-2005
+&nbsp;&nbsp;&nbsp;Accepted: 02-Oct-2005
+&nbsp;&nbsp;&nbsp;Published: 31-Oct-2005
+</font>
+<p align=left><a href="https://www.jasss.org/8/4/6/6.pdf"><img src="../gifs/Acrobat.gif" 
+alt="PDF version" title="PDF of this article"></a></p>
+<hr>
+<h3><img src="../gifs/bullet.gif" alt="* ">Abstract</h3>
+<dl compact><dt><dd>
+The paper deals with the use of empirical data in social science agent-based models. Agent-based models are too often viewed just as highly abstract thought experiments conducted in artificial worlds, in which the purpose is to generate and not to test theoretical hypotheses in an empirical way. On the contrary, they should be viewed as models that need to be embedded into empirical data both to allow the calibration and the validation of their findings. As a consequence, the search for strategies to find and extract data from reality, and integrate agent-based models with other traditional empirical social science methods, such as qualitative, quantitative, experimental and participatory methods, becomes a fundamental step of the modelling process. The paper argues that the characteristics of the empirical target matter. According to characteristics of the target, ABMs can be differentiated into case-based models, typifications and theoretical abstractions. These differences pose different challenges for empirical data gathering, and imply the use of different validation strategies.
+<p><dt><b>Keywords:</b><dd>
+ Agent-Based Models, Empirical Calibration and Validation, Taxanomy of Models
+</dl><hr noshade>
+<h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* "> Introduction
+</h3><dl compact>
+<dt><b><a name="1.1">1.1</a></b><dd>The paper deals with the quest of empirical validation of agent-based models (ABMs), from a methodological point of view. Why computational social scientists need to take more carefully into account the use of empirical data? Which are the empirical data needed? Which are the possible strategies to take out empirical data from reality? Are all models of the same type? Does a difference of the modelling target matter for empirical calibration and validation strategies? These are the questions the paper aims to deal with.
+
+
+<p><dt><b><a name="1.2">1.2</a></b><dd>Our starting point is the generalised belief that ABMs are just highly abstract "thought experiments" conducted in artificial worlds, in which the purpose is to generate but not to test theoretical hypotheses in an empirical way (<a href="#prietula1998">Prietula, Carley and Gasser 1998</a>). ABMs are often tacitly viewed as a new branch of experimental sciences, where the computer is conceived as a laboratory through which it is possible to compensate for the unavoidable weakness of empirical and experimental knowledge in social science. This belief often implies a self-referential theoretical usage of these models.
+
+
+<p><dt><b><a name="1.3">1.3</a></b><dd>Of course, such attitude is not restricted to the case of computational social scientists. The weakness of the link between empirical reality, modelling and theory is not something new in social science (<a href="#merton1949">Merton 1949</a>; <a href="#hedstr&ouml;m1998">Hedstr&ouml;m and Swedberg 1998</a>). In social science, theories always teem, theoretical debates are vivid, more or less grand theories emerge once in a while, to be sometimes left aside or to suddenly re-emerge. On the contrary, empirical tests of the theories lack perhaps at all, and the coherence of the theory with direct observable evidence does not seem to be one of the main imperative of social scientists (<a href="#moss2004">Moss and Edmonds 2004</a>). Furthermore, broadly speaking, the need of relating theories and empirical evidences through formalised models is not perceived as a focal point in social science.
+
+
+<p><dt><b><a name="1.4">1.4</a></b><dd>The literature on ABMs recently seems to begin to recognise the importance of these issues. Let the debate on applied evolutionary economics, social simulation, and history-friendly models be an example of this (<a href="#pyka2004">Pyka and Ahrweiler 2004</a>; <a href="#eliasson2000">Eliasson and Taymaz 2000</a>; <a href="#brenner2003">Brenner and Murmann 2003</a>), to remain within the social science domain. In ecological sciences, biology and in social insects studies, the question of empirical validation of models is already under discussion since many years ago (for example, see: <a href="#carlson2002">Carlson et al. 2002</a>; <a href="#jackson2004">Jackson, Holcombe, Ratnieks 2004</a>). 
+
+
+<p><dt><b><a name="1.5">1.5</a></b><dd>In any case, within the computational social science community, most of the steps forward have been rather undertaken on the quest of internal verification of ABMs, model to model alignment or docking methods, replication, and so forth (see: <a href="#axtell1996">Axtell, Axelrod, Epstein and Cohen 1996</a>; Axelrod 1998; <a href="#burton1998">Burton 1998</a>; <a href="#edmonds2003">Edmonds and Hales 2003</a>). Less attention has been devoted to the quest of empirical calibration and validation and to the empirical extension of models.
+
+
+<p><dt><b><a name="1.6">1.6</a></b><dd>The situation briefly pictured above implies that ABMs are often conceived as a kind of self-referential autonomous method of doing science, a new promise, something completely different, while little attention has been paid to the need of integrating ABMs (and simulation models generally speaking) and methods to infer data from empirical reality, such as qualitative, quantitative, experimental and participatory methods.
+
+
+<p><dt><b><a name="1.7">1.7</a></b><dd>The first argument of the paper is that if empirical knowledge should be a fundamental component to have sound and interesting theoretical models, as a consequence model makers cannot use empirical data just as a loose and un-direct reference for modelling social phenomena. On the contrary, empirical knowledge needs to be appropriately embedded into modelling practices through specific strategies and methods.
+
+
+<p><dt><b><a name="1.8">1.8</a></b><dd>The second argument is that speaking about empirical validation of ABMs means to take into account problems of both model construction and model validation. The link between empirical data, model construction and validation needs to be thought and practicised as a circular process for which the overall goal is not merely to get a validation of simulation results, but to empirically test theoretical mechanisms behind the model. Empirical data are needed both to build sound micro specifications of the model and to validate macro results of simulation. Models should be both empirically calibrated and empirically validated. This is the reason why we often enlarge our analysis to the broader quest of the use of empirical data in ABMs, with respect to the narrow quest of the empirical validation.
+
+
+<p><dt><b><a name="1.9">1.9</a></b><dd>We are aware that social scientists often deal with missing, incomplete or inconsistent empirical data and, at the same time, that theory is the most important added value of the scientific process. But, our point is that models are theoretical constructs that need to be embedded as much as possible in empirical analysis to have a real analytical value.
+
+
+<p><dt><b><a name="1.10">1.10</a></b><dd>The third argument is that there are different types of empirical data a model maker would need, and different possible and multiple strategies to take them out from the reality. We use the term "strategies" because a unique method for empirically calibrating and validating ABMs does not exist, yet. In this regard, ABMs should be fruitfully integrated, through a sort of creative <i>bricolage</i>, with other methods, such as qualitative, quantitative, experimental and participatory methods. There are some first examples of such a creative <i>bricolage</i> in ABMs literature (see the empirical model of Anasazi, the water demand model and the Fearlus model described in the fourth section). They should be used as "best practices" to improve our methodological knowledge about empirical validation.
+
+
+<p><dt><b><a name="1.11">1.11</a></b><dd>The last argument is that the features of the model target definitively matter. We suggest a taxonomy according to which ABMs are differentiated into "case-based models", "typifications" and "theoretical abstractions". The difference is in the target of the model. This has a strong effect on empirical data finding strategies.
+
+
+<p><dt><b><a name="1.12">1.12</a></b><dd>It is worth saying that the subject of this paper would imply to take seriously into account broad epistemological issues: for example, the relation between theories, models and reality, the difference between description and explanation, deduction and induction, explanation and prediction and so forth (see also <a href="#troitzsch2004">Troitzsch 2004</a>). We are firmly convinced that the innovative epistemological purport of ABMs for the social science domain is far from being fully understood and systematized, yet. Computational social science is still in its infancy, and computational social scientists are getting on as they were craftsmen of a new method. This is to say that computational social science does not have reached the age of standards, yet. We are in an innovation phase, not in an exploitation one. This is the reason why our argumentation, rather than consciously focussing on epistemological issues, is taken as close as possible within the field of methodological issues, although we are aware that such issues are in some sense also epistemological ones. To clarify some of these issues, we choose to summarise our point of view in this introduction.
+
+
+<p><dt><b><a name="1.13">1.13</a></b><dd>First of all, there are different kinds of ABMs in social science as regards to the goals they aim to reach. ABMs can be used to allow prediction, scenario analysis and forecasting, entertainment or educational purposes, or again to substitute for human capabilities (<a href="#gilbert1999">Gilbert and Troitzsch 1999</a>). Here, we take into account just the use of models to explain social empirical phenomena by means of a micro-macro causal theory.
+
+
+<p><dt><b><a name="1.14">1.14</a></b><dd>We totally agree with the so called "analytical sociology" approach: the goal of a social scientist is to explain an empirical phenomenon by referring to a set of entities and processes (agents, action and interaction) that are spatially and temporally organised in such a way that they regularly bring about the type of phenomenon the social scientist seeks to explain (<a href="#hedstr&ouml;m1998">Hedstr&ouml;m and Swedberg 1998</a>; <a href="#barbera2004">Barbera 2004</a>)<sup><a href="#fn1">[1]</a></sup>. Without aiming at entering in detail on this, it is worth outlining here that the explanation via social mechanisms differs both from common knowledge and descriptions, and from statistical explanations and covering law explanations. The mechanism explanation does refer neither to general and deterministic causal laws, nor to statistical relationships among variables. It does not make use of explanations in terms of cause-effect linear principle, according to which causality is among a prior event (cause) and a consequent event (effect). Generally, in social science, causes and effects are not just viewed as events, but as attributes of agents or aggregates, which can be also viewed as non-events or not directly observables (<a href="#mahoney2001">Mahoney 2001</a>). A mechanism-based causal explanation refers to a social macro regularity as a target to be explained, action and interaction among agents as objects to be modelled, and a causal micro-macro generative mechanism as a theoretical construct to be isolated and investigated, so that, according to specific conditions to be repeatedly found in reality, such a construct can allow to explain the target (<a href="#goldthorpe2000">Goldthorpe 2000</a>; <a href="#barbera2004">Barbera 2004</a>). As Elster argues, the mechanism-based explanation is based on a finer grain logic in respect to black box explanations, according to which "if A [the mechanism], then sometimes B, C, and D [social outcomes]". This is because of the role of specific empirical conditions and the possibility that mechanisms can be paired and mutually exclusive, as well as operating simultaneously with opposite effects on the target, as in the Le Grand example of the impact of taxes on the supply of labour reported by Elster (<a href="#elster1998">1998</a>). According to the "Coleman boat" (<a href="#coleman1990">Coleman 1990</a>), a typology of mechanisms-based explanation includes at best the interlacement between situational mechanisms (macro-micro), action-formation mechanisms (micro-micro), and transformational mechanisms (micro-macro). Models need to be viewed as generative tools, because they allow formalising a representation of the micro-macro mechanisms responsible for social outcomes to be brought about (<a href="#hedstr&ouml;m1998">Hedstr&ouml;m and Sweberg 1998</a>; <a href="#barbera2004">Barbera 2004</a>).
+
+
+<p><dt><b><a name="1.15">1.15</a></b><dd>ABMs imply the use of the computer to formalise social science generative models of that kind (<a href="#squazzoni2005">Squazzoni and Boero 2005</a>). In this respect, the role of formalisation is important, because it is often the only way of making possible to study most of the emergent properties that are thought to be the most important aspects of social reality. We argue that ABMs are tools for translating, formalising and testing theoretical hypotheses about empirical reality in a mechanism-based style of analysis. As it is known, ABMs have a fundamental property that makes a difference on this point: they allow taking into account aspects and mechanisms that other methods can not do. They allow 'complexificating' models from a theoretical and empirical point of view (<a href="#casti1994">Casti 1994</a>). Aspects and mechanisms included are heterogeneity and adaptation at micro level, non linear relations, complicate interaction structures, emergent properties, and micro-macro links.
+
+
+<p><dt><b><a name="1.16">1.16</a></b><dd>To sum up the structure of the paper and the main arguments, section 2 focuses on empirical data and strategies to collect them. We argue that empirical data refer to the specification-calibration of model components and to the validation of simulation results. The output of such a process is intended to test the explanatory theoretical mechanism behind the model.
+
+
+<p><dt><b><a name="1.17">1.17</a></b><dd>Section 3 depicts a taxonomy of models that can be useful to tackle with the quest of both empirical data and theory generalisation. Models are differentiated in "case-based models" (the target is a specific empirical phenomenon with a circumscribed space-time nature and the model is <i>ad hoc </i>construct), "typifications" (the target is a specific class of empirical phenomena that share some idealised properties), and "theoretical abstractions" (the target is a wide range general phenomena with no direct reference to reality). Differences in the target imply different empirical challenges and different possible strategies of validation to be taken into account. These types are not discrete ones but belong to an ideal continuum. This allows drawing some reflections on the problem of how theoretical results of a model can be put under test and generalised.
+
+
+<p><dt><b><a name="1.18">1.18</a></b><dd>Section 4 brings the previous taxonomy on the ground of empirical data finding strategies. Which are the empirical data needed and the validation strategies available according to the specificity of the modelling target? We emphasise some available "best practices" in the field.
+
+
+<p><dt><b><a name="1.19">1.19</a></b><dd>Finally, section 5 draws some conclusions on the entire set of issues the paper has dealt with.
+
+
+
+</dl><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* ">The Use of Empirical Data: Strategies for Model Calibration and Validation
+</h3><dl compact>
+
+<dt><b><a name="2.1">2.1</a></b><dd>Empirical validation distinguishes itself from other important modelling processes, which are more concerned with internal verification of the model.
+
+
+<p><dt><b><a name="2.2">2.2</a></b><dd>For internal verification we mean the analysis of the internal correctness of the computer implementation of the theoretical model (<a href="#manson2003">Manson 2003</a>) and the model's alignment or docking, which compares the same model translated in different platforms (<a href="#axelrod1998">Axelrod 1998</a>). Internal verification focuses on the theory and its implementation as a computer programmed model.
+
+
+<p><dt><b><a name="2.3">2.3</a></b><dd>On the contrary, according to a micro-macro analytical perspective, the usage of empirical data implies different methods for establishing fruitful relations between the model and the data. Empirical data can be used for two purposes as follows: to specify and calibrate model components at micro level and to validate simulation results at macro level.
+
+
+<p><dt><b><a name="2.4">2.4</a></b><dd>For specification and calibration of model components, we mean the use of empirical data to choose and select the appropriate set of model components, as well as their respective values, and the appropriate level of details of micro foundations to be included into the model. For empirical validation of simulation results we mean the use of empirical data to test artificial data produced by the simulation, through intensive analysis and comparison with data on empirical reality.
+
+
+<p><dt><b><a name="2.5">2.5</a></b><dd>To clarify the point, let us suppose that a model maker should explain <i>k<sub>r</sub></i>, a phenomenon or macro behaviour. As we have argued before, the model maker aims to translate <i>k<sub>r</sub></i> into an ABM <i>M</i> because <i>k<sub>r</sub></i> is perceived as complex phenomenon that can be understood neither directly nor with other kinds of models. The model maker translates <i>k<sub>r</sub></i> into a theoretical system <i>T</i> and then into an ABM <i>M</i>, assuming some premises, definitions and logical sentences, which are mostly influenced by empirical and theoretical knowledge already available (<a href="#werker2004">Werker and Brenner 2004</a>). Let us suppose that A, B, C&hellip;, are all the possible model components, which ideally allow the model maker to translate <i>T</i> into the model <i>M</i> in an appropriate way. They are, for example, number and type of agents, rules of behaviour, types of interaction structure, and structure of information flow, and so on. Let us suppose that A<sub>1</sub>,<sub> </sub>A<sub>2</sub>,<sub> </sub>A<sub>3</sub>&hellip;, B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>&hellip;, C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>&hellip;, are all the possible features of the model components. The model maker is ideally called to choose the right components and to select their right features to be included in the model, because they should be considered potential sources of generation of the macro behaviour <i>k<sub>r</sub></i>.
+
+
+<p><dt><b><a name="2.6">2.6</a></b><dd>To empirically specify the model components it means to use empirical evidences to choose the appropriate model components, let us suppose, for instance, A+C+D+N. To empirically calibrate the model components, it means to use empirical evidences to select the features of the components, that is to say, for instance, A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5</sub>.
+
+
+<p><dt><b><a name="2.7">2.7</a></b><dd>Now, let us suppose that from the empirically specified and calibrated model it follows <i>k<sub>a</sub></i> as the simulation result. For empirical validation, we mean an intensive analysis and comparison between <i>k<sub>a</sub></i> (the artificial data) and <i>k<sub>r</sub></i> (the real macro behaviour). If A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5 </sub>come to generate <i>k<sub>a</sub></i> and <i>k<sub>a</sub> </i>is closely comparable with <i>k<sub>r</sub></i>, it follows that A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5 </sub>can be considered as a causal mechanism necessary and sufficient to generate <i>k<sub>r </sub></i>(<a href="#epstein1996">Epstein and Axtell 1996</a>; <a href="#epstein1999">Epstein 1999</a>; <a href="#axtell1999">Axtell 1999</a>).
+
+
+<p><dt><b><a name="2.8">2.8</a></b><dd>Three points call for our attention. They are about the possible black holes in available empirical data, the sequential order from specification-calibration to validation, and the condition for causal mechanisms to be considered as a valid theoretical statement.
+
+
+<p><dt><b><a name="2.9">2.9</a></b><dd>As it is well known, getting empirical data for fully specifying and calibrating all the model components and their features is not so easy done. In the worst case scenario, the model maker is forced just to formulate hypotheses about them. In the best case scenario, the model maker can find just some empirical data about some model components and part of their feature, and not about other components and features which are relevant as the formers.
+
+
+<p><dt><b><a name="2.10">2.10</a></b><dd>According to the example mentioned before, let us suppose that the model maker has access to empirical data about A+C+D model components specifications but not about N, and thus just about A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3 </sub>component features. The consequence will be that the model maker will introduce plausible model components and features. They will maybe become important sources of investigation within the model. For instance, the model maker will test different features of N (N<sub>5, </sub>N<sub>2</sub>, and so on), and their effects on the other components to generate <i>k<sub>a</sub></i>. This is to say that it is usually expected to find empirical data on structure components (number of agents, types of agents, and so on) and on the macro behaviour, but not on rules of behaviour and interaction structures. The effect of these two components often is the real reason for theoretical investigation.
+
+
+<p><dt><b><a name="2.11">2.11</a></b><dd>The second point is about the sequential order from specification-calibration to validation. It is natural to approach the order in the opposite way, from a top-down perspective. To come back to the example, it is natural to use the simulation model to take advantage of a prior selection of model components (A+C+D+N) and features (A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5</sub>,), and to understand their generativeness as regards to the macro behaviour<i> k<sub>a</sub></i>. In the best case scenario, once a good generativeness and a good macro validation are found, the specification-calibration step is carried on in terms of an empirical test for micro foundations. It is worth saying that the argument of the need of such an empirical test on micro foundations does not have a lot of supporters. The widespread approach implies the idea that once a macro empirical validation is found (a good fit between <i>k<sub>a </sub>k<sub>r</sub></i>), the micro foundations can be considered as validated even if they are not empirically based (<a href="#epstein1999">Epstein 1999</a>; <a href="#axtell1999">Axtell 1999</a>).
+
+ 
+<p><dt><b><a name="2.12">2.12</a></b><dd>Here, we come to a focal point. We argued before that if A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5 </sub>(being them empirically based) come to generate <i>k<sub>a</sub></i> and that if <i>k<sub>a</sub> </i>is closely comparable with <i>k<sub>r</sub></i>, it will follow that A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5 </sub>can be considered as a causal mechanism able to generate <i>k<sub>r</sub></i>.  But, now let us suppose that the model maker ignores empirical data for the micro specification. The consequence is that is always possible to find out that not only A<sub>2</sub>+<sub> </sub>C<sub>1</sub>+<sub> </sub>D<sub>3</sub>+<sub> </sub>N<sub>5</sub> but also other combinations of elements and of their features, for instance A<sub>1</sub>+<sub> </sub>R<sub>2</sub>+<sub> </sub>H<sub>3</sub>+<sub> </sub>L<sub>5</sub>, can come to generate the same <i>k<sub>a</sub></i> the model maker is trying to understand.
+
+
+<p><dt><b><a name="2.13">2.13</a></b><dd>Put in other words, the point is the following: given that a possible infinite amount of micro specifications (and, consequently, an infinite amount of possible explanations!) can be found capable of generating the <i>k<sub>a</sub></i> close to the <i>k<sub>r</sub></i> of interest, what else, if not empirical data and knowledge about the micro level, is indispensable to understand which causal mechanism is behind the phenomenon of interest?
+
+
+<p><dt><b><a name="2.14">2.14</a></b><dd>To sum up our argument so far, we stress that empirical data are a fundamental ingredient to support mechanism-based theoretical explanations and that they can have a twofold input-output function. They have the function of supporting the model building and to get sound theoretical outcomes out of the model. 
+
+
+<p><dt><b><a name="2.15">2.15</a></b><dd>Evaluating the explanatory theoretical mechanism behind the model is the general intended output of the validation process: it means to use empirical evidences to support the heuristic values of the theory in understanding the phenomenon that is the modelling target. To have this, model construction and model validation rather to be considered different stages of scientific knowledge development, need to be considered as a unique process with strong mutual influences. In the middle of this input-output process, there is the mechanism-based theoretical model, which is the overall goal of the process itself. This is the reason why we did not separate the quest of empirical base of model construction and validation.
+
+
+<p><dt><b><a name="2.16">2.16</a></b><dd>But, which kind of empirical data are useful to have an empirical-based model and a validated ABM? According to the aim of the model maker, common approaches to collect empirical data can be used. ABMs need for empirical data does not require the development of <i>ad hoc</i> strategies to collect such data. On the contrary, it requires an effective exploitation of available techniques, considering the evolution in the field and the fact that different approaches are available for the different kinds of issues to be measured, as the case of Sociometric tools to understand the structure of social networks and so forth. Instead of focusing on the quest of which are the available techniques, we focus on direct and indirect strategies to gather empirical data.
+
+
+<p><dt><b><a name="2.17">2.17</a></b><dd>For direct strategies, we mean strategies to take out first hand empirical data directly from the target. This can be done with different tools, or with a mix of them:
+
+
+<ol type=a><li>experimental methods (experiments with real agents, or mixed experiments with real and artificial agents);
+<li>stakeholders approach (direct involvement of stakeholders as knowledge bearers) (<a href="#moss1998">Moss 1998</a>; <a href="#bousquet2003">Bousquet et al. 2003</a>; <a href="#edmonds2005">Edmonds and Moss 2005</a>);
+<li>qualitative methods (interviews or questionnaires to involved agents, archival data, empirical case-studies);
+<li>quantitative methods (statistical surveys on the target)
+</ol>
+
+
+In this respect, a quite intensive debate about experimental and stakeholder approach on empirical data is in progress.
+
+<p><dt><b><a name="2.18">2.18</a></b><dd>Experimental methods are particularly useful when environmental data is already available. Experimental data in fact differs from field data because the formers are collected into a laboratory, that is to say in a controlled and fixed environment. In fact, to conduct an experiment and to get useful data, the researcher must already know for sure the environmental settings to choose in the experiment (which generally will be also used in the ABM). When enough data about the environment is available, it is thus possible to design an experiment capable to mimic such environment, and then it is possible to focus on other issues of interest, such as the interaction among subjects or their behaviour, and collecting data about them (for a survey on the links between experiments and ABMs in Economics, see <a href="#duffy2004">Duffy 2004</a>; for an example of a technique to gather behavioural data in experiments, see <a href="#dal2004">Dal Forno and Merlone 2004</a>).
+
+
+<p><dt><b><a name="2.19">2.19</a></b><dd>Stakeholder approach is a participatory method to gather empirical data. It is based on the idea of setting up a dense cross-fertilization where theoretical knowledge of model makers and empirical knowledge of involved agents enrich each other directly on the ground. It is often used in the so-called "action research" approach and in the literature on evaluation process. The principle of "action research" is that relevant knowledge for model building and validation can be generated by an intensive dialogue between planners, practitioners, and stakeholders, who are all involved in the analysis of specific problems in specific areas (<a href="#pawsons1997">Pawsons and Tilley 1997</a>; <a href="#stame2004">Stame 2004</a>). In a different way in respect to the previous case, in this case environmental data are not already available. Rather, they are the action's target and the output of a multi-disciplinary dialogue (<a href="#moss1998">Moss 1998</a>; <a href="#barreteau2001">Barreteau, Bousquet and Attonaty 2001</a>; <a href="#etienne2003">Etienne, Le Page and Cohen 2003</a>; <a href="#bousquet2003">Bousquet et al. 2003</a>; <a href="#moss2005">Moss and Edmonds 2005</a>). The direct involvement of stakeholders allows the model maker to exploit involved agents as knowledge holders and bearers, who can bring relevant empirical knowledge about agents, rules of behaviour and target domain into the model, and to reduce asymmetries of information and the risk of theoretical biases. An example of such a strategy is given by Moss and Edmonds (<a href="#moss2005">2005</a>) in a water demand model described in the fourth section.
+
+
+<p><dt><b><a name="2.20">2.20</a></b><dd>For indirect strategies, we mean strategies to exploit second hand empirical data, using empirical analyses and evidences already available in the field. As in the foregoing case, these data could have been also produced through different methods (i.e.: statistical surveys or qualitative case-studies). Second hand data are used in all the cases in which it is impossible to have direct data, when it is possible to exploit the presence of institutions or agencies specialised on data production, or when the model maker is constrained by budget or time reasons. As it is known, it is often difficult to find second hand empirical data really useful and complete for creating and testing an ABM.
+
+
+<p><dt><b><a name="2.21">2.21</a></b><dd>Data to be used are both quantitative and qualitative in their nature . That is to say that they can be "hard" or "soft" ones. The first ones allow parameterising variables such as the number of agents, size of the system, features of the environment, dimensions and characteristics of the interaction structure and so on. They refer to everything that can be quantified in the model. The second ones allow introducing realistic rules of behaviour or cognitive aspects at the micro level of individual action. They refer to everything that cannot always be  quantified, but can be expressed in a logic language.
+
+
+<p><dt><b><a name="2.22">2.22</a></b><dd>Data should refer to the entire space of the parameters of the model. In ABMs, it is natural to consider that also qualitative aspects, such as rules of behaviour, are parameters themselves, making the word "parameters set" a synonymous of "model micro specification". Moreover, it is worth to clarify that, when one speaks about quantitative data of a model, one often simply means a numerical expression of the qualitative aspects of a given phenomenon.
+
+
+<p><dt><b><a name="2.23">2.23</a></b><dd>Data also differ in their reference analytic level. They can refer on micro or macro analytic level. To evaluate simulation results, a model maker needs to find aggregate data about the macro dynamics of the system that is under investigation. As a consequence, it is possible to compare artificial and empirical data. In order to specify and calibrate the micro-specification, a model maker needs to find out data at a lower level of aggregation, such as those referring to micro-components of the system itself.
+
+
+
+</dl><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* ">A Taxonomy of ABMs in Social Science from a Model Maker Perspective
+</h3><dl compact>
+
+<dt><b><a name="3.1">3.1</a></b><dd>From the empirical validation point of view, ABMs can be differentiated in "case-based models", "typifications", and "theoretical abstractions". The difference among them is understood in terms of characteristics of the modelling target.
+
+
+<p><dt><b><a name="3.2">3.2</a></b><dd>To sum up: "case-based models" are models of empirically circumscribed phenomena, with specificity and "individuality" in terms of time-space  dimensions; "typifications" refer to specific classes of empirical phenomena, and are intended to investigate some theoretical properties which apply to a more or less wide range of empirical phenomena; "theoretical abstractions" are "pure" theoretical models with reference neither to specific circumscribed empirical phenomena nor to specific classes of empirical phenomena. 
+
+
+<p><dt><b><a name="3.3">3.3</a></b><dd>This section aims at discussing both the difference among these types and their belonging to an ideal continuum. As we stress below, these types are not conceived as discrete. This allows reflecting upon the quest of empirical generalisation of theoretical findings.
+
+
+<h4>Case-Based Models
+</h4>
+<p><dt><b><a name="3.4">3.4</a></b><dd>Case-based models have an empirical space-time circumscribed target domain. The phenomenon is characterised by idiosyncratic and individual features. This is what Max Weber called "a historical individual" (<a href="#weber1904">Weber 1904</a>). The model is often built as an <i>ad hoc </i>model, a theoretically thick representation, where some theoretical hypotheses on micro foundations, in terms of individuals and interaction structures, are introduced to investigate empirical macro properties, which are the target domain of the modelling. The goal of the model maker is to find a micro-macro generative mechanism that can allow explaining the specificity of the case, and sometimes to build upon it realistic scenarios for policy making. 
+
+
+<p><dt><b><a name="3.5">3.5</a></b><dd>These models can achieve a good level of richness and detail, because they are usually built in the perspective of finding accuracy, details, precision, veridicality, sometimes prediction. As Ragin (<a href="#ragin1987">1987</a>) argues, case-based models aim at "appreciating complexity" rather than at "achieving generality". Even if there are methodological traditions, such as ethnomethodology, which overemphasise the difference between theoretical knowledge models and "a-theoretical descriptions", where these last are intended to grasp subjectivity and direct experience of involved agents, it is clear that case-based models can not be conceived as "a-theoretical" models. They are built upon theoretical hypotheses and general modelling frameworks. Often, pieces of theoretical evidence or well-known theories are used to approach the problem, as well as to build the model.
+
+
+<p><dt><b><a name="3.6">3.6</a></b><dd>Anyway, the point is that a case-based model ideally taken per s&eacute; can allow to tell nothing else than a "particular story". As Weber argues (<a href="#weber1904">1904</a>), the relevance of a case-based model, as well as the condition of its possibility, depends on its relation with a theoretical typification. For instance, a local theoretical explanation, to be generalisable, needs to be extended to other similar phenomena and abstracted at a higher theoretical level. In our terms, this means to relate a case-based model to a typification. 
+
+
+<p><dt><b><a name="3.7">3.7</a></b><dd>But now, from the empirical validation point of view, what matters is that, in the case of case-based model, the model maker is confronted with a specific and time-space circumscribed phenomenon.
+
+
+<h4>Typifications
+</h4>
+<p><dt><b><a name="3.8">3.8</a></b><dd>Typifications are theoretical constructs intended to investigate some properties that apply to a wide range of empirical phenomena that share some common features. They are abstracted models in a Weberian sense, namely heuristic models that allow understanding some mechanisms that operate within a specific class of empirical phenomena. Because of their heuristic and pragmatic value, typifications are theoretical constructs that do not fully correspond to the empirical reality they aim at understanding (<a href="#willer1970">Willer and Webster 1970</a>). They are not a representation of all the possible empirical declinations of the class itself one can find in the reality. Accordingly to the idea of the Weberian "ideal type", typifications synthesize of "a great many diffuse, discrete, more or less present and occasionally absent <i>concrete individual </i>phenomena, which are arranged according to those one-sidedly emphasized viewpoints into a unified <i>analytical </i>construct" (<a href="#weber1904">Weber 1904</a>). 
+
+
+<p><dt><b><a name="3.9">3.9</a></b><dd>The principle is that more is the degree of distance of the typification with respect to all the empirical precipitates of the class it refers, the more convincing is the theoretical root of the model with respect to the empirical components of the class itself and its heuristic value for scientific inquiry. 
+
+
+<p><dt><b><a name="3.10">3.10</a></b><dd>This is basically what Max Weber, before others, has rightly emphasised when he wrote about the heuristic value of ideal types (<a href="#weber1904">Weber 1904</a>)<sup><a href="#fn2">[2]</a></sup>. Weber rightly argued that such a value does not come from the positive properties of case-based models we have briefly describe above, which are the level of richness and detail, the accuracy, precision, and veridicality. Such heuristic value comes from theoretical and pragmatic reasons.
+
+
+<p><dt><b><a name="3.11">3.11</a></b><dd>In this sense, the possibility of building a good typification has a fundamental pre-requisite: a huge amount of empirical observation and tentative theoretical categorisations, as well as good empirical literature in the field, to be already exploitable. This empirical and theoretical knowledge can be used to build the model and to choose the specific ingredients of the class to be included into the model.
+
+
+<p><dt><b><a name="3.12">3.12</a></b><dd>Here, the point is twofold, as we are going to further clarify in the next sections. The first one is that typifications imply different empirical validation strategies with respect to case-based models. The fact that the model maker is not confronted with a time-space circumscribed empirical phenomenon, but with a particular class of empirical phenomena implies to take up with a deeply different empirical validation challenge. Often, as we argue in the fourth section, case-based models can be an important part of a typification validation. The second point is that the reference to a specific class of empirical phenomena distinguishes typifications from "pure" theoretical abstractions. These last actually take into account abstracted theories about social phenomena that do not have a specific empirical reference, but a potential application to a wide range of different empirical situations and contexts.
+
+
+<p><dt><b><a name="3.13">3.13</a></b><dd>There are several examples of typifications in social science, and a few in ABMs, too. An ABM example is the industrial district model we have worked on in the last years (see: <a href="#squazzoni2002">Squazzoni and Boero 2002</a>; <a href="#boero2004">Boero, Castellani and Squazzoni 2004</a>). The model refers to industrial districts as a class of phenomena and incorporates a set of features that connotes the class itself, such as types of firms, complementarity-based division of functional labour, sector specialisation, production segmentation and coordination mechanisms, geographical proximity relations, and so forth.
+
+
+<p><dt><b><a name="3.14">3.14</a></b><dd>This model does not refer to a typification of an industrial system or an industrial cluster, that is to say to some theoretical constructs that can be theoretically considered quite close to industrial districts. This is because the model incorporates features that do not apply in the other cases. For instance, a complementarity-based division of labour among firms based on their geographical and social proximity is a feature of industrial districts as a class, but not a feature of industrial systems or industrial clusters as a class.
+
+
+<p><dt><b><a name="3.15">3.15</a></b><dd>At the same time, the model does not refer to an empirically circumscribed industrial district, such as, for example, the Prato textile industrial district, or the Silicon Valley industrial district. It is not a case-based model. Rather, it synthesises some general features of the class, without aiming at representing a particular precipitate of the class itself.
+
+
+<p><dt><b><a name="3.16">3.16</a></b><dd>Finally, the model does not aim at reproducing a general model of competition-collaboration among agents, which can shed light upon an issue that applies both to industrial districts, industrial clusters, network firms, and to a lot of different social contexts.
+
+<h4>Theoretical Abstractions
+</h4>
+<p><dt><b><a name="3.17">3.17</a></b><dd>Abstractions focus on general social phenomena. An abstraction is neither a representation of a circumscribed empirical phenomenon, nor a typification of a specific class of empirical phenomena. Rather, it is a metaphor of a general social reality, often expressed in forms of a typical social dilemma or situation. It works if it is as general and abstracted as to differentiate itself from any empirical situation, or any class of empirical phenomena. According to the definition given by Carley (<a href="#carley2002">2002</a>), if case-based models are "veridicality"-based models, aiming at reaching accuracy and empirical descriptions, theoretical abstractions are "transparency"-based models, aiming at reaching simplicity and generalisation.
+
+
+<p><dt><b><a name="3.18">3.18</a></b><dd>They often deal with pure theoretical aims, trying, for instance, to find new intuitions and suggestions for theoretical debates. They often lay upon previous modelling framework and are used to improve some limitations of previous theoretical models, as in the case of game-theory ABMs.
+
+
+<p><dt><b><a name="3.19">3.19</a></b><dd>Abstractions expressed by means of ABMs abound in social science. Examples can be found in game-theory-based ABMs (i.e., see: <a href="#axelrod1997">Axelrod 1997</a>, <a href="#axelrod2002">Axelrod, Riolo and Cohen 2002</a>; for an extensive review, see <a href="#gotts2003a">Gotts, Polhill and Law 2003a</a>), or in "artificial societies" tradition (i.e., see the reputation model described in <a href="#conte2002">Conte and Paolucci 2002</a>). Recently, some interesting reviews of this type of models have become available in social science journals (<a href="#macy2002">Macy and Willer 2002</a>; <a href="#sawyer2003">Sawyer 2003</a>).
+
+
+<p><dt><b><a name="3.20">3.20</a></b><dd>The reason of such a plenty is that some mechanisms, such as the relation between selfish individual behaviour and sub-optimal collective efficiency in social interaction contexts, have been studied for a long time and a huge tradition of formalised models already exists. It is evident, and often useful that social science proceeds with a path-dependence, gradually and incrementally developing formalised models that have been already established. Another reason of the plenty is that the mechanisms that are studied by means of these models can be found in many different empirical social situations. 
+
+<h4>Types in a Continuum
+</h4>
+<p><dt><b><a name="3.21">3.21</a></b><dd>As we said before, the different types of ABMs have to be thought not as discrete forms, but rather as a continuum. This implies to take into account the linkages between the model types, and, consequently, the quest of generalisation, as it is argued in the next section.
+
+
+<p><dt><b><a name="3.22">3.22</a></b><dd>To give a representation of the continuum between types, let us suppose to depict the taxonomy on a Cartesian plane, as in the left part of figure 1 (where C stands for case-based models, T for typifications and A for theoretical abstractions). The two axes of the plane allow to ideally representing a match between the richness of empirical detail of the target and the richness of detail reproduced into the model. Case-based models ideally show the highest level of target and model details, because they refer to a rich empirical reality and the model aims at incorporating such richness. Typifications are all the models in the grey area between case-based models and theoretical abstractions, because their reference to a class of empirical phenomena implies the loss of empirical details of all the possible sub-classes and empirical precipitates the class subsumes. 
+
+
+<p><dt><b><a name="3.23">3.23</a></b><dd>To clarify the point, let us suggest an example, as in the right part of figure 1. Let us suppose that the model maker is interested in studying fish markets. A first possibility is that the model maker would like to study a particular real one, like the one of Marseille, France (M in the figure - a detailed work on that market has been reported in <a href="#kirman2000">Kirman and Vriend 2000</a>; <a href="#kirman2001">2001</a>). In this case, the model would be a case-based model, aiming at reproducing the functioning of that market, with a rich level of details, both at level of model and target, so that the idiosyncratic features of that market would be deeply understood.
+
+
+<p><dt><b><a name="3.24">3.24</a></b><dd>A second possibility is that, according to theoretical literature and to some previous empirical case-studies conducted in the field, which allow to have empirical evidence or well known stylised facts, the model maker supposes that some fish markets belong to the same class of phenomena, that is to say that all those markets share some similar features. In this case, the model would be a typification, aiming at capturing, let us suppose, the common features of all the fish markets which characterise, for example, the French Riviera (FR in the figure), or the Mediterranean Sea (MS) or the world (W). The passage from M to W, through FR and MS, would imply an increasing generalisation of the contents of the model, as well as a loss of richness of target and model details. For instance, the specific features of the M model would be not wholly found in FR model, while those of the FR model would be not wholly found in the MS model, and so forth. Moreover, the W model would contain the common features of all the fish markets as a class, that is to say something more, something less or something else with respect to the case of M, namely a specific empirical precipitate of the class, or with respect to FR, or MS, namely two sub-classes of the class itself that show different degrees of empirical extension.
+
+
+<p><dt><b><a name="3.25">3.25</a></b><dd>Finally, a third possibility is that the model maker decides to work on a more abstract model, so that the model allows understanding the characteristics of the auction mechanism which is embedded in most fish markets. This institutional setting, the Dutch auction (DA in the figure), works in many other social contexts. It can be thought as a wide range social institution with generalised properties and extensions. In this case, the model would aim at studying such institution to show, for example, its excellent performance in quickly allocating prices and quantities of perishable goods as fish. It is evident that the model will be taken as simplified and theoretically pure as possible, with no direct reference at all to empirical concrete situations.
+
+
+<p><dt><b><a name="3.26">3.26</a></b><dd>It is worth to underline how the previous example does not imply the embracing of a particular fixed research path<sup><a href="#fn3">[3]</a></sup>. A model maker can build theoretical abstractions without having built before any typification or case based model and vice versa. It is also possible to build a typification which does not refer to a class of time-space circumscribed phenomena, as in the famous example of the Weberian bureaucracy ideal type. Finally, it is obvious that empirical cases are not randomly selected, but are the product of the model maker's choice. 
+
+<p><center>
+<a name="fig1"></a><table border=0 cellspacing=2 cellpadding=1>
+<tr align="Center" valign="Middle"><td>
+<img src="6/image002.gif" width="484" height="239" border="0" alt="Figure 1">
+</td></tr>
+<tr align="Center" valign="Middle"><td>
+<b>Figure 1</b>. A representation of ABMs taxonomy according to target and model richness of empirical detail (on the left), and the example of fish markets (on the right)
+</td></tr></table>
+</center><p>
+
+
+
+
+<p><dt><b><a name="3.27">3.27</a></b><dd>Just as a clarification, and supposing to be following a path towards generalisation, let us come back to the previous example. Suppose that a model maker, after a case-based model on the Marseille fish market, would try to generalise some theoretical evidences founded in that case. As the literature on case studies generalisation suggests, this is a difficult undertaking, where there is not a general method. 
+
+
+<p><dt><b><a name="3.28">3.28</a></b><dd>One of the traditional ways of generalising empirical case studies is to use "methods of scientific inference also to study systematic patterns in similar parallel events" (<a href="#king1994">King, Verba and Keohane 1994</a>). This is what is done in statistical research: generalising from the sample to the universe, trying to test the significance of particular findings with respect to the universe. But, empirical case studies profoundly differ from statistical surveys. The problem of the heterogeneity of similar cases in the reality and the relation between well known cases and unknown cases is usually tackled with a careful selection of cases with respect to the entire reference universe. In fact, from a scientific point of view, as Weber (<a href="#weber1904">1904</a>) rightly argues, cases are nothing but a synonymous for instances of a broader class. The selection can be done just under empirical and theoretical prior knowledge and following some theoretical hypotheses. This is why typification models can be useful. As we are going to suggest, the broader class that is the reference universe of a case-based model can be intended both as a class that groups together time-space circumscribed empirical phenomena of the same type (as in the example of fish markets), and, at the same time, as a class that groups together empirical phenomena of a different type that share some common properties.
+
+
+<p><dt><b><a name="3.29">3.29</a></b><dd>To clarify the last point, let us suppose that, instead of undertaking an attempt of generalisation by considering other seaside fish markets to find features which can be similar to those of Marseille case-based model, the model maker considers to study fresh food products (e.g., markets selling fruits, vegetables and meat, wherever their location), or completely different perishable goods (for instance markets where some chemical compounds are sold), and so forth. This is a generalisation strategy that has a different empirical reference target with respect to the first example we began.
+
+
+<p><dt><b><a name="3.30">3.30</a></b><dd>Such further example testifies the two following conclusions: the choice of the classes of phenomena to be considered is not closely related to the classification, but to the model maker's research path, and the classification is not a bound to research but is a concept useful for dealing with empirical data, as better explained in the following paragraph.
+
+
+
+</dl><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* ">Empirical Calibration and Validation Strategies
+</h3><dl compact>
+
+<dt><b><a name="4.1">4.1</a></b><dd>As we have outlined in the introduction, the quest of empirical calibration and validation can be approached just in terms of possible and multiple strategies. This is because there is not a unique method yet. There are just some examples that can be used as best practices to be extended, or as a suggested and tentative to-do list.
+
+<h4>Case-based Calibration and Validation
+</h4>
+<p><dt><b><a name="4.2">4.2</a></b><dd>As said before, case-based models are empirical models in their first instance. Usually, finding aggregate data about a specific time-space circumscribed empirical phenomenon is a not so difficult undertaking. More difficult is to figure out a good strategy for micro-level data gathering. As we argued in the second section, there are different tools to obtain first hand empirical data on a target, such as experimental, stakeholder, qualitative and quantitative methods.
+
+
+<p><dt><b><a name="4.3">4.3</a></b><dd>We selected two good examples about finding and using empirical data in ABMs literature. The first one is the Anasazi model (<a href="#dean2000">Dean et al. 2000</a>), a historical phenomenon simulation created by a multidisciplinary research team at Santa Fe Institute. It is a good example on how reproducing historical phenomena with case-based models, by creating realistic representation of environment and populations, mixing different types (quantitative and qualitative) and different sources of empirical data. The second one is the model of domestic water demand recently described by Moss and Edmonds (<a href="#moss2005">2005</a>). This second is a good example of what a stakeholder approach to empirical data means. They can be viewed as first examples of possible best practices to be further broaden. They are discussed below.
+
+
+
+<h5>The Anasazi Example
+</h5>
+<p><dt><b><a name="4.4">4.4</a></b><dd>The model is the outcome of the Artificial Anasazi Project, which has been the first exploratory multidisciplinary project on the use of ABMs in archaeology and is mostly considered as a best practice in the field (<a href="#ware1995">Ware 1995</a>, <a href="#gumerman1996">Gumerman and Kohler 1996</a>). The overall goal of the project was to use ABMs as analytical tools to overcome some traditional problems in the field of evolutionary studies of prehistoric societies, such as the tendency of adopting a "social systems" theoretical perspective, which implies an overemphasizing and a reification of the systemic properties of these societies, the exclusion of the role of space-time as a fundamental evolutionary variable, and the tendency of conceiving culture as a homogenous variable, without paying the due attention to evolutionary and institutional mechanisms of transmission and inheritance of cultural traits.
+
+
+<p><dt><b><a name="4.5">4.5</a></b><dd>The background is a multidisciplinary study of a valley in north eastern Arizona, where an ancient people, the Anasazi<sup><a href="#fn4">[4]</a></sup>, had lived until 1300 A.D. Anasazi were the ancestors of the modern Pueblo Indians, and they inhabited the famous Four Corners (between southern Utah, south western Colorado, north western New Mexico, and northern Arizona). In the time period between the last century B.C. and 1300 A.D., they supplemented their food gathering with maize horticulture and they evolved a culture of which we actually can appreciate ruins and debris. Houses, villages and artefacts (ceramics, and so on) are the nowadays testimony of their culture. Modern archaeological studies, based on the many different sites left on the area, stress the mysterious decline of that people. In fact the ruins testify the evolution of an advanced culture, stopped and erased in few years, without violent events such as enemy invasions. 
+
+
+<p><dt><b><a name="4.6">4.6</a></b><dd>The goal of the model is to shed light on the following question: why Anasazi community, after a <i>long dur&eacute;e </i>evolution, characterised by stability, growth and development, is disappeared in a few years?
+
+
+<p><dt><b><a name="4.7">4.7</a></b><dd>The research focused on a particular area inhabited by Kayenta Anasazi, the so called Long House Valley in north eastern Arizona. That area has been chosen by model makers both because of its representativeness, its topographical bounds, and the quantity and the quality of available scientific data both on socio-cultural and demographic and environmental aspects.
+
+
+<p><dt><b><a name="4.8">4.8</a></b><dd>An ABM allows building a "realistic" environment, based on detailed data, and considering anthropologically coherent agents' rules<sup><a href="#fn5">[5]</a></sup>. The model aims to reproduce a complex socio-cultural empirical reality, and to check if "the agents' repeated interactions with their social and physical landscapes reveal ways in which they respond to changing environmental and social conditions" (Dean et al. 2000). As Gumerman et al. (<a href="#gumerman2002">2002</a>) suggest, "systematically altering demographic, social, and environmental conditions, as well as the rules of interaction, we expect that a clearer picture will emerge as to why Anasazi followed the evolutionary trajectory we recognize from archaeological investigation". To use a well known reference (<a href="#gould1972">Gould and Eldredge 1972</a>), the analytical challenge of Anasazi evolutionary trajectory is conceptually condensable in the overall idea of  "punctuated equilibria".
+
+
+<p><dt><b><a name="4.9">4.9</a></b><dd>To sum up the quest of empirical data used, it is worth to outline that around 2000 B.C., the introduction of maize in the Long House Valley started with the Anasazi presence. The area is made by 180 km2 of land. For each hectare, and for each year in the period lasting from 382 A.D. to 1450 A.D., a quantitative index capable of representing the annual potential production of maize in kilograms has been extracted from data. 
+
+
+<p><dt><b><a name="4.10">4.10</a></b><dd>The process for finding a realistic "fertility" index to be included into the model has been quite challenging. The index was the main building block the model makers used to create a realistic "production landscape". The index has been calibrated on the different geographical areas within the valley and created by using a standard method to infer production data from data on climate (the so-called Palmer Drought Severity Indices) and by completing it with data on other elements, such as the effect of hydrologic curve and aggradation curve. Some elements which the paleoenvironmental index considers are the soil composition, the amount of rain received and the productivity of the species of maize available in the valley at that time. Obviously the process, made for each hectare and each year, involved many sources from dendroclimatic, soil, dendroagricultural and geomorphological surveys, using high level technologies (for a detailed description, see Dean et al. 2000)<sup><a href="#fn6">[6]</a></sup>.
+
+
+<p><dt><b><a name="4.11">4.11</a></b><dd>Following this approach, a description of the whole valley has been created and reproduced into the model, so that really happened production opportunities and a realistic environment have been mimicked<sup><a href="#fn7">[7]</a></sup>, ready to test  hypotheses on agents.
+
+
+<p><dt><b><a name="4.12">4.12</a></b><dd>In fact, agents have been introduced, following different hypotheses on their attributes. Here, we focus on the smallest social unit, individual households, who have heterogeneous and independent characteristics such as age, location, grain stocks, while sharing the value of death age and nutritional need. Demographic variables, nutrition needs and attributes and rules of household building have been taken from previous empirical bio-anthropological, agricultural and ethnographic analyses (for details, see <a href="#dean2000">Dean et al. 2000</a>). Moreover, households identify both "residential" settlement and farming land. Residential settlements are modelled according to empirical evidences on the famous "pithouses" we can see nowadays in different areas of New Mexico. They include: five rooms, five individuals, and a matrilineal regulatory institution.
+
+
+<p><dt><b><a name="4.13">4.13</a></b><dd>Household consumption is fixed on 800 kilograms per year, which is a proxy of data on individual consumption (160 kilograms per year for each household member). Maize not consumed is assumed to be storable two years at most. Households can move, can be created, and can die. To calculate the possible fission of households, the model makers assume that households can get old until 30 years at most and that once a household member is 16 years old there is a 0.125 possibility of creating a new household, thanks to a marriage. Such a probability allows synthesizing different conditions as follows: the probability of a presence of sons in a household, time needed to allow sons to grow; possibility that a female meets a partner, has a child and gives rise to a new household.
+
+
+<p><dt><b><a name="4.14">4.14</a></b><dd>Households have the capacity of calculating the potential harvest of a farmland, identifying other possible farmlands, and selecting them, checking if the selected hectare is unfarmed, uninhabited and it is able to produce at least 160 kilograms per year for each household member. In a similar way, residential areas are chosen if unfarmed, if less than 2 kilometres far, and less productive than the selected farmland. Finally, as a closure, if more residential sites match the criteria, the one with the closest access to domestic water is chosen.
+
+
+<p><dt><b><a name="4.15">4.15</a></b><dd>Nutrition determines fertility and then population dynamics. The environmental landscape allows to reproduce the main different periods in the valley, with a sharp increase of productivity around A.D. 1000, a deterioration around A.D. 1150, an improvement until the end of the 1200s when starts the so called "Great Drought". 
+
+
+<p><dt><b><a name="4.16">4.16</a></b><dd>To sum up, the question is: "can we explain all or part of local Anasazi history- including the departure- with agents that recognize no social institutions or property rights (rule of land inheritance) or must such factors be built into the model?" (<a href="#dean2000">Dean et al. 2000</a>).
+
+
+<p><dt><b><a name="4.17">4.17</a></b><dd>The simulation starts at A.D. 400 with the historical number of households, randomly positioned. It shows great similarity with real data. Simulation is able to replicate localization and size of real settlements. Moreover, in archaeological record, hierarchy and clustering are strictly correlated. In the simulation, hierarchy, even if not directly modelled, can be inferred from clustering. Interesting evidence is that aggregation of households into concentrated clusters emerges when environmental fluctuations are of low intensity. On the contrary, time periods in which there are higher levels of rain, plenty of streams, and higher ground moisture, allow the growth of dispersion of households, to exploit new possibilities of maize horticulture. In sum, simulation shows that Anasazi population is able to generate a robust equilibrium at the edge of concentration-dispersion of household settlements and low-high frequencies of environmental variability.
+
+
+<p><dt><b><a name="4.18">4.18</a></b><dd>In the period between 1170 and 1270, Anasazi population begins to move to the southern area of the valley, because of the erosion and lowering of phreatic surface (which is an empirical evidence introduced into the model). Despite the empirical evidence about the Anasazi departure around 1270, in the simulated environment Anasazi left completely the valley just around 1305. Over the simulation, different low density settlements resist to the environmental challenge and even grow in the meantime. The evidence is that, despite the embitterment of environmental conditions in the period of the so-called "Great Drought", Anasazi still were in a sustainable regime of environmental possibilities and constraints. A movement towards north areas and a dis-aggregation of clustering settlements were enough to survive in the valley.
+
+
+<p><dt><b><a name="4.19">4.19</a></b><dd>This solution of replacing production and creating more small settlements with much less population has been really implemented in other Anasazi areas, as suggested by Stuart (<a href="#stuart2000">2000</a>). But, history teaches us that Anasazi completely left the valley in those critical few years. Perhaps, social ties or complex reasons related to power and social structure of Anasazi community, not yet considered in the model, were the reason for that choice. The model makers in fact conclude that "the fact that in the real Long House Valley, the fraction of the population chose not to stay behind but to participate in the exodus from the area, supports the assertion that socio-cultural 'pull' factors were drawing them away from their homeland [&hellip;] The simple agents posited here explain important aspects of Anasazi history while leaving other important aspects unaccounted for. Our future research will attempt to extend and improve the modelling, and we invite colleagues to posit alternative rules, suggest different system parameters, or recommend operational improvements" (<a href="#dean2000">Dean et al. 2000</a>).
+
+
+<p><dt><b><a name="4.20">4.20</a></b><dd>In conclusion, this case-based model is a good example of empirical data-based ABM. The empirical target has time-space circumscribed dimensions. The goal is to understand a particular history. The mean is a realistic model able to mimic historical evolution. Qualitative and quantitative, direct and indirect empirical data are used to build the model as accurately as possible with respect to the target. There is not a typification behind, but model makers proceed on the ground, trying to exploit available empirical and theoretical knowledge. Theoretical findings of the model show that adaptive settlements, movement across space, replacing production and creating small settlements were a possible way of tackling environmental challenges in the case of Anasazi in the Long House Valley. To generalise these findings, model makers should be able to compare that particular history of Anasazi in the Long House Valley with other stories of the same kind, both with Anasazi cases in other areas, or with other populations in similar environmental conditions, as suggested by Stuart (<a href="#stuart2000">2000</a>).
+
+
+
+<h5>The Water Demand Model
+</h5>
+<p><dt><b><a name="4.21">4.21</a></b><dd>The second example we focus on is the water demand model described by Moss and Edmonds (<a href="#moss2005">2005</a>). It is a model intended to directly deal with some methodological issues, such as the importance of empirical calibration and validation of simulation via stakeholder approach and the need of a generative model to understand empirical statistical properties.
+
+
+<p><dt><b><a name="4.22">4.22</a></b><dd>The example refers to the role of social influence in water demand patterns. From a theoretical point of view, such a role can be investigated just if heterogeneity at micro level can be assumed. As we have argued before, such a property can be formalised just with ABMs.
+
+
+<p><dt><b><a name="4.23">4.23</a></b><dd>From a methodological perspective, the point is that such a model allows taking into account empirical data on behaviour, so that aggregate macro empirical time series can be appropriately generated by the simulation. The goal of the authors was clearly a methodological one: to demonstrate how the explanation of the macro statistical analysis of an outcome can be deeply improved by a model able to take explicitly into account a social generative process. As the authors argue, if the model allows generating leptokurtic time series with clustered volatility that can be compared with empirical data on domestic water consumption, just a causal model can allow explaining the emerging aggregate statistics.
+
+
+<p><dt><b><a name="4.24">4.24</a></b><dd>The model has been intentionally designed to capture empirical knowledge by stakeholders, in particular the "common perceptions and judgements of the representatives - the water industry and its regulators - regarding the determinants of domestic water consumption both during and between droughts in the UK"<sup><a href="#fn8">[8]</a></sup>.
+
+
+<p><dt><b><a name="4.25">4.25</a></b><dd>The first version of the model has been constructed with a little feedback from stakeholders. It was intended to demonstrate the role of social influence in reducing domestic water consumption during periods of droughts. Stakeholders criticized this first version, focussing on the point that, when a drought ended, aggregate water consumption immediately returned to its predrought levels. The second version was designed to address this deficiency, introducing more sound neighbourhood-based social influence mechanisms and the fact that evidence shows a decay function of such an influence over time.
+
+
+<p><dt><b><a name="4.26">4.26</a></b><dd>Cognitive, behavioural and social aspects of the model can be summarised in the idea that agents decide what to do about water consumption by learning over time and by being influenced by other neighbouring agents and institutional agents. Institutional agents issue suggestions to other agents, by monitoring aggregate data. These aspects are all modelled both according to theoretical hypotheses and empirical evidences. Moreover, the model also embodies a sub-model, where empirical knowledge about hydrological issues has been introduced, so that the occurrence of droughts from real precipitation and temperature data can be simulated.
+
+
+<p><dt><b><a name="4.27">4.27</a></b><dd>The simulation data show some interesting features, from the statistical point of view, which can be explained on the basis of the ABM behind. As the authors outline, most of the forms time-series data show are the results of underlying social processes and a consequence of generative mechanisms put into the model, such as social embeddedness, the prevalence of social norms, and individual behaviour. As Coleman argues in his famous critics on the parameter and variables sociology (1990), this is the main difference between descriptive statistics and generative models. As Moss and Edmonds (<a href="#moss2005">2005</a>) accordingly argue, "conflating the two can be misleading".
+
+
+<p><dt><b><a name="4.28">4.28</a></b><dd>In this view, participatory models are an important way to cross the bridge between statistical empirical data and generative theoretical models. Empirical observation of "how processes actually occur should take precedence over assumptions about the aggregate nature of the time series that they produce. That is, generalization and abstraction are only warranted by the ability to capture the evidence. Simply conflating descriptive statistics with a (statistical) model of the underlying processes does not render the result more scientific but simply more quantitative".
+
+
+<p><dt><b><a name="4.29">4.29</a></b><dd>In conclusion, this second case-based model differs from the first one. In this case, the goal of model is not intended to shed light on a particular historical evolution, but is intended to support methodological issues about the importance of an empirical foundation of generative models able to understand macro empirical statistical properties. What is important here is that empirical foundation is done by mixing statistical data and a participatory method. This last is a "direct strategy" for empirical data gathering that was manifestly unavailable in the Anasazi case.
+
+
+
+
+
+<h4>The Case of Typifications
+</h4>
+<p><dt><b><a name="4.30">4.30</a></b><dd>As we stressed before, typifications are theoretical artefacts focused on a particular class of phenomena. In typifications, the relationship between the model and the empirical data is even more difficult than in case-based models, particularly when referring to data for the micro calibration of the model.
+
+
+<p><dt><b><a name="4.31">4.31</a></b><dd>The main issue here is the fact of considering a class of phenomena, and not just an instance of the class, as the modelling target. As in the example about fish markets mentioned before, it is clear how there is less probability to find aggregate data of all the French Riviera fish markets than to find them for just a single case (e.g. Marseille), as well as it is more expensive to collect them in the first case. Such problematic issue can be even more challenging if we do not take into account aggregate data for the macro validation process (e.g., the average weekly price dynamics), but micro data for calibrating model components (e.g. the average percentage of buyers who are restaurant managers). The difficulty rises when qualitative data are taken into account. It is in fact easier to find and collect a description of subjects' behaviour for a single case than for a whole class.
+
+
+<p><dt><b><a name="4.32">4.32</a></b><dd>Such bounds to data availability and collection costs are the reason why typifications mostly lay upon theoretical analyses and second-order (un-direct) empirical data, which are available for some well known classes of phenomena.
+
+
+<p><dt><b><a name="4.33">4.33</a></b><dd>Despite those difficulties, typifications are useful for understanding widespread phenomena, and they can often be empirically calibrated and validated. To testify the first claim (i.e., the usefulness of typification) we report as example the Fearlus model, which allows understanding how a typification can address several different questions related to a class of phenomena and how its flexibility can be exploited to analyse similar classes of phenomena. To show a possible procedure for empirically calibrating a typification, we further illustrate the example about industrial districts we cited before.
+
+
+<h5>The Fearlus Model
+</h5>
+<p><dt><b><a name="4.34">4.34</a></b><dd>The Fearlus (Framework for Evaluation and Assessment of Regional Land Use Scenarios) model has been developed at the Macaulay Institute of Aberdeen to simulate issues related to land use management.
+
+
+<p><dt><b><a name="4.35">4.35</a></b><dd>With the aim of answering research questions related to rural land use change, the model structure is composed by a two dimensional space divided in land parcels, a set of land uses with different values of yield, and a set of decision makers, that is to say land managers able to carry on social interactions (for instance, information sharing).
+
+
+<p><dt><b><a name="4.36">4.36</a></b><dd>The model has to be considered as a typification because it allows capturing the main mechanisms and actors which determine land use change, and, at the same time, it allows a high degree of flexibility to make the model locally adaptable to undertake particular case-studies.
+
+
+<p><dt><b><a name="4.37">4.37</a></b><dd>In fact, the model components and their features can be fixed according either to some theoretical hypotheses or empirically grounded knowledge. For instance, considering the land space as a flat grid, where each parcel is of the same size and of the same climate and soil composition, and assuming randomly determined yields dynamics and land prices permit to study land managers behaviour and its impact on land scenarios in a general way, not bounded by spatially determined peculiarities.
+
+
+<p><dt><b><a name="4.38">4.38</a></b><dd>The target is therefore a class of phenomena: the rural presence of land parcels owned and managed by small land owners which yearly face the choice of their land parcels use. The typification is exploited as a mean for showing the environmental conditions which make non-imitative or imitative behaviour preferable for land managers (see <a href="#polhill2001">Polhill, Gotts and Law 2001</a>), for comparing the outcome of different imitative strategies (<a href="#gotts2003">Gotts, Polhill, Law and Izquierdo 2003</a>), and, finally, for investigating the relationship between land managers aspiration thresholds and environmental circumstances (<a href="#gotts2003b">Gotts, Polhill and Law 2003b</a>).
+
+
+<p><dt><b><a name="4.39">4.39</a></b><dd>As the reader can note, the kind of questions such a model allows to address affects the whole class of phenomena considered. This evidence calls for the creation of a typification model, because a case-based model would answer those questions with very bounded and specific conditions.
+
+
+<p><dt><b><a name="4.40">4.40</a></b><dd>Moreover, scholars working with the Fearlus model have worked in the continuum of the typification space. In fact, in the direction of case-based models, they have adapted Fearlus to a more specific problem even if not case-based, as explained in Izquierdo, Gotts and Polhill (<a href="#izquierdo2003">2003</a>). Focussing on the problem of water management, the model has been adapted to consider the problem of water management and pollution together with land use management. The result is a model of river basin land use and water management, considering social ties among actors, water flows on the spatial dimension and so forth. Validating the model with stakeholders, the new version of Fearlus (called Fearlus-W) is used to "increase our understanding of these complex interactions and explore how common-pool resource problems in river basin management might be tamed through socio-economic interactions between stakeholders (primarily rural land managers), and through management strategies aimed at shaping these interactions" (<a href="#izquierdo2003">Izquierdo, Gotts and Polhill 2003</a>). In other words, the case of general rural land use scenarios has been bounded to the case of scenarios of river basins.
+
+
+<p><dt><b><a name="4.41">4.41</a></b><dd>Finally it is worth to note that Fearlus has been used also for more theoretical and methodological issues. The fact of being a typification has in fact made possible the comparison of the model features and results with GeoSim, a model of military conflicts among states. The idea was to compare these two models, coming from different fields, in order to understand their structural similarities and differences, and to allow cross fertilisation between them (<a href="#cioffi-revilla2003">Cioffi-Revilla and Gotts 2003</a>). Furthermore, the typification has allowed some deep analyses of its internal structure, as in Polhill, Izquierdo and Gotts (<a href="#polhill2005">2005</a>), where the effects of Floating Point Arithmetic used by programming languages are critically presented in connection with model results.
+
+
+<h5>The Industrial District Model
+</h5>
+<p><dt><b><a name="4.42">4.42</a></b><dd>Coming back to typification empirical calibration and validation issues, it is useful to reflect again upon the case of industrial districts. This case has recently attracted a growing attention of ABM scholars. Apart from the work we have done in last years (<a href="#squazzoni2002">Squazzoni and Boero 2002</a>; <a href="#boero2004">Boero, Castellani, Squazzoni 2004</a>), it is worth to remember: the Prato textile Italian industrial district model by Fioretti (<a href="#fioretti2001">2001</a>), an example of a "case-based model" realised to understand historical change of competition strategies of the district in last decades; the Silicon Valley model by Zhang (<a href="#zhang2003">2003</a>); Brenner (<a href="#brenner2001">2001</a>); Albino, Carbonara and Giannoccaro (<a href="#albino2003">2003</a>); Brusco et al. (<a href="#brusco2002">2002</a>), who have used a cellular automata modelling approach to study interaction patterns among localised firms through a typification; and more recently Borrelli et al. (<a href="#borrelli2005">2005</a>). These are example of a growing literature on computational approach to industrial districts that has found a theoretical systematisation in an important contribution by Lane (<a href="#lane2002">2002</a>).
+
+
+<p><dt><b><a name="4.43">4.43</a></b><dd>In this case, the starting point was the huge body of empirical and theoretical studies already conducted in the field in the last 30 years. For instance, it is known that industrial districts are evolutionary networks of heterogeneous, functionally integrated, specialised and complementary firms, which are clustered into the same territory and within the same industry. As it is well known, both by empirical and statistical surveys, they constitute a fundamental bone structure of Italian manufacturing system. An extensive empirical case-based and statistical literature allowed us to identify a set of building blocks, which are ingredients that belong to the class (<a href="#squazzoni2002">Squazzoni and Boero 2002</a>; <a href="#boero2004">Boero, Castellani, Squazzoni 2004</a>). 
+
+
+<p><dt><b><a name="4.44">4.44</a></b><dd>Let us remember the first four building blocks just as an example: 
+
+
+<ol type=i><li>huge number of small firms clusterised in the same territory;
+<li>different types of firms according to the division of labour;
+<li>specialised complementary-based production chains that link firms together;
+<li>informal coordination and hierarchical/horizontal information flow among firms.
+</ol>
+
+
+These building blocks can be sustained by empirical data and accordingly calibrated. The first one i) can be inferred by statistical surveys on the agglomeration of firms across space. Referring to the Italian economy, this is a considerable statistical evidence about it, from which it is inferred and monitored (also for policy making reasons) the number of old and new industrial districts over time. The evidence is that agglomeration is a typical ingredient of industrial districts formula. The second one ii) can be empirically inferred by different quantitative surveys that allow to classify firms according to the types of good they produce (final, intermediate, phase, raw materials, and so on). A great variety of types of firms is the second typical ingredient of industrial districts. The third one iii) is usually inferred by empirically reconstructing the production flow, by interviewing entrepreneurs or managers. The last one iv) can be derived by empirical surveys on the absence of formal registered contracts and protocols, and the predominant use of traditional communication tools as coordination scaffolds.
+
+<p><dt><b><a name="4.45">4.45</a></b><dd>Some of these data can be acquired by second-hand sources (statistical surveys by government institutions, foundations, or local entrepreneurs' associations). Others, often the more qualitative ones, can be acquired through first-hand sources.
+
+
+<p><dt><b><a name="4.46">4.46</a></b><dd>Another point is that it is also possible to infer if there are different morphologies within the same class and to identify different representative empirical cases, according to the absence of some typification building blocks or to different features between the different representative cases. For instance, in the case of Italy, it is usual to consider the case of Prato industrial district and the case of Northeast districts as different morphologies of the class. The first one shows huge number of small firms, flattered inter-firm networks, Marshallian externalities-based growth, and so on, while the second ones show presence of middle-big firms, internal paths of growth, hierarchical and more formalised networks, and so on (<a href="#belussi2000">Belussi and Gottardi 2000</a>; <a href="#belussi2003">Belussi, Gottardi and Rullani 2003</a>). These two examples can be considered, and usually they are, extreme morphologies of the class.
+
+
+<p><dt><b><a name="4.47">4.47</a></b><dd>A particular characteristic of this class is that empirical case-studies and theories abound, while less attention has been paid on formalising models to tests theoretical hypotheses. With this respect, a typification can allow to find out ways of testing theories usually developed in the field, or to deepen our understanding about the basic properties and relations among mechanisms that lie behind the class. For instance, a question can be the understanding of the relation between the different representative morphologies of the class and the features of the environment in which they are embedded: is the Marshallian-like industrial district sub-class (such as Prato) an appropriate organisational formula to cope with a stable technology and market environment, while a network-centred district a good formula to cope with instable environments?
+
+
+<p><dt><b><a name="4.48">4.48</a></b><dd>In conclusion, one of the main challenging questions here is exactly the relation between case-based models and typifications. As Weber (<a href="#weber1904">1904</a>) rightly argued, typifications are needed to do scientific research with case-based models. But, referring to a case-based model, they are theoretical means that can be used to build the case-based model, whereas, in the case of typification, they are the model target itself. 
+
+
+<p><dt><b><a name="4.49">4.49</a></b><dd>Typifications can be used to embed a case-based model into a wider theoretical reference, so that a possible case generalisation is supported, or vice versa: the case, if it is selected to be representative of the class or of some important sub-classes, can be used to have an empirical test for the typification, so that a deepening of the theoretical completeness of the typification is possible. 
+
+
+<p><dt><b><a name="4.50">4.50</a></b><dd>This second way was explored, for example, by Norbert Elias in his famous model of the court society (<a href="#elias1969">Elias 1969</a>). The case of the French court society is chosen as an instance of the typification model of civilising process in Western societies developed in Elias (<a href="#elias1939">1939</a>). The theoretical mechanism under investigation is the role of social interdependence, behavioural <i>habiti</i> and new forms of power competition in shaping particular configurations of modern social life. It is chosen because of its representativeness with respect to the entire class. The idea is that what happened in French court society is found to be also reflected in other <i>Ancien R&eacute;gime </i>court societies in Europe. 
+
+
+<p><dt><b><a name="4.51">4.51</a></b><dd>In the best case scenario, the outcome of such a process, let this begin with a case-model or a typification, is intended to generate what Merton called a "middle range theory" (<a href="#merton1949">Merton 1949</a>), that is to say an empirically grounded theory able to allow the organisation and possibly the generalisation of theoretical knowledge about specific social mechanisms operating in the empirical reality.
+
+
+
+<h4>The Case of Theoretical Abstractions
+</h4>
+<p><dt><b><a name="4.52">4.52</a></b><dd>Theoretical abstractions refer to general social mechanisms with no reference to a space-time circumscribed empirical reality. They are mostly used as theoretical tests for implication analyses, as well as an extension of some previous theoretical or modelling frameworks, such as in the case of game-theory ABMs. They are tools to shed light about some theoretical hypotheses, illustrate some new intuitions or ideas, develop modelling frameworks, as well as to test theoretical consistency of hypotheses.
+
+<p><dt><b><a name="4.53">4.53</a></b><dd>This is to say that theoretical abstractions can have a value per s&eacute;. Often, they allow addressing some topics that can not be empirically understandable. For instance, ABMs of cooperation and social order are used to support a theoretical understanding and explanation of the role of long time evolution and complex interaction structures for the emergence of robust cooperation regimes over time, or to understand some minimal conditions, in terms of social contexts and institutional frameworks, for cooperation to be generated and protected (<a href="#axelrod1997">Axelrod 1997</a>). It is often impossible to understand the role of evolution in empirical controlled experiments.
+
+
+<p><dt><b><a name="4.54">4.54</a></b><dd>At the same time, it is worth to remember that the most famous theoretical abstractions in ABMs literature, such as the game-theory ABMs popularised by Axelrod (<a href="#axelrod1984">1984</a>; <a href="#axelrod1997">1997</a>) and the segregation model by Schelling (<a href="#schelling1971">1971</a>), the first one being so far the reference for social order models, while the second for models of micro-macro emerging dynamics (<a href="#macy2002">Macy and Willer 2002</a>), and which usually serve as general references, frameworks and inspiration sources for other model makers, were built according to a strong empirical knowledge foundation. 
+
+
+<p><dt><b><a name="4.55">4.55</a></b><dd>Models and theoretical foundations summarised in Axelrod (<a href="#axelrod1984">1984</a>) have been cumulatively built upon an extensive empirical analysis about strategies of behaviour in interaction contexts, as well as on a search for empirical salience in different fields of research, from biology to political sciences, which have been a source of discovering of the famous TIT-for-TAT strategy and a theoretical and methodological heuristic for subsequent modelling experiments and theoretical extensions. It was due to the famous round-robin computer tournament between social scientists (enlarged in the second instance to include nonspecialist entrants) that TIT-for-TAT, originally submitted by Anatole Rapoport, was discovered as the most successful strategy, being its robust success due to its combination of niceness, retaliation, forgiveness and clearness (<a href="#hoffmann2000">Hoffmann 2000</a>).
+
+
+<p><dt><b><a name="4.56">4.56</a></b><dd>As Hoffmann (<a href="#hoffmann2000">2000</a>) reminds, in a recent revisitation of Axelrod-inspired debates, after being delimitating some empirical grounded theoretical findings, Axelrod simulated a learning process by allowing a replicator dynamic to change the representation of tournament strategies between successive generations according to relative payoffs, with the result that, after one thousand generations, reciprocating cooperators accounted for about 75% of the total population, and with TIT-for-TAT displaying the highest representation among all. After that, Axelrod used a genetic algorithm application to simulate learning and evolution, generating the emergence of strategies that closely resembled TIT-for-TAT (<a href="#axelrod1997">Axelrod 1997</a>). Subsequent work by Axelrod has been focussed on the analysis of emergence and robustness of cooperation regimes, on the role of social structures in preserving cooperation regimes, and on a deepening of the quest of minimal conditions for the emergence of cooperation regimes through theoretical abstractions via ABMs (i.e.: <a href="#axelrod2002">Axelrod, Riolo and Cohen 2002</a>).
+
+ 
+<p><dt><b><a name="4.57">4.57</a></b><dd>Here, the point is not on discussing theoretical appropriateness and generalisability of Axelrod findings. Here, the point is that Axelrod's work is a demonstration of the utility of experimental data and empirical knowledge to support theoretical abstractions.
+
+
+<p><dt><b><a name="4.58">4.58</a></b><dd>About the same applies to Schelling's segregation model, too. Schelling started with an intriguing theoretical challenge that emerged from sound empirical evidences. Are segregation patterns that we observe in empirical reality in most of the American urban contexts an emerging property from simple and relatively tolerant threshold preference functions at micro level? If we assume that people tend to locally respond and adapt to choices given by their neighbours, that is to say if we assume a local interaction structure characterised by social interdependence, can a qualitative different macro outcome emerges over time? A formalised model was used to address the quest, embedding the segregation empirical example in a set of other similar examples about the complex relation between micro motives and macro behaviour, which now are summarised under the category of "tipping point" mechanisms.
+
+
+<p><dt><b><a name="4.59">4.59</a></b><dd>Subsequent works have attended to revise the traditional Schelling model. Axtell and Epstein (<a href="#axtell1996">1996</a>) have introduced some modifications in preference functions and interaction structures, with a further appreciation of the results of the canonical model. Gilbert (<a href="#gilbert2002">2002</a>) has modified the canonical model to allow a theoretical analysis on the role of heterogeneity at micro level and second order emergence, while Pancs and Vriend (<a href="#pancs2003">2003</a>) have explored preference functions oriented to intentionally refuse racial segregation. Bruch and Mare (<a href="#bruch2005">2005</a>) have focussed on an implication analysis of the Schelling assumptions, discovering that the emergence of tipping point segregation dynamics closely depends on the introduction of a threshold function (not continuous) at micro level, which seems not supported by a thoughtful empirical evidence, and that, by allowing agents to respond in a continuous and accurate way to neighbourhood change, as empirical evidence suggests people do, a trend toward integration rather than a segregation pattern emerges. At the same time, they introduce other relevant empirical issues, such as, for instance, the role of income constraints (<a href="#bruch2005">Bruch and Mare 2005</a>).
+
+
+<p><dt><b><a name="4.60">4.60</a></b><dd>Coming back to the quest of the use of empirical data, abstractions have the advantage to be applicable and testable with respect to a wide range of possible concrete empirical situations, and to be simple and transparent to use (<a href="#carley2002">Carley 2002</a>). But, at the same time, the level of abstraction implies the need of a strong and extensive empirical validation. The empirical reference cannot be made just to few empirical realities. A good practice is that data used for calibrating and validating an abstraction have to be gathered in many empirical situations, in order to find a support for a theory that seeks to be as general as possible. For instance, such kind of data can be obtained by surveying very different populations or with a proper randomization of subjects, in laboratory experiments.
+
+
+<p><dt><b><a name="4.61">4.61</a></b><dd>For example, let us suppose that one would like to study the role of reputation for the emergence and the evolutionary robustness of social order, via abstractions, as it happens in the case of the interesting book recently written by Conte and Paolucci (<a href="#conte2002">2002</a>). In that case, to summarise, the authors formulate a general theory of the reputation that would apply to a wide range of different empirical phenomena, from infosocieties to on-line communities, from social clubs to corporate markets. The theory arises from theoretical debates, reviews and discussions, above all from the shareable dissatisfaction expressed by the authors regarding the approach on the subject carried on by standard game-theorists. The argumentation is thoroughly examined via abstractions, while different simulation settings are created and compared to focus in close details on all the aspects of the theory itself.
+
+
+<p><dt><b><a name="4.62">4.62</a></b><dd>The point is that empirical evidences about reputation as an efficient social control decentralised mechanism, composed, as the authors argue, by "image" formation and "reputation" circulation, abound in different social contexts. The major evidence comes from laboratory experiments and social artefacts, such as infosocieties and on-line communities. For example, let us remind the reader to the case of eBay, Sporas, and Histos (<a href="#zacharia2000">Zacharia and Maes 2000</a>). If macro empirical evidences about reputation and social order abound, this does not automatically imply that the mechanism-based theoretical explanation behind the reputation model has to be considered the appropriate one. To test it, collecting data for calibrating the theory at micro level is the only available mean. This could be done both by collecting data on the good functioning of reputation-based social artefacts and by running several laboratory experiments on social dilemmas to have empirical evidences on the micro theory behind the model.
+
+
+<p><dt><b><a name="4.63">4.63</a></b><dd>In conclusion, the relation between types of models leads to a great irony (<a href="#carley2002">Carley 2002</a>). Abstractions usually are simple models, perceived as transparent, with no requirements for empirical data to be validated, but they always generate only generic knowledge "with a plethora of interpretations" which are difficult to falsify, and apply, too. As we have argued, without empirical foundation, the theory can not find a validation. On the contrary, case-based models or typifications are perceived as being difficult to be theoretically validated and generalised, but they actually generate more knowledge and specific understandings, so that they are paradoxically more easily falsifiable.
+
+
+
+</dl><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* ">Conclusions
+</h3><dl compact>
+
+<dt><b><a name="5.1">5.1</a></b><dd>We emphasise that the quest of empirical validation is an important feature for the development of ABMs in social science. As we argued, the standard view is to consider ABMs as both experimental and 'empirical' methods in their own, or to consider them just as models to do theoretical hypotheses implication analysis. This is the reason why for most of the computational social scientists validation does not refer to empirical issues. 
+
+
+<p><dt><b><a name="5.2">5.2</a></b><dd>Obviously, as we have outlined, internal verification is an important issue for the growth, the cumulativeness, the standardisation and the communicability of results of ABMs in social science. Of course, this is the first leg on which ABMs development in social sciences stands on. But, the quest of empirical calibration and validation is the other leg. If the two legs do not coordinate, we run the risk of unconsciously generating a limping development.
+
+
+<p><dt><b><a name="5.3">5.3</a></b><dd>According to this evidence, the goal of this paper has been to figure out some steps forward in the consciousness of the importance of methodology and empirical validation in computational social science, trying to argue the fruitfulness of beginning to embed ABMs within the entire set of empirical methods for social science. Having a look at the ABM literature in social sciences, we saw some enlightening examples and some potential "best practices" that have recently emerged on the ground. We have simply tried to  give them a classification and an ordered point of reference.
+
+
+<p><dt><b><a name="5.4">5.4</a></b><dd>In conclusion, it is worth remembering once more what Merton (<a href="#merton1949">1949</a>) suggested some decades ago: the challenge of social science within range is neither to produce big, broad and general theories of everything, nor to spend time in empirical accounts <i>per se</i>, but to formalise, test, use and extend theoretical models able to shed light on the causal mechanisms that are behind the complexity of empirical phenomena.
+
+</dl><hr><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* "> Acknowledgements
+</h3><dl compact><dt><dd>
+ <!-Acknowledgements here -->
+ For some enriching discussions on the issues the paper is about, we would like to thank Nigel Gilbert and the participants to EPOS 2004, in particular, Scott Moss, Klaus G. Troitzsch, Nuno David, and Bernd Oliver Heine. Their useful remarks have allowed us to further clarify our understanding of the matter in some respects. Finally, we would like to thank two anonymous referees. Their challenging remarks gave us the chance of revising and further improving the paper. The usual disclaimers apply.
+<p></dl><hr><h3><img align=Bottom src="../gifs/bullet.gif" width=23 height=23 alt="* ">Notes</h3>
+<dl compact><dd>
+
+<a name="fn1"><sup>1</sup></a>Analytical sociology lays upon a strong and sound scientific tradition. Apart from the traditional reference to Max Weber, the most important influences have been as follows, just to name a few: the &#8220;middle range theory&#8221; approach suggested by Merton (<a href="#merton1949">1949</a>), the theory of social action put forward by Boudon (<a href="#boudon1979">1979</a>) and Elster (<a href="#elster1979">1979</a>, <a href="#elster2000">2000</a>), the tipping point models and the idea of micro-macro emergence popularised by Schelling (<a href="#schelling1971">1971</a>), and the famous &#8220;Coleman boat&#8221; (<a href="#coleman1990">Coleman 1990</a>), which is more and more conceived as a general theoretical framework for explaining social phenomena. To have a good introduction, a summary about the state of 'analytical' art and some examples of mechanism-based generative models in sociology, see: <a href="#hedstr&ouml;m1998">Hedstr&ouml;m and Swedberg 1998</a>.<p>
+<a name="fn2"><sup>2</sup></a>As Coser stressed (<a href="#coser1977">Coser 1977</a>), there are different kinds of &#8220;ideal types&#8221; in the Weberian means, three at least. The first is historical routed ideal types, such as the well known cases of &#8220;the protestant ethics&#8221; or &#8220;capitalism&#8221;. The second one refers to abstract concepts of social reality, such as &#8220;bureaucracy&#8221;, while the third one refers to a rationalised typology of social action. This last is the case of economic theory and rational choice theory. These are different possible meanings of the term &#8220;ideal type&#8221;. In our view, the first two meanings refer to a heuristic theoretical constructs that aim at understanding empirical reality, while the third one refers to &#8220;pure&#8221; theoretical (as well as normative) aims. Such a redundancy in the meaning of the term has been strongly criticised. According to our taxonomy, typifications include just the first two meanings of the Weberian &#8220;ideal type&#8221;, while the third meaning refers to what we call abstractions.<p>
+<a name="fn3"><sup>3</sup></a>The choice of the research path to effectively address the scholar's question and the choice of the kind of ABM to be exploited in such attempt are out of the scope of the present work. We just want to further underline that the introduction of the ABMs taxonomy is intended to shed light on the relationship between models and empirical data and that such classification does not represent a bound to the flexibility of research paths.
+<p>
+<a name="fn4"><sup>4</sup></a>For a good introduction to Anasazi, see <a href="#stuart2000">Stuart 2000 </a>and <a href="#morrow1997">Morrow and Price 1997</a>.<p>
+<a name="fn5"><sup>5</sup></a>The model is based on Sugarscape platform developed by <a href="#epstein1996">Epstein and Axtell 1996</a>.<p>
+<a name="fn6"><sup>6</sup></a>Most of these efforts have been supported by the findings of a previous survey on the ground, called &#8220;Long House Valley Project&#8221;, realised by a multidisciplinary team from Museum of Northern Arizona, Laboratory of Tree-Riding Research of the Arizona University and Southwestern Anthropological Research Group. The result has been a database which has been translated and integrated into the Anasazi model.<p>
+<a name="fn7"><sup>7</sup></a>It is also important to consider that in the 200 A.D. to 1450 A.D. period, in the area, the only technological innovation introduced has been a more efficient way to grind the maize.<p>
+<a name="fn8"><sup>8</sup></a>Even if the case of the water demand model allows to show how the stakeholder involvement has brought into the model relevant qualitative data, which were unknowable for the model maker before, it is worth outlining that, in many cases, such an involvement could allow the model maker to access also quantitative data that, in other ways, were unknowable, for instance, because they weren't a common knowledge, or they were protected from outside access. This may be a common situation when, for example, the model target includes a firm or a corporate actor.<p>
+</dl><hr><h3><img align=Bottom src="../gifs/bullet.gif" width="23" height="23" alt="* "> References</h3><dl compact><dt><dd>
+ <!-- References here -->
+<a name="albino2003">ALBINO </a>V, CARBONARA N and GIANNOCCARO I (2003) Coordination Mechanisms Based on Cooperation and Competition within Industrial Districts: An Agent-Based Computational Approach. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 6, No. 4 <a href="https://www.jasss.org/6/4/3.html">https://www.jasss.org/6/4/3.html</a>.<p>
+<a name="axelrod1984">AXELROD</a> R (1984) <i>The Evolution of Cooperation.</i> New York: Basic Books.<p>
+<a name="axelrod1997">AXELROD </a>R (1997) <i>The Complexity of Cooperation: Agent-Based Models of Competition and Collaboration</i>. Princeton, New Jersey: Princeton University Press.<p>
+<a name="axelrod1998">AXELROD </a>R (1998) Advancing the Art of Simulation in the Social Sciences. <i>Complexity</i>, 3, 2. pp. 16-22.<p>
+<a name="axelrod2002">AXELROD </a>R, RIOLO R L and COHEN M D (2002) Beyond Geography: Cooperation with Persistent Links in the Absence of Clustered Neighborhoods. <i>Personality and Social Psychology Review</i>, 6, 4. pp. 341-346.<p>
+<a name="axtell1999">AXTELL</a> R (1999) Why Agents? On the Varied Motivations for Agent Computing in the Social Sciences. Center on Social and Economic Dynamics, Working Paper No. 17. http://www.brookings.edu/es/dynamics/papers/agents/agents.<p>
+<a name="axtell1996">AXTELL </a>R, AXELROD R, EPSTEIN J M, and COHEN M D (1996) Aligning Simulation Models: A Caste Study and Results. <i>Computational and Mathematical Organization Theory</i>, 1, 2. pp. 123-141.<p>
+<a name="barbera2004">BARBERA</a> F (2004) <i>Meccanismi sociali. Elementi di sociologia analitica</i>. Bologna: il Mulino.<p>
+<a name="barreteau2001">BARRETEAU</a> O, BOUSQUET F, ATTONATY J M (2001) Role-Playing Games for Opening the Black Box of Multi-Agent Systems: Method and Lessons of Its Application to Senegal River Valley Irrigated Systems. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 4, No. 2 . https://www.jasss.org/4/2/5.html.<p>
+<a name="belussi2000">BELUSSI</a> F and GOTTARDI G (Eds.) (2000) <i>Evolutionary Patterns of Local Industrial Systems: Towards a Cognitive Approach to Industrial Districts</i>. Aldershot Brookfield Singapore Sidney: Ashgate.<p>
+<a name="belussi2003">BELUSSI</a> F, GOTTARDI G, RULLANI E (2003) <i>The Tecnological Evolution of Industrial Districts</i>. Boston/Dordrecht/New York/London: Kluwer Academic Publishers.<p>
+<a name="boero2004">BOERO</a> R, CASTELLANI M, SQUAZZONI F (2004) "Cognitive Identity and Social Reflexivity of the Industrial District Firms. Going Beyond the 'Complexity Effect' with an Agent-Based Computational Prototype. In (Eds), Lindermann G, Modt D, Paolucci M, <i>Regulated Agent-Based Social Systems</i>. Berlin Heidelberg: Springer Verlag. pp. 48-69. <p>
+<a name="borrelli2005">BORRELLI</a> F, PONSIGLIONE C, IANDOLI L and ZOLLO G (2005) Inter-Organizational Learning and Collective Memory in Small Firms Clusters: An Agent-Based Model. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 8, No. 3. https://www.jasss.org/8/3/4.html.<p>
+<a name="boudon1979">BOUDON</a> R (1979) "Generative Models as a Research Strategy". In (Eds) Merton R K, Coleman J S, and Rossi P H, <i>Qualitative and Quantitative Social Research: Papers in Honor of Paul F. Lazarfield</i>. New York: The Free Press. pp. 51-64.<p>
+<a name="bousquet2003">BOUSQUET</a> F <i>et AL. </i>(2003) "Multi-Agent Systems and Role Games: Collective Learning Processes for Ecosystem Management". In Janssen M A (Ed.), <i>Complexity and EcoSystem Management. The Theory and the Practice of Multi-Agent Systems</i>. Cheltenham UK, Northampton, Massachussets: Edward Elgar. pp. 243-280.<p>
+<a name="brenner2001">BRENNER</a> T (2001) Simulating the Evolution of Localized Industrial Clusters-An Identification of the Basic Mechanisms. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 4, No. 3. http://www-soc.surrey.ac.uk/JASSS/4/3/4.html.<p>
+<a name="brenner2003">BRENNER </a>T and MURMANN J P (2003) The Use of Simulations in Developing Robust Knowledge about Causal Processes: Methodological Considerations and an Application to Industrial Evolution. Papers on Economics and Evolution 0303. Max Planch Institute.<p>
+<a name="bruch2005">BRUCH</a> E E and MARE R D (2005), Neighborhood Choice and 
+Neighborhood Change. California Center for Population 
+Research, Working Paper Series, CCPR-007-04.<p>
+<a name="brusco2002">BRUSCO</a> S, MINERVA T, POLI I and SOLINAS G (2002) Un automa cellulare per lo studio del distretto industriale. <i>Politica Economica</i>, 18. pp. 147-192.<p>
+<a name="burton1998">BURTON</a> R M (1998) "Validating and Docking: An Overview, Summary and Challenge". In Prietula M, Carley K and Gasser L (Eds.), <i>Simulating Societies: Computational Models of Institutions and Groups</i>. Cambridge, Massachusetts: AAAI/MIT Press.<p>
+<a name="carley2002">CARLEY</a> K M (2002) "Simulating Society: The Tension between Transparency and Veridicality". In Macal C and Sallach D. (Eds.), <i>Proceedings of the Agent 2002 Conference on Social Agents: Ecology, Exchange and Evolution</i>. Arbonne, Illinois: Argonne National Laboratory. pp. 103-114.<p>
+<a name="carlson2002">CARLSON</a> L <i>et AL</i> (2002) "Empirical Foundations for Agent-Based Modeling: How Do Institutions Affect Agents' Land-Use Decision Processes in Indiana?". In Macal C and Sallach D. (Eds.), <i>Proceedings of the Agent 2002 Conference on Social Agents: Ecology, Exchange and Evolution</i>. Arbonne, Illinois: Argonne National Laboratory. pp. 133-148.<p>
+<a name="casti1994">CASTI</a> J (1994) <i>Complexification. Explaining a Paradoxical World through the Science of Surprise</i>. New York: Harper Collins.<p>
+<a name="cioffi-revilla2003">CIOFFI-REVILLA</a> C and GOTTS N M (2003) Comparative Analysis of Agent-Based Social Simulations: GeoSim and FEARLUS models. In <i>Proceedings, International Workshop M2M: "Model to Model" Workshop on Comparing Multi-Agent Based Simulation Models</i>. Marseille, France, March 31-April 1, 2003, pp. 91-110.<p>
+<a name="coleman1990">COLEMAN</a> J (1990) <i>Foundations of Social Theory</i>. Cambridge, MA: Harvard University Press.<p>
+<a name="conte2002">CONTE</a> R and PAOLUCCI M (2002) <i>Reputation in Artificial Societies. Social Beliefs for Social Order</i>. Dordrecht: Kluwer Academic Publishers.<p>
+<a name="coser1977">COSER</a> L A (1977) <i>Masters of Sociological Thought: Ideas in Historical and Social Context</i>. New York: Harcourt Brace Jovanovich.<p>
+<a name="dal2004">DAL</a> FORNO A and MERLONE U (2004) From Classroom Experiments to Computer Code. <i>Journal of Artificial Societies and Social Simulation, </i>Vol. 7, No. 3. https://www.jasss.org/7/3/2.html.<p>
+<a name="dean2000">DEAN</a> S J, GUMERMAN G J, EPSTEIN J M, AXTELL R, SWEDLUND A C, PARKER M T, MCCARROLL S (2000) Understanding Anasazi Culture Change Through Agent-Based Modeling. In (Eds.) Kohler T A, Gumerman G J, <i>Dynamics in Human and Primate Societies. Agent-Based Modeling of Social and Spatial Processes</i>. Santa Fe Institute Studies in the Sciences of Complexity, New York: Oxford University Press. pp. 179-205.<p>
+<a name="duffy2004">DUFFY</a> J (2004) Agent-Based Models and Human Subject Experiments, in K.L. Judd and L. Tesfatsion (Eds.) <i>Handbook of Computational Economics vol. 2</i>, Elsevier, Amsterdam, forthcoming.<p>
+<a name="edmonds2003">EDMONDS</a> B and HALES D (2003) Replication, Replication, Replication: Some Hard Lessons from Model Alignment. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 6, No. 4. <a href="https://www.jasss.org/6/4/11.html">https://www.jasss.org/6/4/11.html</a>.<p>
+<a name="edmonds2005">EDMONDS</a> B and MOSS S (2005) From KISS to KIDS: An 'Anti-Simplistic'  Modelling Approach. In (Eds) Davidsson P et al., <i>Multi Agent Based Simulation</i>, Lectures Notes in Artificial Intelligence, 3415, Heidelberg: Springer-Verlag. pp. 130-144. <p>
+<a name="elias1939">ELIAS</a> N (1939) <i>The Civilizing Process</i>. Oxford, Blackwell, 1994.<p>
+<a name="elias1969">ELIAS </a>N (1969) <i>The Court Society</i>. New York, Pantheon, 1983.<p>
+<a name="eliasson2000">ELIASSON</a> G and TAYMAZ E (2000) Institutions, Entrepreneurship, Economic Flexibility and Growth - Experiments on an Evolutionary Micro-to-Macro Model. In (Eds) Cantner U, Hanusch H and Klepper S, <i>Economic Evolution, Learning, and Complexity</i>, Heidelberg: Springer-Verlag. pp. 265-286.<p>
+<a name="elster1979">ELSTER</a> J (1979) <i>Ulysses and the Sirens: Studies in Rationality and Irrationality</i>. Cambridge: Cambridge University Press.<p>
+<a name="elster1998">ELSTER </a>J (1998) "A Plea for Mechanisms". In (Eds.) Hedstrom P and Swedberg R, <i>Social Mechanisms. An Analytical Approach to Social Theory</i>. Cambridge: Cambridge University Press. pp. 45-73.<p>
+<a name="elster2000">ELSTER</a> J (2000) <i>Ulysses Unbound. Studies in Rationality, Precommitment and Constraints</i>. Cambridge: Cambridge University Press.<p>
+<a name="epstein1999">EPSTEIN</a> J M (1999) Agent-Based Models and Generative Social Science. <i>Complexity</i>, 4, 5. pp. 41-60.<p>
+<a name="epstein1996">EPSTEIN </a>J M and AXTELL R (1996) <i>Growing Artificial Societies. Social Science from the Bottom-Up</i>. Cambridge, Massachusetts: The MIT Press.<p>
+<a name="etienne2003">ETIENNE</a> M, LE PAGE C and COHEN M (2003) A Step-by-Step Approach to Building Land Management Scenarios Based on Multiple Viewpoints on Multi-Agent System Simulations. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 6, No. 2. <a href="https://www.jasss.org/6/2/2.html">https://www.jasss.org/6/2/2.html</a>.<p>
+<a name="fioretti2001">FIORETTI</a> G (2001) Information Structure and Behaviour of a Textile Industrial District. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 4, No. 4. <a href="https://www.jasss.org/4/4/1.html">https://www.jasss.org/4/4/1.html</a>.<p>
+<a name="gilbert2002">GILBERT</a> N (2002) "Varieties of Emergence". In (ed) Sallach D, <i>Social Agents: Ecology, Exchange, and Evolution. Agent 2002 Conference</i>. University of Chicago and Argonne National Laboratory. pp. 41-54.<p>
+<a name="gilbert1999">GILBERT </a>N and TROITZSCH K G (1999) <i>Simulation for the  Social Scientist</i>. Buckingham Philadelphia: Open University Press.<p>
+<a name="goldthorpe2000">GOLDTHORPE</a> J H (2000) <i>On Sociology</i>. Oxford: Oxford University Press.<p>
+<a name="gotts2003a">GOTTS</a> N M, POLPHILL J G and LAW A N R (2003a) Agent-Based Simulation in the Study of Social Dilemmas. <i>Artificial Intelligence Review</i>, 19. pp. 3-92.<p>
+<a name="gotts2003b">GOTTS</a> N M, POLHILL J G and LAW A N R (2003b) Aspiration levels in a land use simulation. <i>Cybernetics &amp; Systems</i>, 34 (8). pp. 663-683<p>
+<a name="gotts2003">GOTTS </a>N M, POLHILL J G, LAW A N R and IZQUIERDO L R (2003) Dynamics of Imitation in a Land Use Simulation. In <i>Proceedings of the AISB '03 Second International Symposium on Imitation in Animals and Artifacts</i>, 7-11 April 2003, University of Wales, Aberystwyth. pp. 39-46.<p>
+<a name="gould1972">GOULD</a> S J and ELDREDGE N (1972) Punctuated Equilibria : The Tempo and Mode of Evolution Reconsidered. <i>Paleobiology</i>, 3. pp. 115-151.<p>
+<a name="gumerman2002">GUMERMAN</a> G J<i>, </i>SWEDLUND A C, DEAN J S, EPSTEIN J M (2002) The Evolution of Social Behavior in the Prehistoric American Southwest. Santa Fe Institute, Working Paper.<p>
+<a name="gumerman1996">GUMERMAN </a>G J and KOHLER T A (1996) Creating Alternative Cultural Histories in the Prehistoric Southwest : Agent-Based Modeling in Archeology. Santa Fe Institute, Working Paper.<p>
+<a name="hedstr&ouml;m1998">HEDSTR&Ouml;M</a> P and SWEDBERG R (1998) (eds), <i>Social Mechanisms: An Analytical Approach to Social Theory</i>, Cambridge, Cambridge University Press.<p>
+<a name="hoffmann2000">HOFFMANN </a>R (2000) Twenty Years on: The Evolution of Cooperation Revisited. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 3, No. 2 . <a href="https://www.jasss.org/3/2/forum/1.html">https://www.jasss.org/3/2/forum/1.html</a>.<p>
+<a name="izquierdo2003">IZQUIERDO </a>L R, GOTTS N M and POLHILL J G (2003) FEARLUS-W: An Agent-Based Model of River Basin Land Use and Water Management. Paper presented at<i> </i>"Framing Land Use Dynamics: Integrating knowledge on spatial dynamics in socio-economic and environmental systems for spatial planning in western urbanized countries", International Conference 16-18 April 2003, Utrecht University, The Netherlands.<p>
+<a name="jackson2004">JACKSON</a> D, HOLCOMBE M, RATNIEKS F (2004) Coupled Computational Simulation and Empirical Research into Foraging Systems of Pharaoh's Ant (<i>Monomorium Pharaonis</i>). <i>Biosystems</i>, 76. pp. 101-112.<p>
+<a name="king1994">KING</a> G, VERBA S and KEOHANE R O (1994) <i>Designing Social Inquiry: Scientific Inference in Qualitative Research</i>. Princeton: Princeton University Press.<p>
+<a name="kirman2000">KIRMAN</a> A P and VRIEND N (2000) "Evolving Market Structure: A Model of Price Dispersion and Loyalty for the Marseille Fish Market". In Delli Gatti D, Gallegati M and Kirman A P (Eds.), <i>Interaction and Market Structure</i>. Berlin Heidelberg: Springer Verlag.<p>
+<a name="kirman2001">KIRMAN</a> A P and VRIEND N (2001) Evolving market structure: an ACE model of price dispersion and loyalty.<i> Journal of Economic Dynamics and Control</i>, 25. pp. 459-502.<p>
+<a name="lane2002">LANE</a> D A (2002) "Complexity and local interactions: Towards a theory of industrial districts". In (Eds.) Quadrio Curzio A and Fortis M, <i>Complexity and Industrial Clusters: Dynamics and Models inTheory and Practice</i>. Berlin: Springer Verlag.<p>
+<a name="macy2002">MACY</a> M and WILLER (2002) From Factors to Actors: Computational Sociology and Agent-Based Modelling. <i>American Sociological Review</i>, 28. pp. 143-166.<p>
+<a name="mahoney2001">MAHONEY</a> J (2001) Beyond Correlational Analysis: Recent Innovations in Theory and Method. <i>Sociological Forum</i>, 16, 3. pp. 575-593.<p>
+<a name="manson2003">MANSON</a> S M (2003) "Validation and Verification of Multi-Agent Systems". In Janssen M A (Ed.), <i>Complexity and EcoSystem Management. The Theory and the Practice of Multi-Agent Systems</i>. Cheltenham UK, Northampton, Massachussets: Edward Elgar. pp. 58-69.<p>
+<a name="merton1949">MERTON</a> R K (1949) <i>Social Theory and Social Structure</i>. New York: Free Press.<p>
+<a name="morrow1997">MORROW</a> B H and PRICE V B (1997) <i>Anasazi Architecture and American Design</i>. Albuquerque: University of New Mexico Press.<p>
+<a name="moss1998">MOSS</a> S (1998) Critical Incident Management: An Empirically Derived Computational Model. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 1, No. 4. <a href="https://www.jasss.org/1/4/1.html">https://www.jasss.org/1/4/1.html</a>.<p>
+<a name="moss2004">MOSS </a>S and EDMONDS B (2004) Towards Good Social Science. Centre for Policy Modelling Report.<p>
+<a name="moss2005">MOSS</a> S and EDMONDS B (2005) Sociology and Simulation: Statistical and Qualitative Cross-Validation. <i>American Journal of Sociology</i>, 110, 4. pp. 1095-1131.<p>
+<a name="pancs2003">PANCS</a> R and VRIEND R J (2003) Schelling's Spatial Proximity Model of Segregation Revisited. University of London, Department of Economics, Working Paper No. 487.<p>
+<a name="pawsons1997">PAWSONS</a> R and TILLEY N (1997), <i>Realistic Evaluation</i>. London, Sage.<p>
+<a name="polhill2001">POLHILL</a> J G, GOTTS N M and LAW A N R (2001) Imitative and nonimitative strategies in a land use simulation. <i>Cybernetics &amp; Systems</i>, 32 (1-2). pp. 285-307.<p>
+<a name="polhill2005">POLHILL </a>J G,  IZQUIERDO L R and GOTTS N M (2005) The Ghost in the Model (and Other Effects of Floating Point Arithmetic). <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 8, No. 1. <a href="https://www.jasss.org/8/1/5.html">https://www.jasss.org/8/1/5.html</a>.<p>
+<a name="prietula1998">PRIETULA</a> M K, CARLEY K and GASSER L (1998) <i>Simulating Organizations: Computational Models of Institutions and Groups</i>. Cambridge, Massachusetts: The MIT Press.<p>
+<a name="pyka2004">PYKA</a> A and AHRWEILER P (2004) "Applied Evolutionary Economics and Social Simulation", <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 7, No. 2. <a href="https://www.jasss.org/7/2/6.html">https://www.jasss.org/7/2/6.html</a>.<p>
+<a name="ragin1987">RAGIN</a> C C (1987) <i>The Comparative Method: Moving Beyond Qualitative and Quantitative Strategies</i>. Berkley: University of California Press.<p>
+<a name="sawyer2003">SAWYER</a> R K (2003) Artificial Societies. Multi-Agent Systems and the Micro-Macro Link in Sociological Theory. <i>Sociological Methods and Research</i>, Vol. 31, No. 3. pp. 325-363.<p>
+<a name="schelling1971">SCHELLING</a> T (1971) Dynamic Models of Segregation. <i>Journal of Mathematical Sociology</i>, 1. pp.143-186.<p>
+<a name="squazzoni2002">SQUAZZONI</a> F and BOERO R (2002) Economic Performance, Inter-Firm Relations and "Local Institutional Engineering" in an Agent-Based Computational Prototype of Industrial Districts. <i>Journal of Artificial Societies and Social Simulation</i>, Vol. 5, No. 1.<a href="https://www.jasss.org/5/1/1.html">https://www.jasss.org/5/1/1.html</a>.<p>
+<a name="squazzoni2005">SQUAZZONI </a>F and BOERO R (2005) "Towards an Agent-Based Computational Sociology. Good Reasons to Strengthen a Cross Fertilization Between Complexity and Sociology". In Stoneham (Ed.), <i>Advance in Sociology Research II</i>, New York: NovaScience Publishers. pp. 103-133.<p>
+<a name="stame2004">STAME</a> N (2004) Theory-Based Evaluation and Types of Complexity. <i>Evaluation</i>, vol. 10, 1. pp. 58-76. <p>
+<a name="stuart2000">STUART</a> D E (2000) <i>Anasazi America</i>. Albuquerque: University of New Mexico Press.<p>
+<a name="troitzsch2004">TROITZSCH</a> K G (2004) "Validating Simulation Models". Proceedings of 18th European Simulation Multiconference on Networked Simulation and Simulation Networks, SCS Publishing House. pp. 265-270.<p>
+<a name="ware1995">WARE</a> J (1995) George Gumerman: The Long View. <i>Santa Fe Institute Bulletin</i>, Winter.<p>
+<a name="weber1904">WEBER</a> M (1904) <i>Objectivity of Social Science and Social Policy</i>. In <i>The Methodology of the Social Sciences</i>. Edward Shils and Henry Finch (Eds.), 1949, New York: Free Press.<p>
+<a name="werker2004">WERKER</a> C and BRENNER T (2004) Empirical Calibration of Simulation Models. ECIS Working Paper 04.013.<p>
+<a name="willer1970">WILLER</a> D and WEBSTER M (1970) Theoretical Concepts and Observables. <i>American Sociological Review</i>, 35. pp. 748-757.<p>
+<a name="zacharia2000">ZACHARIA</a> and MAES (2000). Trust management through reputation mechanisms. <i>Applied Artificial Intelligence</i>, 14. pp. 881-907.<p>
+<a name="zhang2003">ZHANG</a> J (2003) Growing Silicon Valley on a Landscape: an Agent-Based Approach to High-Tech Industrial Clusters. <i>Journal of Evolutionary Economics</i>, 13. pp. 529-548.<p>
+</dl><img src="../gifs/bar.gif" width="100%" height="3" alt="----"><p>
+<a href="contents.html"><img src="../gifs/JASSSBut.JPG" width="71" height="68" border="0" align="RIGHT" alt="Button">Return to Contents of this issue</a>
+<p>
+<font size=1>&copy;<a href="../../admin/copyright.html"> 
+ Copyright Journal of Artificial Societies and Social Simulation, 
+ [2005]</a></font>
+</body>
+</html>

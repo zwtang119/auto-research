@@ -1,5 +1,9 @@
 # AutoResearch 课题五项目组合
 
+> **⛔ 项目已终止（2026-07-18，用户决策）**：第一性原理选题终裁后决定收尾。终裁结论见 [docs/investigations/topic-selection-2026-07-18/verdict-topic-selection-first-principles.md](docs/investigations/topic-selection-2026-07-18/verdict-topic-selection-first-principles.md)，终止记录见 [docs/portfolio/project-closure-2026-07-18.md](docs/portfolio/project-closure-2026-07-18.md)。以下内容为历史存档。
+>
+> **⏸ 终止后孵化（2026-07-19，暂停中）**：应用户要求启动新方向 **Decision Co-Scientist**（医学 AI 自动科研方法论 → CDS 决策科学），已完成开题报告并通过两轮独立评审，终裁 GO（附条件，首选 NeurIPS D&B）。工作包与下一阶段入口见 [docs/investigations/decision-coscientist-proposal/](docs/investigations/decision-coscientist-proposal/README.md)。当前状态：用户决策暂停，等待 MVE 试点资源。
+
 本目录是课题五相关 AutoResearch 实验组合的根目录。当前主线已经从“P11 内心独白继续大修”调整为：
 
 1. **P11 收口**：保留负结果、label leakage 和 judge calibration 样本。

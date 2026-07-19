@@ -1,0 +1,116 @@
+# ============================================================================
+# settlement_record 模板 —— 灾害域适配版（template，非实例）
+# 相对 settlement_record.schema.yaml v0.2 的改动（ADAPTED 标记）：
+#   1. match_id → event_id（语义泛化；如需与体育域共用校验器可保留 match_id 键名）
+#   2. task_type：体育域为 group_90m_wdl 等单一终值预测任务；灾害域为
+#      disaster_response_distribution（推演分布 vs 历史锚区间的对齐任务）
+#   3. result：从"官方比分"改为"历史锚值表"，每个锚带 value/interval、basis（口径）、
+#      source、tier（official/media/eng/seed 证据分级）——灾害域证据是多口径区间，
+#      不是单一终值
+#   4. scores：brier/log_loss 删除（灾害域无对单一类别的概率预测，两分数不可算），
+#      替换为：
+#        - percentile_hit[]      逐锚：历史锚落在推演分布的百分位及是否命中 [P25,P75]
+#        - interval_coverage     全部锚命中 [P25,P75] / [P5,P95] 的比例（覆盖率）
+#        - anchor_distance_iqr   锚值距 P50 的 IQR 归一化距离（衡量系统性偏移）
+#        - baseline_difference   与工程夹逼基线（GB 50151 闸门/烧尽上界等）对比，
+#                                保留原 schema baseline_difference 的语义槽位
+#   5. factor_updates / protocol_failures / review_notes：原样保留（直接可用）
+#   6. 新增 adjudication_meta：盲评协议字段（panel_size、blinded、outcome_visibility），
+#      灾害域因子从历史结局反推，必须显式记录裁定人是否见过结局
+# ============================================================================
+
+schema_version: "0.2-disaster"          # ADAPTED: fork 版本号
+event_id: "<event_id, e.g. gulei-2015-0406>"   # ADAPTED: 原 match_id
+task_type: "disaster_response_distribution"    # ADAPTED
+
+result:  # ADAPTED: 历史锚值表（示例为古雷；实例化时逐锚填写）
+  containment_time_hours:
+    value: 56.0
+    basis: "终控口径：4/6 18:56 起爆 → 4/9 02:57 最后扑灭；首控口径 21.7h（607/608/610 明火 4/7 16:40 全扑灭）"
+    source: "official_fujian_yjt_investigation_report_2015"
+    tier: "official"
+  foam_mobilized_tons:
+    interval: [850, 1467]
+    basis: "850=全省调拨桶装（seed 注释引 chenan 1959 L43/L169）；1467=官方报告总调运；媒体早期报道 650。调运≠实际喷施，注意泡沫站远程控制失效与给水压力不足（官方报告确认）"
+    source: "official_fujian_yjt_investigation_report_2015 + seed + media"
+    tier: "mixed"
+  tanks_burned_total: {value: 4, basis: "607/608 重石脑油罐 + 609/610 轻重整液罐", source: "official", tier: "official"}
+  reflare_events: {value: 4, basis: "610×2（4/7 19:45、4/8 02:09）、607×1（4/8 02:09）、609 迟发起火（4/8 11:05）", source: "official", tier: "official"}
+  spread_beyond_initial_group: {value: 0, basis: "无 607-610 之外罐体/装置点燃记录", source: "official", tier: "official"}
+  casualties: {injured: 6, observed: 13, deaths: 0, total_admitted: 19, basis: "全部 4/13 前伤愈出院", source: "official", tier: "official"}
+  evacuated_persons: {value: 29096, basis: "转移并妥善安置周边群众；3km 人口基数待核", source: "official", tier: "official"}
+  evacuation_rate:
+    value: 0.97
+    basis: "29096 / 约 3.0 万（3km 范围人口基数，media/Q3 推断，待核）"
+    source: "derived"
+    tier: "media"
+  environmental_impact_km2:
+    value: 0
+    basis: "官方监测'没有发现辖区环境污染'；口径（陆域/大气/海域）不明，PX 争议背景下降半级"
+    source: "official"
+    tier: "official_downgraded"
+  direct_economic_loss_cny: {value: 94570000, source: "official", tier: "official"}
+
+settled_at_utc: null   # 实例化时填写
+
+scores:  # ADAPTED: 灾害域可算字段
+  percentile_hit:      # 逐锚判定；实例化时每条 metric 一行
+    - metric: "containment_time_hours"
+      anchor: 56.0
+      sim_P25: null
+      sim_P50: null
+      sim_P75: null
+      anchor_percentile_in_sim: null     # 历史锚在推演分布中的百分位 0–100
+      hit_P25_P75: null                  # true/false
+    - metric: "foam_consumption_tons"
+      anchor_interval: [850, 1467]
+      sim_P25: null
+      sim_P50: null
+      sim_P75: null
+      interval_overlap_with_P25_P75: null  # 0–1 重叠比例；≥0.5 判 hit
+      hit_P25_P75: null
+  interval_coverage_P25_P75: null   # 命中锚数 / 可判定锚总数
+  interval_coverage_P5_P95: null
+  anchor_distance_iqr:              # 系统性偏移度量
+    containment_time_hours: null    # (anchor - P50) / IQR
+    foam_consumption_tons: null
+  baseline_difference:              # 保留原 schema 语义槽位；基线=工程夹逼
+    engineering_bounds:
+      containment_time_hours: [2, 200]       # GB 50151 下界 / 烧尽上界放宽
+      foam_consumption_tons_floor: 37        # 4 罐 × 9.2 t 单次进攻下限
+    sim_within_engineering_bounds: null      # true/false/null
+    sim_beats_naive_bounds: null             # 推演分布是否比纯工程区间更贴近历史锚
+  brier: null                        # ADAPTED: 灾害域不可算，置 null 并在此说明
+  log_loss: null                     # ADAPTED: 同上
+  scores_note: >
+    brier/log_loss 不适用于单事件灾害回溯（无对单一类别结局的事前概率预测），
+    以 percentile_hit / interval_coverage / anchor_distance_iqr 替代。
+    若未来灾害域接入事前概率预测任务（如 P(复燃)>x 的预测卡），可恢复 brier。
+
+factor_updates:  # 原 schema 字段，直接保留
+  supported: []
+    # - factor_id: "gulei-2015-f00X"
+    #   evidence: >
+    #   confidence_post: null
+  rejected: []
+  inconclusive: []
+    # - factor_id: ...
+    #   reason_for_inconclusive: >
+
+protocol_failures: []   # 原 schema 字段，直接保留
+  # - failure_id: "gulei-2015-0406-pf01-..."
+  #   factor_affected: ...
+  #   severity: "minor|major"
+  #   description: >
+  #   resolution: >
+  #   resolved: true|false
+
+review_notes: []        # 原 schema 字段，直接保留
+
+adjudication_meta:      # ADAPTED: 新增，盲评协议记录
+  panel_size: 3
+  panel_composition: ["化工安全", "消防战术", "应急管理"]   # 建议；可加 仿真/建模 1 人
+  blinded: true
+  outcome_visibility: "hidden_until_threshold_review"       # 先盲评阈值合理性，再揭盲给锚裁定
+  factor_author_excluded: true
+  inconclusive_rate_policy: "rubric §6 沿用：<30% 正常；30–70% 监控并逐条记录 reason；>70% 连续 5 事件触发 ledger 设计评审"

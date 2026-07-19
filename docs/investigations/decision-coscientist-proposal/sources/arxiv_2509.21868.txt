@@ -1,0 +1,1815 @@
+                                        What Makes LLM Agent Simulations Useful for Policy Practice? An Iterative
+                                        Design Study in Emergency Preparedness
+
+                                        YUXUAN LI, School of Computer Science, Carnegie Mellon University, United States
+                                        SAUVIK DAS, School of Computer Science, Carnegie Mellon University, United States
+                                        HIROKAZU SHIRADO, School of Computer Science, Carnegie Mellon University, United States
+
+
+                                                                                                  Developers
+
+
+
+
+arXiv:2509.21868v2 [cs.HC] 8 Feb 2026
+                                                                                         Not useful             Useful
+                                                                                                                                      LLM Agent Simulation
+
+                                                                                                                                      Policy Implementation
+                                                                                            Distrust             Trust
+
+
+
+
+                                                                                                                                       Evacuation Time
+
+
+
+                                                                                                                                                         Current   Suggested
+                                                                                                                                                         process    process
+
+                                                                                                Policymakers
+
+                                        Fig. 1. An iterative design engagement with emergency preparedness policymakers developed LLM agent simulations to inform policy
+                                        implementation. Through cycles of design and validation, simulations shifted from being distrusted to trusted and were ultimately
+                                        integrated into preparedness practice. This usefulness did not follow a linear path from technical sophistication to institutional
+                                        adaptation, but instead emerged through an iterative, stakeholder-engaged design process.
+
+                                        Policymakers must often act under conditions of deep uncertainty, such as emergency response, where predicting the specific impacts
+                                        of a policy apriori is implausible. Large Language Model (LLM) agent simulations have been proposed as tools to support policymakers
+
+                                        Authors’ Contact Information: Yuxuan Li, School of Computer Science, Carnegie Mellon University, Pittsburgh, United States, yuxuanll@andrew.cmu.edu;
+                                        Sauvik Das, School of Computer Science, Carnegie Mellon University, Pittsburgh, United States, sauvik@cmu.edu; Hirokazu Shirado, School of Computer
+                                        Science, Carnegie Mellon University, Pittsburgh, United States, shirado@cmu.edu.
+
+
+                                        Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not
+                                        made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components
+                                        of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on
+                                        servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+                                        © 2018 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+                                        Manuscript submitted to ACM
+
+
+                                        Manuscript submitted to ACM                                                                                                                             1
+2                                                                                   Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+under these conditions, yet little is known about how such simulations become useful for real-world policy practice. To address this
+gap, we conducted a year-long, stakeholder-engaged design process with a university emergency preparedness team. Through iterative
+design cycles, we developed and refined an LLM agent simulation of a large-scale campus gathering, ultimately scaling to 13,000
+agents that modeled crowd movement and communication under various emergency scenarios. Rather than producing predictive
+forecasts, these simulations supported policy practice by shaping volunteer training, evacuation procedures, and infrastructure
+planning. Analyzing these findings, we identify three design process implications for making LLM agent simulations that are useful
+for policy practice: start from verifiable scenarios to bootstrap trust, use preliminary simulations to elicit tacit domain knowledge, and
+treat simulation capabilities and policy implementation as co-evolving.
+
+CCS Concepts: • Human-centered computing → HCI design and evaluation methods; • Computing methodologies → Natural
+language processing.
+
+Additional Key Words and Phrases: Social simulation, Policymaking, Iterative design, Large language model, LLM agent
+
+ACM Reference Format:
+Yuxuan Li, Sauvik Das, and Hirokazu Shirado. 2018. What Makes LLM Agent Simulations Useful for Policy Practice? An Iterative
+Design Study in Emergency Preparedness. In Proceedings of Make sure to enter the correct conference title from your rights confirmation
+email (Conference acronym ’XX). ACM, New York, NY, USA, 38 pages. https://doi.org/XXXXXXX.XXXXXXX
+
+
+1   Introduction
+Helping policymakers reason and act under conditions of deep uncertainty—situations like emergency response,
+where outcomes depend on many unknowable environmental and social factors—is a longstanding challenge in
+decision-making research and human-computer interaction [56, 103]. Large language models (LLMs) offer a potential
+pathway for addressing this challenge: they have been used as interacting agents whose behavior is generated through
+natural language, enabling large-scale populations to exhibit emergent social behaviors—such as coordination, collective
+decision-making, and information propagation—grounded in interpretation and communication [30, 32, 74, 77, 90]. These
+capabilities have inspired a growing body of work on LLM agent simulation systems, which envision policymakers
+using these systems to experiment with alternative scenarios, communication strategies, or interventions before
+implementation [45, 46, 48, 53].
+    However, what it means for LLM agent simulations to be useful for policy remains unclear. Much existing work
+in such simulations implicitly frames policy in terms of prediction or optimization. In practice, policy work involves
+interpreting uncertain information, coordinating across roles, developing procedures, training personnel, and adapting
+resource allocations under institutional constraints—rather than selecting an optimal action based on forecasts alone
+[56]. At the same time, applying LLM agent simulations to policy contexts introduces new risks: they may reproduce
+stereotypes, amplify biases, or generate outputs that are easy to read but difficult to causally explain or defend within
+policy practice [5, 9, 60]. These concerns foreground the need to understand the conditions under which LLM agent
+simulations can be meaningfully integrated into policy practice without causing harm.
+    This motivates a central question for this work: How can LLM agent simulations be made genuinely useful
+for policy practice? We address this question by treating policy not as a set of outcomes to be optimized, but as
+institutionally situated practice. We use the term “policy” to refer to both institutionally defined goals (e.g., protecting
+life and safety) and the concrete procedures, practices, and resource decisions through which those goals are enacted in
+everyday work. Accordingly, the challenge is to understand how LLM agent simulations can become useful within the
+constraints and routines of real-world policy implementation.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                                      3
+
+
+   Rather than treating simulations as standalone analytical artifacts, the tradition of Human-Computer Interaction
+(HCI), grounded in participatory and user-centered design methodologies, suggests a design-oriented way forward.
+These approaches emphasize stakeholder-engaged design processes to ensure systems align with actual practices and
+needs, rather than on abstract technological potential [4, 80, 83]. From this perspective, LLM agent simulations can be
+studied not only as prediction engines, but as interactive tools whose last-mile usefulness depends less on advances in
+model capability than on how they are iteratively developed with policymakers—grounded in lived challenges and
+collaboratively explored as part of concrete policy implementation work [56].
+   We report on a year-long iterative design engagement with a university emergency preparedness and response
+team—the institutional decision-makers responsible for preparedness policy implementation (hereafter referred to as
+the “policymakers”). We began with semi-structured interviews to understand existing workflows and decision-making
+practices, and points where simulation might productively intervene. Through this process, we identified graduation
+commencement—a large, complex gathering event involving thousands of students, families, and staff—as a concrete
+policy domain in which evacuation preparedness was both pressing and open to innovation. Traditionally, evacuation
+has primarily been modeled as a physics-based or geometric problem [41]. However, we found that preparedness policy
+depended critically on deeply social and institutional dimensions — e.g., communication, coordination, role expectations,
+and trust — that are not well captured by these simple physics-based models. Over five iterative design phases, we
+developed and refined an LLM agent simulation system to model crowd movement and communication dynamics under
+varying conditions of scale, physical constraints, and information scarcity. At each step, we incorporated policymakers’
+feedback, validated the simulator against ground-truth data, and worked toward actionable proposals that could inform
+training, protocols, and the decision-making process itself.
+   Alongside these design iterations, we analyzed the design process to understand when and why simulations were
+perceived as relevant, trustworthy, and actionable by policymakers. From this analysis, we distill three design process
+implications for making LLM agent simulations useful for policy practice. First, start with verifiable scenarios to build
+trust gradually; policymakers engage meaningfully only when their focal aspects of simulation outputs can be checked
+against reality. Second, preliminary simulations — even when imperfect — can serve as productive technology probes [47]
+that elicit tacit knowledge about roles, relationships, and contextual factors that matter in policy implementation. Third,
+simulation and policy development should be treated as interdependent and evolving together; as simulations mature,
+they reshape policymaker expectations, and as institutional priorities shift, they redefine simulation requirements.
+   Our contributions are threefold:
+
+   (1) We present an in-depth account of the iterative design of an LLM agent simulation system for emergency
+        preparedness, demonstrating how sustained collaboration enabled the system to evolve from academic prototypes
+        into a tool that informed concrete preparedness practices 1 .
+   (2) We provide insights into simulation-to-policy relevance by articulating why and how LLM agent simulations
+        come to be perceived as useful, trustworthy, and actionable within institutional policy contexts.
+   (3) We offer design process implications that provide actionable guidance for researchers and practitioners seeking
+        to develop LLM agent simulations that support policy practice through stakeholder-engaged design.
+
+   Together, these contributions articulate the conditions under which LLM agent simulations can move beyond mere
+predictive calculators to iterative, stakeholder-engaged tools, and become meaningfully integrated into policy practice.
+
+1 The core contribution of this work is not the system itself, but the design insights we uncovered in using the system as a technology probe.
+
+                                                                                                                         Manuscript submitted to ACM
+4                                                                          Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+2     Related Work
+2.1    LLM Agent Simulations and Social Modeling
+Simulating human behavior in complex environments has traditionally relied on ABMs [8, 66, 82]. They have proven
+effective for modeling physical dynamics, such as crowd flow, geometric bottlenecks, and collision avoidance in
+evacuation scenarios [20, 43, 51, 79]. However, these models often rely on fixed, pre-defined rules that struggle to
+capture the ambiguity and relational complexity of human decision-making during crises [6, 26, 54, 91]. Real-world
+emergencies are rarely reducible to physics problems; they are social events dominated by information scarcity,
+conflicting social roles, and the need to interpret vague communication. In addition, accuracies of ABMs often highly
+depend on the parameters set by their users, making it hard for novices to flexibly tune for new scenarios [21, 33, 61].
+    LLM agents offer a promising alternative by introducing semantic reasoning and generative behavior into social
+simulation. Because LLM agents are generative and draw on broad knowledge, they have the potential to address
+shortcomings of traditional ABMs, including limited ability to model complex human dynamics and heavy dependence
+on manually tuned parameters [31, 35]. Collection of these agents in social contexts have been shown to spontaneously
+form coalitions, spread invitations, and coordinate collective events [74, 76]. Researchers have extended this paradigm to
+diverse domains, including clinical workflows, classroom dynamics, and macroeconomic trading [11, 30, 57, 90, 106]. In
+policy-relevant domains, multi-agent systems have been used to explore epidemic response, misinformation spread, and
+environmental decision-making [46, 48, 58, 64, 107]. The appeal of these systems lies in “in silico” policy testing—running
+counterfactual scenarios at scale that would be costly or unethical to attempt in the real world [45, 50, 53, 59].
+    Yet, despite their rapid technical progress, these simulations remain almost entirely confined to academic demon-
+stration. Evaluation has typically emphasized internal qualities such as coherence or plausibility, rather than external
+markers of usefulness like institutional adoption or decision-making impact. Policymakers, to our knowledge, have not
+integrated these systems into practice.
+    This absence of real-world uptake has fueled a wave of critical concerns. Some argue that LLM simulations risk
+reproducing stereotypes or producing “black-box” outputs unsuited to accountable governance [5, 9, 60], while others
+warn that by presenting speculative outputs as seemingly concrete, such systems may foster misplaced confidence in
+decision-makers [52, 109]. The result is a widening gap: LLM agent simulations grow more sophisticated in technical
+fidelity, yet remain disconnected from the institutional realities and trust requirements of policy use. Our work aims to
+address this gap by shifting focus from refining agent architectures to designing processes that make simulations useful
+in institutional policymaking.
+
+
+
+
+2.2    HCI and Public Policy
+HCI has long been concerned with civic technologies and decision-support systems that shape governance and public
+policy. Here in this paper, public policy refers to the processes of implementation through which stable institutional
+goals are translated into organizational routines, tools, and decisions, rather than to formal rules or legislation alone.
+Early work introduced platforms for participatory urban planning and neighborhood decision-making [1, 39]. More
+recent systems like PolicyCraft structured deliberations to improve consensus and justification among stakeholders
+[55]. Studies in crisis informatics highlight similar goals in emergency response, where tools support sensemaking and
+communication among responders and the public [73, 88, 100].
+
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                5
+
+
+    Across these domains, scholars emphasize the importance of aligning tools with institutional constraints. For example,
+Corbett and Le Dantec’s ethnographic co-design with a city immigrant affairs office revealed tensions between efficiency-
+focused digital tools and the relational work officials valued for building trust [10, 24, 25]. Other studies note that legal
+mandates, organizational hierarchies, and accountability requirements shape how civic or emergency systems can be
+deployed [7, 10, 81]. While HCI has articulated a vision of technology that makes policymaking more participatory and
+evidence-driven [36, 62, 101], recent work find that policy actors themselves remain an underrepresented stakeholder
+in HCI research [108]. This suggests a need for deeper institutional partnerships and design approaches that can bridge
+between technical innovation and organizational realities [42].
+    In this study, we build on HCI research that emphasizes aligning technologies with institutional constraints by
+examining policy implementation—defined as the processes through which high-level institutional goals, or policy (e.g.,
+protecting life and property in emergencies; see Sec 6.5) are translated into concrete procedures and workflows. Through
+a year-long partnership with emergency preparedness professionals, we investigate how LLM-agent simulations can
+support institutional processes, and address the practical realities of policy implementation.
+
+2.3    Engaging Stakeholders in Design
+To navigate such complexities, HCI researchers have developed a wide repertoire of stakeholder engagement methods.
+Traditions of participatory design, user-centered design, and community-based co-design have demonstrated how
+iterative cycles of prototyping, feedback, and negotiation can surface hidden needs and reconcile value tensions
+[4, 47, 80, 83]. Longitudinal collaborations with municipal offices [25], community organizations [18], and health
+institutions [71, 86] underscore the importance of partnerships that adapt alongside institutional contexts. Agile and
+iterative approaches have also been adopted in high-stakes domains such as education, health, and emergency response
+to foster responsiveness and resilience [3, 85, 96].
+    With the rise of AI-powered systems, however, new challenges emerge. Unlike traditional tools, AI outputs are
+probabilistic, opaque, and sometimes unpredictable, complicating stakeholder understanding and co-design [2, 28].
+Recent work has explored participatory approaches to algorithm design to surface values, fairness concerns, and
+accountability requirements [27, 44], while others emphasize new representational tools to make AI legible in design
+workshops [63, 65]. Together, these efforts point toward a growing consensus: longitudinal, participatory engagements
+are critical not only for uncovering requirements, but also for fostering trust, negotiating unpredictability, and embedding
+AI systems into institutional practice. This study contributes to these engagement traditions by addressing the specific
+challenges of LLM agent simulations for emergency preparedness policy implementation, where outputs are both
+generative and collective, and where contextual requirements are often tacit.
+
+3     Policy Domain: Emergency Preparedness
+To explore what makes LLM agent simulations useful for policy practice, we identified emergency preparedness
+as our design context [72]. Emergency preparedness is a particularly fitting domain because field experiments are
+practically and ethically impossible, observational data are scarce and difficult to generalize, and policymakers must
+make high-stakes decisions under uncertainty — where the timing, form, and consequences of emergencies cannot
+be reliably predicted in advance [40, 41]. Unlike domains where interventions can be validated through controlled
+studies, emergency preparedness requires anticipating rare, unpredictable events with limited empirical grounding [23].
+In practice, policy in emergency preparedness is often enacted through concrete, operational decisions rather than
+strategic or legislative choices. Policymakers must decide how many coordinators or volunteers to deploy, where to
+                                                                                                   Manuscript submitted to ACM
+6                                                                       Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+position them, which exits to prioritize under different threat scenarios, how to configure accessible seating, and how
+to frame announcements that guide crowd movement during evacuation. These decisions are highly interdependent,
+context-specific, and they are difficult to evaluate in advance. Yet they fundamentally shape how emergency plans are
+implemented on the ground. Under such conditions, simulations are less effective when treated as traditional policy
+analysis tools that prioritize ranking policy actions based on predicted outcomes [67]. Instead, they can be valued for
+their ability to support exploration, reflection, and deliberation under uncertainty—helping policymakers examine
+assumptions, surface blind spots, and reason through possible responses before crises occur [56].
+    In addition, many challenges in contemporary emergency preparedness are increasingly shaped by collective
+communication dynamics rather than individual physical movement alone [19, 78]. While early research emphasized
+physics-based movement, it is now understood that physical and social factors interact, with group processes on
+communication shaping evacuation performance [69, 95, 99]. As digital and online technologies have become central
+to how people receive, interpret, and respond to emergency information [87, 92, 94], policy effectiveness depends
+not only on evacuation routes or crowd flows, but also on how messages are framed, how trust is established, and
+how individuals coordinate in response to uncertain and evolving information [84, 97]. These dynamics are inherently
+social and semantic, involving language, interpretation, emotion, and role expectations that unfold through interaction
+[29, 49, 98]. This shift complicates emergency preparedness for conventional policy practices and reduces the utility
+of tools that assume static or physics-based human behavior. At the same time, it makes emergency preparedness a
+particularly relevant context for examining LLM-based agent simulations, which can represent communicative behavior
+and meaning-making processes alongside physical action.
+    Given this unpredictability and domain complexity, the usefulness of LLM agent simulations for emergency pre-
+paredness can hinge less on advances in modeling fidelity or computational scale, and more on the design process. In
+practice, simulations can become useful when they are iteratively developed with policymakers, grounded in their lived
+challenges, validated against real-world evidence, and collaboratively explored as tools for shaping concrete policy
+proposals [68].
+    To situate this inquiry, we partnered with a university’s emergency preparedness and response team. This team
+is responsible for developing and implementing emergency preparedness policies across diverse scenarios, including
+large-scale gatherings such as commencement and orientation, natural disasters such as tornadoes and floods, and
+high-stakes emergencies such as active shooter incidents. Their policymaking practice was largely experience-driven
+and discussion-based, and did not involve the routine use of simulation tools. For recurring events, the team typically
+adopted plans from previous years as a baseline, using their collective professional judgment to identify incremental
+improvements. At the same time, because emergencies are inherently rare and information-poor, the team operated under
+substantial uncertainty, balancing institutional policy, safety concerns, and communication clarity while coordinating
+across stakeholders such as university administration, student groups, local police, and neighboring institutions.
+    A central tool in this process is the after-action report. Following each major university-wide event, the team
+documents preparatory decisions and actions taken during the event, highlighting what worked, what failed, and where
+improvements are needed. These reports inform future policy implementation and occasionally lead to institution-wide
+changes. In this way, after-action reporting serves as a bridge between situated response and long-term organizational
+learning, making it a critical site for understanding how simulations might inform policy practice.
+    We began our partnership by introducing prior work on model-based emergency coordination and exploring how it
+could be extended with recent advances in LLMs. At that stage, the policymaker team was already familiar with both
+the promise and limitations of simulations in their domain. For example, while they were aware of existing agent-based
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                7
+
+
+models for emergency preparedness, they had not incorporated such tools into their process, citing concerns about
+their ability to capture the situational detail and institutional realities relevant to their practice. At the same time, the
+team recognized the potential relevance of LLMs’ natural language capabilities for addressing their challenges related
+to emergency communication and social media dynamics. Several members expressed interest in generating realistic
+variations in agent behavior through persona-based prompting, viewing this as a way to capture community diversity
+and stress-test communication strategies. Notably, the team made no commitment to adapt simulation outputs into
+policy implementation, emphasizing that the collaboration was exploratory rather than prescriptive.
+
+
+4     Methods
+4.1    Iterative Design and Participants
+We conducted an iterative design engagement with the policymaker team between May 2024 and August 2025, spanning
+approximately 16 months. This collaboration was structured around flexible meetings convened as opportunities and
+needs emerged, typically every 2–6 weeks during active design phases. Our goal was not to sample policymakers
+broadly, but to closely examine how simulation usefulness emerges through sustained engagement with a complete
+decision-making unit within the organization. While the broader team included many stakeholders, our design work
+primarily involved five core members who were directly responsible for preparedness and crisis communication: a
+Senior Director for Disaster Recovery and Business Continuity Services (P1), a Senior Director for Reputation and
+Issues Management (P2), a Director for Social Media (P3), and two Emergency Preparedness and Response Specialists
+(P4, P5). Together, these individuals represented both policy-level decision makers and operational specialists, allowing
+our process to bridge institutional strategy with on-the-ground practice.
+    Our design process unfolded in overlapping cycles of needs assessment through interviews, scenario exploration,
+simulation prototyping, validation, and proposed policy changes based on simulation outputs.
+
+
+4.2    Simulation System (Final Version)
+Across the design process, we developed and iteratively refined an LLM-based agent simulation system. We note that
+the system itself is not the primary contribution of this work; nevertheless, we describe its final form to clarify the
+artifact through which policymakers engaged with, evaluated, and ultimately adopted simulation outputs.
+    Figure 2 shows the final system, which simulates approximately 13,000 agents, corresponding to the scale of the
+university’s commencement event. Agents represent students, family members, and emergency coordinators, each with
+distinct roles, goals, mobility constraints, and social relationships. Agents receive inputs from official announcements,
+local environmental conditions, nearby crowd dynamics, and group communication through online networks. OpenAI’s
+GPT-4.1 governs agents’ decision-making and message generation, while a rule-based controller handles physical
+movement and collision-aware navigation.
+    The simulation environment models the actual stadium layout, including seating sections, aisles, concourses, exits,
+and accessibility routes. This combination enables the system to represent both physical crowd dynamics and socially
+mediated behaviors, such as regrouping with family members and responding to coordinator guidance. Across scenarios,
+agents exhibited interpretable context-sensitive behavior: for example, they moved more urgently when informed of
+approaching severe weather than during routine event dispersal, and responded heterogeneously to localized bomb-
+threat announcements, with some agents prioritizing rapid exit while others attempted to regroup with family members
+or parallelized with expressing fear and uncertainty.
+                                                                                                   Manuscript submitted to ACM
+                                           8                                                                                            Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+                                                                   A. LLMA.
+                                                                         Agents    Conceptual
+                                                                            LLM Agents            Diagram
+                                                                                       Conceptual Diagram                                                              B. System Display
+                                                                                           Personal                     Social                   Environmental                             (1)
+                                                                                           Accessibility            Group Chat                   Stadium Overview
+                                                                         Input            Group Member              Official Instructions        Nearby Layout
+                                                                                                                                                                                (2)
+                                                                                          Persona                   Social Network               Neighbor Mobility
+
+                                                                                             LLM-powered                                                 Rule-based
+                                                                                                                                      Moving
+
+                                                                         Process
+                                                                                                                                                                                            (
+                                                                                     Initialized           Discussing             Intermediate
+                                                                                                                                                         Exited
+                                                                                                                                                                               (3)
+                                                                                                                                  Destination
+
+                                                                                                                                      Waiting                         (5)
+
+                                                                                        Physical                         Decision                 Communication
+
+                                                                         Output
+                                                                                     Moving/Navigating                  Destination
+                                                                                                                                                   Group Chat
+                                                                                         Exiting                        Regrouping                                    (6)
+
+nts Conceptual Diagram                                             B.B. System
+                                                                       System      Display
+                                                                               Display                                                             (8)
+                   Social                      Environmental                                                 (1)
+ity            Group Chat                      Stadium Overview
+mber           Official Instructions           Nearby Layout
+                                                                                   (2)
+               Social Network                  Neighbor Mobility
+
+powered                                             Rule-based
+                                 Moving
+                                                                                                              (4)
+      Discussing            Intermediate
+                                                    Exited
+                                                                                   (3)
+                            Destination
+
+                                 Waiting                           (5)
+                                                                                                                            (7)
+l                   Decision                    Communication
+gating             Destination
+                                                 Group Chat
+                   Regrouping                                      (6)
+
+
+                                           Fig. 2. Simulation overview. (A) LLM agents conceptual diagram: Agents receive inputs from three sources: Personal (e.g., accessibility
+                                           needs, group membership, persona), Social (group chat, official instructions, social network), and Environmental (stadium overview,
+                                           local layout, neighbor mobility). For each agent, an LLM governs decision-making and communication and hands off to a rule-based
+                                           controller for embodied action. Outputs include Physical (moving/navigating, exiting), Decision (destination choice, regrouping),
+                                           and Communication (ongoing group chat). (B) System display: Stadium-scale interface showing physical layouts, agents as colored
+                                           dots, coordinators, and a per-agent side panel. Numbered callouts: (1) stage area; (2) students with accessibility needs; (3) seating
+                                           areas for a portion of students’ family and friends; (4) seating sections for students from different majors, each major marked by a
+                                           distinct color; (5) exits; (6) bleacher area with dense family-and-friends seating; (7) coordinators distributed around the field track
+                                           for directing flow; (8) a per-agent side panel showing persona attributes including name, major and profile, below are group-chat
+                                           messages between agents that have social relationships and within the same group. Together this system supports simulations with
+                                           tens of thousands of agents (up to 13k in our largest runs).
+
+
+                                               Policymakers primarily interacted with the system through visualizations, recorded scenario replays, and comparative
+                                           scenario outputs rather than direct parameter tuning. Implementation details, including agent prompting and system
+                                           architecture, are provided in the Appendix (Sec A.3).
+                                           Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                   9
+
+
+    In this paper, we treat the system as a technology probe [47] — sufficiently realistic to support validation , deliberation,
+and preference elicitation — through how simulation usefulness emerged in practice. Thus, in the following sections, we
+show and analyze how usefulness emerged through engagement with this artifact, rather than evaluating the system
+itself.
+
+
+4.3       Data Collection and Analysis
+We collected multiple forms of data across the year-long engagement, including field notes from design and policy
+implementation proposal sessions, transcripts of meetings, simulation logs and iteration logs from the system, semi-
+structured interviews, recordings of the commencement event, and relevant email correspondence. All data collection
+procedures were approved by the university’s Institutional Review Board (IRB).
+    We analyzed our qualitative data as follows. The first author transcribed and coded meeting transcripts, interviews,
+recordings of policy implementation proposal sessions, and relevant email exchanges. Two other researchers indepen-
+dently reviewed the coded transcripts and provided feedback. The first author began by open coding one transcript,
+then discussed the emerging codes with the other coders to align on coding granularity and analytic focus. We then
+applied open coding across the full set of transcripts and emails, capturing both immediate design concerns and broader
+reflections about policy relevance [89]. Together, we refined the codes into higher-level categories and conducted a
+thematic analysis to surface recurrent patterns [14]. We resolved disagreements through discussion until consensus
+was reached. These qualitative analyses provided the foundation for the detailed accounts of our design iterations and
+findings presented in the following sections.
+
+
+5     Design Iterations
+We present the iterations in detail to show how simulation usefulness emerged through interaction with institutional
+constraints, rather than from technical refinement alone. Across a 16-month engagement, we developed our simulation
+system through multiple iterations, each shaped by policymakers’ feedback and targeted design challenges (Fig. 3).
+While these iterations are specific to one institution, the design challenges encountered such as validation and trust
+calibration reflect broader challenges in LLM agent simulations for policy use cases.
+    Each iteration is described only to the extent necessary to show how policymakers’ perceptions, validation criteria,
+and use cases evolved. Technical details are intentionally minimized.
+
+
+5.1       Preparation interviews: Capturing Needs and Institutional Realities
+To ground the design process, we conducted three formative semi-structured interviews with emergency preparedness
+policymakers (P1–P3) during the first five months of the project. Interviews focused on preparedness workflows and
+policy development during emergencies. Insights were synthesized into stakeholder and process maps that documented
+key actors, responsibilities, and information flows, and were reviewed with participants. Full maps are included in the
+Appendix (Figs. A2, A3, A4, and A5).
+
+
+5.2       First Iteration: Simulating Communication and Misinformation Dynamics
+Based on preparatory interviews, we identified online communication and misinformation as primary concerns during
+emergencies. P1, P2, and P3 were particularly interested in how official announcements might be misinterpreted and
+how such misinterpretations could spread through online networks.
+                                                                                                      Manuscript submitted to ACM
+10                                                                                                                            Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+                Preparation                 1st iteration              2nd iteration              3rd iteration             Observation               4th iteration               5th iteration
+                May-Dec 2024              Sep 2024-Feb 2025             Mar-Apr 2025                 Apr 2025                  May 2025               May-June 2025                July-Aug 2025
+                                               100 agents;            500 agents; evacuating         3,000 agents;                                     13,000 agents;              Tested emergency
+                                             online response          with communications in          added aisles,                                added parent/friend roles      variations; evaluated
+                                                                          simple container     bottlenecks, coordinators,                          and navigation planning.         policy scenarios
+
+  Simulation
+                                                                                                actual announcements
+
+
+
+
+    Design        Semi-structured
+                   Interviews for
+                                                                                                                            Real commencement
+                                                                                                                            observed; crowd data
+                institutional realities                                                                                           recorded
+
+
+
+
+                                             Distrust of results;      Highlighted missing      Credibility increased;                             Baseline trust established     Adopted protocols;
+                                              commencement               realism (scale,        Simulations used to                                                             Investigating feasibility;
+
+
+  Policymaker
+                                          identified as validation-     constraints, roles)      train coordinators                                                                 Documented the
+                                              feasible domain                                                                                                                     simulation to After-
+                                                                                                                                                                                     Action Report
+
+
+
+   Feedback
+
+
+
+
+Fig. 3. Iterative design process. Across 16 months (May 2024–Aug 2025), we progressed from preparation interviews through five
+simulation iterations and an in-situ observation. Each phase introduced greater scale and realism (from 100 to 13,000 agents, adding
+roles, bottlenecks, and family dynamics) and was shaped by policymakers’ feedback. The core system used in later studies (Fig. 2) was
+developed by the fourth iteration. Early iterations surfaced distrust and missing realism, later iterations built credibility and training
+value, and by the final iteration, simulations informed adopted protocols, feasibility assessments, and official after-action reports.
+
+
+
+
+     To explore this space, we developed an initial prototype simulating 100 LLM agents interacting online. Agents,
+prompted to behave as students, received official lockdown announcements and shared generated responses through
+a simplified social network. Personas and lightweight state machines introduced variability in interpretation and
+propagation (implementation details in Appendix, Sec. A.2).
+     When we presented this iteration in October 2025, policymakers expressed skepticism about its practical utility. While
+they agreed that modeling misinformation was an important issue, their concerns centered on validation: simulated
+communication dynamics could not be reliably assessed against real-world behavior.
+     These discussions led to a key design shift: rather than pursuing simulations that focused exclusively on communica-
+tion dynamics, we jointly identified evacuation preparedness for the university’s annual commencement as a more
+suitable domain: one that was both operationally critical and recurrent, enabling direct observation and validation.
+
+
+5.3        Second Iteration: Simulating “Commencement”
+Building on the limitations identified in the first iteration, we shifted focus to evacuation preparedness during the
+university’s annual commencement. Unlike online communication scenarios, commencement provided a recurring,
+institutionally significant setting in which crowd movement and response patterns could be directly observed.
+     We developed a simplified evacuation simulation with 500 LLM agents prompted to behave as students attending
+commencement. Agents were placed in an abstracted stadium layout, received an official evacuation announcement,
+exchanged messages with nearby peers, and selected exits over multiple time steps. This iteration deliberately prioritized
+observability over realism, serving as a bridge between the communication-focused prototype and a physically grounded
+evacuation model.
+     When reviewed by P1, P4, and P5 in early April 2025, policymakers immediately identified gaps that limited policy
+relevance. Their feedback emphasized missing contextual details essential for real evacuation planning, including
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                              11
+
+
+realistic scale, physical constraints (aisles and bottlenecks), accessibility considerations, volunteer coordinator roles,
+and the use of realistic announcement language.
+  Rather than rejecting the simulation, policymakers treated this iteration as a diagnostic artifact. Their critiques
+clarified which contextual features were necessary for trust and directly motivated the next iteration’s increase in scale,
+environmental fidelity, and role differentiation.
+
+5.4   Third Iteration: Simulating the University’s Commencement
+Guided by policymakers’ feedback, we substantially increased the realism of the simulation to reflect the operational
+conditions of the university’s commencement. We incorporated key physical features they identified—including seating
+sections, aisles, concourses, and bottlenecks—and increased the simulation scale to 3,000 agents.
+  Agents reflected heterogeneous attendee roles and constraints. We introduced differentiated mobility profiles for
+accessibility needs and coordinator agents positioned throughout the stadium to guide evacuation, mirroring volunteer
+responsibilities during real emergencies. Movement speed adapted dynamically to local crowd density, enabling realistic
+congestion patterns to emerge.
+  We worked with policymakers to obtain the official evacuation message and focused on severe weather scenarios,
+which they identified as the most operationally relevant emergency type. Together, these changes shifted the simulation
+from an abstract model to one recognizable as their institutional environment.
+  This iteration marked a clear turning point in engagement. When P1, P4, and P5 reviewed the system in late April
+2025, they expressed substantially greater confidence in its credibility and relevance. Rather than questioning validity,
+policymakers began using the simulation to reason about concrete planning decisions. For example, P1 used the
+visualization to diagnose where volunteer coordination mattered most, noting that congestion emerged well before
+crowds reached the exits. In their words, “by the time the crowd reaches the exits, it’s too late — they’re already bumping
+into each other,” whereas the key inefficiency occurred earlier, when students selected distant exits and collided along
+interior routes. Seeing these dynamics unfold in the simulation helped them reason about where volunteers should be
+positioned to intervene effectively.
+  Policymakers also immediately recognized the value of recorded simulations as training materials. Rather than
+relying on static slides, they emphasized that coordinators could “see where congestion is likely to happen and what to
+expect,” making the simulations a concrete way to prepare volunteers for real-world conditions. Following this review,
+policymakers integrated them into coordinator training sessions ahead of the 2025 commencement and documented the
+approach in the official after-action report. This marked the first transition of the simulation system from an exploratory
+technology probe [47] to an institutionally-recognized tool supporting policy implementation.
+
+5.5   Fourth Iteration: Validating Simulation with Real Commencement
+Following the third iteration, we observed the university’s actual commencement alongside the policymaker team
+in May 2025. We examined the venue layout and recorded crowd movement as attendees exited the stadium under
+IRB approval. Although no emergency occurred, these observations provided baseline data for validating evacuation
+dynamics.
+  During the event, policymakers highlighted areas they routinely monitored for congestion, helping align our analytic
+focus with practitioner priorities. One unanticipated pattern proved especially consequential: the central role of students’
+family members. More than half of attendees were family or friends, and after the ceremony many students sought to
+reunite with them, producing the most severe congestion near family seating areas.
+                                                                                                  Manuscript submitted to ACM
+12                                                                                 Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+     Our prior simulations had modeled only student agents acting independently. This mismatch revealed a critical
+omission. Evacuation behavior was shaped not only by individual movement but by social regrouping, motivating a
+redesign that treated family members as distinct agents with different goals and interactions.
+     To address this gap, we developed the most comprehensive version of the system, scaling to nearly 13,000 agents—matching
+the actual event—and incorporating student, family/friends, and coordinator agents. Agents were seated in designated
+areas, grouped socially, and designed to communicate and move jointly. The stadium layout, exits, and accessibility
+areas reflected the real venue, enabling realistic congestion and regrouping dynamics (Fig. 2).
+     In June 2025, P1, P4, and P5 judged the simulation’s baseline crowd dynamics to align with their routine commencement
+experience (Fig. 4), which established sufficient trust to explore hypothetical emergencies.
+
+ A. Actual Commencement                                             B. Simulation
+
+
+
+
+Fig. 4. Comparison of crowd movement dynamics between empirical observation and simulation. (A) Photograph of the 2025
+commencement, showing attendee movement as the ceremony concluded under routine (non-emergency) conditions. (B) Snapshot
+from the corresponding simulation, incorporating 13,000 agents with roles for students, family members, and coordinators, represented
+(colored dots). The simulation (Fig. 2) reproduced key spatial patterns observed in the event, including congestion in the track areas at
+the bottom of the frame, supporting alignment between observed and simulated crowd dynamics.
+
+
+
+5.6    Fifth Iteration: Exploring Better Policy Implementation
+In the final iteration, we used the validated simulation to explore concrete policy implementation options raised by
+policymakers. We examined operationally plausible variations in emergency type (severe weather and bomb threat),
+announcement specificity, and coordination strategies, including repositioning coordinators and opening an additional
+exit. Interventions were evaluated relative to baseline practices based on “evacuation efficiency”, measured as the time
+required for 80% of agents to evacuate.
+     This iteration, conducted in August 2025, produced three actionable proposals: (1) opening a previously unused exit
+at the northwestern corner of the stadium, (2) training coordinators to guide both nearby and distant groups during
+localized threats, and (3) differentiating evacuation procedures by emergency type and incorporating these distinctions
+into training materials.
+     Figure 5 illustrates how simulation outputs informed discussion around Proposal 1. Across scenarios, variations in
+coordinators’ positions — which was one of the primary interventions policymakers’ initially considered — did not
+substantially affect evacuation time. In contrast, opening the northwest exit significantly improved evacuation efficiency
+(23.0% relative to baseline), whereas other exits produced negligible gains due to local constraints. Policymakers
+interpreted the effectiveness of the northwest exit in relation to its proximity to a major congestion area between
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                       13
+
+
+
+
+                      Estimated Proportion of
+
+
+
+
+                     Occupants Evacuated (%)
+                                                       -23.0%
+
+
+
+
+                                                         Time (Minutes)
+
+Fig. 5. Cumulative evacuation progress across policy alternatives in a severe weather scenario. The figure shows the simulated
+proportion of agents evacuated over time after an official severe weather announcement instructing evacuation from the stadium. Each
+curve represents the cumulative percentage of agents who have exited under the current procedure and three alternative strategies
+explored with the developed stadium system (Fig. 2). Vertical dashed lines indicate the time required to evacuate 80% of agents—a
+threshold that policymakers routinely use to assess evacuation effectiveness. Opening the northwest exit (green) significantly reduces
+evacuation time relative to the current process (yellow), corresponding to a 23.0% reduction at the 80% threshold, while repositioning
+coordinators or emphasizing the south exit yields only marginal gains. These comparative trajectories supported policymakers’
+reasoning about which procedural changes were likely to meaningfully improve evacuation efficiency.
+
+
+
+students and family members. This intervention was robust in both severe weather and bomb thread scenarios, except
+when the threat itself was located near that exit.
+    Following this iteration, the policymakers adopted Proposals 2 and 3, integrating revised coordinator guidance
+and differentiated emergency protocols into standard operating procedures. They noted that in man-made threat
+scenarios such as bomb or active-shooter incidents, operational authority shifts to local police, limiting their ability to
+fully implement some process changes. Proposal 1 entered a formal feasibility review, consistent with institutional
+procedures for infrastructure modifications. These outcomes were documented in the August 2025 after-action report,
+which committed to continued use of the simulation for preparedness planning and training.
+
+6   Findings
+We identified five mechanisms through which LLM agent simulations became useful for policy practice in our setting:
+
+    (1) The Validation Filter: Simulations are most useful in scenarios where simulated behaviors can be validated
+    (2) The Trust Bootstrap: Trust from validating mundane scenarios extends to novel ones
+    (3) The “Fix-It” Response: “Wrong” simulations surface tacit domain knowledge from policymakers
+    (4) The Details Matter: Contextual nuance in interaction environments enables policy use
+    (5) Policy-AI Interaction: Usefulness emerges from co-evolution in policy requirements and simulation capabilities
+
+    Across these five mechanisms, policymakers were not primarily evaluating whether the simulator was “accurate” in
+predicting exact motion trajectories. Instead, they asked a more operational question: can this simulation be used to
+justify a concrete change in training, staffing, messaging, or infrastructure? In practice, simulation “usefulness” emerged
+                                                                                                          Manuscript submitted to ACM
+14                                                                        Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+when: it created a shared reference point that policymakers could check against something they already knew; it could
+be interrogated when it looked wrong; and, it could be iterated upon until it supported decisions that policymakers
+were actually empowered to make. These findings help explain why the same stochastic and generative affordances
+that make LLM simulations attractive for exploring “unknown unknowns” also make them difficult to adopt without
+an initial path to validation and trust calibration. While our findings are grounded in our engagement with just one
+institution, these mechanisms can reflect recurring conditions of policy-facing simulation work (See Section 7.1). We
+discuss each in turn below.
+
+6.1    Validation Filter: Usefulness Requires Scenarios That Can be Validated
+In our study, simulations were considered useful only when outputs could be validated against policymakers’ experience
+or ground-truth data—an implicit requirement that became visible through iteration. We call this the “validation filter”:
+usefulness depends on domains where well-understood scenarios can be jointly checked before extending to hypothetical
+emergencies. In this context, validation did not mean comparing simulation outputs to a single ground-truth value.
+Rather, policymakers needed to be able to check simulation behavior against something they already knew from
+experience, observation, or institutional records. This surfaced immediately in Iteration 1 (Sec. 5.2), where P3 doubted
+validation was feasible:
+
+        “It’s very hard for us to access social media data in previous emergencies, and some important communi-
+        cation may happen at private Discord channels... And then you have people in other countries who may
+        be having a conversation that’s blowing up way beyond what is actually happening here... we don’t know,
+        I mean, I don’t know how to communicate directly with some of our audiences overseas.”
+
+Because of this gap, the domain was deemed unsuitable for useful simulation, despite its clear policy relevance.
+Policymakers instead steered discussions toward scenarios with verifiable outcomes, explicitly welcoming our proposal
+to observe commencement. As P1 put it:
+
+        We will be more than happy to have you here and so what we do is what we actually have an emergency
+        operation center... you have the whole view and you can see actually see the flow of people.
+
+Commencement was therefore appealing not only because it was high-stakes, but because it recurred and could be
+directly observed. This made it possible to establish a shared sense of what “normal” looked like before using the
+simulation to explore more uncertain scenarios.
+
+6.2    Trust Bootstrap: Trust from Validating Mundane Scenarios Extends to Novel Ones
+The validation filter creates a paradox: simulations are most valuable for hard-to-observe events [11, 74, 75], yet they
+are trusted only when grounded in well-understood scenarios. We found that this paradox could be addressed through
+a “trust bootstrap” process. In practice, this bootstrapping took the form of a gradual expansion in scope. Policymakers
+first accepted the simulator’s representation of routine movement patterns and spatial constraints. Once that foundation
+was established, they became willing to explore scenarios that layered additional uncertainty on top of this baseline,
+such as alternative exit strategies or hypothetical disruptions.
+     In our study, once trust was established through successful validation in mundane scenarios (in our case, attendees
+exiting the stadium after commencement), that trust could be extended—or “bootstrapped”—to more novel and spec-
+ulative scenarios where robust validation was harder or practically impossible. This process has become especially
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                 15
+
+
+salient with recent advances in LLMs, which allow simulation systems to adapt to new, natural-language scenarios
+while building on validated setups. This dynamic was reflected in P1’s comment during the fourth iteration (Sec. 5.5):
+
+       “...when you showed a baseline evacuation without anything major, it mirrored the 20 minutes of what
+       you all experienced with us with just the regular evacuation. And your simulation mirrored what we
+       experience every time we have it. So that gives us some baseline trust, if you will, to see that it is connecting
+       to what experiences we already had.”
+
+   This baseline trust enabled policymakers to explore more speculative possibilities. For example, in our fifth iteration,
+we demonstrated that opening an additional exit at the northwestern corner could speed up evacuation. In response, P5
+proposed another option:
+
+       What if there was another exit that could potentially be opened?... Right behind it are stairs that lead
+       up to the buildings. I believe the university runs a fence across the back because it’s behind the stadium.
+       Maybe the university could put a temporary gate piece there instead of fencing it off completely... The
+       model (simulation) would be good for this and this is kind of the next step on the maturing the process
+       and considering those additional options.
+
+We tested the behind-stage exit, but the simulation outputs showed it was less efficient than the northwestern exit. As a
+result, the team did not pursue it further. This underscores how validated trust allowed policymakers to both imagine
+new options and critically assess their feasibility.
+
+6.3   “Fix-It” Response: “Wrong” Simulations Surface Tacit Domain Knowledge from Policymakers
+We also found that the iterative process was essential because it created opportunities for policymakers to respond to
+simulations with “fix-it” reactions. Even when policymakers were deeply familiar with their domain, they did not initially
+know which details were critical for interpreting a simulation until they saw something that looked off. Incomplete,
+simplistic, or otherwise “wrong” simulations therefore served as productive technology probes [47]. By reacting to
+outputs that seemed unrealistic or missing, policymakers revealed hidden assumptions and unspoken expertise, which
+in turn guided refinements that brought the simulations closer to institutional relevance.
+   For example, our original commencement evacuation simulation did not consider accessibility needs (Sec. 5.3). When
+observing that LLM agents move at the same speed, P5 immediately flagged this omission:
+
+       “Did you think about like people with disabilities and they might want to exit like through the one that
+       has like the ramp or anything like that? Did you guys think about those factors?”
+
+This requirement—accounting for accessibility situations—did not emerge until after policymakers saw a simulation
+that failed to include it.
+   Similarly, while we had incorporated friendship groups based on earlier discussions, the simulation initially modeled
+only students’ evacuation. After seeing this version, P4 immediately surfaced a critical missing dimension:
+
+       “You start thinking about the fact that in a graduation ceremony, for every student, there is potentially
+       minimum of two family members that will be in attendance. And if you’re thinking through the concept
+       of a friend group having a very strong connection, you’ve also got to put into consideration the fact that
+       there is a family connection and they are not with their family in that graduation component.”
+
+P5 built on this observation, noting that families would coordinate around shared landmarks:
+                                                                                                     Manuscript submitted to ACM
+16                                                                          Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+        “Like they’ll meet up at landmarks that the family knows... So like if your family’s not familiar with CMU
+         and you tell them like let’s meet by the goal post that’s something visually that they can see.”
+Despite being core to actual evacuation behavior, these family dynamics and landmark-based coordination strategies
+were never mentioned in initial requirements discussions. These insights rarely surfaced in interviews and instead
+emerged when policymakers confronted unrealistic outputs.
+
+6.4    The Details Matter: Contextual Nuance in Interaction Environments Enables Policy Use
+LLM agent simulations consist of two core elements: the agents themselves and the environments in which they interact
+[90]. In our early iterations, we focused primarily on designing agents and leveraging LLM capabilities. However,
+policymakers consistently pointed out that without sufficient nuance in the interaction environment, the simulations
+lacked credibility. When the interaction environment was under-specified, agents could still produce fluent and socially
+plausible behavior. However, this surface-level plausibility became a liability rather than an asset: because the interaction
+environment was under-specified, realistic-looking behavior gave the impression of policy relevance without clearly
+signaling its limits, making it difficult for policymakers to judge when simulation outputs could or could not inform
+operational decisions.
+     In our case for commencement evacuation, these contextual details included the physical (stadium layout, seating),
+social (family relationships, accessibility needs), procedural (coordinator roles, protocols), and temporal (event sequences,
+decision timelines). When these contexts were incorporated, policymakers not only trusted the realism of the outputs
+but also began to envision practical uses. For example, in the third iteration, seeing weather-related announcements
+integrated into the simulation prompted P4 to imagine how the same system could handle more serious threats:
+        “We were thinking that this evacuation is due to severe weather, which would be a fairly benign reason.
+         But it could also be because of a bomb threat, and that opens up a whole different conversation.”
+     Similarly, viewing the simulation prompted policymakers to recall physical details they had initially overlooked. As
+the simulation became more refined, P1 noted a missing element:
+        “One of the things that we’re not having in the model is the bleachers which is the section in the back,
+        which has a lot more flexibility because we have less volunteers but several thousand people.”
+     In academic demonstrations, developers often concentrate on designing LLM agents. Our findings show that
+environment design is as consequential as agent design for policy use. Context reinforced utility by anchoring simulations
+in recognizable realities, and it sparked imagination about new applications. Missing or misaligned contexts could cause
+temporary dips in confidence, but these gaps also triggered “fix-it” responses that revealed additional requirements (see
+Sec. 6.3).
+
+6.5    Policy-AI Interaction: Usefulness Emerges From Co-Evolution in Policy Requirements and Simulation
+       Capabilities
+Our iterative process ultimately revealed a co-evolution between policy requirements and simulation capabilities. While
+we initially aimed to design simulations that could directly inform “policy,” policymakers clarified that our assumption
+was misplaced. P1 stated:
+        “These are process changes, not policy or concept of policy is different. Our policy is to implement safe
+         procedures to make sure that we protect life, property. So, policy has a context of what we intend to do...
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                               17
+
+
+        So, our policy is the same. What we’re trying to do is to find ways to fulfill the policy, which is protecting
+        life.”
+
+    This distinction matters because policy commitments remain stable while implementation processes adapt to
+context. It also clarified an important boundary on when simulations became actionable. Policymakers found the
+simulator most useful when it addressed decisions that fell within their direct authority, such as training practices,
+coordinator placement, or internal procedures. In contrast, simulation outputs were harder to act on when potential
+changes depended on external command structures, legal authority, or approvals beyond the institution. In these cases,
+the simulator still supported discussion and sensemaking, but it did not translate as directly into changes in policy
+implementation. More broadly, policymakers treated the simulator as a mutual learning device — useful once baseline
+trust existed, but always contingent on what institutional knowledge they could supply. As P1 later reflected:
+
+        We are aware that there’s so many variables, so we’re not going to be going to be able to simulate 100%
+        the whole. So when we trust the system enough... I think that to mutually learn... Because I think this is
+        for us this is a learning experience. So we know that the system is giving us baseline data, but it’s also as
+        good as the information that we provide... to build an own understanding of how the process works.
+
+    Usefulness was therefore recursive: simulations supported policy implementation by helping policymakers refine
+operational procedures that realize stable policy goals, and those refinements in turn shaped what the simulator needed
+to represent next.
+
+7     Discussion
+7.1    Are LLM Agent Simulations Useful for Policy?
+Scholars remain divided on the usefulness of LLM agent simulations for policy. This debate echoes Bill Buxton’s
+distinction between “building the thing right” versus “building the right thing [17].” While prior work has emphasized
+increasingly sophisticated agent architectures [32, 76, 90, 93], critics warn that speculative simulations risk being
+mistaken for predictive truth [9, 52, 109].
+    Our engagement suggests that this debate cannot be resolved by evaluating simulation systems in isolation. Policy-
+makers expressed dissatisfaction with existing tools — such as tabletop exercises and traditional agent-based models —
+that struggle to support reasoning about dynamic, interdependent action. For example, P1 explained:
+
+        “Typically, we’ll sit in a meeting with police, look at a map, and say things like, ‘I’ll send three officers
+        here.’ But we don’t really go deeper into questions like: How long will that take? What are other agents
+        doing at the same time? How do people react dynamically?”
+
+Policymakers further noted that these tools often abstract away social meaning central to real-world decision-making,
+resulting in what P4 described as a “blank human” model:
+
+        “When we normally do tabletop exercises, we’re dealing with a kind of blank human. We don’t know who
+        the person is, and everyone implicitly behaves the same way. But that’s not how real life works.”
+
+The same limitations also apply to traditional ABMs. These models can represent evacuation geometry and physical flow
+more realistically than naive tabletop exercises [20, 43, 51, 79], but they still fall short of capturing social and semantic
+factors central to real-world decision-making, such as communication, social ties, differentiated roles, and heterogeneous
+interpretations of procedures [6, 26, 54, 91]. These gaps motivate the exploration of alternative simulation paradigms,
+                                                                                                   Manuscript submitted to ACM
+18                                                                          Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+not as replacements for existing policy tools, but as complements that foreground communication, interpretation, and
+institutional roles.
+     Against this backdrop of institutional dissatisfaction with existing tools, LLM agent simulations offer a different
+design space: one that integrates language, social meaning, and role-specific reasoning into physically grounded
+scenarios. Our goal is not to claim that LLM agents surpass carefully tuned ABMs in navigation accuracy. Instead, the
+persistent challenges that limit the institutional adoption of existing simulation tools motivate exploration of alternative
+paradigms. However, LLM agent simulations are not inherently useful; their outputs are stochastic, semantically rich,
+and difficult to validate, making trust calibration a central design challenge. We found that LLM agent simulations can
+become useful for policy implementation when embedded in specific design conditions. Rather than emerging from
+predictive accuracy alone, usefulness developed through iterative engagement in which simulations were validated
+against mundane scenarios, used to surface tacit institutional knowledge, and gradually repurposed for training and
+operational planning. In this role, simulations functioned less as forecasting tools and more as technology probes that
+supported shared reasoning about complex scenarios.
+     Nonetheless, caution is warranted. As trust builds, model errors and demographic biases may be overlooked [60].
+While such biases can be deliberately leveraged to stress-test policies against real-world behavioral disparities, uncritical
+reliance on biased outputs risks reinforcing inequities [70], requiring a careful distinction between modeling bias and
+allowing it to shape policy decisions.
+     These observations also suggest that the usefulness of LLM agent simulations is not uniform across policy domains.
+Our findings help identify a set of enabling conditions under which such simulations are most likely to be worth
+the effort: (1) a recurring baseline scenario that can be observed directly; (2) decision levers that policymakers can
+realistically change; and (3) outcomes that can be discussed in operational terms rather than abstract social dynamics.
+     Policy domains that meet these characteristics may similarly support the gradual development of trust in LLM agent
+simulations. Beyond emergency preparedness, examples include managing passenger flow and staffing during recurring
+transit disruptions, coordinating staffing and bed allocation during predictable hospital demand cycles, or planning
+operations for large, regularly scheduled public events. In these settings, policymakers can observe baseline conditions,
+adjust concrete levers such as staffing, routing, or communication workflows, and meaningfully relate simulation
+outputs to plausible operational changes.
+     By contrast, domains such as long-term climate adaptation, national security strategy, or online misinformation
+governance often lack stable, observable baselines and place key decision levers outside the control of any single
+policymaking unit. In such contexts, simulations may still offer exploratory value, but translating simulation outputs
+into actionable institutional change may require forms of validation, interpretation, and organizational alignment
+beyond those examined in this work.
+     Rather than arguing that LLM agent simulations should universally guide policy, this work shows how usefulness
+can emerge through context-sensitive design aligned with institutional practices and constraints. The central question
+is therefore not whether LLM agent simulations are useful for policy, but how they can be designed to become useful for
+policy practice.
+
+7.2    How Can LLM Agent Simulations Be Designed to Become Useful for Policy Practice?
+Building on these boundary conditions, we articulate design process implications specific to LLM agent simulations in
+policy contexts. While our findings align with established HCI insights that iterative stakeholder engagement increases
+the likelihood of producing useful technologies, this section highlights three implications that are distinctive to LLM
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                              19
+
+
+agent simulations when they are intended to support policy implementation rather than exploratory analysis alone.
+Grounded in the five insights identified in Section 6, these implications outline how such simulations can be developed
+and deployed in ways that are genuinely useful within real policy practices.
+
+7.2.1 Start with Verifiable Scenarios and Build Trust Gradually. LLM agent simulations often target complex social
+phenomena that cannot be directly verified [32, 46, 53]. Our “validation filter” finding (Sec 6.1) shows that, in practice
+simulations only become policymakers could first validate outputs against observable or familiar scenarios. Because
+LLM-generated behaviors are inherently stochastic, trust was not established through formal evaluation alone, but
+through post-hoc alignment with known patterns of behavior. This unpredictability is also the strength of LLM agent
+simulations—they allow us to explore unanticipated situations through agent interaction—but it makes the question of
+validation especially challenging.
+  Developers and designers should therefore treat validation not as a final evaluation step, but as an early design
+constraint that shapes which scenarios are explored first. Starting from routine, verifiable cases allows simulations to
+establish baseline credibility, which can then be extended to more speculative or unobservable situations. This staged
+progression — what we describe as “trust bootstrapping” (Sec 6.2) — enables LLM agent simulations to leverage their
+generative capacity while remaining usable for policy practice.
+
+7.2.2 Use Preliminary Simulations to Elicit Tacit Knowledge. In HCI, prototyping is not just about refinement, but
+about exploration through progressively increasing fidelity [16, 37, 75, 110]. LLM agent simulations can serve as a
+similar role in policy contexts; however, our “fix-it” response finding (Sec 6.3) highlights an additional benefit. Because
+LLM-generated behaviors appear socially plausible, even deliberately preliminary or “wrong” simulations can provoke
+rich critique, surfacing tacit domain knowledge that policymakers often cannot articulate in advance.
+  This contrasts with typical AI development practices that emphasize accuracy and polished outputs [15, 22]. All
+simulations are necessarily imperfect—they cannot capture an entire world. As Bonini’s paradox reminds us, increasing
+model complexity does not necessarily increase usefulness [12]. Like a map that is most useful when it selectively
+simplifies the territory, the challenge in simulation design is not simply to increase fidelity, but to choose carefully
+which aspects to represent in order to make the model actionable.
+  Developers should therefore treat interim simulations not simply as flawed prototypes to be corrected, but as
+probes that invite critique. Framing outputs with questions such as “what’s missing here?” rather than “is this correct?”
+helps uncover tacit domain knowledge and institutional practices that can ultimately make the system more useful.
+Importantly, the missing elements are not always tied to LLM capabilities themselves, but often to how the broader
+interaction context is represented. Policymakers care about the broader social context, beyond agent behavior alone. In
+our case, much of this feedback concerned the interaction environment—such as spatial layout, family relationships,
+or coordinator roles—which ultimately proved central to making the simulations useful for policy implementation
+(Sec 6.4). These findings underscore that the details surfaced through iterative feedback are not incidental: they are
+precisely what determines whether a simulation achieves the fidelity needed to inform policy implementation. At
+the same time, the “fix-it” dynamic can become counterproductive when early simulations generate an unbounded
+list of realism demands. In our study, iteration remained productive when critiques could be translated into concrete
+representational changes and linked to decisions that policymakers could plausibly act on.
+
+7.2.3 Set a Design Focus on Evolving Simulation Capabilities and Policy Requirements Together. User-centered design
+often assumes relatively stable user needs that technology should accommodate [4, 34, 102]. In contrast, we found that
+                                                                                                  Manuscript submitted to ACM
+20                                                                           Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+simulation capabilities and policymaker requirements co-evolved, with neither fully specified at the outset (Sec 6.5). In
+our case, simulations began as simple demonstrations of evacuation patterns, but over time policymakers used them to
+explore coordinator placement and differentiated protocols. At the same time, some simulation-informed ideas were
+not pursued due to institutional constraints (e.g., law enforcement authority during bomb threats), highlighting that
+technical possibilities and organizational boundaries must be considered together. More broadly, simulation insights
+were easiest to adopt when the same team that interpreted the results could also change the relevant procedures.
+Adoption became more difficult when changes required coordination across organizational boundaries or shifts in
+incident command.
+     For complex AI systems in institutional contexts, useful design goals cannot be fixed in advance but must be
+iteratively co-constructed. Developers should therefore focus on decision spaces where adaptation is possible—such
+as training, resource allocation, or communication—while maintaining flexibility for both simulation capabilities and
+institutional processes to evolve. This co-evolution enables simulations to move beyond isolated demonstrations and
+become sustained tools for policy implementation.
+
+7.3    Limitations and Future Directions
+Our single-domain focus limits generalizability. Emergency preparedness offers clear success metrics and observable
+validation opportunities that may not exist in other policy domains. In addition, our strongest validation opportunities
+involved routine, non-emergency conditions. We did not have the chance to observe real-world behavior under active
+threat, where fear, uncertainty, and authority dynamics may alter coordination in more fundamental ways. The close
+collaborative relationships with policymakers may also have influenced outcomes in ways that differ from typical
+technology adoption scenarios.
+     Resource requirements raise further questions of scalability. Our iterative design process required substantial time and
+commitment from both developers and policymakers—resources many institutions may lack. User-centered automatic
+interpretation techniques could help increase both the interpretability and scalability of simulation results [38, 104, 105].
+     Ultimately, the usefulness of such tools should be judged by whether suggested changes in policy implementation
+actually improve safety during emergencies. Our study did not directly test implementation results. Longitudinal studies
+are needed to evaluate this question and to trace how simulation tools evolve over extended periods of institutional use.
+A complementary near-term direction is to examine intermediate outcomes that precede rare emergencies, such as
+whether simulation-based training measurably changes coordinator behavior during drills or improves routine crowd
+management. Future research should also test these design conditions across other policy domains and organizational
+contexts, and explore ways to scale iterative methods to institutions with fewer resources. Developing evaluation
+frameworks that center stakeholder experience, rather than traditional accuracy alone, represents another important
+methodological direction.
+     Another important direction for future work is comparative evaluation with traditional agent-based models. LLM
+agent simulations are a form of agent-based modeling, but differ from traditional approach in how agent behavior
+is specified: rather than relying on hand-crafted rules or physics-driven dynamics alone, LLM agent simulations use
+language models to generate semantically rich, context-sensitive behavior. These differences affect how simulations
+are designed, validated, and integrated into policy practice. Accordingly, meaningful evaluation in policy contexts
+would examine how LLM-based approaches complement — and trade off with — the established strengths of traditional
+agent-based models across dimensions such as interpretability, trust calibration, stakeholder engagement, and alignment
+with institutional constraints [56].
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                                    21
+
+
+     Our findings are also constrained by the current capabilities of LLMs—we primarily used OpenAI’s GPT-4o and GPT-
+4.1. As these models advance, new opportunities and challenges for simulation design will likely emerge. Nonetheless, our
+study suggests that building useful LLM agent simulation systems requires shifting focus from technical sophistication
+toward institutional alignment. The path from technological demonstration to institutional impact runs not only through
+better models, but through deep engagement with the organizational and political logics of policymaking itself.
+
+8     Conclusion
+In this paper, we presented a year-long iterative design engagement with a university emergency preparedness team
+to examine how LLM agent simulations can become useful for policy practice. Rather than evaluating simulations as
+predictive or optimization tools, we traced how participatory design enabled them to evolve from academic demonstra-
+tions into institutionally integrated resources for planning, training, and reflection. Our findings show that usefulness
+did not arise from technical fidelity alone, but from design practices that gradually built trust, relevance, and shared
+understanding between developers and policymakers.
+     By tracing this pathway, we articulated three design process implications for practitioners working at the inter-
+section of HCI, AI, and policymaking: begin with scenarios that admit some form of validation, treat imperfections
+as opportunities to surface tacit expertise, and co-evolve simulation capabilities with policy implementation needs.
+Together, these implications shift attention from asking whether LLM agent simulations are “accurate enough” toward
+understanding how they can be responsibly embedded in real organizational workflows.
+     As famously observed in statistics, “All models are wrong, but some are useful” [13]. Our contribution is to show how
+LLM agent simulations can be designed to be useful for policy practice, not by claiming predictive certainty, but by
+aligning technical possibilities with institutional logics, constraints, and decision-making processes. More broadly, this
+work suggests that the value of emerging AI systems in high-stakes domains may hinge less on advances in model
+capability than on the design processes that connect those capabilities to human judgment, institutional practice, and
+organizational sensemaking. We hope this study provides a foundation for future HCI research on designing AI systems
+that support—not replace—policy practice. We also hope it informs more careful, grounded integration of LLM-based
+simulations into real-world institutions.
+
+9     Acknowledgments
+Portions of the teaser figure (Fig. 1) are adapted from illustrations by Storyset (https://storyset.com/technology;
+https://storyset.com/work). We thank Q. Xiao for his insightful advice on the qualitative analysis. This work was
+supported by the NOMIS foundation and the National Science Foundation under grant #2316768.
+
+References
+    [1] Sahar S Abdalla, Sarah A Elariane, and Sarah H El Defrawi. 2016. Decision-making tool for participatory urban planning and development:
+        Residents’ preferences of their built environment. Journal of Urban Planning and Development 142, 1 (2016), 04015011.
+    [2] Ashraf Abdul, Jo Vermeulen, Danding Wang, Brian Y Lim, and Mohan Kankanhalli. 2018. Trends and trajectories for explainable, accountable and
+        intelligible systems: An hci research agenda. In Proceedings of the 2018 CHI conference on human factors in computing systems. 1–18.
+    [3] Pekka Abrahamsson, Outi Salo, Jussi Ronkainen, and Juhani Warsta. 2017. Agile software development methods: Review and analysis. arXiv
+        preprint arXiv:1709.08439 (2017).
+    [4] Chadia Abras, Diane Maloney-Krichmar, Jenny Preece, et al. 2004. User-centered design. Bainbridge, W. Encyclopedia of Human-Computer
+        Interaction. Thousand Oaks: Sage Publications 37, 4 (2004), 445–456.
+    [5] William Agnew, A Stevie Bergman, Jennifer Chien, Mark Díaz, Seliem El-Sayed, Jaylen Pittman, Shakir Mohamed, and Kevin R McKee. 2024. The
+        illusion of artificial inclusion. In Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems. 1–12.
+                                                                                                                      Manuscript submitted to ACM
+22                                                                                            Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+  [6] Benigno E Aguirre, Sherif El-Tawil, Eric Best, Kimberly B Gill, and Vladimir Fedorov. 2011. Contributions of social science to agent-based models
+      of building evacuation. Contemporary Social Science 6, 3 (2011), 415–432.
+  [7] Kars Alfrink, Ianus Keller, Neelke Doorn, and Gerd Kortuem. 2023. Contestable camera cars: a speculative design exploration of public AI that is
+      open and responsive to dispute. In Proceedings of the 2023 CHI conference on human factors in computing systems. 1–16.
+  [8] Li An. 2012. Modeling human decisions in coupled human and natural systems: Review of agent-based models. Ecological modelling 229 (2012),
+      25–36.
+  [9] Sherry R Arnstein. 1969. A ladder of citizen participation. Journal of the American Institute of planners 35, 4 (1969), 216–224.
+ [10] Reuben Binns, Max Van Kleek, Michael Veale, Ulrik Lyngs, Jun Zhao, and Nigel Shadbolt. 2018. ’It’s Reducing a Human Being to a Percentage’
+      Perceptions of Justice in Algorithmic Decisions. In Proceedings of the 2018 Chi conference on human factors in computing systems. 1–14.
+ [11] Marcel Binz, Elif Akata, Matthias Bethge, Franziska Brändle, Fred Callaway, Julian Coda-Forno, Peter Dayan, Can Demircan, Maria K Eckstein,
+      Noémi Éltető, et al. 2025. A foundation model to predict and capture human cognition. Nature (2025), 1–8.
+ [12] Charles P Bonini et al. 1967. Simulation of information and decision systems in the firm. Markham Chicago.
+ [13] George EP Box. 1976. Science and statistics. J. Amer. Statist. Assoc. 71, 356 (1976), 791–799.
+ [14] Virginia Braun and Victoria Clarke. 2006. Using thematic analysis in psychology. Qualitative research in psychology 3, 2 (2006), 77–101.
+ [15] Miles Brundage, Shahar Avin, Jasmine Wang, Haydn Belfield, Gretchen Krueger, Gillian Hadfield, Heidy Khlaaf, Jingying Yang, Helen Toner, Ruth
+      Fong, et al. 2020. Toward trustworthy AI development: mechanisms for supporting verifiable claims. arXiv preprint arXiv:2004.07213 (2020).
+ [16] Marion Buchenau and Jane Fulton Suri. 2000. Experience prototyping. In Proceedings of the 3rd conference on Designing interactive systems: processes,
+      practices, methods, and techniques. 424–433.
+ [17] Bill Buxton. 2010. Sketching user experiences: getting the design right and the right design. Morgan kaufmann.
+ [18] Mirian Calvo and Annalinda De Rosa. 2017. Design for social sustainability. A reflection on the role of the physical realm in facilitating community
+      co-design. The Design Journal 20, sup1 (2017), S1705–S1724.
+ [19] Carlos Castillo. 2016. Big crisis data: social media in disasters and time-critical situations. Cambridge University Press.
+ [20] Xuwei Chen and F Benjamin Zhan. 2008. Agent-based modelling and simulation of urban evacuation: relative effectiveness of simultaneous and
+      staged evacuation strategies. Journal of the Operational Research Society 59, 1 (2008), 25–33.
+ [21] Yixuan Cheng, Dahai Liu, Jie Chen, Sirish Namilae, Jennifer Thropp, and Younho Seong. 2018. Human behavior under emergency and its simulation
+      modeling: a review. In International conference on applied human factors and ergonomics. Springer, 313–325.
+ [22] Rudrajit Choudhuri, Bianca Trinkenreich, Rahul Pandita, Eirini Kalliamvakou, Igor Steinmacher, Marco Gerosa, Christopher Sanchez, and Anita
+      Sarma. 2025. What Guides Our Choices? Modeling Developers’ Trust and Behavioral Intentions Towards Genai. In 2025 IEEE/ACM 47th International
+      Conference on Software Engineering (ICSE). IEEE, 1691–1703.
+ [23] Louise K Comfort. 2007. Crisis management in hindsight: Cognition, communication, coordination, and control. Public administration review 67
+      (2007), 189–197.
+ [24] Eric Corbett and Christopher Le Dantec. 2021. Designing civic technology with trust. In Proceedings of the 2021 CHI Conference on Human Factors
+      in Computing Systems. 1–17.
+ [25] Eric Corbett and Christopher A Le Dantec. 2018. Going the distance: Trust work for citizen participation. In Proceedings of the 2018 CHI conference
+      on human factors in computing systems. 1–13.
+ [26] Donald L DeAngelis and Stephanie G Diaz. 2019. Decision-making in agent-based modeling: A current review and future prospectus. Frontiers in
+      Ecology and Evolution 6 (2019), 237.
+ [27] Wesley Hanwen Deng, Wang Claire, Howard Ziyu Han, Jason I Hong, Kenneth Holstein, and Motahhare Eslami. 2025. WeAudit: Scaffolding User
+      Auditors and AI Practitioners in Auditing Generative AI. arXiv preprint arXiv:2501.01397 (2025).
+ [28] Mateusz Dolata, Norbert Lange, and Gerhard Schwabe. 2024. Development in Times of Hype: How Freelancers Explore Generative AI? 2024
+      IEEE/ACM 46th International Conference on Software Engineering (ICSE) (2024), 2257–2269. https://api.semanticscholar.org/CorpusId:266933328
+ [29] Thomas E Drabek. 2012. Human system responses to disaster: An inventory of sociological findings. Springer Science & Business Media.
+ [30] Yilun Du, Xueguang Ma, Shuran Song, Joshua B. Tenenbaum, and Antonio Torralba. 2024. Improving Factuality and Reasoning in Multi-agent
+      Debate. In Forty-first International Conference on Machine Learning (ICML).
+ [31] Chen Gao, Xiaochong Lan, Nian Li, Yuan Yuan, Jingtao Ding, Zhilun Zhou, Fengli Xu, and Yong Li. 2024. Large language models empowered
+      agent-based modeling and simulation: A survey and perspectives. Humanities and Social Sciences Communications 11, 1 (2024), 1–24.
+ [32] Chen Gao, Xiaochong Lan, Zhihong Lu, Jinzhu Mao, Jinghua Piao, Huandong Wang, Depeng Jin, and Yong Li. 2023. S3: Social-network simulation
+      system with large language model-empowered agents. arXiv preprint arXiv:2307.14984 (2023).
+ [33] Jürgen Groeneveld, Birgit Müller, Carsten M Buchmann, Gunnar Dressler, Cheng Guo, Niklas Hase, Falk Hoffmann, Felix John, Christian Klassert,
+      Thomas Lauf, et al. 2017. Theoretical foundations of human decision-making in agent-based land use models–A review. Environmental modelling &
+      software 87 (2017), 39–48.
+ [34] Jan Gulliksen, Bengt Göransson, Inger Boivie, Stefan Blomkvist, Jenny Persson, and Åsa Cajander. 2003. Key principles for user-centred systems
+      design. Behaviour and Information Technology 22, 6 (2003), 397–409.
+ [35] Onder Gurcan. 2024. Llm-augmented agent-based modelling for social simulations: Challenges and opportunities. arXiv preprint arXiv:2405.06700
+      (2024).
+ [36] Margaret Hagan. 2021. Prototyping for policy. In Legal Design. Edward Elgar Publishing, 9–31.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                                         23
+
+
+[37] Björn Hartmann, Scott R Klemmer, Michael Bernstein, Leith Abdulla, Brandon Burr, Avi Robinson-Mosher, and Jennifer Gee. 2006. Reflective
+     physical prototyping through integrated design, test, and analysis. In Proceedings of the 19th annual ACM symposium on User interface software and
+     technology. 299–308.
+[38] Peter Hase and Mohit Bansal. 2020. Evaluating Explainable AI: Which Algorithmic Explanations Help Users Predict Model Behavior?. In Proceedings
+     of the 58th Annual Meeting of the Association for Computational Linguistics. 5540–5552.
+[39] Patsy Healey, David E Booher, Jacob Torfing, Eva Sørensen, Mee Kam Ng, Pedro Peterson, and Louis Albrechts. 2008. Civic engagement, spatial
+     planning and democracy as a way of life civic engagement and the quality of urban places enhancing effective and democratic governance
+     through empowered participation: some critical reflections one humble journey towards planning for a more sustainable Hong Kong: a need to
+     institutionalise civic engagement civic engagement and urban reform in Brazil setting the scene. Planning Theory & Practice 9, 3 (2008), 379–414.
+[40] Dirk Helbing, Hendrik Ammoser, and Christian Kühnert. 2006. Disasters as extreme events and the importance of network interactions for disaster
+     response management. In Extreme events in nature and society. Springer, 319–348.
+[41] Dirk Helbing, Lubos Buzna, Anders Johansson, and Torsten Werner. 2005. Self-organized pedestrian crowd dynamics: Experiments, simulations,
+     and design solutions. Transportation science 39, 1 (2005), 1–24.
+[42] Dirk Helbing, Sachit Mahajan, Dino Carpentras, Monica Menendez, Evangelos Pournaras, Stefan Thurner, Trivik Verma, Elsa Arcaute, Michael
+     Batty, and Luis MA Bettencourt. 2024. Co-creating the future: participatory cities and digital governance. Philosophical Transactions A 382, 2285
+     (2024), 20240113.
+[43] Dirk Helbing and Peter Molnar. 1995. Social force model for pedestrian dynamics. Physical review E 51, 5 (1995), 4282.
+[44] Kenneth Holstein, Jennifer Wortman Vaughan, Hal Daumé III, Miro Dudik, and Hanna Wallach. 2019. Improving fairness in machine learning
+     systems: What do industry practitioners need?. In Proceedings of the 2019 CHI conference on human factors in computing systems. 1–16.
+[45] John J Horton. 2023. Large language models as simulated economic agents: What can we learn from homo silicus? Technical Report. National Bureau
+     of Economic Research.
+[46] Abe Bohan Hou, Hongru Du, Yichen Wang, Jingyu Zhang, Zixiao Wang, Paul Pu Liang, Daniel Khashabi, Lauren Gardner, and Tianxing He. 2025.
+     Can A Society of Generative Agents Simulate Human Behavior and Inform Public Health Policy? A Case Study on Vaccine Hesitancy. arXiv
+     preprint arXiv:2503.09639 (2025).
+[47] Hilary Hutchinson, Wendy Mackay, Bo Westerlund, Benjamin B Bederson, Allison Druin, Catherine Plaisant, Michel Beaudouin-Lafon, Stéphane
+     Conversy, Helen Evans, Heiko Hansen, et al. 2003. Technology probes: inspiring design for and with families. In Proceedings of the SIGCHI conference
+     on Human factors in computing systems. 17–24.
+[48] Angel Hsing-Chi Hwang, Michael S Bernstein, S Shyam Sundar, Renwen Zhang, Manoel Horta Ribeiro, Yingdan Lu, Serina Chang, Tongshuang
+     Wu, Aimei Yang, Dmitri Williams, et al. 2025. Human Subjects Research in the Age of Generative AI: Opportunities and Challenges of Applying
+     LLM-Simulated Data to HCI Studies. In Proceedings of the Extended Abstracts of the CHI Conference on Human Factors in Computing Systems. 1–7.
+[49] Jayson S Jia, Yiwei Li, Xin Lu, Yijian Ning, Nicholas A Christakis, and Jianmin Jia. 2021. Triadic embeddedness structure in family networks
+     predicts mobile communication response to a sudden natural disaster. Nature communications 12, 1 (2021), 4286.
+[50] Hyoungwook Jin, Minju Yoo, Jeongeon Park, Yokyung Lee, Xu Wang, and Juho Kim. 2025. TeachTune: Reviewing Pedagogical Agents Against
+     Diverse Student Profiles with Simulated Students. In Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (CHI ’25).
+     Association for Computing Machinery, New York, NY, USA, Article 1073, 28 pages. doi:10.1145/3706598.3714054
+[51] Jaekoo Joo, Namhun Kim, Richard A Wysk, Ling Rothrock, Young-Jun Son, Yeong-gwang Oh, and Seungho Lee. 2013. Agent-based simulation of
+     affordance-based human behaviors in emergency evacuation. Simulation Modelling Practice and Theory 32 (2013), 99–115.
+[52] Shivani Kapania, William Agnew, Motahhare Eslami, Hoda Heidari, and Sarah E Fox. 2025. Simulacrum of Stories: Examining Large Language
+     Models as Qualitative Research Participants. In Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems. 1–17.
+[53] Seth Karten, Wenzhe Li, Zihan Ding, Samuel Kleiner, Yu Bai, and Chi Jin. 2025. LLM Economist: Large Population Models and Mechanism Design
+     in Multi-Agent Generative Simulacra. arXiv preprint arXiv:2507.15815 (2025).
+[54] Vassilis Kostakos, Eamonn O’Neill, Alan Penn, George Roussos, and Dikaios Papadongonas. 2010. Brief encounters: Sensing, modeling and
+     visualizing urban mobility and copresence networks. ACM Transactions on Computer-Human Interaction (TOCHI) 17, 1 (2010), 1–38.
+[55] Tzu-Sheng Kuo, Quan Ze Chen, Amy X Zhang, Jane Hsieh, Haiyi Zhu, and Kenneth Holstein. 2025. PolicyCraft: Supporting Collaborative and
+     Participatory Policy Design through Case-Grounded Deliberation. In Proceedings of the 2025 CHI Conference on Human Factors in Computing
+     Systems. 1–24.
+[56] Robert Lempert. 2002. Agent-based modeling as organizational and public policy simulators. Proceedings of the national academy of sciences 99,
+     suppl_3 (2002), 7195–7196.
+[57] Guohao Li, Hasan Hammoud, Hani Itani, Dmitrii Khizbullin, and Bernard Ghanem. 2023. CAMEL: Communicative Agents for “Mind” Exploration
+     of Large Language Model Society. In Advances in Neural Information Processing Systems, A Oh, T Naumann, A Globerson, K Saenko, M Hardt, and
+     S Levine (Eds.), Vol. 36. 51991–52008.
+[58] Junkai Li, Yunghwei Lai, Weitao Li, Jingyi Ren, Meng Zhang, Xinhui Kang, Siyu Wang, Peng Li, Ya-Qin Zhang, Weizhi Ma, et al. 2024. Agent
+     hospital: A simulacrum of hospital with evolvable medical agents. arXiv preprint arXiv:2405.02957 (2024).
+[59] Xinyi Li, Yu Xu, Yongfeng Zhang, and Edward C Malthouse. 2024. Large language model-driven multi-agent simulation for news diffusion under
+     different network structures. arXiv preprint arXiv:2410.13909 (2024).
+
+
+                                                                                                                         Manuscript submitted to ACM
+24                                                                                              Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+ [60] Yuxuan Li, Hirokazu Shirado, and Sauvik Das. 2025. Actions Speak Louder than Words: Agent Decisions Reveal Implicit Biases in Language Models.
+      In Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT ’25). Association for Computing Machinery, New
+      York, NY, USA, 3303–3325. doi:10.1145/3715275.3732212
+ [61] Arika Ligmann-Zielinska, Daniel B Kramer, Kendra Spence Cheruvelil, and Patricia A Soranno. 2014. Using uncertainty and sensitivity analyses in
+      socioecological agent-based models to improve their analytical performance and policy relevance. PloS one 9, 10 (2014), e109779.
+ [62] Charles Lindblom. 2018. The science of “muddling through”. In Classic readings in urban planning. Routledge, 31–40.
+ [63] Joseph Lindley, Haider Ali Akmal, Franziska Pilling, and Paul Coulton. 2020. Researching AI legibility through design. In Proceedings of the 2020
+      CHI Conference on Human Factors in Computing Systems. 1–13.
+ [64] Qun Ma, Xiao Xue, Deyu Zhou, Xiangning Yu, Donghua Liu, Xuwen Zhang, Zihan Zhao, Yifan Shen, Peilin Ji, Juanjuan Li, et al. 2024. Computational
+      experiments meet large language model based agents: A survey and perspective. arXiv preprint arXiv:2402.00262 (2024).
+ [65] Dor Ma’ayan, Wode Ni, Katherine Ye, Chinmay Kulkarni, and Joshua Sunshine. 2020. How domain experts create conceptual diagrams and
+      implications for tool design. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems. 1–14.
+ [66] Charles M Macal and Michael J North. 2005. Tutorial on agent-based modeling and simulation. In Proceedings of the Winter Simulation Conference,
+      2005. IEEE, 14–pp.
+ [67] Millett Granger Morgan, Max Henrion, and Mitchell Small. 1990. Uncertainty: a guide to dealing with uncertainty in quantitative risk and policy
+      analysis. Cambridge university press.
+ [68] Scott Moss. 2002. Policy analysis from first principles. Proceedings of the National Academy of Sciences 99, suppl_3 (2002), 7267–7274.
+ [69] Daniel Nilsson and Anders Johansson. 2009. Social influence during the initial phase of a fire evacuation—Analysis of evacuation experiments in a
+      cinema theatre. Fire safety journal 44, 1 (2009), 71–79.
+ [70] Ziad Obermeyer, Brian Powers, Christine Vogeli, and Sendhil Mullainathan. 2019. Dissecting racial bias in an algorithm used to manage the health
+      of populations. Science 366, 6464 (2019), 447–453.
+ [71] Jennifer O’Brien, Ellie Fossey, and Victoria J Palmer. 2021. A scoping review of the use of co-design methods with culturally and linguistically
+      diverse communities to improve or adapt mental health services. Health & Social Care in the Community 29, 1 (2021), 1–17.
+ [72] Leysia Palen, Kenneth M Anderson, Gloria Mark, James Martin, Douglas Sicker, Martha Palmer, and Dirk Grunwald. 2010. A vision for technology-
+      mediated support for public participation & assistance in mass emergencies & disasters. In ACM-BCS Visions of Computer Science 2010. BCS Learning
+      & Development.
+ [73] Leysia Palen and Sophia B Liu. 2007. Citizen communications in crisis: anticipating a future of ICT-supported public participation. In Proceedings of
+      the SIGCHI conference on Human factors in computing systems. 727–736.
+ [74] Joon Sung Park, Joseph O’Brien, Carrie Jun Cai, Meredith Ringel Morris, Percy Liang, and Michael S Bernstein. 2023. Generative agents: Interactive
+      simulacra of human behavior. In Proceedings of the 36th annual acm symposium on user interface software and technology. 1–22.
+ [75] Joon Sung Park, Lindsay Popowski, Carrie Cai, Meredith Ringel Morris, Percy Liang, and Michael S Bernstein. 2022. Social simulacra: Creating
+      populated prototypes for social computing systems. In Proceedings of the 35th Annual ACM Symposium on User Interface Software and Technology.
+      1–18.
+ [76] Joon Sung Park, Carolyn Q Zou, Aaron Shaw, Benjamin Mako Hill, Carrie Cai, Meredith Ringel Morris, Robb Willer, Percy Liang, and Michael S
+      Bernstein. 2024. Generative agent simulations of 1,000 people. arXiv preprint arXiv:2411.10109 (2024).
+ [77] Jinghua Piao, Yuwei Yan, Jun Zhang, Nian Li, Junbo Yan, Xiaochong Lan, Zhihong Lu, Zhiheng Zheng, Jing Yi Wang, Di Zhou, et al. 2025.
+      AgentSociety: Large-Scale Simulation of LLM-Driven Generative Agents Advances Understanding of Human Behaviors and Society. arXiv preprint
+      arXiv:2502.08691 (2025).
+ [78] Christian Reuter and Marc-André Kaufhold. 2018. Fifteen years of social media in emergencies: a retrospective review and future directions for
+      crisis informatics. Journal of contingencies and crisis management 26, 1 (2018), 41–57.
+ [79] Kelly Rendón Rozo, Julian Arellana, Alcides Santander-Mercado, and Maria Jubiz-Diaz. 2019. Modelling building emergency evacuation plans
+      considering the dynamic behaviour of pedestrians using agent-based simulation. Safety science 113 (2019), 276–284.
+ [80] Elizabeth B-N Sanders and Pieter Jan Stappers. 2008. Co-creation and the new landscapes of design. Co-design 4, 1 (2008), 5–18.
+ [81] Devansh Saxena, Seh Young Moon, Dahlia Shehata, and Shion Guha. 2022. Unpacking invisible work practices, constraints, and latent power
+      relationships in child welfare through casenote analysis. In Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems. 1–22.
+ [82] Thomas C Schelling. 1971. Dynamic models of segregation. Journal of mathematical sociology 1, 2 (1971), 143–186.
+ [83] Douglas Schuler and Aki Namioka. 1993. Participatory design: Principles and practices. CRC press.
+ [84] Hirokazu Shirado, Forrest W Crawford, and Nicholas A Christakis. 2020. Collective communication and behaviour in response to uncertain
+      ‘Danger’in network experiments. Proceedings of the Royal Society A 476, 2237 (2020), 20190685.
+ [85] James Shore and Shane Warden. 2021. The art of agile development. " O’Reilly Media, Inc.".
+ [86] Peter Slattery, Alexander K Saeri, and Peter Bragge. 2020. Research co-design in health: a rapid overview of reviews. Health research policy and
+      systems 18, 1 (2020), 17.
+ [87] Kate Starbird, Jim Maddock, Mania Orand, Peg Achterman, and Robert M Mason. 2014. Rumors, false flags, and digital vigilantes: Misinformation
+      on twitter after the 2013 boston marathon bombing. iConference 2014 proceedings (2014).
+ [88] Kate Starbird and Leysia Palen. 2011. " Voluntweeters" self-organizing by digital volunteers in times of crisis. In Proceedings of the SIGCHI conference
+      on human factors in computing systems. 1071–1080.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                                               25
+
+
+ [89] Anselm L Strauss. 1987. Qualitative analysis for social scientists. Cambridge university press.
+ [90] Theodore Sumers, Shunyu Yao, Karthik Narasimhan, and Thomas Griffiths. 2023. Cognitive architectures for language agents. Transactions on
+      Machine Learning Research (2023).
+ [91] Zhanli Sun, Iris Lorscheid, James D Millington, Steffen Lauf, Nicholas R Magliocca, Jürgen Groeneveld, Stefano Balbi, Henning Nolzen, Birgit
+      Müller, Jule Schulze, et al. 2016. Simple or complicated agent-based models? A complicated issue. Environmental Modelling & Software 86 (2016),
+      56–67.
+ [92] Misako Takayasu, Kazuya Sato, Yukie Sano, Kenta Yamada, Wataru Miura, and Hideki Takayasu. 2015. Rumor diffusion and convergence during
+      the 3.11 earthquake: a Twitter case study. PLoS one 10, 4 (2015), e0121443.
+ [93] Jiakai Tang, Heyang Gao, Xuchen Pan, Lei Wang, Haoran Tan, Dawei Gao, Yushuo Chen, Xu Chen, Yankai Lin, Yaliang Li, et al. 2025. Gensim: A
+      general social simulation platform with large language model based agents. In Proceedings of the 2025 Conference of the Nations of the Americas
+      Chapter of the Association for Computational Linguistics: Human Language Technologies (System Demonstrations). 143–150.
+ [94] Anne Templeton, Claire Nash, Michael Spearpoint, Steve Gwynne, Xie Hui, and Matthew Arnott. 2023. Who and what is trusted in fire incidents?
+      The role of trust in guidance and guidance creators in resident response to fire incidents in high-rise residential buildings. Safety science 164 (2023),
+      106172.
+ [95] Anne Templeton, Hui Xie, Steve Gwynne, Aoife Hunt, Pete Thompson, and Gerta Köster. 2024. Agent-based models of social behaviour and
+      communication in evacuations: A systematic review. Safety Science 176 (2024), 106520.
+ [96] Andrea K. Thomer, Michael B. Twidale, Jinlong Guo, and Matthew J. Yoder. 2016. Co-designing Scientific Software: Hackathons for Participatory
+      Interface Design. In Proceedings of the 2016 CHI Conference Extended Abstracts on Human Factors in Computing Systems (San Jose, California, USA)
+      (CHI EA ’16). Association for Computing Machinery, New York, NY, USA, 3219–3226. doi:10.1145/2851581.2892549
+ [97] Rebecca R Thompson, Dana Rose Garfin, and Roxane Cohen Silver. 2017. Evacuation from natural disasters: a systematic review of the literature.
+      Risk analysis 37, 4 (2017), 812–839.
+ [98] Sonja Utz, Friederike Schultz, and Sandra Glocka. 2013. Crisis communication online: How medium, crisis type and emotions affected public
+      reactions in the Fukushima Daiichi nuclear disaster. Public relations review 39, 1 (2013), 40–46.
+ [99] C Natalie van der Wal, Mark A Robinson, Wändi Bruine de Bruin, and Steven Gwynne. 2021. Evacuation behaviors and emergency communications:
+      An analysis of real-world incident videos. Safety science 136 (2021), 105121.
+[100] Sarah Vieweg, Amanda L Hughes, Kate Starbird, and Leysia Palen. 2010. Microblogging during two natural hazards events: what twitter may
+      contribute to situational awareness. In Proceedings of the SIGCHI conference on human factors in computing systems. 1079–1088.
+[101] Vasillis Vlachokyriakos, Clara Crivellaro, Christopher A Le Dantec, Eric Gordon, Pete Wright, and Patrick Olivier. 2016. Digital civics: Citizen
+      empowerment with and through technology. In Proceedings of the 2016 CHI conference extended abstracts on human factors in computing systems.
+      1096–1099.
+[102] Karel Vredenburg, Ji-Ye Mao, Paul W Smith, and Tom Carey. 2002. A survey of user-centered design practice. In Proceedings of the SIGCHI conference
+      on Human factors in computing systems. 471–478.
+[103] Paul Waddell and Alan Borning. 2004. A case study in digital government: Developing and applying UrbanSim, a system for simulating urban land
+      use, transportation, and environmental impacts. Social science computer review 22, 1 (2004), 37–51.
+[104] Dakuo Wang, Josh Andres, Justin D Weisz, Erick Oduor, and Casey Dugan. 2021. Autods: Towards human-centered automation of data science. In
+      Proceedings of the 2021 CHI conference on human factors in computing systems. 1–12.
+[105] Austin P Wright, Omar Shaikh, Haekyu Park, Will Epperson, Muhammed Ahmed, Stephane Pinel, Duen Horng Chau, and Diyi Yang. 2021. RECAST:
+      Enabling user recourse and interpretability of toxicity detection models with interactive visualization. Proceedings of the ACM on human-computer
+      interaction 5, CSCW1 (2021), 1–26.
+[106] Chengxing Xie, Canyu Chen, Feiran Jia, Ziyu Ye, Shiyang Lai, Kai Shu, Jindong Gu, Adel Bibi, Ziniu Hu, David Jurgens, et al. 2024. Can Large
+      Language Model Agents Simulate Human Trust Behavior?. In The Thirty-eighth Annual Conference on Neural Information Processing Systems.
+[107] Fengli Xu, Jun Zhang, Chen Gao, Jie Feng, and Yong Li. 2023. Urban generative intelligence (ugi): A foundational platform for agents in embodied
+      city environment. arXiv preprint arXiv:2312.11813 (2023).
+[108] Qian Yang, Richmond Y Wong, Steven Jackson, Sabine Junginger, Margaret D Hagan, Thomas Gilbert, and John Zimmerman. 2024. The future of
+      HCI-policy collaboration. In Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems. 1–15.
+[109] Xuhui Zhou, Zhe Su, Tiwalayo Eisape, Hyunwoo Kim, and Maarten Sap. 2024. Is this the real life? is this just fantasy? the misleading success of
+      simulating social interactions with llms. arXiv preprint arXiv:2403.05020 (2024).
+[110] John Zimmerman, Jodi Forlizzi, and Shelley Evenson. 2007. Research through design as a method for interaction design research in HCI. In
+      Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (San Jose, California, USA) (CHI ’07). Association for Computing
+      Machinery, New York, NY, USA, 493–502. doi:10.1145/1240624.1240704
+
+
+
+
+                                                                                                                              Manuscript submitted to ACM
+26                                                                             Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+A     Appendix
+A.1    Co-creating Stakeholder Maps and Process Maps
+
+
+
+
+Fig. A1. Developers and policymakers P1 collaboratively co-creating a stakeholder map and process map during a policy meeting.
+The session supported knowledge elicitation of roles, responsibilities, and workflows in emergency preparedness.
+
+
+
+
+Fig. A2. Stakeholder map of emergency preparedness and response at the university, co-created with policymakers to identify actors,
+roles, and relationships shaping decision-making and information flows during crises.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                   27
+
+
+
+
+Fig. A3. Process diagram of emergency preparedness and response at the university, documenting sequential phases from preparedness
+planning to active response and recovery, and highlighting interdependencies among roles.
+
+
+
+
+Fig. A4. Process diagram of emergency preparedness and response tailored for severe weather scenarios, illustrating protocols for
+monitoring, issuing warnings, coordinating shelter, and resuming normal operations.
+
+                                                                                                       Manuscript submitted to ACM
+28                                                                           Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+
+
+Fig. A5. Process diagram of emergency preparedness and response tailored for unrest or bomb threat scenarios, showing decision
+pathways for lockdowns, communication flows, and coordination with law enforcement.
+
+
+
+A.2     System Description: Iteration 1
+A.2.1 Misinterpretation Simulation System. The simulation system implements a multi-stage pipeline designed to
+evaluate how university announcements may be misinterpreted by students with diverse cognitive and behavioral
+characteristics. The system operates through four primary phases: agent generation, message creation, interpretation
+simulation, and misinterpretation assessment.
+     Agent generation and characterization. The system begins by generating a diverse population of simulated
+students, each represented as an agent with distinct personal characteristics. Each agent is assigned a randomized
+name and a detailed persona that encompasses various psychological and behavioral traits. The persona specifications
+explicitly include the individual’s propensity for misinterpreting information, ranging from highly analytical students
+who carefully parse communications to individuals who may jump to conclusions or misread contextual cues. Additional
+persona elements may include academic background, stress levels, prior experiences with institutional communications,
+attention to detail, and emotional reactivity patterns.
+     Message corpus development. In parallel to agent creation, the system generates a corpus of representative
+university announcement messages. These messages are designed to reflect typical institutional communications that
+students might receive, spanning various topics such as policy changes, event notifications, academic deadlines, or
+administrative updates.
+     Interpretation and reaction simulation. The core simulation phase involves exposing each generated agent to
+each message in the corpus. For every agent-message pair, the system simulates the student’s cognitive processing
+by generating two outputs: an interpretation of the message based on the agent’s persona, and a behavioral reaction
+stemming from that interpretation. The interpretation represents the agent’s internal understanding of the message
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                                      29
+
+
+content, filtered through their individual characteristics and biases. The reaction component captures how the student
+would likely respond to the message given their specific interpretation and personality traits.
+  Misinterpretation scoring and assessment. Following the interpretation simulation, the system employs an
+independent assessment mechanism to evaluate the degree of misinterpretation present in each agent’s response. This
+assessment compares the agent’s interpretation and reaction against the original message content to assign a numerical
+misinterpretation score. The scoring system operates on a scale from zero to one hundred, where zero indicates perfect
+comprehension and one hundred represents complete misunderstanding of the intended message.
+  Extreme response generation. For cases where the misinterpretation score exceeds a threshold value, indicating
+significant misunderstanding, the system generates an additional extreme reaction scenario. This component simulates
+how the student might respond if their misinterpretation led to heightened emotional or behavioral responses, providing
+insight into potential worst-case scenarios for communication failures.
+
+Algorithm 1 Pseudo Script: Misinterpretation Simulation System
+Require: Number of agents 𝑁 , Number of messages 𝑀
+Ensure: Misinterpretation analysis results for all agent-message pairs
+ 1: Phase 1: Agent and Message Generation
+ 2: 𝐴 ← {}                                                                                             ⊲ Initialize agent set
+ 3: for 𝑖 = 1 → 𝑁 do
+ 4:    𝑛𝑎𝑚𝑒𝑖 ← GenerateRandomName()
+ 5:     𝑝𝑒𝑟𝑠𝑜𝑛𝑎𝑖 ← GeneratePersona(misinterpretation_tendency)
+ 6:    𝐴 ← 𝐴 ∪ {(𝑛𝑎𝑚𝑒𝑖 , 𝑝𝑒𝑟𝑠𝑜𝑛𝑎𝑖 )}
+ 7: 𝑀𝑒𝑠𝑠𝑎𝑔𝑒𝑠 ← GenerateMessageCorpus(𝑀)                                             ⊲ Generate university announcements
+ 8: Phase 2: Interpretation Simulation
+ 9: 𝑅𝑒𝑠𝑢𝑙𝑡𝑠 ← {}                                                                                ⊲ Initialize results storage
+10: for all 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑗 ∈ 𝑀𝑒𝑠𝑠𝑎𝑔𝑒𝑠 do
+11:     for all 𝑎𝑔𝑒𝑛𝑡𝑖 ∈ 𝐴 do
+12:         𝑖𝑛𝑡𝑒𝑟𝑝𝑟𝑒𝑡𝑎𝑡𝑖𝑜𝑛𝑖,𝑗 ← SimulateInterpretation(𝑎𝑔𝑒𝑛𝑡𝑖 , 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑗 )
+13:         𝑟𝑒𝑎𝑐𝑡𝑖𝑜𝑛𝑖,𝑗 ← SimulateReaction(𝑎𝑔𝑒𝑛𝑡𝑖 , 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑗 , 𝑖𝑛𝑡𝑒𝑟𝑝𝑟𝑒𝑡𝑎𝑡𝑖𝑜𝑛𝑖,𝑗 )
+14:         Phase 3: Misinterpretation Assessment
+15:         𝑠𝑐𝑜𝑟𝑒𝑖,𝑗 ← AssessMisinterpretation(𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑗 , 𝑖𝑛𝑡𝑒𝑟𝑝𝑟𝑒𝑡𝑎𝑡𝑖𝑜𝑛𝑖,𝑗 , 𝑟𝑒𝑎𝑐𝑡𝑖𝑜𝑛𝑖,𝑗 )
+16:         Phase 4: Extreme Response Generation
+17:         if 𝑠𝑐𝑜𝑟𝑒𝑖,𝑗 > 𝑡ℎ𝑟𝑒𝑠ℎ𝑜𝑙𝑑 then
+18:             𝑒𝑥𝑡𝑟𝑒𝑚𝑒𝑖,𝑗 ← GenerateExtremeReaction(𝑎𝑔𝑒𝑛𝑡𝑖 , 𝑚𝑒𝑠𝑠𝑎𝑔𝑒 𝑗 , 𝑖𝑛𝑡𝑒𝑟𝑝𝑟𝑒𝑡𝑎𝑡𝑖𝑜𝑛𝑖,𝑗 )
+19:         else
+20:             𝑒𝑥𝑡𝑟𝑒𝑚𝑒𝑖,𝑗 ← ∅
+21:         𝑅𝑒𝑠𝑢𝑙𝑡𝑠 [ 𝑗] ← 𝑅𝑒𝑠𝑢𝑙𝑡𝑠 [ 𝑗] ∪ {(𝑎𝑔𝑒𝑛𝑡𝑖 , 𝑖𝑛𝑡𝑒𝑟𝑝𝑟𝑒𝑡𝑎𝑡𝑖𝑜𝑛𝑖,𝑗 , 𝑟𝑒𝑎𝑐𝑡𝑖𝑜𝑛𝑖,𝑗 , 𝑠𝑐𝑜𝑟𝑒𝑖,𝑗 , 𝑒𝑥𝑡𝑟𝑒𝑚𝑒𝑖,𝑗 )}
+         return 𝑅𝑒𝑠𝑢𝑙𝑡𝑠                                                          ⊲ Complete misinterpretation analysis dataset
+
+
+
+A.2.2 Propagation Simulation System. The LLM agent simulation framework implements a multi-agent system designed
+to model information propagation and collective decision-making behaviors in response to security-related scenarios.
+The system consists of three core components: autonomous agents with individual personas, information diffusion
+mechanisms, and environmental orchestration.
+  Agent architecture and decision-making. Each agent possesses a unique identity with a name and detailed
+persona that influences their decision-making patterns. Agents operate through a structured three-phase decision
+                                                                                                          Manuscript submitted to ACM
+30                                                                         Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+pipeline when processing information. In the decision phase, agents evaluate all received information using their
+persona and accumulated knowledge to determine their reaction from three possible states: idle behavior, active
+information spreading, or evacuation from the simulation. When agents choose to spread information, they enter an
+action phase where they generate original content based on their understanding of the situation and their personal
+characteristics. Finally, agents undergo an update phase where they incorporate feedback about simulation outcomes
+into their knowledge base, enabling learning and adaptation for future scenarios.
+     The agent decision-making process utilizes large language models with structured prompts tailored to each agent’s
+persona. Agents maintain separate conversation histories for each decision type, ensuring contextual consistency while
+preventing interference between different cognitive processes. The reward mechanism allows agents to accumulate
+insights from environmental feedback, creating memory effects where past experiences influence future behavior
+patterns. Agents can transition between active and inactive states, with evacuation representing a permanent withdrawal
+from the simulation.
+     Information diffusion mechanisms. The system implements two distinct diffusion strategies to study the effects
+of content moderation on information propagation. The moderated diffusion approach intercepts all agent-generated
+content and applies standardized warning labels indicating potential misinformation before distribution. Specifically,
+content is prefixed with explicit warnings stating “WARNING: This piece of content might contain misinformation”
+followed by the original agent message. The unmoderated diffusion approach transmits agent-generated content without
+any modification, serving as a control condition.
+     Both diffusion mechanisms employ identical probabilistic distribution patterns. When an agent selects the spreading
+action, the diffusion system randomly samples 70% of all agents in the simulation as recipients for the generated content.
+This sampling approach creates realistic information propagation patterns where content does not reach the entire
+population simultaneously. The 70% coverage rate ensures substantial information spread while maintaining realistic
+constraints on individual agent reach within social networks.
+     Environmental coordination and scenario management. The environmental system orchestrates complex
+multi-round simulations through structured scenario scripts that define information injection patterns, timing, and
+feedback mechanisms. These scripts specify which agents receive initial information, the source attribution for credibility
+modeling (such as news organizations or individual sources), and the specific content payloads representing rumors,
+official announcements, or other information types.
+     Simulation execution proceeds through discrete rounds where the environment first distributes scripted information
+to designated agent subsets. Active agents then process their inputs and make decisions according to their decision
+pipeline. Any agents choosing to spread information generate content that enters the diffusion mechanism, creating
+secondary information waves that become inputs for subsequent rounds. This process continues until all scripted
+rounds complete, generating cascading information effects throughout the agent population.
+     The system implements section-based feedback where agents receive environmental outcomes based on their final
+states at the end of each scenario section. Agents learn whether their decisions were appropriate given the actual nature
+of the security threat, enabling behavioral adaptation across multiple scenario sections.
+     Information propagation dynamics and network effects. Information flow within the system emerges or-
+ganically from agent decisions rather than following predefined network topologies. The system creates dynamic
+communication networks where information pathways form based on which agents choose to spread content and
+which agents are randomly selected as recipients. This approach models realistic social media environments where
+information sharing creates temporary communication channels between individuals.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                             31
+
+
+  The propagation mechanism generates compound effects where initial information triggers multiple rounds of
+agent responses, decisions, and subsequent information generation. Agent-generated content influences recipient
+decision-making, potentially creating viral information cascades where rumors or alerts spread exponentially through
+the population. The random sampling approach ensures that different agents may receive different combinations of
+information, leading to diverse response patterns and realistic heterogeneity in population-level outcomes.
+
+Algorithm 2 Pseudo Script: Propagation Simulation System
+Require: 𝐴 = {𝑎 1, 𝑎 2, . . . , 𝑎𝑛 }                                                          ⊲ Set of agents with personas
+Require: 𝑆                                                                       ⊲ Scenario script with sections and rounds
+Require: 𝐷                                                             ⊲ Diffusion mechanism (moderated or unmoderated)
+ 1: Initialize all agents 𝑎𝑖 with personas, decision histories, and reward sets
+ 2: Set all agent states to ACTIVE
+ 3: for each section 𝑠 in 𝑆 do
+ 4:     𝑝𝑟𝑜𝑝𝑎𝑔𝑎𝑡𝑒𝑑_𝑖𝑛𝑓 𝑜 ← ∅
+ 5:     for each round 𝑟 in 𝑠 do
+ 6:          𝑐𝑢𝑟𝑟𝑒𝑛𝑡_𝑟𝑜𝑢𝑛𝑑_𝑎𝑐𝑡𝑖𝑜𝑛𝑠 ← ∅
+ 7:          𝑟𝑜𝑢𝑛𝑑_𝑖𝑛𝑝𝑢𝑡𝑠 ← Combine(𝑟 , 𝑝𝑟𝑜𝑝𝑎𝑔𝑎𝑡𝑒𝑑_𝑖𝑛𝑓 𝑜)                             ⊲ Merge scripted and propagated info
+ 8:          for each agent 𝑎𝑖 ∈ 𝐴 where 𝑠𝑡𝑎𝑡𝑒 (𝑎𝑖 ) = ACTIVE and 𝑎𝑖 has inputs do
+ 9:              𝑖𝑛𝑝𝑢𝑡𝑠𝑖 ← 𝑟𝑜𝑢𝑛𝑑_𝑖𝑛𝑝𝑢𝑡𝑠 [𝑎𝑖 ]
+10:              𝑐𝑜𝑛𝑡𝑒𝑥𝑡 ← BuildContext(𝑎𝑖 .𝑝𝑒𝑟𝑠𝑜𝑛𝑎, 𝑎𝑖 .𝑟𝑒𝑤𝑎𝑟𝑑𝑠, 𝑖𝑛𝑝𝑢𝑡𝑠𝑖 )
+11:              𝑑𝑒𝑐𝑖𝑠𝑖𝑜𝑛𝑖 ← LLMCall(𝑎𝑖 .𝑑𝑒𝑐𝑖𝑠𝑖𝑜𝑛_ℎ𝑖𝑠𝑡𝑜𝑟𝑦, 𝑐𝑜𝑛𝑡𝑒𝑥𝑡)
+12:              if 𝑑𝑒𝑐𝑖𝑠𝑖𝑜𝑛𝑖 = SPREAD then
+13:                   𝑐𝑜𝑛𝑡𝑒𝑛𝑡𝑖 ← LLMCall(𝑎𝑖 .𝑎𝑐𝑡𝑖𝑜𝑛_ℎ𝑖𝑠𝑡𝑜𝑟𝑦, 𝑐𝑜𝑛𝑡𝑒𝑥𝑡)
+14:                   Add {𝑟𝑜𝑙𝑒 : 𝑎𝑖 .𝑛𝑎𝑚𝑒, 𝑐𝑜𝑛𝑡𝑒𝑛𝑡 : 𝑐𝑜𝑛𝑡𝑒𝑛𝑡𝑖 } to 𝑐𝑢𝑟𝑟𝑒𝑛𝑡_𝑟𝑜𝑢𝑛𝑑_𝑎𝑐𝑡𝑖𝑜𝑛𝑠
+15:              else if 𝑑𝑒𝑐𝑖𝑠𝑖𝑜𝑛𝑖 = EVACUATE then
+16:                   𝑠𝑡𝑎𝑡𝑒 (𝑎𝑖 ) ← INACTIVE
+17:          𝑝𝑟𝑜𝑝𝑎𝑔𝑎𝑡𝑒𝑑_𝑖𝑛𝑓 𝑜 ← ∅
+18:          for each action 𝑎𝑐𝑡 in 𝑐𝑢𝑟𝑟𝑒𝑛𝑡_𝑟𝑜𝑢𝑛𝑑_𝑎𝑐𝑡𝑖𝑜𝑛𝑠 do
+19:              𝑟𝑒𝑐𝑖𝑝𝑖𝑒𝑛𝑡𝑠 ← RandomSample(𝐴, 0.7 × |𝐴|)                                                     ⊲ 70% coverage
+20:              if 𝐷 is moderated then
+21:                   𝑐𝑜𝑛𝑡𝑒𝑛𝑡 ← "WARNING: misinformation. " + 𝑎𝑐𝑡 .𝑐𝑜𝑛𝑡𝑒𝑛𝑡
+22:              else
+23:                   𝑐𝑜𝑛𝑡𝑒𝑛𝑡 ← 𝑎𝑐𝑡 .𝑐𝑜𝑛𝑡𝑒𝑛𝑡
+24:              Add {𝑟𝑒𝑐𝑖𝑝𝑖𝑒𝑛𝑡𝑠 : 𝑟𝑒𝑐𝑖𝑝𝑖𝑒𝑛𝑡𝑠, 𝑠𝑜𝑢𝑟𝑐𝑒 : 𝑎𝑐𝑡 .𝑟𝑜𝑙𝑒, 𝑐𝑜𝑛𝑡𝑒𝑛𝑡 : 𝑐𝑜𝑛𝑡𝑒𝑛𝑡 } to 𝑝𝑟𝑜𝑝𝑎𝑔𝑎𝑡𝑒𝑑_𝑖𝑛𝑓 𝑜
+25:     if 𝑠 is not the last section then
+26:          for each agent 𝑎𝑖 ∈ 𝐴 do
+27:              𝑟𝑒𝑠𝑢𝑙𝑡𝑖 ← GetSectionResult(𝑠, 𝑠𝑡𝑎𝑡𝑒 (𝑎𝑖 ))
+28:              𝑘𝑛𝑜𝑤𝑙𝑒𝑑𝑔𝑒 ← LLMCall(𝑎𝑖 .𝑢𝑝𝑑𝑎𝑡𝑒_ℎ𝑖𝑠𝑡𝑜𝑟𝑦, BuildUpdateContext(𝑟𝑒𝑠𝑢𝑙𝑡𝑖 ))
+29:              𝑎𝑖 .𝑟𝑒𝑤𝑎𝑟𝑑𝑠 ← 𝑘𝑛𝑜𝑤𝑙𝑒𝑑𝑔𝑒
+30:              Clear agent histories and reset 𝑠𝑡𝑎𝑡𝑒 (𝑎𝑖 ) ← ACTIVE
+
+
+
+A.3   System Description: Final Iteration
+A.3.1 Agent Population Generation. The simulation employs a two-stage persona generation process to create
+realistic and diverse agent populations representing commencement attendees. The first stage generates individual
+student personas through parallel API calls to language models, while the second stage creates accompanying family
+and friend personas for students requiring social connections.
+                                                                                                 Manuscript submitted to ACM
+32                                                                           Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+     Student persona generation operates across ten academic disciplines with predetermined enrollment distributions,
+totaling 2,928 base student personas. Each generation request includes the academic major as context to produce
+discipline-appropriate background profiles. The system generates an additional 44 students with accessibility require-
+ments, distributed proportionally across all academic programs.
+     The persona generation algorithm assigns unique demographic characteristics including names, detailed background
+descriptions encompassing academic interests and personal circumstances, accessibility requirements, and group
+affiliation patterns. Students with accessibility needs receive explicit mobility considerations that influence their
+movement parameters during simulation execution.
+     The second generation stage creates social network structures through a stratified assignment process. The system
+randomly partitions the 2,928 students into three categories: 2,000 students who attend with family members or friends
+(requiring additional persona generation), 800 students who form friend groups with other students, and 128 students
+who attend individually. For the family/friend category, the system generates between 1-8 additional personas per
+student using targeted prompts that specify relationship types and demographic coherence with the primary student.
+     Friend group formation employs stochastic clustering with group sizes ranging from 3-10 members, randomly
+sampling from the designated student pool until all members receive group assignments. Each generated group
+establishes bidirectional membership lists that define communication channels and decision-making units during
+simulation execution.
+     The complete population generation process produces approximately 13,000 total agents with explicit social network
+topologies, realistic demographic distributions, and heterogeneous accessibility requirements that directly influence
+simulation behavior patterns.
+
+A.3.2 Agent Architecture and Initialization. The simulation instantiates individual agents representing commencement
+attendees, each configured with distinct behavioral parameters and social network affiliations. Each agent maintains a
+comprehensive profile including demographic information, academic major, accessibility requirements, and explicit
+group membership identifiers that define their social connections within the simulation.
+     The system categorizes agents into four distinct behavioral classes that determine their decision-making protocols:
+students with family and friends outside the stadium, students with friends inside the venue, students attending alone,
+and family members or friends of graduates. These classifications directly influence the agent’s response patterns and
+group interaction capabilities.
+     Agent initialization occurs at predetermined coordinates within a 2400×1200 pixel discrete coordinate system
+representing the stadium layout. The coordinate space encompasses geometrically defined regions including eight
+numbered seating sections arranged in a 2×4 grid, interconnecting pathways with specified widths, designated family
+and accessibility areas positioned along the stadium perimeter, a central rectangular stage obstacle, and four exit points
+located at coordinates (20,20), (2380,20), (20,1180), and (2380,600).
+     Each agent operates with a 20-pixel visibility radius for environmental detection and maintains internal state variables
+tracking their current position, movement target coordinates, decision history, and group chat message logs. The system
+assigns each agent an accessibility flag that modifies their movement parameters and a visibility radius parameter that
+determines their environmental awareness range.
+
+A.3.3 Decision-Making Process and Response Formats. The simulation implements two distinct decision-making
+protocols differentiated by agent classification and social context. Non-student-alone agents participate in structured
+group discussion rounds using a multi-field response format that captures both individual decision state and social
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                           33
+
+Algorithm 3 Commencement Emergency Response Simulation System (Part 1: Initialization & Population)
+ 1: procedure InitializeSimulation
+ 2:    canvas ← Create2DSpace(2400, 1200)
+ 3:    stadium_features ← DefineStadiumLayout()
+ 4:    coordinators ← PlaceCoordinators(50, canvas)
+ 5:    agents ← GenerateAgentPopulation()
+ 6:    round ← 0
+ 7:    return agents, canvas, coordinators
+ 8: procedure GenerateAgentPopulation
+ 9:    students ← ∅
+10:    for major in {Engineering(720), Business(240), . . .} do
+11:        personas ← GeneratePersonasAsync(major)
+12:        students ← students ∪ personas
+13:    population ← CreateSocialNetworks(students)
+14:    return population
+15: procedure CreateSocialNetworks(students)
+16:    others_list, friends_list, alone_list ← RandomPartition(students, [2000, 800, 128])
+17:    for student in others_list do
+18:        family_count ← Random(1, 8)
+19:        family ← GenerateFamilyPersonas(student, family_count)
+20:        SetGroupMembership(student ∪ family)
+21:    for remaining in friends_list do
+22:        group_size ← Random(3, 10)
+23:        group ← Sample(remaining, group_size)
+24:        SetGroupMembership(group)
+25:    return others_list ∪ friends_list ∪ alone_list
+
+
+communication. These agents generate responses containing a boolean decision indicator, an optional destination
+selection from a predefined enumeration of twelve possible locations, and a natural language message for intra-group
+communication.
+  The destination enumeration includes four exit locations (Exit 1 through Exit 4), five stadium region descriptions
+(North/South/West/East track areas, South bleachers area), and three social gathering areas (West/East family and
+friends areas, West seating sections area). Each destination maps to specific coordinate generation algorithms that
+produce either fixed exit coordinates or randomized positions within defined regional boundaries.
+  Student-alone agents bypass group consultation mechanisms and utilize a simplified response protocol that produces
+only a destination selection without accompanying social messaging. This streamlined process eliminates group
+coordination overhead while maintaining equivalent environmental input processing.
+  Both decision protocols receive identical contextual information packages generated through environmental analysis
+algorithms. These packages contain structured descriptions of the agent’s current stadium location, enumerated nearby
+physical features within the visibility radius, directional and distance information for all visible agents, coordinator
+proximity notifications with specific exit recommendations, and ranked distance calculations to all four exits with
+cardinal direction indicators.
+
+A.3.4 Environmental Context Generation. The simulation constructs detailed environmental descriptions through
+systematic analysis of agent position relative to stadium features and other attendees. The context generation algorithm
+                                                                                               Manuscript submitted to ACM
+34                                                                          Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+
+first identifies the agent’s current location by testing point-in-rectangle containment against all defined stadium features,
+producing location-specific descriptions that vary based on feature type.
+     For agents positioned within seating sections, the system calculates row and column positions using coordinate offset
+arithmetic and unit spacing parameters. Agents on pathways receive directional information about pathway endpoints
+and connecting features. The algorithm generates specialized descriptions for agents in family areas, accessibility zones,
+or open spaces between major features.
+     Proximity detection operates through distance calculations between agent positions and all stadium features, filtering
+results by the agent’s visibility radius. The system computes cardinal directions using arctangent calculations and
+maps angular ranges to eight-direction compass bearings. Distance measurements undergo categorical classification
+into descriptive ranges: extremely close (less than 50 pixels), near (50-150 pixels), moderately far (150-400 pixels), far
+(400-800 pixels), and very far (greater than 800 pixels).
+     The system performs comprehensive exit ranking by calculating Euclidean distances from the agent’s position to all
+four exit coordinates, sorting results by proximity, and generating formatted descriptions that include both distance
+categories and directional bearings. This exit information provides agents with consistent spatial orientation data for
+navigation decision-making.
+
+Algorithm 4 Commencement Emergency Response Simulation System (Part 2a: Main Loop Core)
+ 1: procedure SimulationMainLoop(agents, canvas, coordinators)
+ 2:       while ∃agent ∈ agents : agent.state ≠ EXITED do
+ 3:         round ← round + 1
+                                                                                 ⊲ Phase 1: State Transition Analysis
+ 4:           resumed_agents ← CheckGroupArrivals(agents)
+ 5:           influenced_groups ← CheckCoordinatorInfluence(agents, coordinators)
+ 6:           ResetInfluencedGroups(influenced_groups)
+                                                                                      ⊲ Phase 2: Decision Processing
+ 7:           discussing_agents ← {𝑎 ∈ agents : 𝑎.state = DISCUSSING}
+ 8:           decisions ← ProcessDecisionsConcurrently(discussing_agents)
+ 9:           UpdateAgentStates(decisions)
+                                                                                    ⊲ Phase 3: Movement Processing
+10:           moving_agents ← {𝑎 ∈ agents : 𝑎.state = MOVING}
+11:           density_map ← CalculateDensity(moving_agents)
+12:           ExecuteMovement(moving_agents, density_map)
+13:           CheckDestinationArrivals(moving_agents)
+                                                                                             ⊲ Phase 4: Data Logging
+14:           LogRoundData(round, agents, decisions)
+
+
+
+A.3.5 Movement Mechanics and Pathfinding. Agent movement operates through a coordinate-based pathfinding system
+that translates abstract destination selections into specific target coordinates and executes movement through obstacle-
+aware navigation algorithms. The destination resolution process maps each of the twelve possible destination types
+to coordinate generation functions that produce either deterministic exit positions or stochastic coordinates within
+defined regional boundaries.
+     Regional destinations employ bounded random coordinate generation with feature-aware constraints. For example,
+"North side of the stadium, track area" generates coordinates within the northern boundary rectangle while explicitly
+avoiding intersection with the central stage obstacle through point-in-rectangle collision detection.
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                             35
+
+
+  The movement calculation system processes agent motion through a multi-stage algorithm that accounts for
+movement constraints, obstacle avoidance, and environmental factors. Base movement speed varies according to agent
+characteristics: standard agents move at 24 pixels per round, accessibility-flagged agents move at 16 pixels per round,
+and all agents receive speed modifications based on environmental conditions.
+  Density-based speed adjustment operates through a graduated reduction system that counts nearby agents within a
+configurable radius and applies speed penalties. The algorithm maintains maximum speed when fewer than 4 agents
+occupy the proximity zone, linearly reduces speed as nearby agent count increases toward 30 agents, and enforces
+minimum speed thresholds to prevent complete movement cessation in crowded conditions.
+  Coordinator proximity provides speed enhancement, increasing movement rates to 32 pixels per round for standard
+agents and 16 pixels per round for accessibility agents when within 50 pixels of any coordinator entity. This mechanism
+simulates urgency responses to authority figure instructions.
+  The pathfinding algorithm implements vector-based movement with obstacle sliding behavior. The system calculates
+unit vectors toward target coordinates, detects intersection points with obstacle boundaries using line-segment-rectangle
+intersection calculations, and applies sliding movement along obstacle edges when direct paths are blocked. Special
+handling prevents agents from entering the stage area unless they begin their movement within that region.
+
+A.3.6 Coordinator Influence and Behavioral Modification. The simulation deploys 50 coordinator entities at predeter-
+mined strategic positions throughout the stadium layout, each configured with specific exit recommendation parameters.
+Coordinator placement follows a spatial distribution pattern: northern coordinators recommend Exit 1, southern coordi-
+nators suggest Exit 3, with positioning designed to provide coverage across major circulation areas including pathway
+intersections, seating section perimeters, and family gathering zones.
+  The coordinator influence mechanism operates through proximity detection coupled with destination conflict analysis.
+When agents enter the 50-pixel influence radius around any coordinator, the system compares the agent’s current
+destination against the coordinator’s programmed exit recommendation. Destination mismatches trigger the influence
+protocol, which applies probabilistic behavioral modification based on a configurable reaction probability parameter.
+  Upon influence activation, the system implements group-level behavioral reset mechanisms. For student-alone agents,
+the influence directly affects the individual agent. For group-affiliated agents, the influence cascades to all members
+of the agent’s social group, regardless of their individual proximity to coordinators. This collective influence model
+simulates realistic group decision-making dynamics where authority recommendations affect entire social units.
+  The behavioral reset process transitions all affected agents from their current movement or waiting states back to
+discussion state, clears their existing destination selections and movement targets, and injects the coordinator’s exit
+recommendation into their next decision-making round as environmental context. The system tracks these influence
+events in the simulation log with detailed records of affected agents, original destinations, coordinator suggestions, and
+agent positions at the time of influence.
+
+A.3.7 State Management and Group Coordination. Agent state management operates through a four-state finite state
+machine with explicit transition conditions and group synchronization mechanisms. The states comprise: discussing
+(participating in decision-making rounds), moving (navigating toward selected destinations), waiting (paused at
+intermediate destinations), and exited (reached final exit and removed from active simulation).
+  The group coordination system maintains data structures tracking destination selections and arrival status for each
+social group, identified by sorted member ID tuples. When agents select destinations, the system records both the
+                                                                                                 Manuscript submitted to ACM
+36                                                                        Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+Algorithm 5 Commencement Emergency Response Simulation System (Part 2b: Coordinator Influence & Decisions)
+ 1: procedure CheckCoordinatorInfluence(agents, coordinators)
+ 2:    influenced_groups ← ∅
+ 3:    for agent in {𝑎 ∈ agents : 𝑎.state = MOVING} do
+ 4:        for coord in coordinators do
+ 5:            if Distance(agent.position, coord.position) ≤ 50 then
+ 6:                if agent.destination ≠ coord.suggested_exit then
+ 7:                    if Random() < 0.5 then
+ 8:                        influenced_groups ← influenced_groups ∪ {agent.group}
+ 9:    return influenced_groups
+10: procedure ProcessDecisionsConcurrently(discussing_agents)
+11:    tasks ← ∅
+12:    for agent in discussing_agents do
+13:        context ← GenerateEnvironmentalContext(agent)
+14:        if agent.type = student_alone then
+15:            task ← CreateDecisionTask(agent, context)
+16:        else
+17:            group_messages ← GetGroupChatHistory(agent.group)
+18:            task ← CreateDiscussionTask(agent, context, group_messages)
+19:        tasks ← tasks ∪ {task}
+20:    responses ← ExecuteTasksConcurrently(tasks, max_concurrent=2000)
+21:    return responses
+22: procedure GenerateEnvironmentalContext(agent)
+23:    current_location ← IdentifyStadiumFeature(agent.position)
+24:    nearby_features ← FindFeaturesInRadius(agent.position, 20)
+25:    nearby_agents ← FindAgentsInRadius(agent.position, 20)
+26:    exit_rankings ← RankExitsByDistance(agent.position)
+27:    coordinator_info ← CheckCoordinatorProximity(agent.position)
+28:    description ← GenerateNaturalLanguageDescription(
+              current_location, nearby_features, nearby_agents,
+              exit_rankings, coordinator_info)
+29:    return description
+
+
+choice and the selecting agent in group-specific tracking tables. As agents reach their target coordinates (determined by
+Euclidean distance calculations with a 50-pixel tolerance threshold), the system updates arrival status records.
+     Automatic discussion resumption occurs when all group members who selected identical intermediate destinations
+successfully arrive at those locations. The coordination algorithm periodically scans all tracked groups, identifies
+destinations where the set of selecting agents equals the set of arrived agents, and transitions all relevant agents from
+waiting state back to discussing state. This mechanism ensures group cohesion during multi-stage navigation without
+requiring explicit coordination messages.
+     Special handling accommodates student-alone agents who bypass group coordination requirements. These agents
+automatically transition from waiting to discussing states without requiring group member synchronization, preventing
+indefinite waiting conditions for agents without social dependencies.
+
+A.3.8 Round-Based Execution and Concurrency Management. The simulation operates through discrete round-based
+execution cycles that process agent decisions and movements in structured phases. Each round begins with state
+Manuscript submitted to ACM
+What Makes LLM Agent Simulations Useful for Policy Practice?                                                             37
+
+
+transition analysis, identifying agents eligible for discussion resumption based on group arrival status and processing
+coordinator influence effects on currently moving agents.
+  The discussion processing phase handles all agents in discussing state through concurrent API request management.
+The system implements semaphore-based concurrency control with configurable limits (defaulting to 2000 concurrent
+requests) and rate limiting mechanisms to manage external language model API interactions. Discussion tasks execute
+asynchronously with timeout handling and retry logic for failed requests.
+  Response processing extracts structured decision data from language model outputs, updates agent internal states
+based on destination selections, and maintains group chat message histories for subsequent rounds. The system
+validates destination selections against the predefined enumeration and applies fuzzy string matching to handle
+response variations.
+  Movement processing operates on all agents in moving state simultaneously, calculating density-based speed
+adjustments through spatial proximity analysis and updating agent coordinates via pathfinding algorithms. The system
+performs destination arrival checking after position updates and transitions agents to appropriate successor states
+based on destination types (exits trigger exited state, intermediate locations trigger waiting state).
+  Data logging captures comprehensive round information including agent positions, state classifications, group
+messages, individual decisions, coordinator influence events, and API interaction statistics. The system maintains both
+in-memory state for active simulation processing and persistent JSON output for subsequent analysis, with intermediate
+result saving to prevent data loss during extended simulation runs.
+  The simulation continues until all agents reach exited state or a predefined maximum round limit is exceeded,
+providing natural termination conditions for both successful evacuation scenarios and extended simulation studies.
+
+Algorithm 6 Commencement Emergency Response Simulation System (Part 3a: Movement & Speed)
+ 1: procedure ExecuteMovement(moving_agents, density_map)
+ 2:    for agent in moving_agents do
+ 3:        nearby_count ← density_map[agent.id]
+ 4:        speed ← CalculateAdjustedSpeed(agent, nearby_count)
+ 5:        new_position ← PathfindToTarget(agent.position, agent.target, speed)
+ 6:        agent.position ← new_position
+ 7: procedure CalculateAdjustedSpeed(agent, nearby_count)
+ 8:    if agent.accessibility = true then
+ 9:        base_speed ← 16, min_speed ← 4.8
+10:    else
+11:        base_speed ← 24, min_speed ← 6.4
+12:    if CoordinatorNearby(agent) then
+13:        base_speed ← base_speed × 1.33
+14:    if nearby_count ≤ 4 then
+15:        speed_factor ← 1.0
+16:    else if nearby_count ≥ 30 then
+17:        speed_factor ← 0.0
+18:    else
+                                   nearby_count−4
+19:        speed_factor ← 1.0 −         30−4
+20:     adjusted_speed ← max(min_speed, base_speed × speed_factor)
+21:     return adjusted_speed
+
+
+                                                                                                 Manuscript submitted to ACM
+38                                                                      Yuxuan Li, Sauvik Das, and Hirokazu Shirado
+
+Algorithm 7 Commencement Emergency Response Simulation System (Part 3b: Pathfinding & Arrivals)
+ 1: procedure PathfindToTarget(current, target, speed)
+ 2:    direction ← UnitVector(target − current)
+ 3:    intended ← current + direction × speed
+ 4:    obstacles ← GetStadiumObstacles()
+ 5:    for obstacle in obstacles do
+ 6:        intersection ← LineRectangleIntersection(current, intended, obstacle)
+ 7:        if intersection ≠ null then
+ 8:            intended ← ApplyObstacleSliding(intersection, obstacle, speed)
+ 9:    return ClampToCanvas(intended)
+10: procedure CheckDestinationArrivals(moving_agents)
+11:    for agent in moving_agents do
+12:        if Distance(agent.position, agent.target) ≤ 50 then
+13:            if agent.destination is Exit then
+14:                agent.state ← EXITED
+15:            else
+16:                agent.state ← WAITING
+17:                RecordGroupArrival(agent.group, agent.destination, agent.id)
+18: procedure CheckGroupArrivals(agents)
+19:    resumed ← ∅
+20:    for group in GetAllGroups(agents) do
+21:        for destination in GetGroupDestinations(group) do
+22:            chosen ← GetAgentsWhoChose(group, destination)
+23:            arrived ← GetAgentsWhoArrived(group, destination)
+24:            if chosen = arrived ∧ |chosen| > 0 then
+25:                for agent_id in arrived do
+26:                     agent ← GetAgent(agent_id)
+27:                     agent.state ← DISCUSSING
+28:                     resumed ← resumed ∪ {agent}
+29:                ClearDestinationTracking(group, destination)
+30:    return resumed
+
+
+
+
+Manuscript submitted to ACM
+

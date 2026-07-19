@@ -1,0 +1,1208 @@
+                  LEAR: LLM-Driven Evolution of Agent-Based Rules
+            Can Gurkan∗                            Narasimha Karthik                                Kevin Wang                         Rudy Danda
+    gurkan@u.northwestern.edu                         Jwalapuram                               Northwestern University             Northwestern University
+     Northwestern University                     Northwestern University                          Evanston, IL, USA                   Evanston, IL, USA
+        Evanston, IL, USA                           Evanston, IL, USA
+
+                                    John Chen                              Leif Rasmussen                            Uri Wilensky
+                           Northwestern University                        College of DuPage                     Northwestern University
+                              Evanston, IL, USA                           Glen Ellyn, IL, USA                      Evanston, IL, USA
+
+                                                                         Code Mutation                                         Pseudocode Mutation
+                                Selection
+                                                                                 LLM                                                     LLM
+                                                                                Mutation                                                 Mutation
+
+                                                               Agent                                                       Agent
+      Evaluation                                                                                                                                      Mutated
+                                                                                                                                                     Pseudocode
+
+                                                                                                                OR
+                                Mutation                                         Reject                                                                 LLM
+                                                                                                   Mutated              Pseudocode                    Conversion
+                                                                Code                                Code
+                                                                                                                           Code
+                                                                                                                                         Reject       Mutated
+       Environment                                                                                                                                     Code
+                                                                     Accept                                               Accept
+
+                             Replacement                                        Verifier                                                Verifier
+
+
+
+
+Figure 1: Overview of the LEAR framework. The evolutionary operators acting on agents in a multi-agent environment (Left)
+and the details of the two LLM-driven mutation paradigms for mutating code (Middle) or pseudocode (Right).
+Abstract                                                                                       subsequently converting them into executable code through an-
+This study investigates the feasibility and effectiveness of integrat-                         other LLM-mediated step. This strategy capitalizes on the extensive
+ing Large Language Models (LLMs) as mutation operators within                                  natural language training data of LLMs, potentially enabling the
+Genetic Programming (GP) frameworks so as to evolve agent be-                                  discovery of more innovative solutions. Our results indicate that
+haviors in multi-agent systems (MAS) and provide benchmarks                                    LLM-driven mutation with comment generation enhances agent
+that evaluate the efficacy of LLM-generated code in multi-agent do-                            performance while mutating pseudocode representations yields
+mains. Our approach leverages the sophisticated code-generation                                reduced performance. This research contributes valuable insights
+capabilities of LLMs to introduce semantically meaningful vari-                                regarding the integration of LLM-driven GP techniques into MAS,
+ations during the evolutionary process. Specifically, we explore                               highlighting both the potential and limitations of these approaches.
+and systematically compare these different prompting strategies:                               All code is open-sourced at https://github.com/can-gurkan/LEAR.
+zero-shot, one-shot, and two-shot prompting as well as prompt-
+ing the generation of commented code to assess their impact on
+the quality of evolved agent behaviors. Additionally, we propose a                             CCS Concepts
+novel methodology where evolution operates at a higher abstraction                             • Computing methodologies → Multi-agent systems; Intel-
+level by mutating pseudocode representations of agent behaviors,                               ligent agents; Natural language generation; Agent / discrete
+                                                                                               models; Simulation environments; Modeling methodologies; Genetic
+∗ Corresponding Author
+                                                                                               programming; Genetic algorithms; Generative and develop-
+                                                                                               mental approaches.
+
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                           Keywords
+© 2025 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-1464-1/2025/07                                                             Large Language Models, Genetic Programming, Evolutionary Com-
+https://doi.org/10.1145/3712255.3734368                                                        putation, Multi-Agent Systems, Agent-Based Modeling
+
+
+
+
+                                                                                        2309
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                                        Gurkan et al.
+
+
+ACM Reference Format:                                                             and co-evolve complex behaviors akin to those observed in nature.
+Can Gurkan, Narasimha Karthik Jwalapuram, Kevin Wang, Rudy Danda,                 LLMs in multi-agent systems have recently received considerable
+John Chen, Leif Rasmussen, and Uri Wilensky. 2025. LEAR: LLM-Driven               attention [12, 14]; however, this study is the first to employ an
+Evolution of Agent-Based Rules. In Genetic and Evolutionary Computation           LLM-GP approach in MAS. This approach could be a promising
+Conference (GECCO ’25 Companion), July 14–18, 2025, Malaga, Spain. ACM,
+                                                                                  candidate for optimizing agent behaviors to achieve desired col-
+New York, NY, USA, 18 pages. https://doi.org/10.1145/3712255.3734368
+                                                                                  lective outcomes—a significant and ongoing challenge within the
+                                                                                  field of artificial intelligence. Furthermore, the inherently stochas-
+1     Introduction                                                                tic and black-box nature of LLMs and their sensitivity to prompts
+                                                                                  and training data warrant the need for benchmarks. Hence, we
+Recent advances in Large Language Models (LLMs) have demon-
+                                                                                  introduce a collection of three multi-agent environments, imple-
+strated their remarkable capabilities in comprehending and gen-
+                                                                                  mented in NetLogo—the most widely used agent-based modeling
+erating complex textual data, including computer code [5, 16, 21].
+                                                                                  platform [46]—that can serve as benchmarks for evaluating LLM-
+LLMs, trained on extensive corpora comprising both natural lan-
+                                                                                  GP in MAS. This initial collection represents the first installment
+guage and code repositories, exhibit a robust capacity for in-context
+                                                                                  in a planned suite of LLM-driven NetLogo simulations that we aim
+learning and generating contextually coherent outputs. This profi-
+                                                                                  to develop in future work.
+ciency facilitates the emergence of a novel paradigm of LLM-driven
+discovery, in which LLMs iteratively enhance diverse computa-
+tional solutions, such as optimized prompts, improved algorithmic                 1.2    Evaluating Prompting Strategies
+strategies, and refined code across various domains and problem                   Effective utilization of LLMs as evolutionary operators necessi-
+sets [6, 11, 20, 25, 27–30, 41, 42]. A particularly promising direction,          tates systematic exploration of prompting strategies to guide the
+pioneered in the seminal work by Lehman et al. [26], involves the                 LLM’s output. Prompting strategies such as zero-shot and multi-
+integration of LLMs within evolutionary algorithms, synergistically               shot prompting have been shown to influence the relevance, di-
+combining evolutionary principles with the generative power of                    versity, and quality of LLM-generated content [5]. In zero-shot
+large language models [48].                                                       prompting, the model generates outputs without explicit examples,
+   Evolutionary algorithms (EAs) consist of population-based opti-                relying solely on the prompt and its pre-trained knowledge. In con-
+mization methods inspired by the principles of biological evolution               trast, one-shot and two-shot prompting involve providing one or
+[2]. These algorithms iteratively improve candidate solutions by                  two examples, respectively, to guide the model’s output generation.
+employing mechanisms analogous to natural selection, genetic vari-                   Another prompting strategy that we consider involves instruct-
+ation, and inheritance. Central to the operation of an EA is the sys-             ing the LLM to generate code accompanied by explicit comments
+tematic application of evolutionary operators, such as evaluation,                that articulate the strategy or behavior the LLM intended to imple-
+selection, mutation, and replacement, which enable the exploration                ment. We hypothesize that generating commented code can enable
+and exploitation of the search space. A subset of EAs specialized in              the LLM to reason with semantic information. This enriched repre-
+evolving executable code constitutes the field of Genetic Program-                sentation, which would otherwise be difficult to infer from the code
+ming (GP) [23, 33, 34, 45].                                                       alone, may leverage the powerful contextual understanding and
+   Traditional GP approaches have been employed to tackle a wide                  semantic representation capabilities of LLMs, thereby enhancing
+range of problems, including the evolution of agent behaviors by                  the potential to propose more intelligent modifications in future
+applying evolutionary operators to programmatic representations.                  code mutations.
+However, the efficacy of these operators is often constrained by                     This study systematically evaluates these prompting strategies
+their reliance on syntactic manipulations, which may not effectively              within the context of evolving agent behaviors in multi-agent sim-
+capture the semantic nuances necessary for generating innovative                  ulations.
+and functional behaviors. To compensate for this inadequacy, an
+exciting new approach [4, 19, 26, 31] has emerged to utilize LLMs                 1.3    Evolving Pseudocode Representations
+in producing syntactically correct code, thus empowering evolu-
+                                                                                  A novel aspect of this study is the proposition of using pseudocode
+tionary operators in GP. Inspired by the nomenclature in [19], we
+                                                                                  representations to evolve code. Pseudocode can be defined as sim-
+will refer to this approach as LLM-GP. Despite recent interest in the
+                                                                                  plified, human-readable text that uses natural language to represent
+LLM-GP approach [18], many avenues of interest that could benefit
+                                                                                  the logical structure of an algorithm or program without adhering
+from the synergistic integration between LLMs and GP remain to
+                                                                                  strictly to the syntax of any specific programming language. Thus,
+be explored.
+                                                                                  pseudocode descriptions can offer a high-level semantic represen-
+   The following sections outline the primary contributions of our
+                                                                                  tation of agent behaviors. In our framework, agent behavior can be
+study and explain how our research addresses existing gaps within
+                                                                                  expressed with pseudocode, which is then mutated using an LLM-
+these promising avenues.
+                                                                                  powered operator and is subsequently translated into executable
+                                                                                  code using a separate LLM operator.
+1.1    Evolving Agent Rules with LLM-GP in                                           This approach of using pseudocode representations is motivated
+       Multi-Agent Systems                                                        by the observation that LLMs have been trained extensively on
+One compelling avenue is the application of LLM-powered GP tech-                  both natural language and pseudocode when compared to domain-
+niques to evolve agent controllers in multi-agent systems (MAS),                  specific programming languages such as NetLogo. As a result, using
+where many interacting agents can specialize into distinct roles                  pseudocode representations may potentially enable LLMs to take
+
+
+
+
+                                                                           2310
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                       GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+advantage of the semantically rich nature of high-level pseudocode              robots in a 2D terrain, known as the Sodarace domain. The gener-
+descriptions to generate more innovative mutations and ultimately               ated programs are then utilized to train a new conditional language
+more creative code. By constraining program representations to                  model capable of producing appropriate robotic walkers tailored to
+a different latent manifold in the representation space of LLMs,                specific terrains. This methodology paves the way for the LLM-GP
+compared to that of code representations, this method may allow                 approach [18]. Although the Sodarace domain provides a rich visual
+for higher-level abstraction in the evolutionary process that could             description, the programs that encode the morphology of the robots
+simplify the search space and enhance the efficiency of evolution.              are difficult to interpret since they do not directly describe agent
+   An additional advantage of evolving pseudocode representations,              behavior.
+as well as generating commented code as discussed in the previous                  Meyerson et al. [31] introduce an approach that builds on the
+section, is their inherent interpretability, which aligns closely with          work of [26] by leveraging LLMs as an intelligent crossover op-
+the principles underlying explainable artificial intelligence (XAI)             erator, called Language Model Crossover (LMX). This approach
+[36, 49]. Unlike executable code, which often involves syntactically            highlights the flexibility and suitability of using LLMs within evo-
+complex language-specific constructs, pseudocode is intentionally               lutionary algorithms across diverse domains. The LMX mechanism
+structured in a human-readable format. This transparency is valu-               produces variations in solutions by considering a few parent text-
+able for facilitating a clearer understanding of algorithmic logic              based genotypes—such as code snippets, plain-text sentences, or
+and agent behaviors, which is becoming increasingly rare in the                 mathematical expressions. These parents are provided as prompts
+age of neural network-driven agent controllers. Moreover, this ap-              to an LLM, which then generates offspring that incorporate and
+proach aligns with the newly popularized term of “vibe coding”                  recombine features from the parents. This method demonstrates
+where rather than writing code directly, programmers increasingly               versatility across various domains, including the evolution of binary
+rely on LLMs to generate code, an innovation highlighting the rele-             bit-strings, sentences, equations, text-to-image prompts, as well as
+vance of studying natural language-based representations of code                Python code for agent controllers in the sodarace domain.
+in generative frameworks.                                                          Bradley et al. [4] introduce OpenELM, an open-source Python
+                                                                                library designed to integrate LLMs into evolutionary algorithms
+1.4    Research Objectives and Contributions                                    using the approaches introduced by [26, 31]. The authors democra-
+                                                                                tize the use of ELM and LMX methods by providing a user-friendly
+To summarize, the primary objectives of this research are as follows:
+                                                                                library along with four benchmark domains: Sodarace, image gen-
+    (1) To evaluate the feasibility and effectiveness of using LLMs             eration, prompts, and programming puzzles.
+        as evolutionary operators in evolving agent code in multi-                 Liu et al. [27] apply LLMs to produce heuristics evaluated on com-
+        agent systems and introduce benchmarks implemented in                   binatorial optimization problems. Their approach, termed Evolution
+        NetLogo that evaluate the efficacy of LLM-generated code                of Heuristics (EoH), employs LLMs to generate and evolve heuristic
+        in multi-agent domains.                                                 strategies articulated in both high-level natural language descrip-
+    (2) To systematically assess the impact of different prompting              tions and executable code simultaneously. The authors demonstrate
+        strategies that consist of zero-shot, one-shot, and two-shot            that EoH outperforms traditional handcrafted heuristics as well as
+        prompting as well as prompting the generation of com-                   other LLM-based code generation methods on several benchmark
+        mented code on the quality of evolved agent behaviors.                  optimization tasks while requiring fewer LLM queries.
+    (3) To investigate the potential benefits of using LLMs to evolve
+        pseudocode representations and translating them to exe-                 3     Methods
+        cutable code, in enhancing the innovation and functionality
+                                                                                Our methodology consists of several key components, including
+        of agent behaviors.
+                                                                                evolutionary operators, particularly the LLM-driven mutation op-
+   By addressing these objectives, this study aims to contribute to             erators, along with agents and environments. In this section, we
+the advancement of LLM-driven genetic programming methodolo-                    provide a detailed explanation of these evolutionary operators and
+gies and the development of more sophisticated and interpretable                their interaction with agents and environments. Section 3.1 pro-
+agent behaviors in multi-agent systems.                                         vides an overview of how these evolutionary operators collectively
+                                                                                facilitate the evolution of agent rules. Section 3.2 describes our
+2     Related Work                                                              specific implementation of LLMs as mutation operators. Section
+                                                                                3.3 details our use of pseudocode representations for mutating
+In this section, we summarize relevant studies that use LLM-based
+                                                                                agent code. Section 3.4 discusses the various prompting strategies
+evolutionary operators to evolve code for agent-controllers or em-
+                                                                                employed to guide LLM outputs.
+ploy natural language abstractions to enhance code generation.
+Additional background on large language models, genetic program-
+ming, and multi-agent systems is provided in Appendix A.                        3.1    Overview
+   Lehman et al. [26] are the first to integrate LLMs into genetic                  This section outlines the evolutionary process of agents within a
+programming to evolve computer programs in an approach called                   given multi-agent environment. The evolution process is structured
+Evolution through Large Models (ELM). The authors use LLMs                      into four stages that correspond to the main evolutionary operators:
+as mutation operators within the MAP-Elites algorithm [35], an                  evaluation, selection, mutation, and replacement. Figure 1 (Left)
+evolutionary quality-diversity algorithm, to generate a diverse set             illustrates the interaction between these operators, and Algorithm 1
+of Python programs that describe the morphology of ambulatory                   details the evolution procedure.
+
+
+
+
+                                                                         2311
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                                        Gurkan et al.
+
+
+Algorithm 1 Main Evolution Loop                                                  uses pseudocode representations to mutate agent code, as explained
+ 1: Given simulation environment 𝑆, number of agents |𝐴|, number                 in detail in Sections 3.2 and 3.3 respectively. While LLMs can be
+    of generations 𝑁 , simulation steps 𝑇 , fitness function 𝑓 , number          incorporated into other evolutionary operators, such as selection,
+    of parents 𝑚                                                                 we observed that their integration into variation operators such as
+ 2: Initialize |𝐴| agents with an initial rule 𝑟𝑖 ← 𝑟𝑖𝑛𝑖𝑡                        mutation yields the greatest benefit for evolving agent controllers
+ 3: for generation = 0 to 𝑁 do                                                   for the environments we consider while maintaining a low compu-
+ 4:    Initialize environment 𝑆                                                  tational and economic cost.
+ 5:    Set the fitness of each agent 𝑓𝑖 ← 0                                      3.1.5 Replacement. Newly generated offspring replace agents with
+ 6:    for iteration = 0 to 𝑇 do                                                 the lowest fitness scores in the existing population. Notably, the
+ 7:       for each agent 𝐴𝑖 do                                                   offspring’s fitness scores remain unknown at the time of replace-
+ 8:          Get observation                                                     ment; thus, it is possible for new offspring to perform worse than
+ 9:          Execute rule 𝑟𝑖                                                     the agents they replace, reflecting natural evolutionary processes.
+10:          Update fitness 𝑓𝑖 using 𝑓
+11:       end for                                                                3.2    LLM as Mutation Operators
+12:       Update environment state
+                                                                                 To integrate LLMs as mutation operators within a GP framework,
+13:    end for
+                                                                                 we employ a structured process in which agent rules, represented
+14:    Choose 𝑚 parents using tournament selection
+                                                                                 either as NetLogo code or pseudocode, are provided as input to the
+15:    Kill 𝑚 agents with the lowest fitness
+                                                                                 LLM with specific prompts designed to elicit semantically mean-
+16:    for each parent do
+                                                                                 ingful mutations. Figure 1 (middle) and Algorithm 2 (in Appen-
+17:       Produce offspring with rule 𝑟𝑖 ← mutate(𝑟𝑖 )
+                                                                                 dix B) outline the mutation process that operates directly on code
+18:    end for
+                                                                                 representations. The LLM generates modified rules that are then
+19:    Add all offspring to population
+                                                                                 evaluated within the simulation environment based on predefined
+20: end for
+                                                                                 fitness criteria. However, before the generated code is accepted, it
+                                                                                 is subjected to a rigorous verification process to ensure that the
+                                                                                 code is error-free and relevant to execute.
+3.1.1 Initialization. The first step is to initialize a given environ-
+ment and a population of agents. Each agent is initialized with the              3.2.1 Verifier. The verification process ensures that the mutated
+same simple initial rule. The initial code and pseudocode rules are              code satisfies three criteria: (1) adherence to NetLogo syntax, (2)
+provided in Section 5.                                                           absence of undeclared variables, and (3) avoidance of modifications
+                                                                                 to the agent’s own variables, interference with other agents, or
+3.1.2 Evaluation. Following initialization, the first generation of
+                                                                                 disruption of the environment in an undesirable way—for example,
+agents undergoes evaluation. At each generation’s start, agents
+                                                                                 preventing mutations in the code that would eliminate other agents.
+reset their fitness scores to zero. The simulation environment then
+                                                                                 If a mutated rule fails verification, the rejected code is sent back to
+runs for a defined number of time steps so that the agents’ rules
+                                                                                 the LLM with an appropriate prompt that contains an error mes-
+can be evaluated. At each simulation timestep, the agents’ fitness
+                                                                                 sage and corresponding line numbers from the verifier to facilitate
+scores are updated based on a fitness function tailored to the specific
+                                                                                 targeted corrections.
+environment. The environments are detailed further in Section 4.
+                                                                                 3.2.2 Retry Mechanism. In cases where verification fails, the re-
+3.1.3 Selection. Following the evaluation of the agents, we employ               jected code undergoes a retry process. The failed code, along with
+tournament selection to select parent agents that will produce the               a detailed error message including line numbers, is collated into a
+next generation of offspring. Tournament selection, a widely used                retry prompt. The LLM then generates new code using this prompt
+selection mechanism in evolutionary algorithms, probabilistically                designed explicitly to address the error messages. Rather than gen-
+favors individuals with higher fitness while preserving population               erating entirely new logic, the retry mechanism directs the LLM
+diversity [32]. This method randomly selects a subset of individuals             to revise only the problematic elements highlighted by the veri-
+from the population (with a size defined by tournament size).                    fier, thus allowing for a focused correction process that efficiently
+Within this subset, individuals are compared based on fitness, and               refines the mutated rules. Despite this verification process, faulty
+the best-performing individual is chosen with a probability defined              code can still slip through, in which case the agents do not perform
+by selection pressure. This probabilistic approach allows for                    any actions.
+the occasional selection of lower-ranked individuals in order to
+prevent premature convergence. The selection process is repeated                 3.3    Pseudocode Evolution
+until the required number of parents is selected, noting that the
+                                                                                 In this study, we introduce a novel mutation approach employing
+same agent can be selected multiple times.
+                                                                                 pseudocode representations. Initially, each agent is assigned an ini-
+3.1.4 Mutation. Once the parent agents are selected, each parent                 tial pseudocode along with its corresponding executable NetLogo
+produces an offspring. The offspring inherits a mutated version                  code. During mutation, the parent’s pseudocode is supplied to the
+of its parent’s rule. The only LLM-powered operator that we con-                 LLM along with a tailored prompt to generate a mutated version.
+sider is the mutation operator. We implement two distinct mutation               This mutated pseudocode is then inputted into the LLM a second
+schemes: one that directly mutates agent code, and another that                  time using a different prompt that instructs the model to translate
+
+
+
+
+                                                                          2312
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                          GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+the high-level pseudocode into executable NetLogo code. The re-
+sulting NetLogo code subsequently undergoes a verification process
+analogous to the one outlined in Section 3.2.1. Should the verifier
+detect errors, an iterative process ensues: the mutated prompt and
+the faulty code with corresponding error messages are returned
+to the LLM with an appropriate prompt to guide targeted correc-
+tions until the code passes verification or reaches a predefined retry
+limit. Figure 1 (Right) and Algorithm 3 (in Appendix B) outline this                     (a) Simple           (b) Hazardous             (c) Resources
+mutation procedure that uses pseudocode representations.
+                                                                                  Figure 2: Depictions of the multi-agent NetLogo environ-
+3.4    Prompts                                                                    ments. In each environment, red arrows depict the agents
+Since every LLM call is made using prompts, there are several dif-                whose behavior is evolved using LLMs (a): The collection sim-
+ferent types of prompts we use throughout our system. We outline                  ple environment. (b): The collection hazardous environment.
+them here.                                                                        (c): The collection resources environment. See Section 4 for
+                                                                                  more details on each environment.
+3.4.1 Prompts for Mutation. The mutation operators are supplied
+with prompts that describe the context of the simulation environ-
+ment and the specific objectives the agent is expected to achieve.                      • Pseudocode Rule: (If Applicable) Pseudocode that deter-
+Using this information, the LLM generates modified code based on                          mines the code rule of the agent. Can be mutated by LLM-
+the code it receives as input.                                                            driven mutation operators.
+   By incorporating the specific contextual details of the environ-                     • Observation Vector: List or lists that contain information
+ment within the prompt, the LLM can leverage its reasoning ca-                            about the agent’s local environment. See Section 4.1.1 for
+pabilities to produce code that is grounded in the context of the                         more information.
+simulation. There are specific goals and caveats of the environment
+that the LLM must consider to ensure relevance and validity before                4.1.1 Agent Observation. The agents have access to only local
+generating the code. Section 5 and Appendix G further describe the                information about their environment. This information is encoded
+details pertaining to mutation prompts.                                           in lists. Each agent has a field of vision consisting of 𝑛𝑠𝑒𝑐𝑡𝑜𝑟 circular
+                                                                                  sectors with angle 𝛼 and radius 𝑟𝑠𝑒𝑐𝑡𝑜𝑟 . In our environments, we
+3.4.2 Prompts for Fixing Code Errors. Our methodology involves                    used 𝑛𝑠𝑒𝑐𝑡𝑜𝑟 = 3, 𝛼 = 20°, 𝑟𝑠𝑒𝑐𝑡𝑜𝑟 = 7, as depicted in Figure 4 (in
+a verification process as described in Section 3.2.1. As part of this             Appendix C). Each sector corresponds to an entry in a list that the
+process, we attempt to fix any generated code that fails to be verified.          agent can access. In each sector, the distance to the closest item
+To do so, we construct a prompt that instructs the LLM to fix the                 of a given type is recorded. If the sector is empty, the entry for
+errors in the code. This prompt includes the specific error message               that sector is zero. If the environment contains multiple items of
+the verifier produces and the line numbers in the faulty code. In                 interest, for example, food and poison sources, then the agent has
+the case of pseudocode-based mutation, the prompt also contains                   multiple lists in its observation vector.
+the mutated pseudocode. See Appendix G for specific examples.
+                                                                                  4.2     Collection Simple
+4     Environments                                                                The Collection Simple environment consists of agents that can
+We introduce three multi-agent environments implemented in Net-                   move around freely and food sources that these agents can consume.
+Logo, each designed to facilitate the evolution of creative strategies            In this environment, the LLM-generated agent code is meant to
+while minimizing constraints on agent behavior. Figure 2 provides                 explore the space and efficiently pursue food sources. Once an agent
+a depiction of each environment. In these environments, agents are                approaches a food source, the food is automatically consumed and
+tasked with collecting various types of resources using strategies                the fitness of the agent increases. Hence, the fitness of the agents
+that must effectively balance exploration and exploitation. The en-               is measured by how many food sources they can collect in a given
+vironments are arranged in order of increasing difficulty, with each              period of time steps. Once a food source is collected, another one
+successive setting requiring more sophisticated agent behaviors.                  spawns at a random location so that the total number of food
+We propose these environments as a benchmark for evaluating                       sources remains constant. In our experiments, we used 30 food
+LLM-GP approaches in the context of multi-agent systems.                          sources. This simple environment is designed to evaluate the extent
+                                                                                  to which agents can utilize their limited observations to accurately
+4.1    Agents                                                                     locate food sources while exploring the available toroidal space.
+Each environment contains agents with rules that can be mutated
+using our methodology. Each agent has the following attributes:                   4.3     Collection Hazardous
+    • Fitness score: A metric that records the performance of the                 The Collection Hazardous environment is similar to the Collection
+      agent in a given environment.                                               Simple environment, except the agents have an additional task
+    • Code Rule: NetLogo code that determines the main behav-                     of avoiding poison as they are collecting food sources. Again, an
+      ior of the agent. Can be mutated by LLM-driven mutation                     agent automatically consumes food or ingests poison if it is nearby.
+      operators.                                                                  While collecting food items adds to agent fitness, collecting poison
+
+
+
+
+                                                                           2313
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                                      Gurkan et al.
+
+
+          Table 1: Parameter Values for Experiments                             pseudocode to be mutated is dynamically inserted into this base
+                                                                                prompt. Full details and examples of the prompts are available in
+         Parameter                      Value                                   Appendix G.
+                                                                                   The experiments explore three main variations of how the LLM
+         Number of Agents               10
+                                                                                is prompted and utilized for mutation:
+         Number of Generations          300
+         Simulation Time Steps          500                                     5.1    Few-Shot Prompting
+         Number of Parents              1
+         Tournament Size                8                                       We investigate the impact of providing examples within the prompt
+         Selection Pressure             0.8                                     for directing NetLogo code mutation.
+
+         LLM Provider                   Groq                                    5.1.1 Zero-Shot. The LLM receives the base prompt containing
+         LLM Model                      llama-3.3-70b-versatile                 instructions and the parent agent’s code but no examples of desired
+         Temperature                    0.65                                    mutations.
+         Max Tokens                     1024                                    5.1.2 One-Shot. In addition to the base prompt and parent code,
+         Number of Retries              2                                       the LLM receives one example pair showing an input code snippet
+                                                                                and a corresponding desired mutated output with a brief explana-
+                                                                                tion.
+detracts from it. Our experiments used 30 food sources and 50                   5.1.3 Two-Shot. Adding onto the previous one-shot example, we
+poison items. This environment design requires agents to carefully              add another distinct example-explanation pair to further guide the
+assess the location of both food and poison items and to effectively            LLM.
+navigate the environment to maximize fitness.
+                                                                                5.2    Code-Based Mutation with Comment
+4.4    Collection Resources
+                                                                                       Generation
+The Collection Resources environment is designed to evaluate
+                                                                                This set of experiments lies on top of the zero-shot, one-shot, and
+agents based on their ability to efficiently collect and manage re-
+                                                                                two-shot setups with an added instruction in the prompt explicitly
+sources with varying values and weights. Specifically, the envi-
+                                                                                asking the LLM to generate NetLogo comments explaining the strat-
+ronment includes three different types of resources: silver coins,
+                                                                                egy and logic of the mutated code it produces. This experiment tests
+gold coins, and crystals, which are worth 1, 2, and 4 points, re-
+                                                                                whether prompting for self-explanation improves the coherence
+spectively. These resources spawn randomly across the map. Each
+                                                                                and strategy of the mutations.
+agent seeks to maximize their cumulative point total, defined as the
+fitness score in this environment, by collecting and storing these
+resources in their inventory. However, higher-value resources are
+                                                                                5.3    Pseudocode-Based Mutation
+also heavier, imposing greater weight penalties on agents that carry            This approach uses a two-step LLM process operating at a higher
+them. The agents’ loss of points at a rate proportional to the current          level of abstraction.
+total weight of their inventory implies that holding onto a large                    • Step 1 (Pseudocode Mutation): A dedicated prompt in-
+quantity of high-value resources will incur an accelerated point                        structs the LLM to mutate the pseudocode representation of
+loss over time. To mitigate this loss, agents can deposit their col-                    the parent agent’s rule. This prompt contains similar con-
+lected resources in a chest located at the center of the map. This                      textual information as the direct code mutation prompt but
+action resets their weight totals as well as the rate at which they                     focuses on evolving the high-level logic described in pseu-
+lose points while preserving their accumulated point total. The                         docode. We test zero-shot, one-shot, and two-shot variations
+motivation underlying this environmental design is to encourage                         for this step as well, providing examples of pseudocode mu-
+agents to develop efficient and adaptive behaviors that balance re-                     tations where applicable.
+source collection with effective weight management. In particular,                   • Step 2 (Code Translation): A second, distinct prompt in-
+agents must learn to optimize the timing of their deposits to the                       structs the LLM to translate the newly mutated pseudocode
+central chest and their routes in order to minimize point loss while                    from Step 1 into executable NetLogo code. This translation
+maximizing resource acquisition.                                                        prompt also includes context, constraints, and valid syntax,
+                                                                                        focusing on faithful implementation. Again, zero-shot, one-
+5     Experiments                                                                       shot, and two-shot variations are tested, providing examples
+In this section, we describe the experiments conducted to evaluate                      of pseudocode-to-code translations.
+the different prompting and mutation strategies we consider. Our                    For all experiments, we used the simulation parameters and LLM
+methodology relies heavily on guiding the LLM through carefully                 configuration detailed in Table 1. These parameter values were
+structured prompts. We use a base prompt structure that provides                empirically tuned to ensure consistent results while maintaining
+the LLM with essential context about the simulation environment,                low computational overhead. The chosen LLM was selected for its
+the agent’s task (e.g., resource collection), available sensory in-             versatility in handling both code and natural language, as well as
+puts (observation vectors), valid NetLogo commands, constraints                 its high rate limit for API calls and relatively low operational cost.
+(e.g., forbidden actions), and strategic goals. The specific code or            The initial code rule provided to all agents at the start of evolution
+
+
+
+
+                                                                         2314
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                       GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+was simply rt random 20 lt random 20 fd 1. This initial rule                   concepts correctly to relevant NetLogo code using the agent’s ob-
+instructs the agent to turn right a random amount and then turn left           servation vector. For example, instead of producing valid checks
+a random amount and move forward one step. The corresponding                   to see if the observation vector detects food in the left cone (e.g.,
+initial pseudocode rule (used in pseudocode evolution experiments)             if item 0 input > 0), the LLM often hallucinated non-existent
+was Take left turn randomly within 0-20 degrees, then                          variables, such as if-food-left. Representative examples of both
+take right turn randomly within 0-20 degrees and move                          generated code and pseudocode are provided in Appendix F.
+forward 1. We conducted 5 trial repetitions with different seeds
+for each experimental condition across the three environments                  6.3    Interpretability of Commented Code and
+described in Section 4 (Collection Simple, Collection Hazardous,                      Pseudocode
+Collection Resources).
+                                                                               Generating commented code and pseudocode representations offers
+                                                                               an additional benefit of improved interpretability compared to code
+6     Results & Discussion                                                     alone. In this section, we discuss the extent to which our approach
+In this section, we discuss the results of our experiments. In Figure          was effective in making generated code artifacts more interpretable
+3, we compare our three mutation approaches: mutation with code                by incorporating comments and generating pseudocode represen-
+representations, mutation with comment generation, and mutation                tations. We provide illustrative examples for both commented code
+with pseudocode representations on the mean fitness of the agents.             and pseudocode.
+Each mutation scheme was tested with zero-shot, one-shot, and                     An examination of the highest-fitness agents across all environ-
+two-shot prompting for each of the three environments.                         ments revealed that the generated comments were relevant and
+                                                                               accurately reflected the corresponding code logic, thereby improv-
+6.1    Few-Shot Prompting                                                      ing comprehensibility. For instance, in Figure 6 (in Appendix F),
+The effects of few-shot prompting vary across the different environ-           the comments “Check if there is food in front” and “Move
+ments. In all cases, the difference between one-shot and two-shot              towards food” clearly clarify the intent of the line if item 2
+prompting are negligible. In the Collection Simple and Collection              input != 0 [fd item 2 input].
+Resources environments, few-shot prompting leads to faster con-                   Pseudocode representations similarly contributed to increased
+vergence to higher fitness values compared to zero-shot prompting              interpretability by explicitly conveying the agent behavior intended
+when using direct code mutation. However, for mutation with com-               by the LLM. For example, the part of the pseudocode shown in
+ments, few-shot prompting strategies have minimal impact. In the               Appendix F “If food is detected ahead and a random number
+Collection Hazardous environment, zero-shot prompting performs                 between 0 and 1 is less than 0.8, move forward 1” is more
+significantly worse than few-shot prompting under direct code                  intuitive than its NetLogo equivalent: if (item 2 input !=
+mutation, and slightly worse under the commented code mutation                 0) and (random-float 1 < 0.8) [fd 1]. However, in some
+scheme. For pseudocode mutation, zero-shot prompting underper-                 instances, the intended behavior expressed in the pseudocode was
+forms relative to multi-shot prompting in both the Collection Simple           not accurately translated into syntactically correct or semantically
+and Collection Hazardous environments. Notably, in the Collec-                 valid NetLogo code, highlighting a limitation in the translation
+tion Hazardous setting, zero-shot pseudocode prompting leads to a              process.
+degenerate strategy in which agents avoid both food and poison,
+resulting in a fitness of zero. In contrast, few-shot prompting has a          7     Limitations & Future Work
+negligible effect in the Collection Resources environment. In sum-             Although our methodology and investigation yield valuable insights
+mary, while two-shot prompting offers no observable advantage                  into the use of LLMs for evolving agent behaviors in multi-agent
+over one-shot prompting, providing at least one example in the                 systems, several limitations remain that point to promising direc-
+prompt generally improves performance across most conditions.                  tions for future work:
+                                                                                   (1) Further research is necessary to fully assess the potential of
+6.2    Commented Code and Pseudocode Mutation                                          leveraging high-level abstractions for guiding the evolution
+Code generation with comments consistently produced the highest                        of code artifacts.
+fitness scores across all three environments, while the pseudocode-                (2) Our approach is highly sensitive to the design of prompts.
+based mutation strategy demonstrated the poorest performance. Al-                      More systematic prompt optimization is required to improve
+though pseudocode representations did not yield high-performing                        the consistency and quality of generated mutations.
+agents, the observed benefits of including comments suggest that                   (3) Further experimentation is needed to investigate the short-
+alternative ways of leveraging pseudocode may still offer potential                    comings of the pseudocode-to-code translation process. Ad-
+for guiding evolution. In Appendix D, we provide additional results                    ditionally, comparative analyses across different LLMs and
+which demonstrate that using a different LLM results in a similar                      experimental parameters—such as LLM temperature, popu-
+performance difference among the code and pseudocode-based mu-                         lation sizes, and the number of generations—are necessary
+tation schemes. The primary limitation of the pseudocode-based                         to better understand their effects on performance.
+approach stemmed from the difficulty of accurately translating                     (4) A broader set of multi-agent environments is needed to test
+high-level instructions into executable NetLogo code. Pseudocode                       the generality of our approach, particularly those involving
+often included abstract directives such as “If food is detected                        more complex dynamics that might enable the emergence
+to the left”; however, the LLM frequently failed to map these                          of diverse competitive or cooperative behaviors.
+
+
+
+
+                                                                        2315
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                                   Gurkan et al.
+
+
+
+
+Figure 3: Mean fitness of agents over generations. The columns correspond to using code generation directly, code generation
+along with comments, and using pseudocode representations respectively. The rows correspond to the collection simple
+hazardous, and resources environments respectively.
+
+
+    (5) Our current framework evaluates and mutates agents individ-           were subsequently translated into executable NetLogo code by
+        ually. However, in many multi-agent contexts, performance             leveraging another LLM-mediated step. Our findings revealed that
+        depends on collective behavior. Future work should explore            pseudocode-based mutations perform worse compared to direct
+        evaluating and evolving agents as teams, though this will             code-based mutation. However, mutation with comment generation
+        likely incur greater computational cost.                              increases the performance of the agents.
+                                                                                 Overall, our research provides evidence supporting the feasibility
+8    Conclusion                                                               and effectiveness of using LLMs in genetic programming for multi-
+                                                                              agent systems. These findings open exciting avenues for future
+In this study, we investigated the integration of LLM-driven muta-            research, particularly in further refining prompting techniques, ex-
+tion operators within genetic programming frameworks to evolve                ploring additional levels of abstraction in representation evolution,
+agent behaviors in NetLogo-based multi-agent simulations. Our                 and extending applications to other complex domains requiring
+experiments systematically evaluated different prompting strate-              transparent, interpretable, and sophisticated agent behaviors.
+gies, zero-shot, one-shot, and two-shot prompting, on the fitness
+of agents across various multi-agent environments focused on re-
+source collection tasks. The results demonstrated that while differ-          Acknowledgments
+ent prompting strategies can have some impact on the fitness of               This work was partially supported by the NSF Grant POSE: Phase
+agents, it is not always the case.                                            II: Cultivating Modeling Literacy and Practice through a NetLogo
+   Additionally, we introduced and explored a novel methodology               Open Source Ecosystem. We thank Joel Lehman for insightful dis-
+involving code mutation using pseudocode representations, which               cussions and feedback.
+
+
+
+
+                                                                       2316
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                                                GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+References                                                                                              and Perspectives. IEEE Transactions on Artificial Intelligence 5, 12 (2024), 5873–
+ [1] R. Axelrod. 1987. The evolution of strategies in the Iterated Prisoner’s Dilemma.                  5893. doi:10.1109/TAI.2024.3444742
+     Genetic Algorithms and Simulated Annealing (1987), 32–41. https://ci.nii.ac.jp/               [17] Bryan Head and Uri Wilensky. 2018. Agent Cognition Through Micro-simulations:
+     naid/10000082922/en/                                                                               Adaptive and Tunable Intelligence with NetLogo LevelSpace: Proceedings of the
+ [2] Wolfgang Banzhaf, Guillaume Beslon, Steffen Christensen, James A. Foster,                          Ninth International Conference on Complex Systems. 71–81. doi:10.1007/978-3-
+     François Képès, Virginie Lefort, Julian F. Miller, Miroslav Radman, and Jeremy J.                  319-96661-8_7
+     Ramsden. 2006. Guidelines: From artificial evolution to computational evolution:              [18] Erik Hemberg, Steven Jorgensen, and Una-May O’Reilly. 2025. Survey of Genetic
+     A research agenda. Nature Reviews Genetics 7 (2006). Issue 9. doi:10.1038/nrg1921                  Programming and Large Language Models. Springer Nature Singapore, Singapore,
+ [3] Eric Bonabeau. 2002.         Agent-based modeling: Methods and techniques                          67–86. doi:10.1007/978-981-96-0077-9_4
+     for simulating human systems.            Proceedings of the National Academy                  [19] Erik Hemberg, Stephen Moskal, and Una-May O’Reilly. 2024. Evolving code with
+     of Sciences 99, suppl 3 (2002), 7280–7287. doi:10.1073/pnas.082080899                              a large language model. Genetic Programming and Evolvable Machines 25, 2 (12
+     arXiv:"https://www.pnas.org/content/99/suppl_3/7280.full.pdf"                                      Sep 2024), 21. doi:10.1007/s10710-024-09494-2
+ [4] Herbie Bradley, Honglu Fan, Theodoros Galanos, Ryan Zhou, Daniel Scott, and                   [20] Shengran Hu, Cong Lu, and Jeff Clune. 2025. Automated Design of Agentic
+     Joel Lehman. 2024. The OpenELM Library: Leveraging Progress in Language                            Systems. In The Thirteenth International Conference on Learning Representations.
+     Models for Novel Evolutionary Algorithms. Springer Nature Singapore, Singapore,                    https://openreview.net/forum?id=t9U3LW7JVX
+     177–201. doi:10.1007/978-981-99-8413-8_10                                                     [21] Juyong Jiang, Fan Wang, Jiasi Shen, Sungju Kim, and Sunghun Kim. 2024. A
+ [5] Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan,                             Survey on Large Language Models for Code Generation. arXiv:2406.00515 [cs.CL]
+     Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda                         https://arxiv.org/abs/2406.00515
+     Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan,                 [22] Hamdi Kavak, Jose J. Padilla, Christopher J. Lynch, and Saikou Y. Diallo. 2018.
+     Rewon Child, Aditya Ramesh, Daniel Ziegler, Jeffrey Wu, Clemens Winter,                            Big Data, Agents, and Machine Learning: Towards a Data-Driven Agent-Based
+     Chris Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin                          Modeling Approach. In Proceedings of the Annual Simulation Symposium (Balti-
+     Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya                          more, Maryland) (ANSS ’18). Society for Computer Simulation International, San
+     Sutskever, and Dario Amodei. 2020. Language Models are Few-Shot Learners.                          Diego, CA, USA, Article 12, 12 pages.
+     In Advances in Neural Information Processing Systems, H. Larochelle, M. Ran-                  [23] John R. Koza. 1992. Genetic Programming: On the Programming of Computers by
+     zato, R. Hadsell, M.F. Balcan, and H. Lin (Eds.), Vol. 33. Curran Associates,                      Means of Natural Selection. MIT Press, Cambridge, MA, USA. http://mitpress.
+     Inc., 1877–1901. https://proceedings.neurips.cc/paper_files/paper/2020/file/                       mit.edu/books/genetic-programming
+     1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf                                                    [24] W. B. Langdon and W. Banzhaf. 2008. Repeated patterns in genetic programming.
+ [6] Leonardo Lucio Custode, Fabio Caraffini, Anil Yaman, and Giovanni Iacca. 2024.                     Natural Computing 7, 4 (01 Dec 2008), 589–613. doi:10.1007/s11047-007-9038-8
+     An investigation on the use of Large Language Models for hyperparameter                       [25] Robert Lange, Yingtao Tian, and Yujin Tang. 2024. Large Language Models As
+     tuning in Evolutionary Algorithms. In Proceedings of the Genetic and Evolution-                    Evolution Strategies. In Proceedings of the Genetic and Evolutionary Computation
+     ary Computation Conference Companion (Melbourne, VIC, Australia) (GECCO                            Conference Companion (Melbourne, VIC, Australia) (GECCO ’24 Companion).
+     ’24 Companion). Association for Computing Machinery, New York, NY, USA,                            Association for Computing Machinery, New York, NY, USA, 579–582. doi:10.
+     1838–1845. doi:10.1145/3638530.3664163                                                             1145/3638530.3654238
+ [7] Leonardo Lucio Custode, Chiara Camilla Migliore Rambaldi, Marco Roveri, and                   [26] Joel Lehman, Jonathan Gordon, Shawn Jain, Kamal Ndousse, Cathy Yeh, and
+     Giovanni Iacca. 2024. Comparing Large Language Models and Grammatical                              Kenneth O. Stanley. 2024. Evolution Through Large Models. Springer Nature
+     Evolution for Code Generation. In Proceedings of the Genetic and Evolution-                        Singapore, Singapore, 331–366. doi:10.1007/978-981-99-3814-8_11
+     ary Computation Conference Companion (Melbourne, VIC, Australia) (GECCO                       [27] Fei Liu, Xialiang Tong, Mingxuan Yuan, Xi Lin, Fu Luo, Zhenkun Wang, Zhichao
+     ’24 Companion). Association for Computing Machinery, New York, NY, USA,                            Lu, and Qingfu Zhang. 2024. Evolution of heuristics: towards efficient automatic
+     1830–1837. doi:10.1145/3638530.3664162                                                             algorithm design using large language model. In Proceedings of the 41st Interna-
+ [8] Kerstin Dautenhahn. 2007. Socially intelligent robots: dimensions of hu-                           tional Conference on Machine Learning (Vienna, Austria) (ICML’24). JMLR.org,
+     man and robot interaction. Philosophical Transactions of the Royal Society                         Article 1304, 23 pages.
+     B: Biological Sciences 362, 1480 (2007), 679–704. doi:10.1098/rstb.2006.2004                  [28] Chris Lu, Samuel Holt, Claudio Fanconi, Alex J. Chan, Jakob Foerster, Mihaela
+     arXiv:https://royalsocietypublishing.org/doi/pdf/10.1098/rstb.2006.2004                            van der Schaar, and Robert Tjarko Lange. 2024. Discovering Preference Op-
+ [9] Joshua M. Epstein. 1999.                 Agent-based computational models                          timization Algorithms with and for Large Language Models. In Advances in
+     and generative social science.               Complexity 4, 5 (1999), 41–60.                        Neural Information Processing Systems, A. Globerson, L. Mackey, D. Belgrave,
+     doi:10.1002/(SICI)1099-0526(199905/06)4:5<41::AID-CPLX9>3.0.CO;2-F                                 A. Fan, U. Paquet, J. Tomczak, and C. Zhang (Eds.), Vol. 37. Curran Associates,
+     arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/                                             Inc., 86528–86573. https://proceedings.neurips.cc/paper_files/paper/2024/file/
+[10] Joshua M. Epstein. 2007. Generative Social Science. Princeton University Press,                    9d88b87b31986f8293bb0067a841579e-Paper-Conference.pdf
+     Princeton. doi:doi:10.1515/9781400842872                                                      [29] Chris Lu, Cong Lu, Robert Tjarko Lange, Jakob Foerster, Jeff Clune, and David
+[11] Chrisantha Fernando, Dylan Sunil Banarse, Henryk Michalewski, Simon                                Ha. 2024. The AI Scientist: Towards Fully Automated Open-Ended Scientific
+     Osindero, and Tim Rocktäschel. 2024. Promptbreeder: Self-Referential Self-                         Discovery. arXiv:2408.06292 [cs.AI] https://arxiv.org/abs/2408.06292
+     Improvement via Prompt Evolution. In Proceedings of the 41st International                    [30] Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani,
+     Conference on Machine Learning (Proceedings of Machine Learning Research,                          Dinesh Jayaraman, Yuke Zhu, Linxi Fan, and Anima Anandkumar. 2024. Eureka:
+     Vol. 235), Ruslan Salakhutdinov, Zico Kolter, Katherine Heller, Adrian Weller,                     Human-Level Reward Design via Coding Large Language Models. In The Twelfth
+     Nuria Oliver, Jonathan Scarlett, and Felix Berkenkamp (Eds.). PMLR, 13481–13544.                   International Conference on Learning Representations. https://openreview.net/
+     https://proceedings.mlr.press/v235/fernando24a.html                                                forum?id=IEduRUO55F
+[12] Chen Gao, Xiaochong Lan, Nian Li, Yuan Yuan, Jingtao Ding, Zhilun Zhou,                       [31] Elliot Meyerson, Mark J. Nelson, Herbie Bradley, Adam Gaier, Arash Moradi,
+     Fengli Xu, and Yong Li. 2024. Large language models empowered agent-based                          Amy K. Hoover, and Joel Lehman. 2024. Language Model Crossover: Variation
+     modeling and simulation: a survey and perspectives. Humanities and Social                          through Few-Shot Prompting. ACM Trans. Evol. Learn. Optim. 4, 4, Article 27
+     Sciences Communications 11, 1 (27 Sep 2024), 1259. doi:10.1057/s41599-024-03611-                   (Nov. 2024), 40 pages. doi:10.1145/3694791
+     3                                                                                             [32] Brad L Miller, David E Goldberg, et al. 1995. Genetic algorithms, tournament
+[13] Volker Grimm and Steven F. Railsback. 2005. Individual-based Modeling and                          selection, and the effects of noise. Complex systems 9, 3 (1995), 193–212.
+     Ecology. Princeton University Press, Princeton. doi:doi:10.1515/9781400850624                 [33] Julian F. Miller. 2011. Cartesian Genetic Programming. Springer Berlin Heidelberg,
+[14] Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruidi Chang, Shichao Pei, Nitesh V.                         Berlin, Heidelberg, 17–34. doi:10.1007/978-3-642-17310-3_2
+     Chawla, Olaf Wiest, and Xiangliang Zhang. 2024. Large language model based                    [34] Melanie Mitchell. 1998. An Introduction to Genetic Algorithms. MIT Press, Cam-
+     multi-agents: a survey of progress and challenges. In Proceedings of the Thirty-                   bridge, MA, USA.
+     Third International Joint Conference on Artificial Intelligence (Jeju, Korea) (IJCAI          [35] Jean-Baptiste Mouret and Jeff Clune. 2015. Illuminating search spaces by mapping
+     ’24). Article 890, 10 pages. doi:10.24963/ijcai.2024/890                                           elites. arXiv:1504.04909 [cs.AI]
+[15] Can Gurkan, Leif Rasmussen, and Uri Wilensky. 2019. Effects of Visual                         [36] W. James Murdoch, Chandan Singh, Karl Kumbier, Reza Abbasi-Asl,
+     Sensory Range on the Emergence of Cognition in Early Terrestrial Verte-                            and Bin Yu. 2019.            Definitions, methods, and applications in inter-
+     brates: An Agent-Based Modeling Approach (ALIFE 2020: The 2020 Confer-                             pretable machine learning.            Proceedings of the National Academy of
+     ence on Artificial Life, Vol. ALIFE 2019: The 2019 Conference on Artificial Life).                 Sciences 116, 44 (2019), 22071–22080.                doi:10.1073/pnas.1900654116
+     475–476. doi:10.1162/isal_a_00206 arXiv:https://direct.mit.edu/isal/proceedings-                   arXiv:https://www.pnas.org/doi/pdf/10.1073/pnas.1900654116
+     pdf/isal2019/31/475/1903463/isal_00206.pdf                                                    [37] Thanh Thi Nguyen, Ngoc Duy Nguyen, and Saeid Nahavandi. 2020. Deep Rein-
+[16] Desta Haileselassie Hagos, Rick Battle, and Danda B. Rawat. 2024. Recent Ad-                       forcement Learning for Multiagent Systems: A Review of Challenges, Solutions,
+     vances in Generative AI and Large Language Models: Current Status, Challenges,                     and Applications. IEEE Transactions on Cybernetics 50, 9 (2020), 3826–3839.
+                                                                                                        doi:10.1109/TCYB.2020.2977374
+
+
+
+
+                                                                                            2317
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                                                       Gurkan et al.
+
+
+[38] Michael O’Neill, Leonardo Vanneschi, Steven Gustafson, and Wolfgang Banzhaf.               A.2     Genetic Programming
+     2010. Open issues in genetic programming. Genetic Programming and Evolvable
+     Machines 11, 3–4 (Sept. 2010), 339–363. doi:10.1007/s10710-010-9113-2                      Genetic Programming (GP) is an evolutionary algorithm designed
+[39] Riccardo Poli, William Langdon, and Nicholas Mcphee. 2008. A Field Guide to                to produce computer programs using the principles of biological
+     Genetic Programming.
+[40] Steven F Railsback and Volker Grimm. 2019. Agent-based and individual-based
+                                                                                                evolution, specifically the concepts of variation, selection, and in-
+     modeling: a practical introduction. Princeton university press.                            heritance [2, 23]. GP uses various evolutionary operators on a pop-
+[41] Bernardino Romera-Paredes, Mohammadamin Barekatain, Alexander Novikov,                     ulation of candidate solutions to iteratively improve them. The
+     Matej Balog, M. Pawan Kumar, Emilien Dupont, Francisco J. R. Ruiz, Jordan S.
+     Ellenberg, Pengming Wang, Omar Fawzi, Pushmeet Kohli, and Alhussein Fawzi.                 evolutionary process begins with an initialization operator that
+     2024. Mathematical discoveries from program search with large language models.             configures a population of candidate programs, which are eval-
+     Nature 625, 7995 (01 Jan 2024), 468–475. doi:10.1038/s41586-023-06924-6                    uated based on their performance or fitness for accomplishing a
+[42] Xingyou Song, Yingtao Tian, Robert Tjarko Lange, Chansoo Lee, Yujin Tang, and
+     Yutian Chen. 2024. Position: leverage foundational models for black-box opti-              given task using an evaluation operator. Then a selection operator
+     mization. In Proceedings of the 41st International Conference on Machine Learning          determines high-performing programs to serve as selected candi-
+     (Vienna, Austria) (ICML’24). JMLR.org, Article 1878, 13 pages.
+[43] Wouter Vermeer, Can Gurkan, Arthur Hjorth, Nanette Benbow, Brian M. Mus-
+                                                                                                dates, referred to as parents, that will undergo subsequent variation
+     tanski, David Kern, C. Hendricks Brown, and Uri Wilensky. 2022. Agent-based                based on the performance of each candidate. The selected candi-
+     model projections for reducing HIV infection among MSM: Prevention and care                dates or parents produce offspring using variation operators that
+     pathways to end the HIV epidemic in Chicago, Illinois. PLOS ONE 17, 10 (10
+     2022), 1–27. doi:10.1371/journal.pone.0274288                                              typically consist of crossover and mutation operators that combine
+[44] Aymeric Vie. 2021. Qualities, challenges and future of genetic algorithms: a               and alter aspects of parent solutions, respectively. A replacement
+     literature review. arXiv:2011.05277 [cs.NE]                                                operator subsequently replaces a portion of the population with the
+[45] Darrell Whitley. 1998. A Genetic Algorithm Tutorial. Statistics and Computing 4
+     (10 1998). doi:10.1007/BF00175354                                                          newly produced offspring solutions that are integrated into the next
+[46] Uri Wilensky. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/. Northwestern            generation. Each of these evolutionary operators can benefit from
+     University, Evanston, IL. http://ccl.northwestern.edu/netlogo/
+[47] Uri Wilensky and William Rand. 2015. An Introduction to Agent-Based Modeling:
+                                                                                                the complementary use of LLMs [19]. In this study, we specifically
+     Modeling Natural, Social, and Engineered Complex Systems with NetLogo. The                 focus on using LLMs as mutation operators. Given the versatility
+     MIT Press.                                                                                 GP has demonstrated across a wide range of complex problem do-
+[48] Xingyu Wu, Sheng-Hao Wu, Jibin Wu, Liang Feng, and Kay Chen Tan. 2024.
+     Evolutionary Computation in the Era of Large Language Model: Survey and                    mains, including symbolic regression, automated design, control
+     Roadmap. IEEE Transactions on Evolutionary Computation (2024), 1–1. doi:10.                strategies, and multi-agent systems [24, 33, 38, 39, 44], the LLM-GP
+     1109/TEVC.2024.3506731                                                                     approach may hold significant potential to expand the capabilities
+[49] Ryan Zhou, Jaume Bacardit, Alexander E. I. Brownlee, Stefano Cagnoni, Martin
+     Fyvie, Giovanni Iacca, John McCall, Niki van Stein, David J. Walker, and Ting              of evolutionary computation beyond current applications.
+     Hu. 2024. Evolutionary Computation and Explainable AI: A Roadmap to Under-
+     standable Intelligent Systems. IEEE Transactions on Evolutionary Computation               A.3     Multi-Agent Systems & Agent-Based
+     (2024), 1–1. doi:10.1109/TEVC.2024.3476443
+                                                                                                        Modeling
+                                                                                                Multi-agent systems (MAS) refer to computational frameworks com-
+A     Background                                                                                posed of multiple autonomous agents that interact with each other,
+In this section, we briefly describe the relevant concepts of large                             typically characterized by localized sensing, decision-making, and
+language models, genetic programming, and multi-agent systems.                                  communication capabilities [14, 37]. Due to their suitability for mod-
+                                                                                                eling complex interactions and emergent phenomena, MAS have
+A.1      Large Language Models                                                                  been extensively studied and successfully applied across diverse sci-
+Large Language Models (LLMs) are typically transformer-based                                    entific domains, including ecology, economics, epidemiology, and
+deep neural network architectures comprised of billions of parame-                              robotics [1, 8, 10, 13, 15, 17, 22, 40, 43]. A related methodological
+ters, designed to process and generate coherent and contextually rel-                           approach, Agent-Based Modeling (ABM) is a form of computational
+evant text through auto-regressive training on vast, internet-scale                             modeling that leverages multi-agent systems as computational tools
+corpora of data [5]. Transformer models leverage attention mecha-                               to simulate and analyze phenomena modeled in terms of agents
+nisms, notably self-attention, which allow the model to dynamically                             and their interactions [47]. Defining appropriate behavioral rules
+weigh the importance of input elements relative to one another.                                 for agents in these systems remains a fundamental challenge, as
+This mechanism enables the model to effectively capture complex                                 even relatively simple agent behaviors can give rise to complex,
+contextual relationships within textual data. Training of LLMs typi-                            emergent patterns that are difficult to anticipate or analytically pre-
+cally involves self-supervised learning, specifically through an auto-                          dict [3, 9]. In this context, the LLM-GP approach holds promise for
+regressive sequence completion task, where models are optimized                                 evolving complex yet interpretable behavioral rules tailored to indi-
+to probabilistically predict subsequent words or tokens when given                              vidual agents with distinct capabilities, thereby enabling nuanced
+a preceding context. This training process enables the acquisition                              interactions among heterogeneous agents. As a result, the LLM-GP
+of robust representations of syntactic and semantic relationships                               framework has the potential to facilitate the effective simulation
+embedded within extensive text corpora. Commercial uses of LLMs                                 and analysis of intricate real-world scenarios within multi-agent
+typically involve an interface that can be queried using an input                               systems.
+sequence of text called a prompt to generate an output sequence
+of text that is intended to be the optimal response to the prompt.
+                                                                                                B     Additional Algorithms
+Within the context of genetic programming, the generative power                                 In this section, we provide the algorithms for code and pseudocode
+and flexibility of LLMs make them ideal candidates for evolving                                 mutation operators.
+programmatic solutions and agent behaviors [7, 18].
+
+
+
+
+                                                                                         2318
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                   GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+Algorithm 2 LLM-Driven Mutation with Code Representations                    D    Additional Results
+ 1: Given agent with code rule 𝑟 , mutation prompt 𝜌𝑚 , retry                Here we provide the results of an additional experiment where
+    prompt 𝜌𝑟 , max number of retries 𝑧, code verifier 𝑉 , and LLM           we used Claude 3.5 Haiku on the Collection Simple environment
+ 2: 𝑟 ′ ← LLM(𝜌𝑚 + 𝑟 )                                                       with zero-shot prompting using the code, code with comments
+ 3: retry ← 0                                                                and pseudocode-based mutation schemes to assess the impact of a
+ 4: while 𝑉 (𝑟 ′ ) ≠ true and retry < 𝑧 do                                   different LLM on our findings.
+ 5:  𝑤 ← get error message from 𝑉 (𝑟 ′ )
+ 6:    𝑟 ′ ← LLM(𝜌𝑟 + 𝑤 + 𝑟 ′ )
+ 7:    retry ← retry +1
+ 8: end while
+ 9: if 𝑉 (𝑟 ′ ) = true then
+10:    return 𝑟 ′
+11: else
+12:    return 𝑟
+13: end if
+
+
+Algorithm 3 LLM-Driven Mutation with Pseudocode Representa-
+tions
+  1: Given agent with pseudocode rule 𝑟 , code rule 𝑐, pseudocode
+     mutation prompt 𝜌𝑚 , code translation prompt 𝜌𝑐 , retry prompt
+     𝜌𝑟 , max number of retries 𝑧, code verifier 𝑉 , and LLM
+  2: 𝑟 ′ ← LLM(𝜌𝑚 + 𝑟 )
+  3: 𝑐 ′ ← LLM(𝜌𝑐 + 𝑟 ′ )
+  4: retry ← 0
+  5: while 𝑉 (𝑐 ′ ) ≠ true and retry < 𝑧 do                                  Figure 5: Mean fitness of agents over generations in the Col-
+  6:     𝑤 ← get error message from 𝑉 (𝑐 ′ )                                 lection Simple environment for code, code with comments
+  7:     𝑐 ′ ← LLM(𝜌𝑟 + 𝑟 ′ + 𝑤 + 𝑐 ′ )                                      and pseudocode-based mutation with zero-shot prompting.
+  8:     retry ← retry +1
+  9: end while
+ 10: if 𝑉 (𝑐) = true then                                                    E   Cost of Experiments
+ 11:     return 𝑟 ′, 𝑐 ′
+                                                                             On average a single experiment cost around $10. The total cost of
+ 12: else
+                                                                             all experiments was roughly $200.
+ 13:     return 𝑟, 𝑐
+ 14: end if
+
+
+
+C     Agent Observation Illustration
+
+
+
+
+                                                     food
+                                        𝑑𝑙𝑒 𝑓 𝑡
+
+                                       𝑟𝑠𝑒𝑐𝑡𝑜𝑟
+               agent
+                                    𝑑𝑟𝑖𝑔ℎ𝑡
+                                              food          food
+
+                                                     food
+
+
+
+
+Figure 4: An example of encoding the information the agent
+can see in its field of vision. In this case, the observation
+vector would be 𝑣 = [𝑑 left, 0, 𝑑 right ].
+
+
+
+
+                                                                      2319
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                         Gurkan et al.
+
+
+F    Generated Code and Pseudocode Examples                      An LLM generated pseudocode snippet.
+                                                               If food is detected ahead and a random number between
+                                                               0 and 1 is less than 0.8,
+                                                                  move forward 1
+                                                               Else if food is detected to the left,
+                                                                  turn left by 10 degrees and move forward 1
+                                                               Else if food is detected to the right,
+                                                                  turn right by 10 degrees and move forward 1
+                                                               Else if a random number between 0 and 1 is less than
+                                                               0.3,
+                                                                  turn left by a random angle between 5-15 degrees and
+                                                               move forward 1
+                                                               Else if a random number between 0 and 1 is less than
+                                                               0.6,
+                                                                   turn right by a random angle between 5-15 degrees
+                                                               and move forward 1
+                                                               Else
+                                                                   turn left by a random angle between 10-20 degrees
+                                                               and move forward 1
+                                                               If a random number between 0 and 1 is less than 0.1,
+                                                                  turn right by 90 degrees and move forward 1
+
+
+
+
+       Figure 6: An LLM generated agent code snippet.
+
+
+
+
+                                                        2320
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                               GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+G     Prompts                                                                3. Do not include code to change the environment
+This appendix details the structure and variations of prompts used           4. Do not include code to create new agents
+to guide the LLM in generating NetLogo code or pseudocode for                5. Do not include code to create new food sources
+agent movement. The placeholder {} in the prompt templates rep-              6. Do not include code to change the rules of the
+resents the location where the parent agent’s current code or pseu-          simulation
+docode is inserted dynamically during the evolutionary run.                  7. Follow NetLogo syntax and constraints
+                                                                             8. Do not use any undefined variables or commands
+                                                                             besides the input variable
+G.1     Direct Code Mutation Prompts
+                                                                             9. Focus on movement strategies based on the input
+These prompts instruct the LLM to directly modify existing NetLogo           variable
+code.
+                                                                             VALID COMMANDS AND SYNTAX:
+G.1.1 Base Prompt Structure (Zero-Shot, No Comments). The core
+                                                                              - Use only these movement commands: fd, forward, rt,
+structure provided context, constraints, valid commands, and goals.
+                                                                             right, lt, left, bk, back
+The LLM was asked to improve the input NetLogo code (inserted
+                                                                              - Use only these reporters: random, random-float, sin,
+at {}) and return only the runnable code block.
+                                                                             cos, item, xcor, ycor, heading
+You are an expert NetLogo coder.                                              - The syntax of the if primitive is as follows: if
+You are trying to improve the code of a given turtle                         boolean [ commands ]
+agent that is trying to collect as much food as possible.                     - The syntax of the ifelse primitive is as follows:
+Improve the given agent movement code following these                        ifelse boolean [ commands1 ] [ commands2 ]
+precise specifications:                                                        - An ifelse block that contains multiple boolean
+                                                                             conditions must be enclosed in parentheses as follows:
+Here is the current code of the turtle agent:                                 (ifelse boolean1 [ commands1 ] boolean2 [ commands2 ]
+                                                                             ... [ elsecommands ])
+```
+{}                                                                           ABSOLUTELY FORBIDDEN:
+```                                                                           - DO NOT use "of" primitives - will cause errors
+                                                                              - DO NOT use "ask", "with", "turtles", or "patches"
+INPUT CONTEXT:                                                                - DO NOT use any undefined variables
+- You have access to a variable called input                                  - DO NOT use while loops or recursive constructs
+- Input is a NetLogo list that contains three values
+representing distances to food                                               ERROR PREVENTION:
+in three cone regions of 20 degrees each                                      - Ensure all bracket pairs match
+- The first item in the input list is the distance to                         - Make sure every movement command has a parameter
+the nearest food in the left cone,                                            - Keep values within reasonable ranges (-1000 to 1000)
+the second is the right cone, and the third is the front                      - Ensure at least one movement command is included
+cone                                                                          - There is no such thing as an `else` statement in
+- Each value encodes the distance to nearest food source                     NetLogo
+where a value of 0 indicates no food
+- Non-zero lower values indicate closer food                                 STRATEGIC GOALS:
+- Use the information in this variable to inform movement                    1. Balance exploration and food-seeking behavior
+strategy                                                                     2. Respond to sensor readings intelligently
+- Remember that you only have access to the variable                         3. Combine different movement patterns
+named input and no other variables                                           4. Be creative in your movement strategy
+
+SIMULATION ENVIRONMENT:                                                      The code must be runnable in NetLogo in the context of
+- The turtle agent is in a food collection simulation                        a turtle.
+- The goal is to collect as much food as possible                            Do not write any procedures and assume that the code
+- The turtle agent can detect food in three cone regions                     will be run in an ask turtles block.
+encoded in the input list                                                    Return ONLY the changed NetLogo code.
+- The food sources are randomly distributed in the                           Do not include any explanations or outside the code
+environment                                                                  block.
+
+CONSTRAINTS:                                                                 ```
+1. Do not include code to kill or control any other                          [Your changed NetLogo code goes here]
+agents                                                                       ```
+2. Do not include code to interact with the environment
+
+
+
+
+                                                                      2321
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                             Gurkan et al.
+
+
+G.1.2 Few-Shot Prompting Variations. To provide examples, the                     ] [
+following text blocks were inserted into the base prompt struc-                     rt random 30
+ture immediately before the final instructions ("The code must be                   lt random 30
+runnable...").                                                                      fd 5
+                                                                                  ]
+   One-Shot Example Addition.                                                  ]
+EXAMPLES OF VALID CODE GENERATION:                                           ]
+Current Code: ```fd 1 rt random 45 fd 2 lt 30```                           ] [
+Changed Code: ```ifelse item 0 input != 0 [rt 15 fd                          ifelse item 1 input != 0 [
+0.5] [rt random 30 lt random 30 fd 5]```                                       ifelse item 1 input < item 0 input [
+Why: This code uses the information in the input list to                         rt 15
+turn right and go forward a little to reach food if the                          fd 0.5
+first element of input list contains a non-zero value,                         ] [
+else moves forward in big steps and turns randomly to                            ifelse item 2 input > 0 [
+explore                                                                            lt 15
+                                                                                   fd 0.5
+   Two-Shot Example Addition. The one-shot example was included,                 ] [ fd 1 ]
+followed immediately by this second example within the same                    ]
+EXAMPLES OF VALID CODE GENERATION:                                           ] [
+Current Code:                                                                  ifelse item 2 input > 0 [
+```                                                                              lt 15
+ifelse item 0 input != 0 [                                                       fd 1
+  lt 5                                                                         ] [
+  fd 0.2                                                                         rt random 30
+] [                                                                              lt random 30
+  ifelse item 1 input != 0 [                                                     fd 5
+    rt 5                                                                       ]
+    fd 0.2                                                                   ]
+  ] [                                                                      ]
+    ifelse item 2 input != 0 [                                             ```
+      fd 0.2
+    ] [                                                                    Why: This code uses the information in the input list
+      ifelse random 100 < 50 [                                             to make decisions based on the distances to food in
+         fd 2                                                              different directions.
+         rt random-float 45                                                It checks the distances in the left, front, and right
+      ] [                                                                  cones and adjusts the movement strategy accordingly.
+         rt random-float 30
+                                                                           G.1.3 Comment Generation Variation. For experiments requiring
+         fd 5
+                                                                           comments, the final instruction block in the base prompt (or the
+      ]
+                                                                           few-shot variations) starting with “The code must be runnable...”
+    ]
+                                                                           was appended with:
+  ]
+]
+```                                                                        Detail your strategy in NetLogo code comments (;;)
+                                                                           before you generate the implementation.
+Changed Code:                                                              Include comments throughout the code to explain your
+```                                                                        strategy.
+ifelse item 0 input < item 1 input [
+  ifelse item 0 input != 0 [
+    lt 15
+    fd 0.5
+  ] [
+    ifelse item 1 input != 0 [
+      rt 15
+      fd 0.5
+    ] [
+      ifelse item 2 input > 0 [
+        fd 1
+
+
+
+
+                                                                    2322
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                           GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+G.2     Pseudocode Mutation and Translation                             - Incorporate more sophisticated decision-making based
+        Prompts                                                         on food sensor inputs
+These prompts were used for the two-step pseudocode evolution
+                                                                        2. INNOVATION GUIDELINES:
+approach.
+                                                                        - Introduce adaptive movement that responds to changing
+                                                                        environments
+G.2.1 Pseudocode Mutation Prompt (Zero-Shot). This prompt asks          - Create multi-stage movement sequences that balance
+the LLM to evolve the input pseudocode (inserted at {}).                local and global exploration
+                                                                        - Develop intelligent turning behaviors that optimize
+You are an expert NetLogo pseudocode creator specializing               path trajectories
+in complex turtle agent movement.                                       - Implement energy-efficient movement strategies that
+Your are trying to improve the given pseudocode of a                    minimize unnecessary actions
+given turtle                                                            - Consider emergent swarm-like behaviors when multiple
+agent that is trying to collect as much food as possible.               agents use this rule
+
+Here is the current pseudocode of the turtle agent:                     3. VALID MOVEMENT CONCEPTS ONLY:
+                                                                        - "Move forward" (will become fd or forward in NetLogo)
+```                                                                     - "Turn right" (will become rt or right in NetLogo)
+{}                                                                      - "Turn left" (will become lt or left in NetLogo)
+```                                                                     - "Move backward" (will become bk or back in NetLogo)
+                                                                        - Conditional movements based on food sensor readings
+Improve the given agent movement pseudocode following                   (the "input" list)
+these precise specifications:
+                                                                        4. ABSOLUTELY FORBIDDEN CONCEPTS:
+INPUT CONTEXT:                                                          - DO NOT include any reference to "of" relationships
+- The agent has ONLY access to a variable called input                  between agents
+- When writing the pseudocode, you can only use the                     - DO NOT create or reference any variables that don't
+variable named input                                                    exist
+and no other variables                                                  - DO NOT ask other agents to perform actions
+- Input is a NetLogo list that contains three values                    - DO NOT create or kill any agents
+representing distances                                                  - DO NOT change the environment environment or any
+to food in three cone regions of 20 degrees each                        variables
+- The first item in the input list is the distance to                   - DO NOT use loops or recursive patterns
+the nearest food in the left cone,
+the second is the right cone, and the third is the front                5. ALLOWED STRUCTURE:
+cone                                                                    - Do not use any variables other than "input". For
+- Each value encodes the distance to nearest food source                example, do not say
+where a                                                                 "if food is detected on the left" - use "if the first
+value of 0 indicates no food                                            item of input is
+- Non-zero lower values indicate closer food                            greater than 0"
+- Use the information in this variable to inform movement               - You may include "if/else" logic based on the "input"
+strategy                                                                list values
+                                                                        - You may combine multiple movement commands in sequence
+SIMULATION ENVIRONMENT:
+- The turtle agent is in a food collection simulation                   6. FORMATTING:
+- The goal is to collect as much food as possible                       - Keep the pseudocode readable and focused on movement
+- The turtle agent can detect food in three cone regions                logic
+encoded in the input list                                               - Use plain English descriptions of movement patterns
+- The food sources are randomly distributed in the                      - Be specific about how food sensor readings influence
+environment                                                             movement
+
+EVOLUTIONARY ADVANCEMENT OBJECTIVES:                                    Present your evolved pseudocode enclosed in triple
+                                                                        backticks.
+1. PROGRESSIVE COMPLEXITY ENHANCEMENT:                                  You may include comments in the pseudocode detailing
+- Build upon the existing pseudocode's core logic                       your strategy.
+- Add advanced movement concepts or conditional                         Do not include any explanations outside the code block:
+behaviors
+
+
+
+
+                                                                 2323
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                      Gurkan et al.
+
+
+```                                                                          - An ifelse block     that contains multiple boolean
+[Your evolved pseudocode here]                                               conditions must be enclosed in parentheses as follows:
+```                                                                          (ifelse boolean1 [ commands1 ] boolean2 [ commands2 ]
+                                                                             ... [ elsecommands ])
+G.2.2 Code Translation Prompt (Zero-Shot). This prompt asks the
+                                                              4. COMPLEXITY IMPLEMENTATION:
+LLM to translate the input pseudocode (inserted at {}) into NetLogo
+code.                                                         - Accurately implement all described movement patterns
+                                                              - Translate conditional logic to ifelse statements with
+You are an expert NetLogo programmer tasked with converting proper brackets
+pseudocode into valid,                                        - Implement sensor-responsive behavior using the "input"
+executable NetLogo code.                                      list only
+Your goal is to faithfully implement the pseudocode           - Do not use any variables other than "input" in your
+while ensuring                                                code
+the code adheres to NetLogo syntax and execution constraints. - Convert multi-stage movements into appropriate command
+                                                              sequences
+PSEUDOCODE TO TRANSLATE:
+                                                              4. ABSOLUTELY FORBIDDEN:
+```                                                           - DO NOT use the "of" primitive/reporter - this will
+{}                                                            cause errors
+```                                                           - DO NOT use any non-existent or undefined variables
+                                                              - DO NOT use "ask", "with", "turtles", "patches" - these
+TRANSLATION REQUIREMENTS:                                     are not allowed
+                                                              - DO NOT use "set", "let", or create any variables
+1. UNDERSTANDING THE PSEUDOCODE:                              - DO NOT include any infinite loops - avoid "while" or
+- Focus on understanding the FUNCTIONALITY described          "loop" constructs
+in the pseudocode                                             - DO NOT copy variable names from pseudocode and do not
+- DO NOT use variable names from the pseudocode directly      use any variables other than "input"
+in your NetLogo code
+- Translate conceptual descriptions into valid NetLogo        5. ALLOWED STRUCTURE:
+syntax                                                        - You may use "if/ifelse" statements with item checks
+- The pseudocode is a guideline for behavior, not a           on the "input" list
+direct translation template                                   - For complex or nested conditions, ensure proper bracket
+                                                              nesting and balance
+2. CONSTRAINTS:                                               - Make sure every opening bracket '[' has a matching
+- Do not include code to kill or control any other            closing bracket ']'
+agents                                                        - Remember "input" is the only valid variable you can
+- Do not include code to interact with the environment        reference
+- Do not include code to change the environment
+- Do not include code to create new agents                    6. ERROR PREVENTION:
+- Do not include code to create new food sources              - Ensure each condition has both true and false branches
+- Do not include code to change the rules of the              in ifelse statements
+simulation                                                    - Verify that each command has a valid parameter
+- Follow NetLogo syntax and constraints                       - Make sure bracket pairs are properly matched and
+- Do not use any undefined variables or commands besides      nested
+the input variable                                            - Keep all numeric values between -1000 and 1000
+- Focus on movement strategies based on the input
+variable                                                      7. ROBUST IMPLEMENTATION:
+                                                              - Generate code that is resilient to edge cases
+3. VALID COMMANDS AND SYNTAX:                                 - If pseudocode mentions a variable that doesn't exist
+- Use only these movement commands: fd, forward, rt,          in NetLogo, translate its purpose
+right, lt, left, bk, back                                     without using the variable name (e.g., if pseudocode
+- Use only these reporters: random, random-float, sin,        contains "food ahead", use the value of the last item
+cos, item, xcor, ycor, heading                                in the input list)
+- The syntax of the if primitive is as follows: if            - Focus on capturing the intent and behavior, not the
+boolean [ commands ]                                          exact syntax
+- The syntax of the ifelse primitive is as follows:
+ifelse boolean [ commands1 ] [ commands2 ]
+
+
+
+
+                                                                      2324
+LEAR: LLM-Driven Evolution of Agent-Based Rules                                                      GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain
+
+
+Your task is to carefully analyze the provided pseudocode                        Two-Shot Example Additions. The respective one-shot examples
+and translate it into well-formed NetLogo code that                            were included, followed immediately by these second examples
+represents the described movement strategy.                                    within the same EXAMPLES: section.
+The code must be runnable in NetLogo in the context of
+                                                                                   • For Pseudocode Mutation Prompt:
+a turtle. Do not write any procedures and assume that
+the code will be run in an ask turtles block.                                          " If the third item of input is not zero, move
+Return ONLY the changed NetLogo code. Do not include                                   forward towards food. If the third item of input
+any explanations or outside the code block.                                            is zero, and if first item of input is greater
+                                                                                       than the second item, turn left and move towards
+Present your generated NetLogo code enclosed in triple                                 food. Otherwise, if the second item of input is
+backticks:                                                                             greater than the first item, turn right and move
+                                                                                       towards food. Otherwise, move randomly."
+```
+[Your generated NetLogo code here]                                                 • For Code Translation Prompt:
+```                                                                                    If the given pseudocode says "If the third item
+                                                                                       of input is not zero, move forward towards food.
+                                                                                       If the third item of input is zero, and if first
+G.2.3 Few-Shot Variations for Pseudocode Prompts. For one-shot                         item of input is greater than the second item,
+and two-shot prompting in the pseudocode mutation and code                             turn left and move towards food. Otherwise, if
+translation steps, example blocks were inserted into the respective                    the second item of input is greater than the first
+base prompts (shown above) under a new section numbered 7.                             item, turn right and move towards food. Otherwise,
+EXAMPLES: (for the mutation prompt) or 8. EXAMPLES: (for the                           move randomly.", you should implement this logic
+translation prompt), just before the final instruction asking for the                  in NetLogo code as follows:
+output.                                                                                ```
+                                                                                       if item 2 input != 0 [
+   One-Shot Example Additions.                                                           fd item 2 input
+     • For Pseudocode Mutation Prompt:                                                 ]
+                                                                                       if item 2 input = 0 [
+       7. EXAMPLES:                                                                      if item 0 input > item 1 input [
+       "If all values in the input list are 0, move                                         lt 15
+       forward randomly.                                                                    fd item 0 input
+       Otherwise, identify the smallest value in the                                     ]
+       input list and turn towards that direction."                                      if item 1 input > item 0 input [
+                                                                                            rt 15
+     • For Code Translation Prompt:                                                         fd item 1 input
+                                                                                         ]
+       8. EXAMPLES:                                                                    ]
+       If the given pseudocode says "If no food is detected,                           ifelse random 2 = 0 [
+       move forward randomly.                                                            rt 45
+       Otherwise, identify the smallest value in the                                   ] [
+       input list                                                                        lt 45
+       and turn towards that direction.",                                              ]
+       you should implement this logic in NetLogo code                                 fd 1
+       as follows:                                                                     ```
+
+       ```
+       ifelse (input = [ 0 0 0 ]) [
+         lt random 20
+                                                                               G.3     Retry Prompts
+         rt random 20                                                          If the verifier detects that the code the LLM generated contains any
+         fd 5                                                                  syntax errors or undesired Netlogo code, as mentioned in Section
+       ] [                                                                     3.2.1 the error message generated by the verifier and the original
+         (ifelse min input = item 0 input [ lt 20 ]                            code is sent to the LLM with a retry prompt. This prompt is struc-
+                 min input = item 1 input [ rt 20 ]                            tured such that the original meaning of the faulty code is preserved
+                 [ fd 3] )                                                     while the specific errors are fixed.
+       ]
+                                                                               G.3.1   Retry Prompt without Psuedocode.
+       ```
+
+
+
+
+                                                                        2325
+GECCO ’25 Companion, July 14–18, 2025, Malaga, Spain                                                                  Gurkan et al.
+
+
+You are an expert NetLogo coder tasked with fixing a             Generate ONLY basic movement code that strictly avoids
+movement code error for a turtle agent. Your goal is to          the error mentioned. The code must be runnable in
+update the provided NetLogo movement code to fix the             NetLogo turtle context. Present your corrected NetLogo
+error message shown below.                                       code enclosed in triple backticks:
+
+Here is the current rule:                                        ```
+{original_code}                                                  [Your corrected NetLogo code here]
+                                                                 ```
+Here is the error message:
+{error_message}                                                  Do not include any explanations - the code itself should
+                                                                 be the only output.
+STRICT GUIDELINES FOR FIXING THE CODE:
+                                                                 G.3.2 Retry Prompt with Psuedocode. This prompt is identical to
+1. VALID COMMANDS ONLY:
+                                                                 Retry Prompt without Pseudocode with the addition of the lines:
+     - Use only these movement commands: fd, forward,
+rt, right, lt, left, bk, back                                    **Guiding Pseudocode:**
+    - Use only these reporters: random, random-float,            ```pseudocode
+sin, cos, item, xcor, ycor, heading                              {pseudocode}
+                                                                 ```
+2. ABSOLUTELY FORBIDDEN:
+     - DO NOT use the "of" primitive/reporter - this
+will always cause errors
+   - DO NOT use any non-existent or undefined variables
+    - DO NOT use "ask", "with", "turtles", "patches" -
+these are not allowed
+    - DO NOT use "set", "let", or create any variables
+     - DO NOT use loops or recursion - these create
+infinite loops
+
+3. ALLOWED STRUCTURE:
+     - You may use "if/ifelse" statements with item
+checks on the "input" list
+    - Basic example: ifelse item 0 input != 0 [fd 1]
+[rt 90 fd 2]
+   - For complex or nested conditions, maintain proper
+bracket balance
+
+4. FORMATTING:
+     - Each command (fd/rt/lt) must be followed by a
+number or simple expression
+    - All commands must be properly separated by spaces
+    - Keep the code simple, focused only on movement
+      - Ensure all brackets are properly paired and
+balanced
+
+5. ERROR-SPECIFIC FIXES:
+      - For "Dangerous primitives" errors: Remove ALL
+prohibited commands
+    - For "Unclosed brackets" errors: Check and fix ALL
+bracket pairs
+     - For "Invalid value" errors: Ensure all numeric
+values are valid and positive
+     - For "No movement commands" errors: Include at
+least one movement command (fd, rt, lt)
+    - For "Command needs a value" errors: Ensure every
+command has a parameter
+
+
+
+
+                                                          2326
+

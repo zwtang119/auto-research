@@ -1,0 +1,740 @@
+Pattern-Oriented Modeling of Agent-Based Complex
+Systems: Lessons from Ecology
+Volker Grimm, et al.
+Science 310, 987 (2005);
+DOI: 10.1126/science.1116681
+The following resources related to this article are available online at
+www.sciencemag.org (this information is current as of April 21, 2008 ):
+
+Supporting Online Material can be found at:
+http://www.sciencemag.org/cgi/content/full/310/5750/987/DC1
+This article cites 23 articles, 5 of which can be accessed for free:
+http://www.sciencemag.org/cgi/content/full/310/5750/987#otherarticles
+This article has been cited by 47 article(s) on the ISI Web of Science.
+This article has been cited by 4 articles hosted by HighWire Press; see:
+http://www.sciencemag.org/cgi/content/full/310/5750/987#otherarticles
+This article appears in the following subject collections:
+Ecology
+http://www.sciencemag.org/cgi/collection/ecology
+Information about obtaining reprints of this article or about obtaining permission to reproduce
+this article in whole or in part can be found at:
+http://www.sciencemag.org/about/permissions.dtl
+
+Science (print ISSN 0036-8075; online ISSN 1095-9203) is published weekly, except the last week in December, by the
+American Association for the Advancement of Science, 1200 New York Avenue NW, Washington, DC 20005. Copyright
+2005 by the American Association for the Advancement of Science; all rights reserved. The title Science is a
+registered trademark of AAAS.
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+Updated information and services, including high-resolution figures, can be found in the online
+version of this article at:
+http://www.sciencemag.org/cgi/content/full/310/5750/987
+
+REVIEW
+Pattern-Oriented Modeling of Agent-Based
+Complex Systems: Lessons from Ecology
+Agent-based complex systems are dynamic networks of many interacting agents; examples
+include ecosystems, financial markets, and cities. The search for general principles
+underlying the internal organization of such systems often uses bottom-up simulation
+models such as cellular automata and agent-based models. No general framework for
+designing, testing, and analyzing bottom-up models has yet been established, but recent
+advances in ecological modeling have come together in a general strategy we call patternoriented modeling. This strategy provides a unifying framework for decoding the internal
+organization of agent-based complex systems and may lead toward unifying algorithmic
+theories of the relation between adaptive behavior and system complexity.
+
+W
+
+hat makes James Bond an agent?
+He has a clear goal, he is autonomous in his decisions about
+achieving the goal, and he adapts these decisions to his rapidly changing situation. We
+are surrounded by such autonomous, adaptive
+agents: cells of the immune system, plants, citizens, stock market investors, businesses, etc.
+The agent-based complex systems (1) (ACSs)
+around us are made up of myriad interacting
+agents. One of the most important challenges
+confronting modern science is to understand
+and predict such systems. Bottom-up simulation modeling is one tool for doing so: We
+compile relevant information about entities at
+a lower level of the system (in Bagent-based
+models,[ these are individual agents), formulate theories about their behavior, implement
+these theories in a computer simulation, and
+observe the emergence of system-level properties related to particular questions (2, 3).
+1
+UFZ Umweltforschungszentrum Leipzig-Halle, Department Ökologische Systemanalyse, PF 500 136,
+04301 Leipzig, Germany. 2Department of Applied Biology, Estación Biológica de Doñana, Spanish Council for
+Scientific Research CSIC, Ave. Maria Luisa s/n, E-41013
+Seville, Spain. 3Zentrum für Marine Tropenökologie,
+Fahrenheitstrasse 6, 28359 Bremen, Germany. 4Institut für Biochemie und Biologie, Universität Potsdam,
+Maulbeerallee 2, 14469 Potsdam, Germany. 5Netherlands Institute of Ecology, Centre for Limnology,
+Rijksstraatweg 6, 3631 AC Nieuwersluis, Netherlands.
+6
+Lang, Railsback and Associates and Department of
+Mathematics, Humboldt State University, 250 California Avenue, Arcata, CA 95521, USA. 7Botany Section,
+Department of Ecology, Royal Veterinary and Agricultural University Rolighedsvej 21, DK-1958 Frederiksberg,
+Denmark. 8U.S. Geological Survey/Florida Integrated
+Science Centers and Department of Biology, University of Miami, Post Office Box 249118, Coral Gables,
+FL 33124, USA.
+
+*To whom correspondence should be addressed.
+E-mail: volker.grimm@ufz.de
+
+Bottom-up models have been developed
+for many types of ACSs (4), but the identification of general principles underlying the
+organization of ACSs has been hampered by
+the lack of an explicit strategy for coping
+with the two main challenges of bottom-up
+modeling: complexity and uncertainty (5, 6).
+Consequently, model structure often is chosen
+ad hoc, and the focus is often on how to
+represent agents without sufficient emphasis
+on analyzing and validating the applicability of
+models to real problems (5, 7).
+A strategy called pattern-oriented modeling
+(POM) attempts to make bottom-up modeling
+more rigorous and comprehensive (6, 8–10). In
+POM, we explicitly follow the basic research
+program of science: the explanation of observed patterns (11). Patterns are defining characteristics of a system and often, therefore,
+indicators of essential underlying processes
+and structures. Patterns contain information on
+the internal organization of a system, but in a
+Bcoded[ form. The purpose of POM is to
+Bdecode[ this information (10).
+The motivation for POM is that, for complex systems, a single pattern observed at a
+specific scale and hierarchical level is not
+sufficient to reduce uncertainty in model structure and parameters. This has long been known
+in science. For example, Chargaff_s rule of
+DNA base pairing was not sufficient to decode the structure of DNA—until combined
+with patterns from x-ray diffraction of DNA
+and from the tautomeric properties of the purine and pyrimidine bases (12). Thus, in POM,
+multiple patterns observed in real systems at
+different hierarchical levels and scales are used
+systematically to optimize model complexity
+and to reduce uncertainty.
+POM was formulated in ecology, a science
+with a long tradition of bottom-up modeling.
+
+www.sciencemag.org
+
+SCIENCE VOL 310
+
+Ecology, in the past 30 years, has produced as
+many individual-based models as all other disciplines together have produced agent-based
+models (13), and has focused more on bottomup models that address real systems and problems (14).
+We describe here how observed patterns
+can be used to optimize model structure, test
+and contrast theories for agent behavior, and
+reduce parameter uncertainty. Finally, we
+discuss POM as a unifying framework for the
+science of agent-based complex systems in
+general.
+
+Patterns for Model Structure:
+The Medawar Zone
+Finding the optimal level of resolution in a
+bottom-up model’s structure is a fundamental
+problem. If a model is too simple, it neglects
+essential mechanisms of the real system,
+limiting its potential to provide understanding
+and testable predictions regarding the problem
+it addresses. If a model is too complex, its
+analysis will be cumbersome and likely to get
+bogged down in detail. We need a way to find
+an optimal zone of model complexity, the
+‘‘Medawar zone’’ (Fig. 1).
+Modeling has to start with specific questions (15). From these questions, we first
+formulate a conceptual model that helps us
+decide which elements and processes of the
+real system to include or ignore. With complex
+systems, however, the question addressed by
+the model is not sufficient to locate the
+Medawar zone because ACSs include too
+many degrees of freedom. Moreover, the conceptual model may too much reflect our perspective as external observers, with our specific
+interests, beliefs, and scales of perception.
+A key idea of POM is to use multiple
+patterns observed in real systems to guide
+design of model structure. Using observed
+patterns for model design directly ties the
+model’s structure to the internal organization
+of the real system. We do so by asking: What
+observed patterns seem to characterize the
+system and its dynamics, and what variables
+and processes must be in the model so that
+these patterns could, in principle, emerge? For
+example, if there are patterns in age structure,
+sex ratio, and spatial distribution, then age,
+sex, and space should be represented in the
+
+11 NOVEMBER 2005
+
+987
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+Volker Grimm,1* Eloy Revilla,2 Uta Berger,3 Florian Jeltsch,4 Wolf M. Mooij,5 Steven F. Railsback,6
+Hans-Hermann Thulke,1 Jacob Weiner,7 Thorsten Wiegand,1 Donald L. DeAngelis8
+
+REVIEW
+
+988
+
+Patterns for Contrasting
+Alternative Theories
+Agents continuously make decisions to reach
+their goals—e.g., survival and reproductive
+success, profiting in a stock market, finding
+the best place to settle—in an ever-changing
+environment. How do we model these decisions? What information do agents have, what
+alternatives do they consider, and how do they
+predict the consequences of their decisions?
+Many studies of ACSs try only one model of
+decision-making and attempt to show that it
+leads to results compatible with a limited data
+set. This practice, however, may lead to the
+impression that bottom-up models include so
+many parameters that they can be fitted to data
+whether or not their structure and processes are
+valid.
+A more rigorous strategy for modeling
+agent decisions, or other bottom-up processes,
+is to use ‘‘strong inference’’ (25) by contrasting alternative decision models, or ‘‘theories’’
+(3, 6). First, alternative theories of the agent’s
+decisions are formulated. Next, characteristic
+patterns at both the individual and higher
+levels are identified. The alternative theories
+
+11 NOVEMBER 2005 VOL 310
+
+SCIENCE
+
+Medawar zone
+
+Model complexity
+
+Problem
+
+Multiple
+Patterns
+
+Data
+
+Fig. 1. Payoff of bottom-up models versus their
+complexity. A model’s payoff is determined not
+only by how useful it is for the problem it was
+developed for, but also by its structural realism;
+i.e., its ability to produce independent predictions
+that match observations. If model design is guided
+only by the problem to be addressed (which often
+is the explanation of a single pattern), the model
+will be too simple. If model design is driven by all
+the data available, the model will be too complex.
+But there is a zone of intermediate complexity
+where the payoff is high. We call this the
+‘‘Medawar zone’’ because Medawar described a
+similar relation between the difficulty of a
+scientific problem and its payoff (41). If the very
+process of model development is guided by
+multiple patterns observed at different scales
+and hierarchical levels, the model is likely to end
+up in the Medawar zone.
+
+are then implemented in a bottom-up model
+and tested by how well they reproduce the
+patterns. Decision models that fail to reproduce
+the characteristic patterns are rejected, and
+additional patterns with more falsifying power
+can be used to contrast successful alternatives.
+Rigorous techniques can be used to design
+experiments and analyze data (6, 26).
+As an example, consider the well-known
+‘‘boids’’ model (27) that produces schoolinglike behavior from a simple theory: Individual
+boids try to avoid collisions, match the velocity
+of neighboring individuals, and stay close to
+neighbors. The emergence of aggregations
+resembling fish schools from this theory (Fig.
+3), however, does not prove that boids explains
+schooling in real fish.
+To define theory for schooling of real fish,
+Huth (28) used observed patterns and contrasted alternative theories for fish behavior.
+Two patterns characterizing fish schools were
+defined and quantified: polarization and nearest neighbor distance (Fig. 3). Eleven alternative theories for how fish adapt swimming
+speed and direction were formulated. In the
+first nine theories, the influence of neighbors is
+averaged; but in two theories, fish adjust their
+swimming to only one neighbor—e.g., the one
+
+www.sciencemag.org
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+increase model credibility, gain understanding
+(18), and address more questions.
+In an example from ecological epidemiology, multiple patterns guided the stepwise
+design and calibration of a model describing
+the spread of rabies among red foxes in central
+Europe (22). Observed patterns included the
+large-scale wave of rabies prevalence, disease
+pockets ahead of the wave, and temporal oscillations of prevalence at local and regional
+scales. The resulting model reproduced these
+patterns, but not by simply applying a preconceived model structure and then fitting it to
+the patterns; instead, one pattern after another
+was used to gradually refine model structure
+(23). Structural realism of this model is
+indicated by the striking match between model
+predictions and a long-term data set of hunted
+foxes, which combines aspects of rabies epidemiology (before the onset of rabies control),
+fox ecology (after control), and their interaction (during control).
+In other ACS disciplines, we found only a
+few models explicitly addressing multiple patterns, although many models were implicitly based on multiple patterns. A model of
+consumer markets (24) addresses three patterns: (i) The statistical distribution of weekly sales of fast-moving consumer goods has
+fatter tails and thinner peaks than normal distributions; (ii) there are clusters of high sales
+volatility; and (iii) market shares of different
+stores follow power-law distributions. Exactly
+how these patterns influenced the design of
+the model is not clear, but pattern (iii) appears to be why the model is spatially explicit:
+Consumer agents only visit stores that are
+nearby.
+
+Payoff
+
+model; if we know that agents behave differently at high densities (e.g., are more aggressive), behavior variability should be in the
+model. This use of patterns might force us to
+include state variables and processes that are
+only indirectly linked to the ultimate purpose
+of the model and are not part of our initial
+conceptual model. Ideally, the patterns used to
+design a model occur at different spatial and
+temporal scales and different hierarchical levels, because the key to understanding complex
+systems often lies in understanding how processes on different scales and hierarchical levels
+are bound to each other.
+Multiple patterns were key to modeling
+spatiotemporal dynamics of the beech forests
+of central Europe (Fig. 2). Natural beech forests
+are characterized by a spatial mosaic pattern of
+successional stages. A cellular automaton model that focused on this pattern only (16) was too
+poor in structure to reveal the forest’s internal organization. But the forests have more
+characteristic patterns. Different successional
+stages have different patterns of vertical structure: e.g., the climax stage has closed canopy
+and little understory, and the decaying stage
+has canopy gaps and an understory of young
+beech. Therefore, a newer model (17, 18) includes four height classes (from seedlings to
+upper canopy) (Fig. 2). The model also explicitly represents individual big trees because
+canopy gaps are caused by windthrow, an
+individual-level process. The model’s structure was thus determined by the multiple
+characteristic patterns: The mosaic pattern
+determined horizontal spatial scale and resolution, the vertical patterns determined the
+need for height classes, and canopy gaps determined that large beeches must be described
+individually.
+When designed to reproduce multiple patterns, models are more likely to be ‘‘structurally
+realistic’’ (10). In particular, model components (e.g., individuals) correspond directly to
+observed objects and variables, and processes
+correspond to the internal organization of the
+real system, so that the model ‘‘not only reproduces the observed real system behavior,
+but truly reflects the way in which the real
+system operates to produce this behavior’’
+[(19), p. 5].
+Structurally realistic models can make independent and testable secondary predictions.
+The beech forest model, for example, delivered
+independent predictions of forest characteristics that were not considered during model
+development and testing (20). Predictions of
+age structure in the canopy and the spatial
+distribution of very old ‘‘giant’’ trees were in
+good agreement with observations, considerably increasing the model’s credibility and
+justifying a completely new application: tracking woody debris (21). Complexity in patternoriented bottom-up models is not simply a
+burden but can provide rich opportunities to
+
+none of the simulations reproduced all
+the observed market
+patterns, the assumption that all investors
+use 25-year memories
+failed to reproduce
+the most basic pattern: price volatility.
+This pattern-oriented
+analysis indicates
+that individual variation in investment
+decision-making is
+crucial to stock market dynamics.
+Testing and contrasting alternative
+theories or decision
+models has several
+benefits. We are
+forced to be explicit
+about how decision
+models are formuFig. 2. Pattern-oriented model design. Observed patterns that characterize old-growth beech forests [(A); images: front, M. lated and tested; we
+Flade; right, C. Rademacher; top, S. Winter] include a horizontal mosaic of developmental stages [(B); x scale: 400 m; modified can demonstrate how
+from (42)], the vertical patterns of tree size that define the developmental stages [(C), showing the late decaying stage; important the spex scale: È60 m; modified from (43)], and distributions of fallen large trees [(D), a map of fallen wood; ellipses indicate crown cific formulation of
+projections of standing trees; x scale: È60 m; modified from (43)]. To allow these patterns to emerge from it, the model
+includes a grid-based horizontal structure [(E), showing grid cells in three developmental stages; x scale: 570 m], a grid-based a decision—or any
+vertical structure [(F), showing each grid cell’s percentage cover for four height classes; total area shown: 1 ha)], and other low-level—
+individual representation of large trees [(G), showing one cell’s trees in the largest two height classes; cell area: 204 m2); (E) model is; we can exto (G) modified from (18)].
+plore null models;
+and we can continually refine models by applying additional
+together they were able to falsify all but one
+closest in front. These two ‘‘priority’’ theories
+patterns.
+theory of habitat selection.
+failed to reproduce realistic polarization values
+In a model exploring what determines the
+(Fig. 3), eliminating them as valid theory.
+Patterns for Parameters:
+access of nomadic herdsmen to pasture lands
+This example shows that looking at one
+Coping with Uncertainty
+owned by village farmers in north Cameroon,
+pattern may not be sufficient to falsify weak
+herdsmen negotiate with farmers for access to
+theory: Looking at nearest neighbor distance
+Pattern-oriented modeling can reduce uncerpastures (29). Two theories of the herdsmen’s
+alone suggested that both types of schooling
+tainty in model parameters in two ways. First,
+reasoning were contrasted: (i) ‘‘cost priority,’’
+model produce similar results, but in fact the
+it helps make models structurally realistic,
+in which herdsmen only consider one dimenpriority theories produce schools only as comwhich usually makes them less sensitive to
+sion of their relationship to farmers—costs;
+pact, but not as polarized, as real schools.
+parameter uncertainty (31). For example, an
+and (ii) ‘‘friend priority,’’ in which herdsmen
+Moreover, the nine theories based on averaging
+individual-based coyote population model
+remember the number of agreements and
+differ widely in assumptions, but the fish school’s
+reproduced an array of observed patterns with
+refusals they received in previous negotiations.
+properties turned out to be robust to these
+no fine-tuning of parameter values taken from
+Real herdsmen sustain a social network across
+assumptions. Demonstrating robustness is also
+the literature (32). The trout model (9) had
+many villages through repeated interactions,
+key to a bottom-up model’s credibility, because it
+four parameters that were particularly una pattern reproduced only by the ‘‘friend
+indicates that we captured the most important
+certain yet important; each had relatively
+priority’’ theory.
+mechanisms. Huth and Wissel’s model also
+independent effects on four different outputs
+In economics, agent-based model experireproduced several additional patterns not
+(size versus abundance, for juveniles versus
+ments have been used to identify characterconsidered during model development, providadults), so they could be calibrated manually
+istics of artificial stock market investors that
+ing further support for its structural realism.
+and independently.
+reproduce patterns well known from real stock
+This pattern-oriented theory development
+Second, the realism of structure and mechmarkets (30). These patterns include continual
+approach is increasingly used in models of
+anism of pattern-oriented models helps paramand unpredictable stock price volatility, high
+ACS. Railsback and Harvey (9) used a stream
+eters interact in ways similar to interactions
+skew and kurtosis in the distribution of profits
+trout model to contrast three theories for how
+of real mechanisms. It is therefore possible
+among investors, and an inverse relation beindividual fish select habitat. Only a new
+to fit all calibration parameters by finding
+tween current investment profits and future
+theory that assumes that fish select habitat to
+values that reproduce multiple patterns simulprice instability. Two assumptions were
+maximize expected survival over a future
+taneously. This technique is known as ‘‘incontrasted about how much historic data
+period reproduced observed patterns of feeding
+verse modeling’’ (33). For a spatially explicit
+investors use to predict the outcome of their
+hierarchy, response to competing species and
+individual-based model of brown bear disinvestment decisions: (i) Investors all use 25predatory fish, seasonal habitat shifts, and
+persal from Slovenia into the Alps (34), a
+year memories of market data, versus (ii)
+response to reduced food availability. Although
+global sensitivity analysis of the uncalibrated
+memory varies from 0.5 to 25 years. Although
+these patterns are each qualitative, or ‘‘weak,’’
+parameter set revealed high uncertainty in
+www.sciencemag.org
+
+SCIENCE VOL 310
+
+11 NOVEMBER 2005
+
+989
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+REVIEW
+
+REVIEW
+
+990
+
+11 NOVEMBER 2005 VOL 310
+
+SCIENCE
+
+www.sciencemag.org
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+Polarization
+
+Nearest neighbor
+distance
+
+model output. To reA
+B 1.5
+duce this uncertainty,
+two data sets were
+1.0
+used to identify five
+patterns. Quantitative criteria for the
+0.5
+agreement between
+observed and sim0.0
+ulated patterns were
+0 1 2 3 4 5 6 7 8 9 10 11
+developed. The in60
+direct modeling analysis started with 557
+50
+random parameter
+40
+sets covering the plausible ranges of all pa30
+rameters. The five
+20
+observed patterns
+were used as filters:
+10
+Only 10 of the 557
+0 1 2 3 4 5 6 7 8 9 10 11
+parameter sets reModel version
+produced all of them.
+Fig.
+3.
+Strong
+inference
+by
+contrasting
+alternative
+theories
+of
+the
+agents’
+behavior.
+Boids
+(27)
+is
+a conceptual model that
+This parameter fildemonstrates how schools or flocks can emerge from simple rules for behavior [(A); a version of boids by H. Hildenbrandt (44)]. (B)
+tering reduced the In a similar model of fish schools (28, 45), 11 alternative theories of fish behavior were contrasted by looking at two school-level
+model’s global sen- patterns: polarization (p) and nearest neighbor distance (NND); p is 0- if all fish swim in the same direction and p approaches 90sitivity by a factor if all fish swim in random directions. Values of p observed in real fish schools are 10- to 20-; observed NND is often G1 fish body
+length. In model versions 1 to 9, the influence of neighbor fish is averaged; in model version 10 and 11 (shaded), fish select a single
+of 4 (fig. S1).
+Indirect parame- neighbor fish and orient their swimming to this neighbor only.
+terization is routine
+in physical process models (i.e., in chemistry,
+hydrology, and climate modeling), but rare
+so far in models of ACSs. An encouraging
+exception is the agent-based model of an
+ancient society, the Kayenta Anasazi, who
+occupied the Long House Valley in northeastern Arizona (United States) until 1300
+A.D. Paleoenvironmental and archaeological
+records permitted the development of a detailed, spatially explicit agent-based model of
+this society and its history (35). These data
+include estimates of annual potential maize
+production for each hectare in the study area
+for the period 400 to 1400 A.D. and records of
+human settlement in the valley. Theories for
+agent decisions, for example, splitting households and moving, were based on detailed regional ethnographies.
+The model includes variability in mortality,
+fertility, splitting of households, and maize
+harvest rates; with eight unknown parameters.
+To evaluate these parameters indirectly, the
+time series of the number of simulated households was compared to the historical record.
+The best parameter set reproduced all imFig. 4. Parameterization and independent predictions of an agent-based model of the Anasazi in
+portant trends and population sizes in the arthe Long House Valley [modified from (35)]. The simulation environment consists of an 80 by 120
+chaeological record. This parameter set also
+grid of 1-ha squares. Dark gray represents a higher water table; light gray and blue represent a
+lower water table. White is nonfarmable land. The red dots represent settlements. (Left) The
+reproduced important features of the spatial
+historical settlement in 1125 A.D.; (right) prediction of the simulation model for the same year.
+distribution of the settlements (Fig. 4) and the
+The match between data and simulation is imperfect, but the clustering of settlements along the
+gradual northward movement of the populavalley boundaries is captured by the model. The model was calibrated not to the settlement
+tion. These spatial patterns can be considered
+patterns but to the population size time series for 400 to 1450 A.D.
+independent predictions, strong indicators of
+the model’s structural realism.
+agents’’ (36); see also table S1]. However,
+entities are physical objects such as atoms
+Implications and Future Directions
+POM is the first attempt to explicitly formulate
+and stars, or are relatively easy to represent,
+Patterns are widely used by many modelers,
+a rigorous and comprehensive strategy for
+such as flocking birds, pedestrians in a
+particularly in disciplines where the low-level
+modeling ACSs. The POM strategy is a
+panicking crowd, or car drivers [‘‘Brownian
+
+way to focus on the most essential information about a complex system’s internal organization. Multiple patterns keep us from
+building models that are too simple in structure and mechanism, or too complex and
+uncertain. Using patterns to test and contrast
+alternative theories for agent behavior or
+other low-level processes is a way for the
+science of ACS to get beyond clever demonstration models and on to rigorous explanations of how real systems are organized and
+how they respond to internal and external
+forces. POM is just taking root, and we expect to see its rapid development in the near
+future.
+Bottom-up models are virtual laboratories
+where controlled experiments distinguish
+noise from signal in the system’s organization. In particular, experiments contrasting
+hypotheses for the behavior of interacting
+agents will lead to an accumulation of theory
+for how the dynamics of systems from molecules to ecosystems and economies emerge
+from bottom-level processes. This approach
+may change our whole notion of scientific
+theory, which until now has been based on
+the theories of physics. Theories of complex
+systems may never be reducible to simple
+analytical equations, but are more likely to
+be sets of conceptually simple mechanisms
+(e.g., Darwinian natural selection) that produce different dynamics and outcomes in
+different contexts. POM thus may lead us to
+an algorithmic (37), rather than analytical,
+approach to theory.
+References and Notes
+1. ‘‘Agent-based complex systems’’ (ACSs) are often
+referred to as ‘‘complex adaptive systems,’’ but we
+prefer ACS because it is not clear whether systems
+are really adaptive, which would require that they
+have a goal.
+2. J. Epstein, R. Axtell, Growing Artificial Societies. Social
+Science from the Bottom Up (Brookings Institution/
+MIT Press, Washington, DC, 1996).
+3. S. Y. Auyang, Foundations of Complex System
+Theories in Economics, Evolutionary Biology, and
+Statistical Physics (Cambridge Univ. Press, New York,
+1998).
+
+4. See the list of recent reviews of bottom-up models
+provided in the Supporting Online Material.
+5. S. C. Bankes, Proc. Natl. Acad. Sci. U.S.A. 99, 7199
+(2002).
+6. V. Grimm, S. F. Railsback, Individual-Based Modeling and
+Ecology (Princeton Univ. Press, Princeton, NJ, 2005).
+7. R. Lempert, Proc. Natl. Acad. Sci. U.S.A. 99, 7195
+(2002).
+8. V. Grimm et al., Sci. Total Environ. 183, 151 (1996).
+9. S. F. Railsback, B. C. Harvey, Ecology 83, 1817 (2002).
+10. T. Wiegand, F. Jeltsch, I. Hanski, V. Grimm, Oikos
+100, 209 (2003).
+11. Patterns are observations of any kind showing
+nonrandom structure and therefore containing information on the mechanisms from which they
+emerge. Complex systems contain patterns at different hierarchical levels and scales. Ecosystems, for
+example, contain patterns in primary production,
+species diversity, spatial structure, dynamics of component species populations, behavior of individual
+organisms, resource dynamics, and response of all
+these to disturbance events and stress. Useful patterns need not be striking; qualitative or ‘‘weak’’ patterns can be powerful in combination. For example,
+we can easily identify a person in a crowd even without a strong pattern (e.g., a photograph) by using a
+set of weak patterns: sex, approximate age, hair color, size, etc. Each of these characteristic patterns
+excludes many individuals.
+12. J. Watson, The Double Helix: A Personal Account of
+the Discovery of the Structure of DNA (Atheneum,
+New York, 1968).
+13. A search for ‘‘(individual-based or individualoriented) and model*’’ and for ‘‘(agent-based or
+agent-oriented) and model*’’ in the Web of Science
+database (title, abstract, keywords) yielded 1023
+‘‘individual-based’’ records and 1036 ‘‘agent-based’’
+records. A review of the 1023 individual-based
+records indicates that more than 90% of them are
+ecological (38).
+14. Examples include individual-based models for forest
+management (39) and population viability analysis
+(40); see also the POM references and the ecological
+bottom-up reviews in the Supporting Online Material.
+15. C. Wissel, Theoretische Ökologie—Eine Einführung
+(Springer, Berlin, 1989).
+16. C. Wissel, Ecol. Model. 63, 29 (1992).
+17. C. Neuert, C. Rademacher, V. Grundmann, C. Wissel,
+V. Grimm, Natursch. Landschaftspl. 33, 173 (2001).
+18. C. Rademacher, C. Neuert, V. Grundmann, C. Wissel,
+V. Grimm, For. Ecol. Manage. 194, 349 (2004).
+19. B. P. Zeigler, Theory of Modeling and Simulation
+(Krieger, Malabar, FL, 1985; first published in 1976 by
+Wiley, New York).
+20. C. Rademacher, C. Neuert, V. Grundmann, C. Wissel,
+V. Grimm, Forstwissenschaftliches Centralblatt 120,
+288 (2001).
+21. C. Rademacher, S. Winter, Forstwiss. Centralbl. 122,
+337 (2003).
+22. F. Jeltsch, M. S. Müller, V. Grimm, C. Wissel, R. Brandl,
+Proc. R. Soc. Lond. Ser. B Biol. Sci. 264, 495 (1997).
+
+www.sciencemag.org
+
+SCIENCE VOL 310
+
+23. H. H. Thulke et al., Ecol. Model. 117, 179 (1999).
+24. S. Moss, Proc. Natl. Acad. Sci. U.S.A. 99, 7267
+(2002).
+25. J. R. Platt, Science 146, 347 (1964).
+26. S. L. Peck, Trends Ecol. Evol. 19, 530 (2004).
+27. C. W. Reynolds, Comput. Graph. (ACM) 21, 25
+(1987).
+28. A. Huth, thesis, University of Marburg, Germany
+(1992).
+29. J. Rouchier, F. Bousquet, M. Requier-Desjardins, M.
+Antona, J. Econ. Dyn. Control 25, 527 (2001).
+30. B. LeBaron, IEEE Trans. Evol. Comput. 5, 442 (2001).
+31. W. M. Mooij, D. L. DeAngelis, Ecol. Appl. 13, 794
+(2003).
+32. W. C. Pitt, P. W. Box, F. F. Knowlton, Ecol. Model.
+166, 109 (2003).
+33. K. P. Burnham, D. R. Anderson, Model Selection and
+Inference, a Practical Information-Theoretic Approach
+(Springer, New York, 2002).
+34. T. Wiegand, E. Revilla, F. Knauer, Biodivers. Conserv.
+13, 53 (2004).
+35. R. L. Axtell et al., Proc. Natl. Acad. Sci. U.S.A. 99,
+7275 (2002).
+36. F. Schweitzer, Brownian Agents and Active Particles:
+Collective Dynamics in the Natural and Social Sciences
+(Springer, Berlin, 2003).
+37. D. C. Dennett, Darwin’s Dangerous Idea: Evolution
+and the Meanings of Life (Simon & Schuster, New
+York, 1995).
+38. D. L. DeAngelis, W. M. Mooij, Annu. Rev. Ecol. Evol.
+Syst., in press.
+39. J. Liu, P. S. Ashton, For. Ecol. Manage. 73, 157 (1995).
+40. M. Burgman, H. Possingham, in Genetics, Demography and Viability of Fragmented Populations, A. G.
+Young, G. M. Clarke, Eds. (Cambridge Univ. Press,
+Cambridge, 2000), pp. 97–112.
+41. C. Loehle, Bioscience 40, 123 (1990).
+42. H. Remmert, in The Mosaic-Cycle Concept of Ecosystems,
+H. Remmert, Ed. (Springer, Berlin, Heidelberg, New York,
+1991).
+43. S. Korpel’, Die Urwälder der Westkarpaten (Gustav
+Fischer Verlag, Stuttgart, Jena, New York, 1995).
+44. See www.rug.nl/biologie/onderzoek/onderzoekgroepen/
+theoreticalbiology/peoplePages/hannoPage.
+45. A. Huth, C. Wissel, Ecol. Model. 75–76, 135 (1994).
+46. We thank L. Tesfatsion, P. Johnson, B. LeBaron, and
+T. Kohler for hints to relevant literature; S. Winter,
+M. Flade, and C. Rademacher for providing photos;
+H. Hildenbrandt for Fig. 3A; and three anonymous
+referees for valuable comments.
+Supporting Online Material
+www.sciencemag.org/cgi/content/full/310/5750/987/
+DC1
+SOM Text
+Fig. S1
+Table S1
+References and Notes
+10.1126/science.1116681
+
+11 NOVEMBER 2005
+
+991
+
+Downloaded from www.sciencemag.org on April 21, 2008
+
+REVIEW
+
+

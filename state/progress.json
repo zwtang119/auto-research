@@ -1,8 +1,8 @@
 {
   "iteration": 15,
-  "status": "cross_project_roi_investigation_COMPLETE_top_journal_kill_confirmed_G3_methods_paper_only_active_target",
+  "status": "PAUSED_2026_07_19_decision_coscientist_incubated_R2_passed_GO_with_conditions_pending_MVE_decision",
   "stale_count": 0,
-  "last_updated": "2026-07-06T12:30:00Z",
+  "last_updated": "2026-07-19T01:27:25Z",
   "current_milestone": "M10 (G3 methods paper outline written)",
   "completed_milestones": [
     "M0",
@@ -23,10 +23,11 @@
     "P8_P1_2": "m1_5_review_research_grade_acceptable",
     "P7_P2_1": "m1_review_research_grade_acceptable + PIT-NEW-9 fixed",
     "Direction_A_Unified_Anchoring": "FOLDED on BOTH axes — review (median 4.5 < 5.5) AND mechanism experiment (β1 sig POSITIVE on 2 cells, CONTRAST hypothesis falsified); 295 ok real records; integrated into G3 methods paper outline as Appendix A",
-    "G3_Dual_Ledger_Bridge": "OUTLINE WRITTEN at `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure); acceptance probability 25-35% at ACL/EMNLP Findings 7.0-7.5; recommended target EMNLP 2027 Eval workshop 4-page short paper"
+    "G3_Dual_Ledger_Bridge": "OUTLINE WRITTEN at `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure); acceptance probability 25-35% at ACL/EMNLP Findings 7.0-7.5; recommended target EMNLP 2027 Eval workshop 4-page short paper",
+    "Decision_Co_Scientist": "POST-CLOSURE INCUBATION (2026-07-18 eve → 07-19, goal-mode pipeline): medical AI auto-research methodology mapped to CDS decision science. Proposal v1.3.1 passed 2 independent red-team rounds (R2 4/3/4/3/5, 0 fatal); second topic-eval verdict = GO with conditions, venue retargeted NeurIPS D&B (anchor dataset + tournament benchmark + calibration protocol); sole hard blocker = zero experimental results → next phase entry = MVE minimal evidence chain pilot (Gulei C0 vs C2 + validation arms + anchor settlement) + G2 statistical legitimacy. Workpack: docs/investigations/decision-coscientist-proposal/ (README = handoff). PAUSED by user decision 2026-07-19 pending next phase."
   },
-  "decision": "G3 dual-ledger bridge methods paper is now the single active publication target. Direction A fold chain complete: data → analysis → decision rule → G3 outline → acceptance probability estimates. Next session: 8-12 hours full-time draft from outline.",
-  "last_seen": "2026-07-06T12:30:00Z",
+  "decision": "PROJECT CLOSED 2026-07-18 by user decision. Final topic-selection verdict recorded (D4/D2 KILL, D3 into D1, D1 PARK, C1 GO-with-4-gates but user declined to fund gates → honest conclusion: no validated top-journal topic). Closure memo: docs/portfolio/project-closure-2026-07-18.md. Restart entry: verdict memo §5 gates. || POST-CLOSURE NOTE 2026-07-19: a new direction (Decision Co-Scientist, medical-AI-methodology → CDS) was incubated after closure at user request, passed the full topic pipeline as GO-with-conditions (NeurIPS D&B target), and is now PAUSED by user decision pending MVE funding. Old-portfolio closure verdict unaffected.",
+  "last_seen": "2026-07-19T01:27:25Z",
   "recent_events": [
     {
       "ts": "2026-07-04T07:14:01Z",
@@ -112,6 +113,21 @@
       "ts": "2026-07-06T12:30:00Z",
       "event": "cross_project_roi_investigation_COMPLETE",
       "detail": "Seventh-round top-journal re-evaluation with new angle: research assets reverse-feed 3 sibling dev projects (Policysim-v0.2 / cds4polymarket / policysim-research-Tsinghua). Method: rp-investigate-cli + pair investigator (session 4AEFE752, opus:max) + direct file reads + systematic-debugging + brainstorming skills. Key findings: (1) auto-research self-publish top-journal main-track KILL still holds (Direction A/F/G2 all empirically falsified); (2) NEW angle — auto-research as methodology tool layer for sibling projects, especially Tsinghua mc-2026-05-05 paper (d=1.19, 4 hypotheses PASS but κ=0.56<0.61 threshold = desk-reject risk); (3) ROI matrix top-3: T7 (P11 plateau→Tsinghua Limitations, ROI=5.0, 0 code change), KC (P7+P8→cds4polymarket, ROI=2.5, max value lever), T1 (P12 5-protocol→Tsinghua Track B, ROI=2.25, MANDATORY pre-submission); (4) pair corrected 3 prior claims: cds4polymarket has no probability vector (T4 drop-in Brier premise broken), G3 real coverage 64.3% not self-reported 92.9%, T1 upgraded to mandatory; (5) Direction K (cross-project methodology validation paper) = G3 extension, 35-45% Findings acceptance, NOT main-track ≥7.5. Output: auto-research/docs/investigations/cross-project-roi-2026-07-06.md (318 lines with pair §8 second opinion) + wiki/investigations/cross-project-roi-2026-07-06.md (Marginalia v0.3.1 compliant, 14168 bytes) + wiki/index.md updated + wiki/pitfalls-and-recoveries.md memo added."
+    },
+    {
+      "ts": "2026-07-18T08:49:23Z",
+      "event": "topic_selection_first_principles_verdict",
+      "detail": "Coordinator verdict after user challenged D4 joint-paper premise and asked for first-principles re-analysis (Nature/Horejs Q1-Q3 + C1-C7 filter). Method: 3 parallel rpce-cli pair agents wrote w1 (criteria, 3-layer source attribution), w2 (D1-D4 honest audit), w3 (AI-auto-research landscape + local asset scan). Verdicts: D4 KILL — 'D2 reuses G3 crosswalk' false in 4 ways (projection residual info-theoretically irreversible over 7 AR-only fields; Murphy decomposition needs multi-outcome probability vector absent on AR side; 22-investigation corpus has no on-disk schema; D1 does not output the per-record signals D4 claims). D2 KILL (same math collapse). D3 fold into D1 as appendix (§6 is spec not experiment). D1 PARK — honest rewrite at verified 64.3% coverage + 5 on-disk settlement records, ceiling ACL/EMNLP Findings 7.0-7.5. User's new direction assessed: AI-auto-research as system-building REJECTED (crowded, frontier-lab-owned, SOTA stuck at 20-42%); as empirical object GO-with-4-gates — long-horizon process trace + failure taxonomy + stop/pivot boundaries (W3-C1) is the ONLY candidate plausibly clearing Q1/Q2/Q3 for NeurIPS D&B-tier; our unique asset is the falsification-laden process trace (incl. today's D4 catch), not any finding. Gates: G1 trace dataset release, G2 external validation on >=5 public failure records at >=70% coverage, G3 pre-registered taxonomy with inter-rater kappa>=0.6, G4 red-line re-check. If gates unresourced: honest verdict = no top-journal topic currently; D1-honest for the record. Memo: docs/investigations/topic-selection-2026-07-18/verdict-topic-selection-first-principles.md"
+    },
+    {
+      "ts": "2026-07-18T08:56:41Z",
+      "event": "project_closure_USER_DECISION",
+      "detail": "PROJECT CLOSED by user decision after first-principles topic-selection verdict delivered. User chose to record conclusion and end the project rather than fund C1's 4-gate plan (4-8 weeks). Per verdict §6 reject-clause, honest final conclusion: no validated top-journal topic in this portfolio. Final state: D4/D2 KILLED, D3 folded into D1, D1 PARKED (honest Findings rewrite never executed), C1 DORMANT (GO-with-gates unfunded). Surviving assets for any future restart: topic-selection-2026-07-18 report pack (w1 criteria / w2 audit / w3 landscape / verdict memo), full falsification-laden process trace (this file + findings.jsonl + iteration_log.jsonl + logs/), framework/ methodology, legacy/p11 raw experiment data. Closure memo: docs/portfolio/project-closure-2026-07-18.md. README banner added. No files deleted or moved; all git history preserved."
+    },
+    {
+      "ts": "2026-07-19T01:27:25Z",
+      "event": "decision_coscientist_incubation_PAUSED",
+      "detail": "Post-closure incubation at user request (goal-mode, 8 turns): medical AI auto-research papers (Co-Scientist/Robin/Biomni etc.) read; Policysim-v0.2 analyzed; 13-element methodology mapping written (docs/investigations/medical-ai-to-cds-mapping-2026-07-18.md, v3). Direction 'Decision Co-Scientist' (tournament+evolution multi-agent emergency decision simulation with reality-anchor calibration) taken through full topic pipeline: Q1 novelty full-text checks (LEAR=arXiv-occupied upper claim only, 2509.21868 orthogonal, self-play theory grounded), Q2 ABM-validation positioning (POM x output-validation; calibration-as-fitness narrowed to 3-fold combination), Q3 non-LLM validation arms selected (GB50151 foam gates + NUREG ETE evacuation), Q4 Gulei anchor trial encoding (9 factors, fork adaptations listed, kill NOT triggered), Q5 second case (Zhengzhou 7-20 negative anchor primary, Tianjin backup), Q6 proposal written. Two independent red-team rounds passed (R1 3/3/3/3/4 conditional → v1.1 structural fixes incl. anchor-separation; R2 4/3/4/3/5 PASS, 0 fatal → v1.2/v1.3). Second topic-eval verdict: GO-with-conditions, venue retargeted to NeurIPS D&B; sole hard blocker = zero experimental results. Anchor-pool pipeline + MEM plan-library mining line documented. PAUSED by user decision 2026-07-19 ('思考一下，等待下一阶段'). Next-phase entry: MVE minimal evidence chain pilot (est. 4-6 weeks) — see docs/investigations/decision-coscientist-proposal/README.md. Workpack complete on disk: proposal v1.3.1 + Q1-Q5 memos + anchors/ + reviews/ + topic-eval memo."
     }
   ]
 }
