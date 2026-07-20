@@ -18,6 +18,17 @@
 #   6. 新增 adjudication_meta：盲评协议字段（panel_size、blinded、outcome_visibility），
 #      灾害域因子从历史结局反推，必须显式记录裁定人是否见过结局
 # ============================================================================
+# 文件级溯源（File-Level Provenance，2026-07-19 增补）
+# 调研报告：docs/investigations/decision-coscientist-proposal/anchor-authenticity-and-corpus-2026-07-19.md
+# ----------------------------------------------------------------------------
+# source_url:    TODO（模板非实例；实例化时填写为该事件官方报告实测 URL，见调研报告）
+# source_tier:   TODO（模板非实例；实例化时填写为 official | media | eng | seed 之一）
+# retrieved:     2026-07-19（模板定版日期）
+# ----------------------------------------------------------------------------
+# per-factor quote / page_or_section: TODO（待编码；不得编造引文）
+#   - 模板实例化时每个 result.<metric>.value 须补 quote（原文片段）与 page_or_section 定位；
+#   - 任何缺 quote / page_or_section 的实例在 Tier 3 核验前不得发布。
+# ============================================================================
 
 schema_version: "0.2-disaster"          # ADAPTED: fork 版本号
 event_id: "<event_id, e.g. gulei-2015-0406>"   # ADAPTED: 原 match_id

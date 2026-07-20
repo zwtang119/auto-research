@@ -9,13 +9,23 @@
 | 状态 | 案例 | 说明 |
 |---|---|---|
 | 已编码 | 古雷 4·6（2015） | 9 条因子（`gulei-2015-0406.factors.yaml`），官方调查报告锚 |
-| 已选定待编码 | 郑州 7·20（2021） | 锚盘点完成（`q5-second-case-selection.md`），估 1 人日；seed、KB 报告全文、H/M/L 金锚草稿均现成 |
-| 三要素已验证候选 | 天津港 8·12（2015） | 报告全文已验证；需新建 seed（1.5–2 人日）；同域工程锚 |
-| 三要素已验证候选 | Buncefield（2005, UK） | HSE/MIIB 报告全文已验证；跨辖区锚 |
+| 已选定待编码 | 郑州 7·20（2021） | 锚盘点完成（`q5-second-case-selection.md`），估 1 人日；seed、KB 报告全文、H/M/L 金锚草稿均现成；2026-07-19 实测 mem.gov.cn PDF 全文存活 |
+| 三要素已验证候选 | 天津港 8·12（2015） | 报告全文已验证（gov.cn PDF `https://www.gov.cn/foot/2016-02/05/5039788/files/460731d8cb4c4488be3bb0c218f8b527.pdf` 2026-07-19 实测 200，含二次爆炸分钟级时间线）；需新建 seed（1.5–2 人日）；同域工程锚 |
+| **国内化工备选锚**（2026-07-19 调研增补） | 响水 3·21（2019, 江苏） | 国务院通报；**原直链 404**，经 mem.gov.cn 调查报告栏目页或江苏省政府批复 js.gov.cn 进入；含三级响应/迟报时序；引用须标注迁移状态 |
+| **国外对照锚（首选，2026-07-19 调研增补）** | CSB West Fertilizer（2013, 硝酸铵爆炸） | `csb.gov/file.aspx?DocumentId=694` **2026-07-19 实测 200**；英文/公有领域；与古雷同种化工对照，15 死中 12 人为消防员，处置决策争议点与古雷正锚互补 |
+| **国外对照锚（首选，2026-07-19 调研增补）** | Katrina 众院《A Failure of Initiative》（2006） | `govinfo.gov/.../GPO-CRECB-2006-pt9-2.pdf` **2026-07-19 实测 200**；英文/公有领域；560 页，联邦/州/市全层级小时级决策时间线，与郑州负锚形成跨辖区负锚对 |
+| **国外对照锚（可选附件）** | CSB BP Texas City（2005）/ Chevron Richmond（2012）; Katrina 参院《A Nation Still Unprepared》; USACE IPET（2007 九卷, LSU 镜像） | 此前已实测 200 或 GovInfo/LSU 镜像稳定；可作首选对照锚的工程/工程实证层附件，非独立锚；参院未实测到稳定直链（GovInfo 可检索） |
+| 三要素已验证候选 | Buncefield（2005, UK） | HSE 直链已 404（2026-07-19 实测）；改用英国国家档案馆 webarchive（buncefieldinvestigation.gov.uk 归档）或 FABIG 镜像（Vol.1 https://www.fabig.com/media/tpuaseey/buncefield-incident-miib-final-report-volume-1-dec2008.pdf 、Vol.2 https://www.fabig.com/media/jkvgpiv3/buncefield-incident-miib-final-report-volume-2-dec2008.pdf ），**Crown copyright 非商用限制**；六源中最贴应急指挥决策 |
 | 潜在零污染锚 | 横州六蓝（2026-07） | seed 已建；等官方调查报告发布（天然在底座训练截止后） |
-| 已排除 | Jaipur 2009、大连 7·16、响水 3·21（第四选择） | 官方档案不可得/不完整/处置记录概述级 |
+| **宽案例类候选（增补层，H3 旁证统计强化，N≥60）** | 台风轨道（首选） | IBTrACS v04r01（1842–至今，免 key bulk）+ CMA 最佳路径（1949–，2017 起登陆前 24h 加密 3h，**非商用**；原站 WAF 拦脚本，可用 IBTrACS 内置 CMA 序列替代）+ JMA 防灾信息 XML（2012–2026，CC BY 4.0）+ 中国省级响应通告（粤/闽/浙，2026-07-19 实测境内直连可爬）+ EM-DAT 后果；不替换深案，与「2 深案」并行 |
+| **宽案例类备选** | 地震轨道 | USGS FDSN（https://earthquake.usgs.gov/fdsnws/event/1/ ，免 key，PAGER 警级+ShakeMap） |
+| 已排除 | Jaipur 2009、大连 7·16 | 官方档案不可得/不完整/处置记录概述级；响水 3·21 已上调至「国内化工备选锚」（2026-07-19 调研） |
 
 当前可用对账组 = **2 场**（古雷正锚 + 郑州负锚），可扩展候选 3–4 场。
+
+**推荐锚结构（2026-07-19 调研结论）**：**2 深（古雷 + 郑州）+ 1–2 国外对照 + 1 宽类**——化工对照首选 CSB West Fertilizer，洪涝对照首选 Katrina 众院报告；二选一也可，若只要一个，推荐 Katrina 众院（洪涝负锚的跨辖区对子价值最高）。理由：① 单司法辖区是开题 §7 风险 8；② 英文锚让国际评审可独立复核因子裁定，D&B 赛道对此敏感；③ 国外对照解决「跨辖区机制效度」而非统计数量（数量已由宽类轨道解决）。不推荐现阶段加入 AZF（法文+检索成本）/ 日本 3·11（灾种不同型+日文）/ 参院或 IPET（作 Katrina 附件而非独立锚）。
+
+> **2026-07-19 修订注记**：依据 `anchor-authenticity-and-corpus-2026-07-19.md`（锚真实性与语料扩容调研）增补：① 国外对照锚（Katrina 众院首选洪涝对照 / CSB West Fertilizer 首选化工对照；BP Texas City、Chevron Richmond、参院、IPET 列为可选附件）；② 国内化工备选锚（天津港 8·12 gov.cn PDF 实测 200；响水 3·21 经栏目页进入，原直链 404 标注迁移）；③ 推荐结构「2 深 + 1–2 国外对照 + 1 宽类」。原「已排除」行中响水 3·21 已上调至「国内化工备选锚」。
 
 ## 2. 命名（项目内术语）
 
@@ -28,8 +38,8 @@
 
 ## 3. 建立方法（六步流水线，古雷已趟通）
 
-1. **筛选**：三要素硬门槛（处置行动时序 + 后果量化锚 ≥3 个 + 官方调查档案公开可得）+ 2509.21868 的 enabling conditions（决策杠杆在权限内、可用运营语言讨论）。
-2. **档案获取与来源分级**：official（官方调查报告）/ media（一手报道）/ eng（工程规范）三级前缀；口径冲突一律写区间（古雷泡沫 650/850/1467 吨的教训）。
+1. **筛选**：三要素硬门槛（处置行动时序 + 后果量化锚 ≥3 个 + 官方调查档案公开可得）+ 2509.21868 的 enabling conditions（决策杠杆在权限内、可用运营语言讨论）。2026-07-19 增补**两轨道并行**：① 深案沿用三要素（古雷/郑州/天津港/Buncefield）；② 宽案例类（台风首选 / 地震备选）准入条件 = 灾害参数 + 决策行动 + 后果三层均有机读源、单类样本 N≥60（H3 旁证统计强化层，不替换深案、不改 H1/H2 设计）。硬约束：宽类事件日期须公布且能交叉对齐参数/行动/后果三层。
+2. **档案获取与来源分级**：official（官方调查报告）/ media（一手报道）/ eng（工程规范）三级前缀；口径冲突一律写区间（古雷泡沫 650/850/1467 吨的教训）。2026-07-19 增补**决策行动锚源金矿（既往稀缺层）**：应急管理部新闻栏目（`mem.gov.cn/xw/yjyw/` 123 页归档、`/xw/yjglbgzdt/` 88 页归档，日时级时间戳，**2018-01 建站至今，此前无官方机读归档 = 2018 断档**）+ 调查报告栏目（`/gk/sgcc/tbzdsgdcbg/`，2003 起归档，全文级约自 2011 甬温线起）+ 省级响应通告（广东 yjgl.gd.gov.cn 实测 2020–2025、福建 yjt.fujian.gov.cn 2019 起、浙江 yjt.zj.gov.cn **境内直连可爬**、含 JMA 防灾信息 XML（Digital Typhoon，2012–2026，CC BY 4.0）+ IFRC GO API（`goadmin.ifrc.org/api/v2/`，field-report 5,107 条含 `actions_taken`）+ NWS `api.weather.gov`（CAP 预警含 Evacuation Immediate）+ NTSB CAROL（CSV/JSON）+ CSB 全本 PDF（BP Texas City 等）。宽类通道：IBTrACS v04r01（免 key bulk）+ CMA 最佳路径（2017 起登陆前 24h 加密 3h，**非商用**，原站 tcdata.typhoon.org.cn 挂 WAF 拦脚本、可改用 IBTrACS 内置 CMA 序列替代）+ USGS FDSN 事件级（地震备选）。
 3. **因子编码**：Factor Ledger 灾害域 fork schema；四类因子（前兆/抑制/分支/反证）俱全；双挂钩（推演可观测 + 历史可裁定）；锚写区间不写点。
 4. **盲评裁定**：≥3 名专家、两轮制（首轮隐去地名与结局）、匹配粒度按因子类型预注册；inconclusive 率 <30% 正常、>70% 触发设计审查（沿用 rubric §6）。
 5. **池分配**：按因子族分层 60/40 冻结（适应度池/评估池），实验前锁定。
@@ -44,7 +54,7 @@
 | 层 | 内容 | 自动化程度 |
 |---|---|---|
 | **Tier 0 发现** | 从 Wikidata（SPARQL：灾害类型+死亡人数+日期）、Wikipedia 灾害列表、新闻流批量拉候选事件，预填基础字段（日期/地点/类型/伤亡） | **可 90%+ 自动**。注意 Wikipedia/Wikidata 是**发现级**来源：通常只有伤亡总数，没有处置时序与资源消耗，不能当锚级证据 |
-| **Tier 1 档案定位** | AI 检索官方调查报告并验证可访问性。金矿源：中国应急管理部及各省应急厅调查报告、**美国 CSB（化工安全委员会，技术极详尽的公开报告）**、UK HSE、NTSB、EM-DAT（量化字段数据库） | **可基本自动**（本 pipeline 的 Q3/Q5 已由子代理演示：抓取+验证 URL） |
+| **Tier 1 档案定位** | AI 检索官方调查报告并验证可访问性。**金矿源**：中国应急管理部及各省应急厅调查报告、**美国 CSB（化工安全委员会，技术极详尽的公开报告）**、UK HSE（**Buncefield 直链 2026-07-19 实测 404，改用英国国家档案馆 webarchive 归档或 FABIG 镜像**；Crown copyright **非商用**）、NTSB、EM-DAT（量化字段数据库）、**决策行动层（2026-07-19 增补）**：mem.gov.cn 国家防总响应通告（2018 起，日时级时间戳）、粤/闽/浙省厅防风响应通告、Digital Typhoon JMA 防灾信息 XML（CC BY 4.0）、IFRC GO API（actions_taken 字段）、NWS api.weather.gov CAP（Evacuation Immediate）、NTSB CAROL、CSB 全本 PDF。**宽类金矿**：IBTrACS v04r01（NOAA/NCEI bulk）、CMA 最佳路径（**非商用**、原站 WAF 拦脚本）、USGS FDSN 事件级（地震备选） | **可基本自动**（本 pipeline 的 Q3/Q5 已由子代理演示：抓取+验证 URL） |
 | **Tier 2 因子草编** | LLM 从报告全文抽取因子草稿（observable_proxy、quantified_threshold、settlement_rule、counter_signal），按 fork schema 预填 | **可自动出草稿**。LLM 读报告抽结构化字段是其强项 |
 | **Tier 3 核验与裁定** | 人工抽查因子草稿（比例可随信任度调）、专家盲评、池分配冻结、修订批准 | **必须留人**。这是锚池可信度的根基，不可省 |
 | **Tier 4 更新** | 新事件进入 watchlist → 监测官方报告发布（通常滞后数月）→ 自动触发 Tier 1–2 → 人工核验入库 | **可自动监测+人工入库**。横州六蓝是活例：事件 2026-07 发生，报告发布后自动提醒 |
@@ -60,6 +70,7 @@
 - cds-keyperson Source Ledger：来源可信度/新鲜度分级机制（Tier 1 分级可直接复用）。
 - cds4polymarket Factor Ledger fork schema + 盲评 rubric（Tier 2/3 的格式与协议）。
 - 横州六蓝 seed：零污染锚的现成载体（Tier 4 的首个监测对象）。
+- **`source-inventory-2026-07-19.md`**（本目录）：**数据可行性附件**——定向盘点灾害参数/后果/决策行动三层机读金矿、含§8/§9两轮网络复测、硬约束清单（Buncefield 直链 404、2018 断档、中国气象历史预警报文无机读存档、pm25.in 已死、ReliefWeb 2025-11 起需预审批 appname）、最终网络指引「采集走境内直连，勿挂 VPN」。
 
 **一句话**：锚池可以建成「AI 发现与草编、专家核验与裁定、机器监测更新」的半自动流水线；全自动到 Tier 2 为止，Tier 3 留人是设计红线，不是效率妥协。
 

@@ -1,7 +1,7 @@
 # 开题报告：面向应急决策的策略锦标赛与进化式多智能体推演——现实锚校准的方法与实证
 
 > **Evolving Multi-Agent Deliberation: Tournament-Based Strategy Search with Reality-Anchored Calibration for Emergency Decision-Making**
-> 版本：v1.3（增加第 0 章导读与术语表，面向非专业读者；正文同 v1.2）｜ 日期：2026-07-19
+> 版本：v1.4（F5 settleability 切割 + F1 宽类轨道 + F4 Buncefield 修链 + F2/F3 锚源实测升级）｜ 日期：2026-07-19
 > 依据材料：Q1（novelty 与理论谱系）、Q2（ABM 验证定位与引用核验）、Q3（校验臂选型）、Q4（古雷锚试编码）、Q5（第二案例）五份备忘录，同目录存档
 > 评审状态：R1、R2 两轮独立评审均已通过并逐条回应（reviews/）
 
@@ -132,6 +132,8 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 
 综合 2.1–2.6：「Co-Scientist 式闭环 × 多智能体决策推演 × 真实灾害记录校准」三元交叉点在两篇最近工作（LEAR、2509.21868）的全文层面均无占位（Q1 全文核查），但相邻几块（LLM+进化、应急 LLM 仿真、结算校准、agent 自动进化、提示优化）都在快速生长，窗口期以月计。本课题的差异化落点：(1) 决策策略语义层的进化（非代码、非 agent 构造、非提示参数）；(2) 三重限定组合的 calibration-as-fitness（区别于参数校准、仿真内部适应度与仿真优化的良定义目标）；(3) judge 噪声下稳健的选择机制（self-play 理论驱动）；(4) 正负双向真实锚（成功处置 + 处置失当案例）。
 
+**与 disaster-KG 谱系的显式切割**：灾害领域已有 disaster knowledge graph 一线工作——LLM4TyphoonKG（github.com/2BAIHAO/LLM4TyphoonKG）证明该线存在（LLM 抽取台风演化/灾情三元组，无抽取评测、无结算语义，CoT 蒸馏 7B）。本课题锚数据集与之的根本区分在 **settleability（可结算性）**：因子 = 带判定规则、阈值区间、反证信号、盲评字段、来源分级的**可裁定断言**；描述性三元组（实体-关系-实体）不可裁定、无阈值、无反证。本课题锚数据集的统一定位为——**首个可结算（settleable）的灾害决策因子集**，与描述性 KG 三元组显式切割。表述场合：novelty/定位陈述（本节）、预期成果（第 9 节）、资产价值、pipeline 契约（M5）。
+
 ## 3. 研究问题与假设
 
 **总问题**：固定算力（token）预算下，锦标赛+进化机制的多智能体应急决策推演，能否在预注册指标上显著优于强基线，且头部策略能在多个真实灾害记录上获得旁证？
@@ -155,7 +157,7 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 
 **M4 评审与元评审层**。Multi-Judge 多角色裁决 + Gold 锚定校准（改造 cds4polymarket `calibration_lib.py`：Gold-H/M/L 三档标准答案检测 judge 跑偏，需将 Gold 锚从「报告质量」场景重建为「灾害决策」场景）；元评审汇总评审模式回写提示词与配置权重（把现有的人工反馈回路自动化）。锦标赛内部胜率/适应度漂移设为 judge 失效告警（self-play 理论的先行指标）。
 
-**M5 现实锚校准协议**。Factor Ledger 结算协议的灾害域 fork（Q4 已完成 9 条古雷因子试编码：前兆/抑制/分支/反证四类，全部双挂钩——推演可观测 + 历史可裁定；适配改动清单：origin 增 `historical_record`、settlement_rule 采用「历史锚区间 ∩ 推演 [P25,P75]」百分位语言、settlement_record 的 Brier/log_loss 换为 percentile_hit/覆盖率、adjudicator 增盲评字段、data_sources 增来源分级）。郑州因子编码按同法执行（Q5 锚盘点已备）。非 LLM 校验臂（第 5.3 节）提供独立于 LLM 的工程参照。**锚分离实现**：因子入库时即标注 fitness_pool / eval_pool，两池不相交，分配实验前冻结。
+**M5 现实锚校准协议**。Factor Ledger 结算协议的灾害域 fork（Q4 已完成 9 条古雷因子试编码：前兆/抑制/分支/反证四类，全部双挂钩——推演可观测 + 历史可裁定；适配改动清单：origin 增 `historical_record`、settlement_rule 采用「历史锚区间 ∩ 推演 [P25,P75]」百分位语言、settlement_record 的 Brier/log_loss 换为 percentile_hit/覆盖率、adjudicator 增盲评字段、data_sources 增来源分级）。郑州因子编码按同法执行（Q5 锚盘点已备）。非 LLM 校验臂（第 5.3 节）提供独立于 LLM 的工程参照。**错分离实现**：因子入库时即标注 fitness_pool / eval_pool，两池不相交，分配实验前冻结。**决策行动错源（2026-07-19 实测可用）**：在官方调查报告与公告之外补一组机器可读行动错源——国家防总响应通告（mem.gov.cn `/xw/yjyw/` 2018-01 起静态 HTML 123 页归档、`/xw/yjglbgzdt/` 2020-07 起 88 页）、省厅（yjgl.gd.gov.cn 2020–2025、yjt.fujian.gov.cn 2019 起、yjt.zj.gov.cn 境内直连可爬）、JMA 防灾信息 XML（Digital Typhoon，2012–2026）、IFRC GO API field-report（5,107 条含 `actions_taken`、中国 69 事件多为 GDACS 自动同步）、NWS api.weather.gov CAP 预警（含 Evacuation Immediate）、NTSB CAROL、CSB 报告全本（BP Texas City）；ReliefWeb API 自 2025-11 起需 appname 预审批，未审批返回 410。
 
 ## 5. 实验设计
 
@@ -164,6 +166,7 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 - **古雷 4·6**（主场景）：2015 年福建漳州 PX 爆炸起火，3×1万+1×2万 m³ 储罐燃烧 56h。锚：官方调查报告 + 媒体一手报道，9 条因子已编码。
 - **郑州 7·20**（第二场景/异域外部效度）：2021 年特大暴雨地铁 5 号线/京广隧道事件。锚：国务院调查组报告全文（分钟级决策时间线 + 法规级量化阈值），因子编码待执行（估 1 人日）。
 - 横州六蓝（储备场景/零污染锚）：2026 年 7 月广西横州洪水（六蓝水库溃坝），事件晚于底座模型训练截止、天然防「背答案」；seed 已建并完成端到端推演测试，待官方调查报告发布后编码入库（见锚池流水线 Tier 4）。合成调试场景仅用于开发，不进入研究。
+- **宽类轨道（增补层，H3 旁证的统计强化；不改 H1/H2 设计）**：在「2 深案」之外追加 1 条**宽类**场景，目标仅作为 H3 旁证（N≥60）的统计强化层，不参与 H1 机制比较、不参与 H2 进化增益的判定。首选**台风**（备选**地震**）：台风宽类数据由 IBTrACS v04r01（1842–至今，NCEI 免 key bulk，每周 3 更，引用 Knapp 2010/Gahtan 2024；HDX 镜像 CC BY-IGO）—其内置 CMA 序列可替代原站 tcdata.typhoon.org.cn（WAF 拦脚本）—加省级应急响应通告（决策侧，详 §4 M5）与 EM-DAT 后果数据拼接；地震宽类备选走 USGS FDSN（免 key，PAGER 警级 + ShakeMap）。宽类与深案共用同一套 Factor Ledger 契约（settleable 因子），仅因子族与判定阈值不同；宽类可与零污染锚并行。
 
 ### 5.2 条件与基线
 
@@ -213,7 +216,7 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 
 - **推演引擎**：PolicySim 三场景、八角色、三轮协商、六维指标提取、约 1200 项自动化测试（工程稳定性证据）。
 - **锦标赛引擎**：policysim-research-Tsinghua `tournament.py`（BT+Elo+CI+自适应配对）可改造；630 runs MAMR/SASR 基线数据可作对照参照。
-- **结算协议**：cds4polymarket 世界杯实验全套 Factor Ledger schema/rubric/预注册 lock；cds4worldcup 5 场实例；古雷 9 因子试编码已完成（Q4），郑州锚盘点与报告全文已备（Q5，KB 已收录）。
+- **结算协议**：cds4polymarket 世界杯实验全套 Factor Ledger schema/rubric/预注册 lock；cds4worldcup 5 场实例；古雷 9 因子试编码已完成（Q4），郑州报告 PDF（2026-07-19 实测存活，https://www.mem.gov.cn/gk/sgcc/tbzdsgdcbg/202201/P020220121639049697767.pdf ）与古雷报告 HTML（实测存活，https://yjt.fj.gov.cn/zwgk/sgxxgk_gb/sgdcbg/202501/t20250102_6601366.htm ）均纳入 KB。
 - **judge 校准**：cds4polymarket `calibration_lib.py`（Gold-H/M/L + 漂移检测）。
 - **选项池**：干预维度即现成变异空间；RoleDNA 五维行为基因（cds-keyperson）可作基因型空间零件。
 - **知识源**：课题三知识库 API、OSINT 模块。
@@ -235,7 +238,7 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 5. **judge 效度**：信度≠效度（稳定地错也是 88%）。对策：H4 的效度部分（与校验臂 Kendall's τ，限覆盖维度）+ Youden J（启发式目标）+ 跨 judge 稳健性 + 跨底座复现（防 Spurious Rewards 式先验放大）。
 6. **训练数据污染**：两大锚都是超大公共事件。对策见 5.5 污染控制六条（含 B4 回忆对照臂）。
 7. **内部主张切割**：Tsinghua 仓库挂起方向 `ideas/09`（古雷政策响应回顾性验证，效应本体 recall/precision，十年政策尺度）与本课题（现场处置策略优化，56 小时尺度）按「验证对象+时间尺度+方法」三轴切割，互相引用；资源紧张时按回退条款合并。
-8. **单司法辖区**：两锚均为中国案例；Buncefield（HSE 报告全文可得）列为第三锚候选，做跨辖区稳健性。
+8. **单司法辖区**：两锚均为中国案例；Buncefield（2005 英国 Buncefield 油库爆炸，HSE 官方直链 404）现使用英国国家档案馆 webarchive 归档的 `buncefieldinvestigation.gov.uk` 副本与 FABIG 镜像（Vol.1 https://www.fabig.com/media/tpuaseey/buncefield-incident-miib-final-report-volume-1-dec2008.pdf ；Vol.2 https://www.fabig.com/media/jkvgpiv3/buncefield-incident-miib-final-report-volume-2-dec2008.pdf ，Crown copyright 非商用限制）作为第三锚候选，做跨辖区稳健性——六源中最贴应急指挥决策。**行动锚采集三条硬约束**（2026-07-19 实测后补入）：(a) **2018 断档**——国家防总响应通告归档仅 2018-01 起，2018 年前无官方机读记录，事件采样须避开 2018 年前的中国官方响应源；(b) **历史预警报文无机读存档**——中国气象历史预警报文（含中央气象台台风公报过季不可追溯）无机器可读历史，写入策略生成时不得假设其可回填为行动锚；(c) **ReliefWeb appname**——ReliefWeb API 自 2025-11 起需 appname 预审批（未审批返回 410），不可作为隐式可用源；以上三条为采集准入门坎，违反的锚行不入因子库。
 
 ## 8. 进度安排与回退条款（18–22 周）
 
@@ -243,19 +246,21 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 |---|---|---|
 | W1–W4 | G2 统计方案与分布检验；sim 侧三个可观测性补齐启动；**单臂成本试跑并外推总预算**；**专家 panel 招募启动（并行）** | **W4 末：G2 不过或总预算超上限 → go/no-go** |
 | W5–W11 | M1–M4 模块实现（含 Multi-Judge 从零实现）；Gold 锚灾害域重建；郑州因子编码 | — |
-| W10–W14 | G3 锚协议定稿（含留出锚冻结、盲评启动）；校验臂实现 | **W14 末：锚协议未就绪 → 触发回退（见下）** |
+| W10–W14 | G3 锚协议定稿（含留出锚冻结、盲评启动）；校验臂实现；**宽类轨道工作包（台风首选 / 地震备选，N≥60）+ 前瞻采集基础设施补齐（F6，约 1–2 天）** | **W14 末：锚协议未就绪（含违反 §7 风险 8 三条行动锚采集硬约束的锚行未清理）→ 触发回退（见下）** |
 | W15–W19 | 主实验（4 条件 + 4 基线 + 3 消融，统一协议与预算） | — |
 | W20–W22 | 统计分析、论文写作、投稿（主选 IJCAI 2027，备选 AAMAS 2027；降级出口 PoliSim@CHI 类 workshop） | — |
 
-**预写回退条款**（防路径振荡）：IF W14 末 G3 未就绪 THEN 改投 workshop 版（闭环方法 + 仿真内实验，明确标注无现实锚）或与 Tsinghua 09 方向合并；IF G2 不可达 THEN 终止并将统计合法性负结果写成方法短文（诚实产出）；IF 评审三轮不过 THEN 按缺口备忘录降级（本开题的评审规则，见附）。
+**预写回退条款**（防路径振荡）：IF W14 末 G3 未就绪 THEN 改投 workshop 版（闭环方法 + 仿真内实验，明确标注无现实锚）或与 Tsinghua 09 方向合并；IF 宽类机判不达标 THEN 降级为生成侧素材（不入结算），不影响深案主线；IF G2 不可达 THEN 终止并将统计合法性负结果写成方法短文（诚实产出）；IF 评审三轮不过 THEN 按缺口备忘录降级（本开题的评审规则，见附）。
 
 ## 9. 预期成果与创新点
 
 1. **面向应急决策的策略进化算子与元评审反馈闭环**（磁盘真空区；决策策略语义层的进化，区别于 LEAR 的运动代码、ADAS/AFlow 的 agent 构造、DSPy 系的提示参数）。
-2. **三重限定组合的 calibration-as-fitness**：自然语言策略 × 历史外部真值校准度 × 生成性闭环（与 ABM 参数校准谱系、仿真优化谱系正面区分）；正负双向真实锚（成功 + 失当案例）。
+2. **三重限定组合的 calibration-as-fitness**：自然语言策略 × 历史外部真值校准度 × 生成性闭环（与 ABM 参数校准谱系、仿真优化谱系正面区分）；正负双向真实锚（成功 + 失当案例）。**首个可结算（settleable）的灾害决策因子集**——因子 = 带判定规则、阈值区间、反证信号、盲评字段、来源分级的可裁定断言；与 disaster knowledge graph 一线（如 LLM4TyphoonKG，LLM 抽取台风演化/灾情三元组、无抽取评测、无结算语义）显式切割：描述性三元组不可裁定，本课题锚带 settlement_rule 与反证信号。
 3. **judge 噪声下稳健的选择机制**：self-play 理论驱动的校准标准（Youden J、误判率 ≪10%）、非传递排名（α-Rank）、多样性门槛、选择伪影对照。
 4. **LLM 推演作为实验装置的方法检验**：统计合法性方案（G2）与非 LLM 校验臂协议（工程闸门 + 轨迹对照）。
-5. 可发布资产：双灾害 Factor Ledger 锚数据集、锦标赛协议、校验臂参照实现。
+5. 可发布资产：**2 深案 + 1 宽类**可结算（settleable）灾害决策 Factor Ledger 锚数据集、锦标赛协议、校验臂参照实现。
+
+**§9 末 · 二期展望：标度测量层（G2 之后启动，不动 MVE 第一优先）**。G2 与 MVE 完成后，本课题拟启动二期工作包——**100–200 受控配置**扫描，自变量取 judge 噪声 / Youden J / 协调结构 / 模型能力 / 灾种，验证协议采 held-out + 跨底座离样本，输出标度律与失效相图。范式参照 arXiv:2512.08296 *Towards a Science of Scaling Agent Systems*（180 配置 × 1.5 万 runs + 标度律），本课题差异点=以真实世界灾害档案为真值锚。**深案层扩至 3–4 封顶**（古雷+郑州+1–2 国外对照：洪涝对照首选 US 众院《A Failure of Initiative》[Katrina]、化工对照首选 CSB West Fertilizer，全文已 2026-07-19 实测存活、公有领域，依据 `anchor-authenticity-and-corpus-2026-07-19.md`），**宽类 ≥120 事件**（台风+地震双宽类 × N≥60），**灾种 3–4 个、每个凑齐参数/行动/后果三层锚**。venue 映射：NeurIPS D&B 现状已够；Nature ComSci 需三层齐发 + 前瞻锚 1–2 季；Nature/Science 主刊需前瞻命中或外部复现 >1 年。本段为远期工作，不进入 MVE 第一优先。
 
 ## 10. 参考文献（已经逐条核验；AI 生成来源已标注）
 
@@ -365,3 +370,4 @@ LLM 时代的验证新工作是 SLALOM（Lee & Seering, PoliSim@CHI 2026 worksho
 - v1.2：R2 后修订——补提示优化与仿真优化两条先验线切割；因子池分配规则；新增 B4 直接作答对照臂；H4 效度操作化（Kendall's τ）；锦标赛参数；工期重排 18–22 周。R2 评审总评：通过。
 - v1.3：**可读性修订**——新增第 0 章导读（给非专业读者：一句话、三个比喻、四层评估结构、一个方案的完整旅程、阅读路线）与附录 A 术语表；正文内容同 v1.2 未变。
 - v1.3.1：经非专业读者测试后修订导读——澄清「对账」逻辑（检验「不违背已知证据与因果机制」而非「复制历史」；郑州负锚的对账方向是避开失败链、复现有效部分；物理闸门的灰色地带与「旁证」定位）；补充误判率 10% 的依据与 Gold 锚样例来源。
+- v1.4（2026-07-19）：按修订简报 `revision-brief-2026-07-19.md` 外科手术式修订，正文骨架与既有结论未动。① §2.7 与 §9 创新点 2 按 F5 切割 settleability：定位陈述统一为「首个可结算（settleable）的灾害决策因子集」，与 disaster knowledge graph 一线（LLM4TyphoonKG，LLM 抽取台风演化/灾情三元组、无抽取评测、无结算语义）显式区分；因子=带判定规则、阈值区间、反证信号、盲评字段、来源分级的可裁定断言。② §5.1 按 F1 增补宽类轨道（H3 旁证的统计强化层，N≥60），首选台风（IBTrACS v04r01 + 内置 CMA 序列 + 省级响应通告 + EM-DAT）、备选地震（USGS FDSN）；明示不改 H1/H2 设计。③ §4 M5 按 F2 补决策行动锚源清单（mem.gov.cn / 省厅 / JMA 防灾信息 XML / IFRC GO API field-report `actions_taken` / NWS api.weather.gov CAP / NTSB CAROL / CSB 报告全本）。④ §6.1 按 F3 把「公开全文」升级为「2026-07-19 实测存活」，附郑州 7·20 PDF 与古雷 4·6 HTML 链接。⑤ §7 风险 8 按 F4① 修 Buncefield：HSE 官方直链 404 改用英国国家档案馆 webarchive 归档 + FABIG 镜像（Crown copyright 非商用），并补 2018 断档、中国气象历史预警报文无机读存档、ReliefWeb API 自 2025-11 起需 appname 预审批三条行动锚采集硬约束。⑥ §8/§9 与 v1.4 增量的最小对齐（不重排工期、不改 go/no-go）：§9 预期成果第 5 条「双灾害 Factor Ledger 锚数据集」按 §5.1 宽类轨道与 §9 创新点 2 的 settleability 切割，对齐为「2 深案 + 1 宽类可结算（settleable）灾害决策 Factor Ledger 锚数据集」；§8 W10–W14 登记宽类轨道工作包（台风首选 / 地震备选，N≥60）与前瞻采集基础设施补齐（F6，约 1–2 天），W14 检查点交叉引用 §7 风险 8 三条行动锚采集硬约束；§8 预写回退条款补宽类降级路径（机判不达标 → 降级为生成侧素材，不影响深案主线）。⑦ 二期工作包「标度测量层」：§9 预期成果末增「二期展望：标度测量层（G2 之后启动，不动 MVE 第一优先）」段落——100–200 受控配置扫描，自变量=judge 噪声 / Youden J / 协调结构 / 模型能力 / 灾种，验证协议=held-out + 跨底座离样本；范式参照 arXiv:2512.08296 *Towards a Science of Scaling Agent Systems*（180 配置 × 1.5 万 runs + 标度律），本课题差异点=真实世界真值锚；深案 3–4 封顶（古雷+郑州+1–2 国外对照，US 众院《A Failure of Initiative》[Katrina] + CSB West Fertilizer 首选）+ 宽类 ≥120（台风+地震双宽类 × N≥60）+ 灾种 3–4 个 × 三层锚（参数/行动/后果）；venue 映射 NeurIPS D&B / Nature ComSci / 主刊三档；明确不动 MVE 第一优先。

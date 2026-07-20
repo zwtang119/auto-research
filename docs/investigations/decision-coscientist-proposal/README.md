@@ -27,9 +27,12 @@
 | `q5-second-case-selection.md` | Q5：第二锚选定（主选郑州 7·20 负锚、备选天津港 8·12；Jaipur/大连如实排除；去污设计） |
 | `anchors/gulei-2015-0406.factors.yaml` | 古雷 9 条因子编码（四类俱全、双挂钩、区间锚） |
 | `anchors/settlement_record.template.disaster.yaml` | 灾害域适配版结算模板 |
-| `anchors/anchor-pool-pipeline.md` | 锚池建设流水线（六步法 + AI 自动化分层 Tier 0–4 + 医学文献背书映射 + 预案库矿线） |
+| `anchors/anchor-pool-pipeline.md` | 锚池建设流水线（六步法 + AI 自动化分层 Tier 0–4 + 医学文献背书映射 + 预案库矿线）；2026-07-19 同步 F1 宽类轨道（台风首选/地震备选）、F2 决策行动锚源金矿、Buncefield F4① 归档/镜像修正 |
+| `source-inventory-2026-07-19.md` | **数据可行性附件**（2026-07-19 定向盘点）：灾害参数/后果/决策行动三层机读金矿 + 两轮网络复测 + 硬约束清单 + 最终采集指引（境内直连） |
+| `anchor-authenticity-and-corpus-2026-07-19.md` | **锚真实性与语料扩容调研**（2026-07-19）：古雷/郑州双锚官方真实性核验 + 中国官方调查报告语料扩容盘点 + 国际候选评估；推荐结构「2 深 + 1–2 国外对照 + 1 宽类」；驱动 `anchors/anchor-pool-pipeline.md` §1 候选列表增补（Katrina 众院首选洪涝对照 / CSB West Fertilizer 首选化工对照 / 响水 3·21 备选锚上调） |
 | `reviews/r1-review.md` / `r2-review.md` | 两轮独立评审（评审子代理未接触作者侧材料） |
 | `reviews/r1-response.md` / `r2-response.md` | 逐条回应记录 |
+| `idea-decision-pipeline-2026-07-19.md` | **想法备忘录（项目关闭后用户补充，未评审）**：决策流水线——把 CDS 决策科学拆成 Agent 负责的流水线步骤，面对从未见过的风险仍能走完决策流程 |
 | `sources/` | 下载核验用的原文 PDF（LEAR、2509.21868、SLALOM、Grimm、Axtell 等） |
 
 ## 3. 关键判断链（一屏速览）
@@ -72,3 +75,27 @@
 
 - **实验方案交付**：rp-deep-plan 全流程（Up-front 用户四问 → 双侦察 → Nature 合规与统计工具链外部调研 → builder 骨架合并 → 设计评审折入 v2），产出 `docs/plans/decision-coscientist-experiment-2026-07-19.md` 与 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md`。
 - **项目关闭**：用户决策结束本项目，未投入实施资源；状态由「暂停」转为「关闭」。若未来重启，§4 入口与实验方案仍然有效。
+
+### 2026-07-19 想法补充（项目关闭后）
+
+- **决策流水线**：用户补充想法——参照 AutoResearch 协议，将 CDS 决策科学拆分为流水线、由 Agent 各管一步，使系统面对从未见过的风险仍能走完决策流程（核心机制：案例知识缺席时各步骤降级而非崩溃；无知清单 + 置信度分级如实呈现）。已记录为 `idea-decision-pipeline-2026-07-19.md`，未评审、未纳入开题报告，供重启时评估。
+
+### 2026-07-19 决策流水线评估包（项目关闭后，平行于冻结 v1.3.1）
+
+> 用户补充的「决策流水线」想法（idea-decision-pipeline-2026-07-19.md）经 5 阶段评估管线产出完整评估包；红队 4/3/3/3/4、fatal=0；终裁建议选项 1 GO（附 hard checkpoint），待用户拍板。所有文档为新增平行产物，不修改已冻结的开题报告 v1.3.1 与 PROJECT-BRIEF v1.3。
+
+| 文件 | 内容 |
+|---|---|
+| `adjacent-work-positioning-2026-07-19.md` | 阶段 1 相邻工作定位：workflow 谱系 5 邻居 + 应急 SOP 文献 + 降级协议先验；贡献落点=流程固化+降级协议显式化 |
+| `pipeline-design-spec-2026-07-19.md` | 阶段 2 设计规范（v1.1）：8 步 I/O 契约 YAML、降级 DAG、GO_L0/L1 分级 hard checkpoint、固定 8 步编排论证 |
+| `asset-mapping-2026-07-19.md` | 阶段 3 资产映射：8×6 矩阵 + 缺口清单 + 4 项最小改造（真实代码改动 1-2 个文件）；如实标注 6 角色与两个零实现 |
+| `redteam-review-2026-07-19.md` | 阶段 4 独立红队评审：五维 4/3/3/3/4、fatal=0、6 严重问题（v1.1 已闭环 2 条、其余已处置） |
+| `ruling-memo-2026-07-19.md` | 阶段 5 终裁 memo：4 视角/12+ Path/Gate 4/三选项，建议选项 1 GO + 最小验证设计（横州六蓝纸面走 8 步） |
+
+过程文件（中间稿，非交付物）在 `auto-research/prompt-exports/`：oracle-plan-2026-07-19-160143-a42bf4-2a67.md（总计划+执行日志）、stage1/2/3-recon-*（侦察交接）、stage4-code-audit.md（改造量复核）、stage5-recon-venues.md（venue 候选）。
+
+### 2026-07-19 文档修订（按 revision-brief Item 4）
+
+- **`anchors/anchor-pool-pipeline.md`**：§1 候选列表增补宽案例类轨道两行（台风首选 IBTrACS/CMA/省级响应/EM-DAT、地震备选 USGS FDSN，N≥60 旁证层）并按 F4① 将 Buncefield 行从「HSE 直链全文已验证」改为「HSE 直链 404，改用英国国家档案馆 webarchive 归档或 FABIG 镜像，Crown copyright 非商用」；§3 步骤 1 筛选增宽类准入（三层机读 + 样本量门槛），步骤 2 档案获取按 F2 补决策行动锚源金矿（mem.gov.cn 国家防总响应省厅防风响应 + JMA XML + IFRC GO actions_taken + NWS CAP + NTSB/CSB）及宽类通道；§4 Tier 1 金矿源同样按 F1/F2 扩充并以 Buncefield F4① 修正；§5 登记 `source-inventory-2026-07-19.md` 为数据可行性附件（含三层金矿 + 硬约束 + 采集指引）。
+- **`anchors/anchor-pool-pipeline.md`**（按 `anchor-authenticity-and-corpus-2026-07-19.md` 修订）：§1 候选列表增补国外对照锚（Katrina 众院《A Failure of Initiative》首选洪涝对照 / CSB West Fertilizer DocumentId=694 首选化工对照；BP Texas City / Chevron Richmond / 参院 / IPET 列为可选附件）、国内化工备选锚（天津港 8·12 gov.cn PDF 实测 200 / 响水 3·21 经栏目页进入，原直链 404 标注迁移），从「已排除」行移除响水 3·21 并上调至备选锚；末尾追加推荐结构「2 深 + 1–2 国外对照 + 1 宽类」及修订注记。
+- **`README.md`**：文件地图新增 `source-inventory-2026-07-19.md` 行（数据可行性附件，同步报表）并同步 `anchors/anchor-pool-pipeline.md` 行说明（标注 F1/F2/F4 本轮修订点）。

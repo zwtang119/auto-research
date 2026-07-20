@@ -1,8 +1,8 @@
 {
   "iteration": 15,
-  "status": "PAUSED_2026_07_19_decision_coscientist_incubated_R2_passed_GO_with_conditions_pending_MVE_decision",
+  "status": "CLOSED_2026_07_19_decision_coscientist_evolution_complete_docs_committed_project_ended_by_user_MVE_pending_restart",
   "stale_count": 0,
-  "last_updated": "2026-07-19T01:27:25Z",
+  "last_updated": "2026-07-19T16:30:00Z",
   "current_milestone": "M10 (G3 methods paper outline written)",
   "completed_milestones": [
     "M0",
@@ -24,10 +24,10 @@
     "P7_P2_1": "m1_review_research_grade_acceptable + PIT-NEW-9 fixed",
     "Direction_A_Unified_Anchoring": "FOLDED on BOTH axes — review (median 4.5 < 5.5) AND mechanism experiment (β1 sig POSITIVE on 2 cells, CONTRAST hypothesis falsified); 295 ok real records; integrated into G3 methods paper outline as Appendix A",
     "G3_Dual_Ledger_Bridge": "OUTLINE WRITTEN at `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure); acceptance probability 25-35% at ACL/EMNLP Findings 7.0-7.5; recommended target EMNLP 2027 Eval workshop 4-page short paper",
-    "Decision_Co_Scientist": "POST-CLOSURE INCUBATION (2026-07-18 eve → 07-19, goal-mode pipeline): medical AI auto-research methodology mapped to CDS decision science. Proposal v1.3.1 passed 2 independent red-team rounds (R2 4/3/4/3/5, 0 fatal); second topic-eval verdict = GO with conditions, venue retargeted NeurIPS D&B (anchor dataset + tournament benchmark + calibration protocol); sole hard blocker = zero experimental results → next phase entry = MVE minimal evidence chain pilot (Gulei C0 vs C2 + validation arms + anchor settlement) + G2 statistical legitimacy. Workpack: docs/investigations/decision-coscientist-proposal/ (README = handoff). PAUSED by user decision 2026-07-19 pending next phase."
+    "Decision_Co_Scientist": "POST-CLOSURE INCUBATION (2026-07-18 eve → 07-19, goal-mode pipeline): medical AI auto-research methodology mapped to CDS decision science. Proposal v1.3.1 passed 2 independent red-team rounds (R2 4/3/4/3/5, 0 fatal); second topic-eval verdict = GO with conditions, venue retargeted NeurIPS D&B (anchor dataset + tournament benchmark + calibration protocol); sole hard blocker = zero experimental results → next phase entry = MVE minimal evidence chain pilot (Gulei C0 vs C2 + validation arms + anchor settlement) + G2 statistical legitimacy. Workpack: docs/investigations/decision-coscientist-proposal/ (README = handoff). PAUSED by user decision 2026-07-19 pending next phase. || EVOLUTION ROUND COMPLETE (2026-07-19 eve): LLM4TyphoonKG adjacency evaluated; 6-way source inventory completed; wide-category track added; novelty cut at settleability; anchor authenticity and corpus expansion investigated; three-layer quantity conclusion = 2 deep cases + 1–2 international comparison anchors + 1 wide-category track (N≥60); 14 documents revised, including proposal v1.4, experiment plan v2.1, and PROJECT-BRIEF v1.4; docs committed; project CLOSED by user decision, MVE pending restart."
   },
   "decision": "PROJECT CLOSED 2026-07-18 by user decision. Final topic-selection verdict recorded (D4/D2 KILL, D3 into D1, D1 PARK, C1 GO-with-4-gates but user declined to fund gates → honest conclusion: no validated top-journal topic). Closure memo: docs/portfolio/project-closure-2026-07-18.md. Restart entry: verdict memo §5 gates. || POST-CLOSURE NOTE 2026-07-19: a new direction (Decision Co-Scientist, medical-AI-methodology → CDS) was incubated after closure at user request, passed the full topic pipeline as GO-with-conditions (NeurIPS D&B target), and is now PAUSED by user decision pending MVE funding. Old-portfolio closure verdict unaffected.",
-  "last_seen": "2026-07-19T01:27:25Z",
+  "last_seen": "2026-07-19T16:30:00Z",
   "recent_events": [
     {
       "ts": "2026-07-04T07:14:01Z",
@@ -128,6 +128,11 @@
       "ts": "2026-07-19T01:27:25Z",
       "event": "decision_coscientist_incubation_PAUSED",
       "detail": "Post-closure incubation at user request (goal-mode, 8 turns): medical AI auto-research papers (Co-Scientist/Robin/Biomni etc.) read; Policysim-v0.2 analyzed; 13-element methodology mapping written (docs/investigations/medical-ai-to-cds-mapping-2026-07-18.md, v3). Direction 'Decision Co-Scientist' (tournament+evolution multi-agent emergency decision simulation with reality-anchor calibration) taken through full topic pipeline: Q1 novelty full-text checks (LEAR=arXiv-occupied upper claim only, 2509.21868 orthogonal, self-play theory grounded), Q2 ABM-validation positioning (POM x output-validation; calibration-as-fitness narrowed to 3-fold combination), Q3 non-LLM validation arms selected (GB50151 foam gates + NUREG ETE evacuation), Q4 Gulei anchor trial encoding (9 factors, fork adaptations listed, kill NOT triggered), Q5 second case (Zhengzhou 7-20 negative anchor primary, Tianjin backup), Q6 proposal written. Two independent red-team rounds passed (R1 3/3/3/3/4 conditional → v1.1 structural fixes incl. anchor-separation; R2 4/3/4/3/5 PASS, 0 fatal → v1.2/v1.3). Second topic-eval verdict: GO-with-conditions, venue retargeted to NeurIPS D&B; sole hard blocker = zero experimental results. Anchor-pool pipeline + MEM plan-library mining line documented. PAUSED by user decision 2026-07-19 ('思考一下，等待下一阶段'). Next-phase entry: MVE minimal evidence chain pilot (est. 4-6 weeks) — see docs/investigations/decision-coscientist-proposal/README.md. Workpack complete on disk: proposal v1.3.1 + Q1-Q5 memos + anchors/ + reviews/ + topic-eval memo."
+    },
+    {
+      "ts": "2026-07-19T16:30:00Z",
+      "event": "decision_coscientist_evolution_round_COMPLETE",
+      "detail": "Evolution round completed: added two new investigations (source-inventory-2026-07-19.md and anchor-authenticity-and-corpus-2026-07-19.md), executed revision-brief-2026-07-19.md, revised 12 core + 2 coordination documents, upgraded experiment plan v2.1 to a three-layer evidence structure (deep cases / international comparison anchors / wide-category track), and closed out with git commits. Project ended by user decision; MVE remains the restart entry."
     }
   ]
 }
