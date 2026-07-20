@@ -1,8 +1,8 @@
 {
   "iteration": 15,
-  "status": "CLOSED_2026_07_19_decision_coscientist_evolution_complete_docs_committed_project_ended_by_user_MVE_pending_restart",
+  "status": "PAUSED_2026_07_20_worldcup_paper_topic_W6_GO_with_8_gates_pending_A0_final_settlement",
   "stale_count": 0,
-  "last_updated": "2026-07-19T16:30:00Z",
+  "last_updated": "2026-07-20T08:40:00Z",
   "current_milestone": "M10 (G3 methods paper outline written)",
   "completed_milestones": [
     "M0",
@@ -24,10 +24,11 @@
     "P7_P2_1": "m1_review_research_grade_acceptable + PIT-NEW-9 fixed",
     "Direction_A_Unified_Anchoring": "FOLDED on BOTH axes — review (median 4.5 < 5.5) AND mechanism experiment (β1 sig POSITIVE on 2 cells, CONTRAST hypothesis falsified); 295 ok real records; integrated into G3 methods paper outline as Appendix A",
     "G3_Dual_Ledger_Bridge": "OUTLINE WRITTEN at `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure); acceptance probability 25-35% at ACL/EMNLP Findings 7.0-7.5; recommended target EMNLP 2027 Eval workshop 4-page short paper",
-    "Decision_Co_Scientist": "POST-CLOSURE INCUBATION (2026-07-18 eve → 07-19, goal-mode pipeline): medical AI auto-research methodology mapped to CDS decision science. Proposal v1.3.1 passed 2 independent red-team rounds (R2 4/3/4/3/5, 0 fatal); second topic-eval verdict = GO with conditions, venue retargeted NeurIPS D&B (anchor dataset + tournament benchmark + calibration protocol); sole hard blocker = zero experimental results → next phase entry = MVE minimal evidence chain pilot (Gulei C0 vs C2 + validation arms + anchor settlement) + G2 statistical legitimacy. Workpack: docs/investigations/decision-coscientist-proposal/ (README = handoff). PAUSED by user decision 2026-07-19 pending next phase. || EVOLUTION ROUND COMPLETE (2026-07-19 eve): LLM4TyphoonKG adjacency evaluated; 6-way source inventory completed; wide-category track added; novelty cut at settleability; anchor authenticity and corpus expansion investigated; three-layer quantity conclusion = 2 deep cases + 1–2 international comparison anchors + 1 wide-category track (N≥60); 14 documents revised, including proposal v1.4, experiment plan v2.1, and PROJECT-BRIEF v1.4; docs committed; project CLOSED by user decision, MVE pending restart."
+    "Decision_Co_Scientist": "POST-CLOSURE INCUBATION (2026-07-18 eve → 07-19, goal-mode pipeline): medical AI auto-research methodology mapped to CDS decision science. Proposal v1.3.1 passed 2 independent red-team rounds (R2 4/3/4/3/5, 0 fatal); second topic-eval verdict = GO with conditions, venue retargeted NeurIPS D&B (anchor dataset + tournament benchmark + calibration protocol); sole hard blocker = zero experimental results → next phase entry = MVE minimal evidence chain pilot (Gulei C0 vs C2 + validation arms + anchor settlement) + G2 statistical legitimacy. Workpack: docs/investigations/decision-coscientist-proposal/ (README = handoff). PAUSED by user decision 2026-07-19 pending next phase. || EVOLUTION ROUND COMPLETE (2026-07-19 eve): LLM4TyphoonKG adjacency evaluated; 6-way source inventory completed; wide-category track added; novelty cut at settleability; anchor authenticity and corpus expansion investigated; three-layer quantity conclusion = 2 deep cases + 1–2 international comparison anchors + 1 wide-category track (N≥60); 14 documents revised, including proposal v1.4, experiment plan v2.1, and PROJECT-BRIEF v1.4; docs committed; project CLOSED by user decision, MVE pending restart.",
+    "WorldCup_Paper_W6": "TOPIC SELECTION DONE 2026-07-19/20 (read-only cds4worldcup recon + verdict memo docs/investigations/worldcup-paper-topic-2026-07-19.md): W6 GO-with-8-gates — audited ex-ante WC2026 benchmark, dataset as carrier + accuracy-vs-proper-score reversal as finding + protocol-failure labels as sole defensible novelty; W1/W2/W3/W4 PARK, W5 KILL; G3 outline stays PARK (92.9%/2-of-2 numbers retired); honest ceiling: NeurIPS D&B 10-20% if G0-G7 all pass, workshop 35-50%. A0 (championship n=48 settlement post-KO104) OVERDUE at memo time; forbidden claims list enforced (no 'first WC LLM benchmark' etc.)."
   },
   "decision": "PROJECT CLOSED 2026-07-18 by user decision. Final topic-selection verdict recorded (D4/D2 KILL, D3 into D1, D1 PARK, C1 GO-with-4-gates but user declined to fund gates → honest conclusion: no validated top-journal topic). Closure memo: docs/portfolio/project-closure-2026-07-18.md. Restart entry: verdict memo §5 gates. || POST-CLOSURE NOTE 2026-07-19: a new direction (Decision Co-Scientist, medical-AI-methodology → CDS) was incubated after closure at user request, passed the full topic pipeline as GO-with-conditions (NeurIPS D&B target), and is now PAUSED by user decision pending MVE funding. Old-portfolio closure verdict unaffected.",
-  "last_seen": "2026-07-19T16:30:00Z",
+  "last_seen": "2026-07-20T08:40:00Z",
   "recent_events": [
     {
       "ts": "2026-07-04T07:14:01Z",
@@ -133,6 +134,11 @@
       "ts": "2026-07-19T16:30:00Z",
       "event": "decision_coscientist_evolution_round_COMPLETE",
       "detail": "Evolution round completed: added two new investigations (source-inventory-2026-07-19.md and anchor-authenticity-and-corpus-2026-07-19.md), executed revision-brief-2026-07-19.md, revised 12 core + 2 coordination documents, upgraded experiment plan v2.1 to a three-layer evidence structure (deep cases / international comparison anchors / wide-category track), and closed out with git commits. Project ended by user decision; MVE remains the restart entry."
+    },
+    {
+      "ts": "2026-07-20T08:40:00Z",
+      "event": "worldcup_paper_topic_selection_COMPLETE",
+      "detail": "Read-only recon of cds4worldcup (2 explore agents: design+data) + pair topic-selection memo (docs/investigations/worldcup-paper-topic-2026-07-19.md). Assets: 72-match group stage dual predictors (Elo n=71 Brier 0.5728; Coach hybrid n=72 Brier 0.6078, hard-pick 59.7% vs 54.9% reversal), CDS qual/champ 48-team (n=46 settled), Plan C 4-match Factor Ledger, 6 baselines. Gaps: KO 30 matches no ex-ante, judge table 0 rows, snapshot drift 44/72, prompt-hash placeholders, Kimi red-source leak. Novelty scan found 7 direct competitors (WorldCupBench etc.) - 'first benchmark' claims FORBIDDEN; sole defensible niche = protocol-integrity audit labels. Verdict: W6 GO with gates G0-G7 (immutable release, paired stats, source ablation, external blind audit kappa>=0.6); auto-fallback to workshop case report if gates fail."
     }
   ]
 }
