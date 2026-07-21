@@ -1,0 +1,78 @@
+schema_version: "0.2"
+required:
+  - match_id
+  - task_type
+  - result
+  - settled_at_utc
+  - scores
+  - factor_updates
+  - protocol_failures
+fields:
+  match_id:
+    type: string
+    description: "Match identifier"
+  task_type:
+    type: string
+    description: "e.g. group_90m_wdl, knockout_advance; must match prediction card task_type"
+  result:
+    type: map[string, string|number]
+    description: "Official match result, e.g. home_goals_90m, away_goals_90m, outcome_90m"
+  settled_at_utc:
+    type: datetime
+    description: "Timestamp when settlement record was created"
+  scores:
+    type: object
+    required: [brier, log_loss, baseline_difference]
+    fields:
+      brier:
+        type: number|null
+        description: "Brier Score for this prediction; null if not computable"
+      log_loss:
+        type: number|null
+        description: "Log Loss for this prediction; null if not computable"
+      baseline_difference:
+        type: map[string, number|null]
+        description: "Difference between prediction and each baseline score"
+  factor_updates:
+    type: object
+    required: [supported, rejected, inconclusive]
+    fields:
+      supported:
+        type: list[string]
+        description: "Factor IDs adjudicated as supported"
+      rejected:
+        type: list[string]
+        description: "Factor IDs adjudicated as rejected"
+      inconclusive:
+        type: list[string]
+        description: "Factor IDs that could not be adjudicated"
+  protocol_failures:
+    type: list[string]
+    description: "Protocol failure types from the taxonomy, if any occurred"
+  review_notes:
+    type: list[string]
+    description: "Post-match review observations; must not modify locked prediction card"
+  brier_calculation:
+    type: string
+    optional: true
+    description: "Step-by-step Brier Score computation for audit"
+  log_loss_calculation:
+    type: string
+    optional: true
+    description: "Step-by-step Log Loss computation for audit"
+  calculation_snippet:
+    type: string
+    optional: true
+    description: "Python or pseudocode snippet used for score computation"
+  result_source:
+    type: string
+    optional: true
+    description: "Source URL or reference for the official match result used in settlement"
+  goal_scorers_home_90m:
+    type: list[string]
+    optional: true
+    description: "Goal scorer names for the home team in 90 minutes, e.g. ['Player A 23\'', 'Player B 67\'']"
+  goal_scorers_away_90m:
+    type: list[string]
+    optional: true
+    description: "Goal scorer names for the away team in 90 minutes, e.g. ['Player C 45\'']"

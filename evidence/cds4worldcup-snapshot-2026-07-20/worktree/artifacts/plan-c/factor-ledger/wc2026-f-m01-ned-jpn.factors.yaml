@@ -1,0 +1,74 @@
+schema_version: "0.2"
+match_id: "wc2026-f-m01-ned-jpn"
+
+factors:
+  - factor_id: "wc2026-f-m01-ned-jpn-f01-ned-possession-control"
+    match_id: "wc2026-f-m01-ned-jpn"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Netherlands possession percentage in the full match (90 minutes)"
+    quantified_threshold: "Netherlands possession >= 55% in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Netherlands possession >= 55%
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Netherlands possession < 48%;
+      inconclusive if official match statistics are unavailable or only half-time
+      possession is reported without full-match aggregate.
+    counter_signal: "Japan scores first before the 25th minute, forcing Netherlands to chase and disrupting possession rhythm"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_f"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-f-m01-ned-jpn-f02-jpn-counter-threat"
+    match_id: "wc2026-f-m01-ned-jpn"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_away_win_probability"
+    observable_proxy: "Japan shots on target in 90 minutes"
+    quantified_threshold: "Japan shots on target >= 4 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Japan shots on target >= 4
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Japan shots on target <= 2;
+      inconclusive if official match statistics are unavailable or only total shots
+      (not shots on target) are reported.
+    counter_signal: "Netherlands keeps a clean sheet with Van Dijk organizing the defensive line throughout"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_f"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-f-m01-ned-jpn-f03-ned-set-piece"
+    match_id: "wc2026-f-m01-ned-jpn"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Netherlands corners and free kicks in attacking third in 90 minutes"
+    quantified_threshold: "Netherlands corners >= 5 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Netherlands corner kicks >= 5
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Netherlands corners <= 2;
+      inconclusive if official match statistics are unavailable.
+    counter_signal: "Japan scores from a counter-attack while Netherlands are committed forward on a set piece"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_f"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"

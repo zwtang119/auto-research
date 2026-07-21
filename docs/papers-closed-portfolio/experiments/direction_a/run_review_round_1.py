@@ -2,7 +2,7 @@
 """Direction A 5-persona review runner.
 
 Reads:
-  - docs/papers/direction-a-1-page-proposal.md
+  - docs/papers-closed-portfolio/direction-a-1-page-proposal.md
   - docs/investigations/novelty-depth-check-2026-07-05.md
   - docs/investigations/llm-intelligence-blocker-verdict-2026-07-05-zh.md
 
@@ -203,7 +203,7 @@ def main() -> int:
 
     md_lines = [
         "# Direction A — 5-Persona Review Round 1 (2026-07-05)\n",
-        f"_Source: docs/papers/direction-a-1-page-proposal.md (67 lines, CoBBLEr 3-axis differentiation in §3)_\n",
+        f"_Source: docs/papers-closed-portfolio/direction-a-1-page-proposal.md (67 lines, CoBBLEr 3-axis differentiation in §3)_\n",
         "_Reviewers: 5 paratera (PIT-107) + 1 minimaxi cross-validation_\n",
         f"\n## Results\n",
         "| Persona | Model | Score | Weakness |",
@@ -223,7 +223,7 @@ def main() -> int:
     if median_5 and median_5 >= 5.5:
         md_lines.append("\nDirection A **proceeds** to mechanism experiment execution. The 24-cell × N=30 × 4-anchor design is authorized.\n")
     else:
-        md_lines.append("\nDirection A **folds** into a methods paper. Pivot target: G3 dual-ledger bridge (`docs/papers/direction-a-mechanism-experiment-spec.md` §7).\n")
+        md_lines.append("\nDirection A **folds** into a methods paper. Pivot target: G3 dual-ledger bridge (`docs/papers-closed-portfolio/direction-a-mechanism-experiment-spec.md` §7).\n")
 
     OUT_RESULTS_MD.write_text("\n".join(md_lines))
 

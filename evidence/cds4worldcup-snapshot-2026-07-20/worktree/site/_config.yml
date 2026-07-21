@@ -1,0 +1,26 @@
+# Jekyll 配置（GitHub Pages）
+title: CDS4WorldCup
+description: 计算决策空间 × 2026 世界杯路径分析实验
+baseurl: /cds4worldcup
+url: https://tangzw119.github.io
+
+theme: minima
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-seo-tag
+
+# 只处理 site/ 目录下的文件
+source: .
+destination: ./_site
+
+# 排除不需要发布的文件
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

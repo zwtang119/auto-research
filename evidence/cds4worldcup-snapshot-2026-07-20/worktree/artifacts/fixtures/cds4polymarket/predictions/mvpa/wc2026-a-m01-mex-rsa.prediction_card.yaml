@@ -1,0 +1,110 @@
+schema_version: "0.2"
+smoke_test: false
+task_type: "group_90m_wdl"
+match_id: "wc2026-a-m01-mex-rsa"
+competition: "FIFA World Cup 2026"
+stage: "group"
+kickoff_time_utc: "2026-06-11T23:00:00Z"
+
+teams:
+  home: "Mexico"
+  away: "South Africa"
+
+lock:
+  prediction_locked_at_utc: "2026-06-10T12:50:00Z"
+  sha256: "37d7ad55564a7920abba6119f4a8f79b0bf3668dc4764c286025049cf6b0d36c"
+  git_commit: "56033f2c0008e7f94cf7f2d05e4b2d6bd56814db"
+
+data_package:
+  package_id: "wc2026-a-m01-mex-rsa-mvpa-v0.1"
+  green_sources:
+    - "official_schedule_snapshot"
+    - "wikipedia_mexico_national_football_team_fifa_ranking"
+    - "wikipedia_south_africa_national_football_team_fifa_ranking"
+  red_sources_excluded_from_model:
+    - "kimi_public_artifact_snapshot"
+
+llm:
+  provider_id: "anthropic"
+  model_id: "claude-opus-4-20250514"
+  model_version_observed_at_utc: "2026-06-10T12:00:00Z"
+  prompt_version: "worldcup_prediction_card_v0.1"
+  temperature: 0
+  max_retries: 1
+  reasoning_budget: "fixed"
+  schema_validation_status: "passed"
+  source_cutoff_utc: "2026-06-10T12:00:00Z"
+
+prompt_config:
+  system_prompt_id: "worldcup_system_v0.1"
+  user_prompt_template_id: "worldcup_prediction_card_v0.1"
+  prompt_hash: "manual_mvpa_v0.1_no_fixed_rendered_prompt"
+  market_or_odds_exposed_to_model: false
+  public_ai_baseline_exposed_to_model: false
+
+memory_budget:
+  max_prior_notes: 5
+  max_note_chars_each: 1200
+  max_kimi_derived_candidates_reviewed: 3
+  max_kimi_derived_factors_tracked: 1
+
+probabilities:
+  home_win_90m: 0.55
+  draw_90m: 0.27
+  away_win_90m: 0.18
+
+baselines:
+  market_or_odds:
+    status: "missing_with_reason"
+    reason: >
+      MVP-A manual loop, pre-match market source not archived.
+      Web search API unavailable at lock time; no archivable market probability
+      source was captured before lock. This is a protocol limitation, not a
+      prediction capability claim.
+  simple_statistical:
+    status: "available"
+    method: >
+      FIFA ranking positions via logistic model (same method as Phase -1 smoke test).
+      Mexico ranked #15 (1 April 2026), South Africa ranked #61 (22 December 2025).
+      Approximate ranking points: Mexico ~1640, South Africa ~1370 (estimated from
+      typical FIFA point distribution at these ranks; exact points not archived).
+      Points difference ~270. FIFA Elo formula (c=600): W_e = 1/(10^(-270/600)+1) ~ 0.738.
+      Three-outcome decomposition with base draw rate d=0.25:
+      P(home_win) = W_e - 0.5*d = 0.738 - 0.125 = 0.613;
+      P(draw) = d = 0.25;
+      P(away_win) = 1 - 0.613 - 0.25 = 0.137.
+      Note: this baseline does NOT adjust for home advantage (Mexico at Estadio Azteca,
+      2200m altitude, co-host nation opening match), which significantly favors Mexico.
+    mexico_fifa_rank: 15
+    mexico_ranking_date: "2026-04-01"
+    south_africa_fifa_rank: 61
+    south_africa_ranking_date: "2025-12-22"
+    ranking_source_url: "https://en.wikipedia.org/wiki/Mexico_national_football_team"
+    ranking_source_url_2: "https://en.wikipedia.org/wiki/South_Africa_national_football_team"
+    estimated_points_difference: 270
+    expected_score_home: 0.738
+    decomposition_note: "P(win)=0.613; P(draw)=0.25; P(loss)=0.137; no home advantage adjustment"
+    probabilities:
+      home_win_90m: 0.61
+      draw_90m: 0.25
+      away_win_90m: 0.14
+  public_ai:
+    status: "not_applicable"
+    reason: >
+      worldcup-kimi/ materials exist but contain binary xlsx/pdf formats that could
+      not be parsed into match-level numerical probabilities for this specific
+      match_id (wc2026-a-m01-mex-rsa) and task_type (group_90m_wdl) at lock time.
+      Kimi artifact snapshot is a Red Source and can only serve as baseline/candidate
+      seed; exact probability extraction was not verifiable.
+
+factors_used:
+  - "wc2026-a-m01-mex-rsa-f01-home-possession"
+  - "wc2026-a-m01-mex-rsa-f02-rsa-shots-on-target"
+  - "wc2026-a-m01-mex-rsa-f03-mex-corner-count"
+
+uncertainty_notes:
+  - "Opening match of a World Cup has historically high variance (2010: RSA 1-1 MEX, 2002: FRA 0-1 SEN)."
+  - "Mexico has massive home advantage at Estadio Azteca (2200m altitude, ~87k home fans) but also faces enormous pressure as co-host in the opener."
+  - "South Africa is ranked 46 positions lower but showed strong competitive form (3rd place AFCON 2023, qualified for 2026 WC)."
+  - "Simple statistical baseline does not capture home advantage, altitude, or opening-match pressure effects."
+  - "This is a protocol calibration artifact, not a prediction capability claim."

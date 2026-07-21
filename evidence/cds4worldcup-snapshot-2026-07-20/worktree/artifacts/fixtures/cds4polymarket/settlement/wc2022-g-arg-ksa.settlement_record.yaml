@@ -1,0 +1,69 @@
+schema_version: "0.2"
+match_id: "wc2022-g-arg-ksa"
+task_type: "group_90m_wdl"
+
+result:
+  home_goals_90m: 1
+  away_goals_90m: 2
+  outcome_90m: "away_win"
+  goal_scorers_home_90m: "Lionel Messi (penalty, 10')"
+  goal_scorers_away_90m: "Saleh Al-Shehri (48'), Salem Al-Dawsari (53')"
+  result_source: "https://en.wikipedia.org/wiki/Argentina_v_Saudi_Arabia_(2022_FIFA_World_Cup)"
+
+settled_at_utc: "2026-06-10T12:30:00Z"
+
+scores:
+  brier: 1.3262
+  log_loss: 2.4079
+  brier_calculation: >
+    Brier Score (multi-class, single observation):
+    p = [home_win=0.66, draw=0.25, away_win=0.09]
+    o = [home_win=0, draw=0, away_win=1]
+    BS = (0.66-0)^2 + (0.25-0)^2 + (0.09-1)^2
+       = 0.4356 + 0.0625 + 0.8281
+       = 1.3262
+  log_loss_calculation: >
+    Log Loss (multi-class, single observation, epsilon=1e-12):
+    LL = -[0*log(0.66+1e-12) + 0*log(0.25+1e-12) + 1*log(0.09+1e-12)]
+       = -log(0.09 + 1e-12)
+       = -ln(0.09)
+       = -(-2.407945...)
+       = 2.4079
+  calculation_snippet: |
+    # Python verification:
+    import math
+    p = [0.66, 0.25, 0.09]  # predicted: home_win, draw, away_win
+    outcome_index = 2        # away_win happened
+    # Brier Score
+    brier = sum((p[i] - (1 if i == outcome_index else 0))**2 for i in range(3))
+    assert abs(brier - 1.3262) < 0.0001, f"Brier mismatch: {brier}"
+    # Log Loss
+    epsilon = 1e-12
+    log_loss = -math.log(p[outcome_index] + epsilon)
+    assert abs(log_loss - 2.4079) < 0.001, f"Log Loss mismatch: {log_loss}"
+    print(f"Brier: {brier:.4f}, Log Loss: {log_loss:.4f}")
+  baseline_difference:
+    simple_statistical:
+      brier: 0.0
+      log_loss: 0.0
+      note: "Prediction probabilities are identical to simple_statistical baseline"
+    market_or_odds: null
+
+factor_updates:
+  supported:
+    - "wc2022-g-arg-ksa-f01-ksa-offside-trap"
+    - "wc2022-g-arg-ksa-f02-ksa-early-second-half-goal"
+  rejected: []
+  inconclusive: []
+
+protocol_failures: []
+
+review_notes:
+  - "Both tracked factors were supported by post-match evidence."
+  - "Factor 1 (Saudi Arabia offside trap): 3 Argentina goals disallowed for offside in first half, exceeding threshold of 2."
+  - "Factor 2 (Saudi Arabia early second-half goal): Al-Shehri scored in 48th minute, within the 46'-55' window."
+  - "Prediction probabilities heavily favored Argentina (0.66/0.25/0.09); actual result was away_win (Saudi Arabia 2-1 Argentina)."
+  - "Brier Score 1.3262 and Log Loss 2.408 reflect a high-surprise outcome — consistent with this being one of the biggest upsets in World Cup history."
+  - "The simple statistical baseline (FIFA ranking logistic model) produced the same probabilities as the prediction, so baseline_difference is 0.0."
+  - "No market_or_odds baseline was available; this is documented in the prediction card as missing_with_reason."
+  - "No protocol failures occurred: schemas validated, factors adjudicable, no Red Source contamination, task semantics unambiguous."

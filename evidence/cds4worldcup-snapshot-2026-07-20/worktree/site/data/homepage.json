@@ -1,0 +1,1143 @@
+{
+  "generated_at": "2026-07-19T02:49:58+00:00",
+  "build_date": "2026-07-19",
+  "source_policy_version": "draft-for-execution",
+  "summary": {
+    "total_teams": 48,
+    "deep_description_count": 48,
+    "thin_slice_count": 0,
+    "obstacle_record_count": 255,
+    "settleable_condition_count": 89,
+    "baseline_count": 6
+  },
+  "audit": {
+    "deep_cards_audited": 21,
+    "deep_cards_passed": 21,
+    "source_boundary_status": "pass",
+    "source_boundary_label": "来源边界已检查",
+    "factor_ledger_schema_status": "pass",
+    "factor_ledger_schema_label": "赛后对账规则可用"
+  },
+  "hero": {
+    "headline": "48 支球队，每队都有一条夺冠路。",
+    "lede": "我们不直接猜谁会夺冠。我们想看清楚：一支球队真要捧杯，得过哪些坎，哪些迹象要提前出现，哪些判断赛后能对上账。",
+    "boundary": "市场数据只代表“外界怎么看”，不是我们的事实依据，也不是投机指引。",
+    "hooks": [
+      "如果阿根廷夺冠，世界得变成什么样？",
+      "法国要卫冕，最难的几关是哪几关？",
+      "你支持的球队，离冠军到底差哪口气？"
+    ]
+  },
+  "team_teasers": [
+    {
+      "team_slug": "argentina",
+      "team_name": "阿根廷",
+      "en_name": "Argentina",
+      "flag": "🇦🇷",
+      "confederation": "CONMEBOL",
+      "confederation_label": "南美",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "阿根廷的夺冠路：如果阿根廷夺冠，最可能是因为斯卡洛尼的大赛经验（2022 世界杯+2024 美洲杯双冠）使球队在淘汰赛阶段的战术调整和心理韧性达到最高水平，梅西即使出场时间受限也能在关键时刻提供不可替代的决定力，且球队已完成从\"梅西依赖\"到\"梅西加分\"的结构性转型。",
+      "top_obstacle_types": [
+        "伤病风险",
+        "心理压力"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=argentina"
+    },
+    {
+      "team_slug": "france",
+      "team_name": "法国",
+      "en_name": "France",
+      "flag": "🇫🇷",
+      "confederation": "UEFA",
+      "confederation_label": "欧洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "法国的夺冠路：如果法国夺冠，最可能是因为德尚谢幕战的情感凝聚力释放了球队长期被压制的进攻潜力，姆巴佩在淘汰赛阶段的个体爆破能力在 7 场赛制中不可阻挡，且法国的阵容深度（每个位置 2+ 世界级选项）在高温和多旅行赛制中形成碾压级容错率。",
+      "top_obstacle_types": [
+        "心理压力",
+        "板凳厚度不够"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=france"
+    },
+    {
+      "team_slug": "spain",
+      "team_name": "西班牙",
+      "en_name": "Spain",
+      "flag": "🇪🇸",
+      "confederation": "UEFA",
+      "confederation_label": "欧洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "西班牙的夺冠路：如果西班牙夺冠，最可能是因为德拉富恩特的传控-压迫混合体系在高温淘汰赛中持续消耗对手，亚马尔-佩德里中场三角提供不可阻挡的进攻创造力，且 2024 欧洲杯冠军的信心惯性使球队在关键淘汰赛时刻保持冷静，H 组的平稳出线为淘汰赛阶段储备了充足的体能和战术调试空间。",
+      "top_obstacle_types": [
+        "太依赖小比分",
+        "伤病风险"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=spain"
+    },
+    {
+      "team_slug": "portugal",
+      "team_name": "葡萄牙",
+      "en_name": "Portugal",
+      "flag": "🇵🇹",
+      "confederation": "UEFA",
+      "confederation_label": "欧洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "葡萄牙的夺冠路：如果葡萄牙夺冠，最可能是因为 B 席-布鲁诺-维蒂尼亚的中场三人组在淘汰赛阶段提供了攻防两端的全面控制力，鲁本·迪亚斯领衔的防线在 7 场赛制中保持足够的零封率，且马丁内斯成功解决了 C 罗战术定位问题——让 C 罗在关键时刻作为超级替补而非首发核心。",
+      "top_obstacle_types": [
+        "签表太硬",
+        "战术对不上"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=portugal"
+    },
+    {
+      "team_slug": "england",
+      "team_name": "英格兰",
+      "en_name": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "confederation": "UEFA",
+      "confederation_label": "欧洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "英格兰的夺冠路：如果英格兰夺冠，最可能是因为图赫尔的战术体系成功释放了贝林厄姆+萨卡+福登的进攻天赋，赖斯的中场屏障在淘汰赛阶段提供了足够的防守基础，且球队首次在大赛淘汰赛中克服了心理魔咒——特别是点球大战和领先后的守成能力。",
+      "top_obstacle_types": [
+        "心理压力",
+        "战术对不上"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=england"
+    },
+    {
+      "team_slug": "germany",
+      "team_name": "德国",
+      "en_name": "Germany",
+      "flag": "🇩🇪",
+      "confederation": "UEFA",
+      "confederation_label": "欧洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "德国的夺冠路：如果德国夺冠，最可能是因为穆西亚拉-维尔茨双核的创造力在纳格尔斯曼的体系中被完全释放，球队在 2024 欧洲杯（本土赛事止步 1/4 决赛）的挫败感转化为大赛淘汰赛阶段的冷静和成熟，且定位球转化率在淘汰赛关键场次中成为秘密武器。",
+      "top_obstacle_types": [
+        "心理压力",
+        "板凳厚度不够"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=germany"
+    },
+    {
+      "team_slug": "morocco",
+      "team_name": "摩洛哥",
+      "en_name": "Morocco",
+      "flag": "🇲🇦",
+      "confederation": "CAF",
+      "confederation_label": "非洲",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "摩洛哥的夺冠路：如果摩洛哥夺冠，最可能是因为雷格拉吉的防守反击体系在 C 组中与巴西的对抗中再次证明有效性（2022 已在淘汰赛中击败葡萄牙和西班牙），阿什拉夫的边路突击构成攻防转换的核心武器，且 2022 半决赛的经验使球队在淘汰赛阶段以强队自居而非黑马——用纪律性弥补个体差距，用大赛经验释放心理优势。",
+      "top_obstacle_types": [
+        "硬实力差距",
+        "太依赖小比分"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=morocco"
+    },
+    {
+      "team_slug": "brazil",
+      "team_name": "巴西",
+      "en_name": "Brazil",
+      "flag": "🇧🇷",
+      "confederation": "CONMEBOL",
+      "confederation_label": "南美",
+      "display_status": "deep-description",
+      "display_status_label": "深度版",
+      "path_thesis": "巴西的夺冠路：如果巴西夺冠，最可能是因为维尼修斯的个体爆破能力在淘汰赛阶段无法被战术限制，球队在防守端找到了被长期缺失的组织纪律性——用结构化的防守框架释放前场的自由度，且 C 组的温和签运为淘汰赛储备了体能和信心。",
+      "top_obstacle_types": [
+        "战术对不上",
+        "硬实力差距"
+      ],
+      "source_completeness": "deep",
+      "source_completeness_label": "资料较完整",
+      "href": "team.html?team=brazil"
+    }
+  ],
+  "obstacle_distribution": [
+    {
+      "type": "base_strength_gap",
+      "display_label": "硬实力差距",
+      "count": 56,
+      "classification": "路径难点"
+    },
+    {
+      "type": "low_scoring_dependency",
+      "display_label": "太依赖小比分",
+      "count": 44,
+      "classification": "常见门槛"
+    },
+    {
+      "type": "tactical_mismatch",
+      "display_label": "战术对不上",
+      "count": 40,
+      "classification": "路径难点"
+    },
+    {
+      "type": "psychological_pressure",
+      "display_label": "心理压力",
+      "count": 37,
+      "classification": "常见门槛"
+    },
+    {
+      "type": "squad_depth",
+      "display_label": "板凳厚度不够",
+      "count": 30,
+      "classification": "路径难点"
+    },
+    {
+      "type": "bracket_strength",
+      "display_label": "签表太硬",
+      "count": 20,
+      "classification": "常见门槛"
+    },
+    {
+      "type": "injury_risk",
+      "display_label": "伤病风险",
+      "count": 17,
+      "classification": "区分变量"
+    },
+    {
+      "type": "travel_fatigue",
+      "display_label": "旅途消耗",
+      "count": 6,
+      "classification": "区分变量"
+    },
+    {
+      "type": "favorite_collision",
+      "display_label": "太早撞热门队",
+      "count": 5,
+      "classification": "区分变量"
+    }
+  ],
+  "obstacle_matrix_teaser": {
+    "status": "available",
+    "team_sample": [
+      "argentina",
+      "france",
+      "spain",
+      "morocco"
+    ],
+    "obstacle_types": [
+      "low_scoring_dependency",
+      "psychological_pressure",
+      "bracket_strength",
+      "injury_risk"
+    ],
+    "obstacle_labels": [
+      "太依赖小比分",
+      "心理压力",
+      "签表太硬",
+      "伤病风险"
+    ],
+    "cells": [
+      {
+        "team_slug": "argentina",
+        "obstacle_type": "low_scoring_dependency",
+        "display_label": "太依赖小比分",
+        "active": false,
+        "intensity": 0
+      },
+      {
+        "team_slug": "argentina",
+        "obstacle_type": "psychological_pressure",
+        "display_label": "心理压力",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "argentina",
+        "obstacle_type": "bracket_strength",
+        "display_label": "签表太硬",
+        "active": false,
+        "intensity": 0
+      },
+      {
+        "team_slug": "argentina",
+        "obstacle_type": "injury_risk",
+        "display_label": "伤病风险",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "france",
+        "obstacle_type": "low_scoring_dependency",
+        "display_label": "太依赖小比分",
+        "active": false,
+        "intensity": 0
+      },
+      {
+        "team_slug": "france",
+        "obstacle_type": "psychological_pressure",
+        "display_label": "心理压力",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "france",
+        "obstacle_type": "bracket_strength",
+        "display_label": "签表太硬",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "france",
+        "obstacle_type": "injury_risk",
+        "display_label": "伤病风险",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "spain",
+        "obstacle_type": "low_scoring_dependency",
+        "display_label": "太依赖小比分",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "spain",
+        "obstacle_type": "psychological_pressure",
+        "display_label": "心理压力",
+        "active": false,
+        "intensity": 0
+      },
+      {
+        "team_slug": "spain",
+        "obstacle_type": "bracket_strength",
+        "display_label": "签表太硬",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "spain",
+        "obstacle_type": "injury_risk",
+        "display_label": "伤病风险",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "morocco",
+        "obstacle_type": "low_scoring_dependency",
+        "display_label": "太依赖小比分",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "morocco",
+        "obstacle_type": "psychological_pressure",
+        "display_label": "心理压力",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "morocco",
+        "obstacle_type": "bracket_strength",
+        "display_label": "签表太硬",
+        "active": true,
+        "intensity": 1
+      },
+      {
+        "team_slug": "morocco",
+        "obstacle_type": "injury_risk",
+        "display_label": "伤病风险",
+        "active": true,
+        "intensity": 1
+      }
+    ]
+  },
+  "baselines": [
+    {
+      "baseline_id": "uniform_48",
+      "display_name": "48 队平均参照",
+      "source_level": "Mixed",
+      "source_label": "混合来源",
+      "status": "designed_not_populated",
+      "status_label": "规则有了，数据待补",
+      "construction_rule_short": "先假设每队机会一样，用来当最朴素的参照线。",
+      "display_boundary": "只作外部参照。"
+    },
+    {
+      "baseline_id": "defending_champion",
+      "display_name": "卫冕冠军参照",
+      "source_level": "Green",
+      "source_label": "可靠事实",
+      "status": "designed_not_populated",
+      "status_label": "规则有了，数据待补",
+      "construction_rule_short": "看看“上届冠军惯性”这件事到底有没有解释力。",
+      "display_boundary": "可作为可靠事实参照。"
+    },
+    {
+      "baseline_id": "fifa_ranking_proxy",
+      "display_name": "FIFA 排名参照",
+      "source_level": "Green",
+      "source_label": "可靠事实",
+      "status": "populated",
+      "status_label": "populated",
+      "construction_rule_short": "用 FIFA 排名做一个简单实力参照，等官方排名数据补齐后再更新。",
+      "display_boundary": "可作为可靠事实参照。"
+    },
+    {
+      "baseline_id": "elo_proxy",
+      "display_name": "Elo 实力参照",
+      "source_level": "Green",
+      "source_label": "可靠事实",
+      "status": "populated",
+      "status_label": "populated",
+      "construction_rule_short": "用公开 Elo 评分做实力参照，数据源确认后再放进快照。",
+      "display_boundary": "可作为可靠事实参照。"
+    },
+    {
+      "baseline_id": "market_public_baseline",
+      "display_name": "市场公开参照",
+      "source_level": "Yellow",
+      "source_label": "待核验线索",
+      "status": "populated",
+      "status_label": "populated",
+      "construction_rule_short": "把公开市场看法整理成快照，只看外界热度和分歧。",
+      "display_boundary": "市场数据只代表外界怎么看，不是投机指引。"
+    },
+    {
+      "baseline_id": "public_model_crowd",
+      "display_name": "公开模型群体参考",
+      "source_level": "Mixed",
+      "source_label": "只能参考",
+      "status": "partial_populated",
+      "status_label": "部分可用",
+      "construction_rule_short": "整理一组公开模型群体的冠军倾向，只看外界偏向，不当作事实。",
+      "display_boundary": "只能看作外部参考，不进入我们的事实判断。"
+    }
+  ],
+  "public_signal_snapshots": {
+    "public_model_crowd": {
+      "status": "partial_populated",
+      "status_label": "部分可用",
+      "coverage_count": 21,
+      "total_teams": 48,
+      "source_level": "Red",
+      "source_label": "只能参考",
+      "display_rule": "这是一组外部参考，只代表别人怎么想，不作为事实依据。",
+      "top_teams": [
+        {
+          "team_slug": "spain",
+          "team_name": "西班牙",
+          "flag": "🇪🇸",
+          "probability": 23.82,
+          "href": "team.html?team=spain"
+        },
+        {
+          "team_slug": "france",
+          "team_name": "法国",
+          "flag": "🇫🇷",
+          "probability": 23.56,
+          "href": "team.html?team=france"
+        },
+        {
+          "team_slug": "argentina",
+          "team_name": "阿根廷",
+          "flag": "🇦🇷",
+          "probability": 19.59,
+          "href": "team.html?team=argentina"
+        },
+        {
+          "team_slug": "portugal",
+          "team_name": "葡萄牙",
+          "flag": "🇵🇹",
+          "probability": 6.56,
+          "href": "team.html?team=portugal"
+        },
+        {
+          "team_slug": "england",
+          "team_name": "英格兰",
+          "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+          "probability": 5.2,
+          "href": "team.html?team=england"
+        },
+        {
+          "team_slug": "germany",
+          "team_name": "德国",
+          "flag": "🇩🇪",
+          "probability": 5.16,
+          "href": "team.html?team=germany"
+        },
+        {
+          "team_slug": "morocco",
+          "team_name": "摩洛哥",
+          "flag": "🇲🇦",
+          "probability": 3.48,
+          "href": "team.html?team=morocco"
+        },
+        {
+          "team_slug": "brazil",
+          "team_name": "巴西",
+          "flag": "🇧🇷",
+          "probability": 3.39,
+          "href": "team.html?team=brazil"
+        }
+      ]
+    },
+    "market_public_baseline": {
+      "status": "available",
+      "status_label": "已有快照",
+      "event_slug": "world-cup-winner",
+      "event_title": "World Cup Winner ",
+      "last_fetched_at": "2026-07-19T02:49:46+00:00",
+      "coverage_count": 45,
+      "cache_age_seconds": null,
+      "source_level": "Yellow",
+      "source_label": "待核验线索",
+      "display_rule": "只代表外界怎么看，不作为事实依据。",
+      "missing_reason": "",
+      "teams": {
+        "algeria": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-algeria-win-the-2026-fifa-world-cup",
+          "question": "Will Algeria win the 2026 FIFA World Cup?"
+        },
+        "argentina": {
+          "probability": 40.95,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-argentina-win-the-2026-fifa-world-cup-245",
+          "question": "Will Argentina win the 2026 FIFA World Cup?"
+        },
+        "australia": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-australia-win-the-2026-fifa-world-cup-816",
+          "question": "Will Australia win the 2026 FIFA World Cup?"
+        },
+        "austria": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-austria-win-the-2026-fifa-world-cup",
+          "question": "Will Austria win the 2026 FIFA World Cup?"
+        },
+        "belgium": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-belgium-win-the-2026-fifa-world-cup-358",
+          "question": "Will Belgium win the 2026 FIFA World Cup?"
+        },
+        "brazil": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-brazil-win-the-2026-fifa-world-cup-183",
+          "question": "Will Brazil win the 2026 FIFA World Cup?"
+        },
+        "canada": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-canada-win-the-2026-fifa-world-cup-755",
+          "question": "Will Canada win the 2026 FIFA World Cup?"
+        },
+        "cape-verde": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-cape-verde-win-the-2026-fifa-world-cup",
+          "question": "Will Cape Verde win the 2026 FIFA World Cup?"
+        },
+        "colombia": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-colombia-win-the-2026-fifa-world-cup-734",
+          "question": "Will Colombia win the 2026 FIFA World Cup?"
+        },
+        "croatia": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-croatia-win-the-2026-fifa-world-cup",
+          "question": "Will Croatia win the 2026 FIFA World Cup?"
+        },
+        "curaçao": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-curaao-win-the-2026-fifa-world-cup",
+          "question": "Will Curaçao win the 2026 FIFA World Cup?"
+        },
+        "côte-divoire": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-ivory-coast-win-the-2026-fifa-world-cup",
+          "question": "Will Ivory Coast win the 2026 FIFA World Cup?"
+        },
+        "ecuador": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-ecuador-win-the-2026-fifa-world-cup-986",
+          "question": "Will Ecuador win the 2026 FIFA World Cup?"
+        },
+        "egypt": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-egypt-win-the-2026-fifa-world-cup",
+          "question": "Will Egypt win the 2026 FIFA World Cup?"
+        },
+        "england": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-england-win-the-2026-fifa-world-cup-937",
+          "question": "Will England win the 2026 FIFA World Cup?"
+        },
+        "france": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-france-win-the-2026-fifa-world-cup-924",
+          "question": "Will France win the 2026 FIFA World Cup?"
+        },
+        "germany": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-germany-win-the-2026-fifa-world-cup-467",
+          "question": "Will Germany win the 2026 FIFA World Cup?"
+        },
+        "ghana": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-ghana-win-the-2026-fifa-world-cup",
+          "question": "Will Ghana win the 2026 FIFA World Cup?"
+        },
+        "haiti": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-haiti-win-the-2026-fifa-world-cup",
+          "question": "Will Haiti win the 2026 FIFA World Cup?"
+        },
+        "iran": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-iran-win-the-2026-fifa-world-cup-788",
+          "question": "Will Iran win the 2026 FIFA World Cup?"
+        },
+        "iraq": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-iraq-win-the-2026-fifa-world-cup",
+          "question": "Will Iraq win the 2026 FIFA World Cup?"
+        },
+        "japan": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-japan-win-the-2026-fifa-world-cup-112",
+          "question": "Will Japan win the 2026 FIFA World Cup?"
+        },
+        "jordan": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-jordan-win-the-2026-fifa-world-cup-233",
+          "question": "Will Jordan win the 2026 FIFA World Cup?"
+        },
+        "mexico": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-mexico-win-the-2026-fifa-world-cup-529",
+          "question": "Will Mexico win the 2026 FIFA World Cup?"
+        },
+        "morocco": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-morocco-win-the-2026-fifa-world-cup-464",
+          "question": "Will Morocco win the 2026 FIFA World Cup?"
+        },
+        "netherlands": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-netherlands-win-the-2026-fifa-world-cup-739",
+          "question": "Will Netherlands win the 2026 FIFA World Cup?"
+        },
+        "new-zealand": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-new-zealand-win-the-2026-fifa-world-cup-635",
+          "question": "Will New Zealand win the 2026 FIFA World Cup?"
+        },
+        "norway": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-norway-win-the-2026-fifa-world-cup-893",
+          "question": "Will Norway win the 2026 FIFA World Cup?"
+        },
+        "panama": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-team-z-win-the-2026-fifa-world-cup-316",
+          "question": "Will Panama win the 2026 FIFA World Cup?"
+        },
+        "paraguay": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-paraguay-win-the-2026-fifa-world-cup-967",
+          "question": "Will Paraguay win the 2026 FIFA World Cup?"
+        },
+        "portugal": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-portugal-win-the-2026-fifa-world-cup-912",
+          "question": "Will Portugal win the 2026 FIFA World Cup?"
+        },
+        "qatar": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-qatar-win-the-2026-fifa-world-cup",
+          "question": "Will Qatar win the 2026 FIFA World Cup?"
+        },
+        "saudi-arabia": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-saudi-arabia-win-the-2026-fifa-world-cup",
+          "question": "Will Saudi Arabia win the 2026 FIFA World Cup?"
+        },
+        "scotland": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-scotland-win-the-2026-fifa-world-cup",
+          "question": "Will Scotland win the 2026 FIFA World Cup?"
+        },
+        "senegal": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-senegal-win-the-2026-fifa-world-cup",
+          "question": "Will Senegal win the 2026 FIFA World Cup?"
+        },
+        "south-africa": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-south-africa-win-the-2026-fifa-world-cup",
+          "question": "Will South Africa win the 2026 FIFA World Cup?"
+        },
+        "south-korea": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-south-korea-win-the-2026-fifa-world-cup-485",
+          "question": "Will South Korea win the 2026 FIFA World Cup?"
+        },
+        "spain": {
+          "probability": 59.05,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-spain-win-the-2026-fifa-world-cup-963",
+          "question": "Will Spain win the 2026 FIFA World Cup?"
+        },
+        "sweden": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-sweden-win-the-2026-fifa-world-cup",
+          "question": "Will Sweden win the 2026 FIFA World Cup?"
+        },
+        "switzerland": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-switzerland-win-the-2026-fifa-world-cup",
+          "question": "Will Switzerland win the 2026 FIFA World Cup?"
+        },
+        "tunisia": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-tunisia-win-the-2026-fifa-world-cup-165",
+          "question": "Will Tunisia win the 2026 FIFA World Cup?"
+        },
+        "turkey": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-turkiye-win-the-2026-fifa-world-cup",
+          "question": "Will Turkiye win the 2026 FIFA World Cup?"
+        },
+        "united-states": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-usa-win-the-2026-fifa-world-cup-467",
+          "question": "Will USA win the 2026 FIFA World Cup?"
+        },
+        "uruguay": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-uruguay-win-the-2026-fifa-world-cup-932",
+          "question": "Will Uruguay win the 2026 FIFA World Cup?"
+        },
+        "uzbekistan": {
+          "probability": 0.0,
+          "source_label": "待核验线索",
+          "last_fetched_at": "2026-07-19T02:49:46+00:00",
+          "market_slug": "will-uzbekistan-win-the-2026-fifa-world-cup-773",
+          "question": "Will Uzbekistan win the 2026 FIFA World Cup?"
+        }
+      }
+    }
+  },
+  "ai_perspectives": {
+    "status": "available",
+    "status_label": "已有外部视角",
+    "perspective_count": 300,
+    "faction_count": 10,
+    "covered_team_count": 21,
+    "source_level": "Red",
+    "source_label": "只能参考",
+    "display_rule": "这是外部模型群体参考，只代表不同视角怎么想，不作为事实依据。",
+    "factions": [
+      {
+        "name": "数据派",
+        "count": 30,
+        "color": "#6E8499",
+        "top_champions": [
+          {
+            "team_name": "西班牙",
+            "count": 10
+          },
+          {
+            "team_name": "法国",
+            "count": 8
+          },
+          {
+            "team_name": "阿根廷",
+            "count": 5
+          }
+        ],
+        "representative": {
+          "persona": "前德甲xG数据分析师",
+          "champion": "西班牙",
+          "reason": "西班牙自2024年3月以来保持不败，FIFA世界排名第1，2024欧洲杯冠军，亚马尔2.33亿欧领衔的xG数据统治力被赔率没有充分反映。"
+        }
+      },
+      {
+        "name": "赔率派",
+        "count": 30,
+        "color": "#A85F50",
+        "top_champions": [
+          {
+            "team_name": "西班牙",
+            "count": 8
+          },
+          {
+            "team_name": "阿根廷",
+            "count": 5
+          },
+          {
+            "team_name": "法国",
+            "count": 5
+          }
+        ],
+        "representative": {
+          "persona": "拉斯维加斯博彩顾问",
+          "champion": "西班牙",
+          "reason": "市场有效假说下西班牙+500赔率隐含16.7%已充分定价所有信息，跟随市场共识收益最大。"
+        }
+      },
+      {
+        "name": "老球迷派",
+        "count": 30,
+        "color": "#7E9070",
+        "top_champions": [
+          {
+            "team_name": "克罗地亚",
+            "count": 4
+          },
+          {
+            "team_name": "法国",
+            "count": 3
+          },
+          {
+            "team_name": "阿根廷",
+            "count": 3
+          }
+        ],
+        "representative": {
+          "persona": "58岁意大利老球迷",
+          "champion": "法国",
+          "reason": "德尚2018年用意大利式防守反击夺冠，和1982罗西、2006卡纳瓦罗一脉相承。14.8亿欧世界第一，姆巴佩反击致命。"
+        }
+      },
+      {
+        "name": "玄学派",
+        "count": 30,
+        "color": "#C2A75F",
+        "top_champions": [
+          {
+            "team_name": "阿根廷",
+            "count": 9
+          },
+          {
+            "team_name": "法国",
+            "count": 7
+          },
+          {
+            "team_name": "西班牙",
+            "count": 6
+          }
+        ],
+        "representative": {
+          "persona": "占星术爱好者",
+          "champion": "巴西",
+          "reason": "木星2025年6月入双子座，象征双翼齐飞，巴西维尼修斯+拉菲尼亚边路双子星得木星加持。"
+        }
+      },
+      {
+        "name": "主帅视角派",
+        "count": 30,
+        "color": "#97768F",
+        "top_champions": [
+          {
+            "team_name": "法国",
+            "count": 8
+          },
+          {
+            "team_name": "西班牙",
+            "count": 7
+          },
+          {
+            "team_name": "阿根廷",
+            "count": 5
+          }
+        ],
+        "representative": {
+          "persona": "退休英超主帅",
+          "champion": "英格兰",
+          "reason": "图赫尔高位逼抢+快速转换体系天生适合淘汰赛，贝林厄姆+萨卡转换速度英格兰最快。"
+        }
+      },
+      {
+        "name": "伤病赛程派",
+        "count": 30,
+        "color": "#5E807A",
+        "top_champions": [
+          {
+            "team_name": "阿根廷",
+            "count": 11
+          },
+          {
+            "team_name": "西班牙",
+            "count": 7
+          },
+          {
+            "team_name": "法国",
+            "count": 7
+          }
+        ],
+        "representative": {
+          "persona": "运动医学专家",
+          "champion": "西班牙",
+          "reason": "ACL康复周期9-12个月，罗德里戈和西蒙斯ACL令母队进攻崩塌；西班牙核心框架最完整。"
+        }
+      },
+      {
+        "name": "黑马派",
+        "count": 30,
+        "color": "#C07E55",
+        "top_champions": [
+          {
+            "team_name": "摩洛哥",
+            "count": 9
+          },
+          {
+            "team_name": "挪威",
+            "count": 7
+          },
+          {
+            "team_name": "葡萄牙",
+            "count": 5
+          }
+        ],
+        "representative": {
+          "persona": "南美足球观察家",
+          "champion": "乌拉圭",
+          "reason": "乌拉圭赔率+6500隐含仅1.5%，FIFA第10却与西班牙同组被极度看衰。南美球队美洲作战自带气候适应优势。"
+        }
+      },
+      {
+        "name": "阵容年龄派",
+        "count": 30,
+        "color": "#B27D7E",
+        "top_champions": [
+          {
+            "team_name": "法国",
+            "count": 7
+          },
+          {
+            "team_name": "阿根廷",
+            "count": 6
+          },
+          {
+            "team_name": "西班牙",
+            "count": 6
+          }
+        ],
+        "representative": {
+          "persona": "青训球探",
+          "champion": "法国",
+          "reason": "法国25-28岁黄金年龄覆盖中轴线：姆巴佩27岁登贝莱28岁楚阿梅尼25岁，26.54岁最接近冠军均值26.91岁。"
+        }
+      },
+      {
+        "name": "心理抗压派",
+        "count": 30,
+        "color": "#76729A",
+        "top_champions": [
+          {
+            "team_name": "阿根廷",
+            "count": 9
+          },
+          {
+            "team_name": "法国",
+            "count": 7
+          },
+          {
+            "team_name": "西班牙",
+            "count": 6
+          }
+        ],
+        "representative": {
+          "persona": "体育心理学家",
+          "champion": "阿根廷",
+          "reason": "2022淘汰赛三次生死时刻集体记忆+大马丁40%扑点率，阿根廷点球DNA是淘汰赛杀手锏。"
+        }
+      },
+      {
+        "name": "建模派",
+        "count": 30,
+        "color": "#B59A6B",
+        "top_champions": [
+          {
+            "team_name": "法国",
+            "count": 11
+          },
+          {
+            "team_name": "西班牙",
+            "count": 10
+          },
+          {
+            "team_name": "德国",
+            "count": 3
+          }
+        ],
+        "representative": {
+          "persona": "量化金融分析师",
+          "champion": "西班牙",
+          "reason": "蒙特卡洛模拟10000次tournament显示西班牙夺冠概率18.3%居首，FIFA第1+不败纪录+亚马尔有望恢复。"
+        }
+      }
+    ]
+  },
+  "public_consensus_gap": {
+    "status": "not_available",
+    "status_label": "暂时没有",
+    "display_rule": "市场快照发布后，才展示外界看法和我们路径判断之间差多少。",
+    "items": []
+  },
+  "monitoring": {
+    "items": [
+      {
+        "label": "市场快照",
+        "status": "planned",
+        "status_label": "已规划"
+      },
+      {
+        "label": "官方消息",
+        "status": "planned",
+        "status_label": "已规划"
+      },
+      {
+        "label": "伤病和新闻线索",
+        "status": "planned",
+        "status_label": "已规划"
+      },
+      {
+        "label": "赛程/赛果对账",
+        "status": "planned",
+        "status_label": "已规划"
+      },
+      {
+        "label": "人工复核",
+        "status": "planned",
+        "status_label": "已规划"
+      }
+    ],
+    "public_display_rule": "只展示任务状态，不展示未核验事实为结论。"
+  },
+  "research_log": [
+    {
+      "date": "2026-06-11",
+      "type": "路径卡",
+      "title": "48 队路径卡完成",
+      "href": "teams.html"
+    },
+    {
+      "date": "2026-06-11",
+      "type": "审计",
+      "title": "21 张深度卡通过内部审计",
+      "href": ""
+    },
+    {
+      "date": "2026-06-11",
+      "type": "参照组",
+      "title": "5 组公开参照规则整理完成",
+      "href": ""
+    },
+    {
+      "date": "2026-06-11",
+      "type": "对账",
+      "title": "赛后对账协议验证通过",
+      "href": ""
+    }
+  ]
+}

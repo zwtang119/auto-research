@@ -1,0 +1,57 @@
+schema_version: "0.2"
+match_id: "wc2022-g-arg-ksa"
+
+factors:
+  - factor_id: "wc2022-g-arg-ksa-f01-ksa-offside-trap"
+    match_id: "wc2022-g-arg-ksa"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_away_win_probability"
+    observable_proxy: "Number of Argentina goals disallowed for offside in the first half"
+    quantified_threshold: "At least 2 Argentina goals are ruled out for offside in the first half"
+    settlement_rule: >
+      supported if official match report shows ≥ 2 Argentina goals disallowed for offside
+      in the first half (0'-45'+stoppage); rejected if < 2 such goals; inconclusive if
+      official match timeline data is unavailable.
+    counter_signal: "Argentina scores from open play (non-penalty) in the first half"
+    data_sources:
+      - "wikipedia_2022_wc_group_c"
+      - "fifa_match_report_wc2022_group_c"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor"
+      status: "complete"
+      confidence_0_10: 9
+      reason_for_inconclusive: null
+    calibration_status: "supported"
+    adjudication_evidence: >
+      Wikipedia and BBC Sport match reports confirm 3 Argentina goals disallowed for
+      offside in the first half (once from Messi, twice from Lautaro Martínez).
+      Threshold of ≥ 2 clearly met. Counter-signal (Argentina open-play goal) did not
+      trigger — only a penalty goal was scored in the first half.
+
+  - factor_id: "wc2022-g-arg-ksa-f02-ksa-early-second-half-goal"
+    match_id: "wc2022-g-arg-ksa"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_away_win_probability"
+    observable_proxy: "Saudi Arabia goals scored in the first 10 minutes of the second half (minutes 46-55)"
+    quantified_threshold: "Saudi Arabia scores at least 1 goal within the first 10 minutes of the second half (46th to 55th minute)"
+    settlement_rule: >
+      supported if official match report shows ≥ 1 Saudi Arabia goal between 46' and 55';
+      rejected if no Saudi Arabia goal in this window; inconclusive if official match
+      timeline data is unavailable.
+    counter_signal: "Argentina leads by 2 or more goals at half-time"
+    data_sources:
+      - "wikipedia_2022_wc_group_c"
+      - "fifa_match_report_wc2022_group_c"
+    adjudicator:
+      required_independence: "not the same agent/person who generated the factor"
+      status: "complete"
+      confidence_0_10: 10
+      reason_for_inconclusive: null
+    calibration_status: "supported"
+    adjudication_evidence: >
+      Official match report and Wikipedia confirm Saleh Al-Shehri scored for Saudi Arabia
+      in the 48th minute, within the 46'-55' window. Saudi Arabia added a second goal
+      via Salem Al-Dawsari in the 53rd minute. Counter-signal did not trigger — Argentina
+      led only 1-0 at half-time (Messi penalty 10'), not 2+ goals.

@@ -1,0 +1,73 @@
+schema_version: "0.2"
+match_id: "wc2026-a-m01-mex-rsa"
+
+factors:
+  - factor_id: "wc2026-a-m01-mex-rsa-f01-home-possession"
+    match_id: "wc2026-a-m01-mex-rsa"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Mexico first-half possession percentage"
+    quantified_threshold: "Mexico possession >= 55% in the first half (minutes 1-45+stoppage)"
+    settlement_rule: >
+      supported if official match statistics show Mexico first-half possession >= 55%;
+      rejected if Mexico first-half possession < 48%;
+      inconclusive if official match statistics are unavailable or only full-match
+      (90-minute aggregate) possession is reported without half-time breakdown.
+    counter_signal: "South Africa scores first before the 20th minute, forcing Mexico to chase and disrupting possession control"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_a"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-a-m01-mex-rsa-f02-rsa-shots-on-target"
+    match_id: "wc2026-a-m01-mex-rsa"
+    origin: "cds_generated"
+    event_relation: "suppressor"
+    direction: "decreases_home_win_probability"
+    observable_proxy: "South Africa shots on target count in 90 minutes"
+    quantified_threshold: "South Africa shots on target <= 3 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show South Africa shots on target <= 3
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if South Africa shots on target >= 5;
+      inconclusive if official match statistics are unavailable or only total shots
+      (not shots on target) are reported.
+    counter_signal: "South Africa scores 2 or more goals in the match"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_a"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-a-m01-mex-rsa-f03-mex-corner-count"
+    match_id: "wc2026-a-m01-mex-rsa"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Mexico corner kick count in 90 minutes"
+    quantified_threshold: "Mexico corners >= 6 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Mexico corner kicks >= 6
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Mexico corners <= 3;
+      inconclusive if official match statistics are unavailable.
+    counter_signal: "South Africa leads at half-time"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_a"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"

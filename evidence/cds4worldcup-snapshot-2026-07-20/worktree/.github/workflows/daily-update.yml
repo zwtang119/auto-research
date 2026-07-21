@@ -1,0 +1,77 @@
+# 每日 CDS 管线全量更新
+# UTC 00:00 定时运行完整 CDS 管线（市场快照 → Elo 基线 → CDS 出线/夺冠模拟 → 站点数据构建），
+# commit 变更并 push to main，触发 pages.yml 重建站点。
+# 各 CDS 步骤允许失败（继续使用昨日数据，站点显示 stale 指示器）。
+
+name: Daily CDS Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # UTC midnight
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: true
+
+jobs:
+  cds-update:
+    name: Run CDS Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      # ── Step 1: Market snapshot ──
+      - name: Fetch market snapshot
+        continue-on-error: true
+        run: python3 scripts/fetch_market_snapshot.py
+
+      # ── Step 2: Elo+Poisson baseline ──
+      - name: Run Elo baseline
+        continue-on-error: true
+        run: python3 scripts/numeric_odds.py
+
+      # ── Step 3: CDS Qualification simulation ──
+      - name: CDS Qualification
+        continue-on-error: true
+        run: python3 scripts/cds_path_simulation.py --layer=qualification
+
+      # ── Step 4: CDS Championship simulation ──
+      - name: CDS Championship
+        continue-on-error: true
+        run: python3 scripts/cds_path_simulation.py --layer=championship
+
+      # TODO (WI-4.3): Coach model — select-xi step
+      # - name: Coach Select XI
+      #   continue-on-error: true
+      #   run: python3 scripts/coach_select_xi.py
+
+      # TODO (WI-CM.11): Coach model — simulate step
+      # - name: Coach Simulate
+      #   continue-on-error: true
+      #   run: python3 scripts/coach_simulate.py
+
+      # ── Step 5: Build site data ──
+      - name: Build site data
+        run: python3 scripts/build_site_data.py
+
+      # ── Step 6: Commit and push ──
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed/ site/data/
+          git diff --staged --quiet || git commit -m "chore(daily): CDS update $(date -u +%Y-%m-%d)"
+          git push origin main

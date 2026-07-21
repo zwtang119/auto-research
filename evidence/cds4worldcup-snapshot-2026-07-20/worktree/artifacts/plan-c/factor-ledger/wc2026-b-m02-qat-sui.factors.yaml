@@ -1,0 +1,75 @@
+schema_version: "0.2"
+match_id: "wc2026-b-m02-qat-sui"
+
+factors:
+  - factor_id: "wc2026-b-m02-qat-sui-f01-qat-possession-struggle"
+    match_id: "wc2026-b-m02-qat-sui"
+    origin: "cds_generated"
+    event_relation: "suppressor"
+    direction: "decreases_home_win_probability"
+    observable_proxy: "Qatar possession percentage in the full match (90 minutes)"
+    quantified_threshold: "Qatar possession < 45% in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Qatar possession < 45%
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Qatar possession >= 50%;
+      inconclusive if official match statistics are unavailable or only partial
+      possession data is reported.
+    counter_signal: "Qatar scores first and maintains possession control beyond 60th minute"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_b"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-b-m02-qat-sui-f02-sui-shots-on-target"
+    match_id: "wc2026-b-m02-qat-sui"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_away_win_probability"
+    observable_proxy: "Switzerland shots on target count in 90 minutes"
+    quantified_threshold: "Switzerland shots on target >= 4 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Switzerland shots on target >= 4
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Switzerland shots on target <= 2;
+      inconclusive if official match statistics are unavailable or only total shots
+      (not shots on target) are reported.
+    counter_signal: "Switzerland fails to score despite 4+ shots on target (finishing inefficiency)"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_b"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-b-m02-qat-sui-f03-afif-key-passes"
+    match_id: "wc2026-b-m02-qat-sui"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Akram Afif key passes and chances created in 90 minutes"
+    quantified_threshold: "Afif key passes >= 3 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Akram Afif key passes >= 3
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Afif key passes <= 1;
+      inconclusive if official match statistics are unavailable or player-level
+      statistics for Afif are not reported.
+    counter_signal: "Afif is substituted before the 60th minute due to injury or tactical reasons"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_b"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"

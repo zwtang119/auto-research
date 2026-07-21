@@ -1,0 +1,58 @@
+schema_version: '0.2'
+match_id: wc2026-a-m01-mex-rsa
+factors:
+- factor_id: wc2026-a-m01-mex-rsa-f01-ranking-advantage
+  origin: cds_generated
+  event_relation: precursor
+  direction: home win more likely
+  observable_proxy: FIFA ranking position difference
+  quantified_threshold: Mexico's FIFA ranking is at least 15 positions higher than
+    South Africa's
+  settlement_rule: Supported if ranking difference >=15; rejected if difference <15;
+    inconclusive if ranking data unavailable or ranking system changed
+  counter_signal: South Africa has drawn or won against a top-30 ranked team in the
+    12 months before the match
+  data_sources:
+  - wikipedia_mexico_national_football_team_fifa_ranking
+  - wikipedia_south_africa_national_football_team_fifa_ranking
+  adjudicator:
+    required_independence: same_human_different_time
+    status: pending
+    confidence_0_10: null
+  calibration_status: tracking
+- factor_id: wc2026-a-m01-mex-rsa-f02-experience-gap
+  origin: cds_generated
+  event_relation: precursor
+  direction: home win more likely
+  observable_proxy: Number of World Cup appearances by each team
+  quantified_threshold: Mexico has at least 8 more World Cup appearances than South
+    Africa
+  settlement_rule: Supported if appearance difference >=8; rejected if <8; inconclusive
+    if data unavailable
+  counter_signal: South Africa's squad has significant World Cup experience from other
+    nations (e.g., dual nationals)
+  data_sources:
+  - wikipedia_mexico_national_football_team_fifa_ranking
+  - wikipedia_south_africa_national_football_team_fifa_ranking
+  adjudicator:
+    required_independence: same_human_different_time
+    status: pending
+    confidence_0_10: null
+  calibration_status: tracking
+- factor_id: wc2026-a-m01-mex-rsa-f03-2022-wc-group-performance
+  origin: cds_generated
+  event_relation: precursor
+  direction: home win more likely
+  observable_proxy: Points earned by Mexico in 2022 FIFA World Cup Group C
+  quantified_threshold: Mexico earned at least 4 points in Group C in 2022
+  settlement_rule: Supported if points >=4; rejected if points <4; inconclusive if
+    match details unavailable
+  counter_signal: South Africa has a better recent tournament record (e.g., 2025 AFCON
+    performance)
+  data_sources:
+  - wikipedia_2022_wc_group_c
+  adjudicator:
+    required_independence: same_human_different_time
+    status: pending
+    confidence_0_10: null
+  calibration_status: tracking

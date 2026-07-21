@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS4WorldCup - 全景赛程</title>
+  <meta name="description" content="2026 世界杯 104 场比赛全景赛程：12 组小组赛矩阵 + 淘汰赛签表 + 数值预测概率。">
+  <link rel="stylesheet" href="css/portal.css">
+  <script src="js/common.js"></script>
+  <script src="js/panorama.js" defer></script>
+</head>
+<body>
+  <header class="topbar" aria-label="站点导航">
+    <a class="brand" href="index.html">CDS4WorldCup</a>
+    <nav class="topnav">
+      <a href="index.html">首页</a>
+      <a href="panorama.html" class="active">全景图</a>
+      <a href="teams.html">球队</a>
+    </nav>
+  </header>
+
+  <main class="portal panorama-page">
+    <section class="section panorama-hero">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">全景赛程</p>
+          <h1>104 场比赛，一眼看完。</h1>
+          <p class="lede">12 组小组赛对阵 + 淘汰赛签表。每场比赛附带数值模型概率，方便对比。</p>
+        </div>
+        <p class="count-line" data-generated-at></p>
+      </div>
+    </section>
+
+    <section class="section panorama-controls">
+      <div class="view-switcher" data-view-switcher aria-label="视图切换">
+        <button class="view-btn" data-view="group">小组赛</button>
+        <button class="view-btn" data-view="knockout">淘汰赛</button>
+        <button class="view-btn" data-view="date">按日期</button>
+      </div>
+      <div class="panorama-legend">
+        <span class="legend-item"><span class="prob-seg prob-home legend-swatch"></span>主胜</span>
+        <span class="legend-item"><span class="prob-seg prob-draw legend-swatch"></span>平局</span>
+        <span class="legend-item"><span class="prob-seg prob-away legend-swatch"></span>客胜</span>
+        <span class="legend-sep">|</span>
+        <span class="legend-item"><span class="heat-swatch heat-swatch-hot"></span>一边倒</span>
+        <span class="legend-item"><span class="heat-swatch heat-swatch-yellow"></span>偏强</span>
+        <span class="legend-item"><span class="heat-swatch heat-swatch-red"></span>接近</span>
+        <span class="legend-sep">|</span>
+        <span class="legend-item"><span class="source-badge source-red">只能参考</span>数值模型输出</span>
+      </div>
+    </section>
+
+    <!-- Group Stage Grid -->
+    <div class="panorama-grid" data-panorama-grid>
+      <div class="empty-state">正在加载赛程数据...</div>
+    </div>
+
+    <!-- Knockout Stage Bracket -->
+    <div class="knockout-bracket" data-knockout-bracket style="display:none">
+      <div class="empty-state">正在加载淘汰赛数据...</div>
+    </div>
+
+    <!-- Date View (Mobile) -->
+    <div class="date-view" data-date-view style="display:none">
+      <div class="empty-state">正在加载日期数据...</div>
+    </div>
+
+    <section class="section panorama-footer">
+      <div class="notice">
+        数值预测来自 Elo + 泊松基线模型（Red Source），只能参考，不作为投注建议。
+        市场数据只代表"外界怎么看"，不是我们的事实依据。
+        点击任意比赛卡片可查看详情。
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-disclaimer">
+    <p class="disclaimer-text">
+      <strong>关于概率信号：</strong>全景赛程中的概率来自 Elo+泊松数值模型（Red Source），仅作参考。
+      <br><br>
+      <strong>来源分级：</strong>绿 = 可靠事实 · 黄 = 待核验线索 · 红 = 只能参考
+    </p>
+  </footer>
+</body>
+</html>

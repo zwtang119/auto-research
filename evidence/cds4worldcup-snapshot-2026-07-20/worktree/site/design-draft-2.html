@@ -1,0 +1,1671 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CDS4WorldCup — 草稿 2 · 概率为中心的赛事直播</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CDS4WorldCup · 草稿 2 (DRAFT 2)
+   方向：暗色"赛事直播 + 战术室"
+   核心：把 48 队概率从脚注升到主角
+   状态：DRAFT — 仅供视觉评审，不替换现有页面
+   ============================================================ */
+
+:root {
+  /* 暗色底层 */
+  --bg: #07090f;
+  --bg-1: #0d1119;
+  --bg-2: #131a28;
+  --bg-3: #1a2335;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-2: rgba(255, 255, 255, 0.12);
+
+  /* 文字 */
+  --ink: #f3f5f8;
+  --ink-2: #a3aec0;
+  --ink-3: #5a6677;
+  --ink-4: #3a4356;
+
+  /* 概率等级 */
+  --tier-1: #00d4a8;   /* 冠军热门：青绿 */
+  --tier-1-bg: rgba(0, 212, 168, 0.10);
+  --tier-1-glow: rgba(0, 212, 168, 0.35);
+
+  --tier-2: #4aa3ff;   /* 强队：蓝 */
+  --tier-2-bg: rgba(74, 163, 255, 0.10);
+
+  --tier-3: #f5b942;   /* 黑马：暖黄 */
+  --tier-3-bg: rgba(245, 185, 66, 0.10);
+
+  --tier-4: #5a6677;   /* 长草：灰 */
+  --tier-4-bg: rgba(90, 102, 119, 0.10);
+
+  --gold: #ffd55a;     /* 顶部金 */
+  --red: #ff5e6c;      /* 危险红（仅占位/负面） */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--bg); color: var(--ink); }
+
+body {
+  font-family: "Bricolage Grotesque", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01", "ss02", "ss03";
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* 草稿 2 标识 */
+.draft-banner {
+  background: linear-gradient(90deg, rgba(255, 213, 90, 0.10), rgba(255, 213, 90, 0.04));
+  border-bottom: 1px solid rgba(255, 213, 90, 0.2);
+  color: var(--gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  padding: 10px 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* 顶部导航 */
+.topbar {
+  align-items: center;
+  background: rgba(7, 9, 15, 0.7);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.brand-dot {
+  background: var(--tier-1);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--tier-1-glow);
+  height: 8px;
+  width: 8px;
+}
+
+.brand span { color: var(--ink-2); font-weight: 400; }
+
+.topnav { display: flex; gap: 4px; }
+.topnav a {
+  border-radius: 4px;
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  text-decoration: none;
+  transition: background 160ms, color 160ms;
+}
+.topnav a:hover, .topnav a.active { background: var(--bg-2); color: var(--ink); }
+
+/* 主体容器 */
+.shell {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 28px;
+}
+
+/* ─────── HERO ─────── */
+.hero {
+  padding: 88px 0 64px;
+  position: relative;
+}
+
+.hero::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 18% 10%, rgba(0, 212, 168, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 88% 80%, rgba(74, 163, 255, 0.08), transparent 55%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.eyebrow {
+  align-items: center;
+  color: var(--tier-1);
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  font-weight: 500;
+  gap: 8px;
+  letter-spacing: 0.18em;
+  margin-bottom: 24px;
+  position: relative;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  background: var(--tier-1);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  width: 24px;
+}
+
+.eyebrow.muted { color: var(--ink-3); }
+.eyebrow.muted::before { background: var(--ink-3); }
+
+.hero h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(3rem, 7.5vw, 7.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  margin-bottom: 28px;
+  max-width: 12ch;
+  position: relative;
+}
+
+.hero h1 em {
+  color: var(--tier-1);
+  font-style: normal;
+  position: relative;
+}
+.hero h1 em::after {
+  background: linear-gradient(90deg, transparent, var(--tier-1-glow), transparent);
+  bottom: -8px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.hero-lede {
+  color: var(--ink-2);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.55;
+  max-width: 620px;
+  position: relative;
+}
+.hero-lede strong { color: var(--ink); font-weight: 500; }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+  position: relative;
+}
+
+.btn {
+  align-items: center;
+  background: var(--tier-1);
+  border: 1px solid var(--tier-1);
+  border-radius: 4px;
+  color: var(--bg);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.02em;
+  min-height: 46px;
+  padding: 12px 22px;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.btn:hover {
+  box-shadow: 0 8px 24px var(--tier-1-glow);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-2);
+  color: var(--ink-2);
+}
+.btn-ghost:hover { background: var(--bg-2); border-color: var(--ink-3); color: var(--ink); }
+
+/* Hero 旁的实时指标条 */
+.hero-meta {
+  border-top: 1px solid var(--line);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  gap: 48px;
+  margin-top: 64px;
+  padding-top: 24px;
+  position: relative;
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 6px; }
+.hero-meta-item .lbl { color: var(--ink-3); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.hero-meta-item .val { color: var(--ink); font-size: 1.1rem; font-weight: 700; }
+.hero-meta-item .val .unit { color: var(--ink-3); font-size: 0.85rem; font-weight: 400; margin-left: 2px; }
+.hero-meta-item .delta { color: var(--tier-1); font-size: 0.78rem; }
+.hero-meta-item .delta.down { color: var(--red); }
+
+/* ─────── 48 队概率网格 ─────── */
+.section { padding: 80px 0 40px; position: relative; }
+
+.section-head {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.section-head h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 16ch;
+}
+
+.section-head p { color: var(--ink-3); font-size: 0.92rem; max-width: 360px; }
+
+/* 五支冠军热门 - 大卡 */
+.spotlight {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 48px;
+}
+
+.spot {
+  background: linear-gradient(180deg, var(--bg-1), var(--bg));
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 24px 20px 18px;
+  position: relative;
+  transition: border-color 200ms, transform 200ms;
+  cursor: pointer;
+}
+.spot:hover { border-color: var(--tier-1); transform: translateY(-2px); }
+
+.spot-rank {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.spot-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 2px;
+}
+
+.spot-en {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  margin-bottom: 18px;
+}
+
+.spot-prob {
+  align-items: baseline;
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+.spot-prob .num { color: var(--tier-1); font-size: 2.2rem; letter-spacing: -0.04em; line-height: 1; }
+.spot-prob .pct { color: var(--tier-1); font-size: 1rem; }
+
+.spot-bar {
+  background: var(--bg-2);
+  border-radius: 999px;
+  height: 6px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.spot-bar-fill {
+  background: linear-gradient(90deg, var(--tier-1), #4aa3ff);
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+  width: 0%;
+  transition: width 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spot-meta {
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+/* 48 队紧凑网格 */
+.tier-strip {
+  align-items: center;
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  gap: 12px;
+  margin: 24px 0 12px;
+  text-transform: uppercase;
+}
+.tier-strip .lbl { color: var(--ink-3); letter-spacing: 0.12em; }
+.tier-strip .line { background: var(--line); flex: 1; height: 1px; }
+.tier-strip .count { color: var(--ink-2); letter-spacing: 0.06em; }
+
+.field {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.cell {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 14px 10px 10px;
+  position: relative;
+  transition: border-color 200ms, transform 200ms, background 200ms;
+}
+.cell:hover {
+  background: var(--bg-2);
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+}
+
+.cell-rank {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  margin-bottom: 4px;
+}
+
+.cell-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.cell-prob {
+  color: var(--ink-2);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.cell.tier-1 { border-color: rgba(0, 212, 168, 0.25); background: var(--tier-1-bg); }
+.cell.tier-1 .cell-prob { color: var(--tier-1); }
+.cell.tier-2 { border-color: rgba(74, 163, 255, 0.22); background: var(--tier-2-bg); }
+.cell.tier-2 .cell-prob { color: var(--tier-2); }
+.cell.tier-3 { border-color: rgba(245, 185, 66, 0.18); background: var(--tier-3-bg); }
+.cell.tier-3 .cell-prob { color: var(--tier-3); }
+.cell.tier-4 .cell-prob { color: var(--ink-3); }
+
+/* ─────── 三源对比 ─────── */
+.compare-card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px;
+}
+
+.compare-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.compare-row {
+  align-items: center;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 120px 1fr 1fr 1fr 72px;
+}
+
+.compare-team {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.compare-bar {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.compare-track {
+  background: var(--bg-2);
+  border-radius: 999px;
+  flex: 1;
+  height: 12px;
+  overflow: hidden;
+}
+
+.compare-fill {
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+  transition: width 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0%;
+}
+
+.compare-fill.elo { background: linear-gradient(90deg, #4aa3ff, #6ec1ff); }
+.compare-fill.market { background: linear-gradient(90deg, #f5b942, #ffd55a); }
+.compare-fill.model { background: linear-gradient(90deg, #00d4a8, #5fffd0); }
+
+.compare-val {
+  color: var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 50px;
+  text-align: right;
+}
+
+.compare-axis {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-3);
+  display: grid;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  gap: 16px;
+  grid-template-columns: 120px 1fr 1fr 1fr 72px;
+  margin-bottom: 8px;
+  padding: 0 0 8px 0;
+  text-transform: uppercase;
+}
+.compare-axis .hdr { letter-spacing: 0.12em; }
+
+/* 散点图：市场 vs Elo */
+.scatter {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  height: 320px;
+  justify-content: center;
+  margin-top: 48px;
+  position: relative;
+}
+.scatter-hint {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─────── 关键比赛 ─────── */
+.matches-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 24px;
+}
+
+.match-card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1.2fr;
+  padding: 18px 20px;
+  position: relative;
+  transition: border-color 200ms, transform 200ms;
+}
+.match-card:hover { border-color: var(--line-2); transform: translateY(-2px); }
+
+.match-stage {
+  border-right: 1px solid var(--line);
+  padding-right: 16px;
+}
+.match-stage .label { color: var(--ink-3); font-family: "JetBrains Mono", monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.match-stage .round { color: var(--tier-1); font-family: "JetBrains Mono", monospace; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; margin: 4px 0 14px; }
+.match-stage .when { color: var(--ink-2); font-size: 0.85rem; }
+.match-stage .where { color: var(--ink-3); font-size: 0.78rem; margin-top: 2px; }
+
+.match-teams { display: flex; flex-direction: column; gap: 8px; }
+.match-team-row {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.match-team-row .name { font-size: 1rem; font-weight: 600; }
+.match-team-row .num {
+  color: var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.match-prob-bar {
+  background: var(--bg-2);
+  border-radius: 999px;
+  display: flex;
+  height: 8px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.match-prob-bar .seg-home { background: var(--tier-1); }
+.match-prob-bar .seg-draw { background: var(--tier-3); }
+.match-prob-bar .seg-away { background: var(--tier-2); }
+
+/* ─────── 数据说明 ─────── */
+.legend {
+  align-items: center;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  gap: 24px;
+  margin-top: 40px;
+  padding: 16px 20px;
+}
+.legend-item { align-items: center; display: flex; gap: 8px; }
+.legend-dot { border-radius: 2px; display: inline-block; height: 10px; width: 10px; }
+.legend-dot.t1 { background: var(--tier-1); }
+.legend-dot.t2 { background: var(--tier-2); }
+.legend-dot.t3 { background: var(--tier-3); }
+.legend-dot.t4 { background: var(--ink-3); }
+
+/* ─────── 夺冠路径阶梯 ─────── */
+.path-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+.ladder-team {
+  align-items: center;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 140px 1fr;
+  padding: 18px 22px;
+  transition: border-color 200ms;
+}
+.ladder-team:hover { border-color: var(--line-2); }
+.ladder-team-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.ladder-team-name span {
+  color: var(--ink-3);
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  margin-top: 2px;
+}
+.ladder-nodes {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+.ladder-node {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.ladder-node::after {
+  background: var(--line);
+  content: "";
+  height: 1px;
+  position: absolute;
+  right: -16px;
+  top: 10px;
+  width: 16px;
+}
+.ladder-node:last-child::after { display: none; }
+.ladder-dot {
+  align-items: center;
+  border-radius: 50%;
+  color: var(--bg);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  height: 20px;
+  justify-content: center;
+  transition: transform 200ms;
+  width: 20px;
+}
+.ladder-node:hover .ladder-dot { transform: scale(1.2); }
+.ladder-label {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ladder-prob {
+  color: var(--ink-2);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  margin-top: -2px;
+}
+
+/* ─────── 信号一致性仪表盘 ─────── */
+.consensus-ring {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.consensus-ring svg {
+  height: 36px;
+  transform: rotate(-90deg);
+  width: 36px;
+}
+.consensus-ring circle.bg { fill: none; stroke: var(--bg-2); stroke-width: 4; }
+.consensus-ring circle.fill {
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  stroke-linecap: round;
+  stroke-width: 4;
+  transition: stroke-dashoffset 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.consensus-ring .consensus-lbl {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─────── 火花线 ─────── */
+.sparkline {
+  height: 22px;
+  margin: 10px 0 4px;
+  opacity: 0.7;
+  width: 100%;
+}
+.sparkline path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+.sparkline.area {
+  fill-opacity: 0.12;
+  stroke: none;
+}
+
+/* ─────── 路径影响标签 ─────── */
+.impact-tag {
+  background: rgba(255, 213, 90, 0.10);
+  border: 1px solid rgba(255, 213, 90, 0.25);
+  border-radius: 999px;
+  color: var(--gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+}
+
+/* ─────── 页脚 ─────── */
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  margin-top: 80px;
+  padding: 40px 0 80px;
+}
+footer .shell { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+footer p { max-width: 640px; }
+footer .source-note { color: var(--ink-3); font-size: 0.74rem; }
+footer .source-note a { color: var(--ink-2); text-decoration: none; border-bottom: 1px dotted var(--ink-3); }
+
+/* ─────── 响应式 ─────── */
+@media (max-width: 1100px) {
+  .spotlight { grid-template-columns: repeat(3, 1fr); }
+  .field { grid-template-columns: repeat(6, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .shell { padding: 0 18px; }
+  .topbar { padding: 0 18px; }
+  .hero { padding: 56px 0 40px; }
+  .hero-meta { flex-wrap: wrap; gap: 20px; }
+  .spotlight { grid-template-columns: repeat(2, 1fr); }
+  .field { grid-template-columns: repeat(4, 1fr); }
+  .matches-grid { grid-template-columns: 1fr; }
+  .compare-row { grid-template-columns: 80px 1fr 1fr 1fr 60px; gap: 10px; }
+  .compare-team { font-size: 0.85rem; }
+  .compare-val { min-width: 40px; font-size: 0.78rem; }
+}
+
+@media (max-width: 540px) {
+  .spotlight { grid-template-columns: 1fr; }
+  .field { grid-template-columns: repeat(3, 1fr); }
+  .topnav { display: none; }
+}
+
+/* ─────── LIVE TICKER (新增) ─────── */
+.ticker {
+  align-items: center;
+  background: linear-gradient(90deg, var(--bg), var(--bg-1), var(--bg));
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-label {
+  align-items: center;
+  background: var(--tier-1);
+  color: var(--bg);
+  display: flex;
+  font-size: 0.65rem;
+  font-weight: 700;
+  gap: 6px;
+  height: 100%;
+  letter-spacing: 0.14em;
+  padding: 0 14px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.ticker-label .dot {
+  background: var(--bg);
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(0.9); }
+  50% { opacity: 0.4; transform: scale(0.5); }
+}
+
+.ticker-track {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 18px;
+  white-space: nowrap;
+}
+
+.ticker-marquee {
+  animation: marquee 50s linear infinite;
+  display: inline-flex;
+  gap: 36px;
+  padding-right: 36px;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  align-items: center;
+  color: var(--ink-2);
+  display: inline-flex;
+  font-size: 0.74rem;
+  gap: 8px;
+}
+.ticker-item strong { color: var(--ink); font-weight: 700; }
+.ticker-item .badge-mini {
+  background: var(--tier-1-bg);
+  border: 1px solid rgba(0, 212, 168, 0.25);
+  border-radius: 3px;
+  color: var(--tier-1);
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 6px;
+}
+.ticker-item.up { color: var(--tier-1); }
+.ticker-item.down { color: var(--red); }
+
+/* ─────── 球队徽标 (新增) ─────── */
+.badge {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: -0.04em;
+  position: relative;
+  text-transform: uppercase;
+}
+.badge::after {
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  inset: 2px;
+  opacity: 0.4;
+  position: absolute;
+}
+.badge-sm { font-size: 0.6rem; height: 26px; width: 26px; }
+.badge-md { font-size: 0.72rem; height: 36px; width: 36px; }
+.badge-lg { font-size: 0.88rem; height: 50px; width: 50px; }
+
+.spot .badge { margin-bottom: 8px; }
+
+/* 队色 (16 强覆盖, 其余回退到 .c-zz) */
+.c-esp { background: linear-gradient(135deg, #aa151b, #f1bf00); color: #f1bf00; }
+.c-fra { background: linear-gradient(135deg, #002395, #ed2939); color: #fff; }
+.c-arg { background: linear-gradient(135deg, #74acdf, #fff); color: #74acdf; }
+.c-eng { background: linear-gradient(135deg, #00247d, #cf142b); color: #fff; }
+.c-bra { background: linear-gradient(135deg, #009c3b, #ffdf00); color: #ffdf00; }
+.c-ger { background: linear-gradient(135deg, #000, #dd0000); color: #ffce00; }
+.c-por { background: linear-gradient(135deg, #046a38, #da291c); color: #ffdf00; }
+.c-ned { background: linear-gradient(135deg, #ae1c28, #21468b); color: #fff; }
+.c-ita { background: linear-gradient(135deg, #008c45, #cd212a); color: #fff; }
+.c-bel { background: linear-gradient(135deg, #000, #fdda24); color: #fdda24; }
+.c-usa { background: linear-gradient(135deg, #b22234, #3c3b6e); color: #fff; }
+.c-cro { background: linear-gradient(135deg, #ff0000, #fff); color: #171796; }
+.c-uru { background: linear-gradient(135deg, #0038a8, #fff); color: #0038a8; }
+.c-col { background: linear-gradient(135deg, #fcd116, #003893); color: #003893; }
+.c-mex { background: linear-gradient(135deg, #006847, #ce1126); color: #fff; }
+.c-jpn { background: linear-gradient(135deg, #bc002d, #fff); color: #bc002d; }
+.c-mar { background: linear-gradient(135deg, #c1272d, #006233); color: #006233; }
+.c-sui { background: linear-gradient(135deg, #d52b1e, #fff); color: #d52b1e; }
+.c-den { background: linear-gradient(135deg, #c8102e, #fff); color: #c8102e; }
+.c-sen { background: linear-gradient(135deg, #00853f, #fdef42); color: #00853f; }
+.c-usa2 { background: linear-gradient(135deg, #b22234, #3c3b6e); color: #fff; }
+.c-can { background: linear-gradient(135deg, #d52b1e, #fff); color: #d52b1e; }
+.c-cmr { background: linear-gradient(135deg, #007a5e, #ce1126); color: #fcd116; }
+.c-ksa { background: linear-gradient(135deg, #006c35, #fff); color: #006c35; }
+.c-egy { background: linear-gradient(135deg, #ce1126, #000); color: #fcd116; }
+.c-gha { background: linear-gradient(135deg, #ce1126, #fcd116); color: #000; }
+.c-tun { background: linear-gradient(135deg, #e70013, #fff); color: #e70013; }
+.c-qat { background: linear-gradient(135deg, #8d1b3d, #fff); color: #8d1b3d; }
+.c-kor { background: linear-gradient(135deg, #cd2e3a, #0047a0); color: #fff; }
+.c-aus { background: linear-gradient(135deg, #00008b, #c8102e); color: #fff; }
+.c-ksa2 { background: linear-gradient(135deg, #006c35, #fff); color: #006c35; }
+.c-uru2 { background: linear-gradient(135deg, #0038a8, #fff); color: #0038a8; }
+.c-crc { background: linear-gradient(135deg, #002b7f, #fff); color: #ce1126; }
+.c-rsa { background: linear-gradient(135deg, #007749, #ffb81c); color: #000; }
+.c-jpn2 { background: linear-gradient(135deg, #bc002d, #fff); color: #bc002d; }
+.c-aus2 { background: linear-gradient(135deg, #00008b, #c8102e); color: #fff; }
+.c-nzl { background: linear-gradient(135deg, #000, #fff); color: #c8102e; }
+.c-uzb { background: linear-gradient(135deg, #1eb53a, #fff); color: #0099b5; }
+.c-jor { background: linear-gradient(135deg, #000, #fff); color: #ce1126; }
+.c-irq { background: linear-gradient(135deg, #ce1126, #fff); color: #000; }
+.c-pan { background: linear-gradient(135deg, #005aa7, #fff); color: #d21034; }
+.c-cod { background: linear-gradient(135deg, #007fff, #fcd116); color: #ce1021; }
+.c-cpv { background: linear-gradient(135deg, #003893, #ce1126); color: #fff; }
+.c-hai { background: linear-gradient(135deg, #00209f, #ce1126); color: #fff; }
+.c-cze { background: linear-gradient(135deg, #11457e, #fff); color: #d7141a; }
+.c-bih { background: linear-gradient(135deg, #002395, #fecb00); color: #fecb00; }
+.c-sco { background: linear-gradient(135deg, #003078, #fff); color: #003078; }
+.c-civ { background: linear-gradient(135deg, #f77f00, #fff); color: #009e60; }
+.c-alg { background: linear-gradient(135deg, #006233, #fff); color: #006233; }
+.c-ecu { background: linear-gradient(135deg, #fcd116, #003893); color: #003893; }
+.c-par { background: linear-gradient(135deg, #d52b1e, #fff); color: #0038a8; }
+.c-tur { background: linear-gradient(135deg, #e30a17, #fff); color: #e30a17; }
+.c-nor { background: linear-gradient(135deg, #ba0c2f, #fff); color: #00205b; }
+.c-swe { background: linear-gradient(135deg, #006aa7, #fecb00); color: #fecb00; }
+.c-aut { background: linear-gradient(135deg, #ed2939, #fff); color: #ed2939; }
+.c-zz { background: var(--bg-3); color: var(--ink-2); }
+
+/* ─────── 球队选择条 (新增) ─────── */
+.pick {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-top: 28px;
+  padding: 14px 18px;
+  position: relative;
+}
+.pick-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pick-label {
+  color: var(--ink-3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+.pick-btn {
+  align-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink-2);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 500;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px 0 3px;
+  transition: all 160ms;
+}
+.pick-btn:hover { border-color: var(--tier-1); color: var(--ink); }
+.pick-btn .badge-sm { font-size: 0.5rem; height: 22px; width: 22px; }
+
+/* ─────── Momentum sparkline (新增) ─────── */
+.spark { display: inline-block; vertical-align: middle; }
+.spark .ln { fill: none; stroke-width: 1.4; }
+.spark .area { opacity: 0.18; }
+.spark.up .ln { stroke: var(--tier-1); }
+.spark.up .area { fill: var(--tier-1); }
+.spark.down .ln { stroke: var(--red); }
+.spark.down .area { fill: var(--red); }
+.spark.flat .ln { stroke: var(--ink-3); }
+.spark.flat .area { fill: var(--ink-3); }
+
+.cell-meta {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.cell-delta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+.cell-delta.up { color: var(--tier-1); }
+.cell-delta.down { color: var(--red); }
+.cell-delta.flat { color: var(--ink-3); }
+
+/* ─────── 阶段热力图 (新增, 来自 FiveThirtyEight) ─────── */
+.heatmap-card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-top: 24px;
+  padding: 24px 28px 28px;
+}
+
+.heatmap-grid {
+  display: grid;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  gap: 2px;
+  grid-template-columns: 130px repeat(6, 1fr);
+  margin-top: 18px;
+}
+
+.heatmap-head {
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+  padding: 6px 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.heatmap-head.tl { text-align: left; }
+
+.heatmap-team {
+  align-items: center;
+  color: var(--ink);
+  display: flex;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  gap: 8px;
+  padding: 4px 8px 4px 0;
+}
+.heatmap-team .badge-sm { font-size: 0.5rem; height: 22px; width: 22px; }
+
+.heatmap-cell {
+  align-items: center;
+  border-radius: 3px;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 34px;
+  padding: 4px 2px;
+  position: relative;
+  text-align: center;
+}
+.heatmap-cell .pct { font-size: 0.7rem; }
+.heatmap-cell.dim { color: var(--ink-3); }
+
+.heatmap-legend {
+  align-items: center;
+  color: var(--ink-3);
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  gap: 12px;
+  margin-top: 18px;
+}
+.heatmap-legend .scale {
+  background: linear-gradient(90deg, rgba(0, 212, 168, 0.05), rgba(0, 212, 168, 0.5), var(--tier-1));
+  border-radius: 2px;
+  height: 6px;
+  width: 140px;
+}
+
+/* ─────── 倒计时 (新增) ─────── */
+.countdown {
+  align-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink-2);
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  gap: 6px;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  padding: 3px 8px;
+}
+.countdown.live {
+  background: var(--tier-1-bg);
+  border-color: var(--tier-1);
+  color: var(--tier-1);
+}
+.countdown.urgent { border-color: rgba(255, 213, 90, 0.3); color: var(--gold); }
+.countdown .live-dot {
+  animation: pulse 1.4s ease-in-out infinite;
+  background: currentColor;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+}
+
+/* Hero h1 中的数字加色 */
+.hero h1 .num {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--tier-1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* 入场动画 */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rise { animation: rise 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .spot, .cell, .match-card { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="draft-banner">DRAFT 2 · 概率为中心的暗色赛事直播 · 仅供视觉评审，不替换现行页面</div>
+
+<!-- LIVE TICKER (新增) -->
+<div class="ticker" id="ticker">
+  <div class="ticker-label"><span class="dot"></span>LIVE</div>
+  <div class="ticker-track">
+    <div class="ticker-marquee" id="ticker-marquee"></div>
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-dot"></span>
+    CDS4WORLDCUP <span>/ 2026</span>
+  </a>
+  <nav class="topnav">
+    <a href="#top" class="active">首页</a>
+    <a href="#field">48 队</a>
+    <a href="#paths">路径</a>
+    <a href="#compare">三源对比</a>
+    <a href="#matches">关键比赛</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="shell">
+    <p class="eyebrow rise">FIFA WORLD CUP 2026 · 路 径 分 解</p>
+    <h1 class="rise" style="animation-delay:60ms">
+      <span class="num">48</span> 支球队。<br>
+      一次会举起<em>奖杯</em>。
+    </h1>
+    <p class="hero-lede rise" style="animation-delay:140ms">
+      我们不猜冠军。我们把<strong>每支队的夺冠路拆给你看</strong>——哪些是必须过的坎，哪些迹象值得提前盯上，
+      哪些判断赛后能对账。
+    </p>
+    <div class="hero-actions rise" style="animation-delay:220ms">
+      <a class="btn" href="#pick">选你的队 ↓</a>
+      <a class="btn btn-ghost" href="#heatmap">看路径热力图</a>
+    </div>
+
+    <!-- Team Picker (新增) -->
+    <div class="pick rise" id="pick" style="animation-delay:420ms">
+      <div class="pick-row">
+        <span class="pick-label">选你的队</span>
+        <span id="pick-buttons"></span>
+      </div>
+    </div>
+
+    <div class="hero-meta rise" style="animation-delay:320ms">
+      <div class="hero-meta-item">
+        <span class="lbl">当前覆盖</span>
+        <span class="val">48<span class="unit">/48 队</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="lbl">深度拆解</span>
+        <span class="val">21<span class="unit">队</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="lbl">夺冠路径数</span>
+        <span class="val">255</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="lbl">关键难点</span>
+        <span class="val">109</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="lbl">数据更新</span>
+        <span class="val">2 小时前</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 48 队网格 -->
+<section class="section" id="field">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow muted">48 队 × 概率</p>
+        <h2>一眼看完，谁是热门，谁是黑马，谁是陪跑。</h2>
+      </div>
+      <p>数据来源：Elo + 公开模型群体均值。<br>色彩按冠军概率分四档：青 / 蓝 / 暖 / 灰。</p>
+    </div>
+
+    <!-- Top 5 焦点 -->
+    <div class="spotlight" id="spotlight"></div>
+
+    <!-- Tier 1 强队 -->
+    <div class="tier-strip">
+      <span class="lbl">Tier 1 · 强队</span>
+      <span class="line"></span>
+      <span class="count">8 队 · 3% 以上</span>
+    </div>
+    <div class="field" id="tier-strong"></div>
+
+    <!-- Tier 2 中游 -->
+    <div class="tier-strip">
+      <span class="lbl">Tier 2 · 中游</span>
+      <span class="line"></span>
+      <span class="count">16 队 · 0.4% – 3%</span>
+    </div>
+    <div class="field" id="tier-mid"></div>
+
+    <!-- Tier 3 长草 -->
+    <div class="tier-strip">
+      <span class="lbl">Tier 3 · 长草</span>
+      <span class="line"></span>
+      <span class="count">19 队 · 0.4% 以下</span>
+    </div>
+    <div class="field" id="tier-weak"></div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot t1"></span><span>冠军热门 (≥ 8%)</span></div>
+      <div class="legend-item"><span class="legend-dot t2"></span><span>强队 (3% – 8%)</span></div>
+      <div class="legend-item"><span class="legend-dot t3"></span><span>中游 (0.4% – 3%)</span></div>
+      <div class="legend-item"><span class="legend-dot t4"></span><span>长草 (&lt; 0.4%)</span></div>
+      <div class="legend-item" style="margin-left:auto;color:var(--ink-3)">点击任意队查看完整路径分析 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 阶段热力图已并入"分歧"section，单独成块 -->
+<section class="section" id="paths" hidden>
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow muted">路径分解</p>
+        <h2>夺冠不是一步登天，是六道关。</h2>
+      </div>
+      <p>每颗圆点代表该阶段晋级概率。<br>越往后越能看清，谁在硬撑、谁在蓄力。</p>
+    </div>
+    <div class="path-ladder" id="path-ladder"></div>
+  </div>
+</section>
+
+<!-- 三源对比 -->
+<section class="section" id="compare">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow muted">Elo / 市场 / 公开模型</p>
+        <h2>不同视角看到的，差别有多大？</h2>
+      </div>
+      <p>同一支队伍，三种来源的概率可以差到 4 倍。<br>这正是球迷值得看的：分歧本身。</p>
+    </div>
+
+    <div class="compare-card">
+      <div class="compare-axis">
+        <span></span>
+        <span class="hdr">Elo 实力</span>
+        <span class="hdr">市场赔率</span>
+        <span class="hdr">公开模型</span>
+        <span class="hdr" style="text-align:center">共识</span>
+      </div>
+      <div class="compare-grid" id="compare-grid"></div>
+
+      <div class="scatter">
+        <span class="scatter-hint">[ 散点图：Elo 横轴 × 市场纵轴，48 队分布 ]</span>
+      </div>
+    </div>
+
+    <!-- 阶段热力图 (新增) -->
+    <div class="heatmap-card" id="heatmap">
+      <p class="eyebrow muted">6 阶段路径概率</p>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin-top:8px">每队走完整个赛程的概率一览</h2>
+      <p style="color:var(--ink-3);font-size:0.88rem;margin-top:6px">越亮越可能走更远。组 → R32 → R16 → 四强 → 决赛 → 冠军。</p>
+
+      <div class="heatmap-grid" id="heatmap-grid"></div>
+
+      <div class="heatmap-legend">
+        <span>概率</span>
+        <span>0%</span>
+        <span class="scale"></span>
+        <span>100%</span>
+        <span style="margin-left:auto;color:var(--ink-3)">数据：Elo + 公开模型，10 万次蒙特卡洛</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 关键比赛 -->
+<section class="section" id="matches">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow muted">小组赛 · 前 6 场最值得看</p>
+        <h2>先盯这 6 场，决定很多队的命运。</h2>
+      </div>
+      <p>每场比赛附三方概率。<br>点击进入看完整分析。</p>
+    </div>
+
+    <div class="matches-grid" id="matches-grid"></div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="shell">
+    <p>
+      概率数据来自公开 Elo 评分、市场赔率快照和公开模型群体均值。<br>
+      本站输出的是「概率信号」，不是任何意义上的投机指引。<br>
+      来源分级：Elo 与官方赛程为「可靠事实」；市场赔率为「待核验线索」；公开模型群体与 AI 派别为「只能参考」。
+      <a href="#method" class="source-note">查看完整方法论 →</a>
+    </p>
+    <p class="source-note">
+      草稿 2 · 不替换现行页面 · 数据为示意
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ─────── 数据（示意版本，对齐站内现有口径） ─────── */
+
+// 5 大热门
+const spotlight = [
+  { rank: 1, slug: "spain",     name: "西班牙",   en: "Spain",     prob: 18.4, group: "H", confed: "UEFA",     path: [98, 84, 66, 50, 34, 18.4], spark: [17.2, 17.8, 18.1, 18.4] },
+  { rank: 2, slug: "france",    name: "法国",     en: "France",    prob: 16.8, group: "I", confed: "UEFA",     path: [97, 82, 63, 47, 31, 16.8], spark: [16.0, 16.5, 17.1, 16.8] },
+  { rank: 3, slug: "argentina", name: "阿根廷",   en: "Argentina", prob: 14.2, group: "J", confed: "CONMEBOL", path: [96, 78, 58, 42, 28, 14.2], spark: [13.5, 14.0, 13.8, 14.2] },
+  { rank: 4, slug: "england",   name: "英格兰",   en: "England",   prob: 11.6, group: "L", confed: "UEFA",     path: [95, 74, 52, 36, 23, 11.6], spark: [10.8, 11.2, 11.9, 11.6] },
+  { rank: 5, slug: "brazil",    name: "巴西",     en: "Brazil",    prob: 9.5,  group: "C", confed: "CONMEBOL", path: [94, 70, 48, 32, 20, 9.5],  spark: [9.8, 9.2, 9.6, 9.5] },
+];
+
+// 强队 3-8%
+const strong = [
+  { rank: 6,  slug: "germany",      name: "德国",      en: "Germany",     prob: 7.2,  group: "E" },
+  { rank: 7,  slug: "portugal",     name: "葡萄牙",    en: "Portugal",    prob: 5.8,  group: "K" },
+  { rank: 8,  slug: "netherlands",  name: "荷兰",      en: "Netherlands", prob: 4.4,  group: "F" },
+  { rank: 9,  slug: "italy",        name: "意大利",    en: "Italy",       prob: 3.8,  group: "—" },
+  { rank: 10, slug: "belgium",      name: "比利时",    en: "Belgium",     prob: 3.2,  group: "G" },
+  { rank: 11, slug: "usa",          name: "美国",      en: "USA",         prob: 2.9,  group: "D" },
+  { rank: 12, slug: "croatia",      name: "克罗地亚",  en: "Croatia",     prob: 2.6,  group: "L" },
+  { rank: 13, slug: "uruguay",      name: "乌拉圭",    en: "Uruguay",     prob: 2.3,  group: "H" },
+];
+
+// 中游 0.4-3%
+const mid = [
+  { rank: 14, slug: "colombia",     name: "哥伦比亚",   en: "Colombia",    prob: 1.9 },
+  { rank: 15, slug: "mexico",       name: "墨西哥",     en: "Mexico",      prob: 1.6 },
+  { rank: 16, slug: "japan",        name: "日本",       en: "Japan",       prob: 1.4 },
+  { rank: 17, slug: "morocco",      name: "摩洛哥",     en: "Morocco",     prob: 1.2 },
+  { rank: 18, slug: "switzerland",  name: "瑞士",       en: "Switzerland", prob: 1.0 },
+  { rank: 19, slug: "denmark",      name: "丹麦",       en: "Denmark",     prob: 0.9 },
+  { rank: 20, slug: "senegal",      name: "塞内加尔",   en: "Senegal",     prob: 0.8 },
+  { rank: 21, slug: "spain-b",      name: "西班牙 B",   en: "—",           prob: 0.0 }, // 占位
+];
+
+// 长草 < 0.4%
+const weak = [
+  { rank: 22, slug: "norway",       name: "挪威",       en: "Norway",      prob: 0.36 },
+  { rank: 23, slug: "austria",      name: "奥地利",     en: "Austria",     prob: 0.34 },
+  { rank: 24, slug: "turkey",       name: "土耳其",     en: "Turkey",      prob: 0.32 },
+  { rank: 25, slug: "ecuador",      name: "厄瓜多尔",   en: "Ecuador",     prob: 0.30 },
+  { rank: 26, slug: "paraguay",     name: "巴拉圭",     en: "Paraguay",    prob: 0.28 },
+  { rank: 27, slug: "south-korea",  name: "韩国",       en: "S. Korea",    prob: 0.26 },
+  { rank: 28, slug: "saudi-arabia", name: "沙特",       en: "Saudi Arabia",prob: 0.22 },
+  { rank: 29, slug: "algeria",      name: "阿尔及利亚", en: "Algeria",     prob: 0.20 },
+  { rank: 30, slug: "scotland",     name: "苏格兰",     en: "Scotland",    prob: 0.18 },
+  { rank: 31, slug: "ivory-coast",  name: "科特迪瓦",   en: "Ivory Coast", prob: 0.16 },
+  { rank: 32, slug: "ghana",        name: "加纳",       en: "Ghana",       prob: 0.15 },
+  { rank: 33, slug: "tunisia",      name: "突尼斯",     en: "Tunisia",     prob: 0.13 },
+  { rank: 34, slug: "panama",       name: "巴拿马",     en: "Panama",      prob: 0.11 },
+  { rank: 35, slug: "qatar",        name: "卡塔尔",     en: "Qatar",       prob: 0.10 },
+  { rank: 36, slug: "iran",         name: "伊朗",       en: "Iran",        prob: 0.09 },
+  { rank: 37, slug: "iraq",         name: "伊拉克",     en: "Iraq",        prob: 0.08 },
+  { rank: 38, slug: "jordan",       name: "约旦",       en: "Jordan",      prob: 0.07 },
+  { rank: 39, slug: "uzbekistan",   name: "乌兹别克",   en: "Uzbekistan",  prob: 0.06 },
+  { rank: 40, slug: "south-africa", name: "南非",       en: "South Africa",prob: 0.05 },
+];
+
+// 三方对比 Top 8
+const compare = [
+  { name: "西班牙",   en: "Spain",      elo: 18.4, market: 23.8, model: 19.2 },
+  { name: "法国",     en: "France",     elo: 16.8, market: 23.6, model: 20.4 },
+  { name: "阿根廷",   en: "Argentina",  elo: 14.2, market: 19.6, model: 15.8 },
+  { name: "英格兰",   en: "England",    elo: 11.6, market: 5.2,  model: 9.4 },
+  { name: "巴西",     en: "Brazil",     elo: 9.5,  market: 3.4,  model: 8.8 },
+  { name: "德国",     en: "Germany",    elo: 7.2,  market: 5.2,  model: 6.4 },
+  { name: "葡萄牙",   en: "Portugal",   elo: 5.8,  market: 6.6,  model: 5.1 },
+  { name: "荷兰",     en: "Netherlands",elo: 4.4,  market: 2.8,  model: 4.0 },
+  { name: "意大利",   en: "Italy",      elo: 3.8,  market: 1.6,  model: 3.2 },
+  { name: "比利时",   en: "Belgium",    elo: 3.2,  market: 1.2,  model: 2.8 },
+];
+
+// 6 阶段热力图 (Top 12 队)
+const heatmapTeams = [
+  { code: "ESP", name: "西班牙",   cells: [93.3, 75.0, 53.6, 36.5, 23.9, 18.4] },
+  { code: "FRA", name: "法国",     cells: [91.8, 72.4, 51.2, 33.8, 21.7, 16.8] },
+  { code: "ARG", name: "阿根廷",   cells: [89.4, 64.8, 42.7, 28.4, 18.6, 14.2] },
+  { code: "ENG", name: "英格兰",   cells: [86.2, 58.3, 36.1, 22.4, 14.2, 11.6] },
+  { code: "BRA", name: "巴西",     cells: [84.1, 53.6, 31.2, 18.7, 11.4, 9.5]  },
+  { code: "GER", name: "德国",     cells: [80.5, 48.7, 25.6, 14.3, 8.6, 7.2]  },
+  { code: "POR", name: "葡萄牙",   cells: [78.6, 44.1, 22.3, 11.8, 6.9, 5.8]  },
+  { code: "NED", name: "荷兰",     cells: [73.2, 36.8, 17.4, 8.7, 5.2, 4.4]   },
+  { code: "ITA", name: "意大利",   cells: [69.5, 32.4, 14.8, 7.2, 4.5, 3.8]   },
+  { code: "BEL", name: "比利时",   cells: [64.8, 27.6, 11.9, 5.8, 3.6, 3.2]   },
+  { code: "USA", name: "美国",     cells: [58.4, 22.1, 8.4,  4.1, 2.6, 2.9]   },
+  { code: "MEX", name: "墨西哥",   cells: [52.1, 17.6, 5.8,  2.6, 1.5, 1.6]   },
+];
+
+// Live Ticker (示意)
+const tickerItems = [
+  { tag: "Elo", text: "<strong>西班牙</strong> 上调至 18.4%", cls: "up" },
+  { tag: "市场", text: "法国赔率短时下跌，市场对其 1/8 决赛谨慎" },
+  { tag: "对位", text: "<strong>巴西</strong> vs <strong>摩洛哥</strong> 12 小时后开赛" },
+  { tag: "伤情", text: "英格兰 <strong>B. 萨卡</strong> 已合练，预计首发" },
+  { tag: "数据", text: "10 万次蒙特卡洛已运行 · 最近一次：2 小时前" },
+  { tag: "新闻", text: "Kimi 报告发布：阿根廷夺冠概率 16.5% (低于本站)" },
+  { tag: "市场", text: "Polymarket: 西班牙 17% 隐含概率 · 仍是头号热门" },
+  { tag: "方法", text: "新增第三名晋级规则：8 个最佳小组第 3 进入 R32" },
+];
+
+// 关键比赛
+const matches = [
+  { status: "live",   round: "小组赛 · 第 1 轮", date: "2026-06-12T04:00Z", where: "Mexico City · Estadio Azteca", home: { name: "墨西哥", code: "MEX" }, away: { name: "瑞典",   code: "SWE" }, h: 38, d: 30, a: 32 },
+  { status: "soon",   round: "小组赛 · 第 1 轮", date: "2026-06-12T10:00Z", where: "Houston · NRG Stadium",      home: { name: "美国",   code: "USA" }, away: { name: "巴拉圭", code: "PAR" }, h: 62, d: 22, a: 16 },
+  { status: "soon",   round: "小组赛 · 第 1 轮", date: "2026-06-13T04:00Z", where: "New York · MetLife",          home: { name: "巴西",   code: "BRA" }, away: { name: "摩洛哥", code: "MAR" }, h: 58, d: 24, a: 18 },
+  { status: "future", round: "小组赛 · 第 1 轮", date: "2026-06-13T07:00Z", where: "Toronto · BMO Field",         home: { name: "法国",   code: "FRA" }, away: { name: "塞内加尔", code: "SEN" }, h: 71, d: 18, a: 11 },
+  { status: "future", round: "小组赛 · 第 2 轮", date: "2026-06-18T04:00Z", where: "Los Angeles · SoFi",          home: { name: "西班牙", code: "ESP" }, away: { name: "克罗地亚", code: "CRO" }, h: 54, d: 26, a: 20 },
+  { status: "future", round: "小组赛 · 第 2 轮", date: "2026-06-18T10:00Z", where: "Dallas · AT&T",               home: { name: "英格兰", code: "ENG" }, away: { name: "丹麦",   code: "DEN" }, h: 64, d: 22, a: 14 },
+];
+
+/* ─────── 渲染 ─────── */
+
+const $ = (sel) => document.querySelector(sel);
+
+function tier(prob) {
+  if (prob >= 8) return 1;
+  if (prob >= 3) return 2;
+  if (prob >= 0.4) return 3;
+  return 4;
+}
+
+function badgeHTML(code, size = "sm") {
+  const cls = "c-" + (code || "").toLowerCase();
+  return `<span class="badge badge-${size} ${cls}">${code || "—"}</span>`;
+}
+
+function sparkHTML(trend, delta) {
+  if (!trend) return "";
+  const w = 56, h = 18;
+  const max = Math.max(...trend), min = Math.min(...trend);
+  const span = max - min || 1;
+  const step = w / (trend.length - 1);
+  const pts = trend.map((v, i) => `${i * step},${h - 4 - ((v - min) / span) * (h - 8)}`).join(" ");
+  const area = `0,${h} ${pts} ${w},${h}`;
+  const dir = delta > 0.05 ? "up" : delta < -0.05 ? "down" : "flat";
+  const sign = delta > 0 ? "+" : "";
+  return `
+    <span class="spark ${dir}">
+      <svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+        <polygon class="area" points="${area}"/>
+        <polyline class="ln" points="${pts}"/>
+      </svg>
+    </span>
+    <span class="cell-delta ${dir}">${sign}${delta.toFixed(1)}</span>
+  `;
+}
+
+function renderTicker() {
+  const track = $("#ticker-marquee");
+  // 复制一份以做无缝循环
+  const html = tickerItems.map(i =>
+    `<span class="ticker-item ${i.cls || ""}"><span class="badge-mini">${i.tag}</span>${i.text}</span>`
+  ).join("");
+  track.innerHTML = html + html;
+}
+
+function renderPicker() {
+  const el = $("#pick-buttons");
+  const picks = [...spotlight, ...strong.slice(0, 7)]; // 12 个
+  el.innerHTML = picks.map(t => `
+    <button class="pick-btn" onclick="goTeam('${t.slug}')">
+      ${badgeHTML(t.code, "sm")}${t.name}
+    </button>
+  `).join("");
+}
+
+function renderSpotlight() {
+  const el = $("#spotlight");
+  el.innerHTML = spotlight.map((t, i) => `
+    <article class="spot rise" style="animation-delay:${260 + i * 60}ms" onclick="goTeam('${t.slug}')">
+      ${badgeHTML(t.code, "lg")}
+      <div class="spot-rank">№ ${String(t.rank).padStart(2, '0')} · ${t.confed}</div>
+      <div class="spot-name">${t.name}</div>
+      <div class="spot-en">${t.en} · Group ${t.group}</div>
+      <div class="spot-prob">
+        <span class="num">${t.prob.toFixed(1)}</span>
+        <span class="pct">%</span>
+      </div>
+      <div class="spot-bar"><span class="spot-bar-fill" data-w="${(t.prob / 25) * 100}"></span></div>
+      <div class="spot-meta">
+        <span>7 日</span>
+        ${sparkHTML(t.trend, t.delta)}
+      </div>
+    </article>
+  `).join("");
+  setTimeout(() => {
+    document.querySelectorAll('.spot-bar-fill').forEach(b => b.style.width = b.dataset.w + '%');
+  }, 100);
+}
+
+function renderTier(elId, items, baseT) {
+  const el = $(elId);
+  el.innerHTML = items
+    .filter(t => t.prob > 0)
+    .map((t, i) => {
+      const tk = tier(t.prob);
+      return `
+        <div class="cell tier-${tk} rise" style="animation-delay:${i * 25}ms" onclick="goTeam('${t.slug}')">
+          <div class="cell-rank">№ ${String(t.rank).padStart(2, '0')}${t.group ? ' · ' + t.group : ''}</div>
+          <div class="cell-name" style="display:flex;align-items:center;gap:6px">
+            ${badgeHTML(t.code, "sm")}${t.name}
+          </div>
+          <div class="cell-prob">${t.prob < 0.1 ? t.prob.toFixed(2) : t.prob.toFixed(1)}%</div>
+          ${t.trend ? `<div class="cell-meta">${sparkHTML(t.trend, t.delta)}</div>` : ""}
+        </div>
+      `;
+    }).join("");
+}
+
+function renderCompare() {
+  const el = $("#compare-grid");
+  const max = Math.max(...compare.flatMap(c => [c.elo, c.market, c.model]));
+  el.innerHTML = compare.map((c, i) => `
+    <div class="compare-row rise" style="animation-delay:${i * 40}ms">
+      <div class="compare-team">${c.name}<br><span style="color:var(--ink-3);font-size:0.72rem;font-family:'JetBrains Mono',monospace">${c.en}</span></div>
+      <div class="compare-bar">
+        <div class="compare-track"><span class="compare-fill elo" data-w="${(c.elo / max) * 100}"></span></div>
+        <div class="compare-val">${c.elo.toFixed(1)}%</div>
+      </div>
+      <div class="compare-bar">
+        <div class="compare-track"><span class="compare-fill market" data-w="${(c.market / max) * 100}"></span></div>
+        <div class="compare-val">${c.market.toFixed(1)}%</div>
+      </div>
+      <div class="compare-bar">
+        <div class="compare-track"><span class="compare-fill model" data-w="${(c.model / max) * 100}"></span></div>
+        <div class="compare-val">${c.model.toFixed(1)}%</div>
+      </div>
+    </div>
+  `).join("");
+  setTimeout(() => {
+    document.querySelectorAll('.compare-fill').forEach(b => b.style.width = b.dataset.w + '%');
+  }, 200);
+}
+
+function renderHeatmap() {
+  const el = $("#heatmap-grid");
+  const stages = ["组出线", "R32", "R16", "四强", "决赛", "冠军"];
+  const head = `<div class="heatmap-head tl">球队</div>` + stages.map(s => `<div class="heatmap-head">${s}</div>`).join("");
+  const rows = heatmapTeams.map(t => {
+    const cells = t.cells.map(v => {
+      // 颜色强度: 用 rgba 透明度表达, 越亮越不透明
+      const a = Math.max(0.06, v / 100);
+      const bg = `rgba(0, 212, 168, ${a})`;
+      const dim = v < 5 ? "dim" : "";
+      return `<div class="heatmap-cell ${dim}" style="background:${bg}"><span class="pct">${v.toFixed(1)}</span></div>`;
+    }).join("");
+    return `<div class="heatmap-team">${badgeHTML(t.code, "sm")}${t.name}</div>${cells}`;
+  }).join("");
+  el.innerHTML = head + rows;
+}
+
+function formatCountdown(iso, status) {
+  if (status === "live") {
+    return `<div class="countdown live"><span class="live-dot"></span>LIVE · 进行中</div>`;
+  }
+  const t = new Date(iso).getTime();
+  const diff = t - Date.now();
+  if (diff < 0) return "";
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  if (days === 0 && hours <= 6) {
+    return `<div class="countdown urgent">${hours} 小时后开赛</div>`;
+  }
+  return `<div class="countdown">${days} 天 ${hours} 小时后</div>`;
+}
+
+function renderMatches() {
+  const el = $("#matches-grid");
+  el.innerHTML = matches.map((m, i) => `
+    <article class="match-card rise" style="animation-delay:${i * 50}ms" onclick="goMatch()">
+      <div class="match-stage">
+        <div class="round">${m.round}</div>
+        <div class="where">${m.where}</div>
+        ${formatCountdown(m.date, m.status)}
+      </div>
+      <div class="match-teams">
+        <div class="match-team-row" style="align-items:center;display:flex;gap:8px">
+          ${badgeHTML(m.home.code, "sm")}
+          <span class="name" style="flex:1">${m.home.name}</span>
+          <span class="num">${m.h}%</span>
+        </div>
+        <div class="match-prob-bar">
+          <div class="seg-home" style="width:${m.h}%"></div>
+          <div class="seg-draw" style="width:${m.d}%"></div>
+          <div class="seg-away" style="width:${m.a}%"></div>
+        </div>
+        <div class="match-team-row" style="margin-top:6px;align-items:center;display:flex;gap:8px">
+          ${badgeHTML(m.away.code, "sm")}
+          <span class="name" style="flex:1;color:var(--ink-2)">${m.away.name}</span>
+          <span class="num" style="color:var(--ink-2)">${m.a}%</span>
+        </div>
+        <div style="color:var(--ink-3);font-family:'JetBrains Mono',monospace;font-size:0.7rem;margin-top:6px;text-align:center">平局 ${m.d}%</div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function goTeam(slug) {
+  // 草稿不跳转，但给个提示
+  console.log('would navigate to team.html?team=' + slug);
+}
+function goMatch() {
+  console.log('would navigate to match.html');
+}
+
+renderTicker();
+renderPicker();
+renderSpotlight();
+renderTier("#tier-strong", strong);
+renderTier("#tier-mid", mid);
+renderTier("#tier-weak", weak);
+renderCompare();
+renderHeatmap();
+renderMatches();
+</script>
+
+</body>
+</html>
+

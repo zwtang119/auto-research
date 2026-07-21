@@ -182,7 +182,7 @@
 
 - auto-research 顶刊 KILL verdict：`docs/investigations/rethink-2026-07-06-zh.md`
 - Direction A fold chain（实证）：`state/progress.json:97-104`
-- G3 methods paper outline（唯一活跃目标）：`docs/papers/g3-methods-paper-outline.md`
+- G3 methods paper outline（唯一活跃目标）：`docs/papers-closed-portfolio/g3-methods-paper-outline.md`
 - 跨项目 prompt 持久化审计（已有先例）：`/Users/tangzw119/Documents/GitHub/cds4polymarket/docs/investigations/evidence-chain-readability-retro-2026-06-10.md`
 - policysim-research-Tsinghua 状态：`/Users/tangzw119/Documents/GitHub/policysim-research-Tsinghua/wiki/annotations/current-state.md`
 - mc-2026-05-05 实验数据：`/Users/tangzw119/Documents/GitHub/policysim-research-Tsinghua/experiments/mc-2026-05-05/`
@@ -309,7 +309,7 @@
 ### 交叉引用（本节独立）
 
 - Direction A FOLD 证据：`state/progress.json:97-104`
-- G3 92.9% 自报：`docs/papers/g3-dual-ledger-crosswalk.md`（独立探针 cross-check 实测 64.3% AR→CWCUP）
+- G3 92.9% 自报：`docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.md`（独立探针 cross-check 实测 64.3% AR→CWCUP）
 - Kimi 概率向量缺失证据：`cds4polymarket/worldcup-kimi/extracted_kimi_agent/wc2026_aggregation.json` + `model_01_predictions.json:7,9`
 - Tsinghua kappa + ICC 证据：`policysim-research-Tsinghua/wiki/decisions/risks-and-issues.md:31` + `experiments/mc-2026-05-05/analysis/paper-upgrade-evidence/judge_agreement.csv:1`
 - Tsinghua 论文空 section 证据：`paper/00-README.md:24-30`

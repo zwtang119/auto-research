@@ -1,0 +1,5673 @@
+{
+  "generated_at": "2026-07-19T02:49:58.365294+00:00",
+  "source_generated_at": "2026-07-19T02:49:57.749925+00:00",
+  "total_teams": 48,
+  "source_level": "red",
+  "source_note": "CDS 模拟输出，非事实。",
+  "teams": {
+    "Czech Republic": {
+      "team": "Czech Republic",
+      "group": "A",
+      "qualification": {
+        "qual_prob": 0.9075,
+        "qual_prob_top2": 0.8247,
+        "position_probs": {
+          "p_1st": 0.5526,
+          "p_2nd": 0.2721,
+          "p_3rd": 0.1243,
+          "p_4th": 0.051
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2086
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2585
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 韩国 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0419
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0327
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4585
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "A4-CZE-RSA",
+            "opponent": "South Africa",
+            "impact": 0.5213
+          },
+          {
+            "match_id": "A5-CZE-MEX",
+            "opponent": "Mexico",
+            "impact": 0.3848
+          },
+          {
+            "match_id": "A2-KOR-CZE",
+            "opponent": "South Korea",
+            "impact": 0.3455
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.017903629973651188,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.50, cumulative 0.5009)",
+        "bracket_dependency": "决赛对手: W101；16强对手: W80；八强对手: W91；半决赛对手: W100；32强对手取决于 3CEFHI （小组 C,E,F,H,I）",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "3CEFHI",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5009,
+            "cumulative_prob": 0.50087,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4998,
+            "cumulative_prob": 0.250322,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.476,
+            "cumulative_prob": 0.119159,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4836,
+            "cumulative_prob": 0.057621,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4865,
+            "cumulative_prob": 0.028035,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Mexico": {
+      "team": "Mexico",
+      "group": "A",
+      "qualification": {
+        "qual_prob": 0.857,
+        "qual_prob_top2": 0.731,
+        "position_probs": {
+          "p_1st": 0.3098,
+          "p_2nd": 0.4212,
+          "p_3rd": 0.1891,
+          "p_4th": 0.08
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0744
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1712
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 南非 → 出线危险（27 种情况中有 1 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0162
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0455
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.6926
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "A1-MEX-RSA",
+            "opponent": "South Africa",
+            "impact": 0.6734
+          },
+          {
+            "match_id": "A3-MEX-KOR",
+            "opponent": "South Korea",
+            "impact": 0.6083
+          },
+          {
+            "match_id": "A5-CZE-MEX",
+            "opponent": "Czech Republic",
+            "impact": 0.3134
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.021668968840981424,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:波黑 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:阿根廷",
+        "dominant_failure_node": "Round Of 32 vs 波黑 (win_prob 0.52, cumulative 0.5194)",
+        "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO73",
+            "opponent_slot": "2B",
+            "opponent_team": "Bosnia and Herzegovina",
+            "conditional_win_prob": 0.5194,
+            "cumulative_prob": 0.519391,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO89",
+            "opponent_slot": "W75",
+            "opponent_team": "Scotland",
+            "conditional_win_prob": 0.5063,
+            "cumulative_prob": 0.262951,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W90",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5074,
+            "cumulative_prob": 0.133412,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.4938,
+            "cumulative_prob": 0.065875,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.5056,
+            "cumulative_prob": 0.033306,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "South Africa": {
+      "team": "South Africa",
+      "group": "A",
+      "qualification": {
+        "qual_prob": 0.4594,
+        "qual_prob_top2": 0.2088,
+        "position_probs": {
+          "p_1st": 0.0531,
+          "p_2nd": 0.1557,
+          "p_3rd": 0.376,
+          "p_4th": 0.4152
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0055
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0213
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 墨西哥 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1506
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3133
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5092
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "A1-MEX-RSA",
+            "opponent": "Mexico",
+            "impact": 0.6294
+          },
+          {
+            "match_id": "A4-CZE-RSA",
+            "opponent": "Czech Republic",
+            "impact": 0.5522
+          },
+          {
+            "match_id": "A6-RSA-KOR",
+            "opponent": "South Korea",
+            "impact": 0.2926
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.010711365279348772,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:阿根廷",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO82",
+            "opponent_slot": "1G",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4625,
+            "cumulative_prob": 0.462543,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W81",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4833,
+            "cumulative_prob": 0.223537,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.4625,
+            "cumulative_prob": 0.103379,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.4738,
+            "cumulative_prob": 0.048979,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4706,
+            "cumulative_prob": 0.023051,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "South Korea": {
+      "team": "South Korea",
+      "group": "A",
+      "qualification": {
+        "qual_prob": 0.4404,
+        "qual_prob_top2": 0.229,
+        "position_probs": {
+          "p_1st": 0.0683,
+          "p_2nd": 0.1607,
+          "p_3rd": 0.3172,
+          "p_4th": 0.4538
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0096
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0453
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 墨西哥 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1436
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3828
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4188
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "A3-MEX-KOR",
+            "opponent": "Mexico",
+            "impact": 0.5843
+          },
+          {
+            "match_id": "A6-RSA-KOR",
+            "opponent": "South Africa",
+            "impact": 0.4077
+          },
+          {
+            "match_id": "A2-KOR-CZE",
+            "opponent": "Czech Republic",
+            "impact": 0.3909
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.012925534646516388,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:阿根廷",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO82",
+            "opponent_slot": "1G",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4887,
+            "cumulative_prob": 0.488661,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W81",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5095,
+            "cumulative_prob": 0.248952,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.4886,
+            "cumulative_prob": 0.121635,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.4999,
+            "cumulative_prob": 0.06081,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4968,
+            "cumulative_prob": 0.030209,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Switzerland": {
+      "team": "Switzerland",
+      "group": "B",
+      "qualification": {
+        "qual_prob": 0.8808,
+        "qual_prob_top2": 0.7813,
+        "position_probs": {
+          "p_1st": 0.4997,
+          "p_2nd": 0.2816,
+          "p_3rd": 0.1492,
+          "p_4th": 0.0695
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1822
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2428
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 波黑 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0362
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0452
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4936
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "B5-SUI-CAN",
+            "opponent": "Canada",
+            "impact": 0.5122
+          },
+          {
+            "match_id": "B4-SUI-BIH",
+            "opponent": "Bosnia and Herzegovina",
+            "impact": 0.441
+          },
+          {
+            "match_id": "B2-QAT-SUI",
+            "opponent": "Qatar",
+            "impact": 0.3841
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.021911256776490695,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:乌拉圭 → QF:葡萄牙 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.52, cumulative 0.5248)",
+        "bracket_dependency": "决赛对手: W101；32强对手取决于 3EFGIJ （小组 E,F,G,I,J）；半决赛对手: W99；八强对手: W95；16强对手: W87",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO85",
+            "opponent_slot": "3EFGIJ",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5248,
+            "cumulative_prob": 0.524787,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO96",
+            "opponent_slot": "W87",
+            "opponent_team": "Uruguay",
+            "conditional_win_prob": 0.4958,
+            "cumulative_prob": 0.260195,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W95",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.5107,
+            "cumulative_prob": 0.13287,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5147,
+            "cumulative_prob": 0.068382,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5095,
+            "cumulative_prob": 0.034841,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Bosnia and Herzegovina": {
+      "team": "Bosnia and Herzegovina",
+      "group": "B",
+      "qualification": {
+        "qual_prob": 0.7714,
+        "qual_prob_top2": 0.568,
+        "position_probs": {
+          "p_1st": 0.2507,
+          "p_2nd": 0.3173,
+          "p_3rd": 0.3052,
+          "p_4th": 0.1269
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0586
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1238
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 加拿大 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1961
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0762
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5452
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "B1-CAN-BIH",
+            "opponent": "Canada",
+            "impact": 0.6498
+          },
+          {
+            "match_id": "B4-SUI-BIH",
+            "opponent": "Switzerland",
+            "impact": 0.4872
+          },
+          {
+            "match_id": "B6-BIH-QAT",
+            "opponent": "Qatar",
+            "impact": 0.4868
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.01733082969133307,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:墨西哥 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 墨西哥 (win_prob 0.48, cumulative 0.4806)",
+        "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO73",
+            "opponent_slot": "2A",
+            "opponent_team": "Mexico",
+            "conditional_win_prob": 0.4806,
+            "cumulative_prob": 0.480609,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO89",
+            "opponent_slot": "W75",
+            "opponent_team": "Scotland",
+            "conditional_win_prob": 0.4869,
+            "cumulative_prob": 0.233995,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W90",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.488,
+            "cumulative_prob": 0.114182,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.4744,
+            "cumulative_prob": 0.054167,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4881,
+            "cumulative_prob": 0.026439,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Canada": {
+      "team": "Canada",
+      "group": "B",
+      "qualification": {
+        "qual_prob": 0.7357,
+        "qual_prob_top2": 0.5219,
+        "position_probs": {
+          "p_1st": 0.2086,
+          "p_2nd": 0.3133,
+          "p_3rd": 0.3208,
+          "p_4th": 0.1573
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.036
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.101
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 卡塔尔 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1636
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.1001
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5993
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "B1-CAN-BIH",
+            "opponent": "Bosnia and Herzegovina",
+            "impact": 0.6794
+          },
+          {
+            "match_id": "B3-CAN-QAT",
+            "opponent": "Qatar",
+            "impact": 0.5035
+          },
+          {
+            "match_id": "B5-SUI-CAN",
+            "opponent": "Switzerland",
+            "impact": 0.4877
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.013284357811876587,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:墨西哥 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 墨西哥 (win_prob 0.46, cumulative 0.4581)",
+        "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO73",
+            "opponent_slot": "2A",
+            "opponent_team": "Mexico",
+            "conditional_win_prob": 0.4581,
+            "cumulative_prob": 0.458092,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO89",
+            "opponent_slot": "W75",
+            "opponent_team": "Scotland",
+            "conditional_win_prob": 0.4643,
+            "cumulative_prob": 0.212703,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W90",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4654,
+            "cumulative_prob": 0.098995,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.4519,
+            "cumulative_prob": 0.044737,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4656,
+            "cumulative_prob": 0.020827,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Qatar": {
+      "team": "Qatar",
+      "group": "B",
+      "qualification": {
+        "qual_prob": 0.2669,
+        "qual_prob_top2": 0.1248,
+        "position_probs": {
+          "p_1st": 0.0349,
+          "p_2nd": 0.0899,
+          "p_3rd": 0.2131,
+          "p_4th": 0.6622
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0026
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0114
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 加拿大 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1024
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5382
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3455
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "B6-BIH-QAT",
+            "opponent": "Bosnia and Herzegovina",
+            "impact": 0.4574
+          },
+          {
+            "match_id": "B3-CAN-QAT",
+            "opponent": "Canada",
+            "impact": 0.4174
+          },
+          {
+            "match_id": "B2-QAT-SUI",
+            "opponent": "Switzerland",
+            "impact": 0.2765
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.006432481331319534,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:土耳其 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "半决赛对手: W97；八强对手: W93；16强对手: W82；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO81",
+            "opponent_slot": "1D",
+            "opponent_team": "Turkey",
+            "conditional_win_prob": 0.4649,
+            "cumulative_prob": 0.464856,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W82",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4894,
+            "cumulative_prob": 0.227479,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.467,
+            "cumulative_prob": 0.106235,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.4783,
+            "cumulative_prob": 0.050815,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4771,
+            "cumulative_prob": 0.024242,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Brazil": {
+      "team": "Brazil",
+      "group": "C",
+      "qualification": {
+        "qual_prob": 0.9293,
+        "qual_prob_top2": 0.8518,
+        "position_probs": {
+          "p_1st": 0.5072,
+          "p_2nd": 0.3446,
+          "p_3rd": 0.1163,
+          "p_4th": 0.0319
+        },
+        "third_place_qual_prob": 0.6664,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1847
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2276
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 摩洛哥 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.027
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0136
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5471
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "C1-BRA-MAR",
+            "opponent": "Morocco",
+            "impact": 0.6071
+          },
+          {
+            "match_id": "C3-BRA-HAI",
+            "opponent": "Haiti",
+            "impact": 0.5113
+          },
+          {
+            "match_id": "C5-SCO-BRA",
+            "opponent": "Scotland",
+            "impact": 0.2341
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.027570786922245325,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:瑞典 → R16:挪威 → QF:英格兰 → SF:阿根廷 → Final:比利时",
+        "dominant_failure_node": "Round Of 32 vs 瑞典 (win_prob 0.54, cumulative 0.5351)",
+        "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO76",
+            "opponent_slot": "2F",
+            "opponent_team": "Sweden",
+            "conditional_win_prob": 0.5351,
+            "cumulative_prob": 0.535071,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO91",
+            "opponent_slot": "W78",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.5077,
+            "cumulative_prob": 0.271648,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W92",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5264,
+            "cumulative_prob": 0.142995,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.5194,
+            "cumulative_prob": 0.074272,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.5208,
+            "cumulative_prob": 0.038683,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Scotland": {
+      "team": "Scotland",
+      "group": "C",
+      "qualification": {
+        "qual_prob": 0.862,
+        "qual_prob_top2": 0.7441,
+        "position_probs": {
+          "p_1st": 0.3874,
+          "p_2nd": 0.3567,
+          "p_3rd": 0.1769,
+          "p_4th": 0.0789
+        },
+        "third_place_qual_prob": 0.6664,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1434
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2543
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 摩洛哥 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.033
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0699
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4995
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "C4-SCO-MAR",
+            "opponent": "Morocco",
+            "impact": 0.6131
+          },
+          {
+            "match_id": "C2-HAI-SCO",
+            "opponent": "Haiti",
+            "impact": 0.4223
+          },
+          {
+            "match_id": "C5-SCO-BRA",
+            "opponent": "Brazil",
+            "impact": 0.3653
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.01936130793348143,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:瑞典 → R16:挪威 → QF:英格兰 → SF:阿根廷 → Final:比利时",
+        "dominant_failure_node": "Round Of 32 vs 瑞典 (win_prob 0.50, cumulative 0.4986)",
+        "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO76",
+            "opponent_slot": "2F",
+            "opponent_team": "Sweden",
+            "conditional_win_prob": 0.4986,
+            "cumulative_prob": 0.498551,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO91",
+            "opponent_slot": "W78",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4711,
+            "cumulative_prob": 0.234887,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W92",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4898,
+            "cumulative_prob": 0.115058,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4828,
+            "cumulative_prob": 0.055555,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4843,
+            "cumulative_prob": 0.026904,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Morocco": {
+      "team": "Morocco",
+      "group": "C",
+      "qualification": {
+        "qual_prob": 0.5867,
+        "qual_prob_top2": 0.2787,
+        "position_probs": {
+          "p_1st": 0.077,
+          "p_2nd": 0.2017,
+          "p_3rd": 0.4622,
+          "p_4th": 0.2591
+        },
+        "third_place_qual_prob": 0.6664,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0096
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0368
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 苏格兰 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.19
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.1915
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5721
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "C4-SCO-MAR",
+            "opponent": "Scotland",
+            "impact": 0.658
+          },
+          {
+            "match_id": "C1-BRA-MAR",
+            "opponent": "Brazil",
+            "impact": 0.6432
+          },
+          {
+            "match_id": "C6-MAR-HAI",
+            "opponent": "Haiti",
+            "impact": 0.3164
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02552845763977315,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:比利时",
+        "dominant_failure_node": "Round Of 32 vs 捷克 (win_prob 0.52, cumulative 0.5188)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.5188,
+            "cumulative_prob": 0.518828,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5186,
+            "cumulative_prob": 0.269066,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4948,
+            "cumulative_prob": 0.133145,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.5024,
+            "cumulative_prob": 0.066891,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.5038,
+            "cumulative_prob": 0.033702,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Haiti": {
+      "team": "Haiti",
+      "group": "C",
+      "qualification": {
+        "qual_prob": 0.2798,
+        "qual_prob_top2": 0.1142,
+        "position_probs": {
+          "p_1st": 0.0264,
+          "p_2nd": 0.0878,
+          "p_3rd": 0.2485,
+          "p_4th": 0.6373
+        },
+        "third_place_qual_prob": 0.6664,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0019
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0092
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 巴西 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1004
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5475
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3412
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "C3-BRA-HAI",
+            "opponent": "Brazil",
+            "impact": 0.496
+          },
+          {
+            "match_id": "C6-MAR-HAI",
+            "opponent": "Morocco",
+            "impact": 0.3386
+          },
+          {
+            "match_id": "C2-HAI-SCO",
+            "opponent": "Scotland",
+            "impact": 0.287
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.008206845424247492,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:比利时",
+        "dominant_failure_node": "Round Of 16 vs 塞内加尔 (win_prob 0.47, cumulative 0.2254)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.4749,
+            "cumulative_prob": 0.474886,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4747,
+            "cumulative_prob": 0.22541,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.451,
+            "cumulative_prob": 0.101665,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4585,
+            "cumulative_prob": 0.046616,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4599,
+            "cumulative_prob": 0.021441,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Turkey": {
+      "team": "Turkey",
+      "group": "D",
+      "qualification": {
+        "qual_prob": 0.8943,
+        "qual_prob_top2": 0.8024,
+        "position_probs": {
+          "p_1st": 0.5486,
+          "p_2nd": 0.2538,
+          "p_3rd": 0.1379,
+          "p_4th": 0.0598
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2066
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2588
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 巴拉圭 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.03
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0377
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.467
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "D4-TUR-PAR",
+            "opponent": "Paraguay",
+            "impact": 0.4976
+          },
+          {
+            "match_id": "D5-TUR-USA",
+            "opponent": "United States",
+            "impact": 0.4558
+          },
+          {
+            "match_id": "D2-AUS-TUR",
+            "opponent": "Australia",
+            "impact": 0.3396
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.024815420046956457,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.53, cumulative 0.5334)",
+        "bracket_dependency": "决赛对手: W102；32强对手取决于 3BEFIJ （小组 B,E,F,I,J）；半决赛对手: W97；八强对手: W93；16强对手: W82",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO81",
+            "opponent_slot": "3BEFIJ",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5334,
+            "cumulative_prob": 0.53339,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W82",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5245,
+            "cumulative_prob": 0.279782,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.5022,
+            "cumulative_prob": 0.140496,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.5135,
+            "cumulative_prob": 0.072146,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5123,
+            "cumulative_prob": 0.036957,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "United States": {
+      "team": "United States",
+      "group": "D",
+      "qualification": {
+        "qual_prob": 0.7644,
+        "qual_prob_top2": 0.5794,
+        "position_probs": {
+          "p_1st": 0.2275,
+          "p_2nd": 0.3519,
+          "p_3rd": 0.2776,
+          "p_4th": 0.1431
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0425
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1025
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 巴拉圭 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1567
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0889
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.6094
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "D1-USA-PAR",
+            "opponent": "Paraguay",
+            "impact": 0.7014
+          },
+          {
+            "match_id": "D3-USA-AUS",
+            "opponent": "Australia",
+            "impact": 0.5321
+          },
+          {
+            "match_id": "D5-TUR-USA",
+            "opponent": "Turkey",
+            "impact": 0.4305
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02329321975647429,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:埃及 → R16:葡萄牙 → QF:阿根廷 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 埃及 (win_prob 0.52, cumulative 0.5203)",
+        "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO86",
+            "opponent_slot": "2G",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5203,
+            "cumulative_prob": 0.520337,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W88",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4854,
+            "cumulative_prob": 0.252588,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4835,
+            "cumulative_prob": 0.122133,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5098,
+            "cumulative_prob": 0.062269,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5047,
+            "cumulative_prob": 0.031427,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Paraguay": {
+      "team": "Paraguay",
+      "group": "D",
+      "qualification": {
+        "qual_prob": 0.7025,
+        "qual_prob_top2": 0.4675,
+        "position_probs": {
+          "p_1st": 0.1823,
+          "p_2nd": 0.2852,
+          "p_3rd": 0.3526,
+          "p_4th": 0.1799
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0335
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0868
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 美国 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0968
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.1134
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.6696
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "D1-USA-PAR",
+            "opponent": "United States",
+            "impact": 0.6717
+          },
+          {
+            "match_id": "D4-TUR-PAR",
+            "opponent": "Turkey",
+            "impact": 0.5348
+          },
+          {
+            "match_id": "D6-PAR-AUS",
+            "opponent": "Australia",
+            "impact": 0.4476
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.020395640397299544,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:埃及 → R16:葡萄牙 → QF:阿根廷 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 埃及 (win_prob 0.51, cumulative 0.5051)",
+        "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO86",
+            "opponent_slot": "2G",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5051,
+            "cumulative_prob": 0.505065,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W88",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4702,
+            "cumulative_prob": 0.237472,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4683,
+            "cumulative_prob": 0.111203,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4946,
+            "cumulative_prob": 0.054997,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4894,
+            "cumulative_prob": 0.026917,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Australia": {
+      "team": "Australia",
+      "group": "D",
+      "qualification": {
+        "qual_prob": 0.2937,
+        "qual_prob_top2": 0.1457,
+        "position_probs": {
+          "p_1st": 0.0403,
+          "p_2nd": 0.1054,
+          "p_3rd": 0.2221,
+          "p_4th": 0.6323
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0035
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0232
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 美国 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1069
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5194
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3472
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "D3-USA-AUS",
+            "opponent": "United States",
+            "impact": 0.4451
+          },
+          {
+            "match_id": "D6-PAR-AUS",
+            "opponent": "Paraguay",
+            "impact": 0.4244
+          },
+          {
+            "match_id": "D2-AUS-TUR",
+            "opponent": "Turkey",
+            "impact": 0.3186
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.01061194821885448,
+        "championship_path_count": 5,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "1K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4723,
+            "cumulative_prob": 0.472274,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5051,
+            "cumulative_prob": 0.238534,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4732,
+            "cumulative_prob": 0.112881,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4995,
+            "cumulative_prob": 0.056388,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4944,
+            "cumulative_prob": 0.027877,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Germany": {
+      "team": "Germany",
+      "group": "E",
+      "qualification": {
+        "qual_prob": 0.9525,
+        "qual_prob_top2": 0.8984,
+        "position_probs": {
+          "p_1st": 0.5757,
+          "p_2nd": 0.3227,
+          "p_3rd": 0.0811,
+          "p_4th": 0.0206
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2292
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2404
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 科特迪瓦 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0125
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0113
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5065
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "E1-GER-CUW",
+            "opponent": "Curaçao",
+            "impact": 0.5403
+          },
+          {
+            "match_id": "E3-GER-CIV",
+            "opponent": "Côte d'Ivoire",
+            "impact": 0.4995
+          },
+          {
+            "match_id": "E5-ECU-GER",
+            "opponent": "Ecuador",
+            "impact": 0.179
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.028899420220771715,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:摩洛哥 → R16:佛得角 → QF:荷兰 → SF:西班牙 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 摩洛哥 (win_prob 0.53, cumulative 0.5299)",
+        "bracket_dependency": "半决赛对手: W98；八强对手: W89；32强对手取决于 3ABCDF （小组 A,B,C,D,F）；16强对手: W77；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO74",
+            "opponent_slot": "3ABCDF",
+            "opponent_team": "Morocco",
+            "conditional_win_prob": 0.5299,
+            "cumulative_prob": 0.529855,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO90",
+            "opponent_slot": "W77",
+            "opponent_team": "Cape Verde",
+            "conditional_win_prob": 0.5239,
+            "cumulative_prob": 0.277572,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W89",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.5106,
+            "cumulative_prob": 0.141729,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.5013,
+            "cumulative_prob": 0.071042,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.515,
+            "cumulative_prob": 0.036586,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Ecuador": {
+      "team": "Ecuador",
+      "group": "E",
+      "qualification": {
+        "qual_prob": 0.8762,
+        "qual_prob_top2": 0.7621,
+        "position_probs": {
+          "p_1st": 0.3636,
+          "p_2nd": 0.3985,
+          "p_3rd": 0.1712,
+          "p_4th": 0.0666
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1332
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2028
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 科特迪瓦 → 出线危险（27 种情况中有 5 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1299
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0589
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4752
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "E4-ECU-CUW",
+            "opponent": "Curaçao",
+            "impact": 0.5817
+          },
+          {
+            "match_id": "E2-CIV-ECU",
+            "opponent": "Côte d'Ivoire",
+            "impact": 0.4621
+          },
+          {
+            "match_id": "E5-ECU-GER",
+            "opponent": "Germany",
+            "impact": 0.3278
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.03403289585437442,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:挪威 → R16:瑞典 → QF:捷克 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 挪威 (win_prob 0.50, cumulative 0.5031)",
+        "bracket_dependency": "决赛对手: W101；半决赛对手: W100；16强对手: W76；八强对手: W92",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO78",
+            "opponent_slot": "2I",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.5031,
+            "cumulative_prob": 0.503115,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO91",
+            "opponent_slot": "W76",
+            "opponent_team": "Sweden",
+            "conditional_win_prob": 0.5173,
+            "cumulative_prob": 0.260284,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W92",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.5237,
+            "cumulative_prob": 0.136314,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.517,
+            "cumulative_prob": 0.07048,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5156,
+            "cumulative_prob": 0.036342,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Curaçao": {
+      "team": "Curaçao",
+      "group": "E",
+      "qualification": {
+        "qual_prob": 0.4219,
+        "qual_prob_top2": 0.1507,
+        "position_probs": {
+          "p_1st": 0.0298,
+          "p_2nd": 0.1209,
+          "p_3rd": 0.4069,
+          "p_4th": 0.4425
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0021
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0125
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 德国 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1322
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3996
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4537
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "E1-GER-CUW",
+            "opponent": "Germany",
+            "impact": 0.5982
+          },
+          {
+            "match_id": "E4-ECU-CUW",
+            "opponent": "Ecuador",
+            "impact": 0.5729
+          },
+          {
+            "match_id": "E6-CUW-CIV",
+            "opponent": "Côte d'Ivoire",
+            "impact": 0.236
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.023763311022652608,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.44, cumulative 0.2118)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.4765,
+            "cumulative_prob": 0.47648,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4444,
+            "cumulative_prob": 0.211763,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4603,
+            "cumulative_prob": 0.097483,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4645,
+            "cumulative_prob": 0.045278,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4631,
+            "cumulative_prob": 0.020966,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Côte d'Ivoire": {
+      "team": "Côte d'Ivoire",
+      "group": "E",
+      "qualification": {
+        "qual_prob": 0.4156,
+        "qual_prob_top2": 0.1852,
+        "position_probs": {
+          "p_1st": 0.0438,
+          "p_2nd": 0.1414,
+          "p_3rd": 0.3456,
+          "p_4th": 0.4692
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0047
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0423
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 德国 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.15
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.4075
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3956
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "E3-GER-CIV",
+            "opponent": "Germany",
+            "impact": 0.56
+          },
+          {
+            "match_id": "E2-CIV-ECU",
+            "opponent": "Ecuador",
+            "impact": 0.4009
+          },
+          {
+            "match_id": "E6-CUW-CIV",
+            "opponent": "Curaçao",
+            "impact": 0.3505
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02572531658737443,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.46, cumulative 0.2297)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.4956,
+            "cumulative_prob": 0.495614,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4634,
+            "cumulative_prob": 0.229677,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4794,
+            "cumulative_prob": 0.110112,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4836,
+            "cumulative_prob": 0.053246,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4822,
+            "cumulative_prob": 0.025673,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Netherlands": {
+      "team": "Netherlands",
+      "group": "F",
+      "qualification": {
+        "qual_prob": 0.9167,
+        "qual_prob_top2": 0.8398,
+        "position_probs": {
+          "p_1st": 0.5857,
+          "p_2nd": 0.2541,
+          "p_3rd": 0.1154,
+          "p_4th": 0.0448
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2313
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2641
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 日本 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0319
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0276
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4451
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "F1-NED-JPN",
+            "opponent": "Japan",
+            "impact": 0.458
+          },
+          {
+            "match_id": "F5-TUN-NED",
+            "opponent": "Tunisia",
+            "impact": 0.3798
+          },
+          {
+            "match_id": "F3-NED-SWE",
+            "opponent": "Sweden",
+            "impact": 0.3777
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.029427449906310944,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:苏格兰 → R16:波黑 → QF:德国 → SF:西班牙 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 苏格兰 (win_prob 0.53, cumulative 0.5311)",
+        "bracket_dependency": "16强对手: W73；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO75",
+            "opponent_slot": "2C",
+            "opponent_team": "Scotland",
+            "conditional_win_prob": 0.5311,
+            "cumulative_prob": 0.53108,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO89",
+            "opponent_slot": "W73",
+            "opponent_team": "Bosnia and Herzegovina",
+            "conditional_win_prob": 0.5303,
+            "cumulative_prob": 0.281645,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W90",
+            "opponent_team": "Germany",
+            "conditional_win_prob": 0.5192,
+            "cumulative_prob": 0.146239,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.5033,
+            "cumulative_prob": 0.073604,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.517,
+            "cumulative_prob": 0.038057,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Sweden": {
+      "team": "Sweden",
+      "group": "F",
+      "qualification": {
+        "qual_prob": 0.7911,
+        "qual_prob_top2": 0.6339,
+        "position_probs": {
+          "p_1st": 0.2441,
+          "p_2nd": 0.3898,
+          "p_3rd": 0.2358,
+          "p_4th": 0.1303
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0622
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.169
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 突尼斯 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0189
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0791
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.671
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "F2-SWE-TUN",
+            "opponent": "Tunisia",
+            "impact": 0.5968
+          },
+          {
+            "match_id": "F6-JPN-SWE",
+            "opponent": "Japan",
+            "impact": 0.5847
+          },
+          {
+            "match_id": "F3-NED-SWE",
+            "opponent": "Netherlands",
+            "impact": 0.4186
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.0247357547203352,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:巴西 → R16:挪威 → QF:英格兰 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 巴西 (win_prob 0.46, cumulative 0.4649)",
+        "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO76",
+            "opponent_slot": "1C",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4649,
+            "cumulative_prob": 0.464929,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO91",
+            "opponent_slot": "W78",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4726,
+            "cumulative_prob": 0.219718,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W92",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4913,
+            "cumulative_prob": 0.107946,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4887,
+            "cumulative_prob": 0.05275,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4873,
+            "cumulative_prob": 0.025703,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Tunisia": {
+      "team": "Tunisia",
+      "group": "F",
+      "qualification": {
+        "qual_prob": 0.5362,
+        "qual_prob_top2": 0.3018,
+        "position_probs": {
+          "p_1st": 0.1034,
+          "p_2nd": 0.1984,
+          "p_3rd": 0.3516,
+          "p_4th": 0.3466
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0117
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0381
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 瑞典 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1502
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.2591
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5409
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "F2-SWE-TUN",
+            "opponent": "Sweden",
+            "impact": 0.5908
+          },
+          {
+            "match_id": "F5-TUN-NED",
+            "opponent": "Netherlands",
+            "impact": 0.5357
+          },
+          {
+            "match_id": "F4-TUN-JPN",
+            "opponent": "Japan",
+            "impact": 0.406
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.024403267200139054,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 捷克 (win_prob 0.50, cumulative 0.4964)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.4964,
+            "cumulative_prob": 0.49635,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4961,
+            "cumulative_prob": 0.246252,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4724,
+            "cumulative_prob": 0.116325,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4843,
+            "cumulative_prob": 0.056336,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4829,
+            "cumulative_prob": 0.027204,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Japan": {
+      "team": "Japan",
+      "group": "F",
+      "qualification": {
+        "qual_prob": 0.4045,
+        "qual_prob_top2": 0.2224,
+        "position_probs": {
+          "p_1st": 0.056,
+          "p_2nd": 0.1664,
+          "p_3rd": 0.2732,
+          "p_4th": 0.5044
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0061
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0228
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 瑞典 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0824
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.4234
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4654
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "F1-NED-JPN",
+            "opponent": "Netherlands",
+            "impact": 0.4762
+          },
+          {
+            "match_id": "F6-JPN-SWE",
+            "opponent": "Sweden",
+            "impact": 0.4715
+          },
+          {
+            "match_id": "F4-TUN-JPN",
+            "opponent": "Tunisia",
+            "impact": 0.42
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02502215486149426,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 塞内加尔 (win_prob 0.52, cumulative 0.2754)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.5249,
+            "cumulative_prob": 0.524924,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5247,
+            "cumulative_prob": 0.275427,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.5009,
+            "cumulative_prob": 0.137975,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.5129,
+            "cumulative_prob": 0.070765,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5115,
+            "cumulative_prob": 0.036195,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Belgium": {
+      "team": "Belgium",
+      "group": "G",
+      "qualification": {
+        "qual_prob": 0.9721,
+        "qual_prob_top2": 0.9427,
+        "position_probs": {
+          "p_1st": 0.7975,
+          "p_2nd": 0.1452,
+          "p_3rd": 0.044,
+          "p_4th": 0.0133
+        },
+        "third_place_qual_prob": 0.6671,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4233
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3009
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 伊朗 → 出线危险（27 种情况中有 1 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0066
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0064
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2628
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "G3-BEL-IRN",
+            "opponent": "Iran",
+            "impact": 0.317
+          },
+          {
+            "match_id": "G1-BEL-EGY",
+            "opponent": "Egypt",
+            "impact": 0.2939
+          },
+          {
+            "match_id": "G5-NZL-BEL",
+            "opponent": "New Zealand",
+            "impact": 0.2199
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.023490737095204675,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.53, cumulative 0.5334)",
+        "bracket_dependency": "16强对手: W81；32强对手取决于 3AEHIJ （小组 A,E,H,I,J）；半决赛对手: W97；八强对手: W93；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO82",
+            "opponent_slot": "3AEHIJ",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5334,
+            "cumulative_prob": 0.533393,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W81",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5208,
+            "cumulative_prob": 0.277785,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.4999,
+            "cumulative_prob": 0.138872,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.5113,
+            "cumulative_prob": 0.071003,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.51,
+            "cumulative_prob": 0.036213,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Egypt": {
+      "team": "Egypt",
+      "group": "G",
+      "qualification": {
+        "qual_prob": 0.6917,
+        "qual_prob_top2": 0.4957,
+        "position_probs": {
+          "p_1st": 0.1003,
+          "p_2nd": 0.3954,
+          "p_3rd": 0.2938,
+          "p_4th": 0.2106
+        },
+        "third_place_qual_prob": 0.6671,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0176
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0802
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 伊朗 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0169
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.1699
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.7153
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "G6-EGY-IRN",
+            "opponent": "Iran",
+            "impact": 0.6635
+          },
+          {
+            "match_id": "G4-NZL-EGY",
+            "opponent": "New Zealand",
+            "impact": 0.5741
+          },
+          {
+            "match_id": "G1-BEL-EGY",
+            "opponent": "Belgium",
+            "impact": 0.4252
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.015099542154808823,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:美国 → R16:塞内加尔 → QF:阿根廷 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 美国 (win_prob 0.48, cumulative 0.4797)",
+        "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO86",
+            "opponent_slot": "2D",
+            "opponent_team": "United States",
+            "conditional_win_prob": 0.4797,
+            "cumulative_prob": 0.479663,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W88",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4938,
+            "cumulative_prob": 0.236839,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4632,
+            "cumulative_prob": 0.109713,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4895,
+            "cumulative_prob": 0.053705,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4844,
+            "cumulative_prob": 0.026012,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Iran": {
+      "team": "Iran",
+      "group": "G",
+      "qualification": {
+        "qual_prob": 0.6253,
+        "qual_prob_top2": 0.379,
+        "position_probs": {
+          "p_1st": 0.065,
+          "p_2nd": 0.314,
+          "p_3rd": 0.3692,
+          "p_4th": 0.2518
+        },
+        "third_place_qual_prob": 0.6671,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0088
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0348
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 新西兰 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0686
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.1748
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.713
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "G6-EGY-IRN",
+            "opponent": "Egypt",
+            "impact": 0.6942
+          },
+          {
+            "match_id": "G3-BEL-IRN",
+            "opponent": "Belgium",
+            "impact": 0.5059
+          },
+          {
+            "match_id": "G2-IRN-NZL",
+            "opponent": "New Zealand",
+            "impact": 0.4553
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.01725708988487373,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:美国 → R16:塞内加尔 → QF:阿根廷 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 美国 (win_prob 0.50, cumulative 0.4952)",
+        "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO86",
+            "opponent_slot": "2D",
+            "opponent_team": "United States",
+            "conditional_win_prob": 0.4952,
+            "cumulative_prob": 0.495238,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W88",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5093,
+            "cumulative_prob": 0.252247,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4788,
+            "cumulative_prob": 0.120768,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5051,
+            "cumulative_prob": 0.060998,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4999,
+            "cumulative_prob": 0.030495,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "New Zealand": {
+      "team": "New Zealand",
+      "group": "G",
+      "qualification": {
+        "qual_prob": 0.3832,
+        "qual_prob_top2": 0.2002,
+        "position_probs": {
+          "p_1st": 0.0395,
+          "p_2nd": 0.1607,
+          "p_3rd": 0.2743,
+          "p_4th": 0.5255
+        },
+        "third_place_qual_prob": 0.6671,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0048
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0244
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 埃及 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0396
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5109
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4203
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "G2-IRN-NZL",
+            "opponent": "Iran",
+            "impact": 0.4813
+          },
+          {
+            "match_id": "G5-NZL-BEL",
+            "opponent": "Belgium",
+            "impact": 0.4264
+          },
+          {
+            "match_id": "G4-NZL-EGY",
+            "opponent": "Egypt",
+            "impact": 0.4157
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.00727193002092367,
+        "championship_path_count": 4,
+        "dominant_path_pattern": "R32:瑞士 → R16:乌拉圭 → QF:葡萄牙 → SF:英格兰 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 乌拉圭 (win_prob 0.45, cumulative 0.2003)",
+        "bracket_dependency": "八强对手: W95；决赛对手: W101；16强对手: W87；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO85",
+            "opponent_slot": "1B",
+            "opponent_team": "Switzerland",
+            "conditional_win_prob": 0.4497,
+            "cumulative_prob": 0.449651,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO96",
+            "opponent_slot": "W87",
+            "opponent_team": "Uruguay",
+            "conditional_win_prob": 0.4455,
+            "cumulative_prob": 0.200323,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W95",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4602,
+            "cumulative_prob": 0.092193,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4642,
+            "cumulative_prob": 0.042796,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4591,
+            "cumulative_prob": 0.019646,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Spain": {
+      "team": "Spain",
+      "group": "H",
+      "qualification": {
+        "qual_prob": 0.9656,
+        "qual_prob_top2": 0.9221,
+        "position_probs": {
+          "p_1st": 0.5707,
+          "p_2nd": 0.3514,
+          "p_3rd": 0.0652,
+          "p_4th": 0.0127
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2596
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2557
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 佛得角 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0108
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0057
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4684
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "H1-ESP-CPV",
+            "opponent": "Cape Verde",
+            "impact": 0.5356
+          },
+          {
+            "match_id": "H3-ESP-KSA",
+            "opponent": "Saudi Arabia",
+            "impact": 0.4572
+          },
+          {
+            "match_id": "H5-URU-ESP",
+            "opponent": "Uruguay",
+            "impact": 0.1484
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.033022265471203946,
+        "championship_path_count": 6,
+        "dominant_path_pattern": "R32:奥地利 → R16:克罗地亚 → QF:土耳其 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 奥地利 (win_prob 0.54, cumulative 0.5444)",
+        "bracket_dependency": "八强对手: W94；16强对手: W84；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO83",
+            "opponent_slot": "2J",
+            "opponent_team": "Austria",
+            "conditional_win_prob": 0.5444,
+            "cumulative_prob": 0.544422,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO93",
+            "opponent_slot": "W84",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.5351,
+            "cumulative_prob": 0.291305,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W94",
+            "opponent_team": "Turkey",
+            "conditional_win_prob": 0.5484,
+            "cumulative_prob": 0.159759,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.5437,
+            "cumulative_prob": 0.086857,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5424,
+            "cumulative_prob": 0.047114,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Uruguay": {
+      "team": "Uruguay",
+      "group": "H",
+      "qualification": {
+        "qual_prob": 0.8991,
+        "qual_prob_top2": 0.8048,
+        "position_probs": {
+          "p_1st": 0.3688,
+          "p_2nd": 0.436,
+          "p_3rd": 0.1415,
+          "p_4th": 0.0536
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1558
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2173
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 佛得角 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0917
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0453
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.49
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "H4-URU-CPV",
+            "opponent": "Cape Verde",
+            "impact": 0.6164
+          },
+          {
+            "match_id": "H2-KSA-URU",
+            "opponent": "Saudi Arabia",
+            "impact": 0.4339
+          },
+          {
+            "match_id": "H5-URU-ESP",
+            "opponent": "Spain",
+            "impact": 0.2809
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.025757577752700392,
+        "championship_path_count": 6,
+        "dominant_path_pattern": "R32:阿根廷 → R16:塞内加尔 → QF:葡萄牙 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 阿根廷 (win_prob 0.47, cumulative 0.4722)",
+        "bracket_dependency": "半决赛对手: W99；决赛对手: W101；16强对手: W85；八强对手: W95",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO87",
+            "opponent_slot": "1J",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4722,
+            "cumulative_prob": 0.472174,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO96",
+            "opponent_slot": "W85",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.52,
+            "cumulative_prob": 0.245508,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W95",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.5108,
+            "cumulative_prob": 0.125403,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.5023,
+            "cumulative_prob": 0.062994,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5096,
+            "cumulative_prob": 0.032104,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Cape Verde": {
+      "team": "Cape Verde",
+      "group": "H",
+      "qualification": {
+        "qual_prob": 0.4667,
+        "qual_prob_top2": 0.1462,
+        "position_probs": {
+          "p_1st": 0.024,
+          "p_2nd": 0.1222,
+          "p_3rd": 0.4808,
+          "p_4th": 0.373
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0019
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0145
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 西班牙 → 出线危险（27 种情况中有 5 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1472
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3228
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5137
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "H1-ESP-CPV",
+            "opponent": "Spain",
+            "impact": 0.6265
+          },
+          {
+            "match_id": "H4-URU-CPV",
+            "opponent": "Uruguay",
+            "impact": 0.5868
+          },
+          {
+            "match_id": "H6-CPV-KSA",
+            "opponent": "Saudi Arabia",
+            "impact": 0.206
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02000982319564619,
+        "championship_path_count": 6,
+        "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 比利时 (win_prob 0.46, cumulative 0.4579)",
+        "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO82",
+            "opponent_slot": "1G",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4579,
+            "cumulative_prob": 0.457928,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W81",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4786,
+            "cumulative_prob": 0.219183,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.4579,
+            "cumulative_prob": 0.100354,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.4691,
+            "cumulative_prob": 0.047081,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4679,
+            "cumulative_prob": 0.022029,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Saudi Arabia": {
+      "team": "Saudi Arabia",
+      "group": "H",
+      "qualification": {
+        "qual_prob": 0.3347,
+        "qual_prob_top2": 0.124,
+        "position_probs": {
+          "p_1st": 0.0205,
+          "p_2nd": 0.1035,
+          "p_3rd": 0.3161,
+          "p_4th": 0.5598
+        },
+        "third_place_qual_prob": 0.6666,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0017
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.017
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 乌拉圭 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0583
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5246
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3984
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "H3-ESP-KSA",
+            "opponent": "Spain",
+            "impact": 0.4919
+          },
+          {
+            "match_id": "H2-KSA-URU",
+            "opponent": "Uruguay",
+            "impact": 0.3614
+          },
+          {
+            "match_id": "H6-CPV-KSA",
+            "opponent": "Cape Verde",
+            "impact": 0.2946
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.014464853106355187,
+        "championship_path_count": 6,
+        "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO82",
+            "opponent_slot": "1G",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.4641,
+            "cumulative_prob": 0.464063,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO94",
+            "opponent_slot": "W81",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4848,
+            "cumulative_prob": 0.22498,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W93",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.464,
+            "cumulative_prob": 0.104389,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.4753,
+            "cumulative_prob": 0.049616,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.474,
+            "cumulative_prob": 0.023521,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "France": {
+      "team": "France",
+      "group": "I",
+      "qualification": {
+        "qual_prob": 0.962,
+        "qual_prob_top2": 0.9159,
+        "position_probs": {
+          "p_1st": 0.5688,
+          "p_2nd": 0.3471,
+          "p_3rd": 0.0692,
+          "p_4th": 0.0149
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2398
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5266
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 塞内加尔 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0135
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0069
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2132
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "I1-FRA-SEN",
+            "opponent": "Senegal",
+            "impact": 0.5729
+          },
+          {
+            "match_id": "I3-FRA-IRQ",
+            "opponent": "Iraq",
+            "impact": 0.4758
+          },
+          {
+            "match_id": "I5-NOR-FRA",
+            "opponent": "Norway",
+            "impact": 0.1468
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.032810921918762434,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:佛得角 → R16:摩洛哥 → QF:荷兰 → SF:西班牙 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 佛得角 (win_prob 0.54, cumulative 0.5421)",
+        "bracket_dependency": "半决赛对手: W98；32强对手取决于 3CDFGH （小组 C,D,F,G,H）；八强对手: W89；16强对手: W74；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO77",
+            "opponent_slot": "3CDFGH",
+            "opponent_team": "Cape Verde",
+            "conditional_win_prob": 0.5421,
+            "cumulative_prob": 0.542086,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO90",
+            "opponent_slot": "W74",
+            "opponent_team": "Morocco",
+            "conditional_win_prob": 0.5392,
+            "cumulative_prob": 0.292295,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO97",
+            "opponent_slot": "W89",
+            "opponent_team": "Netherlands",
+            "conditional_win_prob": 0.527,
+            "cumulative_prob": 0.154034,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W98",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.5176,
+            "cumulative_prob": 0.079735,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5314,
+            "cumulative_prob": 0.042367,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Norway": {
+      "team": "Norway",
+      "group": "I",
+      "qualification": {
+        "qual_prob": 0.8988,
+        "qual_prob_top2": 0.8032,
+        "position_probs": {
+          "p_1st": 0.3871,
+          "p_2nd": 0.4161,
+          "p_3rd": 0.1434,
+          "p_4th": 0.0533
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1637
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2237
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 塞内加尔 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.087
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0413
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4843
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "I4-NOR-SEN",
+            "opponent": "Senegal",
+            "impact": 0.6368
+          },
+          {
+            "match_id": "I2-IRQ-NOR",
+            "opponent": "Iraq",
+            "impact": 0.4037
+          },
+          {
+            "match_id": "I5-NOR-FRA",
+            "opponent": "France",
+            "impact": 0.2947
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.031357194305706805,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:厄瓜多尔 → R16:瑞典 → QF:捷克 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 厄瓜多尔 (win_prob 0.50, cumulative 0.4969)",
+        "bracket_dependency": "决赛对手: W101；半决赛对手: W100；16强对手: W76；八强对手: W92",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO78",
+            "opponent_slot": "2E",
+            "opponent_team": "Ecuador",
+            "conditional_win_prob": 0.4969,
+            "cumulative_prob": 0.496885,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO91",
+            "opponent_slot": "W76",
+            "opponent_team": "Sweden",
+            "conditional_win_prob": 0.5142,
+            "cumulative_prob": 0.255514,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W92",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.5206,
+            "cumulative_prob": 0.133021,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.5139,
+            "cumulative_prob": 0.068364,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5125,
+            "cumulative_prob": 0.035038,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Senegal": {
+      "team": "Senegal",
+      "group": "I",
+      "qualification": {
+        "qual_prob": 0.5186,
+        "qual_prob_top2": 0.1775,
+        "position_probs": {
+          "p_1st": 0.035,
+          "p_2nd": 0.1425,
+          "p_3rd": 0.5118,
+          "p_4th": 0.3107
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0031
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0163
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 挪威 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1578
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.2689
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5539
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "I4-NOR-SEN",
+            "opponent": "Norway",
+            "impact": 0.66
+          },
+          {
+            "match_id": "I1-FRA-SEN",
+            "opponent": "France",
+            "impact": 0.6389
+          },
+          {
+            "match_id": "I6-SEN-IRQ",
+            "opponent": "Iraq",
+            "impact": 0.224
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.04461389969016114,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.48, cumulative 0.2491)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.5154,
+            "cumulative_prob": 0.515449,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4832,
+            "cumulative_prob": 0.249066,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4992,
+            "cumulative_prob": 0.124346,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.5034,
+            "cumulative_prob": 0.062596,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.502,
+            "cumulative_prob": 0.031422,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Iraq": {
+      "team": "Iraq",
+      "group": "I",
+      "qualification": {
+        "qual_prob": 0.2832,
+        "qual_prob_top2": 0.0966,
+        "position_probs": {
+          "p_1st": 0.0164,
+          "p_2nd": 0.0802,
+          "p_3rd": 0.28,
+          "p_4th": 0.6234
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0013
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0143
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 法国 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0977
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5685
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3182
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "I3-FRA-IRQ",
+            "opponent": "France",
+            "impact": 0.4771
+          },
+          {
+            "match_id": "I2-IRQ-NOR",
+            "opponent": "Norway",
+            "impact": 0.2982
+          },
+          {
+            "match_id": "I6-SEN-IRQ",
+            "opponent": "Senegal",
+            "impact": 0.276
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.017521763118772446,
+        "championship_path_count": 8,
+        "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+        "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.45, cumulative 0.2183)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO79",
+            "opponent_slot": "1A",
+            "opponent_team": "Czech Republic",
+            "conditional_win_prob": 0.4835,
+            "cumulative_prob": 0.483533,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W80",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4514,
+            "cumulative_prob": 0.218277,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4674,
+            "cumulative_prob": 0.102016,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4715,
+            "cumulative_prob": 0.048101,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4701,
+            "cumulative_prob": 0.022612,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Argentina": {
+      "team": "Argentina",
+      "group": "J",
+      "qualification": {
+        "qual_prob": 0.9628,
+        "qual_prob_top2": 0.9203,
+        "position_probs": {
+          "p_1st": 0.7329,
+          "p_2nd": 0.1874,
+          "p_3rd": 0.0638,
+          "p_4th": 0.0159
+        },
+        "third_place_qual_prob": 0.6667,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3676
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2756
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 约旦 → 出线危险（27 种情况中有 1 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0227
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0108
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3232
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "J1-ARG-ALG",
+            "opponent": "Algeria",
+            "impact": 0.3517
+          },
+          {
+            "match_id": "J5-JOR-ARG",
+            "opponent": "Jordan",
+            "impact": 0.3175
+          },
+          {
+            "match_id": "J3-ARG-AUT",
+            "opponent": "Austria",
+            "impact": 0.2591
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.03244683162436943,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:乌拉圭 → R16:瑞士 → QF:埃及 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 乌拉圭 (win_prob 0.53, cumulative 0.5278)",
+        "bracket_dependency": "半决赛对手: W99；决赛对手: W101；16强对手: W85；八强对手: W95",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO87",
+            "opponent_slot": "2H",
+            "opponent_team": "Uruguay",
+            "conditional_win_prob": 0.5278,
+            "cumulative_prob": 0.527826,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO96",
+            "opponent_slot": "W85",
+            "opponent_team": "Switzerland",
+            "conditional_win_prob": 0.5431,
+            "cumulative_prob": 0.286662,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W95",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5416,
+            "cumulative_prob": 0.155261,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.5302,
+            "cumulative_prob": 0.082313,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5374,
+            "cumulative_prob": 0.044236,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Austria": {
+      "team": "Austria",
+      "group": "J",
+      "qualification": {
+        "qual_prob": 0.8084,
+        "qual_prob_top2": 0.6483,
+        "position_probs": {
+          "p_1st": 0.1751,
+          "p_2nd": 0.4732,
+          "p_3rd": 0.2402,
+          "p_4th": 0.1115
+        },
+        "third_place_qual_prob": 0.6667,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0436
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1036
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 约旦 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0151
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0656
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.7721
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "J2-AUT-JOR",
+            "opponent": "Jordan",
+            "impact": 0.6339
+          },
+          {
+            "match_id": "J6-ALG-AUT",
+            "opponent": "Algeria",
+            "impact": 0.6081
+          },
+          {
+            "match_id": "J3-ARG-AUT",
+            "opponent": "Argentina",
+            "impact": 0.3688
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.02757276209563263,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:西班牙 → R16:克罗地亚 → QF:土耳其 → SF:法国 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 西班牙 (win_prob 0.46, cumulative 0.4556)",
+        "bracket_dependency": "八强对手: W94；16强对手: W84；半决赛对手: W97；决赛对手: W102",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO83",
+            "opponent_slot": "1H",
+            "opponent_team": "Spain",
+            "conditional_win_prob": 0.4556,
+            "cumulative_prob": 0.455578,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO93",
+            "opponent_slot": "W84",
+            "opponent_team": "Croatia",
+            "conditional_win_prob": 0.4906,
+            "cumulative_prob": 0.223503,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W94",
+            "opponent_team": "Turkey",
+            "conditional_win_prob": 0.504,
+            "cumulative_prob": 0.112653,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4983,
+            "cumulative_prob": 0.05613,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.498,
+            "cumulative_prob": 0.027953,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Jordan": {
+      "team": "Jordan",
+      "group": "J",
+      "qualification": {
+        "qual_prob": 0.488,
+        "qual_prob_top2": 0.2261,
+        "position_probs": {
+          "p_1st": 0.0514,
+          "p_2nd": 0.1747,
+          "p_3rd": 0.3929,
+          "p_4th": 0.3811
+        },
+        "third_place_qual_prob": 0.6667,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0057
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0278
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 奥地利 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1157
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3253
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5256
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "J2-AUT-JOR",
+            "opponent": "Austria",
+            "impact": 0.6228
+          },
+          {
+            "match_id": "J5-JOR-ARG",
+            "opponent": "Argentina",
+            "impact": 0.499
+          },
+          {
+            "match_id": "J4-JOR-ALG",
+            "opponent": "Algeria",
+            "impact": 0.3348
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.021828957885353033,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:瑞士 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 葡萄牙 (win_prob 0.45, cumulative 0.4473)",
+        "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "1K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4473,
+            "cumulative_prob": 0.447346,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.48,
+            "cumulative_prob": 0.214723,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Switzerland",
+            "conditional_win_prob": 0.4779,
+            "cumulative_prob": 0.102606,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4621,
+            "cumulative_prob": 0.04741,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4693,
+            "cumulative_prob": 0.022251,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Algeria": {
+      "team": "Algeria",
+      "group": "J",
+      "qualification": {
+        "qual_prob": 0.4048,
+        "qual_prob_top2": 0.2081,
+        "position_probs": {
+          "p_1st": 0.0335,
+          "p_2nd": 0.1746,
+          "p_3rd": 0.295,
+          "p_4th": 0.497
+        },
+        "third_place_qual_prob": 0.6667,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0035
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0187
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 奥地利 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0796
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.5365
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3617
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "J6-ALG-AUT",
+            "opponent": "Austria",
+            "impact": 0.5133
+          },
+          {
+            "match_id": "J1-ARG-ALG",
+            "opponent": "Argentina",
+            "impact": 0.451
+          },
+          {
+            "match_id": "J4-JOR-ALG",
+            "opponent": "Jordan",
+            "impact": 0.3776
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.019974270074674724,
+        "championship_path_count": 7,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:瑞士 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "1K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.463,
+            "cumulative_prob": 0.463013,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.4958,
+            "cumulative_prob": 0.229551,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Switzerland",
+            "conditional_win_prob": 0.4936,
+            "cumulative_prob": 0.113314,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4778,
+            "cumulative_prob": 0.054141,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4851,
+            "cumulative_prob": 0.026263,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Portugal": {
+      "team": "Portugal",
+      "group": "K",
+      "qualification": {
+        "qual_prob": 0.9491,
+        "qual_prob_top2": 0.8877,
+        "position_probs": {
+          "p_1st": 0.5092,
+          "p_2nd": 0.3785,
+          "p_3rd": 0.0921,
+          "p_4th": 0.0202
+        },
+        "third_place_qual_prob": 0.6668,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1948
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2258
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 刚果民主共和国 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0159
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0087
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.555
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "K1-POR-COD",
+            "opponent": "DR Congo",
+            "impact": 0.6022
+          },
+          {
+            "match_id": "K3-POR-UZB",
+            "opponent": "Uzbekistan",
+            "impact": 0.4802
+          },
+          {
+            "match_id": "K5-COL-POR",
+            "opponent": "Colombia",
+            "impact": 0.1786
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.024132668446078427,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.54, cumulative 0.5426)",
+        "bracket_dependency": "决赛对手: W101；半决赛对手: W99；32强对手取决于 3DEIJL （小组 D,E,I,J,L）；16强对手: W86；八强对手: W96",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "3DEIJL",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5426,
+            "cumulative_prob": 0.542628,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5328,
+            "cumulative_prob": 0.289104,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.501,
+            "cumulative_prob": 0.144828,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.5148,
+            "cumulative_prob": 0.074562,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5221,
+            "cumulative_prob": 0.03893,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Colombia": {
+      "team": "Colombia",
+      "group": "K",
+      "qualification": {
+        "qual_prob": 0.9094,
+        "qual_prob_top2": 0.8236,
+        "position_probs": {
+          "p_1st": 0.4491,
+          "p_2nd": 0.3745,
+          "p_3rd": 0.1287,
+          "p_4th": 0.0477
+        },
+        "third_place_qual_prob": 0.6668,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1866
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.238
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 刚果民主共和国 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0357
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0397
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "K4-COL-COD",
+            "opponent": "DR Congo",
+            "impact": 0.5789
+          },
+          {
+            "match_id": "K2-UZB-COL",
+            "opponent": "Uzbekistan",
+            "impact": 0.3971
+          },
+          {
+            "match_id": "K5-COL-POR",
+            "opponent": "Portugal",
+            "impact": 0.2975
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.022883700474173294,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.54, cumulative 0.5418)",
+        "bracket_dependency": "决赛对手: W101；半决赛对手: W99；32强对手取决于 3DEIJL （小组 D,E,I,J,L）；16强对手: W86；八强对手: W96",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "3DEIJL",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5418,
+            "cumulative_prob": 0.541753,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.5319,
+            "cumulative_prob": 0.288162,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.5001,
+            "cumulative_prob": 0.144103,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.514,
+            "cumulative_prob": 0.074062,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5212,
+            "cumulative_prob": 0.038604,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "DR Congo": {
+      "team": "DR Congo",
+      "group": "K",
+      "qualification": {
+        "qual_prob": 0.4813,
+        "qual_prob_top2": 0.1657,
+        "position_probs": {
+          "p_1st": 0.0295,
+          "p_2nd": 0.1362,
+          "p_3rd": 0.4733,
+          "p_4th": 0.361
+        },
+        "third_place_qual_prob": 0.6668,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0026
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.017
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 葡萄牙 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1356
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3144
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5303
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "K1-POR-COD",
+            "opponent": "Portugal",
+            "impact": 0.6296
+          },
+          {
+            "match_id": "K4-COL-COD",
+            "opponent": "Colombia",
+            "impact": 0.6105
+          },
+          {
+            "match_id": "K6-COD-UZB",
+            "opponent": "Uzbekistan",
+            "impact": 0.229
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.007011865524928664,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:英格兰 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 英格兰 (win_prob 0.44, cumulative 0.4446)",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W79；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO80",
+            "opponent_slot": "1L",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4446,
+            "cumulative_prob": 0.444566,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W79",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4803,
+            "cumulative_prob": 0.21352,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4604,
+            "cumulative_prob": 0.098302,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4679,
+            "cumulative_prob": 0.045996,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4709,
+            "cumulative_prob": 0.021658,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Uzbekistan": {
+      "team": "Uzbekistan",
+      "group": "K",
+      "qualification": {
+        "qual_prob": 0.3268,
+        "qual_prob_top2": 0.1269,
+        "position_probs": {
+          "p_1st": 0.0282,
+          "p_2nd": 0.0987,
+          "p_3rd": 0.2998,
+          "p_4th": 0.5734
+        },
+        "third_place_qual_prob": 0.6668,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0023
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0205
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 葡萄牙 → 出线危险（27 种情况中有 4 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.1136
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.6479
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2157
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "K3-POR-UZB",
+            "opponent": "Portugal",
+            "impact": 0.516
+          },
+          {
+            "match_id": "K2-UZB-COL",
+            "opponent": "Colombia",
+            "impact": 0.3552
+          },
+          {
+            "match_id": "K6-COD-UZB",
+            "opponent": "DR Congo",
+            "impact": 0.2902
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.005174954274736084,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:英格兰 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "半决赛对手: W100；16强对手: W79；八强对手: W91；决赛对手: W101",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO80",
+            "opponent_slot": "1L",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.4521,
+            "cumulative_prob": 0.452084,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W79",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.4879,
+            "cumulative_prob": 0.220563,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.4679,
+            "cumulative_prob": 0.103212,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4755,
+            "cumulative_prob": 0.049075,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4784,
+            "cumulative_prob": 0.02348,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "England": {
+      "team": "England",
+      "group": "L",
+      "qualification": {
+        "qual_prob": 0.9437,
+        "qual_prob_top2": 0.8866,
+        "position_probs": {
+          "p_1st": 0.6251,
+          "p_2nd": 0.2615,
+          "p_3rd": 0.0856,
+          "p_4th": 0.0278
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.2843
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.317
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 加纳 → 出线危险（27 种情况中有 1 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0076
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0197
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.3714
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "L3-ENG-GHA",
+            "opponent": "Ghana",
+            "impact": 0.4723
+          },
+          {
+            "match_id": "L5-PAN-ENG",
+            "opponent": "Panama",
+            "impact": 0.3162
+          },
+          {
+            "match_id": "L1-ENG-CRO",
+            "opponent": "Croatia",
+            "impact": 0.3
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.025450109095410095,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+        "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.55, cumulative 0.5504)",
+        "bracket_dependency": "16强对手: W79；决赛对手: W101；八强对手: W91；半决赛对手: W100；32强对手取决于 3EHIJK （小组 E,H,I,J,K）",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO80",
+            "opponent_slot": "3EHIJK",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5504,
+            "cumulative_prob": 0.550358,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO92",
+            "opponent_slot": "W79",
+            "opponent_team": "Senegal",
+            "conditional_win_prob": 0.5359,
+            "cumulative_prob": 0.294925,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO99",
+            "opponent_slot": "W91",
+            "opponent_team": "Norway",
+            "conditional_win_prob": 0.516,
+            "cumulative_prob": 0.15217,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W100",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.5235,
+            "cumulative_prob": 0.079661,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5265,
+            "cumulative_prob": 0.041939,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Croatia": {
+      "team": "Croatia",
+      "group": "L",
+      "qualification": {
+        "qual_prob": 0.8583,
+        "qual_prob_top2": 0.7391,
+        "position_probs": {
+          "p_1st": 0.269,
+          "p_2nd": 0.4701,
+          "p_3rd": 0.1788,
+          "p_4th": 0.0822
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0812
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.1507
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 加纳 → 出线危险（27 种情况中有 2 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0121
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.0535
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.7025
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "L6-CRO-GHA",
+            "opponent": "Ghana",
+            "impact": 0.6637
+          },
+          {
+            "match_id": "L4-PAN-CRO",
+            "opponent": "Panama",
+            "impact": 0.5821
+          },
+          {
+            "match_id": "L1-ENG-CRO",
+            "opponent": "England",
+            "impact": 0.3138
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.019668118199642627,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:奥地利 → QF:比利时 → SF:法国 → Final:英格兰",
+        "dominant_failure_node": "Round Of 32 vs 葡萄牙 (win_prob 0.49, cumulative 0.4901)",
+        "bracket_dependency": "八强对手: W94；16强对手: W83；决赛对手: W102；半决赛对手: W97",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO84",
+            "opponent_slot": "2K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4901,
+            "cumulative_prob": 0.490131,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO93",
+            "opponent_slot": "W83",
+            "opponent_team": "Austria",
+            "conditional_win_prob": 0.5133,
+            "cumulative_prob": 0.251563,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO98",
+            "opponent_slot": "W94",
+            "opponent_team": "Belgium",
+            "conditional_win_prob": 0.5197,
+            "cumulative_prob": 0.130728,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO101",
+            "opponent_slot": "W97",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.5127,
+            "cumulative_prob": 0.067018,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W102",
+            "opponent_team": "England",
+            "conditional_win_prob": 0.5124,
+            "cumulative_prob": 0.034339,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Ghana": {
+      "team": "Ghana",
+      "group": "L",
+      "qualification": {
+        "qual_prob": 0.4391,
+        "qual_prob_top2": 0.163,
+        "position_probs": {
+          "p_1st": 0.034,
+          "p_2nd": 0.129,
+          "p_3rd": 0.4142,
+          "p_4th": 0.4227
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0024
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0138
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 克罗地亚 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0737
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.3416
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.5684
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "L6-CRO-GHA",
+            "opponent": "Croatia",
+            "impact": 0.6611
+          },
+          {
+            "match_id": "L3-ENG-GHA",
+            "opponent": "England",
+            "impact": 0.5907
+          },
+          {
+            "match_id": "L2-GHA-PAN",
+            "opponent": "Panama",
+            "impact": 0.2285
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.005998601577241788,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "1K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4443,
+            "cumulative_prob": 0.444258,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.4769,
+            "cumulative_prob": 0.211855,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4452,
+            "cumulative_prob": 0.094318,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.459,
+            "cumulative_prob": 0.043288,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4662,
+            "cumulative_prob": 0.020181,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    },
+    "Panama": {
+      "team": "Panama",
+      "group": "L",
+      "qualification": {
+        "qual_prob": 0.4119,
+        "qual_prob_top2": 0.2053,
+        "position_probs": {
+          "p_1st": 0.0544,
+          "p_2nd": 0.1509,
+          "p_3rd": 0.31,
+          "p_4th": 0.4846
+        },
+        "third_place_qual_prob": 0.6665,
+        "scenarios": [
+          {
+            "label": "必胜出线",
+            "trigger": "赢下全部剩余比赛 → 确保前二出线",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0079
+          },
+          {
+            "label": "已定出线",
+            "trigger": "已确保出线（所有结果都是前二）",
+            "resulting_position": "top2_qualified",
+            "prob": 0.0363
+          },
+          {
+            "label": "危局",
+            "trigger": "输给 加纳 → 出线危险（27 种情况中有 3 种不利）",
+            "resulting_position": "3rd_may_qualify",
+            "prob": 0.0743
+          },
+          {
+            "label": "已淘汰",
+            "trigger": "小组赛三场全负 → 淘汰",
+            "resulting_position": "eliminated",
+            "prob": 0.4417
+          },
+          {
+            "label": "正常争夺",
+            "trigger": "出线取决于具体赛果",
+            "resulting_position": "top2_qualified",
+            "prob": 0.4398
+          }
+        ],
+        "key_matches": [
+          {
+            "match_id": "L4-PAN-CRO",
+            "opponent": "Croatia",
+            "impact": 0.5288
+          },
+          {
+            "match_id": "L5-PAN-ENG",
+            "opponent": "England",
+            "impact": 0.4076
+          },
+          {
+            "match_id": "L2-GHA-PAN",
+            "opponent": "Ghana",
+            "impact": 0.3528
+          }
+        ]
+      },
+      "championship": {
+        "championship_prob": 0.0072179419483373655,
+        "championship_path_count": 3,
+        "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+        "dominant_failure_node": "none",
+        "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+        "path_nodes": [
+          {
+            "round": "round_of_32",
+            "match_id": "KO88",
+            "opponent_slot": "1K",
+            "opponent_team": "Portugal",
+            "conditional_win_prob": 0.4666,
+            "cumulative_prob": 0.466613,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "round_of_16",
+            "match_id": "KO95",
+            "opponent_slot": "W86",
+            "opponent_team": "Egypt",
+            "conditional_win_prob": 0.4994,
+            "cumulative_prob": 0.233024,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "quarterfinal",
+            "match_id": "KO100",
+            "opponent_slot": "W96",
+            "opponent_team": "Argentina",
+            "conditional_win_prob": 0.4676,
+            "cumulative_prob": 0.108954,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "semifinal",
+            "match_id": "KO102",
+            "opponent_slot": "W99",
+            "opponent_team": "Brazil",
+            "conditional_win_prob": 0.4814,
+            "cumulative_prob": 0.052451,
+            "probability_source": "elo_poisson"
+          },
+          {
+            "round": "final",
+            "match_id": "KO104",
+            "opponent_slot": "W101",
+            "opponent_team": "France",
+            "conditional_win_prob": 0.4887,
+            "cumulative_prob": 0.025633,
+            "probability_source": "elo_poisson"
+          }
+        ]
+      }
+    }
+  }
+}

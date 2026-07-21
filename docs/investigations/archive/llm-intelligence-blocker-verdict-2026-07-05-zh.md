@@ -187,7 +187,7 @@
 - 本调查报告：`docs/investigations/llm-intelligence-blocker-verdict-2026-07-05-zh.md`
 - 调查骨架（含 pair 未填部分）：`docs/investigations/llm-intelligence-blocker-analysis-2026-07-05.md`
 - 4 份 review_round_1.md：`papers/{p07-signal-fusion,p08-market-calibration,p12-judge-calibration,p1p2-evidence-ledger}/paper/review_round_1.md`
-- joint-methods-outline-review.md：`docs/papers/joint-methods-outline-review.md`
+- joint-methods-outline-review.md：`docs/papers-closed-portfolio/joint-methods-outline-review.md`
 - directions_tried.json：`state/directions_tried.json`
 - API 配置：`.env`, `.env.sample`, `framework/vendor/policysim_config/experiment-config.yaml`
 - Pair session（失败）：`F1BA7E4C-8208-4E9F-99EE-F85B827C99B7`

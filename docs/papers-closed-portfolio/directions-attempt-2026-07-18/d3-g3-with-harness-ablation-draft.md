@@ -2,7 +2,7 @@
 
 **Draft**: 2026-07-18 (D3 of auto-research deep-research recalculation)
 **Target**: ACL/EMNLP Findings 8-page methods paper
-**Status**: prose draft, not outline. Primary contribution is **settlement reconciliation** (companion standalone paper: see `docs/papers/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md`); the substantive new content of this paper is **§6 Harness-Evolution Ablation**.
+**Status**: prose draft, not outline. Primary contribution is **settlement reconciliation** (companion standalone paper: see `docs/papers-closed-portfolio/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md`); the substantive new content of this paper is **§6 Harness-Evolution Ablation**.
 
 ---
 
@@ -42,7 +42,7 @@ The harness-engineering subspace is established by four primary-source papers: S
 
 ## §3 Method (brief recap; full treatment in companion D1)
 
-The methodology of this paper is the settlement reconciliation introduced in the companion paper; we summarize briefly here and refer the reader to Section 3 of `docs/papers/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md` for full treatment.
+The methodology of this paper is the settlement reconciliation introduced in the companion paper; we summarize briefly here and refer the reader to Section 3 of `docs/papers-closed-portfolio/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md` for full treatment.
 
 ### §3.1 Dual-ledger crosswalk
 

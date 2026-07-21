@@ -29,7 +29,7 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers/experiments/direction_a")
+EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers-closed-portfolio/experiments/direction_a")
 RESULTS_DIR = EXPERIMENT_ROOT / "results"
 ALL_CALLS = RESULTS_DIR / "all_calls_real_combined.jsonl"
 

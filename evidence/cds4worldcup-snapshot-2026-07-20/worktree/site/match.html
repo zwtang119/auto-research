@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS4WorldCup - 比赛详情</title>
+  <meta name="description" content="2026 世界杯单场比赛深度分析：数值预测、市场参考、比赛信息。">
+  <link rel="stylesheet" href="css/portal.css">
+  <script src="js/common.js"></script>
+  <script src="js/match.js" defer></script>
+</head>
+<body>
+  <header class="topbar" aria-label="站点导航">
+    <a class="brand" href="index.html">CDS4WorldCup</a>
+    <nav class="topnav">
+      <a href="index.html">首页</a>
+      <a href="panorama.html">全景图</a>
+      <a href="teams.html">球队</a>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="面包屑导航">
+    <a href="index.html">首页</a><span class="sep">›</span><a href="panorama.html">全景赛程</a><span class="sep">›</span><span class="current">比赛详情</span>
+  </nav>
+
+  <main class="portal match-page">
+    <!-- Match header -->
+    <section class="section match-hero" data-match-hero>
+      <div class="empty-state">正在加载比赛数据...</div>
+    </section>
+
+    <!-- Probability section -->
+    <section class="section match-probs" data-match-probs style="display:none">
+      <div class="section-head">
+        <p class="eyebrow">概率分析</p>
+        <h2>三方概率对比</h2>
+      </div>
+      <div class="prob-sources" data-prob-sources></div>
+
+      <!-- Timeline placeholder -->
+      <div class="match-timeline-section" data-match-timeline>
+        <div class="section-head">
+          <p class="eyebrow">概率变化</p>
+          <h2>时间线</h2>
+        </div>
+        <div class="timeline-placeholder">
+          <p>概率时间线需要历史数据（Phase 3 接入后可用）。</p>
+          <p>当前仅展示最新快照。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Match info -->
+    <section class="section match-info" data-match-info style="display:none">
+      <div class="section-head">
+        <p class="eyebrow">比赛信息</p>
+        <h2>场地 &amp; 时间</h2>
+      </div>
+      <div class="info-grid" data-info-grid></div>
+    </section>
+
+    <!-- Back link -->
+    <div class="match-back">
+      <a href="panorama.html">← 返回全景赛程</a>
+    </div>
+  </main>
+
+  <footer class="footer-disclaimer">
+    <p class="disclaimer-text">
+      <strong>关于概率信号：</strong>比赛胜率来自 Elo+泊松数值模型（Red Source），市场数据和 AI 投票将在后续版本接入。仅作参考，不作为投注建议。
+      <br><br>
+      <strong>来源分级：</strong>绿 = 可靠事实 · 黄 = 待核验线索 · 红 = 只能参考
+    </p>
+  </footer>
+</body>
+</html>

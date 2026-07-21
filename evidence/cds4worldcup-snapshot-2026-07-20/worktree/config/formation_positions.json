@@ -1,0 +1,100 @@
+{
+  "formations": {
+    "4-3-3": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LB",  "position_group": "DEF"},
+        {"slot": 3,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 4,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 5,  "position_code": "RB",  "position_group": "DEF"},
+        {"slot": 6,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 7,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 9,  "position_code": "LW",  "position_group": "ATT"},
+        {"slot": 10, "position_code": "CF",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "RW",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 4, "MID": 3, "ATT": 3}
+    },
+    "4-4-2": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LB",  "position_group": "DEF"},
+        {"slot": 3,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 4,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 5,  "position_code": "RB",  "position_group": "DEF"},
+        {"slot": 6,  "position_code": "LM",  "position_group": "MID"},
+        {"slot": 7,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 9,  "position_code": "RM",  "position_group": "MID"},
+        {"slot": 10, "position_code": "CF",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "CF",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 4, "MID": 4, "ATT": 2}
+    },
+    "4-2-3-1": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LB",  "position_group": "DEF"},
+        {"slot": 3,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 4,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 5,  "position_code": "RB",  "position_group": "DEF"},
+        {"slot": 6,  "position_code": "DM",  "position_group": "MID"},
+        {"slot": 7,  "position_code": "DM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "LW",  "position_group": "ATT"},
+        {"slot": 9,  "position_code": "AM",  "position_group": "MID"},
+        {"slot": 10, "position_code": "RW",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "CF",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 4, "MID": 3, "ATT": 3}
+    },
+    "3-5-2": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LCB", "position_group": "DEF"},
+        {"slot": 3,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 4,  "position_code": "RCB", "position_group": "DEF"},
+        {"slot": 5,  "position_code": "LWB", "position_group": "DEF"},
+        {"slot": 6,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 7,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 9,  "position_code": "RWB", "position_group": "DEF"},
+        {"slot": 10, "position_code": "CF",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "CF",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 5, "MID": 3, "ATT": 2}
+    },
+    "3-4-3": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LCB", "position_group": "DEF"},
+        {"slot": 3,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 4,  "position_code": "RCB", "position_group": "DEF"},
+        {"slot": 5,  "position_code": "LM",  "position_group": "MID"},
+        {"slot": 6,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 7,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "RM",  "position_group": "MID"},
+        {"slot": 9,  "position_code": "LW",  "position_group": "ATT"},
+        {"slot": 10, "position_code": "CF",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "RW",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 3, "MID": 4, "ATT": 3}
+    },
+    "5-3-2": {
+      "positions": [
+        {"slot": 1,  "position_code": "GK",  "position_group": "GK"},
+        {"slot": 2,  "position_code": "LWB", "position_group": "DEF"},
+        {"slot": 3,  "position_code": "LCB", "position_group": "DEF"},
+        {"slot": 4,  "position_code": "CB",  "position_group": "DEF"},
+        {"slot": 5,  "position_code": "RCB", "position_group": "DEF"},
+        {"slot": 6,  "position_code": "RWB", "position_group": "DEF"},
+        {"slot": 7,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 8,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 9,  "position_code": "CM",  "position_group": "MID"},
+        {"slot": 10, "position_code": "CF",  "position_group": "ATT"},
+        {"slot": 11, "position_code": "CF",  "position_group": "ATT"}
+      ],
+      "group_counts": {"GK": 1, "DEF": 5, "MID": 3, "ATT": 2}
+    }
+  }
+}

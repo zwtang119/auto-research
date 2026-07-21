@@ -1,0 +1,112 @@
+schema_version: "0.2"
+smoke_test: false
+task_type: "group_90m_wdl"
+match_id: "wc2026-f-m01-ned-jpn"
+competition: "FIFA World Cup 2026"
+stage: "group"
+kickoff_time_utc: "2026-06-15T00:00:00Z"
+
+teams:
+  home: "Netherlands"
+  away: "Japan"
+
+lock:
+  prediction_locked_at_utc: "2026-06-13T18:00:00Z"
+  sha256: "to_be_computed_at_lock"
+  git_commit: "to_be_computed_at_lock"
+
+data_package:
+  package_id: "wc2026-f-m01-ned-jpn-plan-c-v0.1"
+  green_sources:
+    - "official_schedule_snapshot"
+    - "fifa_ranking_proxy"
+    - "public_football_knowledge_netherlands"
+    - "public_football_knowledge_japan"
+  red_sources_excluded_from_model:
+    - "kimi_public_artifact_snapshot"
+    - "kimi_300_agent_reasons_netherlands"
+    - "kimi_300_agent_reasons_japan"
+
+llm:
+  provider_id: "anthropic"
+  model_id: "claude-opus-4-20250514"
+  model_version_observed_at_utc: "2026-06-13T12:00:00Z"
+  prompt_version: "worldcup_prediction_card_plan_c_v0.1"
+  temperature: 0
+  max_retries: 1
+  reasoning_budget: "fixed"
+  schema_validation_status: "passed"
+  source_cutoff_utc: "2026-06-13T12:00:00Z"
+
+prompt_config:
+  system_prompt_id: "worldcup_system_v0.1"
+  user_prompt_template_id: "worldcup_prediction_card_plan_c_v0.1"
+  prompt_hash: "plan_c_v0.1_no_fixed_rendered_prompt"
+  market_or_odds_exposed_to_model: false
+  public_ai_baseline_exposed_to_model: false
+
+memory_budget:
+  max_prior_notes: 5
+  max_note_chars_each: 1200
+  max_kimi_derived_candidates_reviewed: 3
+  max_kimi_derived_factors_tracked: 1
+  max_candidate_factors_reviewed: 6
+
+probabilities:
+  home_win_90m: 0.49
+  draw_90m: 0.26
+  away_win_90m: 0.25
+
+baselines:
+  market_or_odds:
+    status: "missing_with_reason"
+    reason: >
+      Plan C pre-registration artifact. Web search API not used at creation time;
+      no archivable market probability source was captured. This is a protocol
+      limitation, not a prediction capability claim.
+  simple_statistical:
+    status: "available"
+    method: >
+      FIFA ranking positions via logistic model (same method as MVPA fixture).
+      Netherlands ranked ~#6 (FIFA Men's World Ranking 2025-11-19),
+      Japan ranked ~#16 (FIFA Men's World Ranking 2025-11-19).
+      Approximate ranking points: Netherlands ~1790, Japan ~1620.
+      Points difference ~+170 (Netherlands higher). FIFA Elo formula (c=600):
+      W_e(home) = 1/(10^(-170/600)+1) = 1/(10^(-0.283)+1) ~ 0.657.
+      Three-outcome decomposition with base draw rate d=0.25:
+      P(home_win) = W_e - 0.5*d = 0.657 - 0.125 = 0.532;
+      P(draw) = d = 0.25;
+      P(away_win) = 1 - 0.532 - 0.25 = 0.218.
+      Note: this baseline does NOT adjust for home advantage. Both teams play
+      on neutral ground at AT&T Stadium, Dallas.
+    netherlands_fifa_rank: 6
+    netherlands_ranking_date: "2025-11-19"
+    japan_fifa_rank: 16
+    japan_ranking_date: "2025-11-19"
+    ranking_source_url: "data/processed/baselines/fifa-ranking-proxy.json"
+    estimated_points_difference: 170
+    expected_score_home: 0.657
+    decomposition_note: "P(win)=0.53; P(draw)=0.25; P(loss)=0.22; no home advantage adjustment"
+    probabilities:
+      home_win_90m: 0.53
+      draw_90m: 0.25
+      away_win_90m: 0.22
+  public_ai:
+    status: "not_applicable"
+    reason: >
+      No public AI baseline available for this match_id at creation time.
+      Kimi artifact snapshot and 300-agent reasons are Red Sources excluded
+      from model input.
+
+factors_used:
+  - "wc2026-f-m01-ned-jpn-f01-ned-possession-control"
+  - "wc2026-f-m01-ned-jpn-f02-jpn-counter-threat"
+  - "wc2026-f-m01-ned-jpn-f03-ned-set-piece"
+
+uncertainty_notes:
+  - "Japan's 2022 WC victories over Germany (2-1) and Spain (2-1) demonstrate proven ability to defeat top European opposition in tournament conditions, which the 10-position ranking gap does not fully capture."
+  - "Netherlands' Van Dijk-led defense provides a high floor but the team historically underperforms relative to squad quality in group stages (e.g., 2012 group stage exit, 2022 close call vs Ecuador)."
+  - "Frenkie de Jong's fitness is a key variable; if unavailable or limited, Netherlands' midfield control diminishes significantly, narrowing the gap with Japan's technically gifted midfield."
+  - "AT&T Stadium in Dallas uses artificial turf, which may disadvantage teams less familiar with the surface; Japan's J-League experience on similar surfaces may provide a small adjustment."
+  - "Both teams rely on tactical discipline rather than individual brilliance, which typically produces closer matches with lower variance."
+  - "This is a protocol calibration artifact, not a prediction capability claim."

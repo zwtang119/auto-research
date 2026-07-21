@@ -1,0 +1,49 @@
+team_slug,canonical_team,zh_name,confederation,group,has_kimi_data,kimi_probability,kimi_baseline_signals,path_type,tier
+spain,Spain,西班牙,UEFA,F,True,23.82,high_kimi_probability;broad_faction_support;cross_faction_consensus,unassigned,unassigned
+france,France,法国,UEFA,C,True,23.56,high_kimi_probability;broad_faction_support;cross_faction_consensus,unassigned,unassigned
+argentina,Argentina,阿根廷,CONMEBOL,B,True,19.59,high_kimi_probability;broad_faction_support;cross_faction_consensus,unassigned,unassigned
+portugal,Portugal,葡萄牙,UEFA,F,True,6.56,broad_faction_support;cross_faction_consensus,unassigned,unassigned
+england,England,英格兰,UEFA,E,True,5.2,cross_faction_consensus,unassigned,unassigned
+germany,Germany,德国,UEFA,G,True,5.16,cross_faction_consensus,unassigned,unassigned
+morocco,Morocco,摩洛哥,CAF,F,True,3.48,kimi_longshot,unassigned,unassigned
+brazil,Brazil,巴西,CONMEBOL,D,True,3.39,cross_faction_consensus;kimi_longshot,unassigned,unassigned
+norway,Norway,挪威,UEFA,K,True,2.63,cross_faction_consensus;kimi_longshot,unassigned,unassigned
+netherlands,Netherlands,荷兰,UEFA,C,True,1.6,cross_faction_consensus;kimi_longshot,unassigned,unassigned
+croatia,Croatia,克罗地亚,UEFA,J,True,1.34,kimi_longshot,unassigned,unassigned
+colombia,Colombia,哥伦比亚,CONMEBOL,I,True,0.61,kimi_longshot,unassigned,unassigned
+japan,Japan,日本,AFC,G,True,0.57,kimi_longshot,unassigned,unassigned
+senegal,Senegal,塞内加尔,CAF,J,True,0.55,kimi_longshot,unassigned,unassigned
+united-states,United States,美国,CONCACAF,A,True,0.5,kimi_longshot,unassigned,unassigned
+mexico,Mexico,墨西哥,CONCACAF,A,True,0.49,kimi_longshot,unassigned,unassigned
+uruguay,Uruguay,乌拉圭,CONMEBOL,H,True,0.41,kimi_longshot,unassigned,unassigned
+belgium,Belgium,比利时,UEFA,I,True,0.18,kimi_longshot,unassigned,unassigned
+australia,Australia,澳大利亚,AFC,I,True,0.18,kimi_longshot,unassigned,unassigned
+south-korea,South Korea,韩国,AFC,G,True,0.1,kimi_longshot,unassigned,unassigned
+turkey,Turkey,土耳其,UEFA,C,True,0.1,kimi_longshot,unassigned,unassigned
+canada,Canada,加拿大,CONCACAF,A,False,N/A,none,unassigned,unassigned
+panama,Panama,巴拿马,CONCACAF,A,False,N/A,none,unassigned,unassigned
+costa-rica,Costa Rica,哥斯达黎加,CONCACAF,D,False,N/A,none,unassigned,unassigned
+italy,Italy,意大利,UEFA,H,False,N/A,none,unassigned,unassigned
+denmark,Denmark,丹麦,UEFA,J,False,N/A,none,unassigned,unassigned
+switzerland,Switzerland,瑞士,UEFA,K,False,N/A,none,unassigned,unassigned
+austria,Austria,奥地利,UEFA,C,False,N/A,none,unassigned,unassigned
+poland,Poland,波兰,UEFA,L,False,N/A,none,unassigned,unassigned
+ukraine,Ukraine,乌克兰,UEFA,L,False,N/A,none,unassigned,unassigned
+wales,Wales,威尔士,UEFA,E,False,N/A,none,unassigned,unassigned
+chile,Chile,智利,CONMEBOL,B,False,N/A,none,unassigned,unassigned
+ecuador,Ecuador,厄瓜多尔,CONMEBOL,B,False,N/A,none,unassigned,unassigned
+venezuela,Venezuela,委内瑞拉,CONMEBOL,B,False,N/A,none,unassigned,unassigned
+saudi-arabia,Saudi Arabia,沙特阿拉伯,AFC,K,False,N/A,none,unassigned,unassigned
+tunisia,Tunisia,突尼斯,CAF,E,False,N/A,none,unassigned,unassigned
+cameroon,Cameroon,喀麦隆,CAF,L,False,N/A,none,unassigned,unassigned
+côte-divoire,Côte d'Ivoire,科特迪瓦,CAF,H,False,N/A,none,unassigned,unassigned
+nigeria,Nigeria,尼日利亚,CAF,,False,N/A,none,unassigned,unassigned
+ghana,Ghana,加纳,CAF,,False,N/A,none,unassigned,unassigned
+egypt,Egypt,埃及,CAF,,False,N/A,none,unassigned,unassigned
+algeria,Algeria,阿尔及利亚,CAF,,False,N/A,none,unassigned,unassigned
+iran,Iran,伊朗,AFC,,False,N/A,none,unassigned,unassigned
+uzbekistan,Uzbekistan,乌兹别克斯坦,AFC,,False,N/A,none,unassigned,unassigned
+iraq,Iraq,伊拉克,AFC,,False,N/A,none,unassigned,unassigned
+qatar,Qatar,卡塔尔,AFC,,False,N/A,none,unassigned,unassigned
+new-zealand,New Zealand,新西兰,OFC,,False,N/A,none,unassigned,unassigned
+paraguay,Paraguay,巴拉圭,CONMEBOL,,False,N/A,none,unassigned,unassigned

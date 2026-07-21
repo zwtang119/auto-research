@@ -1,0 +1,94 @@
+# ============================================
+# CDS4WorldCup .gitignore
+# ============================================
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# --- AI Agent 本地配置 ---
+.claude/settings.local.json
+.mimocode/
+.playwright-mcp/
+.playwright-cli/
+
+# --- AI / Oracle 临时导出 ---
+prompt-exports/
+artifacts/annotation/**/private/
+artifacts/annotation/**/*.zip
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+.python-version
+
+# --- Node.js（如后续引入）---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# --- 敏感文件（绝不上库）---
+docs/references/
+docs/ops/
+wiki/decisions/mimo-*
+archive/
+
+# --- 大文件 / 临时数据 ---
+data/raw/
+data/cache/
+data/ops/
+*.csv.bak
+*.sqlite
+*.db
+
+# --- 构建产物（Makefile / CI 生成）---
+_publish/
+_site/
+
+# --- 本地运行产物 ---
+results/.tmp/
+results/ops/
+
+# --- 环境变量 / 凭证 ---
+*.env
+.env*
+
+# --- 临时文件 ---
+*.log
+*.bak
+*.tmp
+
+# --- 视频文件（防止仓库膨胀）---
+*.mp4
+
+# --- 孤立数据文件（无对应 HTML 消费者）---
+site/data/predictions-data.js
+
+# --- 二进制文档（防止误提交）---
+*.pdf
+*.docx
+*.xlsx
+*.doc
+
+# --- OS ---
+Thumbs.db
+Desktop.ini
+.superpowers/

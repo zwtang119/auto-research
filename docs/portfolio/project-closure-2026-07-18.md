@@ -21,7 +21,7 @@
 |---|---|---|
 | 选题终审包 | `docs/investigations/topic-selection-2026-07-18/` | w1 第一性原理标准（三层溯源）、w2 D1-D4 审计、w3 景观+资产、verdict memo |
 | 过程 trace | `state/progress.json`（18 events）、`state/findings.jsonl`、`state/iteration_log.jsonl`、`logs/` | 带证伪决策记录的长周期研究 trace，公开文献无等价物 |
-| 方法论沉淀 | `framework/knowledge/`、`framework/schemas/`、`docs/papers/g3-methods-paper-outline.md` | 含 first-class paper 中译 + exemplar 标尺 + PIT 反模式库 |
+| 方法论沉淀 | `framework/knowledge/`、`framework/schemas/`、`docs/papers-closed-portfolio/g3-methods-paper-outline.md` | 含 first-class paper 中译 + exemplar 标尺 + PIT 反模式库 |
 | 原始实验数据 | `legacy/p11-*/experiments/`（30+ raw-data 目录）、`papers/*/wiki/` | P11 三条件对照实验等 |
 | 外部结算锚 | cds4worldcup settlement records（5 个，姊妹项目） | Brier replay 真实锚 |
 

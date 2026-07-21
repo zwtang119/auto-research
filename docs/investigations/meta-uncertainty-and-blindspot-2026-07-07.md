@@ -104,7 +104,7 @@ Exhaustive sweep of `docs/autoresearch/` (4 files), `docs/portfolio/` (9 files �
 
 | Candidate | File:line | External? | Outcome |
 |---|---|---|---|
-| Real FIFA WC 2022 outcomes | `cds4worldcup/artifacts/fixtures/cds4polymarket/settlement/wc2022-*.yaml`; injected in `docs/papers/experiments/direction_a/raw/cds4worldcup__leaked_gt__closed_source_mid__wc2022-a-f01-qat-ecu__prompt.txt:6-8` | **No** — same author, same git tree per `docs/investigations/rp-investigate-top-journal-2026-07-05.md:85`; prompt text also contains **factually wrong ground truth** ("Qatar won vs Ecuador, 0-2"; actual was Ecuador 2-0 Qatar on 2022-11-20) | FOLDED 2026-07-05 (`docs/papers/experiments/direction_a/results/summary_REAL.md:178`); signal did not replicate |
+| Real FIFA WC 2022 outcomes | `cds4worldcup/artifacts/fixtures/cds4polymarket/settlement/wc2022-*.yaml`; injected in `docs/papers-closed-portfolio/experiments/direction_a/raw/cds4worldcup__leaked_gt__closed_source_mid__wc2022-a-f01-qat-ecu__prompt.txt:6-8` | **No** — same author, same git tree per `docs/investigations/rp-investigate-top-journal-2026-07-05.md:85`; prompt text also contains **factually wrong ground truth** ("Qatar won vs Ecuador, 0-2"; actual was Ecuador 2-0 Qatar on 2022-11-20) | FOLDED 2026-07-05 (`docs/papers-closed-portfolio/experiments/direction_a/results/summary_REAL.md:178`); signal did not replicate |
 | LLM-generated GuLei scenarios | `legacy/p11-closed-v5-minimax-m3/experiments/h5-emergence/A/yaml/*.yaml` | No | Source of `inter_judge_agreement_fidelity=0.19_low` |
 | Tsinghua 4-model results | `policysim-research-Tsinghua/experiments/mc-2026-05-05/` | Sister project (same author) | Methodology pattern donor only |
 | cds4polymarket `gold_calibration.py` | sibling repo | Sister project (same author) | Internal template only |
@@ -397,7 +397,7 @@ lead underweighted is the **opposite-direction finding** (blind > leaked,
 meanΔ=-1.28, p=0.0000 at N=10): the data directly contradicts the original P11
 leakage hypothesis. A "label visibility makes the judge STRICTER, not looser"
 finding is a publishable methodological lesson. **But it is also falsified**:
-G2 N=30 (docs/papers/g2-p12-calibration-paradox-replication.md §7) shows
+G2 N=30 (docs/papers-closed-portfolio/g2-p12-calibration-paradox-replication.md §7) shows
 1st-judge meanΔ shrunk 8× to -0.16 (CI crosses 0) and 2nd-judge FLIPPED to
 +0.34 (CI entirely positive). The "opposite" was cherry-picked from sample
 subset P12-001..006. All reviewers ≤4.0 except R5 systems-only at 6.0.
@@ -448,7 +448,7 @@ human-checkpoint), this is a 1-table methods paper at best.
 **Strongest counter-argument the lead underweighted**: 927 agent-runs × 1,824
 judge-calls is real industrial-scale data; A1 t=-3.391 p=0.0008 Cliff's δ=-0.162
 is real signal on subjective fidelity; the G1 PA-degrades-fidelity abstract
-exists with 4-pillar evidence table (docs/papers/g1-pa-degrades-fidelity-abstract.md).
+exists with 4-pillar evidence table (docs/papers-closed-portfolio/g1-pa-degrades-fidelity-abstract.md).
 **Counter-counter**: this stands on 1/6 measured dimensions (inter-judge
 ρ=0.19 on subjective, ρ=0.74 ONLY on risk_taking); 199/750 parse failures
 leave n=551; single scenario (Gulei 2015 petrochemical); R7 OpenRouter

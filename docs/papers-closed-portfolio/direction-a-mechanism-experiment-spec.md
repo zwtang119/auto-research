@@ -1,6 +1,6 @@
 # Direction A Mechanism Experiment — Detailed Cell Design
 
-> **Parent proposal**: `docs/papers/direction-a-1-page-proposal.md`
+> **Parent proposal**: `docs/papers-closed-portfolio/direction-a-1-page-proposal.md`
 > **Goal**: empirically test the **3-axis anchoring-bias taxonomy** (CONTRAST vs ASSIMILATION vs INSUFFICIENT-ADJUSTMENT) for LLM-as-a-judge.
 > **Headline falsifiable prediction**: Δ_assimilation > 0 (judges converge to reference anchor) AND Δ_contrast < 0 (judges adjust insufficiently toward ground-truth anchor, leaving room for stricter scoring). Signs should be opposite in both anchors. This is what the taxonomy predicts and what naive "label bias" framings do NOT predict.
 > **Hard gate before running**: (a) Direction A 1-page proposal passes 5-persona review (median ≥ 5.5); (b) 8-method-paper novelty check passes (no method paper uses the same framing).

@@ -1,0 +1,147 @@
+schema_version: "0.2"
+match_id: "wc2026-a-m01-mex-rsa"
+task_type: "group_90m_wdl"
+
+result:
+  home_goals_90m: 2
+  away_goals_90m: 0
+  outcome_90m: "home_win"
+  goal_scorers_home_90m: "Julián Quiñones (9'), Raúl Jiménez (67')"
+  goal_scorers_away_90m: "None"
+  half_time_score: "1-0"
+  red_cards:
+    - "Cesar Montes (MEX, 90+2', direct red)"
+    - "Sphephelo Sithole (RSA, 49', direct red)"
+    - "Themba Zwane (RSA, 84', direct red)"
+  match_statistics:
+    possession_home_pct: 61
+    possession_away_pct: 39
+    shots_total_home: 16
+    shots_total_away: 3
+    shots_on_target_home: 4
+    shots_on_target_away: 2
+    corners_home: 3
+    corners_away: 1
+    fouls_home: 12
+    fouls_away: 11
+    yellow_cards_home: 1
+    yellow_cards_away: 2
+    attendance: 80824
+  result_source: "https://fdp.fifa.org/assetspublic/ce281/r12452/pdf/FullTimeMatchReport-English.pdf"
+  result_source_secondary: "https://www.espn.com/soccer/report/_/gameId/760415"
+
+settled_at_utc: "2026-06-13T12:00:00Z"
+
+scores:
+  brier: 0.3078
+  log_loss: 0.5978
+  brier_calculation: >
+    Brier Score (multi-class, single observation):
+    p = [home_win=0.55, draw=0.27, away_win=0.18]
+    o = [home_win=1, draw=0, away_win=0]
+    BS = (0.55-1)^2 + (0.27-0)^2 + (0.18-0)^2
+       = 0.2025 + 0.0729 + 0.0324
+       = 0.3078
+  log_loss_calculation: >
+    Log Loss (multi-class, single observation, epsilon=1e-12):
+    LL = -[1*log(0.55+1e-12) + 0*log(0.27+1e-12) + 0*log(0.18+1e-12)]
+       = -ln(0.55)
+       = -(-0.5978...)
+       = 0.5978
+  calculation_snippet: |
+    # Python verification:
+    import math
+    p = [0.55, 0.27, 0.18]  # predicted: home_win, draw, away_win
+    outcome_index = 0        # home_win happened
+    # Brier Score
+    brier = sum((p[i] - (1 if i == outcome_index else 0))**2 for i in range(3))
+    assert abs(brier - 0.3078) < 0.0001, f"Brier mismatch: {brier}"
+    # Log Loss
+    epsilon = 1e-12
+    log_loss = -math.log(p[outcome_index] + epsilon)
+    assert abs(log_loss - 0.5978) < 0.001, f"Log Loss mismatch: {log_loss}"
+    print(f"Brier: {brier:.4f}, Log Loss: {log_loss:.4f}")
+  baseline_difference:
+    simple_statistical:
+      brier_baseline: 0.2342
+      brier_prediction: 0.3078
+      brier_delta: 0.0736
+      log_loss_baseline: 0.4943
+      log_loss_prediction: 0.5978
+      log_loss_delta: 0.1035
+      note: >
+        Prediction slightly underperformed the simple statistical baseline (FIFA ranking
+        logistic model). The baseline gave higher home_win probability (0.61 vs 0.55)
+        which proved more accurate. The prediction's conservatism (lower home_win P)
+        reflected opening-match uncertainty noted in uncertainty_notes, but Mexico's
+        home advantage at Estadio Azteca was even stronger than the model anticipated.
+        Both Brier and Log Loss differences favor the baseline.
+    market_or_odds: null
+
+factor_updates:
+  supported:
+    - factor_id: "wc2026-a-m01-mex-rsa-f02-rsa-shots-on-target"
+      evidence: >
+        Official FIFA match report shows South Africa 2 shots on target (3 total attempts,
+        2 on target). Threshold was <= 3. Result: 2 <= 3. SUPPORTED.
+        South Africa registered only 3 total attempts in the entire match, reflecting
+        Mexico's complete dominance. The suppressor factor correctly identified that
+        South Africa's attacking output would be minimal.
+      confidence_post: 8
+  rejected:
+    - factor_id: "wc2026-a-m01-mex-rsa-f03-mex-corner-count"
+      evidence: >
+        Official FIFA match report shows Mexico 3 corner kicks. Threshold was >= 6
+        for support, <= 3 for rejection. Result: 3 <= 3. REJECTED.
+        Despite Mexico's 61% possession and 16 total shots, they earned only 3 corners.
+        This suggests many attacks came through central channels or were shots directly
+        rather than crosses requiring defensive intervention. The low corner count may
+        also reflect South Africa's deep, compact defensive shape funneling play centrally.
+      confidence_post: 7
+  inconclusive:
+    - factor_id: "wc2026-a-m01-mex-rsa-f01-home-possession"
+      evidence: >
+        Official FIFA match report shows Mexico 61% ball possession (full-match aggregate).
+        Factor threshold requires first-half possession >= 55% for support.
+        The FIFA report does not provide a half-time possession breakdown — only the
+        90-minute aggregate. Settlement rule specifies "inconclusive if only full-match
+        (90-minute aggregate) possession is reported without half-time breakdown."
+        Full-match 61% possession strongly suggests first-half possession was also above
+        55%, especially since Mexico scored in the 9th minute and controlled the game
+        throughout, but this cannot be confirmed from the official data source per the
+        strict settlement protocol.
+      confidence_post: null
+      reason_for_inconclusive: >
+        FIFA official match report (FullTimeMatchReport-English.pdf) provides only
+        aggregate 90-minute possession (Mexico 61%), not a first-half breakdown.
+        Settlement rule explicitly marks this scenario as inconclusive.
+
+protocol_failures:
+  - failure_id: "wc2026-a-m01-mex-rsa-pf01-half-time-possession-unavailable"
+    factor_affected: "wc2026-a-m01-mex-rsa-f01-home-possession"
+    severity: "minor"
+    description: >
+      Factor f01 requires first-half possession percentage for settlement, but the
+      FIFA official match report only provides full-match aggregate possession (61%).
+      The settlement rule anticipated this scenario and designated it as inconclusive,
+      so no settlement error occurred. However, this represents a protocol limitation:
+      the factor's observable proxy (first-half possession) was not available from
+      the designated data source (fifa_match_report_wc2026_group_a).
+    resolution: >
+      Factor settled as "inconclusive" per its own settlement_rule.
+      Recommendation: future factor ledgers should either (a) use full-match aggregates
+      as observable proxies, or (b) specify an alternative data source that provides
+      half-time statistical breakdowns (e.g., Opta, Sofascore, FotMob).
+    resolved: true
+
+review_notes:
+  - "Prediction correctly identified Mexico as favorites (P(home_win)=0.55); actual result was Mexico 2-0."
+  - "Brier Score 0.3078 and Log Loss 0.5978 represent a reasonably well-calibrated prediction for a home_win outcome."
+  - "The simple statistical baseline (FIFA ranking logistic model, P(home_win)=0.61) slightly outperformed the prediction, suggesting the model's opening-match uncertainty discount was modestly over-applied."
+  - "Factor f01 (possession): inconclusive due to data limitation. Full-match 61% possession suggests first-half was likely >= 55%, but cannot be confirmed per strict settlement protocol."
+  - "Factor f02 (RSA shots on target): supported. South Africa managed only 2 shots on target, well within the <= 3 threshold. The suppressor factor was well-chosen — South Africa was completely dominated."
+  - "Factor f03 (Mexico corners): rejected. Mexico earned only 3 corners despite 16 shots. This is a surprising mismatch between shot volume and corner count, likely reflecting central-channel attacking patterns."
+  - "One minor protocol failure documented: f01's data source does not provide half-time possession breakdown. The factor's own settlement rule correctly anticipated this and defaults to inconclusive."
+  - "3 red cards in the match (Montes MEX 90+2', Sithole RSA 49', Zwane RSA 84') — an unusually ill-tempered opening match. These were not factored into the prediction model."
+  - "No Red Source contamination detected. No schema validation failures."
+  - "The uncertainty note about 'historically high variance in opening matches' was partially validated by the red card count, though the outcome itself (comfortable home win) was low-variance."

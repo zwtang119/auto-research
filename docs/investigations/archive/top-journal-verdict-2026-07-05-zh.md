@@ -72,7 +72,7 @@ Novelty 更新来源：用户用 Google 深度检索完成 COBBLER + 三篇 surv
   - PROV-O (W3C 2013)、HippoRAG (NeurIPS 2024)、GraphRAG、RAGAS 都已解决跨域 provenance——G3 是"schema engineering，不是 research contribution"。
 
 ### 7. Joint methods package — 14 小时前刚被否
-- 6-persona review median=4.0 < 4.5 fallback threshold（`docs/papers/joint-methods-outline-review.md`）。
+- 6-persona review median=4.0 < 4.5 fallback threshold（`docs/papers-closed-portfolio/joint-methods-outline-review.md`）。
 - 任何"G2+G3+P11-neg 组合包"都是这个已否 outline 的严格子集。
 
 ---
@@ -127,7 +127,7 @@ Novelty 更新来源：用户用 Google 深度检索完成 COBBLER + 三篇 surv
 | 完成所需预算 | ~80–200 API hours + 8–12 周人月 + 工具/数据 |
 | 关键风险 | (1) ~~anchoring 框架可能已被某 2024-2025 论文预先覆盖~~——已大幅降低，但仍需查具体方法论文；(2) contrast vs assimilation 的边界条件实验需要至少 3 个 anchor type，每个要 2 个 judge family × 2 个 domain × N≥30/cell，约 360 次评分； |
 
-**【2026-07-06 重大更新 — 5-persona review FOLD】**：Direction A 1-page proposal 5-persona review 已执行（详见 `docs/papers/direction-a-review-round-1.md` + `docs/investigations/direction-a-decision-memo-2026-07-05.md`）：
+**【2026-07-06 重大更新 — 5-persona review FOLD】**：Direction A 1-page proposal 5-persona review 已执行（详见 `docs/papers-closed-portfolio/direction-a-review-round-1.md` + `docs/investigations/direction-a-decision-memo-2026-07-05.md`）：
 
 | Reviewer | Model | Score | Binding weakness |
 |---|---|---|---|
@@ -228,7 +228,7 @@ Novelty 更新来源：用户用 Google 深度检索完成 COBBLER + 三篇 surv
   - §五 Direction A 诚实评估：novelty 描述加入"3 surveys + 8 method papers + CoBBLEr 均无 anchoring 先占；CoBBLEr 需 3-axis 区分"
   - §七 局限声明 #1：更新"剩余未完成项"——8 method-paper 已查证，**唯一剩余**是 Direction A 1-page proposal 的 5-persona review
 - **未变更**：收敛主判断；Direction A 仍是唯一值得赌的新方向
-- **关键新增文件**：`docs/papers/direction-a-1-page-proposal.md` §3 新增 CoBBLEr 3-axis 区分（theory / mechanism / anchor types）
+- **关键新增文件**：`docs/papers-closed-portfolio/direction-a-1-page-proposal.md` §3 新增 CoBBLEr 3-axis 区分（theory / mechanism / anchor types）
 - **诚实声明**：本轮 CoBBLEr 修订证明早先 "无法定位" 判断是错的——之前的探索 agent 把 arXiv ID、venue、作者都拼错了。这一修订是反例：threat 升级而不是降级，novelty 仍成立但要求 related work 更严谨。
 
 ### 2026-07-06 凌晨 — Direction A 5-persona review FOLD + mechanism experiment 中止
@@ -240,9 +240,9 @@ Novelty 更新来源：用户用 Google 深度检索完成 COBBLER + 三篇 surv
   - §五 Direction A 诚实评估：新增 5-persona review FOLD 表格 + 3 个 binding concerns 收敛分析 + "5-persona review 已 FOLD" 结论
   - Direction A 折叠进 G3 dual-ledger bridge methods paper——机制实验作为 negative-result appendix
 - **关键新增文件**：
-  - `docs/papers/direction-a-review-round-1.md` (review 结果 markdown)
+  - `docs/papers-closed-portfolio/direction-a-review-round-1.md` (review 结果 markdown)
   - `docs/investigations/direction-a-decision-memo-2026-07-05.md` (FOLD 决策 memo)
-  - `docs/papers/experiments/direction_a/` (24-cell build + runner + analyzer + review 脚本，~800 lines)
+  - `docs/papers-closed-portfolio/experiments/direction_a/` (24-cell build + runner + analyzer + review 脚本，~800 lines)
   - 384 条 dry-run 合成数据（pipeline 验证）+ ~57 条 paratera real 调用（partial，review 触发中止）
 - **诚实声明**：Direction A 5-persona review 是**第三个**由 5-persona review FOLD 的方向（前两个：P1+P2 median=4.0 → fold_into_p12；G1 median=4.5 → workshop pillar only）。模式一致：proposal 智识上有趣但 reviewer 抓到 implementation 级 fatal flaw（这里：no power analysis + confounded manipulation + niche use case）。**项目内任何 paper 的天花板确认是 ACL/EMNLP Findings 7.0-7.5**，不再是 ≥7.5 main track。G3 dual-ledger bridge methods paper 是**唯一**还剩的现实投稿目标。
 
@@ -265,21 +265,21 @@ Novelty 更新来源：用户用 Google 深度检索完成 COBBLER + 三篇 surv
   - **DECISION: FOLD** (review + experiment 双轴确认)
 - **诚实意义**：这是迄今为止最有力的 negative result——Direction A 的核心理论预测（CONTRAST 机制导致 stricter scoring）**在 N=30/cell × 3 judges × 2 domains 的真实数据下被证伪**。G2 N=6 的强信号是 sample-size artifact，且预测的机制方向也是错的。
 - **关键新增文件**：
-  - `docs/papers/experiments/direction_a/analyze_real.py` (real-data analyzer)
-  - `docs/papers/experiments/direction_a/results/all_calls_real_paratera.jsonl` (256 attempts)
-  - `docs/papers/experiments/direction_a/results/all_calls_real_openrouter.jsonl` (128 attempts)
-  - `docs/papers/experiments/direction_a/results/all_calls_real_combined.jsonl` (295 ok merged)
-  - `docs/papers/experiments/direction_a/results/primary_regression_REAL.csv` + `summary_REAL.md` (real-data 分析)
+  - `docs/papers-closed-portfolio/experiments/direction_a/analyze_real.py` (real-data analyzer)
+  - `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_paratera.jsonl` (256 attempts)
+  - `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_openrouter.jsonl` (128 attempts)
+  - `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_combined.jsonl` (295 ok merged)
+  - `docs/papers-closed-portfolio/experiments/direction_a/results/primary_regression_REAL.csv` + `summary_REAL.md` (real-data 分析)
 - **项目方向确认**：Direction A 的全 cycle (proposal → novelty depth-check → mechanism experiment → 5-persona review) 是项目内**最完整的科学闭环**——理论清晰、机制可测、review 严格执行、数据驱动决策。所有 4 次 fold (P1+P2, G1, Direction A 的 review, Direction A 的 experiment) 都收敛于同一信号：现有数据/方法无法支撑顶刊主张。G3 dual-ledger bridge methods paper 是**唯一**现实投稿目标。
 
 ### 2026-07-06 凌晨 — G3 methods paper outline 完成（执行"fold 进 G3"路线）
 - **触发**：用户原始指令包含 "fold Direction A 进 methods paper 走 G3 dual-ledger bridge 路线" — 不仅要 fold，还要实际**执行** G3 methods paper 路径。
 - **执行结果**：
-  - 写了 `docs/papers/g3-methods-paper-outline.md`（250+ 行，11 节）
+  - 写了 `docs/papers-closed-portfolio/g3-methods-paper-outline.md`（250+ 行，11 节）
   - 集成：(1) G3.1 92.9% field coverage；(2) G3.2 enum orthogonality；(3) G3.3 100% Brier replay；(4) Direction A pre-registered negative-result appendix 完整数据；(5) CoBBLEr + 3 surveys + 8 method-papers 作为 prior art
   - 8-page 结构 + 每节具体内容规划
   - Honest limitations §6 (single-author data / n=2 Brier / no human inter-rater)
   - NOT-claims §8 (NOT new benchmark / NOT new judge model / NOT theoretical breakthrough / NOT main track)
   - Submission plan §9 + acceptance probability estimates §10（Findings 25-35% / Workshop 50-60% / Short paper 60-70%）
 - **Direction A fold chain 现在 COMPLETE**：data → analysis → decision rule → G3 outline → acceptance probability → actionable next step。**所有 4 sub-conditions（A 实验/B 评审/C 决策规则/D provider 一致性）均满足**，且 fold 后立即执行了用户的"走 G3 dual-ledger bridge 路线"指令——这是用户原始 contract 的最完整闭合。
-- **关键新增文件**：`docs/papers/g3-methods-paper-outline.md`（8-page methods paper outline with Direction A as Appendix A）
+- **关键新增文件**：`docs/papers-closed-portfolio/g3-methods-paper-outline.md`（8-page methods paper outline with Direction A as Appendix A）

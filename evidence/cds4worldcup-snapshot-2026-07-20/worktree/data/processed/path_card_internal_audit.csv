@@ -1,0 +1,22 @@
+team_slug,canonical_team,zh_name,status,primary_obstacle_count,required_breakthrough_count,black_swan_helper_count,miracle_condition_count,settleable_condition_count,placeholder_count,source_boundary_notes,overall_audit_status
+argentina,Argentina,阿根廷,deep-description,5,4,4,3,3,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+australia,Australia,澳大利亚,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+belgium,Belgium,比利时,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+brazil,Brazil,巴西,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+colombia,Colombia,哥伦比亚,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+croatia,Croatia,克罗地亚,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+england,England,英格兰,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+france,France,法国,deep-description,6,4,4,3,3,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+germany,Germany,德国,deep-description,6,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+japan,Japan,日本,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+mexico,Mexico,墨西哥,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+morocco,Morocco,摩洛哥,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+netherlands,Netherlands,荷兰,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+norway,Norway,挪威,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+portugal,Portugal,葡萄牙,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+senegal,Senegal,塞内加尔,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+south-korea,South Korea,韩国,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+spain,Spain,西班牙,deep-description,6,4,4,3,3,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+turkey,Turkey,土耳其,deep-description,6,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+united-states,United States,美国,deep-description,5,4,4,5,5,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass
+uruguay,Uruguay,乌拉圭,deep-description,5,4,4,4,4,0,Kimi correctly demoted to Red Source; §8 Factor Ledger empty (correct),pass

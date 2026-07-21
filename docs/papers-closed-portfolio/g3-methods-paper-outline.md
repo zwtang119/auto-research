@@ -74,7 +74,7 @@ OLS regression per (judge_family, domain) cell:
 
 ### A.5 Why this is publishable as a negative result
 - **Pre-registered**: the analysis plan was locked before the experiment ran.
-- **Reproducible**: full code + data + prompts in `docs/papers/experiments/direction_a/`.
+- **Reproducible**: full code + data + prompts in `docs/papers-closed-portfolio/experiments/direction_a/`.
 - **Strong statistical power**: n=120 closed_source_mid × gulei is a robust cell; β1 = +0.459 (p=0.029) is unambiguous.
 - **Direct contradiction with prior art**: Li et al. 2026 (arXiv:2506.22316) reports lenient bias from score-tagged reference; our data shows the same-direction effect even for LEAKED GT (which is a stronger manipulation than score-tagged reference). This generalizes Li et al. 2026's finding to a previously-untested anchor type.
 
@@ -142,7 +142,7 @@ The claim is: **dual-ledger crosswalk is a workable schema-engineering approach 
 1. **Target venue**: ACL 2027 (May 2027 deadline), EMNLP 2027 (June 2027 deadline) Findings track. NOT main track.
 2. **Submission window**: 4-6 weeks full-time writeup from this outline.
 3. **Co-author**: single-author (tangzw119) acceptable for Findings; main track would prefer collaboration.
-4. **Pre-registration**: G3 has full data; Direction A negative result is pre-registered; both reproducible from `docs/papers/experiments/direction_a/` + G3 crosswalk docs.
+4. **Pre-registration**: G3 has full data; Direction A negative result is pre-registered; both reproducible from `docs/papers-closed-portfolio/experiments/direction_a/` + G3 crosswalk docs.
 5. **Reproducibility artifacts**: code + data + prompts + raw responses all in repo.
 
 ---

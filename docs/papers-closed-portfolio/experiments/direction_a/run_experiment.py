@@ -26,7 +26,7 @@ import time
 from pathlib import Path
 from typing import Optional
 
-EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers/experiments/direction_a")
+EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers-closed-portfolio/experiments/direction_a")
 CELLS_PATH = EXPERIMENT_ROOT / "cells.jsonl"
 SAMPLE_POOL_PATH = EXPERIMENT_ROOT / "sample_pool.json"
 P12_OUTPUTS_PATH = EXPERIMENT_ROOT / "p12_outputs.json"

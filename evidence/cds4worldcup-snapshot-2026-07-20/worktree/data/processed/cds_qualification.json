@@ -1,0 +1,3272 @@
+{
+  "schema_version": "0.1",
+  "schema_type": "cds_qualification",
+  "generated_at": "2026-07-19T02:49:57.749925+00:00",
+  "total_teams": 48,
+  "teams": [
+    {
+      "team": "Czech Republic",
+      "group": "A",
+      "qual_prob": 0.9075,
+      "qual_prob_top2": 0.8247,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2086
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2585
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 韩国 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0419
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0327
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4585
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5526,
+        "p_2nd": 0.2721,
+        "p_3rd": 0.1243,
+        "p_4th": 0.051
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "A4-CZE-RSA",
+          "opponent": "South Africa",
+          "impact": 0.5213
+        },
+        {
+          "match_id": "A5-CZE-MEX",
+          "opponent": "Mexico",
+          "impact": 0.3848
+        },
+        {
+          "match_id": "A2-KOR-CZE",
+          "opponent": "South Korea",
+          "impact": 0.3455
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Mexico",
+      "group": "A",
+      "qual_prob": 0.857,
+      "qual_prob_top2": 0.731,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0744
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1712
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 南非 → 出线危险（27 种情况中有 1 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0162
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0455
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.6926
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.3098,
+        "p_2nd": 0.4212,
+        "p_3rd": 0.1891,
+        "p_4th": 0.08
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "A1-MEX-RSA",
+          "opponent": "South Africa",
+          "impact": 0.6734
+        },
+        {
+          "match_id": "A3-MEX-KOR",
+          "opponent": "South Korea",
+          "impact": 0.6083
+        },
+        {
+          "match_id": "A5-CZE-MEX",
+          "opponent": "Czech Republic",
+          "impact": 0.3134
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "South Africa",
+      "group": "A",
+      "qual_prob": 0.4594,
+      "qual_prob_top2": 0.2088,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0055
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0213
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 墨西哥 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1506
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3133
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5092
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0531,
+        "p_2nd": 0.1557,
+        "p_3rd": 0.376,
+        "p_4th": 0.4152
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "A1-MEX-RSA",
+          "opponent": "Mexico",
+          "impact": 0.6294
+        },
+        {
+          "match_id": "A4-CZE-RSA",
+          "opponent": "Czech Republic",
+          "impact": 0.5522
+        },
+        {
+          "match_id": "A6-RSA-KOR",
+          "opponent": "South Korea",
+          "impact": 0.2926
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "South Korea",
+      "group": "A",
+      "qual_prob": 0.4404,
+      "qual_prob_top2": 0.229,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0096
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0453
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 墨西哥 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1436
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3828
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4188
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0683,
+        "p_2nd": 0.1607,
+        "p_3rd": 0.3172,
+        "p_4th": 0.4538
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "A3-MEX-KOR",
+          "opponent": "Mexico",
+          "impact": 0.5843
+        },
+        {
+          "match_id": "A6-RSA-KOR",
+          "opponent": "South Africa",
+          "impact": 0.4077
+        },
+        {
+          "match_id": "A2-KOR-CZE",
+          "opponent": "Czech Republic",
+          "impact": 0.3909
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Switzerland",
+      "group": "B",
+      "qual_prob": 0.8808,
+      "qual_prob_top2": 0.7813,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1822
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2428
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 波黑 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0362
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0452
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4936
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.4997,
+        "p_2nd": 0.2816,
+        "p_3rd": 0.1492,
+        "p_4th": 0.0695
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "B5-SUI-CAN",
+          "opponent": "Canada",
+          "impact": 0.5122
+        },
+        {
+          "match_id": "B4-SUI-BIH",
+          "opponent": "Bosnia and Herzegovina",
+          "impact": 0.441
+        },
+        {
+          "match_id": "B2-QAT-SUI",
+          "opponent": "Qatar",
+          "impact": 0.3841
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Bosnia and Herzegovina",
+      "group": "B",
+      "qual_prob": 0.7714,
+      "qual_prob_top2": 0.568,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0586
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1238
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 加拿大 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1961
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0762
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5452
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.2507,
+        "p_2nd": 0.3173,
+        "p_3rd": 0.3052,
+        "p_4th": 0.1269
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "B1-CAN-BIH",
+          "opponent": "Canada",
+          "impact": 0.6498
+        },
+        {
+          "match_id": "B4-SUI-BIH",
+          "opponent": "Switzerland",
+          "impact": 0.4872
+        },
+        {
+          "match_id": "B6-BIH-QAT",
+          "opponent": "Qatar",
+          "impact": 0.4868
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Canada",
+      "group": "B",
+      "qual_prob": 0.7357,
+      "qual_prob_top2": 0.5219,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.036
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.101
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 卡塔尔 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1636
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.1001
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5993
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.2086,
+        "p_2nd": 0.3133,
+        "p_3rd": 0.3208,
+        "p_4th": 0.1573
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "B1-CAN-BIH",
+          "opponent": "Bosnia and Herzegovina",
+          "impact": 0.6794
+        },
+        {
+          "match_id": "B3-CAN-QAT",
+          "opponent": "Qatar",
+          "impact": 0.5035
+        },
+        {
+          "match_id": "B5-SUI-CAN",
+          "opponent": "Switzerland",
+          "impact": 0.4877
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Qatar",
+      "group": "B",
+      "qual_prob": 0.2669,
+      "qual_prob_top2": 0.1248,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0026
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0114
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 加拿大 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1024
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5382
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3455
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0349,
+        "p_2nd": 0.0899,
+        "p_3rd": 0.2131,
+        "p_4th": 0.6622
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "B6-BIH-QAT",
+          "opponent": "Bosnia and Herzegovina",
+          "impact": 0.4574
+        },
+        {
+          "match_id": "B3-CAN-QAT",
+          "opponent": "Canada",
+          "impact": 0.4174
+        },
+        {
+          "match_id": "B2-QAT-SUI",
+          "opponent": "Switzerland",
+          "impact": 0.2765
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Brazil",
+      "group": "C",
+      "qual_prob": 0.9293,
+      "qual_prob_top2": 0.8518,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1847
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2276
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 摩洛哥 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.027
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0136
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5471
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5072,
+        "p_2nd": 0.3446,
+        "p_3rd": 0.1163,
+        "p_4th": 0.0319
+      },
+      "third_place_qual_prob": 0.6664,
+      "key_matches": [
+        {
+          "match_id": "C1-BRA-MAR",
+          "opponent": "Morocco",
+          "impact": 0.6071
+        },
+        {
+          "match_id": "C3-BRA-HAI",
+          "opponent": "Haiti",
+          "impact": 0.5113
+        },
+        {
+          "match_id": "C5-SCO-BRA",
+          "opponent": "Scotland",
+          "impact": 0.2341
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Scotland",
+      "group": "C",
+      "qual_prob": 0.862,
+      "qual_prob_top2": 0.7441,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1434
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2543
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 摩洛哥 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.033
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0699
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4995
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.3874,
+        "p_2nd": 0.3567,
+        "p_3rd": 0.1769,
+        "p_4th": 0.0789
+      },
+      "third_place_qual_prob": 0.6664,
+      "key_matches": [
+        {
+          "match_id": "C4-SCO-MAR",
+          "opponent": "Morocco",
+          "impact": 0.6131
+        },
+        {
+          "match_id": "C2-HAI-SCO",
+          "opponent": "Haiti",
+          "impact": 0.4223
+        },
+        {
+          "match_id": "C5-SCO-BRA",
+          "opponent": "Brazil",
+          "impact": 0.3653
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Morocco",
+      "group": "C",
+      "qual_prob": 0.5867,
+      "qual_prob_top2": 0.2787,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0096
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0368
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 苏格兰 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.19
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.1915
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5721
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.077,
+        "p_2nd": 0.2017,
+        "p_3rd": 0.4622,
+        "p_4th": 0.2591
+      },
+      "third_place_qual_prob": 0.6664,
+      "key_matches": [
+        {
+          "match_id": "C4-SCO-MAR",
+          "opponent": "Scotland",
+          "impact": 0.658
+        },
+        {
+          "match_id": "C1-BRA-MAR",
+          "opponent": "Brazil",
+          "impact": 0.6432
+        },
+        {
+          "match_id": "C6-MAR-HAI",
+          "opponent": "Haiti",
+          "impact": 0.3164
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Haiti",
+      "group": "C",
+      "qual_prob": 0.2798,
+      "qual_prob_top2": 0.1142,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0019
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0092
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 巴西 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1004
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5475
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3412
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0264,
+        "p_2nd": 0.0878,
+        "p_3rd": 0.2485,
+        "p_4th": 0.6373
+      },
+      "third_place_qual_prob": 0.6664,
+      "key_matches": [
+        {
+          "match_id": "C3-BRA-HAI",
+          "opponent": "Brazil",
+          "impact": 0.496
+        },
+        {
+          "match_id": "C6-MAR-HAI",
+          "opponent": "Morocco",
+          "impact": 0.3386
+        },
+        {
+          "match_id": "C2-HAI-SCO",
+          "opponent": "Scotland",
+          "impact": 0.287
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Turkey",
+      "group": "D",
+      "qual_prob": 0.8943,
+      "qual_prob_top2": 0.8024,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2066
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2588
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 巴拉圭 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.03
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0377
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.467
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5486,
+        "p_2nd": 0.2538,
+        "p_3rd": 0.1379,
+        "p_4th": 0.0598
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "D4-TUR-PAR",
+          "opponent": "Paraguay",
+          "impact": 0.4976
+        },
+        {
+          "match_id": "D5-TUR-USA",
+          "opponent": "United States",
+          "impact": 0.4558
+        },
+        {
+          "match_id": "D2-AUS-TUR",
+          "opponent": "Australia",
+          "impact": 0.3396
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "United States",
+      "group": "D",
+      "qual_prob": 0.7644,
+      "qual_prob_top2": 0.5794,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0425
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1025
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 巴拉圭 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1567
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0889
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.6094
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.2275,
+        "p_2nd": 0.3519,
+        "p_3rd": 0.2776,
+        "p_4th": 0.1431
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "D1-USA-PAR",
+          "opponent": "Paraguay",
+          "impact": 0.7014
+        },
+        {
+          "match_id": "D3-USA-AUS",
+          "opponent": "Australia",
+          "impact": 0.5321
+        },
+        {
+          "match_id": "D5-TUR-USA",
+          "opponent": "Turkey",
+          "impact": 0.4305
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Paraguay",
+      "group": "D",
+      "qual_prob": 0.7025,
+      "qual_prob_top2": 0.4675,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0335
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0868
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 美国 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0968
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.1134
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.6696
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.1823,
+        "p_2nd": 0.2852,
+        "p_3rd": 0.3526,
+        "p_4th": 0.1799
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "D1-USA-PAR",
+          "opponent": "United States",
+          "impact": 0.6717
+        },
+        {
+          "match_id": "D4-TUR-PAR",
+          "opponent": "Turkey",
+          "impact": 0.5348
+        },
+        {
+          "match_id": "D6-PAR-AUS",
+          "opponent": "Australia",
+          "impact": 0.4476
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Australia",
+      "group": "D",
+      "qual_prob": 0.2937,
+      "qual_prob_top2": 0.1457,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0035
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0232
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 美国 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1069
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5194
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3472
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0403,
+        "p_2nd": 0.1054,
+        "p_3rd": 0.2221,
+        "p_4th": 0.6323
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "D3-USA-AUS",
+          "opponent": "United States",
+          "impact": 0.4451
+        },
+        {
+          "match_id": "D6-PAR-AUS",
+          "opponent": "Paraguay",
+          "impact": 0.4244
+        },
+        {
+          "match_id": "D2-AUS-TUR",
+          "opponent": "Turkey",
+          "impact": 0.3186
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Germany",
+      "group": "E",
+      "qual_prob": 0.9525,
+      "qual_prob_top2": 0.8984,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2292
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2404
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 科特迪瓦 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0125
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0113
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5065
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5757,
+        "p_2nd": 0.3227,
+        "p_3rd": 0.0811,
+        "p_4th": 0.0206
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "E1-GER-CUW",
+          "opponent": "Curaçao",
+          "impact": 0.5403
+        },
+        {
+          "match_id": "E3-GER-CIV",
+          "opponent": "Côte d'Ivoire",
+          "impact": 0.4995
+        },
+        {
+          "match_id": "E5-ECU-GER",
+          "opponent": "Ecuador",
+          "impact": 0.179
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Ecuador",
+      "group": "E",
+      "qual_prob": 0.8762,
+      "qual_prob_top2": 0.7621,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1332
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2028
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 科特迪瓦 → 出线危险（27 种情况中有 5 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1299
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0589
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4752
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.3636,
+        "p_2nd": 0.3985,
+        "p_3rd": 0.1712,
+        "p_4th": 0.0666
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "E4-ECU-CUW",
+          "opponent": "Curaçao",
+          "impact": 0.5817
+        },
+        {
+          "match_id": "E2-CIV-ECU",
+          "opponent": "Côte d'Ivoire",
+          "impact": 0.4621
+        },
+        {
+          "match_id": "E5-ECU-GER",
+          "opponent": "Germany",
+          "impact": 0.3278
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Curaçao",
+      "group": "E",
+      "qual_prob": 0.4219,
+      "qual_prob_top2": 0.1507,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0021
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0125
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 德国 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1322
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3996
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4537
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0298,
+        "p_2nd": 0.1209,
+        "p_3rd": 0.4069,
+        "p_4th": 0.4425
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "E1-GER-CUW",
+          "opponent": "Germany",
+          "impact": 0.5982
+        },
+        {
+          "match_id": "E4-ECU-CUW",
+          "opponent": "Ecuador",
+          "impact": 0.5729
+        },
+        {
+          "match_id": "E6-CUW-CIV",
+          "opponent": "Côte d'Ivoire",
+          "impact": 0.236
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Côte d'Ivoire",
+      "group": "E",
+      "qual_prob": 0.4156,
+      "qual_prob_top2": 0.1852,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0047
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0423
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 德国 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.15
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.4075
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3956
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0438,
+        "p_2nd": 0.1414,
+        "p_3rd": 0.3456,
+        "p_4th": 0.4692
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "E3-GER-CIV",
+          "opponent": "Germany",
+          "impact": 0.56
+        },
+        {
+          "match_id": "E2-CIV-ECU",
+          "opponent": "Ecuador",
+          "impact": 0.4009
+        },
+        {
+          "match_id": "E6-CUW-CIV",
+          "opponent": "Curaçao",
+          "impact": 0.3505
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Netherlands",
+      "group": "F",
+      "qual_prob": 0.9167,
+      "qual_prob_top2": 0.8398,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2313
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2641
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 日本 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0319
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0276
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4451
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5857,
+        "p_2nd": 0.2541,
+        "p_3rd": 0.1154,
+        "p_4th": 0.0448
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "F1-NED-JPN",
+          "opponent": "Japan",
+          "impact": 0.458
+        },
+        {
+          "match_id": "F5-TUN-NED",
+          "opponent": "Tunisia",
+          "impact": 0.3798
+        },
+        {
+          "match_id": "F3-NED-SWE",
+          "opponent": "Sweden",
+          "impact": 0.3777
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Sweden",
+      "group": "F",
+      "qual_prob": 0.7911,
+      "qual_prob_top2": 0.6339,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0622
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.169
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 突尼斯 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0189
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0791
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.671
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.2441,
+        "p_2nd": 0.3898,
+        "p_3rd": 0.2358,
+        "p_4th": 0.1303
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "F2-SWE-TUN",
+          "opponent": "Tunisia",
+          "impact": 0.5968
+        },
+        {
+          "match_id": "F6-JPN-SWE",
+          "opponent": "Japan",
+          "impact": 0.5847
+        },
+        {
+          "match_id": "F3-NED-SWE",
+          "opponent": "Netherlands",
+          "impact": 0.4186
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Tunisia",
+      "group": "F",
+      "qual_prob": 0.5362,
+      "qual_prob_top2": 0.3018,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0117
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0381
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 瑞典 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1502
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.2591
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5409
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.1034,
+        "p_2nd": 0.1984,
+        "p_3rd": 0.3516,
+        "p_4th": 0.3466
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "F2-SWE-TUN",
+          "opponent": "Sweden",
+          "impact": 0.5908
+        },
+        {
+          "match_id": "F5-TUN-NED",
+          "opponent": "Netherlands",
+          "impact": 0.5357
+        },
+        {
+          "match_id": "F4-TUN-JPN",
+          "opponent": "Japan",
+          "impact": 0.406
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Japan",
+      "group": "F",
+      "qual_prob": 0.4045,
+      "qual_prob_top2": 0.2224,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0061
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0228
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 瑞典 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0824
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.4234
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4654
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.056,
+        "p_2nd": 0.1664,
+        "p_3rd": 0.2732,
+        "p_4th": 0.5044
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "F1-NED-JPN",
+          "opponent": "Netherlands",
+          "impact": 0.4762
+        },
+        {
+          "match_id": "F6-JPN-SWE",
+          "opponent": "Sweden",
+          "impact": 0.4715
+        },
+        {
+          "match_id": "F4-TUN-JPN",
+          "opponent": "Tunisia",
+          "impact": 0.42
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Belgium",
+      "group": "G",
+      "qual_prob": 0.9721,
+      "qual_prob_top2": 0.9427,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4233
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3009
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 伊朗 → 出线危险（27 种情况中有 1 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0066
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0064
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2628
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.7975,
+        "p_2nd": 0.1452,
+        "p_3rd": 0.044,
+        "p_4th": 0.0133
+      },
+      "third_place_qual_prob": 0.6671,
+      "key_matches": [
+        {
+          "match_id": "G3-BEL-IRN",
+          "opponent": "Iran",
+          "impact": 0.317
+        },
+        {
+          "match_id": "G1-BEL-EGY",
+          "opponent": "Egypt",
+          "impact": 0.2939
+        },
+        {
+          "match_id": "G5-NZL-BEL",
+          "opponent": "New Zealand",
+          "impact": 0.2199
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Egypt",
+      "group": "G",
+      "qual_prob": 0.6917,
+      "qual_prob_top2": 0.4957,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0176
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0802
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 伊朗 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0169
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.1699
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.7153
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.1003,
+        "p_2nd": 0.3954,
+        "p_3rd": 0.2938,
+        "p_4th": 0.2106
+      },
+      "third_place_qual_prob": 0.6671,
+      "key_matches": [
+        {
+          "match_id": "G6-EGY-IRN",
+          "opponent": "Iran",
+          "impact": 0.6635
+        },
+        {
+          "match_id": "G4-NZL-EGY",
+          "opponent": "New Zealand",
+          "impact": 0.5741
+        },
+        {
+          "match_id": "G1-BEL-EGY",
+          "opponent": "Belgium",
+          "impact": 0.4252
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Iran",
+      "group": "G",
+      "qual_prob": 0.6253,
+      "qual_prob_top2": 0.379,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0088
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0348
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 新西兰 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0686
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.1748
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.713
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.065,
+        "p_2nd": 0.314,
+        "p_3rd": 0.3692,
+        "p_4th": 0.2518
+      },
+      "third_place_qual_prob": 0.6671,
+      "key_matches": [
+        {
+          "match_id": "G6-EGY-IRN",
+          "opponent": "Egypt",
+          "impact": 0.6942
+        },
+        {
+          "match_id": "G3-BEL-IRN",
+          "opponent": "Belgium",
+          "impact": 0.5059
+        },
+        {
+          "match_id": "G2-IRN-NZL",
+          "opponent": "New Zealand",
+          "impact": 0.4553
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "New Zealand",
+      "group": "G",
+      "qual_prob": 0.3832,
+      "qual_prob_top2": 0.2002,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0048
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0244
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 埃及 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0396
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5109
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4203
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0395,
+        "p_2nd": 0.1607,
+        "p_3rd": 0.2743,
+        "p_4th": 0.5255
+      },
+      "third_place_qual_prob": 0.6671,
+      "key_matches": [
+        {
+          "match_id": "G2-IRN-NZL",
+          "opponent": "Iran",
+          "impact": 0.4813
+        },
+        {
+          "match_id": "G5-NZL-BEL",
+          "opponent": "Belgium",
+          "impact": 0.4264
+        },
+        {
+          "match_id": "G4-NZL-EGY",
+          "opponent": "Egypt",
+          "impact": 0.4157
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Spain",
+      "group": "H",
+      "qual_prob": 0.9656,
+      "qual_prob_top2": 0.9221,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2596
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2557
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 佛得角 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0108
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0057
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4684
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5707,
+        "p_2nd": 0.3514,
+        "p_3rd": 0.0652,
+        "p_4th": 0.0127
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "H1-ESP-CPV",
+          "opponent": "Cape Verde",
+          "impact": 0.5356
+        },
+        {
+          "match_id": "H3-ESP-KSA",
+          "opponent": "Saudi Arabia",
+          "impact": 0.4572
+        },
+        {
+          "match_id": "H5-URU-ESP",
+          "opponent": "Uruguay",
+          "impact": 0.1484
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Uruguay",
+      "group": "H",
+      "qual_prob": 0.8991,
+      "qual_prob_top2": 0.8048,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1558
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2173
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 佛得角 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0917
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0453
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.49
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.3688,
+        "p_2nd": 0.436,
+        "p_3rd": 0.1415,
+        "p_4th": 0.0536
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "H4-URU-CPV",
+          "opponent": "Cape Verde",
+          "impact": 0.6164
+        },
+        {
+          "match_id": "H2-KSA-URU",
+          "opponent": "Saudi Arabia",
+          "impact": 0.4339
+        },
+        {
+          "match_id": "H5-URU-ESP",
+          "opponent": "Spain",
+          "impact": 0.2809
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Cape Verde",
+      "group": "H",
+      "qual_prob": 0.4667,
+      "qual_prob_top2": 0.1462,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0019
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0145
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 西班牙 → 出线危险（27 种情况中有 5 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1472
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3228
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5137
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.024,
+        "p_2nd": 0.1222,
+        "p_3rd": 0.4808,
+        "p_4th": 0.373
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "H1-ESP-CPV",
+          "opponent": "Spain",
+          "impact": 0.6265
+        },
+        {
+          "match_id": "H4-URU-CPV",
+          "opponent": "Uruguay",
+          "impact": 0.5868
+        },
+        {
+          "match_id": "H6-CPV-KSA",
+          "opponent": "Saudi Arabia",
+          "impact": 0.206
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Saudi Arabia",
+      "group": "H",
+      "qual_prob": 0.3347,
+      "qual_prob_top2": 0.124,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0017
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.017
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 乌拉圭 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0583
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5246
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3984
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0205,
+        "p_2nd": 0.1035,
+        "p_3rd": 0.3161,
+        "p_4th": 0.5598
+      },
+      "third_place_qual_prob": 0.6666,
+      "key_matches": [
+        {
+          "match_id": "H3-ESP-KSA",
+          "opponent": "Spain",
+          "impact": 0.4919
+        },
+        {
+          "match_id": "H2-KSA-URU",
+          "opponent": "Uruguay",
+          "impact": 0.3614
+        },
+        {
+          "match_id": "H6-CPV-KSA",
+          "opponent": "Cape Verde",
+          "impact": 0.2946
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "France",
+      "group": "I",
+      "qual_prob": 0.962,
+      "qual_prob_top2": 0.9159,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2398
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5266
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 塞内加尔 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0135
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0069
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2132
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5688,
+        "p_2nd": 0.3471,
+        "p_3rd": 0.0692,
+        "p_4th": 0.0149
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "I1-FRA-SEN",
+          "opponent": "Senegal",
+          "impact": 0.5729
+        },
+        {
+          "match_id": "I3-FRA-IRQ",
+          "opponent": "Iraq",
+          "impact": 0.4758
+        },
+        {
+          "match_id": "I5-NOR-FRA",
+          "opponent": "Norway",
+          "impact": 0.1468
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Norway",
+      "group": "I",
+      "qual_prob": 0.8988,
+      "qual_prob_top2": 0.8032,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1637
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2237
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 塞内加尔 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.087
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0413
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4843
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.3871,
+        "p_2nd": 0.4161,
+        "p_3rd": 0.1434,
+        "p_4th": 0.0533
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "I4-NOR-SEN",
+          "opponent": "Senegal",
+          "impact": 0.6368
+        },
+        {
+          "match_id": "I2-IRQ-NOR",
+          "opponent": "Iraq",
+          "impact": 0.4037
+        },
+        {
+          "match_id": "I5-NOR-FRA",
+          "opponent": "France",
+          "impact": 0.2947
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Senegal",
+      "group": "I",
+      "qual_prob": 0.5186,
+      "qual_prob_top2": 0.1775,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0031
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0163
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 挪威 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1578
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.2689
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5539
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.035,
+        "p_2nd": 0.1425,
+        "p_3rd": 0.5118,
+        "p_4th": 0.3107
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "I4-NOR-SEN",
+          "opponent": "Norway",
+          "impact": 0.66
+        },
+        {
+          "match_id": "I1-FRA-SEN",
+          "opponent": "France",
+          "impact": 0.6389
+        },
+        {
+          "match_id": "I6-SEN-IRQ",
+          "opponent": "Iraq",
+          "impact": 0.224
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Iraq",
+      "group": "I",
+      "qual_prob": 0.2832,
+      "qual_prob_top2": 0.0966,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0013
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0143
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 法国 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0977
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5685
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3182
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0164,
+        "p_2nd": 0.0802,
+        "p_3rd": 0.28,
+        "p_4th": 0.6234
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "I3-FRA-IRQ",
+          "opponent": "France",
+          "impact": 0.4771
+        },
+        {
+          "match_id": "I2-IRQ-NOR",
+          "opponent": "Norway",
+          "impact": 0.2982
+        },
+        {
+          "match_id": "I6-SEN-IRQ",
+          "opponent": "Senegal",
+          "impact": 0.276
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Argentina",
+      "group": "J",
+      "qual_prob": 0.9628,
+      "qual_prob_top2": 0.9203,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3676
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2756
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 约旦 → 出线危险（27 种情况中有 1 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0227
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0108
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3232
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.7329,
+        "p_2nd": 0.1874,
+        "p_3rd": 0.0638,
+        "p_4th": 0.0159
+      },
+      "third_place_qual_prob": 0.6667,
+      "key_matches": [
+        {
+          "match_id": "J1-ARG-ALG",
+          "opponent": "Algeria",
+          "impact": 0.3517
+        },
+        {
+          "match_id": "J5-JOR-ARG",
+          "opponent": "Jordan",
+          "impact": 0.3175
+        },
+        {
+          "match_id": "J3-ARG-AUT",
+          "opponent": "Austria",
+          "impact": 0.2591
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Austria",
+      "group": "J",
+      "qual_prob": 0.8084,
+      "qual_prob_top2": 0.6483,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0436
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1036
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 约旦 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0151
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0656
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.7721
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.1751,
+        "p_2nd": 0.4732,
+        "p_3rd": 0.2402,
+        "p_4th": 0.1115
+      },
+      "third_place_qual_prob": 0.6667,
+      "key_matches": [
+        {
+          "match_id": "J2-AUT-JOR",
+          "opponent": "Jordan",
+          "impact": 0.6339
+        },
+        {
+          "match_id": "J6-ALG-AUT",
+          "opponent": "Algeria",
+          "impact": 0.6081
+        },
+        {
+          "match_id": "J3-ARG-AUT",
+          "opponent": "Argentina",
+          "impact": 0.3688
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Jordan",
+      "group": "J",
+      "qual_prob": 0.488,
+      "qual_prob_top2": 0.2261,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0057
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0278
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 奥地利 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1157
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3253
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5256
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0514,
+        "p_2nd": 0.1747,
+        "p_3rd": 0.3929,
+        "p_4th": 0.3811
+      },
+      "third_place_qual_prob": 0.6667,
+      "key_matches": [
+        {
+          "match_id": "J2-AUT-JOR",
+          "opponent": "Austria",
+          "impact": 0.6228
+        },
+        {
+          "match_id": "J5-JOR-ARG",
+          "opponent": "Argentina",
+          "impact": 0.499
+        },
+        {
+          "match_id": "J4-JOR-ALG",
+          "opponent": "Algeria",
+          "impact": 0.3348
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Algeria",
+      "group": "J",
+      "qual_prob": 0.4048,
+      "qual_prob_top2": 0.2081,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0035
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0187
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 奥地利 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0796
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.5365
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3617
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0335,
+        "p_2nd": 0.1746,
+        "p_3rd": 0.295,
+        "p_4th": 0.497
+      },
+      "third_place_qual_prob": 0.6667,
+      "key_matches": [
+        {
+          "match_id": "J6-ALG-AUT",
+          "opponent": "Austria",
+          "impact": 0.5133
+        },
+        {
+          "match_id": "J1-ARG-ALG",
+          "opponent": "Argentina",
+          "impact": 0.451
+        },
+        {
+          "match_id": "J4-JOR-ALG",
+          "opponent": "Jordan",
+          "impact": 0.3776
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Portugal",
+      "group": "K",
+      "qual_prob": 0.9491,
+      "qual_prob_top2": 0.8877,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1948
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2258
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 刚果民主共和国 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0159
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0087
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.555
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.5092,
+        "p_2nd": 0.3785,
+        "p_3rd": 0.0921,
+        "p_4th": 0.0202
+      },
+      "third_place_qual_prob": 0.6668,
+      "key_matches": [
+        {
+          "match_id": "K1-POR-COD",
+          "opponent": "DR Congo",
+          "impact": 0.6022
+        },
+        {
+          "match_id": "K3-POR-UZB",
+          "opponent": "Uzbekistan",
+          "impact": 0.4802
+        },
+        {
+          "match_id": "K5-COL-POR",
+          "opponent": "Colombia",
+          "impact": 0.1786
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Colombia",
+      "group": "K",
+      "qual_prob": 0.9094,
+      "qual_prob_top2": 0.8236,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1866
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.238
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 刚果民主共和国 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0357
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0397
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.4491,
+        "p_2nd": 0.3745,
+        "p_3rd": 0.1287,
+        "p_4th": 0.0477
+      },
+      "third_place_qual_prob": 0.6668,
+      "key_matches": [
+        {
+          "match_id": "K4-COL-COD",
+          "opponent": "DR Congo",
+          "impact": 0.5789
+        },
+        {
+          "match_id": "K2-UZB-COL",
+          "opponent": "Uzbekistan",
+          "impact": 0.3971
+        },
+        {
+          "match_id": "K5-COL-POR",
+          "opponent": "Portugal",
+          "impact": 0.2975
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "DR Congo",
+      "group": "K",
+      "qual_prob": 0.4813,
+      "qual_prob_top2": 0.1657,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0026
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.017
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 葡萄牙 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1356
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3144
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5303
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0295,
+        "p_2nd": 0.1362,
+        "p_3rd": 0.4733,
+        "p_4th": 0.361
+      },
+      "third_place_qual_prob": 0.6668,
+      "key_matches": [
+        {
+          "match_id": "K1-POR-COD",
+          "opponent": "Portugal",
+          "impact": 0.6296
+        },
+        {
+          "match_id": "K4-COL-COD",
+          "opponent": "Colombia",
+          "impact": 0.6105
+        },
+        {
+          "match_id": "K6-COD-UZB",
+          "opponent": "Uzbekistan",
+          "impact": 0.229
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Uzbekistan",
+      "group": "K",
+      "qual_prob": 0.3268,
+      "qual_prob_top2": 0.1269,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0023
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0205
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 葡萄牙 → 出线危险（27 种情况中有 4 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.1136
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.6479
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2157
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0282,
+        "p_2nd": 0.0987,
+        "p_3rd": 0.2998,
+        "p_4th": 0.5734
+      },
+      "third_place_qual_prob": 0.6668,
+      "key_matches": [
+        {
+          "match_id": "K3-POR-UZB",
+          "opponent": "Portugal",
+          "impact": 0.516
+        },
+        {
+          "match_id": "K2-UZB-COL",
+          "opponent": "Colombia",
+          "impact": 0.3552
+        },
+        {
+          "match_id": "K6-COD-UZB",
+          "opponent": "DR Congo",
+          "impact": 0.2902
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "England",
+      "group": "L",
+      "qual_prob": 0.9437,
+      "qual_prob_top2": 0.8866,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.2843
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.317
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 加纳 → 出线危险（27 种情况中有 1 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0076
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0197
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.3714
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.6251,
+        "p_2nd": 0.2615,
+        "p_3rd": 0.0856,
+        "p_4th": 0.0278
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "L3-ENG-GHA",
+          "opponent": "Ghana",
+          "impact": 0.4723
+        },
+        {
+          "match_id": "L5-PAN-ENG",
+          "opponent": "Panama",
+          "impact": 0.3162
+        },
+        {
+          "match_id": "L1-ENG-CRO",
+          "opponent": "Croatia",
+          "impact": 0.3
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Croatia",
+      "group": "L",
+      "qual_prob": 0.8583,
+      "qual_prob_top2": 0.7391,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0812
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.1507
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 加纳 → 出线危险（27 种情况中有 2 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0121
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.0535
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.7025
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.269,
+        "p_2nd": 0.4701,
+        "p_3rd": 0.1788,
+        "p_4th": 0.0822
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "L6-CRO-GHA",
+          "opponent": "Ghana",
+          "impact": 0.6637
+        },
+        {
+          "match_id": "L4-PAN-CRO",
+          "opponent": "Panama",
+          "impact": 0.5821
+        },
+        {
+          "match_id": "L1-ENG-CRO",
+          "opponent": "England",
+          "impact": 0.3138
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Ghana",
+      "group": "L",
+      "qual_prob": 0.4391,
+      "qual_prob_top2": 0.163,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0024
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0138
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 克罗地亚 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0737
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.3416
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.5684
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.034,
+        "p_2nd": 0.129,
+        "p_3rd": 0.4142,
+        "p_4th": 0.4227
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "L6-CRO-GHA",
+          "opponent": "Croatia",
+          "impact": 0.6611
+        },
+        {
+          "match_id": "L3-ENG-GHA",
+          "opponent": "England",
+          "impact": 0.5907
+        },
+        {
+          "match_id": "L2-GHA-PAN",
+          "opponent": "Panama",
+          "impact": 0.2285
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    },
+    {
+      "team": "Panama",
+      "group": "L",
+      "qual_prob": 0.4119,
+      "qual_prob_top2": 0.2053,
+      "scenarios": [
+        {
+          "label": "必胜出线",
+          "trigger": "赢下全部剩余比赛 → 确保前二出线",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0079
+        },
+        {
+          "label": "已定出线",
+          "trigger": "已确保出线（所有结果都是前二）",
+          "resulting_position": "top2_qualified",
+          "prob": 0.0363
+        },
+        {
+          "label": "危局",
+          "trigger": "输给 加纳 → 出线危险（27 种情况中有 3 种不利）",
+          "resulting_position": "3rd_may_qualify",
+          "prob": 0.0743
+        },
+        {
+          "label": "已淘汰",
+          "trigger": "小组赛三场全负 → 淘汰",
+          "resulting_position": "eliminated",
+          "prob": 0.4417
+        },
+        {
+          "label": "正常争夺",
+          "trigger": "出线取决于具体赛果",
+          "resulting_position": "top2_qualified",
+          "prob": 0.4398
+        }
+      ],
+      "position_probs": {
+        "p_1st": 0.0544,
+        "p_2nd": 0.1509,
+        "p_3rd": 0.31,
+        "p_4th": 0.4846
+      },
+      "third_place_qual_prob": 0.6665,
+      "key_matches": [
+        {
+          "match_id": "L4-PAN-CRO",
+          "opponent": "Croatia",
+          "impact": 0.5288
+        },
+        {
+          "match_id": "L5-PAN-ENG",
+          "opponent": "England",
+          "impact": 0.4076
+        },
+        {
+          "match_id": "L2-GHA-PAN",
+          "opponent": "Ghana",
+          "impact": 0.3528
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.749600+00:00",
+        "probability_source": "elo_poisson",
+        "group_matches_completed": 0,
+        "total_outcomes_enumerated": 27
+      }
+    }
+  ]
+}

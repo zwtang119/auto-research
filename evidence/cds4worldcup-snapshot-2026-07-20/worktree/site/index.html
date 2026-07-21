@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS4WorldCup - 2026 世界杯夺冠路</title>
+  <meta name="description" content="48支队各有一条夺冠路。走不走得通，数据说了算。">
+  <link rel="stylesheet" href="css/portal.css">
+  <script src="data/homepage-data.js"></script>
+  <script src="data/baselines-data.js"></script>
+  <script src="data/cds-paths-data.js"></script>
+  <script src="data/teams-data.js"></script>
+  <script src="data/odds-data.js"></script>
+  <script src="data/coach-sim-data.js"></script>
+  <script src="data/schedule-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/homepage.js" defer></script>
+</head>
+<body>
+  <header class="topbar" aria-label="站点导航">
+    <a class="brand" href="index.html">CDS4WorldCup</a>
+    <nav class="topnav">
+      <a href="index.html" class="active">首页</a>
+      <a href="panorama.html">全景图</a>
+      <a href="teams.html">球队</a>
+    </nav>
+  </header>
+
+  <main class="portal homepage">
+    <!-- ═══ Hero ═══ -->
+    <section class="hero hero-home" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">2026 FIFA WORLD CUP</p>
+        <h1 data-home-hero-headline>48 支队，各有一条夺冠路。走不走得通，数据说了算。</h1>
+        <p class="lede" data-home-hero-lede>不猜冠军。拆路径——每支队的夺冠概率、要过谁、怕什么、赛后怎么对账，全摆出来。</p>
+        <p class="hook-line" data-home-hero-hook>你支持的队，有几成希望？往下看 ↓</p>
+        <div class="notice" data-home-hero-boundary>
+          概率 ≠ 预测，市场数据 ≠ 投注建议。
+        </div>
+      </div>
+
+      <aside class="hero-signals" aria-label="热门球队夺冠信号" data-home-signals-hero>
+        <p class="hero-signals-label">热门球队夺冠信号</p>
+        <div class="empty-state">正在加载...</div>
+      </aside>
+    </section>
+
+    <!-- ═══ 路径热力图 ═══ -->
+    <section class="section" id="path-heatmap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">谁走得更远</p>
+          <h2>12 支热门队，从小组到冠军，一步步看</h2>
+          <p>颜色越深越稳。从出线到捧杯，每一步的概率摆在这里。</p>
+        </div>
+      </div>
+      <div class="heatmap-card">
+        <div class="heatmap-grid" data-home-heatmap></div>
+        <div class="heatmap-legend">
+          <span>概率</span>
+          <span>0%</span>
+          <span class="scale"></span>
+          <span>100%</span>
+          <span style="margin-left:auto">Top 12 队 · Elo+泊松模型模拟</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 焦点比赛 ═══ -->
+    <section class="section focus-matches-section" id="focus-matches">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" style="color:#d93025;">哪场最悬</p>
+          <h2>同一场比赛，两个模型看法差了 28 个百分点</h2>
+          <p>Elo 说稳赢，教练模型说五五开。分歧越大，越值得看。按分歧度排了 Top 6。</p>
+        </div>
+      </div>
+      <div class="focus-matches-grid" data-home-focus-matches>
+        <div class="empty-state">正在加载焦点比赛...</div>
+      </div>
+    </section>
+
+    <!-- ═══ 选球队 ═══ -->
+    <section class="section choose-team-section" id="choose-team">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">找到你的队</p>
+          <h2>点进去看：怎么走、卡在哪、有几成把握</h2>
+        </div>
+        <a class="text-link" href="teams.html">全部 48 队</a>
+      </div>
+      <div class="team-teaser-grid" data-home-team-teasers>
+        <div class="empty-state">正在加载球队入口...</div>
+      </div>
+    </section>
+
+    <!-- ═══ AI 视角 ═══ -->
+    <section class="section ai-perspective-section" id="ai-perspectives">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">换个角度</p>
+          <h2>300 个视角，不只一个声音</h2>
+          <p>数据派、赔率派、老球迷视角……各有各的判断。看个参考。</p>
+        </div>
+      </div>
+      <div data-ai-perspectives></div>
+    </section>
+  </main>
+
+  <footer class="footer-disclaimer">
+    <div style="display:flex;gap:16px;margin-bottom:8px;">
+      <a href="#method" style="color:var(--ink);text-decoration:underline;">怎么判断的</a>
+      <a href="#progress" style="color:var(--ink);text-decoration:underline;">项目进度</a>
+      <a href="#updates" style="color:var(--ink);text-decoration:underline;">更新日志</a>
+    </div>
+    <p class="disclaimer-text">
+      <strong>关于概率信号：</strong>本页展示的夺冠概率和比赛胜率来自 Elo+泊松数值模型（Red Source），仅作参考对比，不作为事实依据或投注建议。
+      教练对位模型来自 Transfermarkt 身价代理（Red Source）。
+      <br><br>
+      <strong>来源分级：</strong>绿 = 可靠事实 · 黄 = 待核验线索 · 红 = 只能参考
+    </p>
+  </footer>
+</body>
+</html>

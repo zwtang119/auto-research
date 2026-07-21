@@ -1,0 +1,49 @@
+team_slug,canonical_team,zh_name,confederation,group,card_status,has_kimi_data,green_source_count,yellow_source_count,red_source_count,coverage_status,gap_level,gap_description,recommended_source_action,excluded_from_wc
+algeria,Algeria,阿尔及利亚,CAF,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+argentina,Argentina,阿根廷,CONMEBOL,B,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+australia,Australia,澳大利亚,AFC,I,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+austria,Austria,奥地利,UEFA,C,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+belgium,Belgium,比利时,UEFA,I,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+brazil,Brazil,巴西,CONMEBOL,D,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+cameroon,Cameroon,喀麦隆,CAF,L,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+canada,Canada,加拿大,CONCACAF,A,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+chile,Chile,智利,CONMEBOL,B,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+colombia,Colombia,哥伦比亚,CONMEBOL,I,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+costa-rica,Costa Rica,哥斯达黎加,CONCACAF,D,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+croatia,Croatia,克罗地亚,UEFA,J,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+côte-divoire,Côte d'Ivoire,科特迪瓦,CAF,H,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+denmark,Denmark,丹麦,UEFA,J,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+ecuador,Ecuador,厄瓜多尔,CONMEBOL,B,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+egypt,Egypt,埃及,CAF,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+england,England,英格兰,UEFA,E,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+france,France,法国,UEFA,C,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+germany,Germany,德国,UEFA,G,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+ghana,Ghana,加纳,CAF,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+iran,Iran,伊朗,AFC,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+iraq,Iraq,伊拉克,AFC,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+italy,Italy,意大利,UEFA,H,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,True
+japan,Japan,日本,AFC,G,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+mexico,Mexico,墨西哥,CONCACAF,A,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+morocco,Morocco,摩洛哥,CAF,F,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+netherlands,Netherlands,荷兰,UEFA,C,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+new-zealand,New Zealand,新西兰,OFC,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+nigeria,Nigeria,尼日利亚,CAF,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+norway,Norway,挪威,UEFA,K,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+panama,Panama,巴拿马,CONCACAF,A,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+paraguay,Paraguay,巴拉圭,CONMEBOL,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+poland,Poland,波兰,UEFA,L,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+portugal,Portugal,葡萄牙,UEFA,F,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+qatar,Qatar,卡塔尔,AFC,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+saudi-arabia,Saudi Arabia,沙特阿拉伯,AFC,K,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+senegal,Senegal,塞内加尔,CAF,J,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+south-korea,South Korea,韩国,AFC,G,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+spain,Spain,西班牙,UEFA,F,deep-description,True,1,1,1,sufficient,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+switzerland,Switzerland,瑞士,UEFA,K,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+tunisia,Tunisia,突尼斯,CAF,E,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+turkey,Turkey,土耳其,UEFA,C,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+ukraine,Ukraine,乌克兰,UEFA,L,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+united-states,United States,美国,CONCACAF,A,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+uruguay,Uruguay,乌拉圭,CONMEBOL,H,deep-description,True,1,1,1,partial,high,无实质性 Green Source（仅 generic label ['public-football-knowledge']），实际依赖 Yellow/Red,补充 FIFA 官方排名、近期大赛赛果、阵容名单等 Green Source,False
+uzbekistan,Uzbekistan,乌兹别克斯坦,AFC,,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+venezuela,Venezuela,委内瑞拉,CONMEBOL,B,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False
+wales,Wales,威尔士,UEFA,E,thin-slice,True,0,0,0,thin,critical,无任何来源；path card 为薄切片占位,补充 FIFA 排名、阵容名单、近期赛果等 Green Source；建议升级为 deep-description,False

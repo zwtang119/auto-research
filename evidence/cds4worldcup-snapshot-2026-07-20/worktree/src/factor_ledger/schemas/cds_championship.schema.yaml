@@ -1,0 +1,203 @@
+# CDS Championship Path Output Schema — Knockout Stage Path Analysis
+# WI-PAN.1: Data contract for the second CDS layer (championship path)
+# Consumer: team-detail CDS panel, cds_path_simulation.py --layer=championship
+# Aligns with team-card §7 Path Simulation Notes (8 fields)
+
+schema_version: "0.1"
+schema_type: cds_championship
+description: >
+  Output of CDS Layer 2: championship path conditional probability tree.
+  For each team, traces a path through the knockout bracket (R32 → R16 → QF → SF → Final)
+  with per-round conditional probabilities. Fills the 8 null fields from team-card §7.
+
+required:
+  - team
+  - championship_prob
+  - championship_path_count
+  - dominant_path_pattern
+  - dominant_failure_node
+  - bracket_dependency
+  - black_swan_dependency
+  - penalty_dependency
+  - injury_sensitivity
+  - simulation_status
+  - path_nodes
+  - simulation_meta
+
+fields:
+  team:
+    type: string
+    description: "Team name (canonical English, matching team_registry.csv)"
+    example: "Argentina"
+  team_code:
+    type: string
+    optional: true
+    description: "3-letter team code (e.g. ARG)"
+    example: "ARG"
+  championship_prob:
+    type: number
+    description: >
+      Overall probability of winning the tournament.
+      Computed as the product of conditional probabilities along the
+      highest-expected-probability path, weighted across all qualifying scenarios.
+    constraints:
+      min: 0.0
+      max: 1.0
+    example: 0.12
+
+  # --- §7 aligned fields (8 fields from team-card Path Simulation Notes) ---
+
+  championship_path_count:
+    type: integer
+    description: >
+      Number of distinct bracket paths (branching sequences of opponents)
+      that lead to a championship. Each path is a unique sequence of
+      opponents from R32 through the Final.
+    example: 48
+  dominant_path_pattern:
+    type: string
+    description: >
+      The single highest-probability opponent sequence from R32 to Final.
+      Represented as a chain of opponent slots or known team names.
+      Format: "R32:[slot] → R16:[slot] → QF:[slot] → SF:[slot] → Final"
+      Uses team names where known, slot references otherwise.
+    example: "R32:3CEFHI → R16:W80 → QF:W91 → SF:W99 → Final:W102"
+  dominant_failure_node:
+    type: string
+    description: >
+      The round + opponent where the single-match win probability drops
+      the most relative to the cumulative path probability. Identifies
+      the biggest bottleneck on the dominant path.
+    example: "QF vs France (win_prob 0.35, -0.28 from prior cumulative)"
+  bracket_dependency:
+    type: string
+    description: >
+      Third-place or draw-dependent slot references that affect this
+      team's path. Empty string if the team's path is fully determined
+      by group position. References config/third_place_mapping.json slots.
+    example: "R32 opponent depends on 3CEFHI (groups C,E,F,H,I)"
+  black_swan_dependency:
+    type: string
+    description: >
+      Cross-reference to team-card §5 black swan events that would
+      significantly alter the championship probability. Empty string
+      if no black swan events identified in the team card.
+    example: "Messi injury (§5 row 3): championship_prob drops from 0.12 to 0.04"
+  penalty_dependency:
+    type: string
+    description: >
+      Whether the path analysis suggests significant dependency on
+      penalty shootout outcomes. References goalkeeper penalty strength
+      from team-card §5 if available.
+    example: "High — Emi Martínez penalty specialist; SF/Final likely to involve PKs"
+  injury_sensitivity:
+    type: string
+    description: >
+      Championship probability change when the team's most critical
+      player (from team-card §5) is removed. Quantifies roster fragility.
+    example: "Without Messi: 0.12 → 0.04 (−67%); Without Álvarez: 0.12 → 0.08 (−33%)"
+  simulation_status:
+    type: enum
+    values: ["not_run_yet", "run_complete", "run_partial", "run_degraded"]
+    description: >
+      Execution status of the championship path simulation:
+      - not_run_yet: §7 default, no simulation performed
+      - run_complete: full conditional probability tree computed
+      - run_partial: some rounds skipped (e.g. opponents unknown)
+      - run_degraded: Elo-only fallback (coach model unavailable)
+
+  # --- Path tree ---
+
+  path_nodes:
+    type: list[object]
+    description: >
+      Per-round conditional probability nodes along the knockout bracket.
+      Each node represents a single match in the path.
+      Ordered from earliest to latest round.
+    item_fields:
+      round:
+        type: enum
+        values: ["round_of_32", "round_of_16", "quarterfinal", "semifinal", "final"]
+        description: "Tournament round"
+      match_id:
+        type: string
+        description: >
+          Match ID from schedule.json knockout section (e.g. KO79).
+          May be conditional if opponent depends on prior results.
+      opponent_slot:
+        type: string
+        description: >
+          Slot reference from schedule.json (e.g. 3CEFHI, W89, 1A).
+          Identifies who the team would face in this round.
+      opponent_team:
+        type: string
+        optional: true
+        description: >
+          Most likely opponent team name for this slot.
+          Null if the slot is a winner reference (W73 etc.) or
+          third-place composite that hasn't been resolved yet.
+      conditional_win_prob:
+        type: number
+        description: >
+          Probability of winning this match, conditional on having
+          reached this round. Range [0.0, 1.0].
+        constraints:
+          min: 0.0
+          max: 1.0
+      cumulative_prob:
+        type: number
+        description: >
+          Probability of reaching this round (product of all prior
+          conditional win probabilities × qualification probability).
+        constraints:
+          min: 0.0
+          max: 1.0
+      probability_source:
+        type: enum
+        values: ["coach_simulation", "elo_poisson", "market_implied", "unknown"]
+        description: >
+          Which probability source was used for this node's win probability.
+          'unknown' for future rounds where no specific probability was computed.
+    example:
+      round: "round_of_32"
+      match_id: "KO79"
+      opponent_slot: "3CEFHI"
+      opponent_team: null
+      conditional_win_prob: 0.78
+      cumulative_prob: 0.68
+      probability_source: "elo_poisson"
+
+  # --- Simulation metadata ---
+
+  simulation_meta:
+    type: object
+    required:
+      - run_at_utc
+      - probability_source
+      - qualification_prob_used
+      - paths_enumerated
+    fields:
+      run_at_utc:
+        type: datetime
+        description: "ISO 8601 UTC timestamp of this simulation run"
+      probability_source:
+        type: enum
+        values: ["elo_poisson", "coach_simulation", "elo_degraded"]
+        description: >
+          Primary probability source used for match outcomes throughout
+          the bracket tree.
+      qualification_prob_used:
+        type: number
+        description: >
+          The team's qualification probability (from cds_qualification output)
+          used as the entry point for the championship path tree.
+        constraints:
+          min: 0.0
+          max: 1.0
+      paths_enumerated:
+        type: integer
+        description: "Total number of distinct opponent sequences computed"
+      model_version:
+        type: string
+        optional: true
+        description: "Version identifier for the simulation model used"

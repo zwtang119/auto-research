@@ -64,7 +64,7 @@ Builder 没幻觉,3 处关键 claim 全部 file:line confirmed。
 
 Pair（session `6A1DE78B`, opus:max）sincere attempt to falsify lead，结论：**5/5 PSEUDO_CONFIRMED，无 counter-evidence 找到**。Pair 还 self-flag 为 verdict #12 同循环。Pair 找到的 1 个新事实已 verify：
 
-- **V4 P11 G1 abstract 已存在作为 cross-weld composite**: ✅ confirmed `legacy/p11-closed-v5-minimax-m3/state/progress.json` `abstract_path: docs/papers/g1-pa-degrades-fidelity-abstract.md` + `review_path: g1-abstract-review.md`。这是把 P11 N + Mimo integration + PA-degrades-fidelity 跨项目跨 weld 的尝试。
+- **V4 P11 G1 abstract 已存在作为 cross-weld composite**: ✅ confirmed `legacy/p11-closed-v5-minimax-m3/state/progress.json` `abstract_path: docs/papers-closed-portfolio/g1-pa-degrades-fidelity-abstract.md` + `review_path: g1-abstract-review.md`。这是把 P11 N + Mimo integration + PA-degrades-fidelity 跨项目跨 weld 的尝试。
 - **V5 P11 "75-85/100 integrated"**: ✅ confirmed `progress.json:127` `Mimo folder CLOSED 7.0/10 + integrated 75-85/100` + `:137` mimo_score "75-85/100 integrated"。但这分数是 workshop 级别（同 progress 自标），不是顶刊 ≥7.5/10。
 - **V6 P11 A1 真实信号但 H1_auditability 失败**: ✅ confirmed `progress.json:44` `H1_auditability_experiment: fail_3mode_NS (DS KW p=0.851, QW KW p=0.451)`。pair 说"A1 t=-3.391 p=0.0008 on 927 runs"是 H1c_reasoning_depth pass 方向，但同 6-dim 报告里 H1_auditability fail——**P11 最强结果也是部分 fail**。
 

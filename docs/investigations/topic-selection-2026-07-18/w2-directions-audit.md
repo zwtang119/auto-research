@@ -24,14 +24,14 @@
 
 | 文件 | 行数 | 状态 |
 |---|---|---|
-| `auto-research/docs/papers/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md` | 121 | 完整 |
-| `auto-research/docs/papers/directions-attempt-2026-07-18/d2-verdict-reversal-paper-draft.md` | 99 | 完整 |
-| `auto-research/docs/papers/directions-attempt-2026-07-18/d2-rescore-card.md` | 32 | 完整 |
-| `auto-research/docs/papers/directions-attempt-2026-07-18/d3-g3-with-harness-ablation-draft.md` | 142 | 完整 |
-| `auto-research/docs/papers/directions-attempt-2026-07-18/d4-cross-direction-joint-paper-synthesis.md` | 118 | 完整 |
+| `auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md` | 121 | 完整 |
+| `auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d2-verdict-reversal-paper-draft.md` | 99 | 完整 |
+| `auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d2-rescore-card.md` | 32 | 完整 |
+| `auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d3-g3-with-harness-ablation-draft.md` | 142 | 完整 |
+| `auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d4-cross-direction-joint-paper-synthesis.md` | 118 | 完整 |
 | `auto-research/state/progress.json` | 117 | 完整 |
-| `auto-research/docs/papers/g3-dual-ledger-crosswalk.md` | 83 | 完整（schema bridge 实锤）|
-| `auto-research/docs/papers/g3-dual-ledger-crosswalk.json` | 30 | 完整（g3_brier_pass=false, status=synthetic_test_only）|
+| `auto-research/docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.md` | 83 | 完整（schema bridge 实锤）|
+| `auto-research/docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.json` | 30 | 完整（g3_brier_pass=false, status=synthetic_test_only）|
 | `auto-research/docs/investigations/archive/cross-project-roi-2026-07-06.md` | 318 | 完整（真实 64.3% 来源 + 跨项目 ROI）|
 
 搜索过但找不到：`g3_crosswalk.py`（0 命中）、`22-investigation` schema 规范（0 命中）、G3 字段映射 supplementary figure（无 supplementary 路径）。
@@ -369,15 +369,15 @@ D1 (instrument) → D2 (detector built from instrument) → D3 (ablation axis on
 
 ## 9. 交叉引用
 
-- D1 draft：`auto-research/docs/papers/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md`
-- D2 draft：`auto-research/docs/papers/directions-attempt-2026-07-18/d2-verdict-reversal-paper-draft.md`
-- D2 rescore：`auto-research/docs/papers/directions-attempt-2026-07-18/d2-rescore-card.md`
-- D3 draft：`auto-research/docs/papers/directions-attempt-2026-07-18/d3-g3-with-harness-ablation-draft.md`
-- D4 draft：`auto-research/docs/papers/directions-attempt-2026-07-18/d4-cross-direction-joint-paper-synthesis.md`
-- G3 crosswalk artifact：`auto-research/docs/papers/g3-dual-ledger-crosswalk.{md,json}`
+- D1 draft：`auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d1-g3-standalone-paper-draft.md`
+- D2 draft：`auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d2-verdict-reversal-paper-draft.md`
+- D2 rescore：`auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d2-rescore-card.md`
+- D3 draft：`auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d3-g3-with-harness-ablation-draft.md`
+- D4 draft：`auto-research/docs/papers-closed-portfolio/directions-attempt-2026-07-18/d4-cross-direction-joint-paper-synthesis.md`
+- G3 crosswalk artifact：`auto-research/docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.{md,json}`
 - Project history：`auto-research/state/progress.json`
 - Cross-project ROI（含 64.3% 实测）：`auto-research/docs/investigations/archive/cross-project-roi-2026-07-06.md`
 - post-gate-and-qlib-assessment（含 G3 Brier 真实 data on disk）：`auto-research/docs/investigations/archive/post-gate-and-qlib-assessment-2026-07-05.md`
 - cds4worldcup-settlement-experiment-executed（含 2026-07-08 后续 3 settlement records）：`auto-research/docs/investigations/cds4worldcup-settlement-experiment-executed-2026-07-08.md`
 - Top-journal KILL verdict (cross-referenced)：`auto-research/docs/investigations/rethink-2026-07-06-zh.md`（progress.json event 引用）
-- G3 methods paper outline：`auto-research/docs/papers/g3-methods-paper-outline.md`（M10 milestone, 与 D1/D3 内容有部分重叠）
+- G3 methods paper outline：`auto-research/docs/papers-closed-portfolio/g3-methods-paper-outline.md`（M10 milestone, 与 D1/D3 内容有部分重叠）

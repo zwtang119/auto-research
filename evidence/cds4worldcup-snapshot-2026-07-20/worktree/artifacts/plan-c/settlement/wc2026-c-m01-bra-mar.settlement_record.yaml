@@ -1,0 +1,177 @@
+schema_version: "0.2"
+match_id: "wc2026-c-m01-bra-mar"
+task_type: "group_90m_wdl"
+
+result:
+  home_goals_90m: 1
+  away_goals_90m: 1
+  outcome_90m: "draw"
+  goal_scorers_home_90m: "Vinícius Júnior (32')"
+  goal_scorers_away_90m: "Ismael Saibari (21')"
+  half_time_score: "1-1"
+  red_cards: []
+  match_statistics:
+    possession_home_pct: 51
+    possession_away_pct: 49
+    shots_total_home: 13
+    shots_total_away: 14
+    shots_on_target_home: 5
+    shots_on_target_away: 3
+    corners_home: 6
+    corners_away: 2
+    fouls_home: 16
+    fouls_away: 14
+    yellow_cards_home: 2
+    yellow_cards_away: 0
+    attendance: 80663
+  result_source: "https://fdp.fifa.org/assetspublic/ce281/r12465/pdf/FullTimeMatchReport-English.pdf"
+  result_source_secondary: "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_C"
+
+settled_at_utc: "2026-07-08T00:00:00Z"
+
+scores:
+  brier: 0.8552
+  log_loss: 1.3471
+  brier_calculation: >
+    Brier Score (multi-class, single observation):
+    p = [home_win=0.50, draw=0.26, away_win=0.24]
+    o = [home_win=0, draw=1, away_win=0]
+    BS = (0.50-0)^2 + (0.26-1)^2 + (0.24-0)^2
+       = 0.25 + 0.5476 + 0.0576
+       = 0.8552
+  log_loss_calculation: >
+    Log Loss (multi-class, single observation, epsilon=1e-12):
+    LL = -[0*log(0.50+1e-12) + 1*log(0.26+1e-12) + 0*log(0.24+1e-12)]
+       = -ln(0.26)
+       = -(-1.3471...)
+       = 1.3471
+  calculation_snippet: |
+    # Python verification:
+    import math
+    p = [0.50, 0.26, 0.24]  # predicted: home_win, draw, away_win
+    outcome_index = 1        # draw happened (Brazil 1-1 Morocco)
+    # Brier Score
+    brier = sum((p[i] - (1 if i == outcome_index else 0))**2 for i in range(3))
+    assert abs(brier - 0.8552) < 0.0001, f"Brier mismatch: {brier}"
+    # Log Loss
+    epsilon = 1e-12
+    log_loss = -math.log(p[outcome_index] + epsilon)
+    assert abs(log_loss - 1.3471) < 0.001, f"Log Loss mismatch: {log_loss}"
+    print(f"Brier: {brier:.4f}, Log Loss: {log_loss:.4f}")
+    # Cross-check with src/verify_plan_c_settlement.py
+  baseline_difference:
+    simple_statistical:
+      brier_baseline: 0.8702
+      brier_prediction: 0.8552
+      brier_delta: -0.0150
+      log_loss_baseline: 1.3863
+      log_loss_prediction: 1.3471
+      log_loss_delta: -0.0392
+      note: >
+        Both the prediction and the simple statistical baseline missed the draw.
+        The prediction was closer to the actual outcome: Brier 0.8552 vs baseline
+        0.8702 (Δbrier -0.0150, prediction favored); Log Loss 1.3471 vs baseline
+        1.3863 (Δlog_loss -0.0392, prediction favored). The prediction's higher
+        draw probability (0.26 vs 0.25) reduced the draw miss slightly, and its
+        more balanced home/away split (0.50/0.24) was closer to the actual
+        1-1 outcome than the baseline's 0.49/0.26. This is the OPPOSITE direction
+        from the mex-rsa and qat-sui precedents — for this match, the prediction
+        outperformed the baseline, despite both missing the draw.
+    market_or_odds: null
+
+factor_updates:
+  supported: []
+  rejected: []
+  inconclusive:
+    - factor_id: "wc2026-c-m01-bra-mar-f01-bra-shot-volume"
+      evidence: >
+        FIFA official match report shows Brazil 13 total shots (vs Morocco 14).
+        Threshold: supported if Brazil total shots >= 14; rejected if Brazil total
+        shots <= 8; inconclusive if statistics are unavailable.
+        Result: 13 shots. Statistics ARE available, but 13 is in neither the
+        support range (>= 14) nor the reject range (<= 8) — it falls in the
+        threshold gap (9 to 13 inclusive). The settlement rule does not specify
+        a verdict for this gap.
+      confidence_post: null
+      reason_for_inconclusive: >
+        Brazil's 13 shots is one short of the support threshold and well above
+        the rejection threshold. The factor's settlement rule is silent on the
+        9-13 range. Per strict protocol, the factor is INCONCLUSIVE because we
+        cannot confidently adjudicate it as supported or rejected. Notably,
+        Brazil's shot count is essentially equal to Morocco's (13 vs 14), which
+        is unusual for a Brazil match and reflects Morocco's exceptional
+        defensive organization noted in the prediction's uncertainty_notes.
+    - factor_id: "wc2026-c-m01-bra-mar-f02-mar-defensive-block"
+      evidence: >
+        FIFA official match report shows Brazil 5 shots on target (vs Morocco 3).
+        Threshold: supported if Brazil shots on target <= 4; rejected if >= 7;
+        inconclusive if statistics are unavailable.
+        Result: 5 shots on target. Statistics ARE available, but 5 falls in the
+        threshold gap (5 to 6 inclusive) between the support range (<= 4) and
+        the reject range (>= 7).
+      confidence_post: null
+      reason_for_inconclusive: >
+        Brazil's 5 shots on target is one above the support threshold and well
+        below the rejection threshold. The factor's settlement rule is silent on
+        the 5-6 range. Per strict protocol, the factor is INCONCLUSIVE. Note:
+        Morocco's defensive block did keep Brazil's shots on target modest
+        (5) relative to their total shot volume (13), suggesting the directional
+        expectation was partially borne out — but the factor cannot be
+        formally adjudicated without an exact threshold hit.
+    - factor_id: "wc2026-c-m01-bra-mar-f03-bra-defense-gaps"
+      evidence: >
+        FIFA official match report shows Morocco 3 shots on target (vs Brazil 5).
+        Threshold: supported if Morocco shots on target >= 4; rejected if <= 2;
+        inconclusive if statistics are unavailable.
+        Result: 3 shots on target. Statistics ARE available, but 3 is in neither
+        the support range (>= 4) nor the reject range (<= 2) — it falls in the
+        threshold gap (3).
+      confidence_post: null
+      reason_for_inconclusive: >
+        Morocco's 3 shots on target is one short of the support threshold and
+        one above the rejection threshold. The factor's settlement rule is silent
+        on the 3-case. Per strict protocol, the factor is INCONCLUSIVE. Note:
+        Brazil did NOT keep a clean sheet (Saibari scored in 21'), so the
+        counter_signal did not materialize — but the formal adjudication
+        remains inconclusive because the threshold was not crossed.
+
+protocol_failures:
+  - failure_id: "wc2026-c-m01-bra-mar-pf01-factor-thresholds-not-bridging-mid-range"
+    factor_affected: "wc2026-c-m01-bra-mar-f01-bra-shot-volume, wc2026-c-m01-bra-mar-f02-mar-defensive-block, wc2026-c-m01-bra-mar-f03-bra-defense-gaps"
+    severity: "minor"
+    description: >
+      All three Plan C factors for this match had threshold definitions with gaps:
+      f01 defined <= 8 (reject) and >= 14 (support) — the 9-13 range is silent;
+      f02 defined <= 4 (support) and >= 7 (reject) — the 5-6 range is silent;
+      f03 defined <= 2 (reject) and >= 4 (support) — the 3-case is silent.
+      Actual observations (13, 5, 3) all fell into these silent gaps. This is a
+      calibration-of-thresholds limitation: factors are binary but match
+      statistics are continuous, and threshold gaps produce systematic
+      inconclusive outcomes in the mid-range.
+    resolution: >
+      All three factors settled as "inconclusive" per strict protocol. The
+      match itself provided clear directional signal (e.g., Brazil's 13 shots is
+      one short of the support threshold but reflects near-equal shot volume
+      with Morocco — atypical for Brazil), but the binary thresholds cannot
+      capture it. Recommendation: future factor ledgers should either (a) use
+      three-way thresholds with an explicit mid-range outcome (e.g., "partial
+      support"), or (b) define continuous observable_proxy fields with a
+      calibrated expected value range. This protocol failure is logged but does
+      not affect the Brier/Log Loss adjudication, which is independent of factor
+      threshold gaps.
+    resolved: true
+
+review_notes:
+  - "Brazil 1-1 Morocco is the prediction's best-performing Plan C match: Brier 0.8552 and Log Loss 1.3471, both better than the simple statistical baseline (0.8702 / 1.3863). The prediction's modest draw probability (0.26) and balanced home/away split (0.50/0.24) were closer to the actual 1-1 than the baseline's tighter 0.49/0.25/0.26."
+  - "All three factors for this match are INCONCLUSIVE because actual observations (Brazil 13 shots, Brazil 5 shots on target, Morocco 3 shots on target) fell in the silent gaps between support and rejection thresholds. This is the protocol-failure-of-the-mid-range issue documented in pf01."
+  - "Despite all three factors being inconclusive, the directional evidence is consistent with the prediction card's uncertainty_notes: (a) Morocco's 2022 WC semifinal defensive organization translated into keeping Brazil's shots on target to 5 (modest for Brazil), and (b) Brazil's defensive gaps were exposed — Saibari's 21' goal and Morocco's 3 shots on target show Brazil did not keep a clean sheet."
+  - "Brazil's possession was 51% vs Morocco 49% — essentially even. The pre-match uncertainty_note about 'quasi-home atmosphere from the Brazilian diaspora' at MetLife Stadium is consistent with Brazil's narrow possession edge but did not translate into win probability (the actual draw suggests the diaspora effect was more psychological than statistical)."
+  - "Brier Score 0.8552 and Log Loss 1.3471 are intermediate in the Plan C settlement range (between mex-rsa 0.3078 and qat-sui 0.9722). This is because the prediction's home_win probability (0.50) is closer to the actual draw than qat-sui's away_win probability (0.61), reducing the squared-error penalty."
+  - "This is the only Plan C match where the prediction OUTPERFORMED the simple statistical baseline on both Brier and Log Loss — for mex-rsa and qat-sui, the baseline was better. This is partly an artifact of the threshold-tightness of the baseline (P(home_win)=0.49 vs prediction P(home_win)=0.50 — both essentially 50/50 with low draw probability)."
+  - "Two yellow cards for Brazil (Roger Ibañez 43', Casemiro 37' per Wikipedia lineup notes) — Casemiro's booking is notable as he is a key defensive midfielder, possibly affecting his aggressive defending in subsequent matches. No Moroccan yellows; no reds."
+  - "Saibari's 21' opener and Vinícius Júnior's 32' equalizer meant the entire scoring was done in the first half. The match settled into a tactical stalemate thereafter, reflected in the even possession (51/49), nearly even shots (13/14), and Brazil's modest shots on target (5)."
+  - "No Red Source contamination detected. No schema validation failures."
+  - "One protocol failure documented: all 3 factors fall into silent threshold gaps. This is a calibration issue with the binary threshold design, not a data availability issue."
+  - "Cross-verified via src/verify_plan_c_settlement.py: Brier 0.8552 and Log Loss 1.3471 match computed values to 4 decimal places."
+  - "3/3 draw selection is NOT cherry-picking: this card was locked at 2026-06-13T18:00:00Z, before kickoff (2026-06-14T02:00:00Z), so the draw outcome could not be known at lock time. The 3/3 (100%) draw rate across the three Plan C cards does NOT represent the population draw rate: Matchday 1 (n=24 matches) drew 9 (37.5% ≈ 38%, per wiki/index.md 2026-06-18 MD1 evaluation memo). The 3/3 draw concentration is an ex-ante accidental over-representation of the MD1 'systematic draw underestimation' failure mode, not a population estimate (reviewer audit R6)."
+  - "This is a protocol calibration artifact, not a prediction capability claim."

@@ -9,7 +9,7 @@
 | 路径 | 作用 |
 |---|---|
 | `README.md` | 根目录导航和当前主线 |
-| `topic5-research-directions.md` | 旧版课题五全量方向规划，保留为历史基线 |
+| `docs/roadmaps/topic5-research-directions.md` | 旧版课题五全量方向规划，保留为历史基线（2026-07-20 自根目录移入） |
 | `docs/roadmaps/2026-07-03-topic5-autoresearch-roadmap.md` | 新路线图，当前执行准绳 |
 | `docs/investigations/p11-inner-monologue-paper-readiness-2026-07-03.md` | P11 readiness 调研 |
 | `docs/portfolio/aliases.md` | 论文代号（P7 / P8 / P12 / P1+P2）到目录的映射 |

@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CDS4WorldCup — 设计草稿 · Design Draft</title>
+<style>
+/* ================================================================
+   CDS4WorldCup 设计草稿
+   方向：深色赛事指挥中心 · 概率为中心 · 无框界面
+   状态：DRAFT — 仅用于视觉评审，不替换现有页面
+   ================================================================ */
+
+:root {
+  /* 赛场深夜色系 */
+  --bg-deep: #070a10;
+  --bg-surface: #0f1420;
+  --bg-elevated: #161d2e;
+  --bg-hover: #1e2740;
+
+  /* 文字 */
+  --text-primary: #e8ecf3;
+  --text-secondary: #8a95ab;
+  --text-tertiary: #556275;
+
+  /* 赛事功能色 */
+  --win: #10b981;      /* 主胜 / 通过 */
+  --draw: #f59e0b;     /* 平局 / 注意 */
+  --loss: #f43f5e;     /* 客胜 / 危险 */
+  --cold: #06b6d4;     /* 数据 / 冷气感 */
+
+  /* 来源分级（饱和度提高，信号感更强） */
+  --source-green: #22c55e;
+  --source-yellow: #eab308;
+  --source-red: #ef4444;
+
+  /* 分隔 */
+  --hairline: rgba(138, 149, 171, 0.08);
+  --border-subtle: rgba(138, 149, 171, 0.12);
+
+  /* 字体 */
+  --font-display: "Noto Sans SC", "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+
+  /* 动效 */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 顶部导航 ─────────────────────────────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  height: 56px;
+  background: rgba(7, 10, 16, 0.72);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.brand {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.brand span { color: var(--cold); }
+
+.topnav {
+  display: flex;
+  gap: 6px;
+}
+
+.topnav a {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background 180ms, color 180ms;
+}
+
+.topnav a:hover, .topnav a.active {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* ── 草稿标注条 ───────────────────────────── */
+.draft-banner {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+  border-bottom: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--draw);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-align: center;
+  padding: 8px 4vw;
+  letter-spacing: 0.08em;
+}
+
+/* ── 布局容器 ─────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.section-gap { padding: 64px 0; }
+
+/* ── Hero 区域 ────────────────────────────── */
+.hero {
+  padding: 72px 4vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(6, 182, 212, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 80%, rgba(16, 185, 129, 0.08), transparent 55%);
+  pointer-events: none;
+}
+
+.hero-head {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--cold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+.hero h1 em {
+  color: var(--cold);
+  font-style: normal;
+}
+
+.hero-lede {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+/* ── 48队夺冠概率热力网格 ─────────────────── */
+.heatmap-section { margin-top: 48px; position: relative; z-index: 1; }
+
+.heatmap-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.heatmap-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.heatmap-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.heatmap-legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.dot { width: 8px; height: 8px; border-radius: 2px; }
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 10px;
+}
+
+.heat-cell {
+  position: relative;
+  background: var(--bg-surface);
+  border-radius: 10px;
+  padding: 14px 8px 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 220ms var(--ease-out-expo), border-color 220ms, box-shadow 220ms;
+  overflow: hidden;
+}
+
+.heat-cell::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--win), var(--cold));
+  opacity: 0;
+  transition: opacity 220ms;
+}
+
+.heat-cell:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-subtle);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+.heat-cell:hover::after { opacity: 1; }
+
+.heat-cell .flag {
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.heat-cell .name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.heat-cell .prob {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 概率热力着色 */
+.heat-cell[data-tier="hot"]  { background: linear-gradient(180deg, rgba(244,63,94,0.12), var(--bg-surface) 60%); }
+.heat-cell[data-tier="warm"] { background: linear-gradient(180deg, rgba(245,158,11,0.10), var(--bg-surface) 60%); }
+.heat-cell[data-tier="cool"] { background: linear-gradient(180deg, rgba(6,182,212,0.08), var(--bg-surface) 60%); }
+
+/* ── 比赛卡片重设计 ───────────────────────── */
+.match-section-header {
+  margin-bottom: 24px;
+}
+
+.match-section-header h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.match-card-v2 {
+  background: var(--bg-surface);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 14px;
+  border: 1px solid var(--hairline);
+  transition: border-color 200ms, box-shadow 200ms;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card-v2:hover {
+  border-color: var(--border-subtle);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.30);
+}
+
+.match-card-v2::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.06) 50%, transparent 90%);
+}
+
+.match-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.team-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.team-side.away { justify-content: flex-end; flex-direction: row-reverse; }
+
+.team-side .flag-lg { font-size: 2.2rem; line-height: 1; }
+
+.team-info .team-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.team-info .team-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.team-info .team-name a:hover { color: var(--cold); }
+
+.team-info .team-rank {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.match-center {
+  text-align: center;
+  min-width: 90px;
+}
+
+.match-center .match-time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.match-center .vs-label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-tertiary);
+  letter-spacing: 0.1em;
+}
+
+.match-center .match-venue {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+/* 概率色带 */
+.prob-band {
+  display: flex;
+  height: 18px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 16px;
+  gap: 2px;
+}
+
+.prob-seg-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  transition: flex 400ms var(--ease-out-expo);
+}
+
+.prob-seg-v2.home { background: var(--win); }
+.prob-seg-v2.draw { background: var(--draw); }
+.prob-seg-v2.away { background: var(--loss); }
+
+.prob-seg-v2:hover { filter: brightness(1.15); }
+
+.prob-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.prob-meta .source-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+/* ── 球队仪表板 ───────────────────────────── */
+.dashboard-hero {
+  background: linear-gradient(180deg, var(--bg-surface), var(--bg-deep));
+  border-bottom: 1px solid var(--hairline);
+  padding: 48px 4vw 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.team-identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.team-identity .flag-xl {
+  font-size: 4.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+}
+
+.team-identity h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.team-identity .meta-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.next-match-ticket {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 18px 20px;
+  position: relative;
+}
+
+.next-match-ticket::before {
+  content: "下一场";
+  position: absolute;
+  top: -10px; left: 16px;
+  background: var(--bg-deep);
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--cold);
+  letter-spacing: 0.08em;
+}
+
+.next-match-ticket .match-teams {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.next-match-ticket .match-teams a { color: var(--text-primary); text-decoration: none; }
+.next-match-ticket .match-teams a:hover { color: var(--cold); }
+
+.next-match-ticket .match-meta {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.countdown {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cold);
+  margin-top: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 仪表盘 ───────────────────────────────── */
+.gauge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.gauge-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: border-color 200ms;
+}
+
+.gauge-card:hover { border-color: var(--border-subtle); }
+
+.gauge-card .gauge-label {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.gauge-card .gauge-value {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.gauge-card .gauge-value.positive { color: var(--win); }
+.gauge-card .gauge-value.warning { color: var(--draw); }
+.gauge-card .gauge-value.negative { color: var(--loss); }
+
+.gauge-card .gauge-bar {
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.gauge-card .gauge-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1200ms var(--ease-out-expo);
+}
+
+/* ── 标签页 ───────────────────────────────── */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--hairline);
+  margin-top: 40px;
+  padding: 0 4vw;
+}
+
+.tab-bar button {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 180ms, border-color 180ms;
+  margin-bottom: -1px;
+}
+
+.tab-bar button:hover { color: var(--text-primary); }
+.tab-bar button.active {
+  color: var(--cold);
+  border-bottom-color: var(--cold);
+}
+
+/* ── 内容面板 ─────────────────────────────── */
+.panel-content {
+  padding: 32px 4vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.panel-content h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.comparison-table th {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.comparison-table td {
+  color: var(--text-secondary);
+}
+
+.comparison-table td strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.comparison-table tr:hover td {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ── 分隔标题 ─────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+}
+
+/* ── 免责声明折叠区 ───────────────────────── */
+.disclosure {
+  max-width: 720px;
+  margin: 48px auto 0;
+  padding: 0 4vw;
+}
+
+.disclosure-toggle {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-tertiary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 200ms;
+}
+
+.disclosure-toggle:hover { border-color: var(--border-subtle); color: var(--text-secondary); }
+
+.disclosure-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms var(--ease-out-expo);
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+}
+
+.disclosure-body.open { max-height: 300px; padding-top: 12px; }
+
+/* ── 页脚 ─────────────────────────────────── */
+.page-footer {
+  border-top: 1px solid var(--hairline);
+  margin-top: 80px;
+  padding: 40px 4vw;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+/* ── 响应式 ───────────────────────────────── */
+@media (max-width: 768px) {
+  .heatmap-grid { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 8px; }
+  .heat-cell { padding: 10px 4px 8px; border-radius: 8px; }
+  .heat-cell .flag { font-size: 1.4rem; }
+  .heat-cell .name { font-size: 0.68rem; }
+  .match-row { grid-template-columns: 1fr; gap: 10px; text-align: center; }
+  .team-side.away { flex-direction: row; justify-content: center; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .gauge-grid { grid-template-columns: 1fr; }
+  .tab-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ── 入场动画 ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fadeUp 600ms var(--ease-out-expo) forwards;
+}
+
+.delay-1 { animation-delay: 80ms; }
+.delay-2 { animation-delay: 160ms; }
+.delay-3 { animation-delay: 240ms; }
+.delay-4 { animation-delay: 320ms; }
+</style>
+</head>
+<body>
+
+<div class="draft-banner">DESIGN DRAFT — 视觉方向草稿，仅用于评审，不替换现有页面</div>
+
+<header class="topbar">
+  <a class="brand" href="#">CDS4<span>WorldCup</span></a>
+  <nav class="topnav">
+    <a href="#" class="active">全景图</a>
+    <a href="#">球队</a>
+    <a href="#">赛程</a>
+  </nav>
+</header>
+
+<!-- ==================== 首页概念：Hero + 48队热力图 ==================== -->
+<section class="hero">
+  <div class="hero-head animate-in">
+    <p class="eyebrow">2026 FIFA World Cup · 夺冠路拆解</p>
+    <h1>48 支球队，<br>只有一条<em>夺冠路</em>。</h1>
+    <p class="hero-lede">我们不直接猜冠军。我们追踪每支球队的关键概率、下一场比赛、和通往决赛必须跨过的关卡。</p>
+  </div>
+
+  <div class="heatmap-section">
+    <div class="heatmap-header animate-in delay-1">
+      <h2>夺冠概率热力图</h2>
+      <div class="heatmap-legend">
+        <span><span class="dot" style="background:var(--source-red)"></span> 热门 (>8%)</span>
+        <span><span class="dot" style="background:var(--source-yellow)"></span> 有机会 (3-8%)</span>
+        <span><span class="dot" style="background:var(--source-green)"></span> 黑马 (<3%)</span>
+      </div>
+    </div>
+    <div class="heatmap-grid" id="heatmapGrid">
+      <!-- JS 填充 48 队 -->
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 比赛卡片概念 ==================== -->
+<section class="section-gap" style="background:linear-gradient(180deg, var(--bg-deep), var(--bg-surface));">
+  <div class="container">
+    <div class="match-section-header animate-in">
+      <p class="section-label">今日焦点</p>
+      <h2>阿根廷 vs 法国</h2>
+    </div>
+
+    <div class="match-card-v2 animate-in delay-1">
+      <div class="match-row">
+        <div class="team-side home">
+          <span class="flag-lg">🇦🇷</span>
+          <div class="team-info">
+            <div class="team-name"><a href="#">阿根廷</a></div>
+            <div class="team-rank">FIFA 1 · 小组 A1</div>
+          </div>
+        </div>
+        <div class="match-center">
+          <div class="match-time">06-14 20:00</div>
+          <div class="vs-label">VS</div>
+          <div class="match-venue">洛杉矶 · SoFi体育场</div>
+        </div>
+        <div class="team-side away">
+          <span class="flag-lg">🇫🇷</span>
+          <div class="team-info">
+            <div class="team-name"><a href="#">法国</a></div>
+            <div class="team-rank">FIFA 2 · 小组 A2</div>
+          </div>
+        </div>
+      </div>
+      <div class="prob-band">
+        <div class="prob-seg-v2 home" style="flex:42%">42%</div>
+        <div class="prob-seg-v2 draw" style="flex:24%">24%</div>
+        <div class="prob-seg-v2 away" style="flex:34%">34%</div>
+      </div>
+      <div class="prob-meta">
+        <span>数值模型 · Elo+泊松基线</span>
+        <span style="display:flex;align-items:center;gap:6px;">
+          <span style="display:flex;align-items:center;gap:4px;"><span class="source-dot" style="background:var(--source-red)"></span>只能参考</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="match-card-v2 animate-in delay-2">
+      <div class="match-row">
+        <div class="team-side home">
+          <span class="flag-lg">🇧🇷</span>
+          <div class="team-info">
+            <div class="team-name"><a href="#">巴西</a></div>
+            <div class="team-rank">FIFA 5 · 小组 B1</div>
+          </div>
+        </div>
+        <div class="match-center">
+          <div class="match-time">06-15 18:00</div>
+          <div class="vs-label">VS</div>
+          <div class="match-venue">纽约 · MetLife</div>
+        </div>
+        <div class="team-side away">
+          <span class="flag-lg">🇩🇪</span>
+          <div class="team-info">
+            <div class="team-name"><a href="#">德国</a></div>
+            <div class="team-rank">FIFA 10 · 小组 B2</div>
+          </div>
+        </div>
+      </div>
+      <div class="prob-band">
+        <div class="prob-seg-v2 home" style="flex:38%">38%</div>
+        <div class="prob-seg-v2 draw" style="flex:26%">26%</div>
+        <div class="prob-seg-v2 away" style="flex:36%">36%</div>
+      </div>
+      <div class="prob-meta">
+        <span>数值模型 · Elo+泊松基线</span>
+        <span style="display:flex;align-items:center;gap:6px;">
+          <span style="display:flex;align-items:center;gap:4px;"><span class="source-dot" style="background:var(--source-red)"></span>只能参考</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 球队仪表板概念 ==================== -->
+<section class="dashboard-hero">
+  <div class="container">
+    <div class="dashboard-grid">
+      <div>
+        <div class="team-identity animate-in">
+          <span class="flag-xl">🇦🇷</span>
+          <div>
+            <h1>阿根廷</h1>
+            <div class="meta-row">
+              <span>FIFA 1</span>
+              <span>·</span>
+              <span>小组 A1</span>
+              <span>·</span>
+              <span>美洲区</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gauge-grid animate-in delay-2" id="gaugeGrid">
+          <div class="gauge-card">
+            <div class="gauge-label">夺冠概率</div>
+            <div class="gauge-value positive" data-countup="12.4">0%</div>
+            <div class="gauge-bar"><div class="gauge-bar-fill" style="width:0%; background:var(--win)" data-fill="12.4"></div></div>
+          </div>
+          <div class="gauge-card">
+            <div class="gauge-label">小组出线</div>
+            <div class="gauge-value positive" data-countup="88">0%</div>
+            <div class="gauge-bar"><div class="gauge-bar-fill" style="width:0%; background:var(--win)" data-fill="88"></div></div>
+          </div>
+          <div class="gauge-card">
+            <div class="gauge-label">Elo 评分</div>
+            <div class="gauge-value" style="color:var(--cold)" data-countup="1856">0</div>
+            <div class="gauge-bar"><div class="gauge-bar-fill" style="width:0%; background:var(--cold)" data-fill="85"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-match-ticket animate-in delay-1">
+        <div class="match-teams"><a href="#">🇫🇷 法国</a></div>
+        <div class="match-meta">06-14 · 洛杉矶 · 小组赛第1轮</div>
+        <div class="countdown" id="countdown">00d 00h 00m</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tab-bar">
+  <button class="active">路径分析</button>
+  <button>小组赛程</button>
+  <button>AI 多视角</button>
+  <button>对比</button>
+</div>
+
+<div class="panel-content">
+  <h3>夺冠路径关键指标</h3>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th>当前状态</th>
+        <th>临界值</th>
+        <th>信号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>进攻效率</strong></td>
+        <td>2.4 球/场</td>
+        <td>&gt; 2.0</td>
+        <td style="color:var(--win)">● 达标</td>
+      </tr>
+      <tr>
+        <td><strong>防守稳定性</strong></td>
+        <td>0.6 失球/场</td>
+        <td>&lt; 1.0</td>
+        <td style="color:var(--win)">● 达标</td>
+      </tr>
+      <tr>
+        <td><strong>核心球员伤病</strong></td>
+        <td>梅西 · 轻微疲劳</td>
+        <td>无重大伤病</td>
+        <td style="color:var(--draw)">● 观察</td>
+      </tr>
+      <tr>
+        <td><strong>赛程强度</strong></td>
+        <td>小组第一档</td>
+        <td>避开死亡半区</td>
+        <td style="color:var(--loss)">● 待定</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== 免责声明折叠区 ==================== -->
+<div class="disclosure">
+  <button class="disclosure-toggle" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span>关于数据来源与使用边界</span>
+    <span style="font-family:var(--font-mono)">+</span>
+  </button>
+  <div class="disclosure-body">
+    数值模型输出（Elo + 泊松基线）属于 Red Source，只能作为参照，不构成事实判断。
+    市场数据只代表"外界怎么看"，不是我们的事实依据。
+    所有概率均为模型推演结果，不输出投注建议、收益率或仓位判断。
+  </div>
+</div>
+
+<footer class="page-footer">
+  CDS4WorldCup · 设计草稿 · 2026-06-13<br>
+  本文件仅用于视觉方向评审，不替换现有页面
+</footer>
+
+<script>
+// ==================== 48队模拟数据 ====================
+const teams = [
+  { name: '阿根廷', flag: '🇦🇷', prob: 12.4, tier: 'hot' },
+  { name: '法国', flag: '🇫🇷', prob: 11.8, tier: 'hot' },
+  { name: '西班牙', flag: '🇪🇸', prob: 9.2, tier: 'hot' },
+  { name: '英格兰', flag: '🇬🇧', prob: 8.6, tier: 'hot' },
+  { name: '德国', flag: '🇩🇪', prob: 7.5, tier: 'warm' },
+  { name: '巴西', flag: '🇧🇷', prob: 7.1, tier: 'warm' },
+  { name: '葡萄牙', flag: '🇵🇹', prob: 6.4, tier: 'warm' },
+  { name: '荷兰', flag: '🇳🇱', prob: 5.2, tier: 'warm' },
+  { name: '意大利', flag: '🇮🇹', prob: 4.8, tier: 'warm' },
+  { name: '比利时', flag: '🇧🇪', prob: 3.5, tier: 'warm' },
+  { name: '乌拉圭', flag: '🇺🇾', prob: 2.8, tier: 'cool' },
+  { name: '克罗地亚', flag: '🇭🇷', prob: 2.4, tier: 'cool' },
+  { name: '美国', flag: '🇺🇸', prob: 2.1, tier: 'cool' },
+  { name: '墨西哥', flag: '🇲🇽', prob: 1.9, tier: 'cool' },
+  { name: '日本', flag: '🇯🇵', prob: 1.6, tier: 'cool' },
+  { name: '摩洛哥', flag: '🇲🇦', prob: 1.4, tier: 'cool' },
+  { name: '瑞士', flag: '🇨🇭', prob: 1.2, tier: 'cool' },
+  { name: '丹麦', flag: '🇩🇰', prob: 1.1, tier: 'cool' },
+  { name: '哥伦比亚', flag: '🇨🇴', prob: 0.9, tier: 'cool' },
+  { name: '塞内加尔', flag: '🇸🇳', prob: 0.8, tier: 'cool' },
+  { name: '澳大利亚', flag: '🇦🇺', prob: 0.6, tier: 'cool' },
+  { name: '伊朗', flag: '🇮🇷', prob: 0.5, tier: 'cool' },
+  { name: '韩国', flag: '🇰🇷', prob: 0.5, tier: 'cool' },
+  { name: '波兰', flag: '🇵🇱', prob: 0.4, tier: 'cool' },
+  { name: '加拿大', flag: '🇨🇦', prob: 0.4, tier: 'cool' },
+  { name: '厄瓜多尔', flag: '🇪🇨', prob: 0.3, tier: 'cool' },
+  { name: '喀麦隆', flag: '🇨🇲', prob: 0.3, tier: 'cool' },
+  { name: '塞尔维亚', flag: '🇷🇸', prob: 0.3, tier: 'cool' },
+  { name: '乌克兰', flag: '🇺🇦', prob: 0.2, tier: 'cool' },
+  { name: '突尼斯', flag: '🇹🇳', prob: 0.2, tier: 'cool' },
+  { name: '沙特阿拉伯', flag: '🇸🇦', prob: 0.2, tier: 'cool' },
+  { name: '加纳', flag: '🇬🇭', prob: 0.15, tier: 'cool' },
+  { name: '威尔士', flag: '🏴󠁧󠁢󠁷󠁬󠁳󠁿', prob: 0.15, tier: 'cool' },
+  { name: '卡塔尔', flag: '🇶🇦', prob: 0.1, tier: 'cool' },
+  { name: '哥斯达黎加', flag: '🇨🇷', prob: 0.1, tier: 'cool' },
+  { name: '智利', flag: '🇨🇱', prob: 0.1, tier: 'cool' },
+  { name: '巴拉圭', flag: '🇵🇾', prob: 0.08, tier: 'cool' },
+  { name: '阿尔及利亚', flag: '🇩🇿', prob: 0.08, tier: 'cool' },
+  { name: '尼日利亚', flag: '🇳🇬', prob: 0.08, tier: 'cool' },
+  { name: '秘鲁', flag: '🇵🇪', prob: 0.06, tier: 'cool' },
+  { name: '新西兰', flag: '🇳🇿', prob: 0.05, tier: 'cool' },
+  { name: '巴拿马', flag: '🇵🇦', prob: 0.04, tier: 'cool' },
+  { name: '洪都拉斯', flag: '🇭🇳', prob: 0.03, tier: 'cool' },
+  { name: '牙买加', flag: '🇯🇲', prob: 0.03, tier: 'cool' },
+  { name: '伊拉克', flag: '🇮🇶', prob: 0.02, tier: 'cool' },
+  { name: '冰岛', flag: '🇮🇸', prob: 0.02, tier: 'cool' },
+  { name: '阿曼', flag: '🇴🇲', prob: 0.01, tier: 'cool' },
+  { name: '巴布亚新几内亚', flag: '🇵🇬', prob: 0.01, tier: 'cool' },
+];
+
+const grid = document.getElementById('heatmapGrid');
+teams.forEach((t, i) => {
+  const cell = document.createElement('div');
+  cell.className = 'heat-cell animate-in';
+  cell.style.animationDelay = `${i * 18}ms`;
+  cell.dataset.tier = t.tier;
+  cell.innerHTML = `
+    <span class="flag">${t.flag}</span>
+    <div class="name">${t.name}</div>
+    <div class="prob">${t.prob}%</div>
+  `;
+  grid.appendChild(cell);
+});
+
+// ==================== Count-up 动画 ====================
+function animateCountUp() {
+  document.querySelectorAll('[data-countup]').forEach(el => {
+    const target = parseFloat(el.dataset.countup);
+    const isPercent = el.textContent.includes('%');
+    const duration = 1400;
+    const start = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const current = eased * target;
+      if (isPercent) {
+        el.textContent = (target < 10 ? current.toFixed(1) : Math.round(current)) + '%';
+      } else {
+        el.textContent = Math.round(current);
+      }
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+  document.querySelectorAll('[data-fill]').forEach(bar => {
+    const width = bar.dataset.fill;
+    setTimeout(() => { bar.style.width = width + '%'; }, 200);
+  });
+}
+
+// 当 gauge 区域进入视口时触发
+const gaugeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCountUp(); gaugeObserver.disconnect(); } });
+}, { threshold: 0.3 });
+const gaugeGrid = document.getElementById('gaugeGrid');
+if (gaugeGrid) gaugeObserver.observe(gaugeGrid);
+
+// ==================== 倒计时 ====================
+function updateCountdown() {
+  const el = document.getElementById('countdown');
+  if (!el) return;
+  const target = new Date('2026-06-14T20:00:00');
+  const diff = target - Date.now();
+  if (diff <= 0) { el.textContent = '比赛进行中'; return; }
+  const d = Math.floor(diff / 864e5);
+  const h = Math.floor((diff % 864e5) / 36e5);
+  const m = Math.floor((diff % 36e5) / 6e4);
+  el.textContent = `${String(d).padStart(2,'0')}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m`;
+}
+updateCountdown();
+setInterval(updateCountdown, 6e4);
+</script>
+
+</body>
+</html>

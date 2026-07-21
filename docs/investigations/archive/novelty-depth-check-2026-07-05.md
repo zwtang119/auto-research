@@ -85,7 +85,7 @@ Impacts: `docs/investigations/top-journal-verdict-2026-07-05-zh.md` §四/§五/
 
 ## Check 3: Method-paper layer (8 papers — COMPLETED 2026-07-05 晚)
 
-All 8 method papers queried via Exa + arXiv + Semantic Scholar + project pages. Each scored YES/NO/MARGINAL on 4 dimensions per `docs/papers/method-paper-depth-check-prompt.md`.
+All 8 method papers queried via Exa + arXiv + Semantic Scholar + project pages. Each scored YES/NO/MARGINAL on 4 dimensions per `docs/papers-closed-portfolio/method-paper-depth-check-prompt.md`.
 
 ### 8-paper summary table
 
@@ -134,7 +134,7 @@ All 8 method papers queried via Exa + arXiv + Semantic Scholar + project pages. 
 
 ## Recommendation
 
-1. **Proceed to write the Direction A 1-page proposal** — already drafted at `docs/papers/direction-a-1-page-proposal.md`. **Update required**: add CoBBLEr to related-work with 3-axis differentiation (theory / mechanism / anchor types).
+1. **Proceed to write the Direction A 1-page proposal** — already drafted at `docs/papers-closed-portfolio/direction-a-1-page-proposal.md`. **Update required**: add CoBBLEr to related-work with 3-axis differentiation (theory / mechanism / anchor types).
 2. **Method-paper check completed** (0/8 use anchoring framing). No method paper pre-empts Direction A's theoretical lens.
 3. **CoBBLEr handling**: do NOT delete it from related work. Add explicit citation with the 3-axis differentiator table. This converts a "missed prior art" weakness into "we are aware of and differentiate from" — strictly stronger proposal.
 4. **Hard gate before any large-token mechanism experiment**: 5-persona review on the updated proposal (median ≥ 5.5) + frontier baseline arm provisioned + P12 G2 N=30 falsification acknowledged in proposal §6.

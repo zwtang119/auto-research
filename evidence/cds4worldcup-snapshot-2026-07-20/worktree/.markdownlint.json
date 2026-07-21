@@ -1,0 +1,32 @@
+# markdownlint 配置
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+# 行长度限制 — 放宽，因为中文内容换行不便
+MD013:
+  line_length: 200
+  heading_line_length: 120
+  code_block_line_length: 200
+  # 不检查表格行长度
+  tables: false
+
+# 允许重复标题（不同章节下可能有同名子标题）
+MD024:
+  siblings_only: true
+
+# 允许 HTML（用于 memo 批注等）
+MD033: false
+
+# 允许裸 URL
+MD034: false
+
+# 允许尾随空格（某些编辑器行为）
+MD009: false
+
+# 第一行不强制为 h1（wiki 页面有自己的 frontmatter）
+MD041: false
+
+# 允许无空行的标题
+MD022: false
+
+# 允许列表缩进不一致（中文内容排版需要）
+MD004: false

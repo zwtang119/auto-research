@@ -1,0 +1,49 @@
+canonical_team,zh_name,en_name,confederation,group,source_status,coverage_status,notes
+Mexico,墨西哥,Mexico,CONCACAF,A,kimi-aggregation,champion/top3,
+South Africa,南非,South Africa,CAF,A,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+South Korea,韩国,South Korea,AFC,A,kimi-aggregation,champion/top3,
+Czech Republic,捷克,Czech Republic,UEFA,A,expected-not-in-kimi,missing-from-kimi,UEFA Path D winners
+Canada,加拿大,Canada,CONCACAF,B,expected-not-in-kimi,missing-from-kimi,
+Bosnia and Herzegovina,波斯尼亚和黑塞哥维那,Bosnia and Herzegovina,UEFA,B,expected-not-in-kimi,missing-from-kimi,UEFA Path A winners
+Qatar,卡塔尔,Qatar,AFC,B,expected-not-in-kimi,missing-from-kimi,
+Switzerland,瑞士,Switzerland,UEFA,B,expected-not-in-kimi,missing-from-kimi,
+Brazil,巴西,Brazil,CONMEBOL,C,kimi-aggregation,champion/top3,
+Morocco,摩洛哥,Morocco,CAF,C,kimi-aggregation,champion/top3,
+Haiti,海地,Haiti,CONCACAF,C,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+Scotland,苏格兰,Scotland,UEFA,C,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+United States,美国,United States,CONCACAF,D,kimi-aggregation,champion/top3,
+Paraguay,巴拉圭,Paraguay,CONMEBOL,D,expected-not-in-kimi,missing-from-kimi,
+Australia,澳大利亚,Australia,AFC,D,kimi-aggregation,champion/top3,
+Turkey,土耳其,Turkey,UEFA,D,kimi-aggregation,champion/top3,UEFA Path C winners
+Germany,德国,Germany,UEFA,E,kimi-aggregation,champion/top3,
+Curaçao,库拉索,Curaçao,CONCACAF,E,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+Côte d'Ivoire,科特迪瓦,Côte d'Ivoire,CAF,E,expected-not-in-kimi,missing-from-kimi,
+Ecuador,厄瓜多尔,Ecuador,CONMEBOL,E,expected-not-in-kimi,missing-from-kimi,
+Netherlands,荷兰,Netherlands,UEFA,F,kimi-aggregation,champion/top3,
+Japan,日本,Japan,AFC,F,kimi-aggregation,champion/top3,
+Sweden,瑞典,Sweden,UEFA,F,expected-not-in-kimi,missing-from-kimi,UEFA Path B winners
+Tunisia,突尼斯,Tunisia,CAF,F,expected-not-in-kimi,missing-from-kimi,
+Belgium,比利时,Belgium,UEFA,G,kimi-aggregation,champion/top3,
+Egypt,埃及,Egypt,CAF,G,expected-not-in-kimi,missing-from-kimi,
+Iran,伊朗,Iran,AFC,G,expected-not-in-kimi,missing-from-kimi,
+New Zealand,新西兰,New Zealand,OFC,G,expected-not-in-kimi,missing-from-kimi,
+Spain,西班牙,Spain,UEFA,H,kimi-aggregation,champion/top3,
+Cape Verde,佛得角,Cape Verde,CAF,H,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+Saudi Arabia,沙特阿拉伯,Saudi Arabia,AFC,H,expected-not-in-kimi,missing-from-kimi,
+Uruguay,乌拉圭,Uruguay,CONMEBOL,H,kimi-aggregation,champion/top3,
+France,法国,France,UEFA,I,kimi-aggregation,champion/top3,
+Senegal,塞内加尔,Senegal,CAF,I,kimi-aggregation,champion/top3,
+Iraq,伊拉克,Iraq,AFC,I,expected-not-in-kimi,missing-from-kimi,IC Path 2 winners
+Norway,挪威,Norway,UEFA,I,kimi-aggregation,champion/top3,
+Argentina,阿根廷,Argentina,CONMEBOL,J,kimi-aggregation,champion/top3,
+Algeria,阿尔及利亚,Algeria,CAF,J,expected-not-in-kimi,missing-from-kimi,
+Austria,奥地利,Austria,UEFA,J,expected-not-in-kimi,missing-from-kimi,
+Jordan,约旦,Jordan,AFC,J,expected-not-in-kimi,missing-from-kimi,New team from Wikipedia draw
+Portugal,葡萄牙,Portugal,UEFA,K,kimi-aggregation,champion/top3,
+DR Congo,刚果(金),DR Congo,CAF,K,expected-not-in-kimi,missing-from-kimi,IC Path 1 winners
+Uzbekistan,乌兹别克斯坦,Uzbekistan,AFC,K,expected-not-in-kimi,missing-from-kimi,
+Colombia,哥伦比亚,Colombia,CONMEBOL,K,kimi-aggregation,champion/top3,
+England,英格兰,England,UEFA,L,kimi-aggregation,champion/top3,
+Croatia,克罗地亚,Croatia,UEFA,L,kimi-aggregation,champion/top3,
+Ghana,加纳,Ghana,CAF,L,expected-not-in-kimi,missing-from-kimi,
+Panama,巴拿马,Panama,CONCACAF,L,expected-not-in-kimi,missing-from-kimi,

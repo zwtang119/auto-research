@@ -27,7 +27,7 @@ This decision follows the user's stopping rule:
 - R6 cross-validation: 4.0 (deviation -0.5 from paratera median — consistent)
 - **Verdict: FOLD**
 
-Full review record: `docs/papers/direction-a-review-round-1.md`
+Full review record: `docs/papers-closed-portfolio/direction-a-review-round-1.md`
 
 ---
 
@@ -66,7 +66,7 @@ Full review record: `docs/papers/direction-a-review-round-1.md`
 
 **DECISION: FOLD** — the real mechanism experiment **CONTRADICTS** Direction A's CONTRAST hypothesis. The leaked_gt anchor manipulation produces **HIGHER scores** (more lenient), opposite of the predicted stricter scoring. This is consistent with ASSIMILATION-like convergence rather than CONTRAST-style insufficient adjustment.
 
-Full analysis: `docs/papers/experiments/direction_a/results/summary_REAL.md`
+Full analysis: `docs/papers-closed-portfolio/experiments/direction_a/results/summary_REAL.md`
 
 ---
 
@@ -95,7 +95,7 @@ Combined with the prior G2 N=30 falsification (the only empirical evidence we ha
 
 ## §4 What G3 dual-ledger bridge methods paper should include
 
-**G3 methods paper outline written**: `docs/papers/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure)
+**G3 methods paper outline written**: `docs/papers-closed-portfolio/g3-methods-paper-outline.md` (250+ lines, 11 sections, 8-page structure)
 
 The fold target is a **methods paper** that combines:
 - **G3 dual-ledger crosswalk** (`docs/investigations/g3-dual-ledger-crosswalk-zh.md`) — 92.9% AR→CWCUP field coverage + 2/2 Brier replay (100% match) — the strongest existing empirical result in this project
@@ -139,25 +139,25 @@ The methods paper claim becomes: "LLM-as-judge audit trails can be cross-domain 
 
 | File | Purpose |
 |------|---------|
-| `docs/papers/experiments/direction_a/build_cells.py` | Cell construction (24 cells × 4 anchors × 3 judges × 2 domains) |
-| `docs/papers/experiments/direction_a/run_experiment.py` | Execution runner (paratera + openrouter) |
-| `docs/papers/experiments/direction_a/analyze.py` | Pre-registered OLS + cross-judge/domain sign tests + GO/FOLD decision (dry-run pipeline validation) |
-| `docs/papers/experiments/direction_a/analyze_real.py` | Same analysis configured for real combined dataset |
-| `docs/papers/experiments/direction_a/run_review_round_1.py` | 5-persona review runner |
-| `docs/papers/experiments/direction_a/cells.jsonl` | 24 cells |
-| `docs/papers/experiments/direction_a/sample_pool.json` | Frozen sample pool |
-| `docs/papers/experiments/direction_a/p12_outputs.json` | 30 P12 sample agent_outputs |
-| `docs/papers/experiments/direction_a/cds_outputs.json` | 2 cds4worldcup placeholder outputs |
-| `docs/papers/experiments/direction_a/results/all_calls_dryrun.jsonl` | 384 synthetic records (pipeline validation) |
-| `docs/papers/experiments/direction_a/results/all_calls_real_paratera.jsonl` | 256 real paratera attempts |
-| `docs/papers/experiments/direction_a/results/all_calls_real_openrouter.jsonl` | 128 real openrouter attempts |
-| `docs/papers/experiments/direction_a/results/all_calls_real_combined.jsonl` | 295 ok real records merged |
-| `docs/papers/experiments/direction_a/results/primary_regression_REAL.csv` | Per-(judge,domain) regression |
-| `docs/papers/experiments/direction_a/results/cross_judge_sign_test_REAL.csv` | Cross-judge β1 sign test |
-| `docs/papers/experiments/direction_a/results/cross_domain_sign_test_REAL.csv` | Cross-domain β1 sign test |
-| `docs/papers/experiments/direction_a/results/summary_REAL.md` | Full analysis summary |
-| `docs/papers/experiments/direction_a/results/review_round_1.json` | 6-reviewer results |
-| `docs/papers/direction-a-review-round-1.md` | 5-persona review markdown |
+| `docs/papers-closed-portfolio/experiments/direction_a/build_cells.py` | Cell construction (24 cells × 4 anchors × 3 judges × 2 domains) |
+| `docs/papers-closed-portfolio/experiments/direction_a/run_experiment.py` | Execution runner (paratera + openrouter) |
+| `docs/papers-closed-portfolio/experiments/direction_a/analyze.py` | Pre-registered OLS + cross-judge/domain sign tests + GO/FOLD decision (dry-run pipeline validation) |
+| `docs/papers-closed-portfolio/experiments/direction_a/analyze_real.py` | Same analysis configured for real combined dataset |
+| `docs/papers-closed-portfolio/experiments/direction_a/run_review_round_1.py` | 5-persona review runner |
+| `docs/papers-closed-portfolio/experiments/direction_a/cells.jsonl` | 24 cells |
+| `docs/papers-closed-portfolio/experiments/direction_a/sample_pool.json` | Frozen sample pool |
+| `docs/papers-closed-portfolio/experiments/direction_a/p12_outputs.json` | 30 P12 sample agent_outputs |
+| `docs/papers-closed-portfolio/experiments/direction_a/cds_outputs.json` | 2 cds4worldcup placeholder outputs |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_dryrun.jsonl` | 384 synthetic records (pipeline validation) |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_paratera.jsonl` | 256 real paratera attempts |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_openrouter.jsonl` | 128 real openrouter attempts |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/all_calls_real_combined.jsonl` | 295 ok real records merged |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/primary_regression_REAL.csv` | Per-(judge,domain) regression |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/cross_judge_sign_test_REAL.csv` | Cross-judge β1 sign test |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/cross_domain_sign_test_REAL.csv` | Cross-domain β1 sign test |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/summary_REAL.md` | Full analysis summary |
+| `docs/papers-closed-portfolio/experiments/direction_a/results/review_round_1.json` | 6-reviewer results |
+| `docs/papers-closed-portfolio/direction-a-review-round-1.md` | 5-persona review markdown |
 | `docs/investigations/direction-a-decision-memo-2026-07-05.md` | **THIS FILE** |
 
 ---

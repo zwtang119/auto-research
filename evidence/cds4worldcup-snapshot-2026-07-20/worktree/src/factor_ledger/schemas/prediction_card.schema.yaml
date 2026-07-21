@@ -1,0 +1,159 @@
+schema_version: "0.2"
+required:
+  - task_type
+  - match_id
+  - competition
+  - stage
+  - kickoff_time_utc
+  - teams
+  - lock
+  - data_package
+  - llm
+  - prompt_config
+  - memory_budget
+  - probabilities
+  - baselines
+  - factors_used
+fields:
+  task_type:
+    type: string
+    description: "e.g. group_90m_wdl, knockout_advance"
+  match_id:
+    type: string
+    description: "e.g. wc2026-m001"
+  competition:
+    type: string
+    description: "e.g. FIFA World Cup 2026"
+  stage:
+    type: string
+    description: "e.g. group, round_of_16, quarter_final, semi_final, final"
+  kickoff_time_utc:
+    type: datetime
+    description: "ISO 8601 UTC"
+  teams:
+    type: object
+    required: [home, away]
+    fields:
+      home:
+        type: string
+        description: "Home team name from official schedule"
+      away:
+        type: string
+        description: "Away team name from official schedule"
+  lock:
+    type: object
+    required: [prediction_locked_at_utc, sha256, git_commit]
+    fields:
+      prediction_locked_at_utc:
+        type: datetime
+      sha256:
+        type: string
+        description: "SHA-256 of the prediction card file at lock time"
+      git_commit:
+        type: string
+        description: "Git commit hash at lock time"
+  data_package:
+    type: object
+    required: [package_id, green_sources, red_sources_excluded_from_model]
+    fields:
+      package_id:
+        type: string
+      green_sources:
+        type: list[string]
+        description: "Source IDs from source_ledger Green Sources"
+      red_sources_excluded_from_model:
+        type: list[string]
+        description: "Source IDs from source_ledger Red Sources, excluded from CDS model input"
+  llm:
+    type: object
+    required:
+      - provider_id
+      - model_id
+      - model_version_observed_at_utc
+      - prompt_version
+      - temperature
+      - max_retries
+      - reasoning_budget
+      - schema_validation_status
+      - source_cutoff_utc
+    fields:
+      provider_id:
+        type: string
+      model_id:
+        type: string
+      model_version_observed_at_utc:
+        type: datetime
+      prompt_version:
+        type: string
+      temperature:
+        type: number
+      max_retries:
+        type: integer
+      reasoning_budget:
+        type: string
+        description: "e.g. fixed"
+      schema_validation_status:
+        type: enum[passed, failed]
+      source_cutoff_utc:
+        type: datetime
+  prompt_config:
+    type: object
+    required:
+      - system_prompt_id
+      - user_prompt_template_id
+      - prompt_hash
+      - market_or_odds_exposed_to_model
+      - public_ai_baseline_exposed_to_model
+    fields:
+      system_prompt_id:
+        type: string
+      user_prompt_template_id:
+        type: string
+      prompt_hash:
+        type: string
+        description: "SHA-256 of the rendered prompt"
+      market_or_odds_exposed_to_model:
+        type: boolean
+      public_ai_baseline_exposed_to_model:
+        type: boolean
+  memory_budget:
+    type: object
+    required:
+      - max_prior_notes
+      - max_note_chars_each
+      - max_kimi_derived_candidates_reviewed
+      - max_kimi_derived_factors_tracked
+      - max_candidate_factors_reviewed
+    fields:
+      max_prior_notes:
+        type: integer
+      max_note_chars_each:
+        type: integer
+      max_kimi_derived_candidates_reviewed:
+        type: integer
+      max_kimi_derived_factors_tracked:
+        type: integer
+      max_candidate_factors_reviewed:
+        type: integer
+        description: "Max total candidate factors reviewed per match (CDS-generated + Kimi-derived); spec §14.4 limit is 6"
+  probabilities:
+    type: map[string, number]
+    description: "Outcome probabilities; must sum to 1.0 ± 0.01"
+  baselines:
+    type: map[string, object]
+    description: "Baseline probability sources (market_or_odds, simple_statistical, public_ai)"
+  factors_used:
+    type: list[string]
+    description: "Factor IDs referenced from factor ledger"
+  uncertainty_notes:
+    type: list[string]
+    description: "Free-text notes on prediction uncertainty"
+  smoke_test:
+    type: boolean
+    optional: true
+    default: false
+    description: "If true, this card is a historical retrospective smoke test, not a real-time pre-match forecast"
+  smoke_test_note:
+    type: string
+    optional: true
+    description: "Optional note explaining the smoke test context (e.g. historical match used, retrospective rationale)"

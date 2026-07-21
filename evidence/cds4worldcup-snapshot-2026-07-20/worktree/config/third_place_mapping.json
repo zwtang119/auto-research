@@ -1,0 +1,46 @@
+{
+  "description": "FIFA 2026 World Cup third-place team allocation to Round of 32 matches. Derived from schedule.json slot references.",
+  "note": "8 of 12 third-placed teams advance. Each slot selects the best-ranked 3rd-placed team from its pool of groups. Actual assignment depends on final group-stage rankings.",
+  "slots": {
+    "3ABCDF": {
+      "match_id": "KO74",
+      "position": "away",
+      "pool_groups": ["A", "B", "C", "D", "F"]
+    },
+    "3CDFGH": {
+      "match_id": "KO77",
+      "position": "away",
+      "pool_groups": ["C", "D", "F", "G", "H"]
+    },
+    "3CEFHI": {
+      "match_id": "KO79",
+      "position": "away",
+      "pool_groups": ["C", "E", "F", "H", "I"]
+    },
+    "3EHIJK": {
+      "match_id": "KO80",
+      "position": "away",
+      "pool_groups": ["E", "H", "I", "J", "K"]
+    },
+    "3AEHIJ": {
+      "match_id": "KO82",
+      "position": "away",
+      "pool_groups": ["A", "E", "H", "I", "J"]
+    },
+    "3BEFIJ": {
+      "match_id": "KO81",
+      "position": "away",
+      "pool_groups": ["B", "E", "F", "I", "J"]
+    },
+    "3EFGIJ": {
+      "match_id": "KO85",
+      "position": "away",
+      "pool_groups": ["E", "F", "G", "I", "J"]
+    },
+    "3DEIJL": {
+      "match_id": "KO88",
+      "position": "away",
+      "pool_groups": ["D", "E", "I", "J", "L"]
+    }
+  }
+}

@@ -1,0 +1,164 @@
+# CDS Qualification Output Schema — Group Stage Path Analysis
+# WI-PAN.1: Data contract for the first CDS layer (group stage qualification)
+# Consumer: team-detail CDS panel, cds_path_simulation.py --layer=qualification
+
+schema_version: "0.1"
+schema_type: cds_qualification
+description: >
+  Output of CDS Layer 1: group stage qualification simulation.
+  For each of 48 teams, enumerates 3^3 = 27 outcome combinations across
+  their 3 group matches, computes FIFA ranking within the group, and
+  aggregates into qualification probability + key scenarios.
+
+required:
+  - team
+  - group
+  - qual_prob
+  - scenarios
+  - simulation_meta
+
+fields:
+  team:
+    type: string
+    description: "Team name (canonical English, matching team_registry.csv)"
+    example: "Argentina"
+  team_code:
+    type: string
+    optional: true
+    description: "3-letter team code (e.g. ARG)"
+    example: "ARG"
+  group:
+    type: string
+    description: "Group letter A–L"
+    example: "J"
+  qual_prob:
+    type: number
+    description: >
+      Overall probability of qualifying for the knockout stage (top 2 in group
+      OR one of the 8 best third-placed teams). Range [0.0, 1.0].
+    constraints:
+      min: 0.0
+      max: 1.0
+    example: 0.87
+  scenarios:
+    type: list[object]
+    description: >
+      Key scenarios aggregated from the 27 outcome combinations.
+      Each scenario represents a meaningful subset of outcomes.
+      At least one scenario must be present.
+    min_items: 1
+    item_fields:
+      label:
+        type: enum
+        values:
+          - 必胜出线
+          - 已定出线
+          - 危局
+          - 已淘汰
+          - 正常争夺
+        description: >
+          Scenario classification:
+          - 必胜出线 (must-win advance): winning remaining matches guarantees advancement
+          - 已定出线 (secured advance): qual_prob = 1.0, already guaranteed
+          - 危局 (danger zone): qual_prob ∈ [0.2, 0.5], advancement depends on other results
+          - 已淘汰 (eliminated): qual_prob = 0.0, cannot advance
+          - 正常争夺 (normal contention): all other cases
+      trigger:
+        type: string
+        description: "Human-readable condition that defines this scenario"
+        example: "Beat Czech Republic in Matchday 3 → guaranteed top 2"
+      resulting_position:
+        type: enum
+        values: ["1st", "2nd", "3rd", "4th", "top2_qualified", "3rd_may_qualify", "eliminated"]
+        description: >
+          Expected group position in this scenario.
+          'top2_qualified' = finishes 1st or 2nd (direct qualification).
+          '3rd_may_qualify' = finishes 3rd, may qualify as best third-placed team.
+      prob:
+        type: number
+        description: >
+          Probability of this scenario occurring (across the 27 outcomes).
+          For 已定出线, prob = 1.0. For 已淘汰, prob = 0.0.
+        constraints:
+          min: 0.0
+          max: 1.0
+    example:
+      label: "必胜出线"
+      trigger: "Beat Czech Republic → guaranteed top 2 regardless of other result"
+      resulting_position: "top2_qualified"
+      prob: 0.65
+  position_probs:
+    type: object
+    optional: true
+    description: "Per-position probability breakdown across all 27 outcomes"
+    fields:
+      p_1st:
+        type: number
+        description: "Probability of finishing 1st in group"
+      p_2nd:
+        type: number
+        description: "Probability of finishing 2nd in group"
+      p_3rd:
+        type: number
+        description: "Probability of finishing 3rd in group"
+      p_4th:
+        type: number
+        description: "Probability of finishing 4th in group"
+  third_place_qual_prob:
+    type: number
+    optional: true
+    description: >
+      If team finishes 3rd, probability of being among the 8 best
+      third-placed teams. Null if p_3rd ≈ 0.
+  key_matches:
+    type: list[object]
+    optional: true
+    description: "Upcoming matches that have the largest impact on qual_prob"
+    item_fields:
+      match_id:
+        type: string
+        description: "Match ID from schedule.json (e.g. A5-CZE-MEX)"
+      opponent:
+        type: string
+        description: "Opponent team name"
+      impact:
+        type: number
+        description: >
+          Absolute swing in qual_prob between winning vs losing this match.
+          Range [0.0, 1.0]. Higher = more decisive.
+  simulation_meta:
+    type: object
+    required:
+      - run_at_utc
+      - probability_source
+      - group_matches_completed
+      - total_outcomes_enumerated
+    fields:
+      run_at_utc:
+        type: datetime
+        description: "ISO 8601 UTC timestamp of this simulation run"
+      probability_source:
+        type: enum
+        values: ["elo_poisson", "coach_simulation", "elo_degraded"]
+        description: >
+          Which probability source was used for match outcomes:
+          - elo_poisson: Elo+Poisson baseline (numeric_odds.py)
+          - coach_simulation: Coach matchup model (enhanced, if available)
+          - elo_degraded: Elo-only fallback when coach model not ready
+      group_matches_completed:
+        type: integer
+        description: >
+          Number of group matches already completed (with known results)
+          at the time of simulation. Range 0–6 per group.
+        constraints:
+          min: 0
+          max: 6
+      total_outcomes_enumerated:
+        type: integer
+        description: >
+          Number of outcome combinations enumerated.
+          Full = 27 (3 matches × 3 outcomes each).
+          Fewer if some matches already completed.
+        constraints:
+          min: 1
+          max: 27

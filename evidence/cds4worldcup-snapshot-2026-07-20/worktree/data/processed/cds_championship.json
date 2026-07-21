@@ -1,0 +1,3176 @@
+{
+  "schema_version": "0.1",
+  "schema_type": "cds_championship",
+  "generated_at": "2026-07-19T02:49:58.198482+00:00",
+  "total_teams": 48,
+  "teams": [
+    {
+      "team": "Czech Republic",
+      "group": "A",
+      "championship_prob": 0.017903629973651188,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.50, cumulative 0.5009)",
+      "bracket_dependency": "决赛对手: W101；16强对手: W80；八强对手: W91；半决赛对手: W100；32强对手取决于 3CEFHI （小组 C,E,F,H,I）",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "3CEFHI",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5009,
+          "cumulative_prob": 0.50087,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4998,
+          "cumulative_prob": 0.250322,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.476,
+          "cumulative_prob": 0.119159,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4836,
+          "cumulative_prob": 0.057621,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4865,
+          "cumulative_prob": 0.028035,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.858809+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9075,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Mexico",
+      "group": "A",
+      "championship_prob": 0.021668968840981424,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:波黑 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:阿根廷",
+      "dominant_failure_node": "Round Of 32 vs 波黑 (win_prob 0.52, cumulative 0.5194)",
+      "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO73",
+          "opponent_slot": "2B",
+          "opponent_team": "Bosnia and Herzegovina",
+          "conditional_win_prob": 0.5194,
+          "cumulative_prob": 0.519391,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO89",
+          "opponent_slot": "W75",
+          "opponent_team": "Scotland",
+          "conditional_win_prob": 0.5063,
+          "cumulative_prob": 0.262951,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W90",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5074,
+          "cumulative_prob": 0.133412,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.4938,
+          "cumulative_prob": 0.065875,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.5056,
+          "cumulative_prob": 0.033306,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.864344+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.857,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "South Africa",
+      "group": "A",
+      "championship_prob": 0.010711365279348772,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:阿根廷",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO82",
+          "opponent_slot": "1G",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4625,
+          "cumulative_prob": 0.462543,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W81",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4833,
+          "cumulative_prob": 0.223537,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.4625,
+          "cumulative_prob": 0.103379,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.4738,
+          "cumulative_prob": 0.048979,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4706,
+          "cumulative_prob": 0.023051,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.869768+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4594,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "South Korea",
+      "group": "A",
+      "championship_prob": 0.012925534646516388,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:阿根廷",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO82",
+          "opponent_slot": "1G",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4887,
+          "cumulative_prob": 0.488661,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W81",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5095,
+          "cumulative_prob": 0.248952,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.4886,
+          "cumulative_prob": 0.121635,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.4999,
+          "cumulative_prob": 0.06081,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4968,
+          "cumulative_prob": 0.030209,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.875216+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4404,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Switzerland",
+      "group": "B",
+      "championship_prob": 0.021911256776490695,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:乌拉圭 → QF:葡萄牙 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.52, cumulative 0.5248)",
+      "bracket_dependency": "决赛对手: W101；32强对手取决于 3EFGIJ （小组 E,F,G,I,J）；半决赛对手: W99；八强对手: W95；16强对手: W87",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO85",
+          "opponent_slot": "3EFGIJ",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5248,
+          "cumulative_prob": 0.524787,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO96",
+          "opponent_slot": "W87",
+          "opponent_team": "Uruguay",
+          "conditional_win_prob": 0.4958,
+          "cumulative_prob": 0.260195,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W95",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.5107,
+          "cumulative_prob": 0.13287,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5147,
+          "cumulative_prob": 0.068382,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5095,
+          "cumulative_prob": 0.034841,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.880809+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8808,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Bosnia and Herzegovina",
+      "group": "B",
+      "championship_prob": 0.01733082969133307,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:墨西哥 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 墨西哥 (win_prob 0.48, cumulative 0.4806)",
+      "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO73",
+          "opponent_slot": "2A",
+          "opponent_team": "Mexico",
+          "conditional_win_prob": 0.4806,
+          "cumulative_prob": 0.480609,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO89",
+          "opponent_slot": "W75",
+          "opponent_team": "Scotland",
+          "conditional_win_prob": 0.4869,
+          "cumulative_prob": 0.233995,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W90",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.488,
+          "cumulative_prob": 0.114182,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.4744,
+          "cumulative_prob": 0.054167,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4881,
+          "cumulative_prob": 0.026439,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.886453+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.7714,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Canada",
+      "group": "B",
+      "championship_prob": 0.013284357811876587,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:墨西哥 → R16:苏格兰 → QF:法国 → SF:西班牙 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 墨西哥 (win_prob 0.46, cumulative 0.4581)",
+      "bracket_dependency": "16强对手: W75；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO73",
+          "opponent_slot": "2A",
+          "opponent_team": "Mexico",
+          "conditional_win_prob": 0.4581,
+          "cumulative_prob": 0.458092,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO89",
+          "opponent_slot": "W75",
+          "opponent_team": "Scotland",
+          "conditional_win_prob": 0.4643,
+          "cumulative_prob": 0.212703,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W90",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4654,
+          "cumulative_prob": 0.098995,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.4519,
+          "cumulative_prob": 0.044737,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4656,
+          "cumulative_prob": 0.020827,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.892053+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.7357,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Qatar",
+      "group": "B",
+      "championship_prob": 0.006432481331319534,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:土耳其 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "半决赛对手: W97；八强对手: W93；16强对手: W82；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO81",
+          "opponent_slot": "1D",
+          "opponent_team": "Turkey",
+          "conditional_win_prob": 0.4649,
+          "cumulative_prob": 0.464856,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W82",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4894,
+          "cumulative_prob": 0.227479,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.467,
+          "cumulative_prob": 0.106235,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.4783,
+          "cumulative_prob": 0.050815,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4771,
+          "cumulative_prob": 0.024242,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.897588+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.2669,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Brazil",
+      "group": "C",
+      "championship_prob": 0.027570786922245325,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:瑞典 → R16:挪威 → QF:英格兰 → SF:阿根廷 → Final:比利时",
+      "dominant_failure_node": "Round Of 32 vs 瑞典 (win_prob 0.54, cumulative 0.5351)",
+      "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO76",
+          "opponent_slot": "2F",
+          "opponent_team": "Sweden",
+          "conditional_win_prob": 0.5351,
+          "cumulative_prob": 0.535071,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO91",
+          "opponent_slot": "W78",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.5077,
+          "cumulative_prob": 0.271648,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W92",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5264,
+          "cumulative_prob": 0.142995,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.5194,
+          "cumulative_prob": 0.074272,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.5208,
+          "cumulative_prob": 0.038683,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.902694+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9293,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Scotland",
+      "group": "C",
+      "championship_prob": 0.01936130793348143,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:瑞典 → R16:挪威 → QF:英格兰 → SF:阿根廷 → Final:比利时",
+      "dominant_failure_node": "Round Of 32 vs 瑞典 (win_prob 0.50, cumulative 0.4986)",
+      "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO76",
+          "opponent_slot": "2F",
+          "opponent_team": "Sweden",
+          "conditional_win_prob": 0.4986,
+          "cumulative_prob": 0.498551,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO91",
+          "opponent_slot": "W78",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4711,
+          "cumulative_prob": 0.234887,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W92",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4898,
+          "cumulative_prob": 0.115058,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4828,
+          "cumulative_prob": 0.055555,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4843,
+          "cumulative_prob": 0.026904,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.907796+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.862,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Morocco",
+      "group": "C",
+      "championship_prob": 0.02552845763977315,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:比利时",
+      "dominant_failure_node": "Round Of 32 vs 捷克 (win_prob 0.52, cumulative 0.5188)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.5188,
+          "cumulative_prob": 0.518828,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5186,
+          "cumulative_prob": 0.269066,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4948,
+          "cumulative_prob": 0.133145,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.5024,
+          "cumulative_prob": 0.066891,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.5038,
+          "cumulative_prob": 0.033702,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.912935+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.5867,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Haiti",
+      "group": "C",
+      "championship_prob": 0.008206845424247492,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:比利时",
+      "dominant_failure_node": "Round Of 16 vs 塞内加尔 (win_prob 0.47, cumulative 0.2254)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.4749,
+          "cumulative_prob": 0.474886,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4747,
+          "cumulative_prob": 0.22541,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.451,
+          "cumulative_prob": 0.101665,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4585,
+          "cumulative_prob": 0.046616,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4599,
+          "cumulative_prob": 0.021441,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.918056+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.2798,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Turkey",
+      "group": "D",
+      "championship_prob": 0.024815420046956457,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.53, cumulative 0.5334)",
+      "bracket_dependency": "决赛对手: W102；32强对手取决于 3BEFIJ （小组 B,E,F,I,J）；半决赛对手: W97；八强对手: W93；16强对手: W82",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO81",
+          "opponent_slot": "3BEFIJ",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5334,
+          "cumulative_prob": 0.53339,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W82",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5245,
+          "cumulative_prob": 0.279782,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.5022,
+          "cumulative_prob": 0.140496,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.5135,
+          "cumulative_prob": 0.072146,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5123,
+          "cumulative_prob": 0.036957,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.923467+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8943,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "United States",
+      "group": "D",
+      "championship_prob": 0.02329321975647429,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:埃及 → R16:葡萄牙 → QF:阿根廷 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 埃及 (win_prob 0.52, cumulative 0.5203)",
+      "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO86",
+          "opponent_slot": "2G",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5203,
+          "cumulative_prob": 0.520337,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W88",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4854,
+          "cumulative_prob": 0.252588,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4835,
+          "cumulative_prob": 0.122133,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5098,
+          "cumulative_prob": 0.062269,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5047,
+          "cumulative_prob": 0.031427,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.928933+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.7644,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Paraguay",
+      "group": "D",
+      "championship_prob": 0.020395640397299544,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:埃及 → R16:葡萄牙 → QF:阿根廷 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 埃及 (win_prob 0.51, cumulative 0.5051)",
+      "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO86",
+          "opponent_slot": "2G",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5051,
+          "cumulative_prob": 0.505065,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W88",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4702,
+          "cumulative_prob": 0.237472,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4683,
+          "cumulative_prob": 0.111203,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4946,
+          "cumulative_prob": 0.054997,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4894,
+          "cumulative_prob": 0.026917,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.934398+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.7025,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Australia",
+      "group": "D",
+      "championship_prob": 0.01061194821885448,
+      "championship_path_count": 5,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "1K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4723,
+          "cumulative_prob": 0.472274,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5051,
+          "cumulative_prob": 0.238534,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4732,
+          "cumulative_prob": 0.112881,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4995,
+          "cumulative_prob": 0.056388,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4944,
+          "cumulative_prob": 0.027877,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.939873+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.2937,
+        "paths_enumerated": 5
+      }
+    },
+    {
+      "team": "Germany",
+      "group": "E",
+      "championship_prob": 0.028899420220771715,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:摩洛哥 → R16:佛得角 → QF:荷兰 → SF:西班牙 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 摩洛哥 (win_prob 0.53, cumulative 0.5299)",
+      "bracket_dependency": "半决赛对手: W98；八强对手: W89；32强对手取决于 3ABCDF （小组 A,B,C,D,F）；16强对手: W77；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO74",
+          "opponent_slot": "3ABCDF",
+          "opponent_team": "Morocco",
+          "conditional_win_prob": 0.5299,
+          "cumulative_prob": 0.529855,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO90",
+          "opponent_slot": "W77",
+          "opponent_team": "Cape Verde",
+          "conditional_win_prob": 0.5239,
+          "cumulative_prob": 0.277572,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W89",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.5106,
+          "cumulative_prob": 0.141729,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.5013,
+          "cumulative_prob": 0.071042,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.515,
+          "cumulative_prob": 0.036586,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.946305+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9525,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Ecuador",
+      "group": "E",
+      "championship_prob": 0.03403289585437442,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:挪威 → R16:瑞典 → QF:捷克 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 挪威 (win_prob 0.50, cumulative 0.5031)",
+      "bracket_dependency": "决赛对手: W101；半决赛对手: W100；16强对手: W76；八强对手: W92",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO78",
+          "opponent_slot": "2I",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.5031,
+          "cumulative_prob": 0.503115,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO91",
+          "opponent_slot": "W76",
+          "opponent_team": "Sweden",
+          "conditional_win_prob": 0.5173,
+          "cumulative_prob": 0.260284,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W92",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.5237,
+          "cumulative_prob": 0.136314,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.517,
+          "cumulative_prob": 0.07048,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5156,
+          "cumulative_prob": 0.036342,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.952962+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8762,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Curaçao",
+      "group": "E",
+      "championship_prob": 0.023763311022652608,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.44, cumulative 0.2118)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.4765,
+          "cumulative_prob": 0.47648,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4444,
+          "cumulative_prob": 0.211763,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4603,
+          "cumulative_prob": 0.097483,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4645,
+          "cumulative_prob": 0.045278,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4631,
+          "cumulative_prob": 0.020966,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.959729+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4219,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Côte d'Ivoire",
+      "group": "E",
+      "championship_prob": 0.02572531658737443,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.46, cumulative 0.2297)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.4956,
+          "cumulative_prob": 0.495614,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4634,
+          "cumulative_prob": 0.229677,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4794,
+          "cumulative_prob": 0.110112,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4836,
+          "cumulative_prob": 0.053246,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4822,
+          "cumulative_prob": 0.025673,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.972607+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4156,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Netherlands",
+      "group": "F",
+      "championship_prob": 0.029427449906310944,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:苏格兰 → R16:波黑 → QF:德国 → SF:西班牙 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 苏格兰 (win_prob 0.53, cumulative 0.5311)",
+      "bracket_dependency": "16强对手: W73；八强对手: W90；决赛对手: W102；半决赛对手: W98",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO75",
+          "opponent_slot": "2C",
+          "opponent_team": "Scotland",
+          "conditional_win_prob": 0.5311,
+          "cumulative_prob": 0.53108,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO89",
+          "opponent_slot": "W73",
+          "opponent_team": "Bosnia and Herzegovina",
+          "conditional_win_prob": 0.5303,
+          "cumulative_prob": 0.281645,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W90",
+          "opponent_team": "Germany",
+          "conditional_win_prob": 0.5192,
+          "cumulative_prob": 0.146239,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.5033,
+          "cumulative_prob": 0.073604,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.517,
+          "cumulative_prob": 0.038057,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.985113+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9167,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Sweden",
+      "group": "F",
+      "championship_prob": 0.0247357547203352,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:巴西 → R16:挪威 → QF:英格兰 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 巴西 (win_prob 0.46, cumulative 0.4649)",
+      "bracket_dependency": "半决赛对手: W100；决赛对手: W101；16强对手: W78；八强对手: W92",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO76",
+          "opponent_slot": "1C",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4649,
+          "cumulative_prob": 0.464929,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO91",
+          "opponent_slot": "W78",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4726,
+          "cumulative_prob": 0.219718,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W92",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4913,
+          "cumulative_prob": 0.107946,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4887,
+          "cumulative_prob": 0.05275,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4873,
+          "cumulative_prob": 0.025703,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:57.997614+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.7911,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Tunisia",
+      "group": "F",
+      "championship_prob": 0.024403267200139054,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 捷克 (win_prob 0.50, cumulative 0.4964)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.4964,
+          "cumulative_prob": 0.49635,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4961,
+          "cumulative_prob": 0.246252,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4724,
+          "cumulative_prob": 0.116325,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4843,
+          "cumulative_prob": 0.056336,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4829,
+          "cumulative_prob": 0.027204,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.010325+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.5362,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Japan",
+      "group": "F",
+      "championship_prob": 0.02502215486149426,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:捷克 → R16:塞内加尔 → QF:挪威 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 塞内加尔 (win_prob 0.52, cumulative 0.2754)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.5249,
+          "cumulative_prob": 0.524924,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5247,
+          "cumulative_prob": 0.275427,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.5009,
+          "cumulative_prob": 0.137975,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.5129,
+          "cumulative_prob": 0.070765,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5115,
+          "cumulative_prob": 0.036195,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.022684+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4045,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Belgium",
+      "group": "G",
+      "championship_prob": 0.023490737095204675,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.53, cumulative 0.5334)",
+      "bracket_dependency": "16强对手: W81；32强对手取决于 3AEHIJ （小组 A,E,H,I,J）；半决赛对手: W97；八强对手: W93；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO82",
+          "opponent_slot": "3AEHIJ",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5334,
+          "cumulative_prob": 0.533393,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W81",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5208,
+          "cumulative_prob": 0.277785,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.4999,
+          "cumulative_prob": 0.138872,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.5113,
+          "cumulative_prob": 0.071003,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.51,
+          "cumulative_prob": 0.036213,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.033435+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9721,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Egypt",
+      "group": "G",
+      "championship_prob": 0.015099542154808823,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:美国 → R16:塞内加尔 → QF:阿根廷 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 美国 (win_prob 0.48, cumulative 0.4797)",
+      "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO86",
+          "opponent_slot": "2D",
+          "opponent_team": "United States",
+          "conditional_win_prob": 0.4797,
+          "cumulative_prob": 0.479663,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W88",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4938,
+          "cumulative_prob": 0.236839,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4632,
+          "cumulative_prob": 0.109713,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4895,
+          "cumulative_prob": 0.053705,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4844,
+          "cumulative_prob": 0.026012,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.044051+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.6917,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Iran",
+      "group": "G",
+      "championship_prob": 0.01725708988487373,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:美国 → R16:塞内加尔 → QF:阿根廷 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 美国 (win_prob 0.50, cumulative 0.4952)",
+      "bracket_dependency": "八强对手: W96；16强对手: W88；决赛对手: W101；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO86",
+          "opponent_slot": "2D",
+          "opponent_team": "United States",
+          "conditional_win_prob": 0.4952,
+          "cumulative_prob": 0.495238,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W88",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5093,
+          "cumulative_prob": 0.252247,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4788,
+          "cumulative_prob": 0.120768,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5051,
+          "cumulative_prob": 0.060998,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4999,
+          "cumulative_prob": 0.030495,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.054663+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.6253,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "New Zealand",
+      "group": "G",
+      "championship_prob": 0.00727193002092367,
+      "championship_path_count": 4,
+      "dominant_path_pattern": "R32:瑞士 → R16:乌拉圭 → QF:葡萄牙 → SF:英格兰 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 乌拉圭 (win_prob 0.45, cumulative 0.2003)",
+      "bracket_dependency": "八强对手: W95；决赛对手: W101；16强对手: W87；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO85",
+          "opponent_slot": "1B",
+          "opponent_team": "Switzerland",
+          "conditional_win_prob": 0.4497,
+          "cumulative_prob": 0.449651,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO96",
+          "opponent_slot": "W87",
+          "opponent_team": "Uruguay",
+          "conditional_win_prob": 0.4455,
+          "cumulative_prob": 0.200323,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W95",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4602,
+          "cumulative_prob": 0.092193,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4642,
+          "cumulative_prob": 0.042796,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4591,
+          "cumulative_prob": 0.019646,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.065526+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.3832,
+        "paths_enumerated": 4
+      }
+    },
+    {
+      "team": "Spain",
+      "group": "H",
+      "championship_prob": 0.033022265471203946,
+      "championship_path_count": 6,
+      "dominant_path_pattern": "R32:奥地利 → R16:克罗地亚 → QF:土耳其 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 奥地利 (win_prob 0.54, cumulative 0.5444)",
+      "bracket_dependency": "八强对手: W94；16强对手: W84；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO83",
+          "opponent_slot": "2J",
+          "opponent_team": "Austria",
+          "conditional_win_prob": 0.5444,
+          "cumulative_prob": 0.544422,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO93",
+          "opponent_slot": "W84",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.5351,
+          "cumulative_prob": 0.291305,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W94",
+          "opponent_team": "Turkey",
+          "conditional_win_prob": 0.5484,
+          "cumulative_prob": 0.159759,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.5437,
+          "cumulative_prob": 0.086857,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5424,
+          "cumulative_prob": 0.047114,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.077687+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9656,
+        "paths_enumerated": 6
+      }
+    },
+    {
+      "team": "Uruguay",
+      "group": "H",
+      "championship_prob": 0.025757577752700392,
+      "championship_path_count": 6,
+      "dominant_path_pattern": "R32:阿根廷 → R16:塞内加尔 → QF:葡萄牙 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 阿根廷 (win_prob 0.47, cumulative 0.4722)",
+      "bracket_dependency": "半决赛对手: W99；决赛对手: W101；16强对手: W85；八强对手: W95",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO87",
+          "opponent_slot": "1J",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4722,
+          "cumulative_prob": 0.472174,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO96",
+          "opponent_slot": "W85",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.52,
+          "cumulative_prob": 0.245508,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W95",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.5108,
+          "cumulative_prob": 0.125403,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.5023,
+          "cumulative_prob": 0.062994,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5096,
+          "cumulative_prob": 0.032104,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.086938+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8991,
+        "paths_enumerated": 6
+      }
+    },
+    {
+      "team": "Cape Verde",
+      "group": "H",
+      "championship_prob": 0.02000982319564619,
+      "championship_path_count": 6,
+      "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 比利时 (win_prob 0.46, cumulative 0.4579)",
+      "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO82",
+          "opponent_slot": "1G",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4579,
+          "cumulative_prob": 0.457928,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W81",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4786,
+          "cumulative_prob": 0.219183,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.4579,
+          "cumulative_prob": 0.100354,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.4691,
+          "cumulative_prob": 0.047081,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4679,
+          "cumulative_prob": 0.022029,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.093091+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4667,
+        "paths_enumerated": 6
+      }
+    },
+    {
+      "team": "Saudi Arabia",
+      "group": "H",
+      "championship_prob": 0.014464853106355187,
+      "championship_path_count": 6,
+      "dominant_path_pattern": "R32:比利时 → R16:塞内加尔 → QF:克罗地亚 → SF:荷兰 → Final:英格兰",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "16强对手: W81；八强对手: W93；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO82",
+          "opponent_slot": "1G",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.4641,
+          "cumulative_prob": 0.464063,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO94",
+          "opponent_slot": "W81",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4848,
+          "cumulative_prob": 0.22498,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W93",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.464,
+          "cumulative_prob": 0.104389,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.4753,
+          "cumulative_prob": 0.049616,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.474,
+          "cumulative_prob": 0.023521,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.099185+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.3347,
+        "paths_enumerated": 6
+      }
+    },
+    {
+      "team": "France",
+      "group": "I",
+      "championship_prob": 0.032810921918762434,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:佛得角 → R16:摩洛哥 → QF:荷兰 → SF:西班牙 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 佛得角 (win_prob 0.54, cumulative 0.5421)",
+      "bracket_dependency": "半决赛对手: W98；32强对手取决于 3CDFGH （小组 C,D,F,G,H）；八强对手: W89；16强对手: W74；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO77",
+          "opponent_slot": "3CDFGH",
+          "opponent_team": "Cape Verde",
+          "conditional_win_prob": 0.5421,
+          "cumulative_prob": 0.542086,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO90",
+          "opponent_slot": "W74",
+          "opponent_team": "Morocco",
+          "conditional_win_prob": 0.5392,
+          "cumulative_prob": 0.292295,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO97",
+          "opponent_slot": "W89",
+          "opponent_team": "Netherlands",
+          "conditional_win_prob": 0.527,
+          "cumulative_prob": 0.154034,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W98",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.5176,
+          "cumulative_prob": 0.079735,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5314,
+          "cumulative_prob": 0.042367,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.105506+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.962,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Norway",
+      "group": "I",
+      "championship_prob": 0.031357194305706805,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:厄瓜多尔 → R16:瑞典 → QF:捷克 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 厄瓜多尔 (win_prob 0.50, cumulative 0.4969)",
+      "bracket_dependency": "决赛对手: W101；半决赛对手: W100；16强对手: W76；八强对手: W92",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO78",
+          "opponent_slot": "2E",
+          "opponent_team": "Ecuador",
+          "conditional_win_prob": 0.4969,
+          "cumulative_prob": 0.496885,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO91",
+          "opponent_slot": "W76",
+          "opponent_team": "Sweden",
+          "conditional_win_prob": 0.5142,
+          "cumulative_prob": 0.255514,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W92",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.5206,
+          "cumulative_prob": 0.133021,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.5139,
+          "cumulative_prob": 0.068364,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5125,
+          "cumulative_prob": 0.035038,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.112665+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8988,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Senegal",
+      "group": "I",
+      "championship_prob": 0.04461389969016114,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.48, cumulative 0.2491)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.5154,
+          "cumulative_prob": 0.515449,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4832,
+          "cumulative_prob": 0.249066,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4992,
+          "cumulative_prob": 0.124346,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.5034,
+          "cumulative_prob": 0.062596,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.502,
+          "cumulative_prob": 0.031422,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.119818+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.5186,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Iraq",
+      "group": "I",
+      "championship_prob": 0.017521763118772446,
+      "championship_path_count": 8,
+      "dominant_path_pattern": "R32:捷克 → R16:英格兰 → QF:巴西 → SF:葡萄牙 → Final:法国",
+      "dominant_failure_node": "Round Of 16 vs 英格兰 (win_prob 0.45, cumulative 0.2183)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W80；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO79",
+          "opponent_slot": "1A",
+          "opponent_team": "Czech Republic",
+          "conditional_win_prob": 0.4835,
+          "cumulative_prob": 0.483533,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W80",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4514,
+          "cumulative_prob": 0.218277,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4674,
+          "cumulative_prob": 0.102016,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4715,
+          "cumulative_prob": 0.048101,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4701,
+          "cumulative_prob": 0.022612,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.126979+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.2832,
+        "paths_enumerated": 8
+      }
+    },
+    {
+      "team": "Argentina",
+      "group": "J",
+      "championship_prob": 0.03244683162436943,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:乌拉圭 → R16:瑞士 → QF:埃及 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 乌拉圭 (win_prob 0.53, cumulative 0.5278)",
+      "bracket_dependency": "半决赛对手: W99；决赛对手: W101；16强对手: W85；八强对手: W95",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO87",
+          "opponent_slot": "2H",
+          "opponent_team": "Uruguay",
+          "conditional_win_prob": 0.5278,
+          "cumulative_prob": 0.527826,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO96",
+          "opponent_slot": "W85",
+          "opponent_team": "Switzerland",
+          "conditional_win_prob": 0.5431,
+          "cumulative_prob": 0.286662,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W95",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5416,
+          "cumulative_prob": 0.155261,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.5302,
+          "cumulative_prob": 0.082313,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5374,
+          "cumulative_prob": 0.044236,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.133426+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9628,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Austria",
+      "group": "J",
+      "championship_prob": 0.02757276209563263,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:西班牙 → R16:克罗地亚 → QF:土耳其 → SF:法国 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 西班牙 (win_prob 0.46, cumulative 0.4556)",
+      "bracket_dependency": "八强对手: W94；16强对手: W84；半决赛对手: W97；决赛对手: W102",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO83",
+          "opponent_slot": "1H",
+          "opponent_team": "Spain",
+          "conditional_win_prob": 0.4556,
+          "cumulative_prob": 0.455578,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO93",
+          "opponent_slot": "W84",
+          "opponent_team": "Croatia",
+          "conditional_win_prob": 0.4906,
+          "cumulative_prob": 0.223503,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W94",
+          "opponent_team": "Turkey",
+          "conditional_win_prob": 0.504,
+          "cumulative_prob": 0.112653,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4983,
+          "cumulative_prob": 0.05613,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.498,
+          "cumulative_prob": 0.027953,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.140160+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8084,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Jordan",
+      "group": "J",
+      "championship_prob": 0.021828957885353033,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:瑞士 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 葡萄牙 (win_prob 0.45, cumulative 0.4473)",
+      "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "1K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4473,
+          "cumulative_prob": 0.447346,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.48,
+          "cumulative_prob": 0.214723,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Switzerland",
+          "conditional_win_prob": 0.4779,
+          "cumulative_prob": 0.102606,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4621,
+          "cumulative_prob": 0.04741,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4693,
+          "cumulative_prob": 0.022251,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.147135+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.488,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Algeria",
+      "group": "J",
+      "championship_prob": 0.019974270074674724,
+      "championship_path_count": 7,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:瑞士 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "1K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.463,
+          "cumulative_prob": 0.463013,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.4958,
+          "cumulative_prob": 0.229551,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Switzerland",
+          "conditional_win_prob": 0.4936,
+          "cumulative_prob": 0.113314,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4778,
+          "cumulative_prob": 0.054141,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4851,
+          "cumulative_prob": 0.026263,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.154536+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4048,
+        "paths_enumerated": 7
+      }
+    },
+    {
+      "team": "Portugal",
+      "group": "K",
+      "championship_prob": 0.024132668446078427,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.54, cumulative 0.5426)",
+      "bracket_dependency": "决赛对手: W101；半决赛对手: W99；32强对手取决于 3DEIJL （小组 D,E,I,J,L）；16强对手: W86；八强对手: W96",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "3DEIJL",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5426,
+          "cumulative_prob": 0.542628,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5328,
+          "cumulative_prob": 0.289104,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.501,
+          "cumulative_prob": 0.144828,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.5148,
+          "cumulative_prob": 0.074562,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5221,
+          "cumulative_prob": 0.03893,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.160694+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9491,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "Colombia",
+      "group": "K",
+      "championship_prob": 0.022883700474173294,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.54, cumulative 0.5418)",
+      "bracket_dependency": "决赛对手: W101；半决赛对手: W99；32强对手取决于 3DEIJL （小组 D,E,I,J,L）；16强对手: W86；八强对手: W96",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "3DEIJL",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5418,
+          "cumulative_prob": 0.541753,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.5319,
+          "cumulative_prob": 0.288162,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.5001,
+          "cumulative_prob": 0.144103,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.514,
+          "cumulative_prob": 0.074062,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5212,
+          "cumulative_prob": 0.038604,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.166051+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9094,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "DR Congo",
+      "group": "K",
+      "championship_prob": 0.007011865524928664,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:英格兰 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 英格兰 (win_prob 0.44, cumulative 0.4446)",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W79；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO80",
+          "opponent_slot": "1L",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4446,
+          "cumulative_prob": 0.444566,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W79",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4803,
+          "cumulative_prob": 0.21352,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4604,
+          "cumulative_prob": 0.098302,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4679,
+          "cumulative_prob": 0.045996,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4709,
+          "cumulative_prob": 0.021658,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.171393+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4813,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "Uzbekistan",
+      "group": "K",
+      "championship_prob": 0.005174954274736084,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:英格兰 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "半决赛对手: W100；16强对手: W79；八强对手: W91；决赛对手: W101",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO80",
+          "opponent_slot": "1L",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.4521,
+          "cumulative_prob": 0.452084,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W79",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.4879,
+          "cumulative_prob": 0.220563,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.4679,
+          "cumulative_prob": 0.103212,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4755,
+          "cumulative_prob": 0.049075,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4784,
+          "cumulative_prob": 0.02348,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.176775+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.3268,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "England",
+      "group": "L",
+      "championship_prob": 0.025450109095410095,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:塞内加尔 → R16:塞内加尔 → QF:挪威 → SF:阿根廷 → Final:法国",
+      "dominant_failure_node": "Round Of 32 vs 塞内加尔 (win_prob 0.55, cumulative 0.5504)",
+      "bracket_dependency": "16强对手: W79；决赛对手: W101；八强对手: W91；半决赛对手: W100；32强对手取决于 3EHIJK （小组 E,H,I,J,K）",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO80",
+          "opponent_slot": "3EHIJK",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5504,
+          "cumulative_prob": 0.550358,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO92",
+          "opponent_slot": "W79",
+          "opponent_team": "Senegal",
+          "conditional_win_prob": 0.5359,
+          "cumulative_prob": 0.294925,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO99",
+          "opponent_slot": "W91",
+          "opponent_team": "Norway",
+          "conditional_win_prob": 0.516,
+          "cumulative_prob": 0.15217,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W100",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.5235,
+          "cumulative_prob": 0.079661,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5265,
+          "cumulative_prob": 0.041939,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.182182+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.9437,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "Croatia",
+      "group": "L",
+      "championship_prob": 0.019668118199642627,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:奥地利 → QF:比利时 → SF:法国 → Final:英格兰",
+      "dominant_failure_node": "Round Of 32 vs 葡萄牙 (win_prob 0.49, cumulative 0.4901)",
+      "bracket_dependency": "八强对手: W94；16强对手: W83；决赛对手: W102；半决赛对手: W97",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO84",
+          "opponent_slot": "2K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4901,
+          "cumulative_prob": 0.490131,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO93",
+          "opponent_slot": "W83",
+          "opponent_team": "Austria",
+          "conditional_win_prob": 0.5133,
+          "cumulative_prob": 0.251563,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO98",
+          "opponent_slot": "W94",
+          "opponent_team": "Belgium",
+          "conditional_win_prob": 0.5197,
+          "cumulative_prob": 0.130728,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO101",
+          "opponent_slot": "W97",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.5127,
+          "cumulative_prob": 0.067018,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W102",
+          "opponent_team": "England",
+          "conditional_win_prob": 0.5124,
+          "cumulative_prob": 0.034339,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.187516+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.8583,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "Ghana",
+      "group": "L",
+      "championship_prob": 0.005998601577241788,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "1K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4443,
+          "cumulative_prob": 0.444258,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.4769,
+          "cumulative_prob": 0.211855,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4452,
+          "cumulative_prob": 0.094318,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.459,
+          "cumulative_prob": 0.043288,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4662,
+          "cumulative_prob": 0.020181,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.192823+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4391,
+        "paths_enumerated": 3
+      }
+    },
+    {
+      "team": "Panama",
+      "group": "L",
+      "championship_prob": 0.0072179419483373655,
+      "championship_path_count": 3,
+      "dominant_path_pattern": "R32:葡萄牙 → R16:埃及 → QF:阿根廷 → SF:巴西 → Final:法国",
+      "dominant_failure_node": "none",
+      "bracket_dependency": "八强对手: W96；决赛对手: W101；16强对手: W86；半决赛对手: W99",
+      "black_swan_dependency": "not_assessed",
+      "penalty_dependency": "not_assessed",
+      "injury_sensitivity": "not_assessed",
+      "simulation_status": "run_complete",
+      "path_nodes": [
+        {
+          "round": "round_of_32",
+          "match_id": "KO88",
+          "opponent_slot": "1K",
+          "opponent_team": "Portugal",
+          "conditional_win_prob": 0.4666,
+          "cumulative_prob": 0.466613,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "round_of_16",
+          "match_id": "KO95",
+          "opponent_slot": "W86",
+          "opponent_team": "Egypt",
+          "conditional_win_prob": 0.4994,
+          "cumulative_prob": 0.233024,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "quarterfinal",
+          "match_id": "KO100",
+          "opponent_slot": "W96",
+          "opponent_team": "Argentina",
+          "conditional_win_prob": 0.4676,
+          "cumulative_prob": 0.108954,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "semifinal",
+          "match_id": "KO102",
+          "opponent_slot": "W99",
+          "opponent_team": "Brazil",
+          "conditional_win_prob": 0.4814,
+          "cumulative_prob": 0.052451,
+          "probability_source": "elo_poisson"
+        },
+        {
+          "round": "final",
+          "match_id": "KO104",
+          "opponent_slot": "W101",
+          "opponent_team": "France",
+          "conditional_win_prob": 0.4887,
+          "cumulative_prob": 0.025633,
+          "probability_source": "elo_poisson"
+        }
+      ],
+      "simulation_meta": {
+        "run_at_utc": "2026-07-19T02:49:58.198166+00:00",
+        "probability_source": "elo_poisson",
+        "qualification_prob_used": 0.4119,
+        "paths_enumerated": 3
+      }
+    }
+  ]
+}

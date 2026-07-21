@@ -1,0 +1,65 @@
+field,value,description
+reason_id,free_text,
+reason_text,free_text,
+atomic_claim_count,0,这句话中可被拆出的事实/判断原子数量。没有明确主张选 0。
+atomic_claim_count,1,这句话中可被拆出的事实/判断原子数量。没有明确主张选 0。
+atomic_claim_count,2,这句话中可被拆出的事实/判断原子数量。没有明确主张选 0。
+atomic_claim_count,3+,这句话中可被拆出的事实/判断原子数量。没有明确主张选 0。
+claim_family_primary,roster,最主要的主张类型。只选一个。
+claim_family_primary,market,最主要的主张类型。只选一个。
+claim_family_primary,ranking,最主要的主张类型。只选一个。
+claim_family_primary,historical_result,最主要的主张类型。只选一个。
+claim_family_primary,injury_schedule,最主要的主张类型。只选一个。
+claim_family_primary,tactical,最主要的主张类型。只选一个。
+claim_family_primary,psychological,最主要的主张类型。只选一个。
+claim_family_primary,model_internal,最主要的主张类型。只选一个。
+claim_family_primary,mystical,最主要的主张类型。只选一个。
+claim_family_primary,hearsay,最主要的主张类型。只选一个。
+claim_family_primary,vague_narrative,最主要的主张类型。只选一个。
+claim_family_primary,other,最主要的主张类型。只选一个。
+claim_family_secondary,none,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,roster,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,market,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,ranking,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,historical_result,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,injury_schedule,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,tactical,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,psychological,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,model_internal,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,mystical,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,hearsay,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,vague_narrative,如存在第二类明显主张则选择，否则选 none。
+claim_family_secondary,other,如存在第二类明显主张则选择，否则选 none。
+observable_proxy,direct,是否存在可观测代理信号。direct 表示可直接查；proxy_needed 表示要转成代理指标。
+observable_proxy,proxy_needed,是否存在可观测代理信号。direct 表示可直接查；proxy_needed 表示要转成代理指标。
+observable_proxy,none,是否存在可观测代理信号。direct 表示可直接查；proxy_needed 表示要转成代理指标。
+observable_proxy,model_internal,是否存在可观测代理信号。direct 表示可直接查；proxy_needed 表示要转成代理指标。
+time_window,pre_tournament,该主张能在哪个时间窗结算；无法判断选 undefined。
+time_window,group_stage,该主张能在哪个时间窗结算；无法判断选 undefined。
+time_window,match_level,该主张能在哪个时间窗结算；无法判断选 undefined。
+time_window,tournament_level,该主张能在哪个时间窗结算；无法判断选 undefined。
+time_window,undefined,该主张能在哪个时间窗结算；无法判断选 undefined。
+settlement_rule_type,numeric_threshold,若要结算，最接近哪类规则。无法结算选 none。
+settlement_rule_type,event_occurrence,若要结算，最接近哪类规则。无法结算选 none。
+settlement_rule_type,ordinal_judgment,若要结算，最接近哪类规则。无法结算选 none。
+settlement_rule_type,none,若要结算，最接近哪类规则。无法结算选 none。
+source_likelihood,green_possible,原则上可能用哪类来源核验。不要现在查资料。
+source_likelihood,yellow_possible,原则上可能用哪类来源核验。不要现在查资料。
+source_likelihood,red_only,原则上可能用哪类来源核验。不要现在查资料。
+source_likelihood,unknown,原则上可能用哪类来源核验。不要现在查资料。
+source_likelihood,impossible,原则上可能用哪类来源核验。不要现在查资料。
+any_codable_atom,yes,是否至少有一个事实碎片原则上可核验。
+any_codable_atom,no,是否至少有一个事实碎片原则上可核验。
+main_claim_codable,strict,支撑预测的主要理由，在多严格标准下可审计。
+main_claim_codable,moderate,支撑预测的主要理由，在多严格标准下可审计。
+main_claim_codable,loose,支撑预测的主要理由，在多严格标准下可审计。
+main_claim_codable,no,支撑预测的主要理由，在多严格标准下可审计。
+ledger_route,ledger_now,这条 reason 的最佳去向。
+ledger_route,ledger_candidate,这条 reason 的最佳去向。
+ledger_route,marginalia_only,这条 reason 的最佳去向。
+ledger_route,reject,这条 reason 的最佳去向。
+annotation_confidence,high,你对自己本行判断的信心。
+annotation_confidence,medium,你对自己本行判断的信心。
+annotation_confidence,low,你对自己本行判断的信心。
+dominant_claim_text,free_text,用一句话摘出你认为的主张核心。
+notes,free_text,只写必要备注；不确定、拆分困难、规则冲突写在这里。

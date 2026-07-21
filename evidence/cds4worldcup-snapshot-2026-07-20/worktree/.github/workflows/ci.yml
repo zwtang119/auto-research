@@ -1,0 +1,141 @@
+# CI - PR 验证门禁
+# 每次 PR 到 main 时自动运行，确保知识库和脚本健康
+
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # ── 知识库健康检查 ──
+  wiki-health:
+    name: Wiki Audit & Verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Audit wiki
+        run: python3 scripts/audit.py --root wiki/
+
+      - name: Verify wiki
+        run: python3 scripts/verify.py --root wiki/
+
+      - name: Audit example
+        run: python3 scripts/audit.py --root example/
+
+      - name: Verify example
+        run: python3 scripts/verify.py --root example/
+
+  # ── 敏感文件检查 ──
+  sensitive-check:
+    name: No Sensitive Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check no references leaked
+        run: |
+          if [ -d "docs/references" ] && [ "$(ls -A docs/references 2>/dev/null)" ]; then
+            echo "❌ ERROR: docs/references/ contains files that should not be committed."
+            echo "These are proprietary documents. Add them to .gitignore."
+            ls -la docs/references/
+            exit 1
+          fi
+          echo "✅ No sensitive files in docs/references/"
+
+      - name: Check no .claude/local settings
+        run: |
+          if [ -f ".claude/settings.local.json" ]; then
+            echo "❌ ERROR: .claude/settings.local.json should not be committed."
+            exit 1
+          fi
+          echo "✅ No local settings committed"
+
+  # ── Markdown 语法检查 ──
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: |
+            **/*.md
+            !docs/references/**
+          config: .markdownlint.json
+        continue-on-error: true  # 初期不阻塞，仅警告
+
+  # ── 结构完整性 ──
+  structure-check:
+    name: Structure Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          REQUIRED_FILES=(
+            "README.md"
+            "LICENSE"
+            "CONTRIBUTING.md"
+            "CHANGELOG.md"
+            "CLAUDE.md"
+            "AGENTS.md"
+            "schema/rules.md"
+            "schema/node-types.md"
+            "wiki/index.md"
+          )
+          MISSING=0
+          for f in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$f" ]; then
+              echo "❌ Missing: $f"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          if [ $MISSING -gt 0 ]; then
+            echo "❌ $MISSING required file(s) missing."
+            exit 1
+          fi
+          echo "✅ All required files present"
+
+  # ── 密钥扫描 ──
+  secret-scan:
+    name: Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: TruffleHog scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+  # ── 单元测试 ──
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tests
+        run: python3 -m unittest tests/test_build_site_data.py tests/test_fetch_market_snapshot.py

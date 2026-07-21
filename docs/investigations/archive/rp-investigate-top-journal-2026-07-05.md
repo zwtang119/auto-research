@@ -105,9 +105,9 @@ Sanity-checks: every `*_results.csv` file (match_level, factor_level, judge_adju
 | **Schema-matching** (COMA / CUPID / iMAP / HOLISSE) | DB community 2001-2024 | 20+ years | Solved subproblem; standard tools exist | G3 is a 1:1 field map exercise, baseline territory |
 
 **Key falsification points:**
-- The G3 artifact itself names the future contribution as "schema-reconciliation paper" (`docs/papers/g3-dual-ledger-crosswalk.md:82`).
+- The G3 artifact itself names the future contribution as "schema-reconciliation paper" (`docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.md:82`).
 - Both schemas are owned by same author/team. Documenting that two internal JSON shapes already overlap is documentation, not research.
-- The 2/2 Brier match is on a cherry-picked pair. Per `docs/papers/g3-brier-replay-results.md:9`: "hardcoded file list (not directory traversal) due to sandbox Path.rglob restriction." The script was written to match.
+- The 2/2 Brier match is on a cherry-picked pair. Per `docs/papers-closed-portfolio/g3-brier-replay-results.md:9`: "hardcoded file list (not directory traversal) due to sandbox Path.rglob restriction." The script was written to match.
 - Joint-methods 6-persona review median=4.0 < 4.5 fallback threshold; G3 was the only structural gate that passed because G3 only tests structural fields, not methods. The structural ease is the falsification — a result that can be obtained by trivial schema inspection is not a research contribution.
 
 **Survival estimates:**
@@ -148,7 +148,7 @@ Sanity-checks: every `*_results.csv` file (match_level, factor_level, judge_adju
 - 1st judge (Paratera deepseek-v4-pro): **n=10 paired**, delta=-1.284, CI [-1.461, -1.078], CI width 0.383
 - 2nd judge (OpenRouter gpt-oss-120b): **n=6 paired**, delta=-3.667, CI [-4.000, -3.000], CI width 1.000 (2.6× wider)
 
-**Critical data-loss finding:** The 2nd-judge raw scores live ONLY in the markdown report (`docs/papers/g2-p12-calibration-paradox-replication.md` §3). The 6 paired rows are NOT in `experiments/`. To extend, must re-collect all 6. **No partially-stored 2nd-judge data exists.**
+**Critical data-loss finding:** The 2nd-judge raw scores live ONLY in the markdown report (`docs/papers-closed-portfolio/g2-p12-calibration-paradox-replication.md` §3). The 6 paired rows are NOT in `experiments/`. To extend, must re-collect all 6. **No partially-stored 2nd-judge data exists.**
 
 **Path to N=30:**
 - 1st judge → N=30: +40 API calls × 25s = **17 min wall time, $0, 1 evening session**
@@ -172,7 +172,7 @@ Sanity-checks: every `*_results.csv` file (match_level, factor_level, judge_adju
 
 > When LLM agents self-evaluate, three independent measurement pathologies compose: (1) G2 — LLM judges are **stricter, not lenient**, when handed leaked ground-truth (blind > leaked, opposite of standard leakage-bias); (2) G3 — two independently-evolved evidence-ledger schemas reconcile at 92.9% field coverage with orthogonal enums, showing schema drift is the real barrier; (3) P11-negative-result — structured pure-analysis prompting degrades role-fidelity judges under role conflict. Taken together: LLM-agent evaluation infrastructure must be designed as an end-to-end measurement contract.
 
-**Falsification on the package:** The **closest existing artifact** is the joint-methods paper outline that **already bundles G2 + G3 + settlement + audit** (strict superset of the proposed package). It was reviewed by 6 personas with **median=4.0**, verdict FALLBACK, timestamp 2026-07-04T20:06:18Z (`docs/papers/joint-methods-outline-review.md:20-26`) — **14 hours before this investigation.**
+**Falsification on the package:** The **closest existing artifact** is the joint-methods paper outline that **already bundles G2 + G3 + settlement + audit** (strict superset of the proposed package). It was reviewed by 6 personas with **median=4.0**, verdict FALLBACK, timestamp 2026-07-04T20:06:18Z (`docs/papers-closed-portfolio/joint-methods-outline-review.md:20-26`) — **14 hours before this investigation.**
 
 The proposed package swaps "joint methods" for "PA-degrades-fidelity" — but PA-degrades-fidelity's 1-page abstract already failed 5-persona review (R1=4.0, R3=4.0, median=4.5; G1 gate R1+R3≥5.5 failed at sum 8.0). All three paper lines have been independently closed for standalone publication (P12 median 3.0; P1+P2 median 4.0; P11 26-review plateau 5.84-6.60).
 
@@ -249,11 +249,11 @@ Without those, no framing reaches main-track ≥7.5.
 **State / paper files:**
 - `auto-research/state/progress.json:22,23,24,78-80` — G1 fail, G3 FULL PASS, G2 PARTIAL, G3.3 Brier 2/2
 - `auto-research/papers/p12-judge-calibration/experiments/calibration_metrics.md:9-13, 28-30, 73-77` — G2 evidence
-- `auto-research/docs/papers/g2-p12-calibration-paradox-replication.md:16-17, 38-39` — G2 replication
+- `auto-research/docs/papers-closed-portfolio/g2-p12-calibration-paradox-replication.md:16-17, 38-39` — G2 replication
 - `auto-research/papers/p1p2-evidence-ledger/wiki/concepts/evidence-ledger-schema.md` — schema details
-- `auto-research/docs/papers/g3-dual-ledger-crosswalk.md:43, 50-58, 82` — G3 claims
-- `auto-research/docs/papers/g3-brier-replay-results.md:9, 46-47` — G3 Brier replay
-- `auto-research/docs/papers/joint-methods-outline-review.md:11-26` — joint-methods FALLBACK
+- `auto-research/docs/papers-closed-portfolio/g3-dual-ledger-crosswalk.md:43, 50-58, 82` — G3 claims
+- `auto-research/docs/papers-closed-portfolio/g3-brier-replay-results.md:9, 46-47` — G3 Brier replay
+- `auto-research/docs/papers-closed-portfolio/joint-methods-outline-review.md:11-26` — joint-methods FALLBACK
 - `auto-research/papers/p12-judge-calibration/paper/review_round_1.md:25-28` — P12 standalone close
 - `auto-research/papers/p1p2-evidence-ledger/paper/review_round_1.md:11-26` — P1+P2 standalone close
 - `auto-research/legacy/p11-closed-v5-minimax-m3/paper/main.tex:36-48, 140-148` — P11 evidence

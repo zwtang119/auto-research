@@ -1,6 +1,6 @@
 # Direction A — 5-Persona Review Round 1 (2026-07-05)
 
-_Source: docs/papers/direction-a-1-page-proposal.md (67 lines, CoBBLEr 3-axis differentiation in §3)_
+_Source: docs/papers-closed-portfolio/direction-a-1-page-proposal.md (67 lines, CoBBLEr 3-axis differentiation in §3)_
 
 _Reviewers: 5 paratera (PIT-107) + 1 minimaxi cross-validation_
 
@@ -26,4 +26,4 @@ _Reviewers: 5 paratera (PIT-107) + 1 minimaxi cross-validation_
 **FOLD (median < 5.5)**
 
 
-Direction A **folds** into a methods paper. Pivot target: G3 dual-ledger bridge (`docs/papers/direction-a-mechanism-experiment-spec.md` §7).
+Direction A **folds** into a methods paper. Pivot target: G3 dual-ledger bridge (`docs/papers-closed-portfolio/direction-a-mechanism-experiment-spec.md` §7).

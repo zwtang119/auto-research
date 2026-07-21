@@ -1,0 +1,73 @@
+schema_version: '0.2'
+smoke_test: false
+task_type: group_90m_wdl
+match_id: wc2026-a-m01-mex-rsa
+competition: FIFA World Cup 2026
+stage: group
+kickoff_time_utc: '2026-06-11T23:00:00Z'
+teams:
+  home: Mexico
+  away: South Africa
+lock:
+  prediction_locked_at_utc: '2026-06-10T11:11:12Z'
+  sha256: detached_companion_file
+  git_commit: pending_commit_after_write
+data_package:
+  package_id: wc2026-a-m01-mex-rsa-mvpa-v0.2
+  green_sources:
+  - official_schedule_snapshot
+  red_sources_excluded_from_model:
+  - kimi_public_artifact_snapshot
+llm:
+  provider_id: openai
+  model_id: DeepSeek-V4-Flash
+  model_version_observed_at_utc: '2026-06-10T12:00:00Z'
+  prompt_version: worldcup_prediction_card_v0.2
+  temperature: 0
+  max_retries: 1
+  reasoning_budget: fixed
+  schema_validation_status: passed
+  source_cutoff_utc: '2026-06-10T12:00:00Z'
+prompt_config:
+  system_prompt_id: worldcup_system_v0.2
+  user_prompt_template_id: worldcup_prediction_card_v0.2
+  prompt_hash: 8673e013b1da8f986f410f4e402fd7af5ff7994c6f3a50c0c296563235a7b3d9
+  market_or_odds_exposed_to_model: false
+  public_ai_baseline_exposed_to_model: false
+memory_budget:
+  max_prior_notes: 5
+  max_note_chars_each: 1200
+  max_kimi_derived_candidates_reviewed: 3
+  max_kimi_derived_factors_tracked: 1
+  max_candidate_factors_reviewed: 6
+probabilities:
+  home_win_90m: 0.62
+  draw_90m: 0.23
+  away_win_90m: 0.15
+baselines:
+  simple_statistical:
+    method: FIFA ranking difference with home advantage adjustment
+    home_win_est: 0.62
+    draw_est: 0.23
+    away_win_est: 0.15
+    note: Based on Mexico rank ~11, South Africa rank ~67 (from Wikipedia, as of 2025).
+      Rough conversion using log-odds model with home advantage bias. Not authoritative.
+  market_or_odds:
+    status: missing_with_reason
+    reason: No archived odds available in match package. Market data not exposed to
+      CDS model per MVP-A protocol.
+  public_ai:
+    status: not_applicable
+    reason: Kimi public artifact excluded per MVP-A methodology. Public AI baseline
+      not used.
+factors_used:
+- wc2026-a-m01-mex-rsa-f01-ranking-advantage
+- wc2026-a-m01-mex-rsa-f02-experience-gap
+- wc2026-a-m01-mex-rsa-f03-2022-wc-group-performance
+uncertainty_notes:
+- FIFA ranking data is static and may not reflect current form or injuries.
+- World Cup matches have high irreducible variance; probability estimates are rough.
+- Sample size of one match is insufficient for calibration; this card is a protocol
+  test.
+- Altitude and home advantage may have additional effect not captured in ranking-based
+  baseline.

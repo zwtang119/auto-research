@@ -167,4 +167,4 @@
 - AHE 论文：arxiv 2026-04 `Agentic Harness Engineering: Observability-Driven Automatic Evolution of Coding-Agent Harnesses`
 - Karpathy autoresearch：github.com/karpathy/autoresearch
 - Niklaus 实验：huggingface.co/spaces/joelniklaus/harness-optimization
-- 项目 G3 paper outline：docs/papers/g3-methods-paper-outline.md
+- 项目 G3 paper outline：docs/papers-closed-portfolio/g3-methods-paper-outline.md

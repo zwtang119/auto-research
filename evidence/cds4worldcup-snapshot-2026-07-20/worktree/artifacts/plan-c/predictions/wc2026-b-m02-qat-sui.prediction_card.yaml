@@ -1,0 +1,109 @@
+schema_version: "0.2"
+smoke_test: false
+task_type: "group_90m_wdl"
+match_id: "wc2026-b-m02-qat-sui"
+competition: "FIFA World Cup 2026"
+stage: "group"
+kickoff_time_utc: "2026-06-13T23:00:00Z"
+
+teams:
+  home: "Qatar"
+  away: "Switzerland"
+
+lock:
+  prediction_locked_at_utc: "2026-06-13T18:00:00Z"
+  sha256: "to_be_computed_at_lock"
+  git_commit: "to_be_computed_at_lock"
+
+data_package:
+  package_id: "wc2026-b-m02-qat-sui-plan-c-v0.1"
+  green_sources:
+    - "official_schedule_snapshot"
+    - "fifa_ranking_proxy"
+    - "public_football_knowledge_qatar"
+    - "public_football_knowledge_switzerland"
+  red_sources_excluded_from_model:
+    - "kimi_public_artifact_snapshot"
+
+llm:
+  provider_id: "anthropic"
+  model_id: "claude-opus-4-20250514"
+  model_version_observed_at_utc: "2026-06-13T12:00:00Z"
+  prompt_version: "worldcup_prediction_card_plan_c_v0.1"
+  temperature: 0
+  max_retries: 1
+  reasoning_budget: "fixed"
+  schema_validation_status: "passed"
+  source_cutoff_utc: "2026-06-13T12:00:00Z"
+
+prompt_config:
+  system_prompt_id: "worldcup_system_v0.1"
+  user_prompt_template_id: "worldcup_prediction_card_plan_c_v0.1"
+  prompt_hash: "plan_c_v0.1_no_fixed_rendered_prompt"
+  market_or_odds_exposed_to_model: false
+  public_ai_baseline_exposed_to_model: false
+
+memory_budget:
+  max_prior_notes: 5
+  max_note_chars_each: 1200
+  max_kimi_derived_candidates_reviewed: 3
+  max_kimi_derived_factors_tracked: 1
+  max_candidate_factors_reviewed: 6
+
+probabilities:
+  home_win_90m: 0.15
+  draw_90m: 0.24
+  away_win_90m: 0.61
+
+baselines:
+  market_or_odds:
+    status: "missing_with_reason"
+    reason: >
+      Plan C pre-registration artifact. Web search API not used at creation time;
+      no archivable market probability source was captured. This is a protocol
+      limitation, not a prediction capability claim.
+  simple_statistical:
+    status: "available"
+    method: >
+      FIFA ranking positions via logistic model (same method as MVPA fixture).
+      Qatar ranked ~#46 (estimated from FIFA ranking proxy inverse normalization),
+      Switzerland ranked ~#15 (FIFA Men's World Ranking 2025-11-19).
+      Approximate ranking points: Qatar ~1430, Switzerland ~1640.
+      Points difference ~-210 (Qatar lower). FIFA Elo formula (c=600):
+      W_e(home) = 1/(10^(210/600)+1) = 1/(10^0.35+1) ~ 0.309.
+      Three-outcome decomposition with base draw rate d=0.25:
+      P(home_win) = W_e - 0.5*d = 0.309 - 0.125 = 0.184;
+      P(draw) = d = 0.25;
+      P(away_win) = 1 - 0.184 - 0.25 = 0.566.
+      Note: this baseline does NOT adjust for home advantage. Both teams play
+      on neutral ground at Levi's Stadium, SF Bay Area.
+    qatar_fifa_rank: 46
+    qatar_ranking_date: "2025-11-19"
+    switzerland_fifa_rank: 15
+    switzerland_ranking_date: "2025-11-19"
+    ranking_source_url: "data/processed/baselines/fifa-ranking-proxy.json"
+    estimated_points_difference: -210
+    expected_score_home: 0.309
+    decomposition_note: "P(win)=0.18; P(draw)=0.25; P(loss)=0.57; no home advantage adjustment"
+    probabilities:
+      home_win_90m: 0.18
+      draw_90m: 0.25
+      away_win_90m: 0.57
+  public_ai:
+    status: "not_applicable"
+    reason: >
+      No public AI baseline available for this match_id at creation time.
+      Kimi artifact snapshot is a Red Source and excluded from model input.
+
+factors_used:
+  - "wc2026-b-m02-qat-sui-f01-qat-possession-struggle"
+  - "wc2026-b-m02-qat-sui-f02-sui-shots-on-target"
+  - "wc2026-b-m02-qat-sui-f03-afif-key-passes"
+
+uncertainty_notes:
+  - "Qatar's 2022 WC record (3 losses, 0 points) represents the only WC-level data point for this generation; the 2023 Asian Cup title suggests improvement but against much weaker opposition than Switzerland."
+  - "Switzerland's consistent tournament performance (3 consecutive WC knockout stages) provides a reliable floor but their ceiling against weaker opposition is less predictable."
+  - "Levi's Stadium in SF Bay Area is neutral ground for both teams; Qatar has limited experience playing outside Asia in competitive fixtures."
+  - "Akram Afif's creative ability (2023 Asian Cup MVP) is untested against organized European defenses at WC level."
+  - "The 31-position ranking gap (~210 points) is a large structural difference, but single-match football variance is inherently high."
+  - "This is a protocol calibration artifact, not a prediction capability claim."

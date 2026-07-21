@@ -1,0 +1,357 @@
+{
+  "status": "available",
+  "source": "polymarket_gamma_public_search",
+  "event_slug": "world-cup-winner",
+  "event_title": "World Cup Winner ",
+  "last_fetched_at": "2026-07-19T02:53:30+00:00",
+  "display_rule": "只代表外界怎么看，不作为事实依据，也不是投注建议。",
+  "teams": {
+    "algeria": {
+      "probability": 0.0,
+      "market_slug": "will-algeria-win-the-2026-fifa-world-cup",
+      "question": "Will Algeria win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "argentina": {
+      "probability": 40.95,
+      "market_slug": "will-argentina-win-the-2026-fifa-world-cup-245",
+      "question": "Will Argentina win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.4095
+    },
+    "australia": {
+      "probability": 0.0,
+      "market_slug": "will-australia-win-the-2026-fifa-world-cup-816",
+      "question": "Will Australia win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "austria": {
+      "probability": 0.0,
+      "market_slug": "will-austria-win-the-2026-fifa-world-cup",
+      "question": "Will Austria win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "belgium": {
+      "probability": 0.0,
+      "market_slug": "will-belgium-win-the-2026-fifa-world-cup-358",
+      "question": "Will Belgium win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "brazil": {
+      "probability": 0.0,
+      "market_slug": "will-brazil-win-the-2026-fifa-world-cup-183",
+      "question": "Will Brazil win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "canada": {
+      "probability": 0.0,
+      "market_slug": "will-canada-win-the-2026-fifa-world-cup-755",
+      "question": "Will Canada win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "cape-verde": {
+      "probability": 0.0,
+      "market_slug": "will-cape-verde-win-the-2026-fifa-world-cup",
+      "question": "Will Cape Verde win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "colombia": {
+      "probability": 0.0,
+      "market_slug": "will-colombia-win-the-2026-fifa-world-cup-734",
+      "question": "Will Colombia win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "croatia": {
+      "probability": 0.0,
+      "market_slug": "will-croatia-win-the-2026-fifa-world-cup",
+      "question": "Will Croatia win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "curaçao": {
+      "probability": 0.0,
+      "market_slug": "will-curaao-win-the-2026-fifa-world-cup",
+      "question": "Will Curaçao win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "côte-divoire": {
+      "probability": 0.0,
+      "market_slug": "will-ivory-coast-win-the-2026-fifa-world-cup",
+      "question": "Will Ivory Coast win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "ecuador": {
+      "probability": 0.0,
+      "market_slug": "will-ecuador-win-the-2026-fifa-world-cup-986",
+      "question": "Will Ecuador win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "egypt": {
+      "probability": 0.0,
+      "market_slug": "will-egypt-win-the-2026-fifa-world-cup",
+      "question": "Will Egypt win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "england": {
+      "probability": 0.0,
+      "market_slug": "will-england-win-the-2026-fifa-world-cup-937",
+      "question": "Will England win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "france": {
+      "probability": 0.0,
+      "market_slug": "will-france-win-the-2026-fifa-world-cup-924",
+      "question": "Will France win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "germany": {
+      "probability": 0.0,
+      "market_slug": "will-germany-win-the-2026-fifa-world-cup-467",
+      "question": "Will Germany win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "ghana": {
+      "probability": 0.0,
+      "market_slug": "will-ghana-win-the-2026-fifa-world-cup",
+      "question": "Will Ghana win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "haiti": {
+      "probability": 0.0,
+      "market_slug": "will-haiti-win-the-2026-fifa-world-cup",
+      "question": "Will Haiti win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "iran": {
+      "probability": 0.0,
+      "market_slug": "will-iran-win-the-2026-fifa-world-cup-788",
+      "question": "Will Iran win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "iraq": {
+      "probability": 0.0,
+      "market_slug": "will-iraq-win-the-2026-fifa-world-cup",
+      "question": "Will Iraq win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "japan": {
+      "probability": 0.0,
+      "market_slug": "will-japan-win-the-2026-fifa-world-cup-112",
+      "question": "Will Japan win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "jordan": {
+      "probability": 0.0,
+      "market_slug": "will-jordan-win-the-2026-fifa-world-cup-233",
+      "question": "Will Jordan win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "mexico": {
+      "probability": 0.0,
+      "market_slug": "will-mexico-win-the-2026-fifa-world-cup-529",
+      "question": "Will Mexico win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "morocco": {
+      "probability": 0.0,
+      "market_slug": "will-morocco-win-the-2026-fifa-world-cup-464",
+      "question": "Will Morocco win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "netherlands": {
+      "probability": 0.0,
+      "market_slug": "will-netherlands-win-the-2026-fifa-world-cup-739",
+      "question": "Will Netherlands win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "new-zealand": {
+      "probability": 0.0,
+      "market_slug": "will-new-zealand-win-the-2026-fifa-world-cup-635",
+      "question": "Will New Zealand win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "norway": {
+      "probability": 0.0,
+      "market_slug": "will-norway-win-the-2026-fifa-world-cup-893",
+      "question": "Will Norway win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "panama": {
+      "probability": 0.0,
+      "market_slug": "will-team-z-win-the-2026-fifa-world-cup-316",
+      "question": "Will Panama win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "paraguay": {
+      "probability": 0.0,
+      "market_slug": "will-paraguay-win-the-2026-fifa-world-cup-967",
+      "question": "Will Paraguay win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "portugal": {
+      "probability": 0.0,
+      "market_slug": "will-portugal-win-the-2026-fifa-world-cup-912",
+      "question": "Will Portugal win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "qatar": {
+      "probability": 0.0,
+      "market_slug": "will-qatar-win-the-2026-fifa-world-cup",
+      "question": "Will Qatar win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "saudi-arabia": {
+      "probability": 0.0,
+      "market_slug": "will-saudi-arabia-win-the-2026-fifa-world-cup",
+      "question": "Will Saudi Arabia win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "scotland": {
+      "probability": 0.0,
+      "market_slug": "will-scotland-win-the-2026-fifa-world-cup",
+      "question": "Will Scotland win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "senegal": {
+      "probability": 0.0,
+      "market_slug": "will-senegal-win-the-2026-fifa-world-cup",
+      "question": "Will Senegal win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "south-africa": {
+      "probability": 0.0,
+      "market_slug": "will-south-africa-win-the-2026-fifa-world-cup",
+      "question": "Will South Africa win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "south-korea": {
+      "probability": 0.0,
+      "market_slug": "will-south-korea-win-the-2026-fifa-world-cup-485",
+      "question": "Will South Korea win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "spain": {
+      "probability": 59.05,
+      "market_slug": "will-spain-win-the-2026-fifa-world-cup-963",
+      "question": "Will Spain win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.5905
+    },
+    "sweden": {
+      "probability": 0.0,
+      "market_slug": "will-sweden-win-the-2026-fifa-world-cup",
+      "question": "Will Sweden win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "switzerland": {
+      "probability": 0.0,
+      "market_slug": "will-switzerland-win-the-2026-fifa-world-cup",
+      "question": "Will Switzerland win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "tunisia": {
+      "probability": 0.0,
+      "market_slug": "will-tunisia-win-the-2026-fifa-world-cup-165",
+      "question": "Will Tunisia win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "turkey": {
+      "probability": 0.0,
+      "market_slug": "will-turkiye-win-the-2026-fifa-world-cup",
+      "question": "Will Turkiye win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "united-states": {
+      "probability": 0.0,
+      "market_slug": "will-usa-win-the-2026-fifa-world-cup-467",
+      "question": "Will USA win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "uruguay": {
+      "probability": 0.0,
+      "market_slug": "will-uruguay-win-the-2026-fifa-world-cup-932",
+      "question": "Will Uruguay win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    },
+    "uzbekistan": {
+      "probability": 0.0,
+      "market_slug": "will-uzbekistan-win-the-2026-fifa-world-cup-773",
+      "question": "Will Uzbekistan win the 2026 FIFA World Cup?",
+      "raw_yes_price": 0.0
+    }
+  },
+  "unmapped_markets": [
+    {
+      "question": "Will Italy win the 2026 FIFA World Cup?",
+      "market_slug": "will-italy-win-the-2026-fifa-world-cup-813",
+      "reason": "team_name_not_in_registry"
+    },
+    {
+      "question": "Will Peru win the 2026 FIFA World Cup?",
+      "market_slug": "will-peru-win-the-2026-fifa-world-cup-981",
+      "reason": "team_name_not_in_registry"
+    },
+    {
+      "question": "Will Any Other Team win the 2026 FIFA World Cup?",
+      "market_slug": "will-any-other-team-win-the-2026-fifa-world-cup-541-319-294-845-754-317-243-911-472-778-811-233-235-839-426-488",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Congo DR win the 2026 FIFA World Cup?",
+      "market_slug": "will-congo-dr-win-the-2026-fifa-world-cup",
+      "reason": "team_name_not_in_registry"
+    },
+    {
+      "question": "Will Bosnia-Herzegovina win the 2026 FIFA World Cup?",
+      "market_slug": "will-bosnia-herzegovina-win-the-2026-fifa-world-cup",
+      "reason": "team_name_not_in_registry"
+    },
+    {
+      "question": "Will Czechia win the 2026 FIFA World Cup?",
+      "market_slug": "will-czechia-win-the-2026-fifa-world-cup",
+      "reason": "team_name_not_in_registry"
+    },
+    {
+      "question": "Will Team AG win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-ag-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AH win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-ah-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AI win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-ai-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AJ win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-aj-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AK win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-ak-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AL win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-al-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AM win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-am-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AN win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-an-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    },
+    {
+      "question": "Will Team AO win the 2026 FIFA World Cup?",
+      "market_slug": "will-team-ao-win-the-2026-fifa-world-cup",
+      "reason": "unmapped_or_missing_yes_price"
+    }
+  ]
+}

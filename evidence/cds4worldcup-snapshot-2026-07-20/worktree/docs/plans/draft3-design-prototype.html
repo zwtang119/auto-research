@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>草稿3 — CDS4WorldCup 设计原型</title>
+  <style>
+    /* ═════════════════════════════════════════
+       草稿3 — 设计方向：赛场能量 × 数据直觉
+       核心改动：
+       1. Hero 概率信号前置（热门球队概率卡）
+       2. 球迷模式概率条（无说明前缀，数字即主角）
+       3. 球星卡式球队列表
+       4. 导航精简 + 色彩系统升级
+       5. 节奏变化：呼吸感 → 紧凑 → 宽松
+    ═════════════════════════════════════════ */
+
+    :root {
+      /* ── 原有系统保留 ── */
+      --ink: #15231e;
+      --muted: #596962;
+      --paper: #f8f6f1;
+      --panel: #fffef8;
+      --line: #d7dfd0;
+
+      /* ── 新增：赛场能量色 ── */
+      --energy-blue: #1a73e8;
+      --fight-red: #d93025;
+      --alert-gold: #f9ab00;
+      --grass-green: #0f8c48;
+      --neutral-gray: #9aa0a6;
+
+      /* ── 概率条专用色 ── */
+      --prob-home: #1565c0;
+      --prob-draw: #e0e0e0;
+      --prob-away: #c62828;
+
+      /* ── 字体 ── */
+      --display: "DM Serif Display", "Songti SC", Georgia, serif;
+      --body: "Noto Sans SC", -apple-system, "PingFang SC", sans-serif;
+      --mono: "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--paper);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    * { box-sizing: border-box; }
+
+    /* ── 草稿标注 ── */
+    .draft-badge {
+      position: fixed;
+      top: 16px; right: 16px;
+      background: var(--fight-red); color: #fff;
+      font: 700 11px/1 var(--mono);
+      padding: 4px 10px; border-radius: 4px;
+      z-index: 9999; letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .draft-badge::before { content: "草稿3 · "; opacity: 0.7; }
+
+    /* ═════ NAV ═════ */
+    .nav {
+      display: flex; align-items: center; gap: 28px;
+      padding: 14px 40px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(248, 246, 241, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand {
+      font: 700 15px/1 var(--mono);
+      color: var(--ink); text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand span { color: var(--grass-green); }
+    .nav-links {
+      display: flex; gap: 24px;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .nav-links a {
+      font: 500 14px/1 var(--body);
+      color: var(--muted); text-decoration: none;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink); border-bottom-color: var(--grass-green);
+    }
+
+    /* ═════ HERO — 全新设计 ═════ */
+    .hero {
+      padding: 60px 40px 50px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+    .hero-text { max-width: 600px; }
+    .hero-eyebrow {
+      font: 600 12px/1 var(--mono);
+      color: #c44d00;  /* 加深以通过 WCAG AA */
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .hero-title {
+      font: 700 3.2rem/1.05 var(--display);
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-lede {
+      font-size: 1.12rem; color: #37474f;
+      line-height: 1.65; margin: 0 0 24px;
+    }
+    .hero-actions {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center;
+      font: 600 14px/1 var(--body);
+      padding: 10px 20px; border-radius: 8px;
+      text-decoration: none; cursor: pointer;
+      border: none; transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--ink); color: #fff;
+      box-shadow: 0 4px 14px rgba(21,35,30,0.2);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* ── Hero 右侧：热门球队概率卡（核心新增）── */
+    .hero-signals {
+      width: 320px;
+    }
+    .hero-signals-label {
+      font: 600 11px/1 var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .signal-card-mini {
+      display: flex; align-items: center; gap: 12px;
+      background: #fff; border: 1px solid var(--line);
+      border-radius: 10px; padding: 12px 14px;
+      margin-bottom: 8px;
+      transition: box-shadow 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .signal-card-mini:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transform: translateX(4px);
+    }
+    .signal-flag { font-size: 1.6rem; flex-shrink: 0; }
+    .signal-info { flex: 1; min-width: 0; }
+    .signal-team-name {
+      font: 600 14px/1.2 var(--body);
+      margin: 0;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .signal-meta {
+      font: 500 11px/1 var(--mono);
+      color: var(--muted);
+    }
+    .signal-pct {
+      font: 800 22px/1 var(--mono);
+      color: var(--grass-green);
+      flex-shrink: 0;
+      min-width: 52px; text-align: right;
+    }
+    .signal-pct.low { color: var(--alert-gold); }
+    .signal-pct.mid { color: var(--energy-blue); }
+
+    /* ═════ SECTION: 比赛概率条（球迷模式）═════ */
+    .section {
+      max-width: 1200px; margin: 0 auto;
+      padding: 48px 40px;
+    }
+    .section-label {
+      font: 600 11px/1 var(--mono);
+      color: #c44d00;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 8px;
+    }
+    .section-title {
+      font: 700 2rem/1.15 var(--display);
+      margin: 0 0 32px;
+    }
+
+    /* ── 球迷模式概率条（无 source-badge，数字主角）── */
+    .fan-match {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .fan-match-header {
+      display: flex; justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .fan-match-teams {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .fan-team-block {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 4px;
+    }
+    .fan-team-flag { font-size: 2.4rem; }
+    .fan-team-name {
+      font: 700 16px/1.2 var(--body);
+      white-space: nowrap;
+    }
+    .fan-vs {
+      font: 900 18px/1 var(--display);
+      color: var(--neutral-gray);
+    }
+    .fan-match-meta {
+      font: 500 13px/1.5 var(--mono);
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── 概率条核心组件 ── */
+    .fan-prob-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 80px;
+      align-items: center;
+      gap: 16px;
+    }
+    .fan-pct-big {
+      font: 800 36px/1 var(--mono);
+      text-align: center;
+    }
+    .fan-pct-big.home { color: var(--prob-home); }
+    .fan-pct-big.away { color: var(--prob-away); }
+    .fan-prob-track {
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      background: #f0ece4;
+    }
+    .fan-prob-seg {
+      height: 100%;
+      display: flex; align-items: center;
+      justify-content: center;
+      font: 700 11px/1 var(--mono);
+      color: #fff;
+      transition: width 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fan-prob-seg.home { background: var(--prob-home); }
+    .fan-prob-seg.draw { background: var(--prob-draw); color: var(--muted); }
+    .fan-prob-seg.away { background: var(--prob-away); }
+
+    .fan-draw-note {
+      text-align: center;
+      font: 600 14px/1 var(--mono);
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .fan-draw-note strong { color: var(--ink); }
+
+    /* 三信号对比（紧凑版） */
+    .tri-signal {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--line);
+    }
+    .tri-signal-label {
+      font: 600 10px/1 var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .tri-signal-row {
+      display: grid; gap: 6px;
+    }
+    .tri-signal-item {
+      display: grid;
+      grid-template-columns: 56px 1fr 48px;
+      align-items: center;
+      gap: 10px;
+    }
+    .tri-src-name {
+      font: 600 11px/1 var(--mono);
+      color: var(--muted);
+    }
+    .tri-track {
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #eee;
+      display: flex;
+    }
+    .tri-fill-home { background: var(--prob-home); height: 100%; }
+    .tri-fill-draw { background: #ccc; height: 100%; }
+    .tri-fill-away { background: var(--prob-away); height: 100%; }
+    .tri-val {
+      font: 700 11px/1 var(--mono);
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* ═════ SECTION: 球星卡球队列表 ═════ */
+    .team-grid-new {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .team-star-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      display: flex; flex-direction: column;
+    }
+    .team-star-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      border-color: var(--grass-green);
+    }
+    .tsc-top {
+      display: flex; justify-content: space-between;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+    .tsc-flag { font-size: 2rem; }
+    .tsc-depth {
+      font: 600 9px/1 var(--mono);
+      padding: 2px 6px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .tsc-depth.deep {
+      background: #e8f5e9; color: #2e7d32;
+    }
+    .tsc-depth.thin {
+      background: #fff8e1; color: #f57f17;
+    }
+    .tsc-name {
+      font: 700 17px/1.2 var(--body);
+      margin: 0 0 4px;
+    }
+    .tsc-group {
+      font: 500 12px/1 var(--mono);
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .tsc-prob-bar {
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #f0ece4;
+      margin-bottom: 6px;
+    }
+    .tsc-prob-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--grass-green), var(--energy-blue));
+      transition: width 0.5s ease;
+    }
+    .tsc-prob-label {
+      font: 700 14px/1 var(--mono);
+      color: var(--grass-green);
+    }
+    .tsc-link {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid #f0ece4;
+      font: 600 12px/1 var(--body);
+      color: var(--energy-blue);
+      text-decoration: none;
+    }
+
+    /* ═════ AI 观点墙 ═════ */
+    .quote-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .quote-card {
+      background: linear-gradient(135deg, #fafbf6 0%, #f4f1ea 100%);
+      border-left: 4px solid var(--alert-gold);
+      border-radius: 0 12px 12px 0;
+      padding: 24px;
+      position: relative;
+    }
+    .quote-mark {
+      font: 700 64px/1 Georgia, serif;
+      color: var(--alert-gold);
+      opacity: 0.25;
+      position: absolute;
+      top: -4px; left: 12px;
+    }
+    .quote-text {
+      font: 500 15px/1.6 var(--body);
+      color: #1a1a1a;
+      margin: 0 0 12px;
+      position: relative; z-index: 1;
+    }
+    .quote-source {
+      font: 600 11px/1 var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ═════ Footer 免责声明（统一来源说明）═════ */
+    .footer-disclaimer {
+      max-width: 1200px; margin: 0 auto;
+      padding: 32px 40px 48px;
+      border-top: 1px solid var(--line);
+    }
+    .disclaimer-text {
+      font: 400 12px/1.7 var(--body);
+      color: var(--muted);
+      max-width: 720px;
+    }
+    .disclaimer-text strong { color: var(--ink); }
+
+    /* ═════ 动画 ═════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeUp 0.5s ease both;
+    }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+    .delay-5 { animation-delay: 0.40s; }
+    .delay-6 { animation-delay: 0.48s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-in { animation: none; opacity: 1; }
+      .signal-card-mini:hover { transform: none; }
+      .team-star-card:hover { transform: none; }
+    }
+
+    /* ═════ 响应式 ═════ */
+    @media (max-width: 768px) {
+      .hero { padding: 40px 20px 30px; }
+      .hero-top { grid-template-columns: 1fr; gap: 28px; }
+      .hero-signals { width: 100%; }
+      .hero-title { font-size: 2.2rem; }
+      .section { padding: 36px 20px; }
+      .nav { padding: 12px 20px; gap: 16px; }
+      .nav-links { gap: 16px; }
+      .fan-match { padding: 20px; }
+      .fan-pct-big { font-size: 28px; }
+      .fan-prob-row { grid-template-columns: 60px 1fr 60px; gap: 10px; }
+      .team-grid-new { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .fan-team-flag { font-size: 1.8rem; }
+      .quote-wall { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="draft-badge">Design Draft</div>
+
+<!-- ═════ NAV（精简版） ═════ -->
+<nav class="nav">
+  <a class="nav-brand" href="#">CDS<span>4</span>WorldCup</a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">首页</a></li>
+    <li><a href="#">全景图</a></li>
+    <li><a href="#">球队</a></li>
+  </ul>
+</nav>
+
+<!-- ═════ HERO（概率信号前置） ═════ -->
+<section class="hero animate-in">
+  <div class="hero-top">
+    <div class="hero-text">
+      <p class="hero-eyebrow">2026 FIFA World Cup</p>
+      <h1 class="hero-title">48 支球队，每队都有一条夺冠路。</h1>
+      <p class="hero-lede">我们不猜冠军。拆开看每支球队真要捧杯，得过哪些坎。所有概率信号供参考，不作为投注建议。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">选一支球队看看</a>
+        <a class="btn btn-ghost" href="#">看全部 48 队</a>
+      </div>
+    </div>
+
+    <!-- 核心：热门球队概率卡 -->
+    <aside class="hero-signals">
+      <p class="hero-signals-label">热门球队夺冠信号</p>
+
+      <div class="signal-card-mini animate-in delay-1">
+        <span class="signal-flag">🇦🇷</span>
+        <div class="signal-info">
+          <p class="signal-team-name">阿根廷</p>
+          <span class="signal-meta">C组 · 深度版</span>
+        </div>
+        <span class="signal-pct">72.8%</span>
+      </div>
+
+      <div class="signal-card-mini animate-in delay-2">
+        <span class="signal-flag">🇧🇷</span>
+        <div class="signal-info">
+          <p class="signal-team-name">巴西</p>
+          <span class="signal-meta">C组 · 深度版</span>
+        </div>
+        <span class="signal-pct mid">15.2%</span>
+      </div>
+
+      <div class="signal-card-mini animate-in delay-3">
+        <span class="signal-flag">🇫🇷</span>
+        <div class="signal-info">
+          <p class="signal-team-name">法国</p>
+          <span class="signal-meta">A组 · 深度版</span>
+        </div>
+        <span class="signal-pct mid">11.4%</span>
+      </div>
+
+      <div class="signal-card-mini animate-in delay-4">
+        <span class="signal-flag">🇪🇸</span>
+        <div class="signal-info">
+          <p class="signal-team-name">西班牙</p>
+          <span class="signal-meta">H组 · 深度版</span>
+        </div>
+        <span class="signal-pct low">8.5%</span>
+      </div>
+
+      <div class="signal-card-mini animate-in delay-5">
+        <span class="signal-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+        <div class="signal-info">
+          <p class="signal-team-name">英格兰</p>
+          <span class="signal-meta">L组 · 深度版</span>
+        </div>
+        <span class="signal-pct low">6.1%</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═════ 比赛概率（球迷模式：无说明前缀） ═════ -->
+<section class="section">
+  <p class="section-label">焦点战役</p>
+  <h2 class="section-title">下一场，谁更被看好？</h2>
+
+  <!-- 比赛 1：一边倒 -->
+  <article class="fan-match animate-in">
+    <div class="fan-match-header">
+      <div class="fan-match-teams">
+        <div class="fan-team-block">
+          <span class="fan-team-flag">🇦🇷</span>
+          <span class="fan-team-name">阿根廷</span>
+        </div>
+        <span class="fan-vs">VS</span>
+        <div class="fan-team-block">
+          <span class="fan-team-flag">🇸🇦</span>
+          <span class="fan-team-name">沙特阿拉伯</span>
+        </div>
+      </div>
+      <div class="fan-match-meta">
+        C组 第3轮<br>
+        2026-06-19 21:00
+      </div>
+    </div>
+
+    <div class="fan-prob-row">
+      <span class="fan-pct-big home">82.8%</span>
+      <div class="fan-prob-track">
+        <div class="fan-prob-seg home" style="width:82.8%">82.8</div>
+        <div class="fan-prob-seg draw" style="width:12.7%">平</div>
+        <div class="fan-prob-seg away" style="width:4.5%">4.5</div>
+      </div>
+      <span class="fan-pct-big away">4.5%</span>
+    </div>
+    <p class="fan-draw-note">平局概率 <strong>12.7%</strong></p>
+
+    <!-- 三信号对比（折叠态） -->
+    <div class="tri-signal">
+      <p class="tri-signal-label">三源对比</p>
+      <div class="tri-signal-row">
+        <div class="tri-signal-item">
+          <span class="tri-src-name">Elo</span>
+          <div class="tri-track">
+            <div class="tri-fill-home" style="width:82.8%"></div>
+            <div class="tri-fill-draw" style="width:12.7%"></div>
+            <div class="tri-fill-away" style="width:4.5%"></div>
+          </div>
+          <span class="tri-val">83/13/5</span>
+        </div>
+        <div class="tri-signal-item">
+          <span class="tri-src-name">市场</span>
+          <div class="tri-track">
+            <div class="tri-fill-home" style="width:78%"></div>
+            <div class="tri-fill-draw" style="width:15%"></div>
+            <div class="tri-fill-away" style="width:7%"></div>
+          </div>
+          <span class="tri-val" style="color:var(--muted)">待接入</span>
+        </div>
+        <div class="tri-signal-item">
+          <span class="tri-src-name">AI</span>
+          <div class="tri-track">
+            <div class="tri-fill-home" style="width:85%"></div>
+            <div class="tri-fill-draw" style="width:10%"></div>
+            <div class="tri-fill-away" style="width:5%"></div>
+          </div>
+          <span class="tri-val" style="color:var(--muted)">待接入</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 比赛 2：势均力敌 -->
+  <article class="fan-match animate-in delay-1">
+    <div class="fan-match-header">
+      <div class="fan-match-teams">
+        <div class="fan-team-block">
+          <span class="fan-team-flag">🇺🇾</span>
+          <span class="fan-team-name">乌拉圭</span>
+        </div>
+        <span class="fan-vs">VS</span>
+        <div class="fan-team-block">
+          <span class="fan-team-flag">🇪🇸</span>
+          <span class="fan-team-name">西班牙</span>
+        </div>
+      </div>
+      <div class="fan-match-meta">
+        小组赛潜在对决<br>
+        （示意数据）
+      </div>
+    </div>
+
+    <div class="fan-prob-row">
+      <span class="fan-pct-big home">38.4%</span>
+      <div class="fan-prob-track">
+        <div class="fan-prob-seg home" style="width:38.4%">38.4</div>
+        <div class="fan-prob-seg draw" style="width:25%">平</div>
+        <div class="fan-prob-seg away" style="width:36.6%">36.6</div>
+      </div>
+      <span class="fan-pct-big away">36.6%</span>
+    </div>
+    <p class="fan-draw-note">平局概率 <strong>25.0%</strong> · 势均力敌</p>
+  </article>
+</section>
+
+<!-- ═════ 球队列表（球星卡模式） ═════ -->
+<section class="section">
+  <p class="section-label">48 队总览</p>
+  <h2 class="section-title">你支持的队，夺冠信号是多少？</h2>
+
+  <div class="team-grid-new">
+
+    <div class="team-star-card animate-in">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇦🇷</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">阿根廷</h3>
+      <p class="tsc-group">C组 · 南美</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:72.8%"></div></div>
+      <span class="tsc-prob-label">72.8%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-1">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇧🇷</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">巴西</h3>
+      <p class="tsc-group">C组 · 南美</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:15.2%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--energy-blue)">15.2%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-2">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇫🇷</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">法国</h3>
+      <p class="tsc-group">A组 · 欧洲</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:11.4%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--energy-blue)">11.4%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-3">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇪🇸</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">西班牙</h3>
+      <p class="tsc-group">H组 · 欧洲</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:8.5%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--alert-gold)">8.5%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-4">
+      <div class="tsc-top">
+        <span class="tsc-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">英格兰</h3>
+      <p class="tsc-group">L组 · 欧洲</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:6.1%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--alert-gold)">6.1%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-5">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇵🇹</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">葡萄牙</h3>
+      <p class="tsc-group">K组 · 欧洲</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:5.8%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--alert-gold)">5.8%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇩🇪</span>
+        <span class="tsc-depth deep">深度版</span>
+      </div>
+      <h3 class="tsc-name">德国</h3>
+      <p class="tsc-group">E组 · 欧洲</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:4.2%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--alert-gold)">4.2%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+    <div class="team-star-card animate-in delay-1">
+      <div class="tsc-top">
+        <span class="tsc-flag">🇲🇽</span>
+        <span class="tsc-depth thin">简版</span>
+      </div>
+      <h3 class="tsc-name">墨西哥</h3>
+      <p class="tsc-group">A组 · 中北美</p>
+      <div class="tsc-prob-bar"><div class="tsc-prob-fill" style="width:0.8%"></div></div>
+      <span class="tsc-prob-label" style="color:var(--neutral-gray)">0.8%</span>
+      <a class="tsc-link" href="#">查看夺冠路 →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════ AI 观点墙（替代派别卡片网格） ═════ -->
+<section class="section">
+  <p class="section-label">AI 多视角推演</p>
+  <h2 class="section-title">300 个视角，不是一个声音。</h2>
+
+  <div class="quote-wall">
+    <div class="quote-card animate-in">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">阿根廷的最大敌人不是对手，是心理包袱。连续大赛夺冠后的自满倾向在历史上反复出现。</p>
+      <span class="quote-source">老球迷视角 · 42 个同类观点</span>
+    </div>
+    <div class="quote-card animate-in delay-1">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">西班牙的控球体系在杯赛赛制下会被压缩空间，他们的破密集防守能力存疑。</p>
+      <span class="quote-source">战术分析师 · 38 个同类观点</span>
+    </div>
+    <div class="quote-card animate-in delay-2">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">法国的阵容深度掩盖了一个问题：主力与替补之间的断层比看起来的大。</p>
+      <span class="quote-source">数据建模 · 31 个同类观点</span>
+    </div>
+    <div class="quote-card animate-in delay-3">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">别忽视黑马。上届世界杯已经证明，小组赛的偶然性足以改变整个淘汰赛对阵。</p>
+      <span class="quote-source">历史类比 · 27 个同类观点</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ Footer（统一来源声明，不再重复） ═════ -->
+<footer class="footer-disclaimer">
+  <p class="disclaimer-text">
+    <strong>关于概率信号：</strong>本页展示的夺冠概率和比赛胜率来自 Elo+泊松数值模型（Red Source），仅作参考对比，不作为事实依据或投注建议。
+    市场数据和 AI 投票信号将在后续版本接入后展示在三源对比区域。
+    所有判断遵循「可赛后对账」原则——每个概率背后都有可观测的验证指标。
+    <br><br>
+    <strong>来源分级：</strong>
+    绿 = 可靠事实（FIFA 官方、可复核数据）·
+    黄 = 待核验线索（市场快照、媒体汇总）·
+    红 = 只能参考（模型输出、未核验结论）
+  </p>
+</footer>
+
+</body>
+</html>

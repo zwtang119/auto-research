@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>48 队路径卡总览 - CDS4WorldCup</title>
+  <meta name="description" content="搜索和筛选 2026 世界杯 48 队夺冠路径卡">
+  <link rel="stylesheet" href="css/portal.css">
+  <script src="data/teams-data.js"></script>
+  <script src="data/baselines-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/teams.js" defer></script>
+</head>
+<body>
+  <header class="topbar" aria-label="站点导航">
+    <a class="brand" href="index.html">CDS4WorldCup</a>
+    <nav class="topnav">
+      <a href="index.html">首页</a>
+      <a href="panorama.html">全景图</a>
+      <a href="teams.html" class="active">球队</a>
+    </nav>
+  </header>
+
+  <main class="portal teams-shell">
+    <section>
+      <div class="eyebrow">球队入口</div>
+      <h1>48 队路径卡总览</h1>
+      <p class="lede">这里先把 48 支队摆出来：21 队已经做了深度拆解，27 队先保留简版。你可以先找自己支持的队，看它离冠军差哪几关。</p>
+      <div class="portal-actions">
+        <a class="button-link secondary" href="index.html">返回研究门户</a>
+      </div>
+    </section>
+
+    <section class="control-panel" aria-label="球队筛选">
+      <label>
+        <span class="label">搜球队</span>
+        <input data-filter-query type="search" placeholder="搜索 西班牙 / Spain / spain">
+      </label>
+      <label>
+        <span class="label">赛区</span>
+        <select data-filter-confederation>
+          <option value="all">全部洲际</option>
+          <option value="UEFA">UEFA 欧洲</option>
+          <option value="CONMEBOL">CONMEBOL 南美</option>
+          <option value="CONCACAF">CONCACAF 中北美</option>
+          <option value="CAF">CAF 非洲</option>
+          <option value="AFC">AFC 亚洲</option>
+          <option value="OFC">OFC 大洋洲</option>
+        </select>
+      </label>
+      <label>
+        <span class="label">拆解程度</span>
+        <select data-filter-depth>
+          <option value="all">全部卡片</option>
+          <option value="deep">只看深度版</option>
+          <option value="thin">只看简版</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="count-line" data-count-line>正在加载球队...</div>
+    <section class="team-grid team-grid-new" data-team-grid aria-live="polite"></section>
+  </main>
+
+</body>
+</html>

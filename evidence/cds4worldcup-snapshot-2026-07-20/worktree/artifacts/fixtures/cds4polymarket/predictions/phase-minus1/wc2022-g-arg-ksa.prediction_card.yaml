@@ -1,0 +1,99 @@
+schema_version: "0.2"
+smoke_test: true
+smoke_test_note: >
+  Historical retrospective — Argentina vs Saudi Arabia, 2022 FIFA World Cup Group C.
+  Probabilities derived from FIFA ranking-based logistic model, not from LLM generation.
+  This is a protocol validation artifact, not a real-time pre-match forecast.
+
+task_type: "group_90m_wdl"
+match_id: "wc2022-g-arg-ksa"
+competition: "FIFA World Cup 2022"
+stage: "group"
+kickoff_time_utc: "2022-11-22T10:00:00Z"
+
+teams:
+  home: "Argentina"
+  away: "Saudi Arabia"
+
+lock:
+  prediction_locked_at_utc: "2022-11-22T09:00:00Z"
+  sha256: "pending_smoke_test_retrospective_no_file_hash"
+  git_commit: "not_applicable_historical_smoke_test"
+
+data_package:
+  package_id: "wc2022-g-arg-ksa-smoke-test-v0.1"
+  green_sources:
+    - "wikipedia_2022_wc_group_c"
+    - "wikipedia_2022_wc_seeding"
+  red_sources_excluded_from_model:
+    - "kimi_public_artifact_snapshot"
+
+llm:
+  provider_id: "none_retrospective_smoke_test"
+  model_id: "fifa_ranking_logistic_v0.1"
+  model_version_observed_at_utc: "2026-06-10T00:00:00Z"
+  prompt_version: "not_applicable_smoke_test"
+  temperature: 0
+  max_retries: 0
+  reasoning_budget: "fixed"
+  schema_validation_status: "passed"
+  source_cutoff_utc: "2022-11-22T09:00:00Z"
+
+prompt_config:
+  system_prompt_id: "not_applicable_smoke_test"
+  user_prompt_template_id: "not_applicable_smoke_test"
+  prompt_hash: "not_applicable_smoke_test"
+  market_or_odds_exposed_to_model: false
+  public_ai_baseline_exposed_to_model: false
+
+memory_budget:
+  max_prior_notes: 0
+  max_note_chars_each: 0
+  max_kimi_derived_candidates_reviewed: 0
+  max_kimi_derived_factors_tracked: 0
+
+probabilities:
+  home_win_90m: 0.66
+  draw_90m: 0.25
+  away_win_90m: 0.09
+
+baselines:
+  market_or_odds:
+    status: "missing_with_reason"
+    reason: >
+      Historical retrospective smoke test — market source not archived for this match.
+      Protocol does not require market archival for Phase -1 historical smoke tests.
+      This field is kept as missing_with_reason per spec requirement.
+  simple_statistical:
+    status: "available"
+    method: >
+      FIFA ranking points difference via FIFA Elo formula (c=600) followed by
+      three-outcome decomposition with base draw rate d=0.25.
+      P(home_win) = W_e - 0.5*d; P(draw) = d; P(away_win) = 1 - P(home_win) - P(draw).
+    fifa_ranking_date: "2022-03-31"
+    argentina_rank: 4
+    saudi_arabia_rank: 49
+    ranking_source_url: "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_seeding"
+    ranking_points_difference_note: >
+      Argentina ~1838 pts (rank #4), Saudi Arabia ~1437 pts (rank #49).
+      Points difference ~400. FIFA Elo formula: W_e = 1/(10^(-400/600)+1) ≈ 0.82.
+      Using October 2022 ranking (last before WC): W_e ≈ 0.785 with Δ≈337.
+    expected_score_argentina: 0.785
+    decomposition_note: "P(win)=0.785-0.125=0.66; P(draw)=0.25; P(loss)=0.09"
+    probabilities:
+      home_win_90m: 0.66
+      draw_90m: 0.25
+      away_win_90m: 0.09
+  public_ai:
+    status: "not_applicable_smoke_test"
+
+factors_used:
+  - "wc2022-g-arg-ksa-f01-ksa-offside-trap"
+  - "wc2022-g-arg-ksa-f02-ksa-early-second-half-goal"
+
+uncertainty_notes:
+  - "Smoke test: historical retrospective, not a real-time pre-match forecast."
+  - "Probabilities derived from FIFA ranking positions (#4 Argentina vs #49 Saudi Arabia) using logistic model; not from LLM or market data."
+  - "Argentina was on a 36-match unbeaten streak entering this match, which the simple statistical baseline does not capture."
+  - "This match produced one of the biggest upsets in World Cup history (Saudi Arabia 2-1 Argentina)."
+  - "The simple statistical baseline heavily favored Argentina; the actual result was an extreme outlier relative to the baseline."

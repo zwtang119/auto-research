@@ -1,0 +1,1372 @@
+{
+  "generated_at": "2026-07-19T02:49:46.710982+00:00",
+  "model": "elo_poisson",
+  "model_description": "基线数值预测模型。使用联合会代理 Elo + 主场优势 + 泊松分布计算胜/平/负概率。来源等级: Red（模型输出）。",
+  "total_matches_predicted": 72,
+  "total_matches_skipped": 32,
+  "elo_ratings": {
+    "Spain": 1800,
+    "France": 1800,
+    "Argentina": 1790,
+    "Germany": 1760,
+    "Portugal": 1760,
+    "England": 1760,
+    "Brazil": 1750,
+    "Turkey": 1730,
+    "Netherlands": 1730,
+    "Belgium": 1730,
+    "Norway": 1730,
+    "Croatia": 1730,
+    "Uruguay": 1720,
+    "Colombia": 1720,
+    "Czech Republic": 1700,
+    "Bosnia and Herzegovina": 1700,
+    "Switzerland": 1700,
+    "Scotland": 1700,
+    "Sweden": 1700,
+    "Austria": 1700,
+    "Paraguay": 1690,
+    "Ecuador": 1690,
+    "Mexico": 1640,
+    "United States": 1640,
+    "Morocco": 1630,
+    "Canada": 1610,
+    "Senegal": 1600,
+    "South Korea": 1580,
+    "Australia": 1580,
+    "Japan": 1580,
+    "South Africa": 1570,
+    "Côte d'Ivoire": 1570,
+    "Tunisia": 1570,
+    "Egypt": 1570,
+    "Cape Verde": 1570,
+    "Algeria": 1570,
+    "DR Congo": 1570,
+    "Ghana": 1570,
+    "Qatar": 1550,
+    "Haiti": 1550,
+    "Curaçao": 1550,
+    "Iran": 1550,
+    "Saudi Arabia": 1550,
+    "Iraq": 1550,
+    "Jordan": 1550,
+    "Uzbekistan": 1550,
+    "Panama": 1550,
+    "New Zealand": 1460
+  },
+  "predictions": [
+    {
+      "match_id": "A1-MEX-RSA",
+      "model": "elo_poisson",
+      "home_team": "Mexico",
+      "away_team": "South Africa",
+      "home_win": 0.7004,
+      "draw": 0.184,
+      "away_win": 0.1155,
+      "expected_goals_home": 2.181,
+      "expected_goals_away": 0.753,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs CAF",
+        "东道主主场 (Mexico)",
+        "主队预期进球较高 (2.181)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "A2-KOR-CZE",
+      "model": "elo_poisson",
+      "home_team": "South Korea",
+      "away_team": "Czech Republic",
+      "home_win": 0.3115,
+      "draw": 0.2481,
+      "away_win": 0.4405,
+      "expected_goals_home": 1.275,
+      "expected_goals_away": 1.562,
+      "confidence": "medium",
+      "factors": [
+        "Czech Republic 有一定 Elo 优势 (+120)",
+        "跨联合会: AFC vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "A4-CZE-RSA",
+      "model": "elo_poisson",
+      "home_team": "Czech Republic",
+      "away_team": "South Africa",
+      "home_win": 0.7397,
+      "draw": 0.1683,
+      "away_win": 0.092,
+      "expected_goals_home": 2.281,
+      "expected_goals_away": 0.663,
+      "confidence": "medium",
+      "factors": [
+        "Czech Republic 有一定 Elo 优势 (+130)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.281)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "A3-MEX-KOR",
+      "model": "elo_poisson",
+      "home_team": "Mexico",
+      "away_team": "South Korea",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs AFC",
+        "东道主主场 (Mexico)",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "A5-CZE-MEX",
+      "model": "elo_poisson",
+      "home_team": "Czech Republic",
+      "away_team": "Mexico",
+      "home_win": 0.6402,
+      "draw": 0.205,
+      "away_win": 0.1549,
+      "expected_goals_home": 2.034,
+      "expected_goals_away": 0.884,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: UEFA vs CONCACAF",
+        "主队预期进球较高 (2.034)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "A6-RSA-KOR",
+      "model": "elo_poisson",
+      "home_team": "South Africa",
+      "away_team": "South Korea",
+      "home_win": 0.5167,
+      "draw": 0.2358,
+      "away_win": 0.2475,
+      "expected_goals_home": 1.749,
+      "expected_goals_away": 1.138,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B1-CAN-BIH",
+      "model": "elo_poisson",
+      "home_team": "Canada",
+      "away_team": "Bosnia and Herzegovina",
+      "home_win": 0.4214,
+      "draw": 0.2482,
+      "away_win": 0.3304,
+      "expected_goals_home": 1.534,
+      "expected_goals_away": 1.331,
+      "confidence": "low",
+      "factors": [
+        "Bosnia and Herzegovina 有一定 Elo 优势 (+90)",
+        "跨联合会: CONCACAF vs UEFA",
+        "东道主主场 (Canada)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B2-QAT-SUI",
+      "model": "elo_poisson",
+      "home_team": "Qatar",
+      "away_team": "Switzerland",
+      "home_win": 0.2619,
+      "draw": 0.2421,
+      "away_win": 0.4961,
+      "expected_goals_home": 1.149,
+      "expected_goals_away": 1.674,
+      "confidence": "medium",
+      "factors": [
+        "Switzerland 有一定 Elo 优势 (+150)",
+        "跨联合会: AFC vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B4-SUI-BIH",
+      "model": "elo_poisson",
+      "home_team": "Switzerland",
+      "away_team": "Bosnia and Herzegovina",
+      "home_win": 0.5353,
+      "draw": 0.2322,
+      "away_win": 0.2324,
+      "expected_goals_home": 1.792,
+      "expected_goals_away": 1.1,
+      "confidence": "low",
+      "factors": [
+        "两队实力接近，基线模型区分度低"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B3-CAN-QAT",
+      "model": "elo_poisson",
+      "home_team": "Canada",
+      "away_team": "Qatar",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs AFC",
+        "东道主主场 (Canada)",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B5-SUI-CAN",
+      "model": "elo_poisson",
+      "home_team": "Switzerland",
+      "away_team": "Canada",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "Switzerland 有一定 Elo 优势 (+90)",
+        "跨联合会: UEFA vs CONCACAF",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "B6-BIH-QAT",
+      "model": "elo_poisson",
+      "home_team": "Bosnia and Herzegovina",
+      "away_team": "Qatar",
+      "home_win": 0.7629,
+      "draw": 0.1582,
+      "away_win": 0.0789,
+      "expected_goals_home": 2.344,
+      "expected_goals_away": 0.607,
+      "confidence": "medium",
+      "factors": [
+        "Bosnia and Herzegovina 有一定 Elo 优势 (+150)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.344)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C1-BRA-MAR",
+      "model": "elo_poisson",
+      "home_team": "Brazil",
+      "away_team": "Morocco",
+      "home_win": 0.7272,
+      "draw": 0.1735,
+      "away_win": 0.0993,
+      "expected_goals_home": 2.249,
+      "expected_goals_away": 0.692,
+      "confidence": "medium",
+      "factors": [
+        "Brazil 有一定 Elo 优势 (+120)",
+        "跨联合会: CONMEBOL vs CAF",
+        "主队预期进球较高 (2.249)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C2-HAI-SCO",
+      "model": "elo_poisson",
+      "home_team": "Haiti",
+      "away_team": "Scotland",
+      "home_win": 0.2619,
+      "draw": 0.2421,
+      "away_win": 0.4961,
+      "expected_goals_home": 1.149,
+      "expected_goals_away": 1.674,
+      "confidence": "medium",
+      "factors": [
+        "Scotland 有一定 Elo 优势 (+150)",
+        "跨联合会: CONCACAF vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C4-SCO-MAR",
+      "model": "elo_poisson",
+      "home_team": "Scotland",
+      "away_team": "Morocco",
+      "home_win": 0.6561,
+      "draw": 0.1998,
+      "away_win": 0.1441,
+      "expected_goals_home": 2.072,
+      "expected_goals_away": 0.85,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.072)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C3-BRA-HAI",
+      "model": "elo_poisson",
+      "home_team": "Brazil",
+      "away_team": "Haiti",
+      "home_win": 0.8116,
+      "draw": 0.1349,
+      "away_win": 0.0535,
+      "expected_goals_home": 2.484,
+      "expected_goals_away": 0.482,
+      "confidence": "medium",
+      "factors": [
+        "Brazil Elo 优势显著 (+200)",
+        "跨联合会: CONMEBOL vs CONCACAF",
+        "主队预期进球较高 (2.484)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C5-SCO-BRA",
+      "model": "elo_poisson",
+      "home_team": "Scotland",
+      "away_team": "Brazil",
+      "home_win": 0.4405,
+      "draw": 0.2465,
+      "away_win": 0.313,
+      "expected_goals_home": 1.577,
+      "expected_goals_away": 1.292,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: UEFA vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "C6-MAR-HAI",
+      "model": "elo_poisson",
+      "home_team": "Morocco",
+      "away_team": "Haiti",
+      "home_win": 0.6714,
+      "draw": 0.1946,
+      "away_win": 0.134,
+      "expected_goals_home": 2.109,
+      "expected_goals_away": 0.817,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs CONCACAF",
+        "主队预期进球较高 (2.109)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D1-USA-PAR",
+      "model": "elo_poisson",
+      "home_team": "United States",
+      "away_team": "Paraguay",
+      "home_win": 0.4978,
+      "draw": 0.2391,
+      "away_win": 0.2631,
+      "expected_goals_home": 1.707,
+      "expected_goals_away": 1.176,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs CONMEBOL",
+        "东道主主场 (United States)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D2-AUS-TUR",
+      "model": "elo_poisson",
+      "home_team": "Australia",
+      "away_team": "Turkey",
+      "home_win": 0.2619,
+      "draw": 0.2421,
+      "away_win": 0.4961,
+      "expected_goals_home": 1.149,
+      "expected_goals_away": 1.674,
+      "confidence": "medium",
+      "factors": [
+        "Turkey 有一定 Elo 优势 (+150)",
+        "跨联合会: AFC vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D3-USA-AUS",
+      "model": "elo_poisson",
+      "home_team": "United States",
+      "away_team": "Australia",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs AFC",
+        "东道主主场 (United States)",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D4-TUR-PAR",
+      "model": "elo_poisson",
+      "home_team": "Turkey",
+      "away_team": "Paraguay",
+      "home_win": 0.6069,
+      "draw": 0.2149,
+      "away_win": 0.1782,
+      "expected_goals_home": 1.956,
+      "expected_goals_away": 0.954,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: UEFA vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D5-TUR-USA",
+      "model": "elo_poisson",
+      "home_team": "Turkey",
+      "away_team": "United States",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "Turkey 有一定 Elo 优势 (+90)",
+        "跨联合会: UEFA vs CONCACAF",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "D6-PAR-AUS",
+      "model": "elo_poisson",
+      "home_team": "Paraguay",
+      "away_team": "Australia",
+      "home_win": 0.7141,
+      "draw": 0.1788,
+      "away_win": 0.1072,
+      "expected_goals_home": 2.215,
+      "expected_goals_away": 0.722,
+      "confidence": "medium",
+      "factors": [
+        "Paraguay 有一定 Elo 优势 (+110)",
+        "跨联合会: CONMEBOL vs AFC",
+        "主队预期进球较高 (2.215)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E1-GER-CUW",
+      "model": "elo_poisson",
+      "home_team": "Germany",
+      "away_team": "Curaçao",
+      "home_win": 0.8199,
+      "draw": 0.1307,
+      "away_win": 0.0495,
+      "expected_goals_home": 2.509,
+      "expected_goals_away": 0.46,
+      "confidence": "high",
+      "factors": [
+        "Germany Elo 优势显著 (+210)",
+        "跨联合会: UEFA vs CONCACAF",
+        "主队预期进球较高 (2.509)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E2-CIV-ECU",
+      "model": "elo_poisson",
+      "home_team": "Côte d'Ivoire",
+      "away_team": "Ecuador",
+      "home_win": 0.3115,
+      "draw": 0.2481,
+      "away_win": 0.4405,
+      "expected_goals_home": 1.275,
+      "expected_goals_away": 1.562,
+      "confidence": "medium",
+      "factors": [
+        "Ecuador 有一定 Elo 优势 (+120)",
+        "跨联合会: CAF vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E3-GER-CIV",
+      "model": "elo_poisson",
+      "home_team": "Germany",
+      "away_team": "Côte d'Ivoire",
+      "home_win": 0.8029,
+      "draw": 0.1393,
+      "away_win": 0.0578,
+      "expected_goals_home": 2.458,
+      "expected_goals_away": 0.506,
+      "confidence": "medium",
+      "factors": [
+        "Germany Elo 优势显著 (+190)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.458)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E4-ECU-CUW",
+      "model": "elo_poisson",
+      "home_team": "Ecuador",
+      "away_team": "Curaçao",
+      "home_win": 0.7516,
+      "draw": 0.1632,
+      "away_win": 0.0852,
+      "expected_goals_home": 2.313,
+      "expected_goals_away": 0.635,
+      "confidence": "medium",
+      "factors": [
+        "Ecuador 有一定 Elo 优势 (+140)",
+        "跨联合会: CONMEBOL vs CONCACAF",
+        "主队预期进球较高 (2.313)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E5-ECU-GER",
+      "model": "elo_poisson",
+      "home_team": "Ecuador",
+      "away_team": "Germany",
+      "home_win": 0.4024,
+      "draw": 0.2493,
+      "away_win": 0.3482,
+      "expected_goals_home": 1.49,
+      "expected_goals_away": 1.369,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONMEBOL vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "E6-CUW-CIV",
+      "model": "elo_poisson",
+      "home_team": "Curaçao",
+      "away_team": "Côte d'Ivoire",
+      "home_win": 0.4978,
+      "draw": 0.2391,
+      "away_win": 0.2631,
+      "expected_goals_home": 1.707,
+      "expected_goals_away": 1.176,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONCACAF vs CAF"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F1-NED-JPN",
+      "model": "elo_poisson",
+      "home_team": "Netherlands",
+      "away_team": "Japan",
+      "home_win": 0.7629,
+      "draw": 0.1582,
+      "away_win": 0.0789,
+      "expected_goals_home": 2.344,
+      "expected_goals_away": 0.607,
+      "confidence": "medium",
+      "factors": [
+        "Netherlands 有一定 Elo 优势 (+150)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.344)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F2-SWE-TUN",
+      "model": "elo_poisson",
+      "home_team": "Sweden",
+      "away_team": "Tunisia",
+      "home_win": 0.7397,
+      "draw": 0.1683,
+      "away_win": 0.092,
+      "expected_goals_home": 2.281,
+      "expected_goals_away": 0.663,
+      "confidence": "medium",
+      "factors": [
+        "Sweden 有一定 Elo 优势 (+130)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.281)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F3-NED-SWE",
+      "model": "elo_poisson",
+      "home_team": "Netherlands",
+      "away_team": "Sweden",
+      "home_win": 0.5896,
+      "draw": 0.2196,
+      "away_win": 0.1908,
+      "expected_goals_home": 1.915,
+      "expected_goals_away": 0.99,
+      "confidence": "low",
+      "factors": [
+        "两队实力接近，基线模型区分度低"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F4-TUN-JPN",
+      "model": "elo_poisson",
+      "home_team": "Tunisia",
+      "away_team": "Japan",
+      "home_win": 0.5167,
+      "draw": 0.2358,
+      "away_win": 0.2475,
+      "expected_goals_home": 1.749,
+      "expected_goals_away": 1.138,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F5-TUN-NED",
+      "model": "elo_poisson",
+      "home_team": "Tunisia",
+      "away_team": "Netherlands",
+      "home_win": 0.2464,
+      "draw": 0.2393,
+      "away_win": 0.5143,
+      "expected_goals_home": 1.109,
+      "expected_goals_away": 1.71,
+      "confidence": "medium",
+      "factors": [
+        "Netherlands Elo 优势显著 (+160)",
+        "跨联合会: CAF vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "F6-JPN-SWE",
+      "model": "elo_poisson",
+      "home_team": "Japan",
+      "away_team": "Sweden",
+      "home_win": 0.3115,
+      "draw": 0.2481,
+      "away_win": 0.4405,
+      "expected_goals_home": 1.275,
+      "expected_goals_away": 1.562,
+      "confidence": "medium",
+      "factors": [
+        "Sweden 有一定 Elo 优势 (+120)",
+        "跨联合会: AFC vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G1-BEL-EGY",
+      "model": "elo_poisson",
+      "home_team": "Belgium",
+      "away_team": "Egypt",
+      "home_win": 0.7737,
+      "draw": 0.1533,
+      "away_win": 0.073,
+      "expected_goals_home": 2.374,
+      "expected_goals_away": 0.58,
+      "confidence": "medium",
+      "factors": [
+        "Belgium Elo 优势显著 (+160)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.374)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G2-IRN-NZL",
+      "model": "elo_poisson",
+      "home_team": "Iran",
+      "away_team": "New Zealand",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "Iran 有一定 Elo 优势 (+90)",
+        "跨联合会: AFC vs OFC",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G3-BEL-IRN",
+      "model": "elo_poisson",
+      "home_team": "Belgium",
+      "away_team": "Iran",
+      "home_win": 0.7937,
+      "draw": 0.1438,
+      "away_win": 0.0625,
+      "expected_goals_home": 2.431,
+      "expected_goals_away": 0.53,
+      "confidence": "medium",
+      "factors": [
+        "Belgium Elo 优势显著 (+180)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.431)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G4-NZL-EGY",
+      "model": "elo_poisson",
+      "home_team": "New Zealand",
+      "away_team": "Egypt",
+      "home_win": 0.3289,
+      "draw": 0.2493,
+      "away_win": 0.4218,
+      "expected_goals_home": 1.317,
+      "expected_goals_away": 1.524,
+      "confidence": "medium",
+      "factors": [
+        "Egypt 有一定 Elo 优势 (+110)",
+        "跨联合会: OFC vs CAF"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G5-NZL-BEL",
+      "model": "elo_poisson",
+      "home_team": "New Zealand",
+      "away_team": "Belgium",
+      "home_win": 0.1172,
+      "draw": 0.1935,
+      "away_win": 0.6893,
+      "expected_goals_home": 0.711,
+      "expected_goals_away": 2.065,
+      "confidence": "high",
+      "factors": [
+        "Belgium Elo 优势显著 (+270)",
+        "跨联合会: OFC vs UEFA",
+        "客队预期进球较高 (2.065)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "G6-EGY-IRN",
+      "model": "elo_poisson",
+      "home_team": "Egypt",
+      "away_team": "Iran",
+      "home_win": 0.5718,
+      "draw": 0.2241,
+      "away_win": 0.2041,
+      "expected_goals_home": 1.875,
+      "expected_goals_away": 1.026,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H1-ESP-CPV",
+      "model": "elo_poisson",
+      "home_team": "Spain",
+      "away_team": "Cape Verde",
+      "home_win": 0.835,
+      "draw": 0.1227,
+      "away_win": 0.0423,
+      "expected_goals_home": 2.556,
+      "expected_goals_away": 0.418,
+      "confidence": "high",
+      "factors": [
+        "Spain Elo 优势显著 (+230)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.556)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H2-KSA-URU",
+      "model": "elo_poisson",
+      "home_team": "Saudi Arabia",
+      "away_team": "Uruguay",
+      "home_win": 0.2316,
+      "draw": 0.2362,
+      "away_win": 0.5322,
+      "expected_goals_home": 1.068,
+      "expected_goals_away": 1.746,
+      "confidence": "medium",
+      "factors": [
+        "Uruguay Elo 优势显著 (+170)",
+        "跨联合会: AFC vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H3-ESP-KSA",
+      "model": "elo_poisson",
+      "home_team": "Spain",
+      "away_team": "Saudi Arabia",
+      "home_win": 0.8484,
+      "draw": 0.1153,
+      "away_win": 0.0363,
+      "expected_goals_home": 2.6,
+      "expected_goals_away": 0.379,
+      "confidence": "high",
+      "factors": [
+        "Spain Elo 优势显著 (+250)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.6)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H4-URU-CPV",
+      "model": "elo_poisson",
+      "home_team": "Uruguay",
+      "away_team": "Cape Verde",
+      "home_win": 0.7629,
+      "draw": 0.1582,
+      "away_win": 0.0789,
+      "expected_goals_home": 2.344,
+      "expected_goals_away": 0.607,
+      "confidence": "medium",
+      "factors": [
+        "Uruguay 有一定 Elo 优势 (+150)",
+        "跨联合会: CONMEBOL vs CAF",
+        "主队预期进球较高 (2.344)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H5-URU-ESP",
+      "model": "elo_poisson",
+      "home_team": "Uruguay",
+      "away_team": "Spain",
+      "home_win": 0.3837,
+      "draw": 0.25,
+      "away_win": 0.3664,
+      "expected_goals_home": 1.447,
+      "expected_goals_away": 1.408,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONMEBOL vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "H6-CPV-KSA",
+      "model": "elo_poisson",
+      "home_team": "Cape Verde",
+      "away_team": "Saudi Arabia",
+      "home_win": 0.5718,
+      "draw": 0.2241,
+      "away_win": 0.2041,
+      "expected_goals_home": 1.875,
+      "expected_goals_away": 1.026,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I1-FRA-SEN",
+      "model": "elo_poisson",
+      "home_team": "France",
+      "away_team": "Senegal",
+      "home_win": 0.8116,
+      "draw": 0.1349,
+      "away_win": 0.0535,
+      "expected_goals_home": 2.484,
+      "expected_goals_away": 0.482,
+      "confidence": "medium",
+      "factors": [
+        "France Elo 优势显著 (+200)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.484)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I2-IRQ-NOR",
+      "model": "elo_poisson",
+      "home_team": "Iraq",
+      "away_team": "Norway",
+      "home_win": 0.2173,
+      "draw": 0.2328,
+      "away_win": 0.5499,
+      "expected_goals_home": 1.029,
+      "expected_goals_away": 1.781,
+      "confidence": "medium",
+      "factors": [
+        "Norway Elo 优势显著 (+180)",
+        "跨联合会: AFC vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I3-FRA-IRQ",
+      "model": "elo_poisson",
+      "home_team": "France",
+      "away_team": "Iraq",
+      "home_win": 0.8484,
+      "draw": 0.1153,
+      "away_win": 0.0363,
+      "expected_goals_home": 2.6,
+      "expected_goals_away": 0.379,
+      "confidence": "high",
+      "factors": [
+        "France Elo 优势显著 (+250)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.6)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I4-NOR-SEN",
+      "model": "elo_poisson",
+      "home_team": "Norway",
+      "away_team": "Senegal",
+      "home_win": 0.7397,
+      "draw": 0.1683,
+      "away_win": 0.092,
+      "expected_goals_home": 2.281,
+      "expected_goals_away": 0.663,
+      "confidence": "medium",
+      "factors": [
+        "Norway 有一定 Elo 优势 (+130)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.281)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I5-NOR-FRA",
+      "model": "elo_poisson",
+      "home_team": "Norway",
+      "away_team": "France",
+      "home_win": 0.4024,
+      "draw": 0.2493,
+      "away_win": 0.3482,
+      "expected_goals_home": 1.49,
+      "expected_goals_away": 1.369,
+      "confidence": "low",
+      "factors": [
+        "两队实力接近，基线模型区分度低"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "I6-SEN-IRQ",
+      "model": "elo_poisson",
+      "home_team": "Senegal",
+      "away_team": "Iraq",
+      "home_win": 0.6238,
+      "draw": 0.21,
+      "away_win": 0.1662,
+      "expected_goals_home": 1.995,
+      "expected_goals_away": 0.919,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J1-ARG-ALG",
+      "model": "elo_poisson",
+      "home_team": "Argentina",
+      "away_team": "Algeria",
+      "home_win": 0.8277,
+      "draw": 0.1266,
+      "away_win": 0.0457,
+      "expected_goals_home": 2.533,
+      "expected_goals_away": 0.438,
+      "confidence": "high",
+      "factors": [
+        "Argentina Elo 优势显著 (+220)",
+        "跨联合会: CONMEBOL vs CAF",
+        "主队预期进球较高 (2.533)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J2-AUT-JOR",
+      "model": "elo_poisson",
+      "home_team": "Austria",
+      "away_team": "Jordan",
+      "home_win": 0.7629,
+      "draw": 0.1582,
+      "away_win": 0.0789,
+      "expected_goals_home": 2.344,
+      "expected_goals_away": 0.607,
+      "confidence": "medium",
+      "factors": [
+        "Austria 有一定 Elo 优势 (+150)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.344)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J3-ARG-AUT",
+      "model": "elo_poisson",
+      "home_team": "Argentina",
+      "away_team": "Austria",
+      "home_win": 0.6862,
+      "draw": 0.1893,
+      "away_win": 0.1245,
+      "expected_goals_home": 2.145,
+      "expected_goals_away": 0.785,
+      "confidence": "low",
+      "factors": [
+        "Argentina 有一定 Elo 优势 (+90)",
+        "跨联合会: CONMEBOL vs UEFA",
+        "主队预期进球较高 (2.145)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J4-JOR-ALG",
+      "model": "elo_poisson",
+      "home_team": "Jordan",
+      "away_team": "Algeria",
+      "home_win": 0.4978,
+      "draw": 0.2391,
+      "away_win": 0.2631,
+      "expected_goals_home": 1.707,
+      "expected_goals_away": 1.176,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: AFC vs CAF"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J5-JOR-ARG",
+      "model": "elo_poisson",
+      "home_team": "Jordan",
+      "away_team": "Argentina",
+      "home_win": 0.1451,
+      "draw": 0.2076,
+      "away_win": 0.6473,
+      "expected_goals_home": 0.809,
+      "expected_goals_away": 1.978,
+      "confidence": "high",
+      "factors": [
+        "Argentina Elo 优势显著 (+240)",
+        "跨联合会: AFC vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "J6-ALG-AUT",
+      "model": "elo_poisson",
+      "home_team": "Algeria",
+      "away_team": "Austria",
+      "home_win": 0.2944,
+      "draw": 0.2465,
+      "away_win": 0.4591,
+      "expected_goals_home": 1.232,
+      "expected_goals_away": 1.6,
+      "confidence": "medium",
+      "factors": [
+        "Austria 有一定 Elo 优势 (+130)",
+        "跨联合会: CAF vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K1-POR-COD",
+      "model": "elo_poisson",
+      "home_team": "Portugal",
+      "away_team": "DR Congo",
+      "home_win": 0.8029,
+      "draw": 0.1393,
+      "away_win": 0.0578,
+      "expected_goals_home": 2.458,
+      "expected_goals_away": 0.506,
+      "confidence": "medium",
+      "factors": [
+        "Portugal Elo 优势显著 (+190)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.458)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K2-UZB-COL",
+      "model": "elo_poisson",
+      "home_team": "Uzbekistan",
+      "away_team": "Colombia",
+      "home_win": 0.2316,
+      "draw": 0.2362,
+      "away_win": 0.5322,
+      "expected_goals_home": 1.068,
+      "expected_goals_away": 1.746,
+      "confidence": "medium",
+      "factors": [
+        "Colombia Elo 优势显著 (+170)",
+        "跨联合会: AFC vs CONMEBOL"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K3-POR-UZB",
+      "model": "elo_poisson",
+      "home_team": "Portugal",
+      "away_team": "Uzbekistan",
+      "home_win": 0.8199,
+      "draw": 0.1307,
+      "away_win": 0.0495,
+      "expected_goals_home": 2.509,
+      "expected_goals_away": 0.46,
+      "confidence": "high",
+      "factors": [
+        "Portugal Elo 优势显著 (+210)",
+        "跨联合会: UEFA vs AFC",
+        "主队预期进球较高 (2.509)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K4-COL-COD",
+      "model": "elo_poisson",
+      "home_team": "Colombia",
+      "away_team": "DR Congo",
+      "home_win": 0.7629,
+      "draw": 0.1582,
+      "away_win": 0.0789,
+      "expected_goals_home": 2.344,
+      "expected_goals_away": 0.607,
+      "confidence": "medium",
+      "factors": [
+        "Colombia 有一定 Elo 优势 (+150)",
+        "跨联合会: CONMEBOL vs CAF",
+        "主队预期进球较高 (2.344)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K5-COL-POR",
+      "model": "elo_poisson",
+      "home_team": "Colombia",
+      "away_team": "Portugal",
+      "home_win": 0.4596,
+      "draw": 0.2445,
+      "away_win": 0.2959,
+      "expected_goals_home": 1.621,
+      "expected_goals_away": 1.253,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CONMEBOL vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "K6-COD-UZB",
+      "model": "elo_poisson",
+      "home_team": "DR Congo",
+      "away_team": "Uzbekistan",
+      "home_win": 0.5718,
+      "draw": 0.2241,
+      "away_win": 0.2041,
+      "expected_goals_home": 1.875,
+      "expected_goals_away": 1.026,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs AFC"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L1-ENG-CRO",
+      "model": "elo_poisson",
+      "home_team": "England",
+      "away_team": "Croatia",
+      "home_win": 0.5896,
+      "draw": 0.2196,
+      "away_win": 0.1908,
+      "expected_goals_home": 1.915,
+      "expected_goals_away": 0.99,
+      "confidence": "low",
+      "factors": [
+        "两队实力接近，基线模型区分度低"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L2-GHA-PAN",
+      "model": "elo_poisson",
+      "home_team": "Ghana",
+      "away_team": "Panama",
+      "home_win": 0.5718,
+      "draw": 0.2241,
+      "away_win": 0.2041,
+      "expected_goals_home": 1.875,
+      "expected_goals_away": 1.026,
+      "confidence": "low",
+      "factors": [
+        "跨联合会: CAF vs CONCACAF"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L3-ENG-GHA",
+      "model": "elo_poisson",
+      "home_team": "England",
+      "away_team": "Ghana",
+      "home_win": 0.8029,
+      "draw": 0.1393,
+      "away_win": 0.0578,
+      "expected_goals_home": 2.458,
+      "expected_goals_away": 0.506,
+      "confidence": "medium",
+      "factors": [
+        "England Elo 优势显著 (+190)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.458)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L4-PAN-CRO",
+      "model": "elo_poisson",
+      "home_team": "Panama",
+      "away_team": "Croatia",
+      "home_win": 0.2173,
+      "draw": 0.2328,
+      "away_win": 0.5499,
+      "expected_goals_home": 1.029,
+      "expected_goals_away": 1.781,
+      "confidence": "medium",
+      "factors": [
+        "Croatia Elo 优势显著 (+180)",
+        "跨联合会: CONCACAF vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L5-PAN-ENG",
+      "model": "elo_poisson",
+      "home_team": "Panama",
+      "away_team": "England",
+      "home_win": 0.1784,
+      "draw": 0.221,
+      "away_win": 0.6006,
+      "expected_goals_home": 0.915,
+      "expected_goals_away": 1.883,
+      "confidence": "high",
+      "factors": [
+        "England Elo 优势显著 (+210)",
+        "跨联合会: CONCACAF vs UEFA"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    },
+    {
+      "match_id": "L6-CRO-GHA",
+      "model": "elo_poisson",
+      "home_team": "Croatia",
+      "away_team": "Ghana",
+      "home_win": 0.7737,
+      "draw": 0.1533,
+      "away_win": 0.073,
+      "expected_goals_home": 2.374,
+      "expected_goals_away": 0.58,
+      "confidence": "medium",
+      "factors": [
+        "Croatia Elo 优势显著 (+160)",
+        "跨联合会: UEFA vs CAF",
+        "主队预期进球较高 (2.374)"
+      ],
+      "source_level": "red",
+      "source_note": "模型模拟输出，非事实。基于 Elo 代理 + 泊松分布。"
+    }
+  ]
+}

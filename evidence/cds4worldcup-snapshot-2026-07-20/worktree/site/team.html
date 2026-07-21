@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>球队夺冠路详情 - CDS4WorldCup</title>
+  <meta name="description" content="查看单支球队的 2026 世界杯夺冠路、关键难点、外界参考和赛后观察清单。">
+  <link rel="stylesheet" href="css/portal.css">
+  <script src="data/team-details-data.js"></script>
+  <script src="data/cds-paths-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/team-detail.js" defer></script>
+</head>
+<body>
+  <header class="topbar" aria-label="站点导航">
+    <a class="brand" href="index.html">CDS4WorldCup</a>
+    <nav class="topnav">
+      <a href="index.html">首页</a>
+      <a href="panorama.html">全景图</a>
+      <a href="teams.html">球队</a>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="面包屑导航">
+    <a href="index.html">首页</a><span class="sep">›</span><a href="teams.html">球队</a><span class="sep">›</span><span class="current" data-breadcrumb-team>球队详情</span>
+  </nav>
+
+  <main class="portal team-detail-shell">
+
+    <!-- ═══ Block 1: Thesis ═══ -->
+    <section class="section arg-block arg-thesis">
+      <div class="arg-marker" data-arg-marker>论点</div>
+      <div class="thesis-hero">
+        <p class="eyebrow" data-team-meta>球队详情</p>
+        <h1 data-team-title>正在加载球队...</h1>
+        <p class="lede" data-team-opening>正在读取这支队的夺冠路。</p>
+      </div>
+      <div class="thesis-prob-row" data-thesis-cards></div>
+      <div class="thesis-text">
+        <h2 data-team-thesis>正在加载分析...</h2>
+      </div>
+      <div class="portal-actions">
+        <a class="button-link secondary" href="teams.html">换一支球队</a>
+        <a class="button-link secondary" href="panorama.html">全景赛程</a>
+        <a class="button-link secondary" href="index.html">回到首页</a>
+      </div>
+    </section>
+
+    <!-- ═══ Block 2: Evidence 1 — Group Matches ═══ -->
+    <section class="section arg-block arg-evidence">
+      <div class="arg-marker" data-arg-marker>证据 ①</div>
+      <div class="section-head">
+        <p class="eyebrow">先看这三场</p>
+        <h2>小组赛是第一道关</h2>
+      </div>
+      <div data-team-group-matches></div>
+    </section>
+
+    <!-- ═══ Block 3: Evidence 2 — Path Attenuation ═══ -->
+    <section class="section arg-block arg-evidence">
+      <div class="arg-marker" data-arg-marker>证据 ②</div>
+      <div class="section-head">
+        <p class="eyebrow">路径衰减</p>
+        <h2>每一关概率掉多少？</h2>
+      </div>
+      <div data-path-attenuation></div>
+    </section>
+
+    <!-- ═══ Block 4: Evidence 3 — Bull Case ═══ -->
+    <section class="section arg-block arg-bull">
+      <div class="arg-marker" data-arg-marker>证据 ③</div>
+      <div class="section-head">
+        <p class="eyebrow">看多理由</p>
+        <h2>什么情况下这队能走远？</h2>
+      </div>
+      <div data-bull-case></div>
+    </section>
+
+    <!-- ═══ Block 5: Counter-evidence ═══ -->
+    <section class="section arg-block arg-counter">
+      <div class="arg-marker" data-arg-marker>反证</div>
+      <div class="section-head">
+        <p class="eyebrow">什么情况推翻判断</p>
+        <h2>如果这些发生，论点不成立</h2>
+      </div>
+      <div data-counter-evidence></div>
+    </section>
+
+    <!-- ═══ Block 6: Key Variable ═══ -->
+    <section class="section arg-block arg-key-var">
+      <div class="arg-marker" data-arg-marker>关键变量</div>
+      <div data-key-variable></div>
+    </section>
+
+    <!-- ═══ Block 7: Verification ═══ -->
+    <section class="section arg-block arg-verify">
+      <div class="arg-marker" data-arg-marker>验证</div>
+      <div class="section-head">
+        <p class="eyebrow">怎么验证</p>
+        <h2>赛前盯什么，赛后对什么账</h2>
+      </div>
+      <div data-verification></div>
+    </section>
+
+    <!-- ═══ Block 8: Market Consensus ═══ -->
+    <section class="section arg-block arg-consensus">
+      <div class="arg-marker" data-arg-marker>市场共识</div>
+      <div data-market-consensus></div>
+    </section>
+
+    <!-- ═══ Block 9: Appendix (collapsible) ═══ -->
+    <section class="section arg-block arg-appendix">
+      <details class="appendix-details">
+        <summary class="appendix-toggle">
+          <span>附录：AI 多视角 · 黑天鹅 · 完整分析</span>
+          <span class="appendix-arrow">▾</span>
+        </summary>
+        <div class="appendix-body">
+          <article class="appendix-section">
+            <h3>AI 多视角</h3>
+            <div data-team-ai-perspective></div>
+          </article>
+          <article class="appendix-section">
+            <h3>可能帮它一把的意外</h3>
+            <div data-team-swans></div>
+          </article>
+          <article class="appendix-section">
+            <h3>完整分析</h3>
+            <div data-team-analysis></div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="footer-disclaimer">
+    <p class="disclaimer-text">
+      <strong>关于概率信号：</strong>本页展示的夺冠概率和比赛胜率来自 Elo+泊松数值模型（Red Source），仅作参考对比，不作为事实依据或投注建议。
+      <br><br>
+      <strong>来源分级：</strong>绿 = 可靠事实 · 黄 = 待核验线索 · 红 = 只能参考
+    </p>
+  </footer>
+</body>
+</html>

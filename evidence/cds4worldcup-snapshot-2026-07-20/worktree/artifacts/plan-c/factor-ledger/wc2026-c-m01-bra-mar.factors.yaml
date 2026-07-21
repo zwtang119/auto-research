@@ -1,0 +1,74 @@
+schema_version: "0.2"
+match_id: "wc2026-c-m01-bra-mar"
+
+factors:
+  - factor_id: "wc2026-c-m01-bra-mar-f01-bra-shot-volume"
+    match_id: "wc2026-c-m01-bra-mar"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_home_win_probability"
+    observable_proxy: "Brazil total shots in 90 minutes"
+    quantified_threshold: "Brazil total shots >= 14 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Brazil total shots >= 14
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Brazil total shots <= 8;
+      inconclusive if official match statistics are unavailable.
+    counter_signal: "Morocco scores first, forcing Brazil into a chase game that reduces shot quality despite volume"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_c"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-c-m01-bra-mar-f02-mar-defensive-block"
+    match_id: "wc2026-c-m01-bra-mar"
+    origin: "cds_generated"
+    event_relation: "suppressor"
+    direction: "decreases_home_win_probability"
+    observable_proxy: "Brazil shots on target conceded by Morocco in 90 minutes"
+    quantified_threshold: "Brazil shots on target <= 4 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Brazil shots on target <= 4
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Brazil shots on target >= 7;
+      inconclusive if official match statistics are unavailable or only total shots
+      (not shots on target) are reported.
+    counter_signal: "Brazil scores 2+ goals in the first half, breaking Morocco's defensive structure early"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_c"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"
+
+  - factor_id: "wc2026-c-m01-bra-mar-f03-bra-defense-gaps"
+    match_id: "wc2026-c-m01-bra-mar"
+    origin: "cds_generated"
+    event_relation: "precursor"
+    direction: "increases_away_win_probability"
+    observable_proxy: "Morocco shots on target in 90 minutes"
+    quantified_threshold: "Morocco shots on target >= 4 in the full match (90 minutes + stoppage time)"
+    settlement_rule: >
+      supported if official match statistics show Morocco shots on target >= 4
+      in the full 90 minutes (including stoppage time, excluding extra time);
+      rejected if Morocco shots on target <= 2;
+      inconclusive if official match statistics are unavailable or only total shots
+      (not shots on target) are reported.
+    counter_signal: "Brazil keeps a clean sheet with organized defensive shape throughout the match"
+    data_sources:
+      - "official_schedule_snapshot"
+      - "fifa_match_report_wc2026_group_c"
+    adjudicator:
+      required_independence: "same_human_different_time"
+      status: "pending"
+      confidence_0_10: null
+      reason_for_inconclusive: null
+    calibration_status: "tracking"

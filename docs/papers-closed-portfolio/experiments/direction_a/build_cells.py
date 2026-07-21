@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers/experiments/direction_a")
+EXPERIMENT_ROOT = Path("/Users/tangzw119/Documents/GitHub/auto-research/docs/papers-closed-portfolio/experiments/direction_a")
 CELLS_PATH = EXPERIMENT_ROOT / "cells.jsonl"
 SAMPLE_POOL_PATH = EXPERIMENT_ROOT / "sample_pool.json"
 

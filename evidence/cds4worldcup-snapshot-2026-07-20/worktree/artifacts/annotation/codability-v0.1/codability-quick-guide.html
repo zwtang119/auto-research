@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Codability Annotation Quick Guide</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 920px; margin: 40px auto; line-height: 1.65; color: #172033; }
+    h1, h2 { color: #163b5c; }
+    code { background: #eef3f7; padding: 2px 5px; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin: 18px 0; }
+    th, td { border: 1px solid #d7e0ea; padding: 8px 10px; vertical-align: top; }
+    th { background: #edf4fa; }
+    .warn { background: #fff7e6; border-left: 4px solid #d88900; padding: 12px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Codability Annotation Quick Guide</h1>
+  <div class="warn">不要查资料；不要判断真假；只判断 reason 是否原则上可审计。</div>
+  <h2>三层判断</h2>
+  <table>
+    <tr><th>字段</th><th>问题</th></tr>
+    <tr><td><code>any_codable_atom</code></td><td>是否至少有一个事实碎片可核验？</td></tr>
+    <tr><td><code>main_claim_codable</code></td><td>支撑预测的主要理由能否被审计？</td></tr>
+    <tr><td><code>ledger_route</code></td><td>这条 reason 应进入账本、候选、边注，还是拒绝？</td></tr>
+  </table>
+  <h2>发送附件</h2>
+  <p>先发送 <code>codability-calibration-20.xlsx</code>。确认理解一致后，再发送正式文件。</p>
+</body>
+</html>

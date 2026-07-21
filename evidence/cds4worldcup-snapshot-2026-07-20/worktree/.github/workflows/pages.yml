@@ -1,0 +1,70 @@
+# GitHub Pages 自动发布
+# 推送到 main 时，自动将 site/ 发布到 GitHub Pages
+
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个 Pages 部署同时运行
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build public site data
+        run: python3 scripts/build_site_data.py
+
+      - name: Prepare site content
+        run: |
+          # 创建发布目录
+          mkdir -p _publish
+          touch _publish/.nojekyll
+
+          # 复制 site/ 作为根目录
+          cp -r site/* _publish/
+          rm -f _publish/_config.yml
+
+          # 公开 Pages 只发布 site/ 目录。
+          # artifacts/、wiki/、schema/、docs/references/ 留在私有仓库内，不进入公开站。
+
+          echo "✅ Site content prepared"
+          ls -la _publish/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_publish
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

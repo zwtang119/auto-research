@@ -1,0 +1,22 @@
+team_slug,canonical_team,base_strength_gap,bracket_strength,squad_depth,injury_risk,travel_fatigue,tactical_mismatch,psychological_pressure,low_scoring_dependency,penalty_dependency,favorite_collision,other
+argentina,Argentina,0,0,1,1,1,0,1,0,0,1,0
+australia,Australia,1,1,1,0,0,1,0,1,0,0,0
+belgium,Belgium,1,1,0,1,0,0,1,1,0,0,0
+brazil,Brazil,1,0,0,1,0,1,1,1,0,0,0
+colombia,Colombia,1,1,0,0,0,1,1,1,0,0,0
+croatia,Croatia,1,1,1,1,0,0,0,1,0,0,0
+england,England,0,0,2,0,0,1,1,1,0,0,0
+france,France,0,1,2,1,0,1,1,0,0,0,0
+germany,Germany,0,1,1,0,0,1,2,1,0,0,0
+japan,Japan,1,1,1,1,0,0,0,1,0,0,0
+mexico,Mexico,1,1,0,0,0,1,1,1,0,0,0
+morocco,Morocco,1,1,0,1,0,0,1,1,0,0,0
+netherlands,Netherlands,0,1,0,1,0,1,1,1,0,0,0
+norway,Norway,2,0,1,0,0,1,1,0,0,0,0
+portugal,Portugal,0,1,1,0,0,1,1,1,0,0,0
+senegal,Senegal,1,1,0,1,0,1,0,1,0,0,0
+south-korea,South Korea,1,1,1,0,1,0,0,1,0,0,0
+spain,Spain,0,1,0,1,1,1,0,1,0,1,0
+turkey,Turkey,1,1,0,0,0,1,2,1,0,0,0
+united-states,United States,1,1,0,0,0,1,1,1,0,0,0
+uruguay,Uruguay,1,0,2,0,0,1,0,1,0,0,0

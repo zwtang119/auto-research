@@ -1,0 +1,67 @@
+schema_version: "0.2"
+required:
+  - factor_id
+  - match_id
+  - origin
+  - event_relation
+  - direction
+  - observable_proxy
+  - quantified_threshold
+  - settlement_rule
+  - counter_signal
+  - data_sources
+  - adjudicator
+  - calibration_status
+fields:
+  factor_id:
+    type: string
+    description: "Unique factor identifier, e.g. wc2026-m001-altitude-fatigue"
+  match_id:
+    type: string
+    description: "Match identifier this factor applies to"
+  origin:
+    type: enum[cds_generated, kimi_derived, human_seeded]
+    description: "How this factor was originally proposed"
+  event_relation:
+    type: enum[precursor, suppressor, branch, counter_signal]
+    description: "Structural role of this factor relative to the match outcome"
+  direction:
+    type: string
+    description: "e.g. increases_home_win_probability"
+  observable_proxy:
+    type: string
+    description: "Measurable observable that indicates the factor's activation"
+  quantified_threshold:
+    type: string
+    description: "Numeric/measurable threshold for settlement; natural language only as supplement"
+  settlement_rule:
+    type: string
+    description: "Rule mapping post-match evidence to supported/rejected/inconclusive"
+  counter_signal:
+    type: string
+    description: "Observable that would undermine or negate this factor"
+  data_sources:
+    type: list[string]
+    description: "Source IDs from source_ledger needed to settle this factor"
+  adjudicator:
+    type: object
+    required: [required_independence, status]
+    fields:
+      required_independence:
+        type: string
+        description: "e.g. not the same agent/person who generated the factor"
+      status:
+        type: enum[pending, complete]
+      confidence_0_10:
+        type: number|null
+        description: "Confidence score 0-10, null until adjudicated"
+      reason_for_inconclusive:
+        type: string|null
+        description: "Reason if adjudication is inconclusive"
+  calibration_status:
+    type: enum[tracking, supported, rejected, inconclusive]
+    description: "Current settlement status of this factor"
+  adjudication_evidence:
+    type: string|object
+    optional: true
+    description: "Post-match evidence supporting the adjudication verdict; either a text summary (string) or a structured evidence object"

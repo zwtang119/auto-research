@@ -1,0 +1,164 @@
+schema_version: "0.2"
+match_id: "wc2026-b-m02-qat-sui"
+task_type: "group_90m_wdl"
+
+result:
+  home_goals_90m: 1
+  away_goals_90m: 1
+  outcome_90m: "draw"
+  goal_scorers_home_90m: "Miro Muheim (90+4', own goal — credited to Qatar as match-equalizer)"
+  goal_scorers_away_90m: "Breel Embolo (17', penalty)"
+  half_time_score: "0-1"
+  red_cards: []
+  match_statistics:
+    possession_home_pct: 34
+    possession_away_pct: 66
+    shots_total_home: 6
+    shots_total_away: 26
+    shots_on_target_home: 3
+    shots_on_target_away: 7
+    corners_home: 3
+    corners_away: 10
+    fouls_home: 12
+    fouls_away: 11
+    yellow_cards_home: 2
+    yellow_cards_away: 1
+    attendance: 67966
+  result_source: "https://fdp.fifa.org/assetspublic/ce281/r12456/pdf/FullTimeMatchReport-English.pdf"
+  result_source_secondary: "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_Group_B"
+
+settled_at_utc: "2026-07-08T00:00:00Z"
+
+scores:
+  brier: 0.9722
+  log_loss: 1.4271
+  brier_calculation: >
+    Brier Score (multi-class, single observation):
+    p = [home_win=0.15, draw=0.24, away_win=0.61]
+    o = [home_win=0, draw=1, away_win=0]
+    BS = (0.15-0)^2 + (0.24-1)^2 + (0.61-0)^2
+       = 0.0225 + 0.5776 + 0.3721
+       = 0.9722
+  log_loss_calculation: >
+    Log Loss (multi-class, single observation, epsilon=1e-12):
+    LL = -[0*log(0.15+1e-12) + 1*log(0.24+1e-12) + 0*log(0.61+1e-12)]
+       = -ln(0.24)
+       = -(-1.4271...)
+       = 1.4271
+  calculation_snippet: |
+    # Python verification:
+    import math
+    p = [0.15, 0.24, 0.61]  # predicted: home_win, draw, away_win
+    outcome_index = 1        # draw happened (Qatar 1-1 Switzerland)
+    # Brier Score
+    brier = sum((p[i] - (1 if i == outcome_index else 0))**2 for i in range(3))
+    assert abs(brier - 0.9722) < 0.0001, f"Brier mismatch: {brier}"
+    # Log Loss
+    epsilon = 1e-12
+    log_loss = -math.log(p[outcome_index] + epsilon)
+    assert abs(log_loss - 1.4271) < 0.001, f"Log Loss mismatch: {log_loss}"
+    print(f"Brier: {brier:.4f}, Log Loss: {log_loss:.4f}")
+    # Cross-check with src/verify_plan_c_settlement.py
+  baseline_difference:
+    simple_statistical:
+      brier_baseline: 0.9198
+      brier_prediction: 0.9722
+      brier_delta: 0.0524
+      log_loss_baseline: 1.3863
+      log_loss_prediction: 1.4271
+      log_loss_delta: 0.0408
+      note: >
+        Both the prediction and the simple statistical baseline missed the draw,
+        but the prediction was more confident in away_win (0.61 vs 0.57). The
+        away_win miss is the dominant contributor to Brier Score here: (0.61)^2 +
+        (0.57)^2 = 0.3721 + 0.3249 = 0.6970 of the 0.9722 / 0.9198 total. The
+        baseline's flatter away probability (0.57 vs 0.61) and slightly higher
+        draw probability (0.25 vs 0.24) gave it a small but consistent edge
+        (Δbrier +0.0524, Δlog_loss +0.0408 favor baseline). Both Brier and Log
+        Loss differences favor the baseline — same direction as the mex-rsa
+        precedent.
+    market_or_odds: null
+
+factor_updates:
+  supported:
+    - factor_id: "wc2026-b-m02-qat-sui-f01-qat-possession-struggle"
+      evidence: >
+        FIFA official match report (FullTimeMatchReport-English.pdf, r12456) shows
+        Qatar possession 34% vs Switzerland 66% (full 90-minute aggregate, including
+        stoppage time). Threshold: supported if Qatar possession < 45%.
+        Result: 34% < 45%. SUPPORTED.
+        Switzerland dominated possession by a 2:1 ratio, fully consistent with the
+        suppressor factor's directional expectation (away_win probability was
+        substantially higher). Qatar's inability to retain the ball supports the
+        pre-match uncertainty note about "Qatar's limited experience playing outside
+        Asia in competitive fixtures."
+      confidence_post: 9
+    - factor_id: "wc2026-b-m02-qat-sui-f02-sui-shots-on-target"
+      evidence: >
+        FIFA official match report shows Switzerland 7 shots on target (26 total
+        attempts, 7 on target). Threshold: supported if Switzerland shots on
+        target >= 4. Result: 7 >= 4. SUPPORTED.
+        Switzerland generated nearly 4x Qatar's shot volume (26 vs 6) and more than
+        2x Qatar's shots on target (7 vs 3), fully consistent with the precursor
+        factor's directional expectation. Notably, Switzerland's 7 shots on target
+        exceeded the threshold by 75%, indicating attacking dominance well beyond
+        what the factor's conservative threshold required.
+      confidence_post: 9
+  rejected: []
+  inconclusive:
+    - factor_id: "wc2026-b-m02-qat-sui-f03-afif-key-passes"
+      evidence: >
+        The FIFA official FullTimeMatchReport PDF provides team-level match
+        statistics (possession, shots, corners, fouls, cards) but does NOT include
+        individual player-level statistics such as key passes, chances created, or
+        expected assists. Akram Afif is listed in Qatar's starting lineup as LW
+        and per Wikipedia Group B match notes played through the 90th minute (no
+        early substitution). However, neither Afif's key passes nor any other
+        player-level creative metrics are reported in the official Green Source.
+      confidence_post: null
+      reason_for_inconclusive: >
+        Settlement rule explicitly marks "inconclusive if player-level statistics
+        for Afif are not reported." The designated data source (FIFA official
+        match report) does not include player-level key-pass counts. The factor
+        cannot be adjudicated against the threshold; we cannot distinguish between
+        Afif registering 0, 1, 2, 3, or more key passes.
+
+protocol_failures:
+  - failure_id: "wc2026-b-m02-qat-sui-pf01-afif-player-stats-unavailable"
+    factor_affected: "wc2026-b-m02-qat-sui-f03-afif-key-passes"
+    severity: "minor"
+    description: >
+      Factor f03 requires Akram Afif's key passes count for settlement (threshold
+      >= 3 for support, <= 1 for rejection). The FIFA official match report
+      (FullTimeMatchReport-English.pdf) provides only team-level statistics and
+      does not include player-level key-pass metrics. The settlement rule
+      anticipated this scenario and designated it as inconclusive, so no
+      settlement error occurred. However, this represents a protocol limitation:
+      the factor's observable proxy (Afif key passes) is not available from the
+      designated Green Source.
+    resolution: >
+      Factor settled as "inconclusive" per its own settlement_rule. Recommendation:
+      future factor ledgers should either (a) use full-team creative metrics
+      (e.g., team total chances created) as the observable proxy, or (b) specify
+      an alternative data source that provides player-level statistics (e.g.,
+      Opta, Sofascore, FotMob, WhoScored). Note: these alternatives are Yellow
+      Source and would require explicit source-policy amendment.
+    resolved: true
+
+review_notes:
+  - "All three Plan C matches (QAT-SUI, BRA-MAR, NED-JPN) ended in draws, validating the prediction cards' relatively modest draw probabilities (0.24-0.26) as systematic underestimates. This is consistent with the broader pattern flagged in the oracle plan: the prediction model underweights draws."
+  - "Prediction significantly overestimated Switzerland's win probability (P(away_win)=0.61). The actual draw (1-1) means Switzerland gained only 1 point instead of the predicted 3, and crucially — Embolo's 17' penalty was Muheim's 90+4' own-goal equalizer away from a Switzerland win."
+  - "Brier Score 0.9722 and Log Loss 1.4271 are substantially worse than the mex-rsa precedent (0.3078 / 0.5978), reflecting two compounding errors: (a) the prediction was overconfident in away_win (0.61 vs actual draw), and (b) draws are inherently a higher-loss outcome than away_win misses in Brier terms when the predicted probability is high."
+  - "The simple statistical baseline (FIFA ranking logistic, P(away_win)=0.57) slightly outperformed the prediction (Δbrier +0.0524, Δlog_loss +0.0408). The baseline's flatter probabilities and slightly higher draw probability gave it a small but consistent edge — same direction as mex-rsa."
+  - "Factor f01 (Qatar possession): SUPPORTED. Qatar's 34% possession is dramatically below the < 45% threshold, fully validating the suppressor factor. Switzerland's 2:1 possession dominance was the structural backdrop to the entire match."
+  - "Factor f02 (Switzerland shots on target): SUPPORTED. Switzerland's 7 shots on target (vs Qatar's 3) is comfortably above the >= 4 threshold, validating the precursor factor. The shot-volume differential (26 vs 6) was even more lopsided than the threshold required."
+  - "Factor f03 (Afif key passes): INCONCLUSIVE. The FIFA official match report does not provide player-level key-pass statistics. The factor's own settlement rule correctly defaults to inconclusive in this scenario."
+  - "Two yellow cards for Qatar (Mahmud Abunada 14', Jassem Gaber 23') and one for Switzerland (Denis Zakaria 42'), per the FIFA match report player table. No red cards (FIFA match report: Qatar 0, Switzerland 0)."
+  - "No red cards were shown (FIFA match report)."
+  - "Akram Afif played the full match (MIN=103 per FIFA match report, no early substitution), so the counter_signal did not materialize. The FIFA report shows Afif with 0 attempts and 0 assists, but key-pass data is not reported — f03 remains inconclusive."
+  - "The draw outcome is consistent with the pre-match uncertainty note that 'single-match football variance is inherently high' and that the ranking gap 'understates Morocco's [analogously: Qatar's] true competitive level.' However, the prediction's away_win overconfidence is a calibration miss, not a directional miss."
+  - "One minor protocol failure documented: f03's data source does not provide player-level key-pass statistics. The factor's own settlement rule correctly anticipated this and defaults to inconclusive."
+  - "No Red Source contamination detected. No schema validation failures."
+  - "Cross-verified via src/verify_plan_c_settlement.py: Brier 0.9722 and Log Loss 1.4271 match computed values to 4 decimal places."
+  - "3/3 draw selection is NOT cherry-picking: this card was locked at 2026-06-13T18:00:00Z, before kickoff (2026-06-13T23:00:00Z), so the draw outcome could not be known at lock time. The 3/3 (100%) draw rate across the three Plan C cards does NOT represent the population draw rate: Matchday 1 (n=24 matches) drew 9 (37.5% ≈ 38%, per wiki/index.md 2026-06-18 MD1 evaluation memo). The 3/3 draw concentration is an ex-ante accidental over-representation of the MD1 'systematic draw underestimation' failure mode, not a population estimate (reviewer audit R6)."
+  - "This is a protocol calibration artifact, not a prediction capability claim."

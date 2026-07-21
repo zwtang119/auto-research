@@ -300,7 +300,7 @@ prior 反驳报告未深挖的"跨项目方法论验证"是另一条可行顶刊
 
 | 用户要求 | 是否完成 | 证据 |
 |---|---|---|
-| (1) 读 docs/papers/experiments/direction_a/ 确认 cell-6 n/parse_rate/β1/p | ✅ | primary_regression_REAL.csv:74, summary_REAL.md:98-105, progress.json:103 |
+| (1) 读 docs/papers-closed-portfolio/experiments/direction_a/ 确认 cell-6 n/parse_rate/β1/p | ✅ | primary_regression_REAL.csv:74, summary_REAL.md:98-105, progress.json:103 |
 | (2) 读 5-persona review 全文确认评的是执行还是新颖性 | ✅ | direction-a-review-round-1.md:11-18, 4/4 actionable issues = execution, R2=6.0 = theory positive |
 | (3) 读 G2 N=30 原始数据确认 underpowered | ✅ | g2-n30-completion.md:13-19, g2-n30-completion.json 27 paired details, 1st n=17, 2nd n=8 |
 | (4) 派 explore agent 验证 NeurIPS D&B 2024-2026 接受度 | ✅ | agent T19 (haiku:medium), D&B ≈ 25% 接收率, equally stringent review, no anchoring-bias paper found in D&B |
@@ -487,7 +487,7 @@ Pair verdict "KILL 不站得住" 和 "NeurIPS 2027 main track 35-45% acceptance"
 - Tsinghua 论文 audit：本报告 Phase 1.5c（MAMR 不新颖 + P12 不修 D1）
 - cds4polymarket audit：本报告 Phase 1.5d（K1 误判 + KC 不可辩护 + best=2026 WC ingestion）
 - Pair investigator：rp-cli session FC4C48D7-186E-4527-B2DD-8D753F9243BF
-- G3 methods paper outline：`docs/papers/g3-methods-paper-outline.md`（备选 venue）
-- Direction A 机制实验规范：`docs/papers/direction-a-mechanism-experiment-spec.md` §1.2/§3.2（frontier arm 缺位 + cross-judge 预注册）
-- 5-persona review 原文：`docs/papers/direction-a-review-round-1.md:11-18`（4/4 execution issues + R2=6.0 理论通过）
-- G2 N=30 实证：`docs/papers/g2-n30-completion.md:13-19`（n=17 缺 43% + n=8 缺 73%，underpowered）
+- G3 methods paper outline：`docs/papers-closed-portfolio/g3-methods-paper-outline.md`（备选 venue）
+- Direction A 机制实验规范：`docs/papers-closed-portfolio/direction-a-mechanism-experiment-spec.md` §1.2/§3.2（frontier arm 缺位 + cross-judge 预注册）
+- 5-persona review 原文：`docs/papers-closed-portfolio/direction-a-review-round-1.md:11-18`（4/4 execution issues + R2=6.0 理论通过）
+- G2 N=30 实证：`docs/papers-closed-portfolio/g2-n30-completion.md:13-19`（n=17 缺 43% + n=8 缺 73%，underpowered）

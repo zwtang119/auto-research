@@ -1,6 +1,6 @@
 # Decision Co-Scientist 实验方案（Nature 标准）
 
-> 日期：2026-07-19 ｜ 状态：v2.1（2026-07-19 外科手术式修订：F5 settleability 切割 + F1 宽类轨道 + F2 决策行动锚源 + F4 硬约束 + F6 采集基础设施）｜ 项目已关闭（2026-07-19 用户决策；本方案为最终交付物，未执行。若未来重启，以此为执行蓝图）｜ 评审记录 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md` ｜ 上游：`docs/investigations/decision-coscientist-proposal/`（开题报告 v1.4、终裁 memo、PROJECT-BRIEF）
+> 日期：2026-07-19 ｜ 状态：v2.1（2026-07-19 外科手术式修订：F5 settleability 切割 + F1 宽类轨道 + F2 决策行动锚源 + F4 硬约束 + F6 采集基础设施）｜ **开题·暂停待资源**（2026-07-19 用户决策：本方案为最终交付物，未执行；若未来重启，以此为执行蓝图。2026-07-20 用户裁定统一状态表述，此前误写"项目已关闭"）｜ 评审记录 `docs/reviews/plan-critique-decision-coscientist-experiment-2026-07-19.md` ｜ 上游：`docs/investigations/decision-coscientist-proposal/`（开题报告 v1.4、终裁 memo、PROJECT-BRIEF）
 > 实施侧主战场：`Policysim-v0.2/dev/backend`（引擎）+ `auto-research`（锚资产、合规资产、分析）
 
 ## Goal
