@@ -1,0 +1,26 @@
+文件名,类别,支撑的论文主张,页面 URL,对应 run/commit,拍摄日期(UTC),备注
+A1-Actions运行列表-最早页6-11.png,A 时效性,赛前预测存在性,https://github.com/zwtang119/cds4worldcup/actions?page=6,全部 148 条,2026-07-25,含"148 workflow runs"总数与 Jun 11/12 时间戳；左栏可见两个每日 workflow 已 Disabled（兼作停用证明）
+A1b-Actions列表底部-开赛日首批运行.png,A 时效性,开赛日当天即有部署,同上,最早 run 27328319760 等,2026-07-25,列表最底部为 2026-06-11 首批运行
+A2-首次部署详情-开赛日6-11.png,A 时效性,开赛日首页已公开部署,https://github.com/zwtang119/cds4worldcup/actions/runs/27328319760,run 27328319760,2026-07-25,Deploy Pages success 2026-06-11T06:28:03Z
+A3a-CI运行-875748b归一化修正.png,A 时效性,归一化修正的时间点,https://github.com/zwtang119/cds4worldcup/actions/runs/27426940212,run 27426940212 / commit 875748b,2026-07-25,CI success 2026-06-12T15:53:46Z
+A3b-市场快照运行-0ff58a7冻结起点.png,A 时效性,kimi 信号冻结起点,https://github.com/zwtang119/cds4worldcup/actions/runs/27455917952,run 27455917952 / commit 0ff58a7,2026-07-25,Market Snapshot success 2026-06-13T04:00:02Z
+A4-设置页-保留期400天.png,A 时效性,保全动作本身,https://github.com/zwtang119/cds4worldcup/settings/actions,仓库设置,2026-07-25,Artifact and log retention = 400 days
+B6a-commit-ef30658-赛前夺冠预测.png,B 内容性,CDS 引擎赛前版存在性,https://github.com/zwtang119/cds4worldcup/commit/ef30658,commit ef30658,2026-07-25,2026-06-12 提交
+B6b-ef30658夺冠预测文件-西班牙0.0484.png,B 内容性,西班牙为 CDS 赛前头号热门（0.0484）,https://github.com/zwtang119/cds4worldcup/blob/ef30658/data/processed/cds_championship.json#L1856-L1860,commit ef30658 文件 L1856,2026-07-25,高亮行 "team": "Spain", championship_prob 0.048364
+B7-0ff58a7首页数据-冻结信号23.82.png,B 内容性,kimi 公众信号西班牙 23.82 头号热门,https://github.com/zwtang119/cds4worldcup/blob/0ff58a7/site/data/homepage.json#:~:text=23.82,commit 0ff58a7,2026-07-25,该数值自 6-13 冻结至今
+B8-commit-875748b归一化修正-主动披露.png,B 内容性,方法论修正时间线（主动披露）,https://github.com/zwtang119/cds4worldcup/commit/875748b,commit 875748b,2026-07-25,修正后头号热门变为塞内加尔；不隐藏修正史
+B9a-commit-2915511-开赛日路径卡.png,B 内容性,开赛日已提交 48 队路径卡,https://github.com/zwtang119/cds4worldcup/commit/2915511,commit 2915511,2026-07-25,2026-06-11 提交
+B9b-commit-091ab91-开赛日建仓.png,B 内容性,项目于开赛日创建,https://github.com/zwtang119/cds4worldcup/commit/091ab91,commit 091ab91,2026-07-25,仓库初始提交 2026-06-11
+B10-commit-923e23a-论文引用锚.png,B 内容性,论文 Data Availability 引用锚,https://github.com/zwtang119/cds4worldcup/commit/923e23a,commit 923e23a,2026-07-25,替代 MANIFEST 原锚 e8d74aa（未推送）
+B11-commit历史列表.png,B 内容性,历史连续性与零重写,https://github.com/zwtang119/cds4worldcup/commits/main,main 全历史,2026-07-25,
+C12-公开首页-6-15冻结版-西班牙头号热门.png,C 公开面,"见 GitHub page 首页"主张,https://zwtang119.github.io/cds4worldcup/,线上站点（6-15 构建）,2026-07-25,西班牙 23.8% 头号热门公开展示中；站点自 6-15 冻结（最后成功部署 a2872b9）
+C13-公开首页数据JSON-含6-15构建日期.png,C 公开面,线上数据 build_date 2026-06-15,https://zwtang119.github.io/cds4worldcup/data/homepage.json,线上 JSON,2026-07-25,generated_at 2026-06-15T02:39:07Z
+C14-Wayback第三方存档-20260725.png,C 公开面,第三方存档存在,http://web.archive.org/web/20260725075343/https://zwtang119.github.io/cds4worldcup/,Wayback 快照 20260725075343,2026-07-25,本站史上首个 Wayback 存档；内容为 6-15 冻结版
+D15-CommonCrawl阴性结果-赛前无存档.png,D 阴性,已尽职核查第三方存档（无赛前记录）,https://index.commoncrawl.org/CC-MAIN-2026-25-index?url=zwtang119.github.io/cds4worldcup*&output=json,CC-MAIN-2026-25,2026-07-25,"No Captures found"；爬取窗口 6-05→6-18 覆盖开赛日
+A6-分支保护-禁强推禁删除含管理员.png,A 时效性,历史不可改写承诺的服务端背书,https://github.com/zwtang119/cds4worldcup/settings/branches,main 分支保护规则,2026-07-25,禁 force-push + 禁删除 + 线性历史 + 对管理员同效；普通 push 不受影响
+E1-Gmail通知列表-含6月11日记录.png,E 邮件,Google 服务器时间戳证明 6 月仓库活动,https://mail.google.com/mail/u/0/#search/from:notifications@github.com+cds4worldcup,14 封 GitHub 通知,2026-07-25,含 6-11×3、6-13×2、6-18×2、6-20 共 8 封 6 月通知
+E2-Gmail邮件详情-6-11建仓日CI通知.png,E 邮件,开赛日仓库已运行 CI（Google 盖章）,Gmail 邮件详情,CI run e76ecc5,2026-07-25,6月11日周四 14:28；与 Actions 记录 06:28:03Z 同分钟互证
+E3-Gmail邮件详情-6-18部署失败通知.png,E 邮件,6-18 部署失败事件（Google 盖章）,Gmail 邮件详情,Deploy Pages run ed49a5c,2026-07-25,6月18日周四 12:56；与 Actions 失败记录一致
+B7b-0ff58a7前五名完整固化-四强全中.png,B 内容性,前五中四主张（上半：西23.82/法23.56/阿19.59）,https://github.com/zwtang119/cds4worldcup/blob/0ff58a7/site/data/homepage.json#L439-L462,commit 0ff58a7,2026-07-25,同框含 source_level: Red 来源纪律标注
+B7c-0ff58a7前五名下半-英格兰5.2.png,B 内容性,前五中四主张（下半：葡6.56/英5.2）,https://github.com/zwtang119/cds4worldcup/blob/0ff58a7/site/data/homepage.json?plain=1#L460-L490,commit 0ff58a7,2026-07-25,英格兰5.2为命中第四强的关键行
+B7a-commit-0ff58a7-bot提交时间.png,B 内容性,0ff58a7 的服务端时间绑定,https://github.com/zwtang119/cds4worldcup/commit/0ff58a7,commit 0ff58a7,2026-07-25,github-actions[bot] committed on Jun 13；与 run 27455917952（04:00:02Z）互证
