@@ -180,6 +180,12 @@ Halawi et al.（2024）证明单 LLM 概率预测可逼近人类预测锦标赛�
 
 ### 2.6 定位陈述与占位风险
 
+> **v2.1 更新（2026-07-26，W5 系统检索完成后）**：本节以下原文为 v2.0 历史记录，其占位情报与 novelty 声明已被 W5（PRISMA-lite，137 候选 → 38 纳入，`analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md` §8）取代。修订后的定位陈述为——
+>
+> **定位陈述（v2.1，W5 后正式版）**：在最接近的 2026 prior art（WorldFork、SourceBench、ContractBench、LMU SoccerArena、ForecastBench、Prophet Arena、Foresight Arena、InfoDelphi）之外，本工作的差异化在于：**首次在体育/事件预测域将 ex-ante 冻结、来源分级（Green/Red）、统一结算、时态溯源、快照漂移、schema 校验六维整合为预测资产的一等评估闭集（Protocol Integrity Vector）**；其中 A/D/E/F 已被 WorldFork 等 anticipate，本工作的增量是 **B（来源分级）与 C（快照漂移监测）**这对 WorldFork 缺失的拼图（且均有本赛事抓获实例：Elo bonus 渗漏、odds.json/市场快照漂移、仪式性日更），以及将它们作为**一等计分字段**而非辅助诊断。该声明经 W5 系统检索验证，不再是"有限核查"。
+>
+> **情报纠错（v2.1）**：① Polymarket-v1 / Boka Qin 2606.04217 = **幻影引用**（两次独立检索查无此文），删除；② Hartvég SVS/THR 三次检索 404、全网无定义——降为"无法验证"，**不得**再列为最大占位威胁或写入对比；③ 真实最近威胁改判为 **LMU LLM-SoccerArena**（中高）：其赛后版本若将诊断升级为资产级审计字段将撞第 ⑫ 维，对策 = §2 显式划界（划界表见 `analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md` §2）；④ 新增已发表竞品 WorldCupArena（arXiv:2607.18084，13 系统）与 WC2026-Agents（arXiv:2607.17765）入 crosswalk；⑤ "Fox 全粉笔也中冠军"经核实有源（foxsports.com 2026-06-09），可引用为媒体级基准率佐证。
+
 综合 2.1–2.5，本研究的落点不是"又一个世界杯预测 benchmark"，而是：**audit-chain-anchored reconciliation 协议 + 协议完整性向量作为一等评估字段**在最接近的 prior art 之外的可证伪空白。具体地：Dubitzky（2019）有 ex-ante 提交但无协议审计粒度；ForecastBench/Prophet Arena 有 live 无污染评估但无单赛事多方法结构差异刻画；Polymarket-v1/Foresight Arena 触及结算层质量但评估对象是链上交易或 agent 而非异质预测者集合；Hartvég 的 SVS/THR 是最接近的协议类指标，但只覆盖输出结构效度，不覆盖 ex-ante 有效性、快照漂移与来源渗漏。把协议完整性结构化为 benchmark 一等标注字段并与 proper score 联合发表的工作，在足球预测与通用 forecasting 文献中均未检出（Stage 2 负面结果记录在案）。
 
 **Visual Anchor（占位风险）**：
