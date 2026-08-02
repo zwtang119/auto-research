@@ -24,6 +24,9 @@ MANIFEST（2026-07-20）声明封存仓库"零读写封存"。实际情况：封
 1. **每日自动化提交（2026-07-21 → 07-25，10 个 commit）**：github-actions bot 每日重建 `cds_championship.json` 等管线文件（概率漂移）。属系统原设计，非人工干预；已于本日停用（见 §1）。
 2. **结算提交改写（2026-07-19/20）**：本地未推送的 `e8d74aab` 被 amend 为 `923e23a` 后推送。差异仅限每日自动生成的 site 数据（14 文件 2618/2618 行）。**MANIFEST 原定论文引用锚 `e8d74aa` 从未推送至 GitHub（API 验证返回 422），引用锚必须改为 `923e23a`**——两者除上述生成文件外逐字节相同，`e8d74aab` 本体封存于 bundle。
 3. **MIGRATED 指针提交（2026-07-25，`9bd5a2d`）**：纯文档新增（2 个 MIGRATED.md），未触碰任何数据/结果文件。注：该提交的 CI 与 Deploy Pages 运行均 failed（原因待查，与证据链无关）。
+4. **联邦迁移尾批（2026-07-25 16:24，`c7b18cb`）**：World Cup 场景模板迁出至 CDS-ontologyKB（删 2 个模板文件 + MIGRATED 指针 + CHANGELOG 0.4.1 + .gitignore/wiki 更新）。CI 与 Deploy Pages 均 failed（Gmail 失败通知 16:24 互证；根因 = build_site_data 扫描到非球队卡 .md）。公开站点继续服务 6-15 构建版（未受部署失败影响，客观上维持赛前展示）。
+
+**封存终态确认（2026-08-02 核验）**：HEAD = `c7b18cb`（一周无新提交，已稳定）；工作区干净，仅 1 个已知未跟踪文件（`docs/investigations/system-running-state-and-paper-readiness-2026-06-20.md`，已含于本快照 worktree 并在原 MANIFEST 标注证据等级）；LICENSE 仍在（用户曾决意删除，2026-07-25 15:28 被恢复，删除决定顺延至投稿转公开时处置）；两个每日 workflow 已停用、branch protection 生效——封存由服务端强制维持。
 
 **已发布历史经 bundle 对账：零重写。** 快照记录的 origin/main（`62b8c99`）为当前 main 的祖先。
 
