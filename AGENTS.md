@@ -32,7 +32,7 @@
 
 ### git 纪律
 
-- 不擅自 `git commit`、`git push`、`git reset`、`git rebase`；需要时先向用户请示。
+- 明确指令后按授权执行 `git commit`/`git push`；`git reset`/`git rebase`/强推等历史改写类操作仍先请示。
 - 移动文件用 `git mv`；删除前列清单给用户。
 - 发现工作区有非自己产生的改动（如 `legacy/p11-closed-v5-minimax-m3` 的 modified 标记），不要触碰，向用户报告。
 

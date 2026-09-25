@@ -21,3 +21,11 @@ __pycache__/
 # Logs / runtime outputs
 logs/
 *.log
+# --- security-sweep 2026-08-26 hardening ---
+*.db
+*.sqlite
+
+# 内部工具痕迹不随仓公开（2026-09-25 用户定调，本地保留）
+prompt-exports/
+logs/
+state/

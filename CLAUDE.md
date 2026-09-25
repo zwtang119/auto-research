@@ -8,9 +8,11 @@
 
 ## 当前活跃主线
 
+> ⏸ **2026-09-25 用户决定：世界杯双论文研究挂起、投稿暂停（无限期）。恢复时可能随 cds4polymarket P1~P7 同步投稿，视校对人意见。**
+
 | 线 | 状态 | 入口 |
 |---|---|---|
-| **世界杯算法比较实证论文** | 活跃开题（主线，v1.3） | 开题：`docs/investigations/worldcup-algorithms-proposal/proposal-worldcup-algorithms.md` ｜ 计划：`docs/plans/worldcup-algorithms-comparison-paper-2026-07-20.md` ｜ 缺口调查：`docs/investigations/evidence-snapshot-gap-analysis-2026-07-20.md` |
+| **世界杯算法比较实证论文** | ⏸ 挂起（2026-09-25，原活跃开题 v1.3） | 开题：`docs/investigations/worldcup-algorithms-proposal/proposal-worldcup-algorithms.md` ｜ 计划：`docs/plans/worldcup-algorithms-comparison-paper-2026-07-20.md` ｜ 缺口调查：`docs/investigations/evidence-snapshot-gap-analysis-2026-07-20.md` |
 | Decision Co-Scientist | 开题·暂停待资源（终裁 GO 附条件，未投入 MVE） | `docs/investigations/decision-coscientist-proposal/` ｜ 计划：`docs/plans/decision-coscientist-experiment-2026-07-19.md` |
 | C1 AI-auto-research 实证（process-trace / failure taxonomy） | GO 附 4-gate · DORMANT（未启动，非关闭） | `docs/portfolio/project-closure-2026-07-18.md` §3 |
 | G3/D1 Settlement Reconciliation | PARK（未执行，非关闭） | 同上 |
@@ -59,7 +61,7 @@ auto-research/
 
 ## 工作约定
 
-- **git 纪律**：不擅自 `git commit`/`push`；移动文件用 `git mv`；改动留给用户审阅。
+- **git 纪律**：明确指令后按授权执行 `git commit`/`push`；历史改写类（`reset`/`rebase`/强推）仍先请示；移动文件用 `git mv`。`prompt-exports/`、`logs/`、`state/` 自 2026-09-25 起本地专用、不入库。
 - **验证纪律**：任何代理（oracle/pair/explore）的具体断言必须经直接计算复核后才入档（2026-07-20 调查：4 条断言 2 证伪 1 漏检）。
 - **复算纪律**：论文数字一律以我方管线从冻结数据复算为准，不引用项目自评数字。
 - **合规**：不输出投注建议，不报告收益率；事实声明引 Green Source，预测数字引 Red Source 并标注 ex-ante 版本。
