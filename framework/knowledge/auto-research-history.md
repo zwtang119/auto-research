@@ -145,6 +145,22 @@ R1's closure-checklist requirement).
 
 ---
 
+## 7. 2026-10-27 — 清华线（policysim-Tsinghua）清洁交付与 token 三层核算口径
+
+> 来源：`docs/progress/2026-10-27-tsinghua-clean-release-progress.md`；交付目标仓 `policysim-research-Tsinghua`。
+> 以下为跨实验可复用规则，凡公开实验包/数据集发布均适用。
+
+| 规则 | 内容 | 复用场景 |
+|---|---|---|
+| Token 三层口径 | 论文主表（最终采用调用）／资源账附录（全部物理记录）／历史估算附录（Red Source）三层互斥、禁止相加；reasoning 单列不叠加 Total；unknown/N-A 不补零不倒填 | 实验用量核算、论文用量章节 |
+| 清洁交付五要素 | ①修复/补测后的完整采用数据 ②完整分析报告 ③自包含运行与离线复算脚本 ④隐私投影 ⑤缺项如实标注 | 公开数据集/实验包发布 |
+| 隐私投影规则 | 删账户/API 凭据/运行金额/个人用户名路径（`/Users/<user>/…` → `<WORKSPACE>/`），保留研究中的政策/企业经济数值；脱敏后以新 manifest 校验，原封包留私有工作区 | 一切公开发布前处理 |
+| 首版交付优先 | 已验收产物独立交付、缺项标注不阻断使用；不以追加审计代替交付；同版本复用验证记录，仅变化/失败/疑点触发复验 | 长周期多实验交付 |
+| 落位最小核验集 | 字节清单哈希（MANIFEST/SHA256SUMS）＋关键计数复算＋敏感模式扫描，三项通过即交首版 | 包复制/迁移落位 |
+| adopted 主集＋legacy 追溯 | 默认主集 adopted-v1（含补测/修复，构成逐条登记 original/technical-replacement/format-repaired），原协议视图独立保留不覆盖 | 有补测/恢复的实验数据发布 |
+
+---
+
 *Original 61-line file retained as section 4 for audit trail. Sections 0-3 + 5-6 are the
 2026-07-03 additions per the framework-level R1 closure work + QREF/PIT index.*
 
