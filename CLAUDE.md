@@ -1,10 +1,10 @@
 # CLAUDE.md — auto-research 项目地图与约定
 
-> 最后更新：2026-07-20（目录重整 + 三级证据结构确立）
+> 最后更新：2026-10-27（补充单代理与交付优先约定）
 
 ## 这是什么
 
-课题五 AutoResearch 组合仓库。组合主线已于 2026-07-18 关闭（`docs/portfolio/project-closure-2026-07-18.md`），当前处于关闭后孵化期。**当前活跃主线：世界杯算法比较实证论文**（用户裁定 2026-07-20，以开题报告为主线）。
+课题五 AutoResearch 组合仓库。组合主线已于 2026-07-18 关闭（`docs/portfolio/project-closure-2026-07-18.md`），当前处于关闭后孵化期。**当前主线（2026-09-25 起挂起、投稿暂停）：世界杯算法比较实证论文**（用户裁定 2026-07-20，以开题报告为主线）。
 
 ## 当前活跃主线
 
@@ -28,6 +28,7 @@
 auto-research/
 ├── CLAUDE.md / AGENTS.md / README.md / OBSOLETE.md
 ├── docs/
+│   ├── INDEX.md                # ★ 仓库级总索引（docs/INDEX.md）：会话开始先读，再查 index.json / SCRIPTS.md
 │   ├── plans/                  # 计划文档（含闸门与回退条款）
 │   ├── investigations/         # 开题、终裁、调查（含 worldcup-algorithms-proposal/）
 │   ├── papers-closed-portfolio/  # 已关闭组合的论文产出（原 docs/papers/，2026-07-20 改的名）
@@ -61,9 +62,12 @@ auto-research/
 
 ## 工作约定
 
+- **执行默认**：单代理负责到底，允许独立工具并行与后台任务；仅用户明确要求时启用 subagent、context_builder 或 Oracle，执行细则见 `AGENTS.md`。
+- **交付优先**：围绕用户目标确定交付物与必要验收条件；条件满足即交付并停止，不自行扩展审计、重建或审批流程。非阻断问题随已知限制交付，证据与隐私底线仍须满足。
+
 - **git 纪律**：明确指令后按授权执行 `git commit`/`push`；历史改写类（`reset`/`rebase`/强推）仍先请示；移动文件用 `git mv`。`prompt-exports/`、`logs/`、`state/` 自 2026-09-25 起本地专用、不入库。
 - **验证纪律**：任何代理（oracle/pair/explore）的具体断言必须经直接计算复核后才入档（2026-07-20 调查：4 条断言 2 证伪 1 漏检）。
 - **复算纪律**：论文数字一律以我方管线从冻结数据复算为准，不引用项目自评数字。
 - **合规**：不输出投注建议，不报告收益率；事实声明引 Green Source，预测数字引 Red Source 并标注 ex-ante 版本。
-- **文档命名**：`docs/plans/<topic>-<YYYY-MM-DD>.md`、`docs/investigations/<topic>-<YYYY-MM-DD>.md`；计划含 Goal/Background/Approach/Work Items/Open Questions/References 与硬 go/no-go 闸门。
-- **rp 技能族**：深度规划/调查/编排/构建走 `~/.agents/skills/rp-*`；过期 `prompt-exports/` 及时清理。
+- **文档命名**：`docs/plans/<topic>-<YYYY-MM-DD>.md`、`docs/investigations/<topic>-<YYYY-MM-DD>.md`；简单任务直接执行，复杂任务的计划只保留目标、步骤、验收条件及真实阻塞项，按需设置 go/no-go 闸门。
+- **rp 技能族**：按任务需要使用 `~/.agents/skills/rp-*`，不默认启动多代理或多轮审查；`prompt-exports/` 清理仍遵守删除前列清单的规则。
