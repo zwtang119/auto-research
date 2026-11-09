@@ -68,3 +68,18 @@
 
 - 授权：用户 2026-11-09「按 A 执行，完毕后检查 Github 是否已经推送，检查并合并 worktree」。
 - 不改：C1–C5 状态口径原文、`docs/index.json`、`README.md`、任何只读区；未 push。
+
+
+## 2026-11-09（五续：推送 Github，用户「推送 Github」）
+
+| 增补 | 文件 | 依据 / 性质 |
+|---|---|---|
+| 新建小节 | `docs/MEMORY.md` §10 | 提交 / 推送 / 同步状态唯一权威入口；显式作废旧断言 |
+| 修改（规则同步） | `docs/MEMORY.md` §7 第 6 条 | 由「未含推送」改为两步授权已分别执行，指向 §10 |
+| 追加 | `COMPARISON.md` §10 | 推送实测与「未 commit/push」历史行作废声明 |
+| 追加 | 本节 | 增补登记，append-only |
+| 追加（本地、gitignored） | `.workbuddy/memory/2026-11-09.md` | 当日事件 |
+
+- 推送实测：`f592df4..a1f480b main -> main`，exit=0；GitHub 通道复核远端 HEAD = `a1f480bfe769fd496df716a9802a4f5a89d605bb`；ahead/behind = 0/0。
+- 作废声明：本报告前四续及 `COMPARISON.md` §7.4 / §8.3 中「未 commit/push」「未 push」均为当时状态，推送后失效；权威值见 `docs/MEMORY.md §10`。历史行保留不回改。
+- 不包含：主工作区 22 条原有未提交改动（4 tracked + 18 未跟踪），仍留在本地；未裁决 C1–C5、未重建 `index.json`、未批量改链。
