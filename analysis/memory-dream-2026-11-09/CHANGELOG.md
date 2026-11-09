@@ -83,3 +83,27 @@
 - 推送实测：`f592df4..a1f480b main -> main`，exit=0；GitHub 通道复核远端 HEAD = `a1f480bfe769fd496df716a9802a4f5a89d605bb`；ahead/behind = 0/0。
 - 作废声明：本报告前四续及 `COMPARISON.md` §7.4 / §8.3 中「未 commit/push」「未 push」均为当时状态，推送后失效；权威值见 `docs/MEMORY.md §10`。历史行保留不回改。
 - 不包含：主工作区 22 条原有未提交改动（4 tracked + 18 未跟踪），仍留在本地；未裁决 C1–C5、未重建 `index.json`、未批量改链。
+
+
+## 2026-11-09（六续：按根因建议执行，用户「按照你的建议走」）
+
+| 增补 | 文件 | 依据 / 性质 |
+|---|---|---|
+| 修改 | `docs/index.json` | 新增 `local_only` 区块（183 条 + 成因依据）；其余顶层键逐键不变（与 `.orig` 比对 True） |
+| 修改 | `docs/tools/build_index.py` | `mode_check` 环境分类、`compose` 保留 `local_only`、默认 regenerate 写回防护 |
+| 修改（仅链接目标） | 6 个 `analysis/worldcup-2026/*.md` + `docs/INDEX.md:63` | W 类 128 条统一；112 行改动，非链接内容 0 变化 |
+| 新建 | `eval-set-draft.md` | 25 题评测草案，未执行 |
+| 修改 | `docs/MEMORY.md` / `WIKI-INDEX.md` / `link-audit.md` / `COMPARISON.md` / 本节 | 当前权威值与作废声明 |
+| 备份 | `backup/*.pre-localonly.orig`、`backup/w-links/*.orig`、`backup/docs-pass2/*.orig` | 全部可回滚；`.orig` 后缀避免被全仓 md 扫描计入 |
+| 删除（仓库外） | opencode `rp-mcp-probe` worktree | 96 MB、0 未提交、0 ignored、可从 `b378f00` 重建 |
+
+- 判否记录：15 个 `analysis/` 未跟踪目录不适合整体入库（约 30.4 GB / 32 万文件、含 `.env` 真实 API Key、public 仓库）；是否指定白名单待用户裁定。
+- 未做：B 类修链、E / B2 只读区修改、`index.json` regenerate、检索评测执行（用户判定无意义）。C1 已裁决并落地，commit / push 已获用户授权。
+- 口径演进：内部链接 710 → 731 → 761 → **762**；W 128 → **0**；待处理 337 → **209**；B192 / E17 不变。
+
+
+### 补记：D4 逐字守恒结论的 1 行例外（2026-11-09 pass #2）
+
+- 此前「原 395 + 346 行逐字守恒、丢失/改写 0 行」**现需修正**：本轮 W 类统一把 `docs/INDEX.md:63` 的自指链接从 `docs/INDEX.md` 改为 `INDEX.md`，原 395 行中该行不再逐字出现；`SCRIPTS.md` 仍为 0 丢失。
+- 终态实测：`INDEX.md` 原 395 行 → 丢失/改写 **1 行**；`SCRIPTS.md` 原 346 行 → **0 行**。改写前顶层原页字节级备份在 `backup/w-links/INDEX.md.orig`（D4 之前的完整 395 行原页仍在 `backup/INDEX.md.orig`）。
+- 性质：只改链接目标，非状态口径文字；状态口径关键行 18/18 逐字留存。历史结论保留在本页前文，以此补记为准。

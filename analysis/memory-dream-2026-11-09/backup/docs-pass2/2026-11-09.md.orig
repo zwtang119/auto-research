@@ -1,0 +1,63 @@
+# 2026-11-09 工作日志
+
+## 记忆「做梦」规划 + 单簇 pilot（用户给 Anthropic《The components of agent memory》链接）
+
+- 判断：本仓问题不是笔记多，是四层记忆缺离线整合层。`docs/INDEX.md` 已是 representation 但涨到 57KB，入口链合计 118.6KB / 907 行（文章经验上限 25KB / 200 行）；索引自登记 5 处状态冲突 C1–C5 全「待裁定」。
+- 实测基线（只读）：3,279 文件 / 89.10MB；581 篇 md / 5.60MB / 78,428 行；内部链接 636；**真断链 209（32.9%）**，另有 128 条仅路径基准写法不一致。单基准算得 53.0% 是虚高，勿复用。全仓 md 的 mtime 全是 worktree 检出时间，**不能用于判断陈旧**。
+- 交付（4 个新文件，既有原文 0 改动）：`docs/plans/memory-dream-2026-11-09.md`（D0–D5 全仓规划 + go/no-go + 执行 Prompt）、`analysis/memory-dream-2026-11-09/token-accounting-wiki.md`（pilot wiki）、`COMPARISON.md`（对比报告）、`CHANGELOG.md`。
+- pilot 真实结果：10 篇 token-*（225,850 B / 1,508 行）→ 1 页 wiki（7,033 B / 73 行，3.1%）；把 32,261,917 / 47,293,807 / 35,152,364 / 20,974,154 四个不可相加口径集中，附 8 条 traps 与 5 项未决。新增 4 文件合计 28.2KB / 340 行，净减约 197KB。
+- 验证：写入前 git status 空；17 个关键既有文件 md5 前后一致；wiki 4 条内部链接双基准 0 断链；`git status` 仅 2 项未跟踪新增路径。
+- 边界：`evidence/` `legacy/` `papers/` `framework/` `state/` 与封存仓库零改动；C1–C5 只引用不裁决；未 commit/push。**全仓 D1–D5 未执行，等用户放行**。
+- 待确认：D4 顶层瘦身会改 `docs/INDEX.md` / `SCRIPTS.md` 正文，与用户 2026-11-05「状态冲突只标注不改原文」裁定的边界需单独确认（允许改结构、不改状态口径文字？）。
+- 不外推：pilot 无评测集，不能引用文章 13%→48% 的准确率收益；19 条 `evidence/` 内 `file://` 历史链接永久只读，验收指标是「分类 100%」而非「清零」。
+
+## 同日续：用户「均同意」→ 全仓 P1/P2/P3 执行完成
+
+- 授权范围：改索引结构、不改状态口径文字；P1/P2/P3 全放行。
+- D1 `notes-audit.md`：171 篇 path / supersedes / verified_at 全 0 失效；A1 / B17 / C20。**首轮规则把 20 条「索引派生挂起状态」误报为硬错误，复核降级**——验证脚本自身会错，勿信聚合数字。
+- D2 四簇 wiki（A20/B26/C36/D19，全部 ≤8KB，61 条链接 0 断链）；四簇按 `index.json` topic 精确划分，D 实为 19 篇（上轮口述 18 已修正）。
+- D3 `link-audit.md`：710 内部链接 / 337 待处理 100% 分类（B192 / W128 / E17）；只出清单不改链。首次生成有 1 条文档示例文本自指假阳性，用「生成→复扫→再生成」自洽循环解决。
+- D4：`INDEX.md` 57.0→14.0KB、`SCRIPTS.md` 48.5→3.6KB，新增 `INDEX-DETAILS.md` / `SCRIPTS-DETAILS.md`。**严口径注入 63.5KB/468行 → 20.5KB/198行**（双达标）；宽口径 118.6→30.7KB。两口径都报告，不换口径凑数。
+- 逐字守恒：`build_index.py` 只写 `index.json`、不重写人读索引 → 下移安全。备份 `.orig` 与原 395+346 行比对，丢失/改写 0 行，状态口径关键行 20/20 留存。
+- **D5 新发现（pre-existing）**：`build_index.py --check` exit=1，183 条失效 path（182 scripts + state/）；`docs[]` 171/171 有效，`scripts[]` 182/185 失效。B1 的 182 条断链去掉 `../` 后与失效 scripts **交集 100%** → 根因是这批脚本目录在当前 worktree 不落盘（analysis 限深3 实际仅 3 个 .py，索引登记 185 个），不是链接写错。未重建 index.json，交用户裁定。
+- 验证：17 个关键既有文件仅 INDEX/SCRIPTS 2 个 md5 变化；git diff 2 files / +15 −598（删除行全部逐字存于下移层）；5 页 wiki 链接 0 断链；未 commit/push。
+- 待用户：复核 D4 结构下移；裁定 183 条失效 scripts 恢复或标注；W 类 128 条写法统一与 B 类修链未执行。
+
+## 同日三续：用户质疑「是否真的执行了做梦」→ 补做 dreaming pass #1
+
+- **诚实结论：前两轮跑偏了。** 执行的是体检（统计 / 断链 / 校验）+ 索引工程（结构下移）+ 对比报告。按 Anthropic 定义，dreaming 是「以 transcripts 为 ground truth，纠错并**写入/重组未来可用记忆**」的离线 compute；前两轮只覆盖了 build representation 与 promote 的一部分，**没做纠错闭环、没建顶层注入层、产物全在 `analysis/` 报告目录（未来 session 不会读）**。规划 §3 自己登记过「项目记忆目录不存在」，执行时却没补。
+- 补做 5 个动作（对应文章五类功能）：
+  1. **Correct**：以备份 `.orig` / 磁盘 / 原文为 ground truth 复核本文件旧断言，4 条作废声明写入 `.workbuddy/memory/MEMORY.md §4`（468→471 行；19 条 → 全仓 17 / evidence 内 14；D1–D5 状态 supersede；记忆目录不存在 → 已建立）。
+  2. **Build representation**：新建 `analysis/memory-dream-2026-11-09/WIKI-INDEX.md`，五页 wiki 的 index 与跨簇地图。
+  3. **Promote**：新建 `.workbuddy/memory/MEMORY.md`（≤200 行 / 25KB 顶层注入 header），把纠正后的权威口径、四层记忆地图、未决项写进未来 session 会读的位置。
+  4. **Shape memory growth**：`MEMORY.md §7` 写入从本轮失败反思改写的 6 条记忆增长规则（核心：验收标准是「下次会话打开哪个文件能得到正确答案」，报告不算）。
+  5. **Fill gaps**：`docs/INDEX.md` 顶层导航补 WIKI-INDEX 链接（仅新增 1 行，原有行逐字未动）。
+- 本文件 append-only：上述旧行不删，作废以 `MEMORY.md §4` 为唯一权威口径。
+- 边界：未裁决 C1–C5、未重建 `index.json`、未批量改链、禁区零读写、未 commit/push；仍无评测集，不外推文章准确率收益。
+- 追加更正：本文件第 19 行「710 内部链接」为 D3 时点旧值；补做后复扫 **731**，B192 / W128 / E17 与待处理 337 条不变（新增 21 条链接全部可达）。权威值以 `MEMORY.md §4` 为准。
+
+## 四续：方案 A 执行（用户「按 A 执行，完毕后检查 Github 是否已经推送，检查并合并 worktree」）
+
+- 评估结论：补做的纠错已完成，但权威页建在被 `.gitignore` 忽略、且不在 `AGENTS.md → CLAUDE.md` 入口链上的本地目录；`CLAUDE.md` 对做梦 0 处提及；按自定验收标准仍未通过。
+- 落地：新建入库 `docs/MEMORY.md`（9.79KB / 85 行）；`CLAUDE.md` 增 1 行导航，原 73 行逐字保留；`docs/INDEX.md:74` 与 `WIKI-INDEX.md` 两处 repoint；本地 `.workbuddy/memory/MEMORY.md` 降级为镜像并删除「唯一权威索引」错误自述。
+- 注入链现为 `AGENTS.md → CLAUDE.md → docs/MEMORY.md`，随仓库同步。全仓复扫 731 → 761 条链接，B192 / W128 / E17 / 待处理 337 不变，残留旧路径链接 0 条。
+- 数字演进留痕：710（D3）→ 731（补做后）→ 761（方案 A 后）；权威值以 `docs/MEMORY.md §4` 为准。
+
+
+## 五续：推送 Github（用户「推送 Github」）
+
+- 执行 `git push origin main`：`f592df4..a1f480b`，exit=0；本地 ahead/behind = 0/0，GitHub 通道独立复核远端 `main` HEAD = `a1f480bfe769fd496df716a9802a4f5a89d605bb`。
+- 推送后发现 5 条阶段性「未 commit/push / 未 push」登记 + `docs/MEMORY.md §7` 第 6 条规则会随推送失效；按本轮做梦增长规则，用「追加作废声明 + 权威值」处理，不回改历史行、不静默覆盖。
+- 新建 `docs/MEMORY.md §10` 作为同步状态唯一权威入口；`COMPARISON.md §10`、`CHANGELOG.md` 五续同步登记。主工作区原有 22 条未提交改动不在此提交内。
+- 数字演进留痕不变：710（D3）→ 731（补做后）→ 761（方案 A 后）；本次追加一律用反引号路径、不新增 markdown 链接，761 保持稳定。
+- 同步登记单独提交 `c2acd3a`（3 文件 / +39 −1），主工作区 ff-only 合并后二次推送 `a1f480b..c2acd3a`；GitHub 通道复核远端 `main` HEAD = `c2acd3aaf0d9390e652e95ff66cac939fd42f749`，本地 ahead/behind = 0/0；主工作区原有 22 条 dirty 一条不少。本轮共两次推送、两个提交。
+
+## 六续：三类遗留问题的根因诊断（用户「这些问题是怎么形成的？」）
+
+- **共同根因**：仓库长期存在「磁盘全量」与「git 入库」两套现实（evidence 850/432、legacy 11723/74、analysis 脚本 185/3、state 6/0）。2026-11-05 `build_index.py` 在主工作区扫**磁盘全量**并把路径写入**入库**的 `index.json`；新 worktree 只检出 tracked 文件，矛盾被暴露。
+- 183 条 = 182 个从未 `git add` 的 `analysis/` 脚本（主工作区 185/185 存在、worktree 仅 3/185；`git log --all -- <path>` 为空、不命中 .gitignore）+ 1 个 `state/` 目录：`b378f00`（2026-09-25「state/logs 转本地专用」）主动从 git 移除并加 `.gitignore:31`，但索引仍登记 `state/progress.json`。
+- `--check` 必然红：`mode_check` 只判 `(REPO_ROOT/p).exists()`，不区分「未入库/已删/写错」，且 `collect_stale` 只在 regenerate 模式跑，`stale_paths` 恒为空。
+- C1–C5 是 2026-11-05「只标注不改原文」裁定的**制度性冻结**（文档时间切片叠加）；W 128 是 2026-07 期 `analysis/worldcup-2026/*.md` 混用仓库根相对路径；B 187 条 `../` 与失效脚本同源；E 17 条是证据快照从 `cds4worldcup` 拷入时保留的 `file:///Users/...` 绝对路径，被「字节级只读」冻结。
+- 无检索评测集：项目无 QA/graded criteria 资产（文件名命中的 9 个都是业务评估文档），且本轮做梦 D5 只设结构验收——属规划取舍，非数据缺陷。
+- opencode worktree：2026-10-26 16:31 创建于 `~/.local/share/opencode/worktree/a023fa/rp-mcp-probe`，detached 检出 `b378f00`，目录干净、`main` 已含该提交，是 RP MCP 探针的历史快照，用完未清理。
+- 结论：不是五个独立 bug，是「双层现实 + 三次只登记不修复」的累积；上一轮称「当前 worktree 不落盘」只说对表象，未查到「从未入库」与 state 被主动移出 git 这两层。

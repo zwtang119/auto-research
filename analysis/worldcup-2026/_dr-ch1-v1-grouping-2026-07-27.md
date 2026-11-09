@@ -31,9 +31,9 @@
 - 决赛：**[西班牙 1–0（加时）阿根廷](https://www.icoachfootball.net/world-cup-2026-knockout-bracket/)**，西班牙夺冠；
 - 半决赛：**[西班牙 2–0 法国](https://so.html5.qq.com/page/real/search_news?docid=70000021_2636a5d522730452)**、英格兰 1–2 阿根廷；
 - 三四名决赛：**[英格兰 6–4 法国](https://www.icoachfootball.net/world-cup-2026-knockout-bracket/)** → **法国最终第 4**（用户称第 3 错误）。
-- 项目内部已结算赛程 `923e23a:data/processed/schedule.json`（Green，Wikipedia 已核验）与上述外部源高度吻合：四强 = 西/阿/法/英，冠军西班牙。[项目文档 `all-paper-claims-master` F2](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)
+- 项目内部已结算赛程 `923e23a:data/processed/schedule.json`（Green，Wikipedia 已核验）与上述外部源高度吻合：四强 = 西/阿/法/英，冠军西班牙。[项目文档 `all-paper-claims-master` F2](all-paper-claims-master-2026-07-26.md)
 
-**论据 6（事实）· 项目内部 bracket 编码核验。** [`bracket-encoding-verification-2026-07-26.md`](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) 事后复算确认：CDS 引擎的 bracket 编码**结构正确**——实际半决赛「西班牙 2–0 法国」在其路径结构中从被淘汰方（法国）视角**可达（命中）**；但路径级预测并不可靠，**R32 对手命中率仅 5/32（15.6%）**，模态决赛预测「英格兰 vs 法国」与实际「西班牙 vs 阿根廷」不符。编码正确是建模义务，非预测技能。
+**论据 6（事实）· 项目内部 bracket 编码核验。** [`bracket-encoding-verification-2026-07-26.md`](bracket-encoding-verification-2026-07-26.md) 事后复算确认：CDS 引擎的 bracket 编码**结构正确**——实际半决赛「西班牙 2–0 法国」在其路径结构中从被淘汰方（法国）视角**可达（命中）**；但路径级预测并不可靠，**R32 对手命中率仅 5/32（15.6%）**，模态决赛预测「英格兰 vs 法国」与实际「西班牙 vs 阿根廷」不符。编码正确是建模义务，非预测技能。
 
 ---
 
@@ -45,11 +45,11 @@
 
 **C. 「夺冠命中」的学术权重被三重稀释（观点，基于事实）。**
 - **（1）粉笔年（chalk year）。** 四支受保护种子**全部进入四强**（SF 正是西/法/阿/英），强队普遍中奖，本届为典型「强队中奖年」。[观点，事实底座：四强=前四种子] 在此结构下，「命中前四」接近制度必然，非独家技能。
-- **（2）市场 top-5 同中 4/4。** kimi 与市场冠军 baseline top5 均为西/法/阿/葡/英，四强中 4 队命中（C1，[项目文档 I-9](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)）。命中**非独家**。
+- **（2）市场 top-5 同中 4/4。** kimi 与市场冠军 baseline top5 均为西/法/阿/葡/英，四强中 4 队命中（C1，[项目文档 I-9](all-paper-claims-master-2026-07-26.md)）。命中**非独家**。
 - **（3）种子保护压低信息量。** 制度预先排除最危险互杀，任何重仓前四信号的 4/4 命中率被结构性抬高（C10 结论）。
 - **结论 [观点]**：「命中冠军」仅配作引言 hook（S2/S7 纪律），且须随车携带三重保险（幸存者偏差 / 种子保护 / 市场后来修对，见 `claim-verification-with-footnotes` §6）。它**不改变 Paper A 的立身之本**。
 
-**D. 立身之本：协议完整性审计（C17 / W5）。** Paper A 的真正贡献是 Protocol Integrity Vector（PIV）——把 ex-ante 冻结、来源分级、统一结算、时态溯源、快照漂移、schema 校验六维整合为预测资产的**一等评估闭集**。[项目文档 C17/W5](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md) 经 W5 系统检索（PRISMA-lite，~137 候选→38 纳入）裁定：**与 prior art 部分重叠**——WorldFork 占 A/D/E/F、SourceBench 占 B、ContractBench 占 E、LMU *LLM-SoccerArena* 占 ex-ante+schema+协议失败诊断；但**无单一工作把六维打包为封闭一等评估对象**，且 B(来源分级)/C(快照漂移) 为体育预测域空白，构成本工作增量。故 C17 须由「空白」降级为「体育预测域首次六维整合闭集」（诚实避免 overclaim）。相关 prior art：WorldFork (ICML 2026)、SourceBench (arXiv:2602.16942)、ContractBench (arXiv:2605.17281)、LMU LLM-SoccerArena (2026)；统计基础参见 Murphy & Winkler (1977, JASA) 与 Dixon & Coles (1997, JRSS A)。
+**D. 立身之本：协议完整性审计（C17 / W5）。** Paper A 的真正贡献是 Protocol Integrity Vector（PIV）——把 ex-ante 冻结、来源分级、统一结算、时态溯源、快照漂移、schema 校验六维整合为预测资产的**一等评估闭集**。[项目文档 C17/W5](all-paper-claims-master-2026-07-26.md) 经 W5 系统检索（PRISMA-lite，~137 候选→38 纳入）裁定：**与 prior art 部分重叠**——WorldFork 占 A/D/E/F、SourceBench 占 B、ContractBench 占 E、LMU *LLM-SoccerArena* 占 ex-ante+schema+协议失败诊断；但**无单一工作把六维打包为封闭一等评估对象**，且 B(来源分级)/C(快照漂移) 为体育预测域空白，构成本工作增量。故 C17 须由「空白」降级为「体育预测域首次六维整合闭集」（诚实避免 overclaim）。相关 prior art：WorldFork (ICML 2026)、SourceBench (arXiv:2602.16942)、ContractBench (arXiv:2605.17281)、LMU LLM-SoccerArena (2026)；统计基础参见 Murphy & Winkler (1977, JASA) 与 Dixon & Coles (1997, JRSS A)。
 
 ---
 

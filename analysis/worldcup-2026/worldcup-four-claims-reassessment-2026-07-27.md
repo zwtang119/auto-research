@@ -23,7 +23,7 @@
 
 本报告基于已冻结、已结算的证据底座，对四个新观点逐一再评估，范围覆盖：（1）概率×赛制叠加能否在标定层证明命中冠亚季军；（2）CDS 路径空间引擎从哪一天开始判定西班牙夺冠；（3）佛得角之夜所暴露的市场 recency 过调与 kimi 冻结信号的校准对照；（4）Polymarket 由链上供需动态涌现的定价机制及其与算法预测的系统性差异的发表价值。
 
-核心发现有三：其一，CDS 冠军概率全程钉死在 0.0325–0.0331 平线、从未出现「判定会赢」的拐点日（[CDS 冻结快照](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)），且引擎 top-3 集合 {Spain, France, Argentina} 与实际 top-3 {Spain, Argentina, England} 不一致；其二，X1.1「概率×赛制叠加命中冠亚季军」被四道硬伤驳回，bracket-aware settlement 应重定位为 C17 协议完整性审计的方法增量；其三，kimi 冻结于 23.82% 的常数信号在 n=1 描述下校准更优，但于 7-18/19 被市场反超，领先具时段性而非系统性。下文逐章展开。
+核心发现有三：其一，CDS 冠军概率全程钉死在 0.0325–0.0331 平线、从未出现「判定会赢」的拐点日（[CDS 冻结快照](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)），且引擎 top-3 集合 {Spain, France, Argentina} 与实际 top-3 {Spain, Argentina, England} 不一致；其二，X1.1「概率×赛制叠加命中冠亚季军」被四道硬伤驳回，bracket-aware settlement 应重定位为 C17 协议完整性审计的方法增量；其三，kimi 冻结于 23.82% 的常数信号在 n=1 描述下校准更优，但于 7-18/19 被市场反超，领先具时段性而非系统性。下文逐章展开。
 
 ---
 
@@ -44,9 +44,9 @@
 
 **论据 1（事实·Green）· 实际领奖台已锁定。** 已结算赛程 `923e23a`（Green，Wikipedia 已核验）显示：冠军 西班牙、亚军 阿根廷、季军 英格兰、第四 法国；三四名决赛**英格兰 6–4 法国**（[Wikipedia 2026 FIFA World Cup](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup)）。据此，**法国最终为第 4，而非第 3**——任何"法国进入前三"的表述均为事实错误；上一轮曾误述，本章显式订正。
 
-**论据 2（事实·Red，冻结版）· 模型 top-3 与实际 top-3 集合不一致。** CDS 路径空间引擎的 top-3 概率集合为 Spain 0.0484(#1) / France 0.0482(#2) / Argentina 0.0469(#3)（[bracket-encoding-verification-2026-07-26](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)）。实际 top-3 为 {Spain, Argentina, England}。两集合 **{Spain, France, Argentina} ≠ {Spain, Argentina, England}**，"集合完全一致"为假——上一轮曾误述，已订正。引擎模态决赛预测为"英格兰 vs 法国"，与实际"西班牙 vs 阿根廷"不符；R32 对手命中率仅 **5/32（15.6%）**。
+**论据 2（事实·Red，冻结版）· 模型 top-3 与实际 top-3 集合不一致。** CDS 路径空间引擎的 top-3 概率集合为 Spain 0.0484(#1) / France 0.0482(#2) / Argentina 0.0469(#3)（[bracket-encoding-verification-2026-07-26](bracket-encoding-verification-2026-07-26.md)）。实际 top-3 为 {Spain, Argentina, England}。两集合 **{Spain, France, Argentina} ≠ {Spain, Argentina, England}**，"集合完全一致"为假——上一轮曾误述，已订正。引擎模态决赛预测为"英格兰 vs 法国"，与实际"西班牙 vs 阿根廷"不符；R32 对手命中率仅 **5/32（15.6%）**。
 
-**论据 3（事实·Red，冻结版）· 逐队 ceiling 重排。** 对 kimi 冻结前五（6-13，`0ff58a7`）施加半区约束（通道 A=西/法/葡，B=阿/英；通道内若有更高排名者 ceiling=3，否则=1）得（[bracket-aware-ranking-2026-07-26](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md)）：
+**论据 3（事实·Red，冻结版）· 逐队 ceiling 重排。** 对 kimi 冻结前五（6-13，`0ff58a7`）施加半区约束（通道 A=西/法/葡，B=阿/英；通道内若有更高排名者 ceiling=3，否则=1）得（[bracket-aware-ranking-2026-07-26](bracket-aware-ranking-2026-07-26.md)）：
 
 | 队 | 冻结排名 | ceiling | 实际 | 判定 |
 |---|---|---|---|---|
@@ -58,7 +58,7 @@
 
 读法：领奖台三席（西/阿/英）均落入冻结前五；**西班牙(#1)精确命中冠军**；**英格兰(#5)在 bracket 变换下为结构性季军预测且精确命中**——这是格式叠加在描述层真正可辩护的增量，但须明确为"ceiling 精确命中季军"，**不得泛化为"命中前四"**（葡萄牙 #4 实际第 12 即反例）；法国是唯一的前三预期偏差（差一场季军赛），葡萄牙为明确实错，**二者须同表呈报**。
 
-**论据 4（事实·Red 派生，已结算）· 标定层不翻案。** 决赛后 n=48 完整结算显示：CDS 把 **93.5% 夺冠质量压在出局队**（[claim-verification-with-footnotes-2026-07-26](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)）；Brier 三版本 ef30658 0.019542 / 875748b 0.019970 / 923e23a 0.019989，**仅勉强低于均匀基线 0.02083**；CDS 西班牙夺冠概率全程**钉死 0.0325–0.0331 平线**（Red，冻结版），每日刷新但无赛果通道。格式叠加不改变任一上述数字。
+**论据 4（事实·Red 派生，已结算）· 标定层不翻案。** 决赛后 n=48 完整结算显示：CDS 把 **93.5% 夺冠质量压在出局队**（[claim-verification-with-footnotes-2026-07-26](claim-verification-with-footnotes-2026-07-26.md)）；Brier 三版本 ef30658 0.019542 / 875748b 0.019970 / 923e23a 0.019989，**仅勉强低于均匀基线 0.02083**；CDS 西班牙夺冠概率全程**钉死 0.0325–0.0331 平线**（Red，冻结版），每日刷新但无赛果通道。格式叠加不改变任一上述数字。
 
 ### 三、分析
 
@@ -80,35 +80,35 @@
 #### 关键发现
 
 - 发现1：实际领奖台 西/阿/英/法，法国第 4（非第 3），须显式订正"法国进入前三"误述（[Green·`923e23a`/Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup)）。
-- 发现2：模型 top-3 {Spain,France,Argentina} ≠ 实际 {Spain,Argentina,England}，"集合完全一致"为假（[Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)）。
-- 发现3：英格兰(#5)经 ceiling 变换精确命中季军，但须限缩为"ceiling 精确命中季军"，不得泛化为"命中前四"（[Red·bracket-aware-ranking](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md)）。
-- 发现4：标定层不翻案——93.5% 质量压出局队、Brier 0.0195–0.0200 vs 均匀 0.02083、CDS 平线 0.0325–0.0331（[Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)）。
-- 发现5：X1.1 被四道硬伤驳回，bracket-aware settlement 重定位为 C17 方法增量（[项目内部·all-paper-claims-master C17/W5](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)）。
+- 发现2：模型 top-3 {Spain,France,Argentina} ≠ 实际 {Spain,Argentina,England}，"集合完全一致"为假（[Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md)）。
+- 发现3：英格兰(#5)经 ceiling 变换精确命中季军，但须限缩为"ceiling 精确命中季军"，不得泛化为"命中前四"（[Red·bracket-aware-ranking](bracket-aware-ranking-2026-07-26.md)）。
+- 发现4：标定层不翻案——93.5% 质量压出局队、Brier 0.0195–0.0200 vs 均匀 0.02083、CDS 平线 0.0325–0.0331（[Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md)）。
+- 发现5：X1.1 被四道硬伤驳回，bracket-aware settlement 重定位为 C17 方法增量（[项目内部·all-paper-claims-master C17/W5](all-paper-claims-master-2026-07-26.md)）。
 
 #### 数据摘要
 
 | 指标 | 数据 | 来源 |
 |------|------|------|
 | 实际领奖台 | 西冠/阿亚/英季/法第4（英 6–4 法） | [Green·`923e23a`/Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup) |
-| 引擎 top-3 概率 | Spain 0.0484 / France 0.0482 / Argentina 0.0469 | [Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) |
-| R32 对手命中率 | 5/32（15.6%） | [Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) |
-| 过度分散 | 93.5% 质量压出局队 | [Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
-| Brier(n=48) | 0.0195–0.0200 vs 均匀 0.02083 | [Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
-| CDS 冠军概率 | 全程 0.0325–0.0331 平线 | [Red·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
+| 引擎 top-3 概率 | Spain 0.0484 / France 0.0482 / Argentina 0.0469 | [Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md) |
+| R32 对手命中率 | 5/32（15.6%） | [Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md) |
+| 过度分散 | 93.5% 质量压出局队 | [Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
+| Brier(n=48) | 0.0195–0.0200 vs 均匀 0.02083 | [Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
+| CDS 冠军概率 | 全程 0.0325–0.0331 平线 | [Red·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
 | 种子保护 | 前四分入不同半区（史上首次） | [Green·FIFA 官方](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw) ＋ [新华网](https://www.news.cn/sports/20251126/275e59c0b82844059c9b218935cab795/c.html) |
 
 ---
 
 #### 本章新增来源（供主理人更新来源池）
 
-1. [bracket-aware-ranking-2026-07-26.md](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md) — Green：ceiling 变换逐队表（西#1精确/英#5 ceiling精确/法#2差一位/葡#4实错），纪律§5（post-hoc、全表呈报、禁用"命中冠亚季军"裸句）。
-2. [bracket-encoding-verification-2026-07-26.md](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) — Green：引擎 top-3 概率、R32 5/32、模态决赛错、bracket 编码结构正确（路径级不可靠）。
-3. [claim-verification-with-footnotes-2026-07-26.md](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) — Green：n=48 Brier 0.0195–0.0200、93.5% 质量、CDS 平线 0.0325–0.0331、注脚约定（G/R/I）。
-4. [all-paper-claims-master-2026-07-26.md](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md) — 项目内部：C1/C10/C17/W5 评级与 prior art 12 维 crosswalk（C17 降级为"体育域首次六维整合闭集"）。
+1. [bracket-aware-ranking-2026-07-26.md](bracket-aware-ranking-2026-07-26.md) — Green：ceiling 变换逐队表（西#1精确/英#5 ceiling精确/法#2差一位/葡#4实错），纪律§5（post-hoc、全表呈报、禁用"命中冠亚季军"裸句）。
+2. [bracket-encoding-verification-2026-07-26.md](bracket-encoding-verification-2026-07-26.md) — Green：引擎 top-3 概率、R32 5/32、模态决赛错、bracket 编码结构正确（路径级不可靠）。
+3. [claim-verification-with-footnotes-2026-07-26.md](claim-verification-with-footnotes-2026-07-26.md) — Green：n=48 Brier 0.0195–0.0200、93.5% 质量、CDS 平线 0.0325–0.0331、注脚约定（G/R/I）。
+4. [all-paper-claims-master-2026-07-26.md](all-paper-claims-master-2026-07-26.md) — 项目内部：C1/C10/C17/W5 评级与 prior art 12 维 crosswalk（C17 降级为"体育域首次六维整合闭集"）。
 5. [FIFA. Procedures for the Final Draw for the FIFA World Cup 2026™ revealed](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw) — 机构/官方：种子保护"for the first time in World Cup history"（[G-1]，工作文件已核验；现网 JS 门控，未能直读正文）。
 6. [新华网. 国际足联公布2026年世界杯抽签规则](https://www.news.cn/sports/20251126/275e59c0b82844059c9b218935cab795/c.html) — 媒体：中文 corroboration 种子保护（前四分入不同半区）。
 7. [Wikipedia. 2026 FIFA World Cup](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup) — 媒体/参考：已结算赛果核验（赛程冻结版 `923e23a` 对应；现网确认 西冠/阿亚/英季/法第4）。
-8. [Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. JASA 72(359).](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md) — 学术：accuracy 与 proper score 可背离的统计学基础（[G-10]，支撑 Brier/标定层论证）。
+8. [Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. JASA 72(359).](all-paper-claims-master-2026-07-26.md) — 学术：accuracy 与 proper score 可背离的统计学基础（[G-10]，支撑 Brier/标定层论证）。
 
 ---
 
@@ -126,25 +126,25 @@
 
 ### 论据
 
-**论据 1（CDS 平线，无日级拐点）**。【Green】封存仓库 git 历史可重建 CDS 日版序列（2026-06-12→07-25，44 个有效日、48 个 commit，缺 7-09 与 7-20 两个无 CDS commit 日）([市场情绪分析 + 四项注脚核验 memo §1.1](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md))。分析副本对此序列的判读是：CDS 的日更冠军概率线"全程平坦"，"没有赛果通道的'日更'只是仪式"([同 memo §2.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md))。锁定快照 `cds_championship.json`（2026-07-19）给出 Spain `championship_prob = 0.03302`([cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json))，落在 0.0325–0.0331 区间内，确属平线、无拐点日。
+**论据 1（CDS 平线，无日级拐点）**。【Green】封存仓库 git 历史可重建 CDS 日版序列（2026-06-12→07-25，44 个有效日、48 个 commit，缺 7-09 与 7-20 两个无 CDS commit 日）([市场情绪分析 + 四项注脚核验 memo §1.1](market-sentiment-and-n48-settlement-2026-07-26.md))。分析副本对此序列的判读是：CDS 的日更冠军概率线"全程平坦"，"没有赛果通道的'日更'只是仪式"([同 memo §2.3](market-sentiment-and-n48-settlement-2026-07-26.md))。锁定快照 `cds_championship.json`（2026-07-19）给出 Spain `championship_prob = 0.03302`([cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json))，落在 0.0325–0.0331 区间内，确属平线、无拐点日。
 
-**论据 2（西班牙从未独占高位）**。【Green】同一快照中 **Senegal = 0.0446，排名 #1**([cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json))。即 CDS 的"头号热门"是一个实际在 R32 就被比利时 2–3 淘汰的队伍（塞内加尔出局见 [市场 memo §1.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)）。其机制是：引擎对塞内加尔的五个节点胜率全在 0.483–0.515（掷硬币级），归一化把"噪声最大值"加冕为头号热门([同 memo §1.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md))——CDS 并非"判断"出塞内加尔，而是没有判断力、又把无判断力伪装成了观点。西班牙 0.03302 在该版本中连榜首都不是。
+**论据 2（西班牙从未独占高位）**。【Green】同一快照中 **Senegal = 0.0446，排名 #1**([cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json))。即 CDS 的"头号热门"是一个实际在 R32 就被比利时 2–3 淘汰的队伍（塞内加尔出局见 [市场 memo §1.3](market-sentiment-and-n48-settlement-2026-07-26.md)）。其机制是：引擎对塞内加尔的五个节点胜率全在 0.483–0.515（掷硬币级），归一化把"噪声最大值"加冕为头号热门([同 memo §1.3](market-sentiment-and-n48-settlement-2026-07-26.md))——CDS 并非"判断"出塞内加尔，而是没有判断力、又把无判断力伪装成了观点。西班牙 0.03302 在该版本中连榜首都不是。
 
 **论据 3（三系统混淆：kimi 与 Polymarket 被误读为 CDS）**。用户常把两类外部读数误当成"CDS 判定西班牙"：
-- **(a) kimi 冻结信号**。【Red·冻结 6-11】300 智能体面板中西班牙为夺冠模态（**62/300 ≈ 20.7%**，[kimi_agent_inventory.csv](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)）；单模型西班牙概率 **23.82%** 自 6-11 起冻结、全程静态([市场 memo §2.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md))。
-- **(b) Polymarket 预测市场**。【Green】`market_public_snapshot.json`（2026-07-19，来源 `polymarket_gamma_public_search`）显示 **Spain 59.05% / Argentina 40.95%**([market_public_snapshot.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json))，但这是决赛对阵已定后的市场定价；市场全轨迹显示西班牙概率直到 **2026-07-18** 才越 50%（[市场 memo §2.1/§2.2](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)），此前还经历了"法国时代"（6-21→7-14，峰值 39.0% @ 7-14）并两次半决赛错判（7-14 法国 39.0 > 西班牙 21.1；英格兰 21.8 > 阿根廷 17.4，两场热门均输）。
+- **(a) kimi 冻结信号**。【Red·冻结 6-11】300 智能体面板中西班牙为夺冠模态（**62/300 ≈ 20.7%**，[kimi_agent_inventory.csv](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)）；单模型西班牙概率 **23.82%** 自 6-11 起冻结、全程静态([市场 memo §2.3](market-sentiment-and-n48-settlement-2026-07-26.md))。
+- **(b) Polymarket 预测市场**。【Green】`market_public_snapshot.json`（2026-07-19，来源 `polymarket_gamma_public_search`）显示 **Spain 59.05% / Argentina 40.95%**([market_public_snapshot.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json))，但这是决赛对阵已定后的市场定价；市场全轨迹显示西班牙概率直到 **2026-07-18** 才越 50%（[市场 memo §2.1/§2.2](market-sentiment-and-n48-settlement-2026-07-26.md)），此前还经历了"法国时代"（6-21→7-14，峰值 39.0% @ 7-14）并两次半决赛错判（7-14 法国 39.0 > 西班牙 21.1；英格兰 21.8 > 阿根廷 17.4，两场热门均输）。
 
 CDS、kimi、Polymarket 是三个**生成机制完全不同**的系统（枚举路径模型 / 冻结静态面板 / 真金白银动态市场），读数不可互通，混用即产生伪时间线。
 
-**论据 4（引擎末端预测并非西班牙）**。【Green】路径空间引擎的模态决赛预测为"**英格兰 vs 法国**"，R32 对手命中率仅 5/32（15.6%），实际决赛为西班牙 vs 阿根廷([bracket-encoding-verification memo §2(iii)](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md))。即引擎自身"末端输出"都不是西班牙夺冠，进一步证伪"系统判定西班牙会赢"的叙事。
+**论据 4（引擎末端预测并非西班牙）**。【Green】路径空间引擎的模态决赛预测为"**英格兰 vs 法国**"，R32 对手命中率仅 5/32（15.6%），实际决赛为西班牙 vs 阿根廷([bracket-encoding-verification memo §2(iii)](bracket-encoding-verification-2026-07-26.md))。即引擎自身"末端输出"都不是西班牙夺冠，进一步证伪"系统判定西班牙会赢"的叙事。
 
 ### 分析
 
-**为什么"某天判定"是伪问题。** CDS 的输出是枚举路径树后的归一化质量分配，其节点胜率被赋予约 0.50（例：Czech vs Senegal `win_prob 0.50`，[市场 memo §1.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)），导致质量沿路径树近均匀扩散（[bracket memo §4.1](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)）。在这种机制下，西班牙夺冠概率稳定在 ~0.033 是**结构使然**，而非"判断使然"——不存在一个由赛果驱动的"拐点日"。日更只是仪式，已为本届结算所印证（CDS Brier 0.0195–0.0200，仅勉强低于均匀基线 0.02083，[市场 memo §1.4](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)）。
+**为什么"某天判定"是伪问题。** CDS 的输出是枚举路径树后的归一化质量分配，其节点胜率被赋予约 0.50（例：Czech vs Senegal `win_prob 0.50`，[市场 memo §1.3](market-sentiment-and-n48-settlement-2026-07-26.md)），导致质量沿路径树近均匀扩散（[bracket memo §4.1](bracket-encoding-verification-2026-07-26.md)）。在这种机制下，西班牙夺冠概率稳定在 ~0.033 是**结构使然**，而非"判断使然"——不存在一个由赛果驱动的"拐点日"。日更只是仪式，已为本届结算所印证（CDS Brier 0.0195–0.0200，仅勉强低于均匀基线 0.02083，[市场 memo §1.4](market-sentiment-and-n48-settlement-2026-07-26.md)）。
 
 **三系统的可区分性（若必须给时点）。** kimi（冻结静态面板，23.82% 自 6-11 持续领先）回答的是"赛前/静态共识"；Polymarket（动态市场，7-18 跳变 >50%）回答的是"资金在决赛对阵确定后的重新定价"；CDS（~0.033 平线）回答的是"枚举式路径模型的结构性质量分配"。把三者叠加，会人为制造出并不存在的"CDS 早判西班牙"时间线。
 
-**制度层注脚。** 2026 世界杯史上首次采用网球式种子保护，FIFA 官方确认四支最高排名球队（西班牙/阿根廷、法国/英格兰）分入不同半区路径，以"确保 competitive balance"（[FIFA 官方抽签程序](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw)）。这意味着"前四进四强"含制度设计成分（[市场 memo §1.2](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)），进一步削弱任何"某系统独具慧眼提前锁定西班牙"的叙事。
+**制度层注脚。** 2026 世界杯史上首次采用网球式种子保护，FIFA 官方确认四支最高排名球队（西班牙/阿根廷、法国/英格兰）分入不同半区路径，以"确保 competitive balance"（[FIFA 官方抽签程序](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw)）。这意味着"前四进四强"含制度设计成分（[市场 memo §1.2](market-sentiment-and-n48-settlement-2026-07-26.md)），进一步削弱任何"某系统独具慧眼提前锁定西班牙"的叙事。
 
 ### 小结
 
@@ -158,33 +158,33 @@ CDS、kimi、Polymarket 是三个**生成机制完全不同**的系统（枚举�
 
 ### 关键发现
 
-- 发现 1：CDS 西班牙夺冠概率 2026-07-19 快照为 0.03302，处于全程 0.0325–0.0331 平线，无日级拐点（[cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】）。
-- 发现 2：同一快照中塞内加尔 0.0446 排名 #1，西班牙从未独占高位（[cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】）。
-- 发现 3：kimi 300 智能体面板西班牙为夺冠模态（62/300），单模型概率 23.82% 自 6-11 冻结（[kimi_agent_inventory.csv](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)【Red·冻结 6-11】）。
-- 发现 4：Polymarket 西班牙概率 2026-07-19 为 59.05%，但仅于 7-18 越 50%（决赛对阵确定后），属市场动态重定价（[market_public_snapshot.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)【Green】）。
-- 发现 5：路径引擎模态决赛预测为"英格兰 vs 法国"，非西班牙夺冠（[bracket-encoding-verification memo §2(iii)](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)【Green】）。
+- 发现 1：CDS 西班牙夺冠概率 2026-07-19 快照为 0.03302，处于全程 0.0325–0.0331 平线，无日级拐点（[cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】）。
+- 发现 2：同一快照中塞内加尔 0.0446 排名 #1，西班牙从未独占高位（[cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】）。
+- 发现 3：kimi 300 智能体面板西班牙为夺冠模态（62/300），单模型概率 23.82% 自 6-11 冻结（[kimi_agent_inventory.csv](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)【Red·冻结 6-11】）。
+- 发现 4：Polymarket 西班牙概率 2026-07-19 为 59.05%，但仅于 7-18 越 50%（决赛对阵确定后），属市场动态重定价（[market_public_snapshot.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)【Green】）。
+- 发现 5：路径引擎模态决赛预测为"英格兰 vs 法国"，非西班牙夺冠（[bracket-encoding-verification memo §2(iii)](bracket-encoding-verification-2026-07-26.md)【Green】）。
 
 ### 数据摘要
 
 | 指标 | 数据 | 来源 |
 |------|------|------|
-| CDS 西班牙夺冠概率（2026-07-19 快照） | 0.03302（区间 0.0325–0.0331 平线） | [cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】 |
-| CDS 头号热门（2026-07-19） | 塞内加尔 0.0446（#1；实际 R32 出局） | [cds_championship.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】 |
-| kimi 单模型西班牙概率（冻结 6-11） | 23.82%（全程静态） | [市场 memo §2.3](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)【Red·冻结】 |
-| kimi 300 智能体面板：西班牙夺冠模态 | 62/300（≈20.7%） | [kimi_agent_inventory.csv](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)【Red·冻结】 |
-| Polymarket 西班牙概率（2026-07-19 快照） | 59.05%（阿根廷 40.95%） | [market_public_snapshot.json](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)【Green】 |
-| Polymarket 西班牙越 50% 时点 | 2026-07-18（决赛对阵确定后） | [市场 memo §2.1/§2.2](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)【Green】 |
-| 路径引擎模态决赛预测 | 英格兰 vs 法国（实际 西班牙 vs 阿根廷） | [bracket-encoding-verification §2(iii)](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)【Green】 |
+| CDS 西班牙夺冠概率（2026-07-19 快照） | 0.03302（区间 0.0325–0.0331 平线） | [cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】 |
+| CDS 头号热门（2026-07-19） | 塞内加尔 0.0446（#1；实际 R32 出局） | [cds_championship.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)【Green】 |
+| kimi 单模型西班牙概率（冻结 6-11） | 23.82%（全程静态） | [市场 memo §2.3](market-sentiment-and-n48-settlement-2026-07-26.md)【Red·冻结】 |
+| kimi 300 智能体面板：西班牙夺冠模态 | 62/300（≈20.7%） | [kimi_agent_inventory.csv](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)【Red·冻结】 |
+| Polymarket 西班牙概率（2026-07-19 快照） | 59.05%（阿根廷 40.95%） | [market_public_snapshot.json](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)【Green】 |
+| Polymarket 西班牙越 50% 时点 | 2026-07-18（决赛对阵确定后） | [市场 memo §2.1/§2.2](market-sentiment-and-n48-settlement-2026-07-26.md)【Green】 |
+| 路径引擎模态决赛预测 | 英格兰 vs 法国（实际 西班牙 vs 阿根廷） | [bracket-encoding-verification §2(iii)](bracket-encoding-verification-2026-07-26.md)【Green】 |
 
 ---
 
 ### 本章新增来源清单（供主理人更新来源池）
 
-1. [cds_championship.json（2026-07-19 冻结快照）](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json) — Green：Spain 0.03302、Senegal 0.0446（#1），CDS 冠军概率平线证据底稿。
-2. [market_public_snapshot.json（2026-07-19 Polymarket 快照）](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json) — Green：来源 polymarket_gamma_public_search，Spain 59.05% / Argentina 40.95%，证明该读数属市场而非 CDS。
-3. [kimi_agent_inventory.csv（300 智能体面板）](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv) — Red·冻结 6-11：西班牙为夺冠模态（62/300）。
-4. [bracket-encoding-verification-2026-07-26.md](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) — Green 工作文件：模态决赛预测"英格兰 vs 法国"、R32 命中率 5/32、bracket 编码核验。
-5. [market-sentiment-and-n48-settlement-2026-07-26.md](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md) — Green 工作文件：CDS 日更线平坦、kimi 23.82% 冻结、Polymarket 轨迹与"法国时代"、n=48 结算。
+1. [cds_championship.json（2026-07-19 冻结快照）](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json) — Green：Spain 0.03302、Senegal 0.0446（#1），CDS 冠军概率平线证据底稿。
+2. [market_public_snapshot.json（2026-07-19 Polymarket 快照）](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json) — Green：来源 polymarket_gamma_public_search，Spain 59.05% / Argentina 40.95%，证明该读数属市场而非 CDS。
+3. [kimi_agent_inventory.csv（300 智能体面板）](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv) — Red·冻结 6-11：西班牙为夺冠模态（62/300）。
+4. [bracket-encoding-verification-2026-07-26.md](bracket-encoding-verification-2026-07-26.md) — Green 工作文件：模态决赛预测"英格兰 vs 法国"、R32 命中率 5/32、bracket 编码核验。
+5. [market-sentiment-and-n48-settlement-2026-07-26.md](market-sentiment-and-n48-settlement-2026-07-26.md) — Green 工作文件：CDS 日更线平坦、kimi 23.82% 冻结、Polymarket 轨迹与"法国时代"、n=48 结算。
 6. [Procedures for the FIFA World Cup 2026 Final Draw revealed（FIFA 官方）](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw) — 机构/官方：确认四支最高排名球队分入不同半区路径的种子保护规则（制度层注脚）。
 7. [世界杯推动预测市场交易额大增，多平台显示今年冠军将是这只劲旅（财联社/搜狐）](https://www.sohu.com/a/1046568007_222256) — 媒体/行业：报道 Polymarket 世界杯冠军市场（7 月初法国 35.4% 领先、西班牙 12.4%），佐证"法国时代"与市场动态属性。
 
@@ -271,19 +271,19 @@ Polymarket 的底座是基于 Polygon 的链上抵押与结算系统，采用连
 
 **4.2 kimi 与市场的概率时点对照（纠正"全程高于"）**
 
-在 2026 世界杯冠军 outright 市场上，kimi 的冻结估计值为 23.82%（快照日 6-11，模型输出，冻结版本 kimi-6-11）【Red】；而 Polymarket 市场在该时点之前的每一个读数都低于这一数值，直到 7-18 市场价才跳升至 59.05%（已结算历史快照）【Green】。因此准确的时序表述是：kimi 的冻结估计在 7-18 之前始终高于市场任何时点，但 7-18/19 市场读数反超了 kimi 的冻结值（[冻结备忘录 faction-lmu-polymarket-2026-07-26](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Red＋Green】。这纠正了"kimi 全程高于市场"的绝对化表述——领先是时段性的、描述性的，而非贯穿全周期。
+在 2026 世界杯冠军 outright 市场上，kimi 的冻结估计值为 23.82%（快照日 6-11，模型输出，冻结版本 kimi-6-11）【Red】；而 Polymarket 市场在该时点之前的每一个读数都低于这一数值，直到 7-18 市场价才跳升至 59.05%（已结算历史快照）【Green】。因此准确的时序表述是：kimi 的冻结估计在 7-18 之前始终高于市场任何时点，但 7-18/19 市场读数反超了 kimi 的冻结值（[冻结备忘录 faction-lmu-polymarket-2026-07-26](faction-lmu-polymarket-2026-07-26.md)）【Red＋Green】。这纠正了"kimi 全程高于市场"的绝对化表述——领先是时段性的、描述性的，而非贯穿全周期。
 
 **4.3 n=1 描述性领先的发表价值**
 
-尽管仅是单届世界杯（n=1）的描述性观察，这一领先仍具发表价值：它是首次在"六维整合闭集预测域"中，将算法预测与异质预测者（Elo／混合／路径空间／LLM 群体／市场）同台审计的尝试（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。学术文献一贯强调 ex-ante 时态与协议完整性的价值（[Prediction market 文献综述](https://datafield.dev/learning-prediction-markets/part-01/chapter-02/further-reading.html) 引 Wolfers & Zitzewitz 2004、Arrow et al. 2008）【Green】。但单届样本的结构性限制明确：描述性领先不能外推为跨赛事的稳健优势。
+尽管仅是单届世界杯（n=1）的描述性观察，这一领先仍具发表价值：它是首次在"六维整合闭集预测域"中，将算法预测与异质预测者（Elo／混合／路径空间／LLM 群体／市场）同台审计的尝试（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。学术文献一贯强调 ex-ante 时态与协议完整性的价值（[Prediction market 文献综述](https://datafield.dev/learning-prediction-markets/part-01/chapter-02/further-reading.html) 引 Wolfers & Zitzewitz 2004、Arrow et al. 2008）【Green】。但单届样本的结构性限制明确：描述性领先不能外推为跨赛事的稳健优势。
 
 **4.4 "系统性差异成立"保留为待检假设**
 
-"kimi 与市场存在系统性差异"是一个待检假设，而非已证实的结论。要将其升级为定论，需要跨多届赛事、跨多个预测市场（Polymarket 之外的 Kalshi、传统博彩等）的复现证据（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。在缺乏此类复现前，正文应明确以"假设"而非"定论"呈现，避免发表性偏差。
+"kimi 与市场存在系统性差异"是一个待检假设，而非已证实的结论。要将其升级为定论，需要跨多届赛事、跨多个预测市场（Polymarket 之外的 Kalshi、传统博彩等）的复现证据（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。在缺乏此类复现前，正文应明确以"假设"而非"定论"呈现，避免发表性偏差。
 
 **4.5 有偏但可用的市场化基线**
 
-市场作为基线并非无偏神谕。学术与机制层面均记录其偏差：Bürgi 等（2025）在分析逾 30 万份 Kalshi 合约时发现显著的 favorite-longshot bias（[The economics of the Kalshi prediction market](https://cepr.org/voxeu/columns/economics-kalshi-prediction-market)）【Green】；理论文献指出，预测市场价格一般不等于概率均值，而是受风险偏好与异质信念影响的边际价格（[Prediction market prices under risk aversion](https://www.sciencedirect.com/science/article/abs/pii/S0304406817300484) 引 Manski 2006）【Green】。本赛事亦有 recency／流动性偏误的实例（如佛得角相关市场 −7pp 的过调，及冠军 outright 市场单笔七位数级别的实质深度证明非幽灵盘）（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。结论：市场是有偏但可用的信念读数——可作基准，不可当神谕。
+市场作为基线并非无偏神谕。学术与机制层面均记录其偏差：Bürgi 等（2025）在分析逾 30 万份 Kalshi 合约时发现显著的 favorite-longshot bias（[The economics of the Kalshi prediction market](https://cepr.org/voxeu/columns/economics-kalshi-prediction-market)）【Green】；理论文献指出，预测市场价格一般不等于概率均值，而是受风险偏好与异质信念影响的边际价格（[Prediction market prices under risk aversion](https://www.sciencedirect.com/science/article/abs/pii/S0304406817300484) 引 Manski 2006）【Green】。本赛事亦有 recency／流动性偏误的实例（如佛得角相关市场 −7pp 的过调，及冠军 outright 市场单笔七位数级别的实质深度证明非幽灵盘）（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。结论：市场是有偏但可用的信念读数——可作基准，不可当神谕。
 
 ### 分析
 
@@ -312,11 +312,11 @@ Polymarket 的冠军概率由链上 CLOB 的供需动态涌现、UMA 乐观预�
 
 综合四章证据，本报告对四个新观点给出如下裁决。
 
-第一，X1.1「概率×赛制叠加可证明命中冠亚季军」不成立：该变换仅在描述层公平显化了「英格兰(#5)经 ceiling 精确命中季军」，但标定层不翻案——93.5% 夺冠质量压在出局队、Brier 0.0195–0.0200 仅勉强优于均匀基线 0.02083、引擎 top-3 集合与实际不一致（[claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)）。据此，bracket-aware settlement 应降级为 C17 方法增量，而非命中证据。
+第一，X1.1「概率×赛制叠加可证明命中冠亚季军」不成立：该变换仅在描述层公平显化了「英格兰(#5)经 ceiling 精确命中季军」，但标定层不翻案——93.5% 夺冠质量压在出局队、Brier 0.0195–0.0200 仅勉强优于均匀基线 0.02083、引擎 top-3 集合与实际不一致（[claim-verification](claim-verification-with-footnotes-2026-07-26.md)）。据此，bracket-aware settlement 应降级为 C17 方法增量，而非命中证据。
 
-第二，「CDS 从某天开始判定西班牙会赢」是伪问题：CDS 冠军概率全程 0.0325–0.0331 平线、西班牙从未独占高位（塞内加尔 0.0446 #1），且引擎末端模态决赛为「英格兰 vs 法国」（[CDS 快照](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)）。所谓「早判」实为把 kimi 冻结信号（6-11 起 23.82%）与 Polymarket 市场（7-18 越 50%）误读为 CDS 所致。
+第二，「CDS 从某天开始判定西班牙会赢」是伪问题：CDS 冠军概率全程 0.0325–0.0331 平线、西班牙从未独占高位（塞内加尔 0.0446 #1），且引擎末端模态决赛为「英格兰 vs 法国」（[CDS 快照](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)）。所谓「早判」实为把 kimi 冻结信号（6-11 起 23.82%）与 Polymarket 市场（7-18 越 50%）误读为 CDS 所致。
 
-第三，佛得角之夜证明市场是结果驱动的事后跟随者：西班牙夺冠概率从 16.95% 跌至 10.05% 谷底、中途误立「法国时代」约 24 天，终随赛果收敛至 100%（[市场快照](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)）；kimi 冻结信号校准更优（log score 1.44 < 市场 1.78）但属 n=1、以放弃临场响应为代价（[Croxson & Reade, 2018](https://www.sciencedirect.com/science/article/abs/pii/S0377221718305575)）。
+第三，佛得角之夜证明市场是结果驱动的事后跟随者：西班牙夺冠概率从 16.95% 跌至 10.05% 谷底、中途误立「法国时代」约 24 天，终随赛果收敛至 100%（[市场快照](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)）；kimi 冻结信号校准更优（log score 1.44 < 市场 1.78）但属 n=1、以放弃临场响应为代价（[Croxson & Reade, 2018](https://www.sciencedirect.com/science/article/abs/pii/S0377221718305575)）。
 
 第四，Polymarket 价格由链上 CLOB 供需动态涌现、UMA 预言机结算，零人为设定赔率（[UMA 文档](https://docs.uma.xyz/protocol-overview/how-does-uma-work)）；kimi 在 7-18 前领先但旋即被反超，「系统性差异成立」仅宜保留为待检假设。
 
@@ -330,21 +330,21 @@ Polymarket 的冠军概率由链上 CLOB 的供需动态涌现、UMA 乐观预�
 - Bürgi 等 (2025). The economics of the Kalshi prediction market. CEPR VoxEU. [链接](https://cepr.org/voxeu/columns/economics-kalshi-prediction-market)
 - Croxson, K., & Reade, J. J. (2018). Improving prediction market forecasts by detecting and correcting possible over-reaction to price movements. European Journal of Operational Research. [链接](https://www.sciencedirect.com/science/article/abs/pii/S0377221718305575)
 - Manski 引 (年份未知). Prediction market prices under risk aversion and heterogeneous beliefs. ScienceDirect. [链接](https://www.sciencedirect.com/science/article/abs/pii/S0304406817300484)
-- Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. Journal of the American Statistical Association, 72(359). [链接](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)
+- Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. Journal of the American Statistical Association, 72(359). [链接](all-paper-claims-master-2026-07-26.md)
 - Snowberg, E., & Wolfers, J. (2010). Explaining the Favorite-Longshot Bias. Journal of Political Economy. [链接](https://authors.library.caltech.edu/31703/)
 - Wolfers, J., & Zitzewitz, E. (2004). Prediction Markets. Journal of Economic Perspectives. [链接](https://www.aeaweb.org/articles?from=j&id=10.1257%2F0895330041371321)
 - 复旦 FDDI (年份未知). 预测市场：原理、现状与展望. [链接](https://fddi.fudan.edu.cn/_t2515/dc/dc/c21253a777436/page.htm)
 - datafield.dev (年份未知). Prediction market 文献综述与书单. [链接](https://datafield.dev/learning-prediction-markets/part-01/chapter-02/further-reading.html)
 - FIFA (2025). Procedures for the Final Draw for the FIFA World Cup 2026™ revealed. [链接](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw)
 - UMA (年份未知). How does UMA work? [链接](https://docs.uma.xyz/protocol-overview/how-does-uma-work)
-- all-paper-claims-master-2026-07-26.md（项目内部：C1/C10/C17/W5 评级与 prior art crosswalk）. [链接](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)
-- bracket-aware-ranking-2026-07-26.md（ceiling 变换逐队表）. [链接](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md)
-- bracket-encoding-verification-2026-07-26.md（引擎 top-3 概率、R32 5/32）. [链接](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)
-- claim-verification-with-footnotes-2026-07-26.md（n=48 Brier、93.5% 质量、CDS 平线）. [链接](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)
-- cds_championship.json（2026-07-19 冻结快照：Spain 0.03302、Senegal 0.0446）. [链接](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)
-- kimi_agent_inventory.csv（300 智能体面板：西班牙夺冠模态 62/300）. [链接](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)
-- market_public_snapshot.json（2026-07-19 Polymarket 快照：Spain 59.05%）. [链接](evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)
-- market-sentiment-and-n48-settlement-2026-07-26.md（CDS 日更线、kimi 23.82%、Polymarket 轨迹、n=48 结算）. [链接](analysis/worldcup-2026/market-sentiment-and-n48-settlement-2026-07-26.md)
+- all-paper-claims-master-2026-07-26.md（项目内部：C1/C10/C17/W5 评级与 prior art crosswalk）. [链接](all-paper-claims-master-2026-07-26.md)
+- bracket-aware-ranking-2026-07-26.md（ceiling 变换逐队表）. [链接](bracket-aware-ranking-2026-07-26.md)
+- bracket-encoding-verification-2026-07-26.md（引擎 top-3 概率、R32 5/32）. [链接](bracket-encoding-verification-2026-07-26.md)
+- claim-verification-with-footnotes-2026-07-26.md（n=48 Brier、93.5% 质量、CDS 平线）. [链接](claim-verification-with-footnotes-2026-07-26.md)
+- cds_championship.json（2026-07-19 冻结快照：Spain 0.03302、Senegal 0.0446）. [链接](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/cds_championship.json)
+- kimi_agent_inventory.csv（300 智能体面板：西班牙夺冠模态 62/300）. [链接](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/kimi_agent_inventory.csv)
+- market_public_snapshot.json（2026-07-19 Polymarket 快照：Spain 59.05%）. [链接](../../evidence/cds4worldcup-snapshot-2026-07-20/worktree/data/processed/market_public_snapshot.json)
+- market-sentiment-and-n48-settlement-2026-07-26.md（CDS 日更线、kimi 23.82%、Polymarket 轨迹、n=48 结算）. [链接](market-sentiment-and-n48-settlement-2026-07-26.md)
 - 网易 (年份未知). 稳定币点燃预测市场？Polymarket 和 Kalshi 完成新一轮融资. [链接](https://www.163.com/dy/article/K34NPMG30552956F.html)
 - pm.wiki (年份未知). Brier Score（glossary）. [链接](https://pm.wiki/data/glossary/brier-score)
 - predictionmarketsreviews.com (年份未知). Prediction Market Accuracy guide. [链接](https://predictionmarketsreviews.com/guides/prediction-markets-accuracy)

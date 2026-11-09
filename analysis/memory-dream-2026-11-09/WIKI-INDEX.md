@@ -35,7 +35,7 @@
 | 文件 | 作用 |
 |---|---|
 | [`notes-audit.md`](notes-audit.md) | 171 篇结论/状态机器校验：A 字段不一致 1 / B 读取陷阱 17 / C 索引派生状态 20（预期） |
-| [`link-audit.md`](link-audit.md) | 全仓链接 100% 分类：761 内部链接、337 待处理（B192 / W128 / E17） |
+| [`link-audit.md`](link-audit.md) | 全仓链接 100% 分类：762 内部链接、209 待处理（B192 / W0 / E17）；演进 710 → 731 → 761 → 762 |
 | [`COMPARISON.md`](COMPARISON.md) | 做梦前后实测对比、口径与边界 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 本目录所有增补的逐条登记 |
 | [`../backup/`](backup/) | 索引原页字节级备份（`.orig` 三件，回滚入口） |
@@ -45,3 +45,10 @@
 - `evidence/`、`legacy/`、`papers/`、`framework/`、`state/` 与封存仓库：`link-audit.md` 中相关断链按字节级只读处理，**永不修改**；验收指标是「分类 100%」而非「清零」。
 - 183 条失效 `scripts` 路径为 pre-existing（当前 worktree 不落盘），`docs/index.json` 未改，处置待用户裁定，详见 [`docs/MEMORY.md §5`](../../docs/MEMORY.md)。
 - 本仓**没有评测集**，不得把文章 13%→48% / 54%→61% 的准确率收益外推到本轮。
+
+
+## 检索评测草案（2026-11-09 pass #2）
+
+| 文件 | 用途 |
+|---|---|
+| [`eval-set-draft.md`](eval-set-draft.md) | 25 题草案，**仅存档**；用户裁定不做检索评测，不执行 |

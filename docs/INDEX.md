@@ -60,7 +60,7 @@
 
 **为何不写反向链接**：用户已明确「状态冲突＝只标注不改原文」，上述文件是状态口径冲突所涉的原文 / 入口；本阶段授权只写 `docs/INDEX.md`、`docs/index.json`、`docs/tools/build_index.py`，根文件写入仅限用户专项豁免的 `CLAUDE.md` 那 1 行。故反向链接不落盘到其余 4 个入口，改为在本页集中登记「入口清单 + 反向互链状态 + 待办」。`docs/INDEX.md` 仍是索引权威入口，发现路径不依赖这些回链。
 
-**待办（若今后获授权）**：如需进一步强化，可考虑在上述其余 4 个文件顶部各加一行指向 `docs/INDEX.md` 的相对链接（从各文件所在目录出发，例如仓库根文件用 `[仓库级总索引](docs/INDEX.md)`、`docs/portfolio/` 与 `docs/investigations/` 下的文件用 `[仓库级总索引](../INDEX.md)`、`analysis/README.md` 用 `[仓库级总索引](../docs/INDEX.md)`）。当前入口链路已按方案 B 闭合，本轮不执行，待用户明确授权后再补。
+**待办（若今后获授权）**：如需进一步强化，可考虑在上述其余 4 个文件顶部各加一行指向 `docs/INDEX.md` 的相对链接（从各文件所在目录出发，例如仓库根文件用 `[仓库级总索引](INDEX.md)`、`docs/portfolio/` 与 `docs/investigations/` 下的文件用 `[仓库级总索引](../INDEX.md)`、`analysis/README.md` 用 `[仓库级总索引](../docs/INDEX.md)`）。当前入口链路已按方案 B 闭合，本轮不执行，待用户明确授权后再补。
 
 **当前发现路径（已闭合，不依赖反向链接）**：用户 2026-11-05 裁定采用方案 B「指引放 CLAUDE.md」，链路为 [`../AGENTS.md`](../AGENTS.md):3 → [`../CLAUDE.md`](../CLAUDE.md)「目录地图」`docs/` 树下的 `INDEX.md` 行 → 本页 `docs/INDEX.md` → `index.json` / `SCRIPTS.md`。本页 `docs/INDEX.md` 自身仍是索引的权威入口，按本页「查询顺序（LLM 会话开始必读）」节（第 6–13 行）进入 `index.json` / `SCRIPTS.md`；这一路径不依赖上述 5 个入口的反向链接，故本轮除方案 B 指定的 1 行目录地图指引外不加回链，不影响索引的可达性。
 

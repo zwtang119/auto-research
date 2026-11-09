@@ -5,7 +5,7 @@
 
 ## 这是什么
 
-课题五 AutoResearch 组合仓库。组合主线已于 2026-07-18 关闭（`docs/portfolio/project-closure-2026-07-18.md`），当前处于关闭后孵化期。**当前主线（2026-09-25 起挂起、投稿暂停）：世界杯算法比较实证论文**（用户裁定 2026-07-20，以开题报告为主线）。
+课题五 AutoResearch 组合仓库。组合主线已于 2026-07-18 关闭（`docs/portfolio/project-closure-2026-07-18.md`），当前处于关闭后孵化期。**当前主线（2026-09-25 起挂起、投稿暂停）：世界杯双论文路线 v1.7 / 开题 v2.1**（2026-07-21 用户裁定拆分；2026-11-09 用户裁定以 README.md:5 口径为准）。
 
 ## 当前活跃主线
 
@@ -13,7 +13,7 @@
 
 | 线 | 状态 | 入口 |
 |---|---|---|
-| **世界杯算法比较实证论文** | ⏸ 挂起（2026-09-25，原活跃开题 v1.3） | 开题：`docs/investigations/worldcup-algorithms-proposal/proposal-worldcup-algorithms.md` ｜ 计划：`docs/plans/worldcup-algorithms-comparison-paper-2026-07-20.md` ｜ 缺口调查：`docs/investigations/evidence-snapshot-gap-analysis-2026-07-20.md` |
+| **世界杯双论文路线 v1.7 / 开题 v2.1** | ⏸ 挂起（2026-09-25；2026-11-09 用户裁定口径） | 路线图：`docs/roadmaps/worldcup-two-paper-roadmap-2026-07-21.md`（v1.7）｜开题：`docs/investigations/worldcup-algorithms-proposal/proposal-worldcup-algorithms-v2.md`（v2.1）｜单篇开题 v1.3 降为历史版本 |
 | Decision Co-Scientist | 开题·暂停待资源（终裁 GO 附条件，未投入 MVE） | `docs/investigations/decision-coscientist-proposal/` ｜ 计划：`docs/plans/decision-coscientist-experiment-2026-07-19.md` |
 | C1 AI-auto-research 实证（process-trace / failure taxonomy） | GO 附 4-gate · DORMANT（未启动，非关闭） | `docs/portfolio/project-closure-2026-07-18.md` §3 |
 | G3/D1 Settlement Reconciliation | PARK（未执行，非关闭） | 同上 |
@@ -21,7 +21,7 @@
 | W6 终裁备忘录 | 参考（用户裁定：开题为主线，本备忘录降为参考） | `docs/investigations/worldcup-paper-topic-2026-07-19.md` |
 | DMO 不确定性决策文献精读（SEA-27 2018 + Elliott 2025，含 4polymarket/4Worldcup/policysim 贡献评估） | 参考（知识沉淀，已关闭 2026-07-22） | `docs/investigations/dmo-uncertainty-decision-reading-2026-07-22.md` ｜ 材料：`analysis/dmo-uncertainty-reading/`、`analysis/downloads-pdf-scan/` |
 
-> ⚠️ 状态口径警告（2026-07-20）：`state/progress.json` 的 status 字段停在 W6 备忘录阶段，未同步 v1.3 主线裁定（metadata drift）。课题状态以本表为准；DORMANT/PARK/想法记录 均**不是**关闭，关闭名单以 `docs/portfolio/project-closure-2026-07-18.md` §3 为准。
+> ⚠️ 状态口径警告（2026-07-20）：`state/progress.json` 的 status 字段停在 W6 备忘录阶段，未同步现行双论文主线裁定（metadata drift）。课题状态以本表为准；DORMANT/PARK/想法记录 均**不是**关闭，关闭名单以 `docs/portfolio/project-closure-2026-07-18.md` §3 为准。
 
 ## 目录地图
 

@@ -791,6 +791,7 @@ def compose(existing, docs, scripts, stale):
     top["docs"] = docs
     top["scripts"] = scripts
     top["stale_paths"] = stale
+    top["local_only"] = existing.get("local_only") or {}
     return top
 
 
@@ -803,11 +804,13 @@ def write_index(data):
 # ---------------------------------------------------------------- 三种模式
 
 def mode_check(existing):
-    print("=== --check：校验 docs/index.json 全部 path 是否仍存在 ===")
+    print("=== --check：校验 docs/index.json 全部 path（按环境分类）===")
     if not existing:
         print("[错误] docs/index.json 不存在或为空，请先运行默认模式生成。")
         return 2
+    local_only = set((existing.get("local_only") or {}).get("paths", []))
     missing = []
+    local_absent = []
     checked = 0
     for key in ("docs", "scripts"):
         for e in existing.get(key, []):
@@ -815,24 +818,39 @@ def mode_check(existing):
             if not p:
                 continue
             checked += 1
-            if not (REPO_ROOT / p).exists():
+            if (REPO_ROOT / p).exists():
+                continue
+            if p in local_only:
+                local_absent.append((key, p))
+            else:
                 missing.append((key, p))
     for key in ("data_zones", "readonly_zones"):
         for z in existing.get(key, []):
             p = z.get("path")
             if p:
                 checked += 1
-                if not (REPO_ROOT / p).exists():
+                if (REPO_ROOT / p).exists():
+                    continue
+                if p in local_only:
+                    local_absent.append((key, p))
+                else:
                     missing.append((key, p))
     print("已校验 path 总数：%d" % checked)
     print("docs[] 条目：%d，scripts[] 条目：%d" % (
         len(existing.get("docs", [])), len(existing.get("scripts", []))))
+    print("本地专用、当前检出环境不适用：%d 条（已登记在 local_only.paths，不计失效）" % len(local_absent))
+    if local_absent:
+        by_key = {}
+        for key, p in local_absent:
+            by_key[key] = by_key.get(key, 0) + 1
+        print("  分类：%s" % "，".join("%s %d 条" % (k, v) for k, v in sorted(by_key.items())))
+        print("  说明：这些资产在主工作区磁盘存在，但从未入库或已被 .gitignore 移出；换 worktree / 机器不会检出。详见 local_only.note。")
     if missing:
-        print("失效清单（%d 条）：" % len(missing))
+        print("真实失效清单（%d 条，非本地专用）：" % len(missing))
         for key, p in missing:
             print("  - [%s] %s" % (key, p))
         return 1
-    print("失效清单：0 条 —— 全部 path 均能在磁盘解析到真实文件。")
+    print("真实失效：0 条 —— 已登记的本地专用资产按环境分类，其余 path 全部解析成功。")
     print("（只读校验，未写回任何文件）")
     return 0
 
@@ -849,6 +867,16 @@ def main():
     existing = load_index()
     doc_scan = scan_docs()
     script_scan = scan_scripts()
+    local_only_paths = (existing.get("local_only") or {}).get("paths", [])
+    if local_only_paths and not args.dry_run:
+        absent = [p for p in local_only_paths
+                  if p.startswith("analysis/") and not (REPO_ROOT / p).exists()]
+        if absent:
+            print("[拒绝写回] 当前检出环境缺少 %d 条已登记的本地专用脚本（示例：%s）。" % (
+                len(absent), absent[0]))
+            print("  regenerate 会把它们误判为失效并移入 stale_paths，破坏索引。")
+            print("  请在保有这些资产的主工作区运行，或先确认环境；本次未写回任何文件。")
+            return 3
     doc_paths = [p for p, _ in doc_scan]
     script_paths = [p for p, _ in script_scan]
     rel_docs, rel_scripts = build_relations(doc_paths, script_paths)

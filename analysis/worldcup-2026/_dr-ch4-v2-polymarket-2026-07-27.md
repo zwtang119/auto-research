@@ -16,19 +16,19 @@ Polymarket 的底座是基于 Polygon 的链上抵押与结算系统，采用连
 
 **4.2 kimi 与市场的概率时点对照（纠正"全程高于"）**
 
-在 2026 世界杯冠军 outright 市场上，kimi 的冻结估计值为 23.82%（快照日 6-11，模型输出，冻结版本 kimi-6-11）【Red】；而 Polymarket 市场在该时点之前的每一个读数都低于这一数值，直到 7-18 市场价才跳升至 59.05%（已结算历史快照）【Green】。因此准确的时序表述是：kimi 的冻结估计在 7-18 之前始终高于市场任何时点，但 7-18/19 市场读数反超了 kimi 的冻结值（[冻结备忘录 faction-lmu-polymarket-2026-07-26](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Red＋Green】。这纠正了"kimi 全程高于市场"的绝对化表述——领先是时段性的、描述性的，而非贯穿全周期。
+在 2026 世界杯冠军 outright 市场上，kimi 的冻结估计值为 23.82%（快照日 6-11，模型输出，冻结版本 kimi-6-11）【Red】；而 Polymarket 市场在该时点之前的每一个读数都低于这一数值，直到 7-18 市场价才跳升至 59.05%（已结算历史快照）【Green】。因此准确的时序表述是：kimi 的冻结估计在 7-18 之前始终高于市场任何时点，但 7-18/19 市场读数反超了 kimi 的冻结值（[冻结备忘录 faction-lmu-polymarket-2026-07-26](faction-lmu-polymarket-2026-07-26.md)）【Red＋Green】。这纠正了"kimi 全程高于市场"的绝对化表述——领先是时段性的、描述性的，而非贯穿全周期。
 
 **4.3 n=1 描述性领先的发表价值**
 
-尽管仅是单届世界杯（n=1）的描述性观察，这一领先仍具发表价值：它是首次在"六维整合闭集预测域"中，将算法预测与异质预测者（Elo／混合／路径空间／LLM 群体／市场）同台审计的尝试（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。学术文献一贯强调 ex-ante 时态与协议完整性的价值（[Prediction market 文献综述](https://datafield.dev/learning-prediction-markets/part-01/chapter-02/further-reading.html) 引 Wolfers & Zitzewitz 2004、Arrow et al. 2008）【Green】。但单届样本的结构性限制明确：描述性领先不能外推为跨赛事的稳健优势。
+尽管仅是单届世界杯（n=1）的描述性观察，这一领先仍具发表价值：它是首次在"六维整合闭集预测域"中，将算法预测与异质预测者（Elo／混合／路径空间／LLM 群体／市场）同台审计的尝试（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。学术文献一贯强调 ex-ante 时态与协议完整性的价值（[Prediction market 文献综述](https://datafield.dev/learning-prediction-markets/part-01/chapter-02/further-reading.html) 引 Wolfers & Zitzewitz 2004、Arrow et al. 2008）【Green】。但单届样本的结构性限制明确：描述性领先不能外推为跨赛事的稳健优势。
 
 **4.4 "系统性差异成立"保留为待检假设**
 
-"kimi 与市场存在系统性差异"是一个待检假设，而非已证实的结论。要将其升级为定论，需要跨多届赛事、跨多个预测市场（Polymarket 之外的 Kalshi、传统博彩等）的复现证据（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。在缺乏此类复现前，正文应明确以"假设"而非"定论"呈现，避免发表性偏差。
+"kimi 与市场存在系统性差异"是一个待检假设，而非已证实的结论。要将其升级为定论，需要跨多届赛事、跨多个预测市场（Polymarket 之外的 Kalshi、传统博彩等）的复现证据（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。在缺乏此类复现前，正文应明确以"假设"而非"定论"呈现，避免发表性偏差。
 
 **4.5 有偏但可用的市场化基线**
 
-市场作为基线并非无偏神谕。学术与机制层面均记录其偏差：Bürgi 等（2025）在分析逾 30 万份 Kalshi 合约时发现显著的 favorite-longshot bias（[The economics of the Kalshi prediction market](https://cepr.org/voxeu/columns/economics-kalshi-prediction-market)）【Green】；理论文献指出，预测市场价格一般不等于概率均值，而是受风险偏好与异质信念影响的边际价格（[Prediction market prices under risk aversion](https://www.sciencedirect.com/science/article/abs/pii/S0304406817300484) 引 Manski 2006）【Green】。本赛事亦有 recency／流动性偏误的实例（如佛得角相关市场 −7pp 的过调，及冠军 outright 市场单笔七位数级别的实质深度证明非幽灵盘）（[冻结备忘录](analysis/worldcup-2026/faction-lmu-polymarket-2026-07-26.md)）【Green】。结论：市场是有偏但可用的信念读数——可作基准，不可当神谕。
+市场作为基线并非无偏神谕。学术与机制层面均记录其偏差：Bürgi 等（2025）在分析逾 30 万份 Kalshi 合约时发现显著的 favorite-longshot bias（[The economics of the Kalshi prediction market](https://cepr.org/voxeu/columns/economics-kalshi-prediction-market)）【Green】；理论文献指出，预测市场价格一般不等于概率均值，而是受风险偏好与异质信念影响的边际价格（[Prediction market prices under risk aversion](https://www.sciencedirect.com/science/article/abs/pii/S0304406817300484) 引 Manski 2006）【Green】。本赛事亦有 recency／流动性偏误的实例（如佛得角相关市场 −7pp 的过调，及冠军 outright 市场单笔七位数级别的实质深度证明非幽灵盘）（[冻结备忘录](faction-lmu-polymarket-2026-07-26.md)）【Green】。结论：市场是有偏但可用的信念读数——可作基准，不可当神谕。
 
 ## 分析
 

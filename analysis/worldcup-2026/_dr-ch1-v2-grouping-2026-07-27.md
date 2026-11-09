@@ -15,9 +15,9 @@
 
 **论据 1（事实·Green）· 实际领奖台已锁定。** 已结算赛程 `923e23a`（Green，Wikipedia 已核验）显示：冠军 西班牙、亚军 阿根廷、季军 英格兰、第四 法国；三四名决赛**英格兰 6–4 法国**（[Wikipedia 2026 FIFA World Cup](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup)）。据此，**法国最终为第 4，而非第 3**——任何"法国进入前三"的表述均为事实错误；上一轮曾误述，本章显式订正。
 
-**论据 2（事实·Red，冻结版）· 模型 top-3 与实际 top-3 集合不一致。** CDS 路径空间引擎的 top-3 概率集合为 Spain 0.0484(#1) / France 0.0482(#2) / Argentina 0.0469(#3)（[bracket-encoding-verification-2026-07-26](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)）。实际 top-3 为 {Spain, Argentina, England}。两集合 **{Spain, France, Argentina} ≠ {Spain, Argentina, England}**，"集合完全一致"为假——上一轮曾误述，已订正。引擎模态决赛预测为"英格兰 vs 法国"，与实际"西班牙 vs 阿根廷"不符；R32 对手命中率仅 **5/32（15.6%）**。
+**论据 2（事实·Red，冻结版）· 模型 top-3 与实际 top-3 集合不一致。** CDS 路径空间引擎的 top-3 概率集合为 Spain 0.0484(#1) / France 0.0482(#2) / Argentina 0.0469(#3)（[bracket-encoding-verification-2026-07-26](bracket-encoding-verification-2026-07-26.md)）。实际 top-3 为 {Spain, Argentina, England}。两集合 **{Spain, France, Argentina} ≠ {Spain, Argentina, England}**，"集合完全一致"为假——上一轮曾误述，已订正。引擎模态决赛预测为"英格兰 vs 法国"，与实际"西班牙 vs 阿根廷"不符；R32 对手命中率仅 **5/32（15.6%）**。
 
-**论据 3（事实·Red，冻结版）· 逐队 ceiling 重排。** 对 kimi 冻结前五（6-13，`0ff58a7`）施加半区约束（通道 A=西/法/葡，B=阿/英；通道内若有更高排名者 ceiling=3，否则=1）得（[bracket-aware-ranking-2026-07-26](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md)）：
+**论据 3（事实·Red，冻结版）· 逐队 ceiling 重排。** 对 kimi 冻结前五（6-13，`0ff58a7`）施加半区约束（通道 A=西/法/葡，B=阿/英；通道内若有更高排名者 ceiling=3，否则=1）得（[bracket-aware-ranking-2026-07-26](bracket-aware-ranking-2026-07-26.md)）：
 
 | 队 | 冻结排名 | ceiling | 实际 | 判定 |
 |---|---|---|---|---|
@@ -29,7 +29,7 @@
 
 读法：领奖台三席（西/阿/英）均落入冻结前五；**西班牙(#1)精确命中冠军**；**英格兰(#5)在 bracket 变换下为结构性季军预测且精确命中**——这是格式叠加在描述层真正可辩护的增量，但须明确为"ceiling 精确命中季军"，**不得泛化为"命中前四"**（葡萄牙 #4 实际第 12 即反例）；法国是唯一的前三预期偏差（差一场季军赛），葡萄牙为明确实错，**二者须同表呈报**。
 
-**论据 4（事实·Red 派生，已结算）· 标定层不翻案。** 决赛后 n=48 完整结算显示：CDS 把 **93.5% 夺冠质量压在出局队**（[claim-verification-with-footnotes-2026-07-26](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)）；Brier 三版本 ef30658 0.019542 / 875748b 0.019970 / 923e23a 0.019989，**仅勉强低于均匀基线 0.02083**；CDS 西班牙夺冠概率全程**钉死 0.0325–0.0331 平线**（Red，冻结版），每日刷新但无赛果通道。格式叠加不改变任一上述数字。
+**论据 4（事实·Red 派生，已结算）· 标定层不翻案。** 决赛后 n=48 完整结算显示：CDS 把 **93.5% 夺冠质量压在出局队**（[claim-verification-with-footnotes-2026-07-26](claim-verification-with-footnotes-2026-07-26.md)）；Brier 三版本 ef30658 0.019542 / 875748b 0.019970 / 923e23a 0.019989，**仅勉强低于均匀基线 0.02083**；CDS 西班牙夺冠概率全程**钉死 0.0325–0.0331 平线**（Red，冻结版），每日刷新但无赛果通道。格式叠加不改变任一上述数字。
 
 ## 三、分析
 
@@ -51,32 +51,32 @@
 ### 关键发现
 
 - 发现1：实际领奖台 西/阿/英/法，法国第 4（非第 3），须显式订正"法国进入前三"误述（[Green·`923e23a`/Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup)）。
-- 发现2：模型 top-3 {Spain,France,Argentina} ≠ 实际 {Spain,Argentina,England}，"集合完全一致"为假（[Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md)）。
-- 发现3：英格兰(#5)经 ceiling 变换精确命中季军，但须限缩为"ceiling 精确命中季军"，不得泛化为"命中前四"（[Red·bracket-aware-ranking](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md)）。
-- 发现4：标定层不翻案——93.5% 质量压出局队、Brier 0.0195–0.0200 vs 均匀 0.02083、CDS 平线 0.0325–0.0331（[Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md)）。
-- 发现5：X1.1 被四道硬伤驳回，bracket-aware settlement 重定位为 C17 方法增量（[项目内部·all-paper-claims-master C17/W5](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md)）。
+- 发现2：模型 top-3 {Spain,France,Argentina} ≠ 实际 {Spain,Argentina,England}，"集合完全一致"为假（[Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md)）。
+- 发现3：英格兰(#5)经 ceiling 变换精确命中季军，但须限缩为"ceiling 精确命中季军"，不得泛化为"命中前四"（[Red·bracket-aware-ranking](bracket-aware-ranking-2026-07-26.md)）。
+- 发现4：标定层不翻案——93.5% 质量压出局队、Brier 0.0195–0.0200 vs 均匀 0.02083、CDS 平线 0.0325–0.0331（[Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md)）。
+- 发现5：X1.1 被四道硬伤驳回，bracket-aware settlement 重定位为 C17 方法增量（[项目内部·all-paper-claims-master C17/W5](all-paper-claims-master-2026-07-26.md)）。
 
 ### 数据摘要
 
 | 指标 | 数据 | 来源 |
 |------|------|------|
 | 实际领奖台 | 西冠/阿亚/英季/法第4（英 6–4 法） | [Green·`923e23a`/Wikipedia](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup) |
-| 引擎 top-3 概率 | Spain 0.0484 / France 0.0482 / Argentina 0.0469 | [Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) |
-| R32 对手命中率 | 5/32（15.6%） | [Red·bracket-encoding-verification](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) |
-| 过度分散 | 93.5% 质量压出局队 | [Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
-| Brier(n=48) | 0.0195–0.0200 vs 均匀 0.02083 | [Red 派生·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
-| CDS 冠军概率 | 全程 0.0325–0.0331 平线 | [Red·claim-verification](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) |
+| 引擎 top-3 概率 | Spain 0.0484 / France 0.0482 / Argentina 0.0469 | [Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md) |
+| R32 对手命中率 | 5/32（15.6%） | [Red·bracket-encoding-verification](bracket-encoding-verification-2026-07-26.md) |
+| 过度分散 | 93.5% 质量压出局队 | [Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
+| Brier(n=48) | 0.0195–0.0200 vs 均匀 0.02083 | [Red 派生·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
+| CDS 冠军概率 | 全程 0.0325–0.0331 平线 | [Red·claim-verification](claim-verification-with-footnotes-2026-07-26.md) |
 | 种子保护 | 前四分入不同半区（史上首次） | [Green·FIFA 官方](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw) ＋ [新华网](https://www.news.cn/sports/20251126/275e59c0b82844059c9b218935cab795/c.html) |
 
 ---
 
 ### 本章新增来源（供主理人更新来源池）
 
-1. [bracket-aware-ranking-2026-07-26.md](analysis/worldcup-2026/bracket-aware-ranking-2026-07-26.md) — Green：ceiling 变换逐队表（西#1精确/英#5 ceiling精确/法#2差一位/葡#4实错），纪律§5（post-hoc、全表呈报、禁用"命中冠亚季军"裸句）。
-2. [bracket-encoding-verification-2026-07-26.md](analysis/worldcup-2026/bracket-encoding-verification-2026-07-26.md) — Green：引擎 top-3 概率、R32 5/32、模态决赛错、bracket 编码结构正确（路径级不可靠）。
-3. [claim-verification-with-footnotes-2026-07-26.md](analysis/worldcup-2026/claim-verification-with-footnotes-2026-07-26.md) — Green：n=48 Brier 0.0195–0.0200、93.5% 质量、CDS 平线 0.0325–0.0331、注脚约定（G/R/I）。
-4. [all-paper-claims-master-2026-07-26.md](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md) — 项目内部：C1/C10/C17/W5 评级与 prior art 12 维 crosswalk（C17 降级为"体育域首次六维整合闭集"）。
+1. [bracket-aware-ranking-2026-07-26.md](bracket-aware-ranking-2026-07-26.md) — Green：ceiling 变换逐队表（西#1精确/英#5 ceiling精确/法#2差一位/葡#4实错），纪律§5（post-hoc、全表呈报、禁用"命中冠亚季军"裸句）。
+2. [bracket-encoding-verification-2026-07-26.md](bracket-encoding-verification-2026-07-26.md) — Green：引擎 top-3 概率、R32 5/32、模态决赛错、bracket 编码结构正确（路径级不可靠）。
+3. [claim-verification-with-footnotes-2026-07-26.md](claim-verification-with-footnotes-2026-07-26.md) — Green：n=48 Brier 0.0195–0.0200、93.5% 质量、CDS 平线 0.0325–0.0331、注脚约定（G/R/I）。
+4. [all-paper-claims-master-2026-07-26.md](all-paper-claims-master-2026-07-26.md) — 项目内部：C1/C10/C17/W5 评级与 prior art 12 维 crosswalk（C17 降级为"体育域首次六维整合闭集"）。
 5. [FIFA. Procedures for the Final Draw for the FIFA World Cup 2026™ revealed](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/procedures-pots-final-draw) — 机构/官方：种子保护"for the first time in World Cup history"（[G-1]，工作文件已核验；现网 JS 门控，未能直读正文）。
 6. [新华网. 国际足联公布2026年世界杯抽签规则](https://www.news.cn/sports/20251126/275e59c0b82844059c9b218935cab795/c.html) — 媒体：中文 corroboration 种子保护（前四分入不同半区）。
 7. [Wikipedia. 2026 FIFA World Cup](https://en.wikipedia.org/wiki/2026_FIFA_World_Cup) — 媒体/参考：已结算赛果核验（赛程冻结版 `923e23a` 对应；现网确认 西冠/阿亚/英季/法第4）。
-8. [Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. JASA 72(359).](analysis/worldcup-2026/all-paper-claims-master-2026-07-26.md) — 学术：accuracy 与 proper score 可背离的统计学基础（[G-10]，支撑 Brier/标定层论证）。
+8. [Murphy, A. H., & Winkler, R. L. (1977). Reliability of Subjective Probability Forecasts. JASA 72(359).](all-paper-claims-master-2026-07-26.md) — 学术：accuracy 与 proper score 可背离的统计学基础（[G-10]，支撑 Brier/标定层论证）。

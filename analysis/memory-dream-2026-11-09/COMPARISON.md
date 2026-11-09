@@ -201,3 +201,26 @@
 | 待推提交 | 0 |
 
 **作废声明**：本报告 §7.4、§8.3 的「未 commit/push」，`CHANGELOG.md` 各续的「未 commit/push / 未 push」，以及 `a1f480b` 提交信息末行「未 push」，均为各阶段**当时状态**，推送后失效；权威状态以 `docs/MEMORY.md §10` 为准。历史行按 append-only 保留，不回改、不静默覆盖。
+
+
+## 11. pass #2：按根因建议执行（2026-11-09）
+
+用户「按照你的建议走」授权后，先做根因调查再执行。**本节为当前权威状态**；§7.4 / §8.3 / §9 / §10 中「W128 / 待处理 337 / 未批量改链 / 183 条待裁定」等均为当时值，已作废，保留不回改。
+
+| 建议 | 执行 | 验收 |
+|---|---|---|
+| 1 修索引口径 | `docs/index.json` 增 `local_only`（183 条 + 依据）；`build_index.py` 的 `mode_check` 按环境分类、`compose` 保留新键、默认 regenerate 加写回防护 | `--check` 在 worktree / 主工作区均 exit=0；分类 183 条；防护实测 exit=3 且 index.json 字节未变；`--dry-run` 不写回 |
+| 2 资产入库 | **判否，不执行**：15 个未跟踪目录约 30.4 GB / 32 万文件，含 `.env` 真实 API Key、venv、site-packages，仓库为 public | 无改动；理由写入 `local_only.basis` |
+| 3 C1–C5 | C2/C3/C4/C5 标「历史登记」；**C1 经用户裁定**：以 README 双论文 v1.7 / 开题 v2.1 为准，已对齐 `CLAUDE.md:8/16/23` | 仅改 3 行状态口径文字，原文备份在 `backup/CLAUDE.md.pre-c1.orig` |
+| 4 W 类统一 | 128 条 → 0，7 文件 / 112 行 | 试运行 + 备份 + 写回 + 逐字节验收全过 |
+| 5 检索评测 | 新建 `eval-set-draft.md`：25 题 + 标注模板 + 对照跑法 | **用户 2026-11-09 判定「不做检索评测、没有意义」**；草案仅存档、不执行，不外推文章准确率 |
+| 6 临时 worktree | `git worktree remove` 清理 opencode `rp-mcp-probe`（96 MB、0 未提交、0 ignored） | 仅剩 2 个 worktree；保留 `worktree add --detach … b378f00` 重建命令 |
+
+**当前权威数字**：内部链接 **762** / B **192** / W **0** / E **17** / 待处理 **209**；演进 710 → 731 → 761 → 762。`--check` 真实失效 0、`local_only` 183 条。上述改动已获用户明确授权提交并推送；具体 sha 以远端 HEAD 为准，本节不写死。
+
+
+### 补记：D4 逐字守恒结论的 1 行例外（2026-11-09 pass #2）
+
+- 此前「原 395 + 346 行逐字守恒、丢失/改写 0 行」**现需修正**：本轮 W 类统一把 `docs/INDEX.md:63` 的自指链接从 `docs/INDEX.md` 改为 `INDEX.md`，原 395 行中该行不再逐字出现；`SCRIPTS.md` 仍为 0 丢失。
+- 终态实测：`INDEX.md` 原 395 行 → 丢失/改写 **1 行**；`SCRIPTS.md` 原 346 行 → **0 行**。改写前顶层原页字节级备份在 `backup/w-links/INDEX.md.orig`（D4 之前的完整 395 行原页仍在 `backup/INDEX.md.orig`）。
+- 性质：只改链接目标，非状态口径文字；状态口径关键行 18/18 逐字留存。历史结论保留在本页前文，以此补记为准。
